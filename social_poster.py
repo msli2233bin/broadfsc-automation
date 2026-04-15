@@ -230,7 +230,7 @@ def generate_tweet_content():
         tags = " ".join(HASHTAGS[:3])
         
         response = client.chat.completions.create(
-            model="llama3-8b-8192",
+            model="llama-3.1-8b-instant",
             messages=[{
                 "role": "user",
                 "content": (
@@ -267,7 +267,7 @@ def generate_linkedin_content():
         day = now.strftime("%A")
         
         response = client.chat.completions.create(
-            model="llama3-8b-8192",
+            model="llama-3.1-8b-instant",
             messages=[{
                 "role": "user",
                 "content": (
