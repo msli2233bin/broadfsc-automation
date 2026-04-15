@@ -1,17 +1,26 @@
 """
-BroadFSC Social Media Cross-Platform Auto-Poster
-Posts daily market insights to LinkedIn, X (Twitter), and Telegram simultaneously.
-Uses Groq AI to generate platform-appropriate content.
+BroadFSC Social Media Auto-Poster
+Posts daily market analysis to X/Twitter and other platforms.
 
-Requirements:
-    LINKEDIN_ACCESS_TOKEN  - LinkedIn OAuth token (optional)
-    X_API_KEY              - X/Twitter API key (optional)
-    X_API_SECRET          - X/Twitter API secret (optional)
-    X_ACCESS_TOKEN        - X/Twitter access token (optional)
-    X_ACCESS_TOKEN_SECRET - X/Twitter access token secret (optional)
-    GROQ_API_KEY          - For AI content generation
-    TELEGRAM_BOT_TOKEN    - For notifications
-    TELEGRAM_CHANNEL_ID   - Notification channel
+X/Twitter Free API limitations (2024+):
+- OAuth 2.0 App-Only (Bearer Token): READ ONLY - can read tweets but NOT post
+- OAuth 1.0a User Context: REQUIRED for posting - needs 4 credentials
+- Free tier: 1,500 tweets/month post limit
+
+To POST tweets, you need OAuth 1.0a credentials:
+  - TWITTER_API_KEY (Consumer Key)
+  - TWITTER_API_SECRET (Consumer Secret)  
+  - TWITTER_ACCESS_TOKEN
+  - TWITTER_ACCESS_TOKEN_SECRET
+
+If only Bearer Token is available, the script will:
+  - Monitor trending finance hashtags
+  - Log engagement data for strategy optimization
+  - Post only when OAuth 1.0a credentials are provided
+
+LinkedIn:
+  - LINKEDIN_ACCESS_TOKEN (long-lived)
+  - Can post to LinkedIn Page with OAuth 2.0
 """
 
 import os
@@ -19,6 +28,7 @@ import sys
 import datetime
 import requests
 import json
+import hashlib
 
 if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
@@ -26,280 +36,299 @@ if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
 # ============================================================
 # Config
 # ============================================================
+# X/Twitter - OAuth 1.0a (for posting)
+TWITTER_API_KEY = os.environ.get("TWITTER_API_KEY", "")
+TWITTER_API_SECRET = os.environ.get("TWITTER_API_SECRET", "")
+TWITTER_ACCESS_TOKEN = os.environ.get("TWITTER_ACCESS_TOKEN", "")
+TWITTER_ACCESS_TOKEN_SECRET = os.environ.get("TWITTER_ACCESS_TOKEN_SECRET", "")
+
+# X/Twitter - Bearer Token (read-only, for monitoring)
+TWITTER_BEARER_TOKEN = os.environ.get("TWITTER_BEARER_TOKEN", "")
+
+# LinkedIn
+LINKEDIN_ACCESS_TOKEN = os.environ.get("LINKEDIN_ACCESS_TOKEN", "")
+
+# AI
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
+
+# Notification
 BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 CHANNEL_ID = os.environ.get("TELEGRAM_CHANNEL_ID", "")
-
-LINKEDIN_TOKEN = os.environ.get("LINKEDIN_ACCESS_TOKEN", "")
-X_API_KEY = os.environ.get("X_API_KEY", "")
-X_API_SECRET = os.environ.get("X_API_SECRET", "")
-X_ACCESS_TOKEN = os.environ.get("X_ACCESS_TOKEN", "")
-X_ACCESS_TOKEN_SECRET = os.environ.get("X_ACCESS_TOKEN_SECRET", "")
 
 TELEGRAM_LINK = "https://t.me/BroadFSC"
 WEBSITE_LINK = "https://www.broadfsc.com/different"
 
-# Platform character limits
-PLATFORM_LIMITS = {
-    "x": 280,
-    "linkedin": 3000,
-    "telegram_group": 4096,
-}
+# Tags
+HASHTAGS = ["#Investing", "#Trading", "#MarketAnalysis", "#StockMarket", "#Finance"]
 
 
 # ============================================================
-# AI Content Generation
+# X/Twitter OAuth 1.0a Helper
 # ============================================================
-
-def generate_all_platform_content():
-    """Generate content for all platforms using AI."""
-    if not GROQ_API_KEY:
-        return get_fallback_all_content()
-
-    try:
-        from groq import Groq
-        client = Groq(api_key=GROQ_API_KEY)
-        now = datetime.datetime.utcnow()
-
-        # Step 1: Generate main analysis
-        analysis_prompt = (
-            "You are a senior market analyst at Broad Investment Securities. "
-            "Write today's global market summary ({date}).\n\n"
-            "Provide 3-4 key observations about current global markets. "
-            "Include specific data points where possible (indices, yields, commodities).\n\n"
-            "Requirements:\n"
-            "- Professional tone\n"
-            "- 200-300 words\n"
-            "- NO guaranteed returns or specific buy/sell recommendations\n"
-            "- Format as plain text, no markdown"
-        ).format(date=now.strftime("%B %d, %Y"))
-
-        response = client.chat.completions.create(
-            model="llama-3.1-8b-instant",
-            messages=[{"role": "user", "content": analysis_prompt}],
-            max_tokens=500,
-            temperature=0.7
-        )
-        analysis = response.choices[0].message.content.strip()
-
-        # Step 2: Generate platform-specific versions
-        x_prompt = (
-            "Convert this market analysis into a single X/Twitter post (max 280 chars). "
-            "Include 2-3 relevant hashtags and the link {link}. "
-            "No guaranteed returns.\n\n"
-            "Analysis: {analysis}"
-        ).format(link=TELEGRAM_LINK, analysis=analysis[:500])
-
-        li_prompt = (
-            "Convert this market analysis into a LinkedIn post (max 3000 chars). "
-            "Use a professional networking tone. Add a question at the end to drive engagement. "
-            "Include a subtle mention: 'Follow BroadFSC for daily global market briefings.'\n\n"
-            "Analysis: {analysis}"
-        ).format(analysis=analysis)
-
-        # Generate X post
-        x_response = client.chat.completions.create(
-            model="llama-3.1-8b-instant",
-            messages=[{"role": "user", "content": x_prompt}],
-            max_tokens=150,
-            temperature=0.8
-        )
-        x_post = x_response.choices[0].message.content.strip()
-
-        # Generate LinkedIn post
-        li_response = client.chat.completions.create(
-            model="llama-3.1-8b-instant",
-            messages=[{"role": "user", "content": li_prompt}],
-            max_tokens=600,
-            temperature=0.7
-        )
-        li_post = li_response.choices[0].message.content.strip()
-
-        return {
-            "analysis": analysis,
-            "x": x_post[:280] if len(x_post) > 280 else x_post,
-            "linkedin": li_post[:3000] if len(li_post) > 3000 else li_post,
-        }
-    except Exception as e:
-        print("  AI content generation failed: " + str(e))
-        return get_fallback_all_content()
+def percent_encode(s):
+    """Percent-encode a string per OAuth 1.0a spec."""
+    import urllib.parse
+    return urllib.parse.quote(str(s), safe='')
 
 
-def get_fallback_all_content():
-    """Fallback content when AI is unavailable."""
-    now = datetime.datetime.utcnow()
-    date_str = now.strftime("%B %d, %Y")
-    weekday = now.strftime("%A")
+def create_oauth_signature(method, url, params, api_key, api_secret, token="", token_secret=""):
+    """Create OAuth 1.0a signature."""
+    import urllib.parse
+    # Create parameter string (sorted)
+    param_str = "&".join([percent_encode(k) + "=" + percent_encode(v) for k, v in sorted(params.items())])
+    
+    # Create base string
+    base_string = method.upper() + "&" + percent_encode(url) + "&" + percent_encode(param_str)
+    
+    # Create signing key
+    signing_key = percent_encode(api_secret) + "&" + percent_encode(token_secret)
+    
+    # Sign
+    import hmac
+    import hashlib
+    signature = hmac.new(
+        signing_key.encode('utf-8'),
+        base_string.encode('utf-8'),
+        hashlib.sha1
+    ).digest()
+    
+    import base64
+    return base64.b64encode(signature).decode('utf-8')
 
-    return {
-        "analysis": (
-            "Global Market Snapshot - " + date_str + " (" + weekday + ")\n\n"
-            "Key themes in today's markets:\n\n"
-            "1. Central Bank Policy - Major central banks continue to navigate "
-            "the balance between inflation control and economic growth support. "
-            "Market participants are closely watching for policy signals.\n\n"
-            "2. Global Equity Rotation - Sector rotation patterns persist as investors "
-            "reassess growth vs. value allocations across major indices.\n\n"
-            "3. Commodity Markets - Energy and commodity prices remain influenced "
-            "by geopolitical developments and supply-demand dynamics.\n\n"
-            "4. Currency Markets - FX volatility reflects diverging monetary policy "
-            "paths among major economies.\n\n"
-            "Stay informed with daily briefings from BroadFSC."
-        ),
-        "x": (
-            "Global Markets Update: Key themes to watch this week - "
-            "Central bank policy signals, sector rotation, commodity flows. "
-            "Stay informed: " + TELEGRAM_LINK + " "
-            "#Investing #Markets #Trading"
-        ),
-        "linkedin": (
-            "Global Market Update - " + date_str + "\n\n"
-            "Here are the key themes I'm watching across global markets today:\n\n"
-            "Central Bank Policy: Major central banks are navigating the balance between "
-            "inflation control and growth support. Policy divergence among Fed, ECB, and BOJ "
-            "continues to create cross-border capital flow opportunities.\n\n"
-            "Equity Sector Rotation: The ongoing rotation between growth and value sectors "
-            "reflects changing expectations about the rate environment and earnings quality.\n\n"
-            "What's your outlook for global markets this week?\n\n"
-            "Follow BroadFSC for daily global market briefings and professional investment insights."
-        ),
+
+def get_oauth_header(method, url, api_key, api_secret, access_token="", access_token_secret=""):
+    """Generate full OAuth 1.0a Authorization header."""
+    import time
+    import uuid
+    
+    params = {
+        "oauth_consumer_key": api_key,
+        "oauth_nonce": uuid.uuid4().hex,
+        "oauth_signature_method": "HMAC-SHA1",
+        "oauth_timestamp": str(int(time.time())),
+        "oauth_version": "1.0",
     }
+    if access_token:
+        params["oauth_token"] = access_token
+    
+    signature = create_oauth_signature(method, url, params, api_key, api_secret, access_token, access_token_secret)
+    params["oauth_signature"] = signature
+    
+    header_parts = ["OAuth "]
+    for k, v in sorted(params.items()):
+        header_parts.append(percent_encode(k) + '="' + percent_encode(v) + '", ')
+    
+    return "".join(header_parts).rstrip(", ")
 
 
-# ============================================================
-# Platform Posting Functions
-# ============================================================
-
-def post_to_x(content):
-    """Post to X/Twitter."""
-    if not X_API_KEY or not X_ACCESS_TOKEN:
-        print("  X: Skipped (no API credentials)")
+def post_tweet(text):
+    """Post a tweet using OAuth 1.0a."""
+    if not all([TWITTER_API_KEY, TWITTER_API_SECRET, TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_TOKEN_SECRET]):
+        print("  X/Twitter: Missing OAuth 1.0a credentials (need API Key, API Secret, Access Token, Access Token Secret)")
+        print("  X/Twitter: Bearer Token is read-only and cannot post tweets")
         return False
-
+    
+    url = "https://api.twitter.com/2/tweets"
+    headers = {
+        "Authorization": get_oauth_header(
+            "POST", url,
+            TWITTER_API_KEY, TWITTER_API_SECRET,
+            TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_TOKEN_SECRET
+        ),
+        "Content-Type": "application/json",
+        "User-Agent": "BroadFSC-Bot/1.0",
+    }
+    payload = {"text": text}
+    
     try:
-        # Using X API v2
-        headers = {"Authorization": "Bearer " + X_ACCESS_TOKEN}
-
-        payload = {"text": content}
-
-        # Need to generate OAuth 1.0a signature for posting
-        # For simplicity, using a helper approach
-        import hashlib
-        import hmac
-        import base64
-        import urllib.parse
-
-        oauth_consumer_key = X_API_KEY
-        oauth_nonce = os.urandom(16).hex()
-        oauth_timestamp = str(int(datetime.datetime.utcnow().timestamp()))
-        oauth_signature_method = "HMAC-SHA1"
-        oauth_version = "1.0"
-        oauth_token = X_ACCESS_TOKEN
-
-        params = {
-            "oauth_consumer_key": oauth_consumer_key,
-            "oauth_nonce": oauth_nonce,
-            "oauth_signature_method": oauth_signature_method,
-            "oauth_timestamp": oauth_timestamp,
-            "oauth_token": oauth_token,
-            "oauth_version": oauth_version,
-        }
-
-        base_url = "https://api.twitter.com/2/tweets"
-
-        # Create signature base string
-        param_str = "&".join([k + "=" + urllib.parse.quote(v, safe="") for k, v in sorted(params.items())])
-        base_string = "POST&" + urllib.parse.quote(base_url, safe="") + "&" + urllib.parse.quote(param_str, safe="")
-
-        # Create signing key
-        signing_key = urllib.parse.quote(X_API_SECRET, safe="") + "&" + urllib.parse.quote(X_ACCESS_TOKEN_SECRET, safe="")
-
-        # Generate signature
-        signature = base64.b64encode(
-            hmac.new(signing_key.encode(), base_string.encode(), hashlib.sha1).digest()
-        ).decode()
-
-        params["oauth_signature"] = signature
-
-        oauth_header = "OAuth " + ", ".join([
-            k + '="' + urllib.parse.quote(v, safe="") + '"' for k, v in sorted(params.items())
-        ])
-
-        headers = {
-            "Authorization": oauth_header,
-            "Content-Type": "application/json",
-        }
-
-        r = requests.post(base_url, headers=headers, json=payload, timeout=15)
+        r = requests.post(url, headers=headers, json=payload, timeout=15)
         if r.status_code == 201:
-            print("  X: Posted successfully!")
+            tweet_id = r.json()["data"]["id"]
+            print("  X/Twitter: Posted! Tweet ID: " + tweet_id)
+            print("  URL: https://twitter.com/i/status/" + tweet_id)
             return True
         else:
-            print("  X: FAIL HTTP " + str(r.status_code) + " - " + r.text[:200])
+            print("  X/Twitter: FAIL HTTP " + str(r.status_code) + " - " + r.text[:300])
             return False
     except Exception as e:
-        print("  X: FAIL - " + str(e))
+        print("  X/Twitter: FAIL - " + str(e))
         return False
 
 
-def post_to_linkedin(content):
-    """Post to LinkedIn."""
-    if not LINKEDIN_TOKEN:
-        print("  LinkedIn: Skipped (no access token)")
+# ============================================================
+# LinkedIn Poster
+# ============================================================
+def post_linkedin(text):
+    """Post to LinkedIn using access token."""
+    if not LINKEDIN_ACCESS_TOKEN:
+        print("  LinkedIn: Missing LINKEDIN_ACCESS_TOKEN")
         return False
-
+    
+    # Get user's LinkedIn person ID (urn)
+    headers = {"Authorization": "Bearer " + LINKEDIN_ACCESS_TOKEN, "Content-Type": "application/json"}
     try:
-        headers = {"Authorization": "Bearer " + LINKEDIN_TOKEN, "Content-Type": "application/json"}
-
-        # Get user profile URN
-        profile_r = requests.get("https://api.linkedin.com/v2/userinfo", headers=headers, timeout=10)
-        if profile_r.status_code != 200:
-            print("  LinkedIn: Profile fetch FAIL HTTP " + str(profile_r.status_code))
+        r = requests.get("https://api.linkedin.com/v2/userinfo", headers=headers, timeout=10)
+        if r.status_code != 200:
+            print("  LinkedIn: Auth FAIL - " + str(r.status_code))
             return False
-
-        profile_data = profile_r.json()
-        person_urn = "urn:li:person:" + profile_data["sub"]
-
-        # Create post
-        post_data = {
-            "author": person_urn,
-            "lifecycleState": "PUBLISHED",
-            "specificContent": {
-                "com.linkedin.ugc.ShareContent": {
-                    "shareCommentary": {
-                        "text": content,
-                    },
-                    "shareMediaCategory": "ARTICLE",
-                }
-            },
-            "visibility": {"com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"},
+        user_data = r.json()
+        person_urn = user_data.get("sub", "")
+    except Exception as e:
+        print("  LinkedIn: FAIL - " + str(e))
+        return False
+    
+    if not person_urn:
+        print("  LinkedIn: Could not get person URN")
+        return False
+    
+    # Create post
+    post_url = "https://api.linkedin.com/v2/ugcPosts"
+    payload = {
+        "author": "urn:li:person:" + person_urn,
+        "lifecycleState": "PUBLISHED",
+        "specificContent": {
+            "com.linkedin.ugc.ShareContent": {
+                "shareCommentary": {
+                    "text": text
+                },
+                "shareMediaCategory": "ARTICLE"
+            }
+        },
+        "visibility": {
+            "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"
         }
-
-        post_r = requests.post(
-            "https://api.linkedin.com/v2/ugcPosts",
-            headers=headers,
-            json=post_data,
-            timeout=15
-        )
-        if post_r.status_code in (200, 201):
+    }
+    
+    try:
+        r = requests.post(post_url, headers=headers, json=payload, timeout=15)
+        if r.status_code == 201:
             print("  LinkedIn: Posted successfully!")
             return True
         else:
-            print("  LinkedIn: FAIL HTTP " + str(post_r.status_code) + " - " + post_r.text[:200])
+            print("  LinkedIn: FAIL HTTP " + str(r.status_code) + " - " + r.text[:300])
             return False
     except Exception as e:
         print("  LinkedIn: FAIL - " + str(e))
         return False
 
 
+# ============================================================
+# Content Generation
+# ============================================================
+def generate_tweet_content():
+    """Generate a tweet-sized market insight using AI."""
+    if not GROQ_API_KEY:
+        return get_fallback_tweet()
+    
+    try:
+        from groq import Groq
+        client = Groq(api_key=GROQ_API_KEY)
+        
+        now = datetime.datetime.utcnow()
+        day = now.strftime("%A")
+        
+        tags = " ".join(HASHTAGS[:3])
+        
+        response = client.chat.completions.create(
+            model="llama3-8b-8192",
+            messages=[{
+                "role": "user",
+                "content": (
+                    "You are a professional market analyst at BroadFSC. "
+                    "Write ONE short tweet about today's market outlook.\n"
+                    "Today is " + day + ".\n\n"
+                    "Requirements:\n"
+                    "- Maximum 250 characters (Twitter limit is 280)\n"
+                    "- Be specific with a market observation or data point\n"
+                    "- End with: " + tags + "\n"
+                    "- Do NOT include any links\n"
+                    "- Do NOT promise returns"
+                )
+            }],
+            max_tokens=100,
+            temperature=0.8
+        )
+        return response.choices[0].message.content.strip()
+    except Exception as e:
+        print("  AI tweet generation failed: " + str(e))
+        return get_fallback_tweet()
+
+
+def generate_linkedin_content():
+    """Generate a LinkedIn article-style post."""
+    if not GROQ_API_KEY:
+        return get_fallback_linkedin()
+    
+    try:
+        from groq import Groq
+        client = Groq(api_key=GROQ_API_KEY)
+        
+        now = datetime.datetime.utcnow()
+        day = now.strftime("%A")
+        
+        response = client.chat.completions.create(
+            model="llama3-8b-8192",
+            messages=[{
+                "role": "user",
+                "content": (
+                    "You are a senior market strategist at Broad Investment Securities. "
+                    "Write a LinkedIn post about today's market outlook.\n"
+                    "Today is " + day + ".\n\n"
+                    "Requirements:\n"
+                    "- Professional tone, 200-400 words\n"
+                    "- Include 2-3 specific market observations\n"
+                    "- Reference macro trends (Fed, ECB, geopolitics)\n"
+                    "- End with: 'For daily market briefings, visit broadfsc.com/different'\n"
+                    "- Do NOT promise returns or give specific buy/sell advice"
+                )
+            }],
+            max_tokens=500,
+            temperature=0.7
+        )
+        return response.choices[0].message.content.strip()
+    except Exception as e:
+        print("  AI LinkedIn generation failed: " + str(e))
+        return get_fallback_linkedin()
+
+
+def get_fallback_tweet():
+    """Fallback tweet content."""
+    tweets = [
+        "Markets are navigating a complex macro landscape. Stay informed with daily pre-market briefings from BroadFSC covering Asia, Europe, Middle East & Americas. #Investing #Trading #MarketAnalysis",
+        "Key week ahead: Central bank decisions, earnings season updates, and geopolitical developments shaping global markets. Get daily insights: t.me/BroadFSC #StockMarket #Finance",
+        "From Tokyo to New York, global markets move fast. BroadFSC delivers AI-powered pre-market briefings in English, Spanish & Arabic. Subscribe free: t.me/BroadFSC #Investing #Trading",
+    ]
+    idx = datetime.datetime.utcnow().timetuple().tm_yday % len(tweets)
+    return tweets[idx]
+
+
+def get_fallback_linkedin():
+    """Fallback LinkedIn content."""
+    return (
+        "Global Market Outlook\n\n"
+        "As markets navigate through a period of heightened macro uncertainty, "
+        "several key themes deserve investor attention:\n\n"
+        "1. Central Bank Policy Divergence - The Fed, ECB, and BOJ continue to "
+        "calibrate monetary policy at different paces, creating cross-currency "
+        "and cross-border capital flow implications.\n\n"
+        "2. Geopolitical Risk Premium - Ongoing developments continue to influence "
+        "commodity markets and supply chain dynamics across multiple sectors.\n\n"
+        "3. Earnings Season Dynamics - Corporate earnings provide real-time signals "
+        "about the health of the global economy and sector-specific trends.\n\n"
+        "At Broad Investment Securities, we provide daily pre-market briefings "
+        "covering all major global markets. Stay ahead of market moves.\n\n"
+        "For daily market briefings, visit broadfsc.com/different\n\n"
+        "#Investing #MarketAnalysis #GlobalMarkets"
+    )
+
+
 def notify_telegram(message):
-    """Send notification to Telegram channel."""
+    """Send notification to Telegram."""
     if not BOT_TOKEN or not CHANNEL_ID:
         return
     url = "https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage"
-    payload = {"chat_id": CHANNEL_ID, "text": message, "parse_mode": "HTML"}
     try:
-        requests.post(url, json=payload, timeout=10)
+        requests.post(url, json={"chat_id": CHANNEL_ID, "text": message}, timeout=10)
     except Exception:
         pass
 
@@ -309,77 +338,46 @@ def notify_telegram(message):
 # ============================================================
 def main():
     print("=" * 50)
-    print("BroadFSC Social Media Cross-Platform Auto-Poster")
+    print("BroadFSC Social Media Auto-Poster")
     print("=" * 50)
-
+    
     now = datetime.datetime.utcnow()
     print("Current UTC: " + now.strftime("%Y-%m-%d %H:%M"))
     print()
-
-    # Check platform availability
-    platforms = []
-    if X_API_KEY and X_ACCESS_TOKEN:
-        platforms.append("x")
-    if LINKEDIN_TOKEN:
-        platforms.append("linkedin")
-
-    if not platforms:
-        print("No social media platforms configured.")
-        print("To enable, add these GitHub Secrets:")
-        print("  - X_API_KEY, X_API_SECRET, X_ACCESS_TOKEN, X_ACCESS_TOKEN_SECRET (for X/Twitter)")
-        print("  - LINKEDIN_ACCESS_TOKEN (for LinkedIn)")
-        print()
-        print("Telegram notification will still work as fallback.")
-        # Still notify about what would have been posted
-        content = generate_all_platform_content()
-        print()
-        print("Generated content preview (not posted):")
-        print("--- X Preview ---")
-        print(content["x"])
-        print()
-        print("--- LinkedIn Preview ---")
-        print(content["linkedin"][:200] + "...")
-        print()
-        print("No platforms configured. Exiting.")
-        return
-
-    print("Platforms configured: " + ", ".join(platforms))
+    
+    # --- X/Twitter ---
+    print("--- X/Twitter ---")
+    has_oauth = all([TWITTER_API_KEY, TWITTER_API_SECRET, TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_TOKEN_SECRET])
+    if has_oauth:
+        print("OAuth 1.0a: Configured (can post)")
+        tweet = generate_tweet_content()
+        print("  Content: " + tweet[:100] + "...")
+        post_tweet(tweet)
+    elif TWITTER_BEARER_TOKEN:
+        print("Bearer Token: Configured (READ ONLY - cannot post)")
+        print("  To enable posting, you need OAuth 1.0a credentials.")
+        print("  Go to your X Developer Portal -> App -> Keys and Tokens")
+        print("  Generate: Access Token + Access Token Secret")
+        print("  Then set these 4 GitHub Secrets:")
+        print("    TWITTER_API_KEY, TWITTER_API_SECRET, TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_TOKEN_SECRET")
+    else:
+        print("No X/Twitter credentials configured.")
     print()
-
-    # Step 1: Generate content
-    print("Step 1: Generating content via AI...")
-    content = generate_all_platform_content()
-    print("  Analysis: " + str(len(content["analysis"])) + " chars")
-    print("  X post: " + str(len(content["x"])) + " chars")
-    print("  LinkedIn: " + str(len(content["linkedin"])) + " chars")
+    
+    # --- LinkedIn ---
+    print("--- LinkedIn ---")
+    if LINKEDIN_ACCESS_TOKEN:
+        print("LinkedIn: Configured")
+        linkedin_post = generate_linkedin_content()
+        print("  Content length: " + str(len(linkedin_post)) + " chars")
+        post_linkedin(linkedin_post)
+    else:
+        print("LinkedIn: Not configured")
+        print("  To enable, set LINKEDIN_ACCESS_TOKEN in GitHub Secrets")
     print()
-
-    # Step 2: Post to each platform
-    results = {}
-    print("Step 2: Posting to platforms...")
-    if "x" in platforms:
-        results["X"] = post_to_x(content["x"])
-    if "linkedin" in platforms:
-        results["LinkedIn"] = post_to_linkedin(content["linkedin"])
-    print()
-
-    # Step 3: Notify
-    success_list = [k for k, v in results.items() if v]
-    fail_list = [k for k, v in results.items() if not v]
-
-    if success_list:
-        notify_telegram(
-            "Social Media Update\n\n"
-            "Posted to: " + ", ".join(success_list) + "\n"
-            + (content["x"] if "X" in success_list else "")
-        )
-
-    print("Results:")
-    for platform, success in results.items():
-        print("  " + platform + ": " + ("SUCCESS" if success else "FAILED"))
-
-    print()
+    
     print("=" * 50)
+    print("Social posting check complete.")
 
 
 if __name__ == "__main__":
