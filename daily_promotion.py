@@ -26,14 +26,19 @@ import requests
 # ============================================================
 # 初始化 AI 客户端（Groq 免费版）
 # ============================================================
-try:
-    from groq import Groq
-    ai_client = Groq(api_key=os.environ["GROQ_API_KEY"])
-    AI_MODEL = "llama3-8b-8192"  # 免费、速度快
-    print("✅ Groq AI client initialized")
-except Exception as e:
-    print(f"❌ AI init error: {e}")
-    ai_client = None
+ai_client = None
+groq_key = os.environ.get("GROQ_API_KEY", "")
+
+if groq_key:
+    try:
+        from groq import Groq
+        ai_client = Groq(api_key=groq_key)
+        AI_MODEL = "llama3-8b-8192"  # 免费、速度快
+        print("OK Groq AI client initialized with key:", groq_key[:6] + "...")
+    except Exception as e:
+        print(f"FAIL AI init error: {e}")
+else:
+    print("WARN No GROQ_API_KEY found, AI generation will use fallback")
 
 # ============================================================
 # 初始化 Reddit 客户端
@@ -47,9 +52,9 @@ try:
         password=os.environ["REDDIT_PASSWORD"],
         user_agent="BroadFSC Investment Research Bot v1.0"
     )
-    print("✅ Reddit client initialized")
+    print("OK Reddit client initialized")
 except Exception as e:
-    print(f"⚠️  Reddit init skipped: {e}")
+    print(f"WARN Reddit init skipped: {e}")
     reddit = None
 
 # ============================================================
@@ -197,16 +202,16 @@ Requirements:
 def post_to_reddit(subreddit_name: str, title: str, content: str) -> bool:
     """发布帖子到 Reddit"""
     if not reddit:
-        print("⏭️  Reddit client not available, skipping")
+        print("SKIP Reddit client not available, skipping")
         return False
     try:
         subreddit = reddit.subreddit(subreddit_name)
         submission = subreddit.submit(title=title, selftext=content)
-        print(f"✅ Reddit posted: r/{subreddit_name} | {submission.url}")
+        print(f"OK Reddit posted: r/{subreddit_name} | {submission.url}")
         time.sleep(30)  # Reddit 限速保护
         return True
     except Exception as e:
-        print(f"❌ Reddit post failed: {e}")
+        print(f"FAIL Reddit post failed: {e}")
         return False
 
 
@@ -220,11 +225,11 @@ def comment_on_reddit(subreddit_name: str, search_query: str, reply_content: str
             # 只回复互动量中等的帖子（不抢热帖也不冷帖）
             if 10 <= post.score <= 500 and not post.locked:
                 post.reply(reply_content[:500])  # 评论限长
-                print(f"✅ Reddit comment on: {post.title[:50]}...")
+                print(f"OK Reddit comment on: {post.title[:50]}...")
                 time.sleep(60)  # 评论间隔更长
                 return True
     except Exception as e:
-        print(f"❌ Reddit comment failed: {e}")
+        print(f"FAIL Reddit comment failed: {e}")
     return False
 
 
@@ -233,9 +238,10 @@ def comment_on_reddit(subreddit_name: str, search_query: str, reply_content: str
 # ============================================================
 def post_to_telegram(channel_id: str, content: str) -> bool:
     """发送消息到 Telegram 频道"""
-    token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    token = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+    print(f"DEBUG Telegram: token={token[:6] if token else 'EMPTY'}... channel={channel_id}")
     if not token or not channel_id:
-        print("⏭️  Telegram config missing, skipping")
+        print("SKIP Telegram config missing, skipping")
         return False
 
     url = f"https://api.telegram.org/bot{token}/sendMessage"
@@ -248,13 +254,13 @@ def post_to_telegram(channel_id: str, content: str) -> bool:
     try:
         r = requests.post(url, json=payload, timeout=10)
         if r.status_code == 200:
-            print(f"✅ Telegram posted to {channel_id}")
+            print(f"OK Telegram posted to {channel_id}")
             return True
         else:
-            print(f"❌ Telegram error {r.status_code}: {r.text[:200]}")
+            print(f"FAIL Telegram error {r.status_code}: {r.text[:200]}")
             return False
     except Exception as e:
-        print(f"❌ Telegram exception: {e}")
+        print(f"FAIL Telegram exception: {e}")
         return False
 
 
@@ -304,14 +310,19 @@ def main():
 
     # ── 2. Telegram 英语频道 ──────────────────────────────
     tg_en = generate_content("telegram", topic, "English", angle)
+    print(f"DEBUG Telegram EN content generated: {len(tg_en) if tg_en else 0} chars")
     if tg_en:
         ok, reason = compliance_check(tg_en)
         channel_en = os.environ.get("TELEGRAM_CHANNEL_ID", "")
+        print(f"DEBUG Telegram EN channel_id: {channel_en}, compliance: {ok}")
         if ok and channel_en:
             results["Telegram EN"] = post_to_telegram(channel_en, tg_en)
         else:
-            print(f"⛔ Telegram EN skipped: {reason if not ok else 'no channel configured'}")
+            print(f"WARN Telegram EN skipped: {reason if not ok else 'no channel configured'}")
             results["Telegram EN"] = False
+    else:
+        print("FAIL Telegram EN: AI content generation returned empty")
+        results["Telegram EN"] = False
 
     # ── 3. Telegram 西班牙语频道（拉美市场）──────────────
     tg_es = generate_content("telegram", topic, "Spanish", angle)
