@@ -1,83 +1,139 @@
-# BroadFSC 全自动推广系统
+# BroadFSC Global Automation System
 
-**零成本 · AI 驱动 · 全球覆盖**
+**Zero Cost · AI-Powered · Global Coverage**
 
-## 项目结构
+## System Architecture
+
+```
+GitHub Actions (Scheduler)
+    |
+    +-- daily_promotion.yml (Every 30 min)
+    |       |-- daily_promotion.py
+    |       |     Sends pre-market briefings to Telegram channels
+    |       |     Languages: English / Spanish / Arabic
+    |       |     Regions: APAC / Middle East / Europe / Americas
+    |       |
+    +-- social_posting.yml (Daily at 14:00 UTC)
+            |-- social_poster.py
+            |     Posts to X/Twitter + LinkedIn
+            |-- reddit_poster.py
+                  Posts to Reddit (rotation: r/investing, r/stocks, etc.)
+
+Telegram Bot (@BroadInvestBot)  --  24/7 Customer Service
+    |-- telegram_bot.py (Deploy to Railway)
+```
+
+## Project Files
 
 ```
 broadfsc-automation/
-├── scripts/
-│   ├── daily_promotion.py    # 每日自动发帖脚本（GitHub Actions 运行）
-│   └── telegram_bot.py       # Telegram 智能客服机器人（Railway 部署）
-├── .github/
-│   └── workflows/
-│       └── daily_promotion.yml  # 定时任务配置
-├── requirements.txt
+├── daily_promotion.py          # Pre-market briefings to Telegram channels
+├── social_poster.py            # Cross-platform posting (X + LinkedIn)
+├── reddit_poster.py            # Reddit auto-poster (rotation strategy)
+├── telegram_bot.py             # 24/7 Telegram customer service bot
+├── Procfile                    # Railway deployment config
+├── runtime.txt                 # Python version for Railway
+├── .gitignore                  # Git ignore rules
+├── requirements.txt            # Python dependencies
+├── .github/workflows/
+│   ├── daily_promotion.yml     # Pre-market briefing scheduler (every 30 min)
+│   └── social_posting.yml      # Social media posting scheduler (daily)
 └── README.md
 ```
 
----
+## GitHub Secrets Required
 
-## 快速上手（3步）
+### Core (Already Configured)
+| Secret | Status | Description |
+|--------|--------|-------------|
+| TELEGRAM_BOT_TOKEN | SET | Telegram Bot API token |
+| TELEGRAM_CHANNEL_ID | SET | Main English channel ID |
+| GROQ_API_KEY | SET | Groq AI API key (llama-3.1-8b-instant) |
 
-### 第1步：获取免费 API 密钥
+### Multi-Language Channels (Optional)
+| Secret | Status | Description |
+|--------|--------|-------------|
+| TELEGRAM_CHANNEL_ES | PENDING | Spanish channel ID (e.g. @BroadFSC_ES) |
+| TELEGRAM_CHANNEL_AR | PENDING | Arabic channel ID (e.g. @BroadFSC_AR) |
 
-| 服务 | 注册地址 | 用途 | 费用 |
-|------|---------|------|------|
-| Groq API | https://console.groq.com | AI内容生成 | 免费 |
-| Reddit API | https://www.reddit.com/prefs/apps | 自动发帖 | 免费 |
-| Telegram Bot | 找 @BotFather 发 /newbot | 客服+推送 | 免费 |
+### Social Media (Optional)
+| Secret | Status | Description |
+|--------|--------|-------------|
+| X_API_KEY | PENDING | X/Twitter API key |
+| X_API_SECRET | PENDING | X/Twitter API secret |
+| X_ACCESS_TOKEN | PENDING | X/Twitter access token |
+| X_ACCESS_TOKEN_SECRET | PENDING | X/Twitter access token secret |
+| LINKEDIN_ACCESS_TOKEN | PENDING | LinkedIn OAuth token |
 
-### 第2步：Fork 本仓库到 GitHub
+### Reddit (Enable After 2-Week Account Aging)
+| Secret | Status | Description |
+|--------|--------|-------------|
+| REDDIT_ENABLED | PENDING | Set to "true" to enable |
+| REDDIT_CLIENT_ID | PENDING | Reddit app client_id |
+| REDDIT_CLIENT_SECRET | PENDING | Reddit app client_secret |
+| REDDIT_USERNAME | PENDING | Reddit username |
+| REDDIT_PASSWORD | PENDING | Reddit password |
 
-1. 在 GitHub 创建新仓库，上传本项目文件
-2. 进入 `Settings → Secrets and variables → Actions`
-3. 添加以下 Secrets：
+## Daily Schedule (UTC)
 
-```
-GROQ_API_KEY          = 你的 Groq API Key
-REDDIT_CLIENT_ID      = 你的 Reddit App Client ID
-REDDIT_SECRET         = 你的 Reddit App Secret
-REDDIT_USERNAME       = 你的 Reddit 用户名
-REDDIT_PASSWORD       = 你的 Reddit 密码
-TELEGRAM_BOT_TOKEN    = 你的 Telegram Bot Token
-TELEGRAM_CHANNEL_EN   = 你的英语频道ID（如 @broadfsc_en）
-TELEGRAM_CHANNEL_ES   = 你的西班牙语频道ID（可选）
-```
+| Time (UTC) | Region | Markets |
+|------------|--------|---------|
+| 00:00 | Asia-Pacific | Japan, Korea, HK, Singapore, Australia, India |
+| 05:30 | Middle East | Saudi Arabia (Tadawul), UAE (DFM/ADX) |
+| 07:00 | Europe | UK (LSE), Germany (Xetra), France (Euronext) |
+| 13:30 | Americas | US (NYSE/NASDAQ), Brazil (B3) |
+| 14:00 | Social | Daily post to X, LinkedIn, Reddit |
 
-### 第3步：启用 Actions + 部署 Bot
+## Free Tier Limits
 
-**每日推广（GitHub Actions）：**
-- 进入 Actions 标签页
-- 启用 `BroadFSC Daily AI Promotion` 工作流
-- 点击 `Run workflow` 测试一次
+| Tool | Free Quota | Usage |
+|------|-----------|-------|
+| GitHub Actions | 2000 min/month | ~10 min/day = 300 min/month |
+| Groq API | ~50K tokens/day | ~10K tokens/day |
+| Railway | $5 credit/month | Sufficient for bot hosting |
+| Telegram Bot API | Unlimited | No limit |
 
-**Telegram 客服机器人（Railway）：**
-1. 注册 https://railway.app（免费）
-2. New Project → Deploy from GitHub repo
-3. 选择本仓库，设置启动命令：`python scripts/telegram_bot.py`
-4. 在 Railway 添加环境变量：`GROQ_API_KEY` 和 `TELEGRAM_BOT_TOKEN`
-5. 部署完成，Bot 永久在线
+**Estimated Monthly Cost: $0**
 
----
+## Setup Guide
 
-## 注意事项
+### 1. Create Multi-Language Telegram Channels
+- Open Telegram > New Channel
+- Create @BroadFSC_ES (Spanish) and @BroadFSC_AR (Arabic)
+- Add @BroadInvestBot as admin to each channel
+- Send me the channel IDs
 
-- **Reddit 养号**：新账号前2周只浏览和评论，不要大量发帖
-- **内容质量**：每周检查 AI 生成内容质量，调整提示词
-- **合规**：不承诺收益，所有内容包含风险免责声明
-- **监控**：在 GitHub Actions 日志中查看每日运行结果
+### 2. Set Up X/Twitter API (Optional)
+1. Go to https://developer.twitter.com
+2. Create a new App
+3. Enable OAuth 1.0a
+4. Copy API Key, API Secret, Access Token, Access Token Secret
+5. Add to GitHub Secrets
 
----
+### 3. Set Up LinkedIn API (Optional)
+1. Go to https://developer.linkedin.com
+2. Create an App
+3. Request marketing developer platform access
+4. Get OAuth access token
+5. Add to GitHub Secrets
 
-## 免费资源限额
+### 4. Deploy Customer Service Bot to Railway
+1. Go to https://railway.app and sign up (free)
+2. New Project > Deploy from GitHub repo
+3. Select: msli2233bin/broadfsc-automation
+4. Railway will auto-detect Procfile
+5. Add environment variables: TELEGRAM_BOT_TOKEN, GROQ_API_KEY
+6. Deploy - bot runs 24/7
 
-| 工具 | 免费额度 | 是否够用 |
-|------|---------|---------|
-| GitHub Actions | 2000分钟/月 | ✅ 够（每次运行约2分钟）|
-| Groq API | 每天约5万Token | ✅ 够（每次约2000Token）|
-| Railway | $5额度/月 | ✅ 够运行轻量Bot |
-| Telegram Bot API | 无限制 | ✅ |
-| Reddit API | 免费版足够 | ✅ |
+### 5. Enable Reddit Posting (After 2-Week Aging)
+1. Create Reddit app at https://www.reddit.com/prefs/apps
+2. Add credentials to GitHub Secrets
+3. Set REDDIT_ENABLED = "true"
+4. Bot will post 1x/day, rotating subreddits
 
-**预计月总成本：$0**
+## Compliance
+
+- All content includes risk disclaimers
+- No guaranteed returns promised
+- Professional tone across all platforms
+- Multi-language content adapted per region
