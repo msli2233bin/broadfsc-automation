@@ -1,15 +1,12 @@
 """
-BroadFSC TikTok Auto-Poster via Postproxy API
-Posts daily market insights as TikTok videos (image-to-video slideshow).
+BroadFSC TikTok Auto-Poster v2 — Professional Video Edition
+Posts daily market insights as TikTok videos with animations, music & subtitles.
 
 Postproxy API: https://postproxy.dev/reference/posts/
 - Bearer Token auth
 - TikTok ONLY supports video (not image carousels)
-- This script: AI generates text slides → Pillow renders images → imageio makes MP4 → Postproxy posts video
-
-Modes:
-1. SLIDESHOW mode (default, zero-cost): AI generates text → branded slide images → MP4 video slideshow
-2. VIDEO mode: Post a video from URL or local file
+- Pipeline: AI generates conversational script → Pillow renders frames → 
+  Ken Burns animations + transitions + subtitles + music → MP4 → Postproxy posts video
 
 Environment variables:
   POSTPROXY_API_KEY - Required. Your Postproxy API key
@@ -25,12 +22,12 @@ import datetime
 import requests
 import json
 import random
-import base64
 import struct
 import math
+import io
 
 try:
-    from PIL import Image, ImageDraw, ImageFont
+    from PIL import Image, ImageDraw, ImageFont, ImageFilter
     HAS_PILLOW = True
 except ImportError:
     HAS_PILLOW = False
@@ -63,82 +60,120 @@ TIKTOK_MODE = os.environ.get("TIKTOK_MODE", "slideshow").lower()
 WEBSITE_LINK = "https://www.broadfsc.com/different"
 TELEGRAM_LINK = "https://t.me/BroadFSC"
 
+# Video settings
+SLIDE_W, SLIDE_H = 1088, 1920  # TikTok 9:16, width must be divisible by 16
+FPS = 30
+SECONDS_PER_SLIDE = 4  # Each slide shows for 4 seconds
+TRANSITION_FRAMES = 15  # 0.5s crossfade transition
+INTRO_FRAMES = 30  # 1s intro animation
+OUTRO_FRAMES = 30  # 1s outro animation
+
 # ============================================================
-# Content Topics (rotated daily)
+# Brand palette — sleek dark finance aesthetic
+# ============================================================
+BRAND_COLORS = {
+    "dark_navy": (12, 18, 35),
+    "deep_blue": (20, 40, 100),
+    "accent_blue": (50, 120, 230),
+    "accent_green": (0, 200, 130),
+    "gold": (255, 180, 0),
+    "white": (255, 255, 255),
+    "light_gray": (160, 175, 200),
+    "warm_white": (240, 238, 235),
+    "red_accent": (255, 70, 70),
+    "subtle_bg": (18, 25, 48),
+}
+
+
+# ============================================================
+# Conversational Content — Human, not AI-ish
 # ============================================================
 CONTENT_TOPICS = [
     {
-        "title": "Why Diversification Matters in 2026",
-        "points": [
-            "Global markets are more correlated than ever",
-            "Geopolitical risks create sudden sector shifts",
-            "Multi-asset strategies reduce drawdown risk",
-            "BroadFSC: Expert guidance for global portfolios"
+        "hook": "Real talk — everyone says diversify but nobody tells you HOW",
+        "script": [
+            "So here's the thing about diversification in 2026",
+            "Global markets are way more connected than they used to be",
+            "One geopolitical event and suddenly everything moves together",
+            "That's why multi-asset strategies actually matter now",
+            "Not just stocks — bonds, commodities, currencies all play a role",
         ],
+        "cta": "Follow for daily market breakdowns",
     },
     {
-        "title": "Fed Rate Decisions: What Investors Need to Know",
-        "points": [
-            "Rate decisions affect ALL asset classes",
-            "Bond yields move inversely to prices",
-            "Equity sectors react differently to policy",
-            "Stay informed with BroadFSC daily briefings"
+        "hook": "The Fed just made a move and you probably missed what it means",
+        "script": [
+            "Every time the Fed meets, people panic or celebrate",
+            "But here's what actually matters for your portfolio",
+            "Bond yields and prices move opposite — when rates go up, bonds drop",
+            "Different stock sectors react completely differently to rate changes",
+            "The key is knowing which sectors to watch before the decision",
         ],
+        "cta": "We break this down daily — link in bio",
     },
     {
-        "title": "Emerging Markets: Opportunity or Risk?",
-        "points": [
-            "EM equities trading at historic discounts",
-            "Currency risk can amplify or erode returns",
-            "Political stability varies widely by region",
-            "BroadFSC: Navigate EM with professional insight"
+        "hook": "Emerging markets are on sale right now — but should you buy?",
+        "script": [
+            "EM stocks are trading at some of the cheapest valuations in years",
+            "Sounds tempting right? But there's a catch",
+            "Currency swings can wipe out your gains in weeks",
+            "And political risk varies wildly from country to country",
+            "The opportunity is real but you need professional navigation",
         ],
+        "cta": "Follow for smarter EM analysis",
     },
     {
-        "title": "How to Read Market Sentiment",
-        "points": [
-            "VIX index: The market's fear gauge",
-            "Put/Call ratios reveal trader positioning",
-            "Fund flows show where smart money goes",
-            "Daily sentiment analysis at BroadFSC"
+        "hook": "3 things smart investors check before the market even opens",
+        "script": [
+            "First — overnight futures. They tell you where things are heading",
+            "Second — central bank signals. A single word can move markets",
+            "Third — economic data releases. Jobs, CPI, GDP all matter",
+            "Most retail investors skip all of this and just buy at the open",
+            "That's literally the worst time to make decisions",
         ],
+        "cta": "Get the morning briefing — link in bio",
     },
     {
-        "title": "Gold in 2026: Safe Haven or Overvalued?",
-        "points": [
-            "Gold hits new highs amid global uncertainty",
-            "Central banks continue accumulating reserves",
-            "Real yields remain the key driver",
-            "Get expert commodity analysis at BroadFSC"
+        "hook": "Gold keeps hitting new highs — is it too late to get in?",
+        "script": [
+            "Gold has been on an absolute tear and everyone's asking the same thing",
+            "Central banks are still hoarding it — that tells you something",
+            "Real yields are still the main driver behind gold prices",
+            "When real rates drop, gold shines. When they rise, gold struggles",
+            "Right now? The macro setup still favors gold",
         ],
+        "cta": "Follow for weekly commodity deep dives",
     },
     {
-        "title": "Tech Earnings: What They Signal",
-        "points": [
-            "Mega-cap earnings drive index performance",
-            "AI spending boom continues across sectors",
-            "Cloud revenue growth remains robust",
-            "BroadFSC: Daily earnings insights & analysis"
+        "hook": "Tech earnings season is here and the numbers are wild",
+        "script": [
+            "Mega-cap tech literally drives the entire index at this point",
+            "AI spending? Still booming. Companies are throwing billions at it",
+            "Cloud revenue growth hasn't slowed down one bit",
+            "But here's the real signal — what they say about NEXT quarter",
+            "Forward guidance matters way more than beating earnings",
         ],
+        "cta": "Daily earnings breakdowns — follow now",
     },
     {
-        "title": "5 Investment Mistakes to Avoid",
-        "points": [
-            "Chasing past performance blindly",
-            "Ignoring fees and total cost of ownership",
-            "Letting emotions override your strategy",
-            "Failing to rebalance your portfolio",
-            "BroadFSC: Professional guidance, zero hype"
+        "hook": "5 investment mistakes I see people make over and over",
+        "script": [
+            "Number one — chasing last year's winners. Past returns don't repeat",
+            "Two — ignoring fees. Even 1% extra eats your returns over decades",
+            "Three — letting emotions drive your trades. Fear and greed are expensive",
+            "Four — never rebalancing. Your 60/40 can become 80/20 without you noticing",
+            "Five — no plan at all. Investing without a strategy is just gambling",
         ],
+        "cta": "We help you avoid all of these — link in bio",
     },
 ]
 
 
 # ============================================================
-# AI Caption Generation
+# AI Caption Generation — Conversational & Human
 # ============================================================
 def generate_tiktok_caption():
-    """Generate a TikTok caption using Groq AI."""
+    """Generate a TikTok caption using Groq AI — conversational, not robotic."""
     if not GROQ_API_KEY:
         return get_fallback_caption()
 
@@ -157,21 +192,20 @@ def generate_tiktok_caption():
             messages=[{
                 "role": "user",
                 "content": (
-                    "You are a financial content creator for BroadFSC on TikTok. "
-                    "Write an engaging TikTok caption for a post about: " + topic["title"] + "\n\n"
-                    "Key points to reference:\n"
-                    + "\n".join(["- " + p for p in topic["points"]]) + "\n\n"
-                    "Requirements:\n"
-                    "- Maximum 300 characters\n"
-                    "- Use 2-3 relevant hashtags\n"
-                    "- Engaging hook in the first line\n"
-                    "- Include a call to action\n"
-                    "- Do NOT promise guaranteed returns\n"
-                    "- Today is " + day
+                    "Write a short TikTok caption for a finance video. Topic: " + topic["hook"] + "\n\n"
+                    "Rules:\n"
+                    "- Sound like a real person, NOT a corporate account\n"
+                    "- Use casual language, like talking to a friend\n"
+                    "- Maximum 200 characters\n"
+                    "- Include 2-3 relevant hashtags\n"
+                    "- No emoji spam (1-2 max)\n"
+                    "- No clichés like 'game changer' or 'you won't believe'\n"
+                    "- Today is " + day + "\n"
+                    "- Do NOT promise returns or give financial advice"
                 )
             }],
-            max_tokens=120,
-            temperature=0.8
+            max_tokens=80,
+            temperature=0.9
         )
         return response.choices[0].message.content.strip()
     except Exception as e:
@@ -180,47 +214,26 @@ def generate_tiktok_caption():
 
 
 def get_fallback_caption():
-    """Fallback TikTok captions."""
+    """Fallback TikTok captions — casual, human-sounding."""
     captions = [
-        "Want to invest smarter in 2026? Here's what the pros watch every morning \U0001f4c8 "
-        "Daily global market briefings - FREE. Link in bio! #Investing #StockMarket #FinanceTips",
-
-        "Markets move FAST. Don't get caught off guard \u26a1 "
-        "Pre-market briefings for Asia, Europe, Middle East & Americas. "
-        "Subscribe free! #Trading #Investing #MarketAnalysis",
-
-        "3 things smart investors check before markets open \U0001f4ca "
-        "1. Overnight futures 2. Central bank signals 3. Key economic data. "
-        "Get all this daily at BroadFSC #Investing #StockMarket #WealthBuilding",
+        "Markets don't wait for you to be ready. Here's what I check every morning before the bell #investing #stocks",
+        "The Fed makes a move and everyone panics. Here's what actually matters for your portfolio #finance #investing",
+        "Smart money checks 3 things before markets open. Most people skip all of them #trading #investingtips",
     ]
     idx = datetime.datetime.utcnow().timetuple().tm_yday % len(captions)
     return captions[idx]
 
 
 # ============================================================
-# Image Generation (Pillow + Fallback)
+# Font Helper
 # ============================================================
-
-# Brand palette
-BRAND_COLORS = {
-    "dark_navy": (15, 23, 42),
-    "deep_blue": (30, 58, 138),
-    "accent_blue": (59, 130, 246),
-    "accent_green": (16, 185, 129),
-    "gold": (245, 158, 11),
-    "white": (255, 255, 255),
-    "light_gray": (148, 163, 184),
-    "red": (239, 68, 68),
-}
-
-SLIDE_W, SLIDE_H = 1088, 1920  # TikTok 9:16, width must be divisible by 16 for video
-
-
 def _get_font(size, bold=False):
     """Get a font, trying system fonts first, falling back to default."""
     font_names = [
         "C:/Windows/Fonts/arialbd.ttf" if bold else "C:/Windows/Fonts/arial.ttf",
         "C:/Windows/Fonts/arial.ttf",
+        "C:/Windows/Fonts/segoeui.ttf",
+        "C:/Windows/Fonts/segoeuib.ttf",
         "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf" if bold else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
         "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
     ]
@@ -231,12 +244,6 @@ def _get_font(size, bold=False):
             except Exception:
                 continue
     return ImageFont.load_default()
-
-
-def _draw_rounded_rect(draw, xy, radius, fill=None, outline=None, width=1):
-    """Draw a rounded rectangle."""
-    x0, y0, x1, y1 = xy
-    draw.rounded_rectangle(xy, radius=radius, fill=fill, outline=outline, width=width)
 
 
 def _wrap_text(text, font, max_width, draw):
@@ -258,363 +265,561 @@ def _wrap_text(text, font, max_width, draw):
     return lines
 
 
-def _create_title_slide(topic):
-    """Create a title slide with topic name and BroadFSC branding."""
-    img = Image.new("RGB", (SLIDE_W, SLIDE_H), BRAND_COLORS["dark_navy"])
+def _draw_rounded_rect(draw, xy, radius, fill=None, outline=None, width=1):
+    """Draw a rounded rectangle."""
+    draw.rounded_rectangle(xy, radius=radius, fill=fill, outline=outline, width=width)
+
+
+# ============================================================
+# Frame Rendering — High Quality Slide Designs
+# ============================================================
+
+def _create_gradient_bg(w, h, color_top, color_bot):
+    """Create a smooth gradient background image."""
+    img = Image.new("RGB", (w, h))
     draw = ImageDraw.Draw(img)
-
-    # Gradient overlay at bottom
-    for y in range(SLIDE_H // 2, SLIDE_H):
-        ratio = (y - SLIDE_H // 2) / (SLIDE_H // 2)
-        r = int(BRAND_COLORS["dark_navy"][0] + (BRAND_COLORS["deep_blue"][0] - BRAND_COLORS["dark_navy"][0]) * ratio)
-        g = int(BRAND_COLORS["dark_navy"][1] + (BRAND_COLORS["deep_blue"][1] - BRAND_COLORS["dark_navy"][1]) * ratio)
-        b = int(BRAND_COLORS["dark_navy"][2] + (BRAND_COLORS["deep_blue"][2] - BRAND_COLORS["dark_navy"][2]) * ratio)
-        draw.line([(0, y), (SLIDE_W, y)], fill=(r, g, b))
-
-    # Top accent bar
-    draw.rectangle([(0, 0), (SLIDE_W, 8)], fill=BRAND_COLORS["accent_blue"])
-
-    # BroadFSC logo text (top)
-    logo_font = _get_font(56, bold=True)
-    draw.text((SLIDE_W // 2, 200), "BroadFSC", font=logo_font,
-              fill=BRAND_COLORS["accent_blue"], anchor="mm")
-
-    # Subtitle
-    sub_font = _get_font(28)
-    draw.text((SLIDE_W // 2, 270), "INVESTMENT INSIGHTS", font=sub_font,
-              fill=BRAND_COLORS["light_gray"], anchor="mm")
-
-    # Divider line
-    draw.rectangle([(SLIDE_W // 2 - 120, 320), (SLIDE_W // 2 + 120, 324)],
-                   fill=BRAND_COLORS["accent_blue"])
-
-    # Title (centered, wrapped)
-    title_font = _get_font(72, bold=True)
-    lines = _wrap_text(topic["title"], title_font, SLIDE_W - 160, draw)
-    y_start = SLIDE_H // 2 - len(lines) * 50
-    for line in lines:
-        draw.text((SLIDE_W // 2, y_start), line, font=title_font,
-                  fill=BRAND_COLORS["white"], anchor="mm")
-        y_start += 100
-
-    # Date
-    date_font = _get_font(32)
-    date_str = datetime.datetime.utcnow().strftime("%B %d, %Y")
-    draw.text((SLIDE_W // 2, SLIDE_H - 280), date_str, font=date_font,
-              fill=BRAND_COLORS["light_gray"], anchor="mm")
-
-    # CTA at bottom
-    cta_font = _get_font(30)
-    draw.text((SLIDE_W // 2, SLIDE_H - 180), "Swipe for key insights \u2192",
-              font=cta_font, fill=BRAND_COLORS["accent_green"], anchor="mm")
-
-    # Bottom accent bar
-    draw.rectangle([(0, SLIDE_H - 8), (SLIDE_W, SLIDE_H)], fill=BRAND_COLORS["accent_blue"])
-
+    for y in range(h):
+        ratio = y / max(h - 1, 1)
+        r = int(color_top[0] + (color_bot[0] - color_top[0]) * ratio)
+        g = int(color_top[1] + (color_bot[1] - color_top[1]) * ratio)
+        b = int(color_top[2] + (color_bot[2] - color_top[2]) * ratio)
+        draw.line([(0, y), (w, y)], fill=(r, g, b))
     return img
 
 
-def _create_point_slide(point, index, total, topic_title):
-    """Create a content point slide."""
-    img = Image.new("RGB", (SLIDE_W, SLIDE_H), BRAND_COLORS["dark_navy"])
+def _add_noise_texture(img, intensity=8):
+    """Add subtle noise texture to make background less flat."""
+    arr = np.array(img).copy()
+    noise = np.random.randint(-intensity, intensity + 1, arr.shape, dtype=np.int16)
+    arr = np.clip(arr.astype(np.int16) + noise, 0, 255).astype(np.uint8)
+    return Image.fromarray(arr)
+
+
+def _add_subtle_grid(img, color=(30, 45, 80), spacing=120):
+    """Add subtle grid lines for a tech/finance feel."""
+    draw = ImageDraw.Draw(img)
+    w, h = img.size
+    for x in range(0, w, spacing):
+        draw.line([(x, 0), (x, h)], fill=color, width=1)
+    for y in range(0, h, spacing):
+        draw.line([(0, y), (w, y)], fill=color, width=1)
+    return img
+
+
+def _draw_brand_tag(draw, y=80):
+    """Draw small BroadFSC brand tag at top."""
+    tag_font = _get_font(26, bold=True)
+    # Small pill-shaped tag
+    tag_w = 200
+    tag_h = 44
+    tag_x = SLIDE_W // 2 - tag_w // 2
+    _draw_rounded_rect(draw, (tag_x, y, tag_x + tag_w, y + tag_h),
+                       radius=22, fill=BRAND_COLORS["accent_blue"])
+    draw.text((SLIDE_W // 2, y + tag_h // 2), "BroadFSC",
+              font=tag_font, fill=BRAND_COLORS["white"], anchor="mm")
+
+
+def _draw_progress_bar(draw, progress, y=1840):
+    """Draw a thin progress bar at bottom of slide."""
+    bar_h = 6
+    bar_w = int(SLIDE_W * progress)
+    # Background
+    draw.rectangle([(0, y), (SLIDE_W, y + bar_h)], fill=(30, 40, 70))
+    # Progress
+    draw.rectangle([(0, y), (bar_w, y + bar_h)], fill=BRAND_COLORS["accent_blue"])
+
+
+def create_hook_slide(topic):
+    """Create the opening hook slide — big text, minimal design."""
+    img = _create_gradient_bg(SLIDE_W, SLIDE_H,
+                              BRAND_COLORS["dark_navy"],
+                              BRAND_COLORS["subtle_bg"])
+    img = _add_subtle_grid(img)
+    img = _add_noise_texture(img, 5)
     draw = ImageDraw.Draw(img)
 
-    # Top accent bar
-    draw.rectangle([(0, 0), (SLIDE_W, 8)], fill=BRAND_COLORS["accent_blue"])
+    # Brand tag
+    _draw_brand_tag(draw, y=100)
 
-    # Point number badge
-    badge_size = 120
-    badge_x, badge_y = 80, 160
-    _draw_rounded_rect(draw, (badge_x, badge_y, badge_x + badge_size, badge_y + badge_size),
-                       radius=20, fill=BRAND_COLORS["accent_blue"])
-    num_font = _get_font(60, bold=True)
-    draw.text((badge_x + badge_size // 2, badge_y + badge_size // 2),
-              str(index + 1), font=num_font, fill=BRAND_COLORS["white"], anchor="mm")
-
-    # Topic reference (small)
-    ref_font = _get_font(24)
-    draw.text((80, 320), topic_title[:50], font=ref_font,
-              fill=BRAND_COLORS["light_gray"])
-
-    # Main content text (large, wrapped)
-    content_font = _get_font(52, bold=True)
-    lines = _wrap_text(point, content_font, SLIDE_W - 160, draw)
-    y_start = 440
-    for line in lines:
-        draw.text((80, y_start), line, font=content_font,
-                  fill=BRAND_COLORS["white"])
-        y_start += 72
-
-    # Decorative accent line
-    draw.rectangle([(80, y_start + 30), (300, y_start + 34)],
+    # Decorative line above hook
+    line_y = SLIDE_H // 2 - 200
+    draw.rectangle([(100, line_y), (250, line_y + 4)],
                    fill=BRAND_COLORS["accent_green"])
 
-    # Page indicator dots
-    dot_y = SLIDE_H - 200
-    dot_start_x = SLIDE_W // 2 - (total * 30) // 2
-    for i in range(total):
-        color = BRAND_COLORS["accent_blue"] if i == index else BRAND_COLORS["light_gray"]
-        cx = dot_start_x + i * 30 + 8
-        draw.ellipse([(cx, dot_y), (cx + 16, dot_y + 16)], fill=color)
+    # Hook text — large, impactful
+    hook_font = _get_font(64, bold=True)
+    lines = _wrap_text(topic["hook"], hook_font, SLIDE_W - 180, draw)
+    y_start = SLIDE_H // 2 - len(lines) * 50
+    for line in lines:
+        draw.text((90, y_start), line, font=hook_font,
+                  fill=BRAND_COLORS["white"])
+        y_start += 88
 
-    # BroadFSC watermark
-    wm_font = _get_font(22)
-    draw.text((SLIDE_W // 2, SLIDE_H - 100), "BroadFSC.com", font=wm_font,
-              fill=BRAND_COLORS["light_gray"], anchor="mm")
+    # Decorative line below hook
+    draw.rectangle([(100, y_start + 40), (400, y_start + 44)],
+                   fill=BRAND_COLORS["accent_blue"])
 
-    # Bottom accent bar
-    draw.rectangle([(0, SLIDE_H - 8), (SLIDE_W, SLIDE_H)], fill=BRAND_COLORS["accent_blue"])
+    # Subtle prompt
+    prompt_font = _get_font(28)
+    draw.text((SLIDE_W // 2, SLIDE_H - 200), "keep watching...",
+              font=prompt_font, fill=BRAND_COLORS["light_gray"], anchor="mm")
 
     return img
 
 
-def _create_cta_slide():
-    """Create a call-to-action slide."""
-    img = Image.new("RGB", (SLIDE_W, SLIDE_H), BRAND_COLORS["deep_blue"])
+def create_script_slide(line, index, total, hook_text):
+    """Create a script/content slide — one talking point per slide."""
+    # Alternate background tones slightly
+    if index % 2 == 0:
+        img = _create_gradient_bg(SLIDE_W, SLIDE_H,
+                                  BRAND_COLORS["dark_navy"],
+                                  BRAND_COLORS["subtle_bg"])
+    else:
+        img = _create_gradient_bg(SLIDE_W, SLIDE_H,
+                                  BRAND_COLORS["subtle_bg"],
+                                  BRAND_COLORS["dark_navy"])
+    img = _add_subtle_grid(img)
+    img = _add_noise_texture(img, 4)
     draw = ImageDraw.Draw(img)
 
-    # Top accent bar
-    draw.rectangle([(0, 0), (SLIDE_W, 8)], fill=BRAND_COLORS["accent_green"])
+    # Brand tag
+    _draw_brand_tag(draw, y=80)
 
-    # BroadFSC branding
-    brand_font = _get_font(64, bold=True)
-    draw.text((SLIDE_W // 2, 350), "BroadFSC", font=brand_font,
-              fill=BRAND_COLORS["white"], anchor="mm")
+    # Quote mark decoration
+    quote_font = _get_font(120, bold=True)
+    draw.text((80, 180), "\u201c", font=quote_font,
+              fill=(*BRAND_COLORS["accent_blue"], 60))
 
-    # Tagline
-    tag_font = _get_font(32)
-    draw.text((SLIDE_W // 2, 440), "Expert Investment Guidance", font=tag_font,
-              fill=BRAND_COLORS["accent_green"], anchor="mm")
+    # Main text — conversational, like someone talking
+    text_font = _get_font(52, bold=True)
+    lines = _wrap_text(line, text_font, SLIDE_W - 160, draw)
+    y_start = 340
+    for line_text in lines:
+        draw.text((90, y_start), line_text, font=text_font,
+                  fill=BRAND_COLORS["warm_white"])
+        y_start += 72
+
+    # Accent line after text
+    draw.rectangle([(90, y_start + 30), (350, y_start + 34)],
+                   fill=BRAND_COLORS["accent_green"])
+
+    # Subtle context reference
+    ref_font = _get_font(22)
+    draw.text((90, y_start + 60), hook_text[:55],
+              font=ref_font, fill=BRAND_COLORS["light_gray"])
+
+    # Progress bar
+    progress = (index + 1) / (total + 1)
+    _draw_progress_bar(draw, progress)
+
+    # Slide number
+    num_font = _get_font(24)
+    draw.text((SLIDE_W - 90, 90), str(index + 1) + "/" + str(total),
+              font=num_font, fill=BRAND_COLORS["light_gray"], anchor="mm")
+
+    return img
+
+
+def create_cta_slide(topic):
+    """Create the closing CTA slide — warm, inviting."""
+    img = _create_gradient_bg(SLIDE_W, SLIDE_H,
+                              BRAND_COLORS["deep_blue"],
+                              BRAND_COLORS["dark_navy"])
+    img = _add_noise_texture(img, 4)
+    draw = ImageDraw.Draw(img)
+
+    # Brand tag
+    _draw_brand_tag(draw, y=200)
+
+    # Main CTA text
+    cta_font = _get_font(56, bold=True)
+    lines = _wrap_text(topic["cta"], cta_font, SLIDE_W - 160, draw)
+    y_start = 500
+    for line_text in lines:
+        draw.text((SLIDE_W // 2, y_start), line_text, font=cta_font,
+                  fill=BRAND_COLORS["white"], anchor="mm")
+        y_start += 80
 
     # Divider
-    draw.rectangle([(SLIDE_W // 2 - 100, 500), (SLIDE_W // 2 + 100, 504)],
-                   fill=BRAND_COLORS["white"])
+    draw.rectangle([(SLIDE_W // 2 - 80, y_start + 40), (SLIDE_W // 2 + 80, y_start + 44)],
+                   fill=BRAND_COLORS["accent_green"])
 
-    # CTA lines
-    cta_lines = [
-        ("Start Your Journey Today", 600, 44, True, BRAND_COLORS["white"]),
-        ("Free daily market briefings", 720, 34, False, BRAND_COLORS["light_gray"]),
-        ("Professional portfolio analysis", 780, 34, False, BRAND_COLORS["light_gray"]),
-        ("Multi-asset global strategies", 840, 34, False, BRAND_COLORS["light_gray"]),
-    ]
-    for text, y, size, bold, color in cta_lines:
-        f = _get_font(size, bold=bold)
-        draw.text((SLIDE_W // 2, y), text, font=f, fill=color, anchor="mm")
+    # Website URL in a pill
+    pill_w = 600
+    pill_h = 70
+    pill_x = SLIDE_W // 2 - pill_w // 2
+    pill_y = y_start + 100
+    _draw_rounded_rect(draw, (pill_x, pill_y, pill_x + pill_w, pill_y + pill_h),
+                       radius=35, fill=BRAND_COLORS["accent_blue"])
+    url_font = _get_font(30, bold=True)
+    draw.text((SLIDE_W // 2, pill_y + pill_h // 2), "broadfsc.com/different",
+              font=url_font, fill=BRAND_COLORS["white"], anchor="mm")
 
-    # Website box
-    box_y = 1020
-    _draw_rounded_rect(draw, (SLIDE_W // 2 - 320, box_y, SLIDE_W // 2 + 320, box_y + 90),
-                       radius=16, outline=BRAND_COLORS["accent_blue"], width=3)
-    url_font = _get_font(36, bold=True)
-    draw.text((SLIDE_W // 2, box_y + 45), "www.broadfsc.com/different",
-              font=url_font, fill=BRAND_COLORS["accent_blue"], anchor="mm")
+    # Telegram
+    tg_font = _get_font(28)
+    draw.text((SLIDE_W // 2, pill_y + pill_h + 80), "t.me/BroadFSC",
+              font=tg_font, fill=BRAND_COLORS["accent_green"], anchor="mm")
 
-    # Telegram link
-    tg_font = _get_font(32)
-    draw.text((SLIDE_W // 2, 1240), "Join us on Telegram", font=tg_font,
-              fill=BRAND_COLORS["white"], anchor="mm")
-    draw.text((SLIDE_W // 2, 1300), "t.me/BroadFSC", font=_get_font(36, bold=True),
-              fill=BRAND_COLORS["accent_blue"], anchor="mm")
-
-    # Disclaimer
-    disc_font = _get_font(18)
-    draw.text((SLIDE_W // 2, SLIDE_H - 250),
+    # Disclaimer — small, at bottom
+    disc_font = _get_font(16)
+    draw.text((SLIDE_W // 2, SLIDE_H - 180),
               "Investing involves risk. Past performance does not guarantee future results.",
               font=disc_font, fill=BRAND_COLORS["light_gray"], anchor="mm")
-    draw.text((SLIDE_W // 2, SLIDE_H - 210),
+    draw.text((SLIDE_W // 2, SLIDE_H - 150),
               "BroadFSC is a licensed investment advisory firm.",
               font=disc_font, fill=BRAND_COLORS["light_gray"], anchor="mm")
 
-    # Bottom accent bar
-    draw.rectangle([(0, SLIDE_H - 8), (SLIDE_W, SLIDE_H)], fill=BRAND_COLORS["accent_green"])
+    # Progress bar — full
+    _draw_progress_bar(draw, 1.0)
 
     return img
 
 
-def generate_carousel_images_pillow():
-    """
-    Generate TikTok carousel images using Pillow (with text overlay).
-    Returns list of (filename, PNG bytes) tuples.
-    """
-    now = datetime.datetime.utcnow()
-    day_of_year = now.timetuple().tm_yday
-    topic_idx = day_of_year % len(CONTENT_TOPICS)
-    topic = CONTENT_TOPICS[topic_idx]
+# ============================================================
+# Advanced Video Generation — Ken Burns + Transitions + Subtitles
+# ============================================================
 
-    images = []
-
-    # Slide 1: Title
-    img1 = _create_title_slide(topic)
-    buf1 = _img_to_bytes(img1)
-    images.append(("title_slide.png", buf1))
-
-    # Slides 2-5: Content points
-    total_points = min(len(topic["points"]), 4)
-    for i in range(total_points):
-        img = _create_point_slide(topic["points"][i], i, total_points, topic["title"])
-        buf = _img_to_bytes(img)
-        images.append(("point_" + str(i + 1) + ".png", buf))
-
-    # Last slide: CTA
-    img_cta = _create_cta_slide()
-    buf_cta = _img_to_bytes(img_cta)
-    images.append(("cta_slide.png", buf_cta))
-
-    return images
-
-
-def _img_to_bytes(img):
-    """Convert PIL Image to PNG bytes."""
-    import io
-    buf = io.BytesIO()
-    img.save(buf, format="PNG", optimize=True)
-    return buf.getvalue()
+def _ken_burns_frame(img, frame_idx, total_frames, zoom_start=1.0, zoom_end=1.08, pan_x=0.0, pan_y=0.02):
+    """Apply Ken Burns effect (slow zoom + pan) to a slide image for one frame."""
+    progress = frame_idx / max(total_frames - 1, 1)
+    # Ease in-out
+    progress = progress * progress * (3 - 2 * progress)  # smoothstep
+    
+    zoom = zoom_start + (zoom_end - zoom_start) * progress
+    px = pan_x * progress
+    py = pan_y * progress
+    
+    w, h = img.size
+    # Calculate crop region
+    new_w = int(w / zoom)
+    new_h = int(h / zoom)
+    
+    # Center + pan offset
+    center_x = w // 2 + int(px * w)
+    center_y = h // 2 + int(py * h)
+    
+    left = max(0, center_x - new_w // 2)
+    top = max(0, center_y - new_h // 2)
+    
+    # Ensure crop doesn't exceed image bounds
+    if left + new_w > w:
+        left = w - new_w
+    if top + new_h > h:
+        top = h - new_h
+    left = max(0, left)
+    top = max(0, top)
+    
+    cropped = img.crop((left, top, left + new_w, top + new_h))
+    return cropped.resize((SLIDE_W, SLIDE_H), Image.LANCZOS)
 
 
-# --- Legacy fallback for non-Pillow environments ---
-
-def create_solid_png(width, height, r, g, b):
-    """Create a minimal valid PNG file with a solid color."""
-    def make_chunk(chunk_type, data):
-        chunk = chunk_type + data
-        import zlib
-        crc = struct.pack('>I', zlib.crc32(chunk) & 0xffffffff)
-        return struct.pack('>I', len(data)) + chunk + crc
-
-    # PNG signature
-    signature = b'\x89PNG\r\n\x1a\n'
-
-    # IHDR
-    ihdr_data = struct.pack('>IIBBBBB', width, height, 8, 2, 0, 0, 0)
-    ihdr = make_chunk(b'IHDR', ihdr_data)
-
-    # IDAT - raw pixel data
-    raw_data = b''
-    for y in range(height):
-        raw_data += b'\x00'  # filter byte
-        raw_data += bytes([r, g, b]) * width
-
-    import zlib
-    compressed = zlib.compress(raw_data)
-    idat = make_chunk(b'IDAT', compressed)
-
-    # IEND
-    iend = make_chunk(b'IEND', b'')
-
-    return signature + ihdr + idat + iend
+def _crossfade(frame_a, frame_b, alpha):
+    """Crossfade between two frames. alpha=0→frame_a, alpha=1→frame_b."""
+    arr_a = np.array(frame_a, dtype=np.float32)
+    arr_b = np.array(frame_b, dtype=np.float32)
+    blended = arr_a * (1 - alpha) + arr_b * alpha
+    return np.clip(blended, 0, 255).astype(np.uint8)
 
 
-def create_gradient_png(width, height, r1, g1, b1, r2, g2, b2):
-    """Create a PNG with a vertical gradient from color1 (top) to color2 (bottom)."""
-    def make_chunk(chunk_type, data):
-        chunk = chunk_type + data
-        import zlib
-        crc = struct.pack('>I', zlib.crc32(chunk) & 0xffffffff)
-        return struct.pack('>I', len(data)) + chunk + crc
-
-    signature = b'\x89PNG\r\n\x1a\n'
-    ihdr_data = struct.pack('>IIBBBBB', width, height, 8, 2, 0, 0, 0)
-    ihdr = make_chunk(b'IHDR', ihdr_data)
-
-    raw_data = b''
-    for y in range(height):
-        ratio = y / max(height - 1, 1)
-        r = int(r1 + (r2 - r1) * ratio)
-        g = int(g1 + (g2 - g1) * ratio)
-        b = int(b1 + (b2 - b1) * ratio)
-        raw_data += b'\x00'
-        raw_data += bytes([r, g, b]) * width
-
-    import zlib
-    compressed = zlib.compress(raw_data)
-    idat = make_chunk(b'IDAT', compressed)
-    iend = make_chunk(b'IEND', b'')
-
-    return signature + ihdr + idat + iend
-
-
-def generate_carousel_images():
-    """
-    Generate TikTok carousel images as PNG bytes.
-    Uses Pillow (with text overlay) if available, falls back to solid colors.
-    Returns list of (filename, PNG bytes) tuples.
-    """
-    if HAS_PILLOW:
-        print("  [Pillow] Generating branded slides with text overlay")
-        return generate_carousel_images_pillow()
-
-    # Fallback: solid/gradient PNGs (no text)
-    print("  [Fallback] Pillow not available, generating solid-color slides")
-    now = datetime.datetime.utcnow()
-    day_of_year = now.timetuple().tm_yday
-    topic_idx = day_of_year % len(CONTENT_TOPICS)
-    topic = CONTENT_TOPICS[topic_idx]
-
-    GRADIENT_TOP = (15, 23, 42)
-    GRADIENT_BOTTOM = (30, 58, 138)
-    DARK_BG = (15, 23, 42)
-
-    images = []
-
-    # Slide 1: Title slide (gradient background)
-    img1 = create_gradient_png(1080, 1920, *GRADIENT_TOP, *GRADIENT_BOTTOM)
-    images.append(("title_slide.png", img1))
-
-    # Slides 2-4: Content slides (dark background with accent)
-    for i, point in enumerate(topic["points"][:3]):
-        img = create_solid_png(1080, 1920, *DARK_BG)
-        images.append(("point_" + str(i + 1) + ".png", img))
-
-    # Slide 5: CTA slide
-    img5 = create_gradient_png(1080, 1920, *GRADIENT_BOTTOM, *GRADIENT_TOP)
-    images.append(("cta_slide.png", img5))
-
-    return images
+def _render_subtitle_frame(base_frame, text, frame_idx, total_frames):
+    """Render subtitle text at bottom of frame with fade-in/out."""
+    img = Image.fromarray(base_frame)
+    draw = ImageDraw.Draw(img)
+    
+    # Subtitle fade in/out (first/last 10% of frames)
+    fade_frames = max(total_frames // 10, 1)
+    if frame_idx < fade_frames:
+        alpha = frame_idx / fade_frames
+    elif frame_idx > total_frames - fade_frames:
+        alpha = (total_frames - frame_idx) / fade_frames
+    else:
+        alpha = 1.0
+    
+    # Semi-transparent background bar
+    bar_y = SLIDE_H - 260
+    bar_h = 100
+    overlay = Image.new("RGBA", (SLIDE_W, bar_h), (0, 0, 0, int(160 * alpha)))
+    img.paste(Image.blend(Image.new("RGB", (SLIDE_W, bar_h), (0, 0, 0)), 
+                           Image.new("RGB", (SLIDE_W, bar_h), (*BRAND_COLORS["dark_navy"],)), 0.7),
+              (0, bar_y))
+    
+    # Subtitle text
+    sub_font = _get_font(38, bold=True)
+    lines = _wrap_text(text, sub_font, SLIDE_W - 120, draw)
+    text_y = bar_y + (bar_h - len(lines) * 50) // 2
+    
+    # Apply alpha via color
+    r = int(BRAND_COLORS["white"][0] * alpha)
+    g = int(BRAND_COLORS["white"][1] * alpha)
+    b = int(BRAND_COLORS["white"][2] * alpha)
+    
+    for line in lines:
+        draw.text((60, text_y), line, font=sub_font, fill=(r, g, b))
+        text_y += 50
+    
+    return np.array(img)
 
 
-def upload_images_to_temp(images):
-    """
-    Save images locally and return file paths.
-    Postproxy supports direct file upload via multipart, so no external hosting needed.
-    Returns list of local file paths.
-    """
-    paths = []
-    script_dir = os.path.dirname(os.path.abspath(__file__))
+def _generate_tone(freq, duration_ms, sample_rate=44100, volume=0.15):
+    """Generate a simple sine wave tone."""
+    num_samples = int(sample_rate * duration_ms / 1000)
+    samples = []
+    for i in range(num_samples):
+        t = i / sample_rate
+        # Gentle fade in/out
+        envelope = 1.0
+        fade_samples = min(num_samples // 10, 1000)
+        if i < fade_samples:
+            envelope = i / fade_samples
+        elif i > num_samples - fade_samples:
+            envelope = (num_samples - i) / fade_samples
+        sample = volume * envelope * math.sin(2 * math.pi * freq * t)
+        samples.append(int(sample * 32767))
+    return samples
 
-    for filename, img_data in images:
+
+def _generate_background_music(duration_sec, sample_rate=44100):
+    """Generate simple ambient background music — soft pads."""
+    total_samples = int(sample_rate * duration_sec)
+    music = [0.0] * total_samples
+    
+    # Chord progression (C major → Am → F → G) — very gentle
+    chords = [
+        [261.63, 329.63, 392.00],  # C major
+        [220.00, 261.63, 329.63],  # Am
+        [174.61, 220.00, 261.63],  # F
+        [196.00, 246.94, 293.66],  # G
+    ]
+    
+    chord_duration = total_samples // len(chords)
+    
+    for chord_idx, chord in enumerate(chords):
+        start = chord_idx * chord_duration
+        end = min(start + chord_duration, total_samples)
+        
+        for i in range(start, end):
+            t = i / sample_rate
+            # Envelope for chord transitions
+            local_t = (i - start) / chord_duration
+            envelope = math.sin(math.pi * local_t)  # smooth rise/fall
+            
+            sample = 0
+            for freq in chord:
+                # Soft pad sound — combine sine with slight detuning
+                sample += math.sin(2 * math.pi * freq * t) * 0.08
+                sample += math.sin(2 * math.pi * freq * 1.002 * t) * 0.04  # slight chorus
+                sample += math.sin(2 * math.pi * freq * 0.998 * t) * 0.04  # detune
+            
+            music[i] += sample * envelope * 0.3
+    
+    # Global fade in/out
+    fade_samples = min(sample_rate, total_samples // 5)
+    for i in range(fade_samples):
+        factor = i / fade_samples
+        music[i] *= factor
+        music[total_samples - 1 - i] *= factor
+    
+    # Normalize
+    max_val = max(abs(v) for v in music) or 1
+    music = [int(v / max_val * 12000) for v in music]  # comfortable volume
+    
+    return music
+
+
+def _save_wav(samples, filepath, sample_rate=44100):
+    """Save audio samples as a WAV file."""
+    import wave
+    with wave.open(filepath, 'w') as wf:
+        wf.setnchannels(1)
+        wf.setsampwidth(2)
+        wf.setframerate(sample_rate)
+        data = struct.pack('<' + 'h' * len(samples), *samples)
+        wf.writeframes(data)
+
+
+def _merge_audio_video(video_path, audio_path, output_path):
+    """Merge audio WAV with video MP4 using imageio ffmpeg."""
+    try:
+        # Use imageio-ffmpeg to mux audio + video
+        import subprocess
+        # Find ffmpeg binary
+        ffmpeg_exe = None
         try:
-            temp_path = os.path.join(script_dir, "temp_" + filename)
-            with open(temp_path, "wb") as f:
-                f.write(img_data)
-            paths.append(temp_path)
-            print("  Saved " + filename + " (" + str(len(img_data)) + " bytes)")
+            import imageio_ffmpeg
+            ffmpeg_exe = imageio_ffmpeg.get_ffmpeg_exe()
+            print("  Found ffmpeg via imageio_ffmpeg: " + str(ffmpeg_exe))
         except Exception as e:
-            print("  Save error (" + filename + "): " + str(e))
+            print("  imageio_ffmpeg import failed: " + str(e))
+        if not ffmpeg_exe:
+            try:
+                ffmpeg_exe = iio.get_ffmpeg_exe()
+                print("  Found ffmpeg via imageio: " + str(ffmpeg_exe))
+            except Exception as e:
+                print("  imageio get_ffmpeg_exe failed: " + str(e))
+        if not ffmpeg_exe:
+            print("  No ffmpeg found, skipping audio merge")
+            return False
+        
+        print("  Merging audio + video with ffmpeg...")
+        cmd = [
+            ffmpeg_exe, '-y',
+            '-i', video_path,
+            '-i', audio_path,
+            '-c:v', 'copy',
+            '-c:a', 'aac',
+            '-b:a', '128k',
+            '-shortest',
+            output_path
+        ]
+        result = subprocess.run(cmd, capture_output=True, timeout=30)
+        if result.returncode == 0 and os.path.exists(output_path):
+            return True
+        else:
+            print("  Audio merge stderr: " + result.stderr.decode('utf-8', errors='replace')[:200])
+            return False
+    except Exception as e:
+        print("  Audio merge failed: " + str(e))
+        return False
 
-    return paths
+
+def create_professional_video(topic, output_path):
+    """
+    Create a professional TikTok video with:
+    - Ken Burns animation (slow zoom/pan on each slide)
+    - Crossfade transitions between slides
+    - Subtitle overlay on each slide
+    - Background music
+    - Hook → Script → CTA structure
+    """
+    if not HAS_IMAGEIO or not HAS_PILLOW:
+        print("  Pillow + imageio required for professional video")
+        return False
+
+    try:
+        # 1. Generate all slide images
+        print("  Creating slide images...")
+        slides = []
+        
+        # Hook slide
+        hook_img = create_hook_slide(topic)
+        slides.append(("hook", topic["hook"], hook_img))
+        
+        # Script slides
+        total_script = len(topic["script"])
+        for i, line in enumerate(topic["script"]):
+            img = create_script_slide(line, i, total_script, topic["hook"])
+            slides.append(("script_" + str(i), line, img))
+        
+        # CTA slide
+        cta_img = create_cta_slide(topic)
+        slides.append(("cta", topic["cta"], cta_img))
+        
+        print("  Created " + str(len(slides)) + " slides")
+        
+        # 2. Generate animated frames
+        frames_per_slide = FPS * SECONDS_PER_SLIDE  # 30fps * 4s = 120 frames
+        all_frames = []
+        slide_subtitles = []  # track which subtitle belongs to which frame range
+        
+        print("  Rendering animation frames...")
+        for slide_idx, (name, subtitle, img) in enumerate(slides):
+            # Randomize Ken Burns parameters slightly per slide
+            zoom_start = 1.0
+            zoom_end = 1.0 + random.uniform(0.04, 0.10)
+            pan_x = random.uniform(-0.02, 0.02)
+            pan_y = random.uniform(0.0, 0.03)
+            
+            slide_frames = []
+            for f in range(frames_per_slide):
+                kb_frame = _ken_burns_frame(img, f, frames_per_slide, 
+                                            zoom_start, zoom_end, pan_x, pan_y)
+                slide_frames.append(np.array(kb_frame))
+            
+            # Add subtitles to frames
+            for f in range(frames_per_slide):
+                slide_frames[f] = _render_subtitle_frame(slide_frames[f], subtitle, f, frames_per_slide)
+            
+            # Crossfade transition with previous slide
+            if all_frames and slide_idx > 0:
+                for t in range(TRANSITION_FRAMES):
+                    alpha = t / TRANSITION_FRAMES
+                    # Blend last frames of previous slide with first frames of current
+                    prev_idx = len(all_frames) - TRANSITION_FRAMES + t
+                    if prev_idx >= 0 and prev_idx < len(all_frames):
+                        blended = _crossfade(all_frames[prev_idx], slide_frames[t], alpha)
+                        all_frames[prev_idx] = blended
+            
+            all_frames.extend(slide_frames)
+            slide_subtitles.append((len(all_frames) - frames_per_slide, len(all_frames), subtitle))
+        
+        total_frames = len(all_frames)
+        total_duration = total_frames // FPS
+        print("  Total frames: " + str(total_frames) + " (" + str(total_duration) + "s)")
+        
+        # 3. Write video (no audio first)
+        temp_video = output_path + ".noaudio.mp4"
+        print("  Encoding video...")
+        writer = iio.get_writer(temp_video, fps=FPS, codec='libx264',
+                                output_params=['-pix_fmt', 'yuv420p', '-preset', 'medium', '-crf', '23'])
+        for frame in all_frames:
+            writer.append_data(frame)
+        writer.close()
+        
+        # 4. Generate and merge background music
+        print("  Generating background music...")
+        music_samples = _generate_background_music(total_duration)
+        temp_audio = output_path + ".temp.wav"
+        _save_wav(music_samples, temp_audio)
+        
+        merged = _merge_audio_video(temp_video, temp_audio, output_path)
+        
+        if merged:
+            # Clean up temp files
+            try:
+                os.remove(temp_video)
+                os.remove(temp_audio)
+            except Exception:
+                pass
+            file_size = os.path.getsize(output_path)
+            print("  Video created: " + output_path + " (" + str(file_size) + " bytes, " +
+                  str(total_frames) + " frames @ " + str(FPS) + "fps = " + str(total_duration) + "s)")
+            return True
+        else:
+            # Use video without audio as fallback
+            try:
+                os.rename(temp_video, output_path)
+                try:
+                    os.remove(temp_audio)
+                except Exception:
+                    pass
+            except Exception:
+                pass
+            file_size = os.path.getsize(output_path)
+            print("  Video created (no audio): " + output_path + " (" + str(file_size) + " bytes)")
+            return True
+            
+    except Exception as e:
+        print("  Professional video creation failed: " + str(e))
+        import traceback
+        traceback.print_exc()
+        return False
 
 
 # ============================================================
-# Image-to-Video Slideshow Generator
+# Legacy: Simple slideshow video (fallback)
 # ============================================================
 def images_to_video(image_paths, output_path, fps=30, seconds_per_slide=3):
-    """
-    Convert a list of image files into an MP4 video slideshow.
-    Each slide is shown for `seconds_per_slide` seconds at `fps` frames per second.
-    TikTok requires 24-30fps minimum, so we duplicate frames to reach target fps.
-    Uses imageio + ffmpeg (bundled, no system install needed).
-    """
+    """Simple slideshow video — fallback if professional mode fails."""
     if not HAS_IMAGEIO:
         print("  imageio not available, cannot create video")
         return False
 
     try:
         frames = []
-        frames_per_slide = fps * seconds_per_slide  # e.g. 30fps * 3s = 90 frames per slide
+        frames_per_slide = fps * seconds_per_slide
         
         for path in image_paths:
             img = Image.open(path).convert("RGB")
-            # Ensure size matches SLIDE_W x SLIDE_H (divisible by 16)
             if img.size != (SLIDE_W, SLIDE_H):
                 img = img.resize((SLIDE_W, SLIDE_H), Image.LANCZOS)
             arr = np.array(img)
@@ -640,107 +845,6 @@ def images_to_video(image_paths, output_path, fps=30, seconds_per_slide=3):
 # ============================================================
 # Postproxy API
 # ============================================================
-def post_tiktok_image(caption, image_paths):
-    """Post a TikTok image carousel via Postproxy API using direct file upload."""
-    if not POSTPROXY_API_KEY:
-        print("  TikTok: Missing POSTPROXY_API_KEY")
-        return False
-
-    if not image_paths:
-        print("  TikTok: No image paths provided")
-        return False
-
-    api_url = POSTPROXY_BASE_URL + "/posts"
-    headers = {
-        "Authorization": "Bearer " + POSTPROXY_API_KEY,
-    }
-
-    # Build multipart form data
-    data = {
-        "post[body]": caption,
-        "profiles[]": "tiktok",
-        "platforms[tiktok][format]": "image",
-        "platforms[tiktok][privacy_status]": "PUBLIC_TO_EVERYONE",
-        "platforms[tiktok][auto_add_music]": "true",
-        "platforms[tiktok][disable_comment]": "false",
-    }
-
-    files = []
-    open_files = []
-    try:
-        for path in image_paths:
-            f = open(path, "rb")
-            open_files.append(f)
-            files.append(("media[]", (os.path.basename(path), f, "image/png")))
-
-        r = requests.post(api_url, headers=headers, data=data, files=files, timeout=60)
-        if r.status_code in [200, 201]:
-            result = r.json()
-            post_id = result.get("id", "unknown")
-            print("  TikTok: Image carousel posted! ID: " + str(post_id))
-            return True
-        else:
-            print("  TikTok: FAIL HTTP " + str(r.status_code) + " - " + r.text[:400])
-            return False
-    except Exception as e:
-        print("  TikTok: FAIL - " + str(e))
-        return False
-    finally:
-        for f in open_files:
-            try:
-                f.close()
-            except Exception:
-                pass
-
-
-def post_tiktok_video(caption, video_url):
-    """Post a TikTok video via Postproxy API."""
-    if not POSTPROXY_API_KEY:
-        print("  TikTok: Missing POSTPROXY_API_KEY")
-        return False
-
-    if not video_url:
-        print("  TikTok: No video URL provided")
-        return False
-
-    url = POSTPROXY_BASE_URL + "/posts"
-    headers = {
-        "Authorization": "Bearer " + POSTPROXY_API_KEY,
-        "Content-Type": "application/json",
-    }
-
-    payload = {
-        "post": {
-            "body": caption,
-        },
-        "profiles": ["tiktok"],
-        "media": [video_url],
-        "platforms": {
-            "tiktok": {
-                "format": "video",
-                "privacy_status": "PUBLIC_TO_EVERYONE",
-                "disable_comment": False,
-                "disable_duet": False,
-                "disable_stitch": False,
-            }
-        }
-    }
-
-    try:
-        r = requests.post(url, headers=headers, json=payload, timeout=120)
-        if r.status_code in [200, 201]:
-            data = r.json()
-            post_id = data.get("id", "unknown")
-            print("  TikTok: Video posted! ID: " + str(post_id))
-            return True
-        else:
-            print("  TikTok: FAIL HTTP " + str(r.status_code) + " - " + r.text[:400])
-            return False
-    except Exception as e:
-        print("  TikTok: FAIL - " + str(e))
-        return False
-
-
 def post_tiktok_video_file(caption, video_file_path):
     """Post a TikTok video from local file via Postproxy API (multipart)."""
     if not POSTPROXY_API_KEY:
@@ -765,7 +869,6 @@ def post_tiktok_video_file(caption, video_file_path):
                 "post[body]": caption,
                 "profiles[]": "tiktok",
             }
-            # Note: platform params as form fields
             data["platforms[tiktok][format]"] = "video"
             data["platforms[tiktok][privacy_status]"] = "PUBLIC_TO_EVERYONE"
 
@@ -783,66 +886,86 @@ def post_tiktok_video_file(caption, video_file_path):
         return False
 
 
-# ============================================================
-# Free Stock Chart Image Generator
-# ============================================================
-def get_free_stock_chart_urls():
-    """
-    Get free stock chart image URLs from public sources.
-    These can be used as TikTok carousel images.
-    """
-    # Using finviz.com free chart screenshots (publicly accessible)
-    tickers = ["SPY", "QQQ", "DIA", "IWM", "GLD"]
-    chart_type = "c"  # daily candle
-    # finviz charts are publicly accessible, no API key needed
-    urls = []
-    for ticker in random.sample(tickers, min(3, len(tickers))):
-        url = "https://finviz.com/chart.ashx?t=" + ticker + "&ty=" + chart_type + "&ta=1&p=d"
-        urls.append((ticker + "_chart", url))
-    return urls
+def post_tiktok_video(caption, video_url):
+    """Post a TikTok video via Postproxy API (URL mode)."""
+    if not POSTPROXY_API_KEY:
+        print("  TikTok: Missing POSTPROXY_API_KEY")
+        return False
+    if not video_url:
+        print("  TikTok: No video URL provided")
+        return False
+
+    url = POSTPROXY_BASE_URL + "/posts"
+    headers = {
+        "Authorization": "Bearer " + POSTPROXY_API_KEY,
+        "Content-Type": "application/json",
+    }
+    payload = {
+        "post": {"body": caption},
+        "profiles": ["tiktok"],
+        "media": [video_url],
+        "platforms": {
+            "tiktok": {
+                "format": "video",
+                "privacy_status": "PUBLIC_TO_EVERYONE",
+                "disable_comment": False,
+                "disable_duet": False,
+                "disable_stitch": False,
+            }
+        }
+    }
+    try:
+        r = requests.post(url, headers=headers, json=payload, timeout=120)
+        if r.status_code in [200, 201]:
+            post_id = r.json().get("id", "unknown")
+            print("  TikTok: Video posted! ID: " + str(post_id))
+            return True
+        else:
+            print("  TikTok: FAIL HTTP " + str(r.status_code) + " - " + r.text[:400])
+            return False
+    except Exception as e:
+        print("  TikTok: FAIL - " + str(e))
+        return False
 
 
-def download_chart_images():
-    """Download stock chart images from free sources."""
-    chart_urls = get_free_stock_chart_urls()
-    image_urls = []
+def post_tiktok_image(caption, image_paths):
+    """Post a TikTok image carousel via Postproxy API (legacy, likely fails)."""
+    if not POSTPROXY_API_KEY or not image_paths:
+        return False
 
-    for name, url in chart_urls:
-        try:
-            r = requests.get(url, headers={
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
-            }, timeout=15)
-            if r.status_code == 200 and len(r.content) > 1000:
-                # Save and re-upload to temp hosting
-                temp_path = os.path.join(
-                    os.path.dirname(os.path.abspath(__file__)),
-                    "temp_" + name + ".png"
-                )
-                with open(temp_path, "wb") as f:
-                    f.write(r.content)
+    api_url = POSTPROXY_BASE_URL + "/posts"
+    headers = {"Authorization": "Bearer " + POSTPROXY_API_KEY}
+    data = {
+        "post[body]": caption,
+        "profiles[]": "tiktok",
+        "platforms[tiktok][format]": "image",
+        "platforms[tiktok][privacy_status]": "PUBLIC_TO_EVERYONE",
+        "platforms[tiktok][auto_add_music]": "true",
+    }
 
-                # Upload to catbox.moe for public URL
-                with open(temp_path, "rb") as f:
-                    upload_r = requests.post(
-                        "https://catbox.moe/user/api.php",
-                        files={"fileToUpload": (name + ".png", f, "image/png")},
-                        data={"reqtype": "fileupload"},
-                        timeout=30
-                    )
-                    if upload_r.status_code == 200 and upload_r.text.strip().startswith("http"):
-                        public_url = upload_r.text.strip()
-                        image_urls.append(public_url)
-                        print("  Chart " + name + " uploaded: " + public_url)
-
-                # Clean up
-                try:
-                    os.remove(temp_path)
-                except Exception:
-                    pass
-        except Exception as e:
-            print("  Chart download error (" + name + "): " + str(e))
-
-    return image_urls
+    open_files = []
+    files = []
+    try:
+        for path in image_paths:
+            f = open(path, "rb")
+            open_files.append(f)
+            files.append(("media[]", (os.path.basename(path), f, "image/png")))
+        r = requests.post(api_url, headers=headers, data=data, files=files, timeout=60)
+        if r.status_code in [200, 201]:
+            print("  TikTok: Image posted! ID: " + r.json().get("id", "unknown"))
+            return True
+        else:
+            print("  TikTok: FAIL HTTP " + str(r.status_code) + " - " + r.text[:300])
+            return False
+    except Exception as e:
+        print("  TikTok: FAIL - " + str(e))
+        return False
+    finally:
+        for f in open_files:
+            try:
+                f.close()
+            except Exception:
+                pass
 
 
 # ============================================================
@@ -864,7 +987,8 @@ def notify_telegram(message):
 # ============================================================
 def main():
     print("=" * 50)
-    print("BroadFSC TikTok Auto-Poster")
+    print("BroadFSC TikTok Auto-Poster v2")
+    print("Professional Video Edition")
     print("=" * 50)
 
     now = datetime.datetime.utcnow()
@@ -876,95 +1000,125 @@ def main():
     print("imageio: " + ("YES" if HAS_IMAGEIO else "NO"))
     print()
 
-    # Step 1: Generate caption
-    print("--- Step 1: Generate Caption ---")
+    # Step 1: Pick today's topic
+    day_of_year = now.timetuple().tm_yday
+    topic_idx = day_of_year % len(CONTENT_TOPICS)
+    topic = CONTENT_TOPICS[topic_idx]
+    print("--- Step 1: Today's Topic ---")
+    print("  Hook: " + topic["hook"])
+    print("  Script lines: " + str(len(topic["script"])))
+    print()
+
+    # Step 2: Generate caption
+    print("--- Step 2: Generate Caption ---")
     caption = generate_tiktok_caption()
     print("  Caption: " + caption[:100] + ("..." if len(caption) > 100 else ""))
     print()
 
-    # Step 2: Post based on mode
+    # Step 3: Create and post video
     success = False
 
     if TIKTOK_MODE == "video":
-        # --- DIRECT VIDEO MODE ---
-        print("--- Step 2: Direct Video Mode ---")
+        print("--- Step 3: Direct Video Mode ---")
         video_url = TIKTOK_VIDEO_URL
-
         if video_url:
-            print("  Video URL: " + video_url[:80] + "...")
             success = post_tiktok_video(caption, video_url)
         else:
-            # Check for local video file
             video_dir = os.path.dirname(os.path.abspath(__file__))
             video_path = os.path.join(video_dir, "tiktok_video.mp4")
             if os.path.exists(video_path):
-                print("  Video file: " + video_path)
                 success = post_tiktok_video_file(caption, video_path)
             else:
-                print("  No video URL or file found!")
-                print("  Set TIKTOK_VIDEO_URL env var or place tiktok_video.mp4 in script directory")
-                print("  Falling back to slideshow mode...")
-                TIKTOK_MODE_ACTUAL = "slideshow"
+                print("  No video URL or file found, falling back to slideshow...")
 
     if TIKTOK_MODE != "video" or not success:
-        # --- SLIDESHOW MODE (default) ---
-        # TikTok only supports VIDEO, so we create images → convert to MP4 → post
-        print("--- Step 2: Slideshow-to-Video Mode ---")
+        print("--- Step 3: Professional Video Mode ---")
+        video_dir = os.path.dirname(os.path.abspath(__file__))
+        video_path = os.path.join(video_dir, "tiktok_slideshow.mp4")
 
-        # Generate branded carousel images
-        print("  Generating carousel images...")
-        images = generate_carousel_images()
-        print("  Created " + str(len(images)) + " slides")
-
-        # Save images locally
-        print("  Saving images...")
-        image_paths = upload_images_to_temp(images)
-
-        if image_paths:
-            if HAS_IMAGEIO:
-                # Convert images to video
-                print("  Converting images to MP4 video...")
-                video_dir = os.path.dirname(os.path.abspath(__file__))
-                video_path = os.path.join(video_dir, "tiktok_slideshow.mp4")
-                if images_to_video(image_paths, video_path, fps=30, seconds_per_slide=3):
-                    # Post the video file
-                    success = post_tiktok_video_file(caption, video_path)
-
-                    # Clean up video
-                    try:
-                        os.remove(video_path)
-                    except Exception:
-                        pass
-                else:
-                    print("  Video creation failed, trying image post as fallback...")
-                    success = post_tiktok_image(caption, image_paths)
-            else:
-                # Fallback: try image post (will likely fail on TikTok)
-                print("  imageio not available, attempting image post (may fail on TikTok)...")
-                success = post_tiktok_image(caption, image_paths)
-
-            # Clean up temp images
-            for path in image_paths:
+        if HAS_PILLOW and HAS_IMAGEIO:
+            # Professional video with animations, subtitles, music
+            if create_professional_video(topic, video_path):
+                success = post_tiktok_video_file(caption, video_path)
                 try:
-                    os.remove(path)
+                    os.remove(video_path)
                 except Exception:
                     pass
+            else:
+                print("  Professional video failed, trying simple slideshow...")
+                # Fallback to simple slideshow
+                success = _fallback_simple_slideshow(caption, video_dir)
         else:
-            print("  Image generation failed!")
+            print("  Pillow/imageio not available for professional mode")
+            success = _fallback_simple_slideshow(caption, video_dir)
 
     print()
 
-    # Step 3: Notify
+    # Step 4: Notify
     if success:
-        notify_telegram("\u2705 TikTok post published: " + caption[:80])
+        notify_telegram("✅ TikTok v2 post published: " + caption[:80])
         print("SUCCESS: TikTok post published!")
     else:
-        notify_telegram("\u274c TikTok post FAILED")
+        notify_telegram("❌ TikTok v2 post FAILED")
         print("FAILED: TikTok post could not be published.")
 
     print()
     print("=" * 50)
     print("TikTok posting complete.")
+
+
+def _fallback_simple_slideshow(caption, video_dir):
+    """Fallback: simple image slideshow without animations."""
+    print("  Using simple slideshow fallback...")
+    now = datetime.datetime.utcnow()
+    day_of_year = now.timetuple().tm_yday
+    topic_idx = day_of_year % len(CONTENT_TOPICS)
+    topic = CONTENT_TOPICS[topic_idx]
+    
+    # Generate simple slides
+    images = []
+    hook_img = create_hook_slide(topic)
+    buf = io.BytesIO()
+    hook_img.save(buf, format="PNG")
+    images.append(("hook.png", buf.getvalue()))
+    
+    for i, line in enumerate(topic["script"]):
+        img = create_script_slide(line, i, len(topic["script"]), topic["hook"])
+        buf = io.BytesIO()
+        img.save(buf, format="PNG")
+        images.append(("script_" + str(i) + ".png", buf.getvalue()))
+    
+    cta_img = create_cta_slide(topic)
+    buf = io.BytesIO()
+    cta_img.save(buf, format="PNG")
+    images.append(("cta.png", buf.getvalue()))
+    
+    # Save to temp files
+    paths = []
+    for filename, data in images:
+        path = os.path.join(video_dir, "temp_" + filename)
+        with open(path, "wb") as f:
+            f.write(data)
+        paths.append(path)
+    
+    success = False
+    if HAS_IMAGEIO and paths:
+        video_path = os.path.join(video_dir, "tiktok_slideshow.mp4")
+        if images_to_video(paths, video_path, fps=30, seconds_per_slide=3):
+            success = post_tiktok_video_file(caption, video_path)
+            try:
+                os.remove(video_path)
+            except Exception:
+                pass
+    
+    # Clean up
+    for path in paths:
+        try:
+            os.remove(path)
+        except Exception:
+            pass
+    
+    return success
 
 
 if __name__ == "__main__":
