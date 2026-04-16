@@ -597,10 +597,11 @@ def upload_images_to_temp(images):
 # ============================================================
 # Image-to-Video Slideshow Generator
 # ============================================================
-def images_to_video(image_paths, output_path, fps=1, seconds_per_slide=3):
+def images_to_video(image_paths, output_path, fps=30, seconds_per_slide=3):
     """
     Convert a list of image files into an MP4 video slideshow.
-    Each slide is shown for `seconds_per_slide` seconds.
+    Each slide is shown for `seconds_per_slide` seconds at `fps` frames per second.
+    TikTok requires 24-30fps minimum, so we duplicate frames to reach target fps.
     Uses imageio + ffmpeg (bundled, no system install needed).
     """
     if not HAS_IMAGEIO:
@@ -609,15 +610,18 @@ def images_to_video(image_paths, output_path, fps=1, seconds_per_slide=3):
 
     try:
         frames = []
+        frames_per_slide = fps * seconds_per_slide  # e.g. 30fps * 3s = 90 frames per slide
+        
         for path in image_paths:
             img = Image.open(path).convert("RGB")
             # Ensure size matches SLIDE_W x SLIDE_H (divisible by 16)
             if img.size != (SLIDE_W, SLIDE_H):
                 img = img.resize((SLIDE_W, SLIDE_H), Image.LANCZOS)
             arr = np.array(img)
-            for _ in range(seconds_per_slide):
+            for _ in range(frames_per_slide):
                 frames.append(arr)
 
+        total_duration = len(frames) // fps
         writer = iio.get_writer(output_path, fps=fps, codec='libx264',
                                 output_params=['-pix_fmt', 'yuv420p'])
         for frame in frames:
@@ -626,7 +630,7 @@ def images_to_video(image_paths, output_path, fps=1, seconds_per_slide=3):
 
         file_size = os.path.getsize(output_path)
         print("  Video created: " + output_path + " (" + str(file_size) + " bytes, " +
-              str(len(frames)) + " frames, " + str(len(frames) // fps) + "s)")
+              str(len(frames)) + " frames @ " + str(fps) + "fps = " + str(total_duration) + "s)")
         return True
     except Exception as e:
         print("  Video creation failed: " + str(e))
@@ -922,7 +926,7 @@ def main():
                 print("  Converting images to MP4 video...")
                 video_dir = os.path.dirname(os.path.abspath(__file__))
                 video_path = os.path.join(video_dir, "tiktok_slideshow.mp4")
-                if images_to_video(image_paths, video_path, fps=1, seconds_per_slide=3):
+                if images_to_video(image_paths, video_path, fps=30, seconds_per_slide=3):
                     # Post the video file
                     success = post_tiktok_video_file(caption, video_path)
 
