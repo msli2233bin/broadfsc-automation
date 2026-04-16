@@ -52,6 +52,10 @@ LINKEDIN_ACCESS_TOKEN = os.environ.get("LINKEDIN_ACCESS_TOKEN", "")
 MASTODON_ACCESS_TOKEN = os.environ.get("MASTODON_ACCESS_TOKEN", "")
 MASTODON_INSTANCE = os.environ.get("MASTODON_INSTANCE", "mastodon.social")
 
+# Discord
+DISCORD_BOT_TOKEN = os.environ.get("DISCORD_BOT_TOKEN", "")
+DISCORD_CHANNEL_ID = os.environ.get("DISCORD_CHANNEL_ID", "")
+
 # AI
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 
@@ -244,6 +248,95 @@ def get_fallback_mastodon():
     ]
     idx = datetime.datetime.utcnow().timetuple().tm_yday % len(toots)
     return toots[idx]
+
+
+# ============================================================
+# Discord Poster
+# ============================================================
+def post_discord(text):
+    """Post a message to a Discord channel using Bot token."""
+    if not DISCORD_BOT_TOKEN or not DISCORD_CHANNEL_ID:
+        print("  Discord: Missing DISCORD_BOT_TOKEN or DISCORD_CHANNEL_ID")
+        return False
+    
+    url = "https://discord.com/api/v10/channels/" + DISCORD_CHANNEL_ID + "/messages"
+    headers = {
+        "Authorization": "Bot " + DISCORD_BOT_TOKEN,
+        "Content-Type": "application/json",
+    }
+    # Discord limit is 2000 chars
+    if len(text) > 1900:
+        text = text[:1897] + "..."
+    payload = {"content": text}
+    
+    try:
+        r = requests.post(url, headers=headers, json=payload, timeout=15)
+        if r.status_code == 200:
+            msg_id = r.json().get("id", "")
+            print("  Discord: Posted! Message ID: " + str(msg_id))
+            return True
+        else:
+            print("  Discord: FAIL HTTP " + str(r.status_code) + " - " + r.text[:300])
+            return False
+    except Exception as e:
+        print("  Discord: FAIL - " + str(e))
+        return False
+
+
+def generate_discord_content():
+    """Generate a Discord post (can be longer, use embed format)."""
+    if not GROQ_API_KEY:
+        return get_fallback_discord()
+    
+    try:
+        from groq import Groq
+        client = Groq(api_key=GROQ_API_KEY)
+        
+        now = datetime.datetime.utcnow()
+        day = now.strftime("%A")
+        
+        tags = " ".join(HASHTAGS)
+        
+        response = client.chat.completions.create(
+            model="llama-3.1-8b-instant",
+            messages=[{
+                "role": "user",
+                "content": (
+                    "You are a professional market analyst at BroadFSC. "
+                    "Write a daily market outlook post for a Discord community.\n"
+                    "Today is " + day + ".\n\n"
+                    "Requirements:\n"
+                    "- Maximum 1500 characters\n"
+                    "- Include 2-3 specific market observations\n"
+                    "- Professional but conversational tone\n"
+                    "- End with: " + tags + "\n"
+                    "- Add: 'Subscribe for daily briefings: https://t.me/BroadFSC'\n"
+                    "- Do NOT promise returns"
+                )
+            }],
+            max_tokens=400,
+            temperature=0.7
+        )
+        return response.choices[0].message.content.strip()
+    except Exception as e:
+        print("  AI Discord generation failed: " + str(e))
+        return get_fallback_discord()
+
+
+def get_fallback_discord():
+    """Fallback Discord content."""
+    return (
+        "**Daily Market Outlook** :chart_with_upwards_trend:\n\n"
+        "Key themes for today:\n"
+        "• Central bank policy divergence driving cross-currency flows\n"
+        "• Earnings season providing real-time economic signals\n"
+        "• Geopolitical risk premiums influencing commodity markets\n\n"
+        "Stay informed with daily pre-market briefings covering "
+        "Asia, Europe, Middle East & Americas.\n\n"
+        "Subscribe free: https://t.me/BroadFSC\n"
+        "Website: https://www.broadfsc.com/different\n\n"
+        "#Investing #Trading #MarketAnalysis #StockMarket #Finance"
+    )
 
 
 # ============================================================
@@ -477,6 +570,18 @@ def main():
     else:
         print("Mastodon: Not configured")
         print("  To enable, set MASTODON_ACCESS_TOKEN and MASTODON_INSTANCE in GitHub Secrets")
+    print()
+    
+    # --- Discord ---
+    print("--- Discord ---")
+    if DISCORD_BOT_TOKEN and DISCORD_CHANNEL_ID:
+        print("Discord: Configured")
+        discord_post = generate_discord_content()
+        print("  Content: " + discord_post[:100] + "...")
+        post_discord(discord_post)
+    else:
+        print("Discord: Not configured")
+        print("  To enable, set DISCORD_BOT_TOKEN and DISCORD_CHANNEL_ID in GitHub Secrets")
     print()
     
     print("=" * 50)
