@@ -2,8 +2,14 @@ name: BroadFSC Pre-Market Briefing
 
 on:
   schedule:
-    # Run every 30 minutes to catch all global market openings
-    - cron: '0,30 * * * *'
+    # APAC: 00:00 UTC (08:00 Beijing)
+    - cron: '0 0 * * 1-5'
+    # Middle East: 05:30 UTC (13:30 Beijing)
+    - cron: '30 5 * * 1-5'
+    # Europe: 07:00 UTC (15:00 Beijing)
+    - cron: '0 7 * * 1-5'
+    # Americas: 13:30 UTC (21:30 Beijing)
+    - cron: '30 13 * * 1-5'
   workflow_dispatch:
 
 jobs:
