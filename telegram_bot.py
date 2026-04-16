@@ -226,6 +226,8 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ============================================================
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """处理用户消息，调用 Groq AI 生成回复"""
+    if update.message is None or update.message.text is None:
+        return
     user_message = update.message.text
     user_name = update.effective_user.first_name or "there"
 
