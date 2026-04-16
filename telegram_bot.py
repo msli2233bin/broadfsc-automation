@@ -33,6 +33,13 @@ from telegram.ext import (
     CallbackQueryHandler, filters, ContextTypes
 )
 
+# Analytics tracking
+try:
+    from analytics_logger import log_post, log_interaction
+    HAS_ANALYTICS = True
+except ImportError:
+    HAS_ANALYTICS = False
+
 # ============================================================
 # 配置日志
 # ============================================================
@@ -228,6 +235,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "username": user.username or "",
         "language_code": user.language_code or "en"
     }
+    if HAS_ANALYTICS:
+        log_interaction("telegram_bot", "start", user_id=user.id)
 
     # 根据用户语言选择欢迎消息（默认英文）
     lang = user.language_code or "en"
@@ -324,6 +333,8 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     data = query.data
     user_id = query.from_user.id
+    if HAS_ANALYTICS:
+        log_interaction("telegram_bot", f"button_{data}", user_id=user_id)
 
     # 缓存用户信息
     USER_INFO_CACHE[user_id] = {
@@ -532,6 +543,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_message = update.message.text
     user_id = update.effective_user.id
     user_name = update.effective_user.first_name or "there"
+    if HAS_ANALYTICS:
+        log_interaction("telegram_bot", "message", user_id=user_id, details=user_message[:100])
 
     # 缓存用户信息
     user = update.effective_user

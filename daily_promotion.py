@@ -14,6 +14,13 @@ import datetime
 import requests
 import json
 
+# Analytics tracking
+try:
+    from analytics_logger import log_post
+    HAS_ANALYTICS = True
+except ImportError:
+    HAS_ANALYTICS = False
+
 if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
@@ -406,12 +413,21 @@ def send_telegram(text, channel_id):
         if r.status_code == 200:
             msg_id = r.json()['result']['message_id']
             print("  Sent to " + channel_id + " - Message ID: " + str(msg_id))
+            if HAS_ANALYTICS:
+                lang = CHANNEL_LANG_MAP.get(channel_id, 'en')
+                log_post(platform=f"telegram_{lang}", post_type="briefing", channel=channel_id, content_preview=text[:100], post_id=str(msg_id), status="success")
             return True
         else:
             print("  FAIL [" + channel_id + "]: HTTP " + str(r.status_code) + " - " + r.text[:200])
+            if HAS_ANALYTICS:
+                lang = CHANNEL_LANG_MAP.get(channel_id, 'en')
+                log_post(platform=f"telegram_{lang}", post_type="briefing", channel=channel_id, content_preview=text[:100], status="failed", error_msg=f"HTTP {r.status_code}")
             return False
     except Exception as e:
         print("  FAIL [" + channel_id + "]: " + str(e))
+        if HAS_ANALYTICS:
+            lang = CHANNEL_LANG_MAP.get(channel_id, 'en')
+            log_post(platform=f"telegram_{lang}", post_type="briefing", channel=channel_id, status="failed", error_msg=str(e)[:200])
         return False
 
 

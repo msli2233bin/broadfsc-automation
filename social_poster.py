@@ -30,6 +30,13 @@ import requests
 import json
 import hashlib
 
+# Analytics tracking
+try:
+    from analytics_logger import log_post
+    HAS_ANALYTICS = True
+except ImportError:
+    HAS_ANALYTICS = False
+
 if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
@@ -159,12 +166,18 @@ def post_tweet(text):
             tweet_id = r.json()["data"]["id"]
             print("  X/Twitter: Posted! Tweet ID: " + tweet_id)
             print("  URL: https://twitter.com/i/status/" + tweet_id)
+            if HAS_ANALYTICS:
+                log_post(platform="twitter", post_type="tweet", content_preview=text[:100], post_id=tweet_id, status="success")
             return True
         else:
             print("  X/Twitter: FAIL HTTP " + str(r.status_code) + " - " + r.text[:300])
+            if HAS_ANALYTICS:
+                log_post(platform="twitter", post_type="tweet", content_preview=text[:100], status="failed", error_msg=f"HTTP {r.status_code}")
             return False
     except Exception as e:
         print("  X/Twitter: FAIL - " + str(e))
+        if HAS_ANALYTICS:
+            log_post(platform="twitter", post_type="tweet", content_preview=text[:100], status="failed", error_msg=str(e)[:200])
         return False
 
 
@@ -194,12 +207,18 @@ def post_mastodon(text):
             toot_url = r.json().get("url", "")
             print("  Mastodon: Posted! ID: " + str(toot_id))
             print("  URL: " + str(toot_url))
+            if HAS_ANALYTICS:
+                log_post(platform="mastodon", post_type="toot", content_preview=text[:100], post_id=str(toot_id), status="success")
             return True
         else:
             print("  Mastodon: FAIL HTTP " + str(r.status_code) + " - " + r.text[:300])
+            if HAS_ANALYTICS:
+                log_post(platform="mastodon", post_type="toot", content_preview=text[:100], status="failed", error_msg=f"HTTP {r.status_code}")
             return False
     except Exception as e:
         print("  Mastodon: FAIL - " + str(e))
+        if HAS_ANALYTICS:
+            log_post(platform="mastodon", post_type="toot", content_preview=text[:100], status="failed", error_msg=str(e)[:200])
         return False
 
 
@@ -279,12 +298,18 @@ def post_discord(text):
         if r.status_code == 200:
             msg_id = r.json().get("id", "")
             print("  Discord: Posted! Message ID: " + str(msg_id))
+            if HAS_ANALYTICS:
+                log_post(platform="discord", post_type="message", content_preview=text[:100], post_id=str(msg_id), status="success")
             return True
         else:
             print("  Discord: FAIL HTTP " + str(r.status_code) + " - " + r.text[:300])
+            if HAS_ANALYTICS:
+                log_post(platform="discord", post_type="message", content_preview=text[:100], status="failed", error_msg=f"HTTP {r.status_code}")
             return False
     except Exception as e:
         print("  Discord: FAIL - " + str(e))
+        if HAS_ANALYTICS:
+            log_post(platform="discord", post_type="message", status="failed", error_msg=str(e)[:200])
         return False
 
 

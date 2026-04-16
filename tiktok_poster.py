@@ -31,6 +31,13 @@ import struct
 import math
 import io
 
+# Analytics tracking
+try:
+    from analytics_logger import log_post
+    HAS_ANALYTICS = True
+except ImportError:
+    HAS_ANALYTICS = False
+
 try:
     from PIL import Image, ImageDraw, ImageFont, ImageFilter
     HAS_PILLOW = True
@@ -907,9 +914,13 @@ def main():
     if success:
         notify_telegram("TikTok v3 post published: " + caption[:80])
         print("SUCCESS: TikTok post published!")
+        if HAS_ANALYTICS:
+            log_post(platform="tiktok", post_type="video", content_preview=caption[:100], status="success")
     else:
         notify_telegram("TikTok v3 post FAILED")
         print("FAILED: TikTok post not published.")
+        if HAS_ANALYTICS:
+            log_post(platform="tiktok", post_type="video", content_preview=caption[:100], status="failed", error_msg="Postproxy upload failed")
 
     print()
     print("=" * 50)

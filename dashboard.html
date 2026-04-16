@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BroadFSC Analytics Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e0e0; min-height: 100vh; }
+        .header { background: linear-gradient(135deg, #0f1640 0%, #1a237e 50%, #0d47a1 100%); padding: 24px 32px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .header h1 { font-size: 24px; font-weight: 700; color: #fff; }
+        .header .subtitle { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 4px; }
+        .header .live { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #4caf50; margin-left: 16px; }
+        .header .live::before { content: ''; width: 8px; height: 8px; background: #4caf50; border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+        .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { background: linear-gradient(145deg, #141938, #1a2050); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 20px; }
+        .kpi-card .label { font-size: 12px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; }
+        .kpi-card .value { font-size: 32px; font-weight: 700; color: #fff; margin: 8px 0 4px; }
+        .kpi-card .change { font-size: 12px; }
+        .kpi-card .change.up { color: #4caf50; }
+        .kpi-card .change.down { color: #f44336; }
+        .kpi-card.blue .value { color: #42a5f5; }
+        .kpi-card.green .value { color: #66bb6a; }
+        .kpi-card.orange .value { color: #ffa726; }
+        .kpi-card.purple .value { color: #ab47bc; }
+        .kpi-card.red .value { color: #ef5350; }
+        .kpi-card.cyan .value { color: #26c6da; }
+        .charts-row { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 24px; }
+        .chart-card { background: linear-gradient(145deg, #141938, #1a2050); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 20px; }
+        .chart-card h3 { font-size: 14px; color: rgba(255,255,255,0.7); margin-bottom: 16px; }
+        .platform-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .platform-card { background: linear-gradient(145deg, #141938, #1a2050); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 20px; }
+        .platform-card .platform-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+        .platform-card .platform-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .platform-card .platform-name { font-size: 16px; font-weight: 600; color: #fff; }
+        .platform-card .platform-status { font-size: 11px; padding: 2px 8px; border-radius: 10px; }
+        .platform-card .stat-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .platform-card .stat-row:last-child { border: none; }
+        .platform-card .stat-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+        .platform-card .stat-value { font-size: 13px; font-weight: 600; color: #fff; }
+        .recent-table { width: 100%; border-collapse: collapse; }
+        .recent-table th { font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; padding: 8px 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .recent-table td { font-size: 13px; padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+        .badge-success { background: rgba(76,175,80,0.2); color: #4caf50; }
+        .badge-failed { background: rgba(244,67,54,0.2); color: #f44336; }
+        .badge-telegram { background: rgba(0,136,204,0.2); color: #0088cc; }
+        .badge-twitter { background: rgba(29,161,242,0.2); color: #1da1f2; }
+        .badge-tiktok { background: rgba(255,0,80,0.2); color: #ff0050; }
+        .badge-mastodon { background: rgba(99,100,255,0.2); color: #6364ff; }
+        .badge-discord { background: rgba(88,101,242,0.2); color: #5865f2; }
+        .badge-reddit { background: rgba(255,69,0,0.2); color: #ff4500; }
+        .badge-bot { background: rgba(76,175,80,0.2); color: #4caf50; }
+        .footer { text-align: center; padding: 32px; color: rgba(255,255,255,0.3); font-size: 12px; }
+        @media (max-width: 768px) {
+            .charts-row { grid-template-columns: 1fr; }
+            .kpi-row { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📊 BroadFSC Analytics Dashboard <span class="live">LIVE</span></h1>
+        <div class="subtitle" id="lastUpdate">Loading...</div>
+    </div>
+    <div class="container">
+        <!-- KPI Cards -->
+        <div class="kpi-row" id="kpiRow"></div>
+        
+        <!-- Charts -->
+        <div class="charts-row">
+            <div class="chart-card">
+                <h3>📈 Daily Posts & Interactions (Last 30 Days)</h3>
+                <canvas id="trendChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3>🥧 Posts by Platform</h3>
+                <canvas id="platformChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Platform Detail Cards -->
+        <div class="platform-grid" id="platformGrid"></div>
+
+        <!-- Recent Activity -->
+        <div class="charts-row" style="grid-template-columns: 1fr 1fr;">
+            <div class="chart-card">
+                <h3>🕐 Recent Posts</h3>
+                <table class="recent-table">
+                    <thead><tr><th>Time</th><th>Platform</th><th>Type</th><th>Status</th></tr></thead>
+                    <tbody id="recentPosts"></tbody>
+                </table>
+            </div>
+            <div class="chart-card">
+                <h3>💬 Recent Interactions</h3>
+                <table class="recent-table">
+                    <thead><tr><th>Time</th><th>Platform</th><th>Action</th><th>User</th></tr></thead>
+                    <tbody id="recentInteractions"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="footer">BroadFSC Analytics Dashboard • Auto-updated by GitHub Actions • Data stored in analytics/</div>
+
+    <script>
+    const PLATFORM_META = {
+        telegram_en: { icon: '📨', name: 'Telegram (EN)', color: '#0088cc', bg: 'rgba(0,136,204,0.15)' },
+        telegram_es: { icon: '📩', name: 'Telegram (ES)', color: '#006699', bg: 'rgba(0,102,153,0.15)' },
+        telegram_ar: { icon: '📬', name: 'Telegram (AR)', color: '#0099cc', bg: 'rgba(0,153,204,0.15)' },
+        twitter: { icon: '🐦', name: 'X / Twitter', color: '#1da1f2', bg: 'rgba(29,161,242,0.15)' },
+        tiktok: { icon: '🎵', name: 'TikTok', color: '#ff0050', bg: 'rgba(255,0,80,0.15)' },
+        mastodon: { icon: '🐘', name: 'Mastodon', color: '#6364ff', bg: 'rgba(99,100,255,0.15)' },
+        discord: { icon: '💬', name: 'Discord', color: '#5865f2', bg: 'rgba(88,101,242,0.15)' },
+        reddit: { icon: '🔴', name: 'Reddit', color: '#ff4500', bg: 'rgba(255,69,0,0.15)' },
+        telegram_bot: { icon: '🤖', name: 'Bot Chat', color: '#4caf50', bg: 'rgba(76,175,80,0.15)' },
+    };
+
+    function getPlatformMeta(platform) {
+        return PLATFORM_META[platform] || { icon: '📱', name: platform, color: '#999', bg: 'rgba(153,153,153,0.15)' };
+    }
+
+    function formatTime(ts) {
+        if (!ts) return '-';
+        const d = new Date(ts);
+        return d.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+    }
+
+    function formatNumber(n) {
+        if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
+        if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
+        return n.toString();
+    }
+
+    async function loadData() {
+        try {
+            const resp = await fetch('analytics/summary.json');
+            const data = await resp.json();
+            renderDashboard(data);
+        } catch (e) {
+            // Generate demo data if no real data yet
+            renderDashboard(generateDemoData());
+        }
+    }
+
+    function generateDemoData() {
+        const now = new Date();
+        const platforms = ['telegram_en', 'telegram_es', 'telegram_ar', 'twitter', 'tiktok', 'mastodon', 'discord'];
+        const daily_trend = {};
+        for (let i = 30; i >= 0; i--) {
+            const d = new Date(now - i * 86400000).toISOString().slice(0, 10);
+            daily_trend[d] = { posts: Math.floor(Math.random() * 10) + 2, interactions: Math.floor(Math.random() * 5) };
+        }
+        const platformsData = {};
+        platforms.forEach(p => {
+            platformsData[p] = { today: Math.floor(Math.random() * 5), week: Math.floor(Math.random() * 30) + 5, month: Math.floor(Math.random() * 120) + 20, success: Math.floor(Math.random() * 100) + 20, failed: Math.floor(Math.random() * 5) };
+        });
+        return {
+            generated_at: now.toISOString(),
+            totals: { posts_today: 8, posts_week: 56, posts_month: 240, interactions_today: 3, interactions_week: 15, interactions_month: 65, success_rate: 96.5 },
+            platforms: platformsData,
+            interactions_by_platform: { telegram_bot: { today: 2, week: 12, month: 45 } },
+            action_breakdown: { start: 15, message: 20, button_services: 5, button_advisor: 3, button_whatsapp: 2 },
+            daily_trend,
+            hourly_distribution: { 0: 4, 5: 8, 6: 6, 7: 3, 13: 5, 14: 2, 22: 1 },
+            recent_posts: [],
+            recent_interactions: [],
+            _demo: true
+        };
+    }
+
+    function renderDashboard(data) {
+        const t = data.totals;
+        const isDemo = data._demo;
+
+        // Last update
+        document.getElementById('lastUpdate').textContent = 
+            `Last updated: ${formatTime(data.generated_at)} UTC${isDemo ? ' (Demo Data — real data will appear after first automated run)' : ''}`;
+
+        // KPI Cards
+        document.getElementById('kpiRow').innerHTML = `
+            <div class="kpi-card blue"><div class="label">Posts Today</div><div class="value">${t.posts_today}</div></div>
+            <div class="kpi-card green"><div class="label">Posts This Week</div><div class="value">${t.posts_week}</div></div>
+            <div class="kpi-card purple"><div class="label">Posts This Month</div><div class="value">${formatNumber(t.posts_month)}</div></div>
+            <div class="kpi-card orange"><div class="label">Interactions Today</div><div class="value">${t.interactions_today}</div></div>
+            <div class="kpi-card cyan"><div class="label">Interactions This Month</div><div class="value">${formatNumber(t.interactions_month)}</div></div>
+            <div class="kpi-card ${t.success_rate >= 90 ? 'green' : 'red'}"><div class="label">Success Rate</div><div class="value">${t.success_rate}%</div></div>
+        `;
+
+        // Trend Chart
+        const trendLabels = Object.keys(data.daily_trend).sort();
+        const trendPosts = trendLabels.map(d => data.daily_trend[d].posts);
+        const trendInteractions = trendLabels.map(d => data.daily_trend[d].interactions);
+        new Chart(document.getElementById('trendChart'), {
+            type: 'line',
+            data: {
+                labels: trendLabels.map(d => d.slice(5)),
+                datasets: [
+                    { label: 'Posts', data: trendPosts, borderColor: '#42a5f5', backgroundColor: 'rgba(66,165,245,0.1)', fill: true, tension: 0.3 },
+                    { label: 'Interactions', data: trendInteractions, borderColor: '#66bb6a', backgroundColor: 'rgba(102,187,106,0.1)', fill: true, tension: 0.3 }
+                ]
+            },
+            options: { responsive: true, plugins: { legend: { labels: { color: '#999' } } }, scales: { x: { ticks: { color: '#666' }, grid: { color: 'rgba(255,255,255,0.05)' } }, y: { ticks: { color: '#666' }, grid: { color: 'rgba(255,255,255,0.05)' } } } }
+        });
+
+        // Platform Pie
+        const platLabels = Object.keys(data.platforms);
+        const platValues = platLabels.map(p => data.platforms[p].month);
+        const platColors = platLabels.map(p => getPlatformMeta(p).color);
+        new Chart(document.getElementById('platformChart'), {
+            type: 'doughnut',
+            data: { labels: platLabels.map(p => getPlatformMeta(p).name), datasets: [{ data: platValues, backgroundColor: platColors }] },
+            options: { responsive: true, plugins: { legend: { position: 'bottom', labels: { color: '#999', padding: 12 } } } }
+        });
+
+        // Platform Detail Cards
+        let platformHTML = '';
+        for (const [plat, stats] of Object.entries(data.platforms)) {
+            const meta = getPlatformMeta(plat);
+            const rate = stats.success + stats.failed > 0 ? Math.round(stats.success / (stats.success + stats.failed) * 100) : 100;
+            platformHTML += `
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div class="platform-icon" style="background:${meta.bg}">${meta.icon}</div>
+                    <div>
+                        <div class="platform-name">${meta.name}</div>
+                        <span class="platform-status badge badge-${rate >= 90 ? 'success' : 'failed'}">${rate}% success</span>
+                    </div>
+                </div>
+                <div class="stat-row"><span class="stat-label">Today</span><span class="stat-value">${stats.today}</span></div>
+                <div class="stat-row"><span class="stat-label">This Week</span><span class="stat-value">${stats.week}</span></div>
+                <div class="stat-row"><span class="stat-label">This Month</span><span class="stat-value">${stats.month}</span></div>
+                <div class="stat-row"><span class="stat-label">Success / Failed</span><span class="stat-value" style="color:#4caf50">${stats.success} <span style="color:#f44336">/ ${stats.failed}</span></span></div>
+            </div>`;
+        }
+        // Bot interaction card
+        for (const [plat, stats] of Object.entries(data.interactions_by_platform || {})) {
+            const meta = getPlatformMeta(plat);
+            platformHTML += `
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div class="platform-icon" style="background:${meta.bg}">${meta.icon}</div>
+                    <div><div class="platform-name">${meta.name}</div></div>
+                </div>
+                <div class="stat-row"><span class="stat-label">Today</span><span class="stat-value">${stats.today}</span></div>
+                <div class="stat-row"><span class="stat-label">This Week</span><span class="stat-value">${stats.week}</span></div>
+                <div class="stat-row"><span class="stat-label">This Month</span><span class="stat-value">${stats.month}</span></div>
+            </div>`;
+        }
+        document.getElementById('platformGrid').innerHTML = platformHTML;
+
+        // Recent Posts
+        const rp = data.recent_posts || [];
+        document.getElementById('recentPosts').innerHTML = rp.length === 0 
+            ? '<tr><td colspan="4" style="color:#666;text-align:center;padding:24px">No posts yet — data will appear after automated runs</td></tr>'
+            : rp.reverse().map(p => {
+                const meta = getPlatformMeta(p.platform);
+                return `<tr>
+                    <td>${formatTime(p.timestamp)}</td>
+                    <td><span class="badge badge-${p.platform.replace('_','')}">${meta.icon} ${meta.name}</span></td>
+                    <td>${p.type || '-'}</td>
+                    <td><span class="badge badge-${p.status === 'success' ? 'success' : 'failed'}">${p.status}</span></td>
+                </tr>`;
+            }).join('');
+
+        // Recent Interactions
+        const ri = data.recent_interactions || [];
+        document.getElementById('recentInteractions').innerHTML = ri.length === 0
+            ? '<tr><td colspan="4" style="color:#666;text-align:center;padding:24px">No interactions yet</td></tr>'
+            : ri.reverse().map(i => {
+                return `<tr>
+                    <td>${formatTime(i.timestamp)}</td>
+                    <td><span class="badge badge-bot">${i.platform}</span></td>
+                    <td>${i.action}</td>
+                    <td>${i.user_id || '-'}</td>
+                </tr>`;
+            }).join('');
+    }
+
+    loadData();
+    // Auto-refresh every 5 minutes
+    setInterval(loadData, 300000);
+    </script>
+</body>
+</html>
