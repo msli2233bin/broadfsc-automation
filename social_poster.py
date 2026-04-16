@@ -59,7 +59,7 @@ DISCORD_CHANNEL_ID = os.environ.get("DISCORD_CHANNEL_ID", "")
 # TikTok (via Postproxy)
 POSTPROXY_API_KEY = os.environ.get("POSTPROXY_API_KEY", "")
 TIKTOK_VIDEO_URL = os.environ.get("TIKTOK_VIDEO_URL", "")
-TIKTOK_MODE = os.environ.get("TIKTOK_MODE", "image").lower()
+TIKTOK_MODE = os.environ.get("TIKTOK_MODE", "slideshow").lower()
 
 # AI
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
@@ -714,13 +714,23 @@ def main():
         tiktok_caption = generate_tiktok_content()
         print("  Caption: " + tiktok_caption[:100] + "...")
         if TIKTOK_VIDEO_URL:
-            print("  Mode: Video")
+            print("  Mode: Direct Video")
             post_tiktok(tiktok_caption, video_url=TIKTOK_VIDEO_URL)
-        elif TIKTOK_MODE == "image":
-            print("  Mode: Image (requires image URLs via TIKTOK_IMAGE_URLS env)")
-            print("  For full image carousel, run tiktok_poster.py separately")
         else:
-            print("  No media configured. Set TIKTOK_VIDEO_URL or use tiktok_poster.py")
+            print("  Mode: Slideshow (running tiktok_poster.py)")
+            # Run the dedicated TikTok poster which handles image→video→post
+            try:
+                import subprocess
+                result = subprocess.run(
+                    [sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)), "tiktok_poster.py")],
+                    capture_output=True, text=True, timeout=120, env=os.environ
+                )
+                if result.returncode == 0:
+                    print("  TikTok poster completed successfully")
+                else:
+                    print("  TikTok poster error: " + result.stderr[:200])
+            except Exception as e:
+                print("  TikTok poster failed: " + str(e))
     else:
         print("TikTok: Not configured")
         print("  To enable, set POSTPROXY_API_KEY in GitHub Secrets")

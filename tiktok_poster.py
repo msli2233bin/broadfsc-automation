@@ -1,16 +1,14 @@
 """
 BroadFSC TikTok Auto-Poster via Postproxy API
-Posts daily market insights as TikTok image carousels or videos.
+Posts daily market insights as TikTok videos (image-to-video slideshow).
 
 Postproxy API: https://postproxy.dev/reference/posts/
 - Bearer Token auth
-- Supports video and image formats
-- TikTok requires media (video or image)
-- Image carousel: up to 35 images
-- Video: mp4/mov, 3s-10min, min 720x1280
+- TikTok ONLY supports video (not image carousels)
+- This script: AI generates text slides → Pillow renders images → imageio makes MP4 → Postproxy posts video
 
 Modes:
-1. IMAGE mode (default, zero-cost): AI generates text + stock chart images
+1. SLIDESHOW mode (default, zero-cost): AI generates text → branded slide images → MP4 video slideshow
 2. VIDEO mode: Post a video from URL or local file
 
 Environment variables:
@@ -37,6 +35,13 @@ try:
 except ImportError:
     HAS_PILLOW = False
 
+try:
+    import imageio.v2 as iio
+    import numpy as np
+    HAS_IMAGEIO = True
+except ImportError:
+    HAS_IMAGEIO = False
+
 if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
@@ -52,8 +57,8 @@ TIKTOK_VIDEO_URL = os.environ.get("TIKTOK_VIDEO_URL", "")
 BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 CHANNEL_ID = os.environ.get("TELEGRAM_CHANNEL_ID", "")
 
-# Post mode: "image" (default) or "video"
-TIKTOK_MODE = os.environ.get("TIKTOK_MODE", "image").lower()
+# Post mode: "slideshow" (default) or "video"
+TIKTOK_MODE = os.environ.get("TIKTOK_MODE", "slideshow").lower()
 
 WEBSITE_LINK = "https://www.broadfsc.com/different"
 TELEGRAM_LINK = "https://t.me/BroadFSC"
@@ -208,7 +213,7 @@ BRAND_COLORS = {
     "red": (239, 68, 68),
 }
 
-SLIDE_W, SLIDE_H = 1080, 1920  # TikTok 9:16
+SLIDE_W, SLIDE_H = 1088, 1920  # TikTok 9:16, width must be divisible by 16 for video
 
 
 def _get_font(size, bold=False):
@@ -590,6 +595,45 @@ def upload_images_to_temp(images):
 
 
 # ============================================================
+# Image-to-Video Slideshow Generator
+# ============================================================
+def images_to_video(image_paths, output_path, fps=1, seconds_per_slide=3):
+    """
+    Convert a list of image files into an MP4 video slideshow.
+    Each slide is shown for `seconds_per_slide` seconds.
+    Uses imageio + ffmpeg (bundled, no system install needed).
+    """
+    if not HAS_IMAGEIO:
+        print("  imageio not available, cannot create video")
+        return False
+
+    try:
+        frames = []
+        for path in image_paths:
+            img = Image.open(path).convert("RGB")
+            # Ensure size matches SLIDE_W x SLIDE_H (divisible by 16)
+            if img.size != (SLIDE_W, SLIDE_H):
+                img = img.resize((SLIDE_W, SLIDE_H), Image.LANCZOS)
+            arr = np.array(img)
+            for _ in range(seconds_per_slide):
+                frames.append(arr)
+
+        writer = iio.get_writer(output_path, fps=fps, codec='libx264',
+                                output_params=['-pix_fmt', 'yuv420p'])
+        for frame in frames:
+            writer.append_data(frame)
+        writer.close()
+
+        file_size = os.path.getsize(output_path)
+        print("  Video created: " + output_path + " (" + str(file_size) + " bytes, " +
+              str(len(frames)) + " frames, " + str(len(frames) // fps) + "s)")
+        return True
+    except Exception as e:
+        print("  Video creation failed: " + str(e))
+        return False
+
+
+# ============================================================
 # Postproxy API
 # ============================================================
 def post_tiktok_image(caption, image_paths):
@@ -824,6 +868,8 @@ def main():
     print("POSTPROXY_API_KEY: " + ("SET" if POSTPROXY_API_KEY else "NOT SET"))
     print("GROQ_API_KEY: " + ("SET" if GROQ_API_KEY else "NOT SET (using fallback)"))
     print("Mode: " + TIKTOK_MODE.upper())
+    print("Pillow: " + ("YES" if HAS_PILLOW else "NO"))
+    print("imageio: " + ("YES" if HAS_IMAGEIO else "NO"))
     print()
 
     # Step 1: Generate caption
@@ -834,11 +880,10 @@ def main():
 
     # Step 2: Post based on mode
     success = False
-    use_image_mode = (TIKTOK_MODE != "video")
 
     if TIKTOK_MODE == "video":
-        # --- VIDEO MODE ---
-        print("--- Step 2: Video Mode ---")
+        # --- DIRECT VIDEO MODE ---
+        print("--- Step 2: Direct Video Mode ---")
         video_url = TIKTOK_VIDEO_URL
 
         if video_url:
@@ -854,27 +899,47 @@ def main():
             else:
                 print("  No video URL or file found!")
                 print("  Set TIKTOK_VIDEO_URL env var or place tiktok_video.mp4 in script directory")
-                print("  Falling back to image mode...")
-                use_image_mode = True
+                print("  Falling back to slideshow mode...")
+                TIKTOK_MODE_ACTUAL = "slideshow"
 
-    if use_image_mode:
-        # --- IMAGE MODE ---
-        print("--- Step 2: Image Carousel Mode ---")
+    if TIKTOK_MODE != "video" or not success:
+        # --- SLIDESHOW MODE (default) ---
+        # TikTok only supports VIDEO, so we create images → convert to MP4 → post
+        print("--- Step 2: Slideshow-to-Video Mode ---")
 
         # Generate branded carousel images
         print("  Generating carousel images...")
         images = generate_carousel_images()
         print("  Created " + str(len(images)) + " slides")
 
-        # Save images locally (Postproxy supports direct file upload)
+        # Save images locally
         print("  Saving images...")
         image_paths = upload_images_to_temp(images)
 
         if image_paths:
-            print("  " + str(len(image_paths)) + " images ready")
-            success = post_tiktok_image(caption, image_paths)
+            if HAS_IMAGEIO:
+                # Convert images to video
+                print("  Converting images to MP4 video...")
+                video_dir = os.path.dirname(os.path.abspath(__file__))
+                video_path = os.path.join(video_dir, "tiktok_slideshow.mp4")
+                if images_to_video(image_paths, video_path, fps=1, seconds_per_slide=3):
+                    # Post the video file
+                    success = post_tiktok_video_file(caption, video_path)
 
-            # Clean up temp files
+                    # Clean up video
+                    try:
+                        os.remove(video_path)
+                    except Exception:
+                        pass
+                else:
+                    print("  Video creation failed, trying image post as fallback...")
+                    success = post_tiktok_image(caption, image_paths)
+            else:
+                # Fallback: try image post (will likely fail on TikTok)
+                print("  imageio not available, attempting image post (may fail on TikTok)...")
+                success = post_tiktok_image(caption, image_paths)
+
+            # Clean up temp images
             for path in image_paths:
                 try:
                     os.remove(path)
