@@ -1,7 +1,7 @@
 """
 BroadFSC Telegram 智能客服机器人
 功能：自动回答投资咨询问题，引导用户访问官网注册
-      WhatsApp 一键联系 + 客服消息转发（真人对话）
+      WhatsApp 一键联系 + Bot内真人对话转接
 
 依赖安装：
     pip install python-telegram-bot groq
@@ -10,6 +10,17 @@ BroadFSC Telegram 智能客服机器人
     TELEGRAM_BOT_TOKEN    - 从 @BotFather 获取
     GROQ_API_KEY          - 从 console.groq.com 获取（免费）
     ADMIN_CHAT_ID         - 管理员 Telegram chat_id（用于接收客户转接消息）
+
+客服对话流程：
+    客户点"Talk to Advisor" → Bot通知管理员 → 管理员 /accept 接受
+    → 客户消息实时转发给管理员 → 管理员 /reply <id> <msg> 回复
+    → 管理员 /endchat <id> 结束对话
+
+管理员命令：
+    /accept <user_id>        - 接受客户的对话请求
+    /reply <user_id> <msg>   - 回复客户
+    /endchat <user_id>       - 结束客服对话
+    /chats                   - 查看当前活跃对话
 """
 
 import os
@@ -43,6 +54,12 @@ ADMIN_CHAT_ID = os.environ.get("ADMIN_CHAT_ID", "")
 
 # 客服模式：正在和真人对话的用户集合
 LIVE_CHAT_USERS = set()
+
+# 等待管理员接受的对话请求
+PENDING_CHATS = set()
+
+# 用户信息缓存 {user_id: {name, username, language_code}}
+USER_INFO_CACHE = {}
 
 # ============================================================
 # AI 客户端
@@ -81,9 +98,8 @@ Rules you MUST follow:
 
 Call-to-action:
 - Guide interested users to: https://www.broadfsc.com/different
-- For personal consultation, offer WhatsApp contact: https://wa.me/118032150144
-- Offer to connect with a licensed human advisor for complex queries
-- When user wants to talk to a real person, suggest WhatsApp or the "Talk to Advisor" button
+- For personal consultation, offer to connect with a live advisor via the "Talk to Advisor" button
+- When user wants to talk to a real person, suggest clicking "Talk to Advisor" for live chat
 """
 
 # ============================================================
@@ -99,10 +115,9 @@ I'm Alex, your AI investment assistant. I can help you with:
 🌍 Global market insights  
 📋 Account registration guidance
 
-Feel free to ask anything in your language!
+💬 Want to talk to a real advisor? Tap **Talk to Advisor** below!
 
 🔗 Visit us: https://www.broadfsc.com/different
-💬 WhatsApp: Direct line to our advisors
 
 ⚠️ _Investment involves risk. Past performance is not indicative of future results._""",
 
@@ -115,10 +130,9 @@ Feel free to ask anything in your language!
 🌍 全球市场洞察
 📋 开户注册指引
 
-请用您习惯的语言提问！
+💬 想和真人顾问聊聊？点击下方 **Talk to Advisor**！
 
 🔗 官方网站：https://www.broadfsc.com/different
-💬 WhatsApp：直接联系我们的顾问
 
 ⚠️ _投资有风险，过往业绩不代表未来收益。_""",
 
@@ -131,8 +145,9 @@ Soy Alex, tu asistente de inversión con IA. Puedo ayudarte con:
 🌍 Perspectivas del mercado global
 📋 Guía de registro de cuenta
 
+💬 ¿Quieres hablar con un asesor real? ¡Toca **Talk to Advisor**!
+
 🔗 Visítenos: https://www.broadfsc.com/different
-💬 WhatsApp: Línea directa con nuestros asesores
 
 ⚠️ _La inversión conlleva riesgos. El rendimiento pasado no es indicativo de resultados futuros._""",
 
@@ -145,8 +160,9 @@ Soy Alex, tu asistente de inversión con IA. Puedo ayudarte con:
 🌍 رؤى السوق العالمية
 📋 إرشادات التسجيل
 
+💬 هل تريد التحدث مع مستشار حقيقي؟ اضغط **Talk to Advisor**!
+
 🔗 زيارة الموقع: https://www.broadfsc.com/different
-💬 واتساب: خط مباشر مع مستشارينا
 
 ⚠️ _الاستثمار ينطوي على مخاطر. الأداء السابق لا يشير إلى نتائج مستقبلية._"""
 }
@@ -179,6 +195,9 @@ def get_contact_keyboard():
             InlineKeyboardButton("📱 WhatsApp — Chat Now", url=WHATSAPP_LINK),
         ],
         [
+            InlineKeyboardButton("💬 Live Chat in Bot", callback_data="live_chat"),
+        ],
+        [
             InlineKeyboardButton("🔗 Visit Website", url=WEBSITE_URL),
         ],
         [
@@ -188,13 +207,30 @@ def get_contact_keyboard():
     return InlineKeyboardMarkup(keyboard)
 
 
+def get_end_chat_keyboard():
+    """客户结束对话按钮"""
+    keyboard = [
+        [InlineKeyboardButton("🔚 End Chat", callback_data="end_my_chat")],
+        [InlineKeyboardButton("🔙 Back to Menu", callback_data="back_menu")]
+    ]
+    return InlineKeyboardMarkup(keyboard)
+
+
 # ============================================================
 # 命令处理器
 # ============================================================
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """处理 /start 命令"""
+    # 缓存用户信息
+    user = update.effective_user
+    USER_INFO_CACHE[user.id] = {
+        "name": user.first_name or "User",
+        "username": user.username or "",
+        "language_code": user.language_code or "en"
+    }
+
     # 根据用户语言选择欢迎消息（默认英文）
-    lang = update.effective_user.language_code or "en"
+    lang = user.language_code or "en"
     if lang.startswith("zh"):
         msg = WELCOME_MESSAGES["zh"]
     elif lang.startswith("es"):
@@ -205,8 +241,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         msg = WELCOME_MESSAGES["en"]
 
     # 移出客服模式
-    user_id = update.effective_user.id
-    LIVE_CHAT_USERS.discard(user_id)
+    LIVE_CHAT_USERS.discard(user.id)
+    PENDING_CHATS.discard(user.id)
 
     await update.message.reply_text(
         msg,
@@ -220,7 +256,8 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "Just ask me anything about investment services, markets, or how to get started! "
         "I speak English, Chinese, Spanish, Arabic, Japanese, and more. 🌍\n\n"
-        "📱 Need a real person? Chat us on WhatsApp anytime!\n"
+        "💬 Want a real person? Tap **Talk to Advisor** for live chat!\n"
+        "📱 Or WhatsApp us anytime!\n"
         "🔗 Or visit: https://www.broadfsc.com/different",
         reply_markup=get_main_keyboard()
     )
@@ -238,7 +275,7 @@ QUICK_ANSWERS = {
         "• **Market Research** — In-depth analysis of global markets and opportunities\n\n"
         "Our advisors are licensed across multiple major markets globally.\n\n"
         "🔗 For full details: https://www.broadfsc.com/different\n"
-        "📱 Chat an advisor: WhatsApp\n\n"
+        "📱 Chat an advisor: WhatsApp or **Talk to Advisor**\n\n"
         "⚠️ _Investment involves risk._"
     ),
     "about": (
@@ -249,7 +286,7 @@ QUICK_ANSWERS = {
         "✅ Serving all types of investors worldwide\n"
         "✅ Professional, regulated, transparent\n\n"
         "🔗 Learn more: https://www.broadfsc.com/different\n"
-        "📱 Reach us: WhatsApp"
+        "📱 Reach us: WhatsApp or **Talk to Advisor**"
     ),
     "register": (
         "📋 **How to Get Started**\n\n"
@@ -258,7 +295,7 @@ QUICK_ANSWERS = {
         "3️⃣ Complete identity verification (KYC)\n"
         "4️⃣ Choose your service package\n"
         "5️⃣ Connect with your dedicated advisor\n\n"
-        "Need help? Chat us on WhatsApp for step-by-step guidance!\n\n"
+        "Need help? Chat us on WhatsApp or use **Talk to Advisor**!\n\n"
         "⚠️ _Investment involves risk. Please ensure you understand the risks involved._"
     ),
     "advisor": (
@@ -268,12 +305,15 @@ QUICK_ANSWERS = {
         "• Portfolio review & recommendations\n"
         "• Account setup assistance\n"
         "• Complex financial questions\n\n"
-        "📱 **WhatsApp** — Fastest way to reach us\n"
-        "Tap the button below to start a chat!\n\n"
+        "Choose how you'd like to connect:\n\n"
+        "💬 **Live Chat** — Chat directly here in the bot\n"
+        "📱 **WhatsApp** — Fastest way to reach us outside the bot\n\n"
         "⏰ We typically respond within minutes during business hours.\n\n"
         "⚠️ _Investment involves risk. Past performance is not indicative of future results._"
     ),
-    "back_menu": "back_menu"  # 特殊标记，返回主菜单
+    "back_menu": "back_menu",
+    "live_chat": "live_chat",
+    "end_my_chat": "end_my_chat"
 }
 
 
@@ -283,17 +323,168 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
 
     data = query.data
-    answer = QUICK_ANSWERS.get(data)
+    user_id = query.from_user.id
 
-    if answer is None:
+    # 缓存用户信息
+    USER_INFO_CACHE[user_id] = {
+        "name": query.from_user.first_name or "User",
+        "username": query.from_user.username or "",
+        "language_code": query.from_user.language_code or "en"
+    }
+
+    # 客户点击 "Live Chat in Bot"
+    if data == "live_chat":
+        if not ADMIN_CHAT_ID:
+            # 没有管理员在线，引导到 WhatsApp
+            await query.message.reply_text(
+                "😔 Our live advisors are currently offline. "
+                "You can reach us on WhatsApp for immediate assistance!",
+                reply_markup=InlineKeyboardMarkup([
+                    [InlineKeyboardButton("📱 WhatsApp — Chat Now", url=WHATSAPP_LINK)],
+                    [InlineKeyboardButton("🔙 Back to Menu", callback_data="back_menu")]
+                ])
+            )
+            return
+
+        # 已在对话中
+        if user_id in LIVE_CHAT_USERS:
+            await query.message.reply_text(
+                "💬 You're already in a live chat! Just type your message.",
+                reply_markup=get_end_chat_keyboard()
+            )
+            return
+
+        # 已在等待中
+        if user_id in PENDING_CHATS:
+            await query.message.reply_text(
+                "⏳ Your request is already pending. An advisor will be with you shortly!",
+                reply_markup=InlineKeyboardMarkup([
+                    [InlineKeyboardButton("❌ Cancel Request", callback_data="cancel_chat")],
+                    [InlineKeyboardButton("🔙 Back to Menu", callback_data="back_menu")]
+                ])
+            )
+            return
+
+        # 发起对话请求
+        PENDING_CHATS.add(user_id)
+        user_info = USER_INFO_CACHE.get(user_id, {})
+        user_name = user_info.get("name", "User")
+        username = user_info.get("username", "")
+
+        # 通知客户
         await query.message.reply_text(
-            "Please visit our website for more information.",
+            "📨 Your live chat request has been sent! An advisor will connect with you shortly.\n\n"
+            "You can also reach us on WhatsApp if you need immediate help.",
+            reply_markup=InlineKeyboardMarkup([
+                [InlineKeyboardButton("📱 WhatsApp — Faster", url=WHATSAPP_LINK)],
+                [InlineKeyboardButton("❌ Cancel Request", callback_data="cancel_chat")]
+            ])
+        )
+
+        # 通知管理员
+        username_str = f" (@{username})" if username else ""
+        admin_msg = (
+            f"🔔 **Live Chat Request**\n\n"
+            f"👤 {user_name}{username_str}\n"
+            f"🆔 ID: `{user_id}`\n\n"
+            f"Tap below to accept:"
+        )
+        accept_keyboard = InlineKeyboardMarkup([
+            [InlineKeyboardButton("✅ Accept Chat", callback_data=f"accept_{user_id}")],
+            [InlineKeyboardButton("❌ Decline", callback_data=f"decline_{user_id}")]
+        ])
+        try:
+            await context.bot.send_message(
+                chat_id=ADMIN_CHAT_ID,
+                text=admin_msg,
+                parse_mode="Markdown",
+                reply_markup=accept_keyboard
+            )
+        except Exception as e:
+            logger.error(f"Failed to notify admin: {e}")
+            PENDING_CHATS.discard(user_id)
+
+        return
+
+    # 客户取消对话请求
+    if data == "cancel_chat":
+        PENDING_CHATS.discard(user_id)
+        await query.message.reply_text(
+            "❌ Live chat request cancelled.",
             reply_markup=get_main_keyboard()
         )
         return
 
-    if answer == "back_menu":
-        # 返回主菜单
+    # 客户结束自己的对话
+    if data == "end_my_chat":
+        LIVE_CHAT_USERS.discard(user_id)
+        await query.message.reply_text(
+            "👋 Live chat ended. Feel free to ask me anything, or start a new live chat anytime!",
+            reply_markup=get_main_keyboard()
+        )
+        # 通知管理员
+        if ADMIN_CHAT_ID:
+            try:
+                await context.bot.send_message(
+                    chat_id=ADMIN_CHAT_ID,
+                    text=f"💬 Customer {user_id} has ended the chat."
+                )
+            except Exception:
+                pass
+        return
+
+    # 管理员接受对话
+    if data.startswith("accept_"):
+        target_id = int(data.split("_")[1])
+        PENDING_CHATS.discard(target_id)
+        LIVE_CHAT_USERS.add(target_id)
+
+        # 通知客户
+        try:
+            await context.bot.send_message(
+                chat_id=target_id,
+                text="✅ An advisor has joined the chat! Type your message and they'll reply directly.\n\n"
+                     "When you're done, tap **End Chat** below.",
+                reply_markup=get_end_chat_keyboard()
+            )
+        except Exception as e:
+            logger.error(f"Failed to notify customer: {e}")
+
+        # 通知管理员
+        await query.message.reply_text(
+            f"✅ Live chat with user {target_id} started!\n\n"
+            f"Use /reply {target_id} <message> to respond.\n"
+            f"Use /endchat {target_id} to end the chat."
+        )
+        return
+
+    # 管理员拒绝对话
+    if data.startswith("decline_"):
+        target_id = int(data.split("_")[1])
+        PENDING_CHATS.discard(target_id)
+
+        # 通知客户
+        try:
+            await context.bot.send_message(
+                chat_id=target_id,
+                text="😔 All our advisors are busy right now. Please try again later or reach us on WhatsApp!",
+                reply_markup=InlineKeyboardMarkup([
+                    [InlineKeyboardButton("📱 WhatsApp — Chat Now", url=WHATSAPP_LINK)],
+                    [InlineKeyboardButton("🔙 Back to Menu", callback_data="back_menu")]
+                ])
+            )
+        except Exception:
+            pass
+
+        await query.message.reply_text(f"❌ Chat request from {target_id} declined.")
+        return
+
+    # 返回主菜单
+    if data == "back_menu":
+        # 移出客服模式
+        LIVE_CHAT_USERS.discard(user_id)
+        PENDING_CHATS.discard(user_id)
+
         lang = query.from_user.language_code or "en"
         if lang.startswith("zh"):
             msg = "👋 有什么可以帮您的？"
@@ -313,13 +504,21 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # advisor 按钮显示联系方式键盘
     if data == "advisor":
         await query.message.reply_text(
-            answer,
+            QUICK_ANSWERS["advisor"],
             parse_mode="Markdown",
             reply_markup=get_contact_keyboard()
         )
         return
 
-    await query.message.reply_text(answer, parse_mode="Markdown")
+    # 其他快捷回答
+    answer = QUICK_ANSWERS.get(data)
+    if answer:
+        await query.message.reply_text(answer, parse_mode="Markdown")
+    else:
+        await query.message.reply_text(
+            "Please visit our website for more information.",
+            reply_markup=get_main_keyboard()
+        )
 
 
 # ============================================================
@@ -334,25 +533,32 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     user_name = update.effective_user.first_name or "there"
 
+    # 缓存用户信息
+    user = update.effective_user
+    USER_INFO_CACHE[user_id] = {
+        "name": user.first_name or "User",
+        "username": user.username or "",
+        "language_code": user.language_code or "en"
+    }
+
     # 检查是否在客服模式（和真人对话中）
     if user_id in LIVE_CHAT_USERS and ADMIN_CHAT_ID:
         # 转发客户消息给管理员
         try:
             forward_text = (
                 f"📩 **Customer Message**\n\n"
-                f"👤 {user_name} (ID: {user_id})\n"
+                f"👤 {user_name} (ID: `{user_id}`)\n"
                 f"💬 {user_message}\n\n"
-                f"_Reply format: /reply {user_id} your message_"
+                f"_Reply: /reply {user_id} your message_"
             )
             await context.bot.send_message(
                 chat_id=ADMIN_CHAT_ID,
                 text=forward_text,
                 parse_mode="Markdown"
             )
-            await update.message.reply_text("✅ Message sent to our advisor. They'll reply shortly!")
+            await update.message.reply_text("✅ Sent to advisor!")
         except Exception as e:
             logger.error(f"Failed to forward message to admin: {e}")
-            # 转发失败，回退到 AI 模式
             LIVE_CHAT_USERS.discard(user_id)
         return
 
@@ -366,12 +572,23 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     ])
 
     if wants_human:
-        contact_msg = (
-            f"Hey {user_name}! 👋\n\n"
-            f"You can reach our team directly on WhatsApp — "
-            f"we usually respond within minutes!\n\n"
-            f"📱 Tap below to start a chat:"
-        )
+        if ADMIN_CHAT_ID:
+            # 有管理员在线，显示 Live Chat 选项
+            contact_msg = (
+                f"Hey {user_name}! 👋\n\n"
+                f"You can connect with our team in two ways:\n\n"
+                f"💬 **Live Chat** — Chat right here in the bot\n"
+                f"📱 **WhatsApp** — Chat on WhatsApp\n\n"
+                f"Choose below:"
+            )
+        else:
+            # 无管理员，只显示 WhatsApp
+            contact_msg = (
+                f"Hey {user_name}! 👋\n\n"
+                f"You can reach our team directly on WhatsApp — "
+                f"we usually respond within minutes!\n\n"
+                f"📱 Tap below to start a chat:"
+            )
         await update.message.reply_text(
             contact_msg,
             reply_markup=get_contact_keyboard()
@@ -401,7 +618,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         msg_count = context.user_data.get("msg_count", 0) + 1
         context.user_data["msg_count"] = msg_count
         if msg_count % 5 == 0:
-            reply += f"\n\n🔗 _Explore our services: {WEBSITE_URL}_\n📱 _WhatsApp: Direct line to advisors_"
+            reply += f"\n\n🔗 _Explore our services: {WEBSITE_URL}_"
 
         # 清理 Markdown 避免解析错误
         reply = re.sub(r'(?<!\*)\*(?!\*)', '', reply)
@@ -437,14 +654,20 @@ async def admin_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("Usage: /reply <user_id> <message>")
         return
 
-    target_user_id = int(parts[1])
+    try:
+        target_user_id = int(parts[1])
+    except ValueError:
+        await update.message.reply_text("Invalid user ID. Usage: /reply <user_id> <message>")
+        return
+
     reply_text = parts[2]
 
     try:
         await context.bot.send_message(
             chat_id=target_user_id,
-            text=f"💬 **Advisor Reply:**\n\n{reply_text}\n\n_— BroadFSC Advisor_",
-            parse_mode="Markdown"
+            text=f"💬 **Advisor:** {reply_text}\n\n_— BroadFSC Advisor_",
+            parse_mode="Markdown",
+            reply_markup=get_end_chat_keyboard() if target_user_id in LIVE_CHAT_USERS else None
         )
         await update.message.reply_text("✅ Message sent to customer.")
     except Exception as e:
@@ -466,13 +689,18 @@ async def admin_end_chat(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("Usage: /endchat <user_id>")
         return
 
-    target_user_id = int(parts[1])
+    try:
+        target_user_id = int(parts[1])
+    except ValueError:
+        await update.message.reply_text("Invalid user ID. Usage: /endchat <user_id>")
+        return
+
     LIVE_CHAT_USERS.discard(target_user_id)
 
     try:
         await context.bot.send_message(
             chat_id=target_user_id,
-            text="💬 Our advisor has ended this chat. Feel free to ask me anything, or reach out on WhatsApp anytime!",
+            text="💬 Our advisor has ended this chat. Feel free to ask me anything, or start a new live chat anytime!",
             reply_markup=get_main_keyboard()
         )
     except Exception:
@@ -481,8 +709,8 @@ async def admin_end_chat(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(f"✅ Chat with user {target_user_id} ended.")
 
 
-async def admin_start_chat(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """管理员主动开启客服对话：/livechat <user_id>"""
+async def admin_accept(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """管理员接受对话请求：/accept <user_id>"""
     if not ADMIN_CHAT_ID:
         return
 
@@ -492,21 +720,66 @@ async def admin_start_chat(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     parts = update.message.text.split(maxsplit=1)
     if len(parts) < 2:
-        await update.message.reply_text("Usage: /livechat <user_id>")
+        await update.message.reply_text("Usage: /accept <user_id>")
         return
 
-    target_user_id = int(parts[1])
+    try:
+        target_user_id = int(parts[1])
+    except ValueError:
+        await update.message.reply_text("Invalid user ID. Usage: /accept <user_id>")
+        return
+
+    PENDING_CHATS.discard(target_user_id)
     LIVE_CHAT_USERS.add(target_user_id)
 
+    # 通知客户
     try:
         await context.bot.send_message(
             chat_id=target_user_id,
-            text="💬 You're now connected with a live advisor! Type your message and they'll reply directly.",
+            text="✅ An advisor has joined the chat! Type your message and they'll reply directly.\n\n"
+                 "When you're done, tap **End Chat** below.",
+            reply_markup=get_end_chat_keyboard()
         )
-    except Exception:
-        pass
+    except Exception as e:
+        logger.error(f"Failed to notify customer: {e}")
 
-    await update.message.reply_text(f"✅ Live chat with user {target_user_id} started. Their messages will be forwarded to you.")
+    await update.message.reply_text(
+        f"✅ Live chat with user {target_user_id} started!\n\n"
+        f"Use /reply {target_user_id} <message> to respond.\n"
+        f"Use /endchat {target_user_id} to end the chat."
+    )
+
+
+async def admin_chats(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """查看当前活跃对话：/chats"""
+    if not ADMIN_CHAT_ID:
+        return
+
+    admin_id = str(update.effective_user.id)
+    if admin_id != ADMIN_CHAT_ID:
+        return
+
+    if not LIVE_CHAT_USERS and not PENDING_CHATS:
+        await update.message.reply_text("📭 No active or pending chats.")
+        return
+
+    msg = ""
+    if LIVE_CHAT_USERS:
+        msg += "💬 **Active Chats:**\n"
+        for uid in LIVE_CHAT_USERS:
+            info = USER_INFO_CACHE.get(uid, {})
+            name = info.get("name", "Unknown")
+            msg += f"  • {name} (ID: `{uid}`) — /reply {uid} <msg> / /endchat {uid}\n"
+        msg += "\n"
+
+    if PENDING_CHATS:
+        msg += "⏳ **Pending Requests:**\n"
+        for uid in PENDING_CHATS:
+            info = USER_INFO_CACHE.get(uid, {})
+            name = info.get("name", "Unknown")
+            msg += f"  • {name} (ID: `{uid}`) — /accept {uid}\n"
+
+    await update.message.reply_text(msg, parse_mode="Markdown")
 
 
 # ============================================================
@@ -527,7 +800,8 @@ def main():
     if ADMIN_CHAT_ID:
         app.add_handler(CommandHandler("reply", admin_reply))
         app.add_handler(CommandHandler("endchat", admin_end_chat))
-        app.add_handler(CommandHandler("livechat", admin_start_chat))
+        app.add_handler(CommandHandler("accept", admin_accept))
+        app.add_handler(CommandHandler("chats", admin_chats))
 
     app.add_handler(CallbackQueryHandler(button_callback))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))

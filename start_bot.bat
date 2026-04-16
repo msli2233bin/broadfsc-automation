@@ -9,6 +9,7 @@ REM ============================================================
 
 set TELEGRAM_BOT_TOKEN=8292422033:AAFir8sg7io6reQY5eYSmdiI8lftwyr3dFg
 set GROQ_API_KEY=%USER_GROQ_API_KEY%
+set ADMIN_CHAT_ID=8639358750
 
 echo ============================================
 echo   BroadFSC Telegram Bot 启动中...
