@@ -31,6 +31,12 @@ import base64
 import struct
 import math
 
+try:
+    from PIL import Image, ImageDraw, ImageFont
+    HAS_PILLOW = True
+except ImportError:
+    HAS_PILLOW = False
+
 if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
@@ -187,8 +193,281 @@ def get_fallback_caption():
 
 
 # ============================================================
-# Image Generation (Programmatic - Zero Cost)
+# Image Generation (Pillow + Fallback)
 # ============================================================
+
+# Brand palette
+BRAND_COLORS = {
+    "dark_navy": (15, 23, 42),
+    "deep_blue": (30, 58, 138),
+    "accent_blue": (59, 130, 246),
+    "accent_green": (16, 185, 129),
+    "gold": (245, 158, 11),
+    "white": (255, 255, 255),
+    "light_gray": (148, 163, 184),
+    "red": (239, 68, 68),
+}
+
+SLIDE_W, SLIDE_H = 1080, 1920  # TikTok 9:16
+
+
+def _get_font(size, bold=False):
+    """Get a font, trying system fonts first, falling back to default."""
+    font_names = [
+        "C:/Windows/Fonts/arialbd.ttf" if bold else "C:/Windows/Fonts/arial.ttf",
+        "C:/Windows/Fonts/arial.ttf",
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf" if bold else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+    ]
+    for name in font_names:
+        if os.path.exists(name):
+            try:
+                return ImageFont.truetype(name, size)
+            except Exception:
+                continue
+    return ImageFont.load_default()
+
+
+def _draw_rounded_rect(draw, xy, radius, fill=None, outline=None, width=1):
+    """Draw a rounded rectangle."""
+    x0, y0, x1, y1 = xy
+    draw.rounded_rectangle(xy, radius=radius, fill=fill, outline=outline, width=width)
+
+
+def _wrap_text(text, font, max_width, draw):
+    """Wrap text to fit within max_width pixels."""
+    words = text.split()
+    lines = []
+    current = ""
+    for word in words:
+        test = current + (" " if current else "") + word
+        bbox = draw.textbbox((0, 0), test, font=font)
+        if bbox[2] - bbox[0] <= max_width:
+            current = test
+        else:
+            if current:
+                lines.append(current)
+            current = word
+    if current:
+        lines.append(current)
+    return lines
+
+
+def _create_title_slide(topic):
+    """Create a title slide with topic name and BroadFSC branding."""
+    img = Image.new("RGB", (SLIDE_W, SLIDE_H), BRAND_COLORS["dark_navy"])
+    draw = ImageDraw.Draw(img)
+
+    # Gradient overlay at bottom
+    for y in range(SLIDE_H // 2, SLIDE_H):
+        ratio = (y - SLIDE_H // 2) / (SLIDE_H // 2)
+        r = int(BRAND_COLORS["dark_navy"][0] + (BRAND_COLORS["deep_blue"][0] - BRAND_COLORS["dark_navy"][0]) * ratio)
+        g = int(BRAND_COLORS["dark_navy"][1] + (BRAND_COLORS["deep_blue"][1] - BRAND_COLORS["dark_navy"][1]) * ratio)
+        b = int(BRAND_COLORS["dark_navy"][2] + (BRAND_COLORS["deep_blue"][2] - BRAND_COLORS["dark_navy"][2]) * ratio)
+        draw.line([(0, y), (SLIDE_W, y)], fill=(r, g, b))
+
+    # Top accent bar
+    draw.rectangle([(0, 0), (SLIDE_W, 8)], fill=BRAND_COLORS["accent_blue"])
+
+    # BroadFSC logo text (top)
+    logo_font = _get_font(56, bold=True)
+    draw.text((SLIDE_W // 2, 200), "BroadFSC", font=logo_font,
+              fill=BRAND_COLORS["accent_blue"], anchor="mm")
+
+    # Subtitle
+    sub_font = _get_font(28)
+    draw.text((SLIDE_W // 2, 270), "INVESTMENT INSIGHTS", font=sub_font,
+              fill=BRAND_COLORS["light_gray"], anchor="mm")
+
+    # Divider line
+    draw.rectangle([(SLIDE_W // 2 - 120, 320), (SLIDE_W // 2 + 120, 324)],
+                   fill=BRAND_COLORS["accent_blue"])
+
+    # Title (centered, wrapped)
+    title_font = _get_font(72, bold=True)
+    lines = _wrap_text(topic["title"], title_font, SLIDE_W - 160, draw)
+    y_start = SLIDE_H // 2 - len(lines) * 50
+    for line in lines:
+        draw.text((SLIDE_W // 2, y_start), line, font=title_font,
+                  fill=BRAND_COLORS["white"], anchor="mm")
+        y_start += 100
+
+    # Date
+    date_font = _get_font(32)
+    date_str = datetime.datetime.utcnow().strftime("%B %d, %Y")
+    draw.text((SLIDE_W // 2, SLIDE_H - 280), date_str, font=date_font,
+              fill=BRAND_COLORS["light_gray"], anchor="mm")
+
+    # CTA at bottom
+    cta_font = _get_font(30)
+    draw.text((SLIDE_W // 2, SLIDE_H - 180), "Swipe for key insights \u2192",
+              font=cta_font, fill=BRAND_COLORS["accent_green"], anchor="mm")
+
+    # Bottom accent bar
+    draw.rectangle([(0, SLIDE_H - 8), (SLIDE_W, SLIDE_H)], fill=BRAND_COLORS["accent_blue"])
+
+    return img
+
+
+def _create_point_slide(point, index, total, topic_title):
+    """Create a content point slide."""
+    img = Image.new("RGB", (SLIDE_W, SLIDE_H), BRAND_COLORS["dark_navy"])
+    draw = ImageDraw.Draw(img)
+
+    # Top accent bar
+    draw.rectangle([(0, 0), (SLIDE_W, 8)], fill=BRAND_COLORS["accent_blue"])
+
+    # Point number badge
+    badge_size = 120
+    badge_x, badge_y = 80, 160
+    _draw_rounded_rect(draw, (badge_x, badge_y, badge_x + badge_size, badge_y + badge_size),
+                       radius=20, fill=BRAND_COLORS["accent_blue"])
+    num_font = _get_font(60, bold=True)
+    draw.text((badge_x + badge_size // 2, badge_y + badge_size // 2),
+              str(index + 1), font=num_font, fill=BRAND_COLORS["white"], anchor="mm")
+
+    # Topic reference (small)
+    ref_font = _get_font(24)
+    draw.text((80, 320), topic_title[:50], font=ref_font,
+              fill=BRAND_COLORS["light_gray"])
+
+    # Main content text (large, wrapped)
+    content_font = _get_font(52, bold=True)
+    lines = _wrap_text(point, content_font, SLIDE_W - 160, draw)
+    y_start = 440
+    for line in lines:
+        draw.text((80, y_start), line, font=content_font,
+                  fill=BRAND_COLORS["white"])
+        y_start += 72
+
+    # Decorative accent line
+    draw.rectangle([(80, y_start + 30), (300, y_start + 34)],
+                   fill=BRAND_COLORS["accent_green"])
+
+    # Page indicator dots
+    dot_y = SLIDE_H - 200
+    dot_start_x = SLIDE_W // 2 - (total * 30) // 2
+    for i in range(total):
+        color = BRAND_COLORS["accent_blue"] if i == index else BRAND_COLORS["light_gray"]
+        cx = dot_start_x + i * 30 + 8
+        draw.ellipse([(cx, dot_y), (cx + 16, dot_y + 16)], fill=color)
+
+    # BroadFSC watermark
+    wm_font = _get_font(22)
+    draw.text((SLIDE_W // 2, SLIDE_H - 100), "BroadFSC.com", font=wm_font,
+              fill=BRAND_COLORS["light_gray"], anchor="mm")
+
+    # Bottom accent bar
+    draw.rectangle([(0, SLIDE_H - 8), (SLIDE_W, SLIDE_H)], fill=BRAND_COLORS["accent_blue"])
+
+    return img
+
+
+def _create_cta_slide():
+    """Create a call-to-action slide."""
+    img = Image.new("RGB", (SLIDE_W, SLIDE_H), BRAND_COLORS["deep_blue"])
+    draw = ImageDraw.Draw(img)
+
+    # Top accent bar
+    draw.rectangle([(0, 0), (SLIDE_W, 8)], fill=BRAND_COLORS["accent_green"])
+
+    # BroadFSC branding
+    brand_font = _get_font(64, bold=True)
+    draw.text((SLIDE_W // 2, 350), "BroadFSC", font=brand_font,
+              fill=BRAND_COLORS["white"], anchor="mm")
+
+    # Tagline
+    tag_font = _get_font(32)
+    draw.text((SLIDE_W // 2, 440), "Expert Investment Guidance", font=tag_font,
+              fill=BRAND_COLORS["accent_green"], anchor="mm")
+
+    # Divider
+    draw.rectangle([(SLIDE_W // 2 - 100, 500), (SLIDE_W // 2 + 100, 504)],
+                   fill=BRAND_COLORS["white"])
+
+    # CTA lines
+    cta_lines = [
+        ("Start Your Journey Today", 600, 44, True, BRAND_COLORS["white"]),
+        ("Free daily market briefings", 720, 34, False, BRAND_COLORS["light_gray"]),
+        ("Professional portfolio analysis", 780, 34, False, BRAND_COLORS["light_gray"]),
+        ("Multi-asset global strategies", 840, 34, False, BRAND_COLORS["light_gray"]),
+    ]
+    for text, y, size, bold, color in cta_lines:
+        f = _get_font(size, bold=bold)
+        draw.text((SLIDE_W // 2, y), text, font=f, fill=color, anchor="mm")
+
+    # Website box
+    box_y = 1020
+    _draw_rounded_rect(draw, (SLIDE_W // 2 - 320, box_y, SLIDE_W // 2 + 320, box_y + 90),
+                       radius=16, outline=BRAND_COLORS["accent_blue"], width=3)
+    url_font = _get_font(36, bold=True)
+    draw.text((SLIDE_W // 2, box_y + 45), "www.broadfsc.com/different",
+              font=url_font, fill=BRAND_COLORS["accent_blue"], anchor="mm")
+
+    # Telegram link
+    tg_font = _get_font(32)
+    draw.text((SLIDE_W // 2, 1240), "Join us on Telegram", font=tg_font,
+              fill=BRAND_COLORS["white"], anchor="mm")
+    draw.text((SLIDE_W // 2, 1300), "t.me/BroadFSC", font=_get_font(36, bold=True),
+              fill=BRAND_COLORS["accent_blue"], anchor="mm")
+
+    # Disclaimer
+    disc_font = _get_font(18)
+    draw.text((SLIDE_W // 2, SLIDE_H - 250),
+              "Investing involves risk. Past performance does not guarantee future results.",
+              font=disc_font, fill=BRAND_COLORS["light_gray"], anchor="mm")
+    draw.text((SLIDE_W // 2, SLIDE_H - 210),
+              "BroadFSC is a licensed investment advisory firm.",
+              font=disc_font, fill=BRAND_COLORS["light_gray"], anchor="mm")
+
+    # Bottom accent bar
+    draw.rectangle([(0, SLIDE_H - 8), (SLIDE_W, SLIDE_H)], fill=BRAND_COLORS["accent_green"])
+
+    return img
+
+
+def generate_carousel_images_pillow():
+    """
+    Generate TikTok carousel images using Pillow (with text overlay).
+    Returns list of (filename, PNG bytes) tuples.
+    """
+    now = datetime.datetime.utcnow()
+    day_of_year = now.timetuple().tm_yday
+    topic_idx = day_of_year % len(CONTENT_TOPICS)
+    topic = CONTENT_TOPICS[topic_idx]
+
+    images = []
+
+    # Slide 1: Title
+    img1 = _create_title_slide(topic)
+    buf1 = _img_to_bytes(img1)
+    images.append(("title_slide.png", buf1))
+
+    # Slides 2-5: Content points
+    total_points = min(len(topic["points"]), 4)
+    for i in range(total_points):
+        img = _create_point_slide(topic["points"][i], i, total_points, topic["title"])
+        buf = _img_to_bytes(img)
+        images.append(("point_" + str(i + 1) + ".png", buf))
+
+    # Last slide: CTA
+    img_cta = _create_cta_slide()
+    buf_cta = _img_to_bytes(img_cta)
+    images.append(("cta_slide.png", buf_cta))
+
+    return images
+
+
+def _img_to_bytes(img):
+    """Convert PIL Image to PNG bytes."""
+    import io
+    buf = io.BytesIO()
+    img.save(buf, format="PNG", optimize=True)
+    return buf.getvalue()
+
+
+# --- Legacy fallback for non-Pillow environments ---
+
 def create_solid_png(width, height, r, g, b):
     """Create a minimal valid PNG file with a solid color."""
     def make_chunk(chunk_type, data):
@@ -251,22 +530,24 @@ def create_gradient_png(width, height, r1, g1, b1, r2, g2, b2):
 
 def generate_carousel_images():
     """
-    Generate TikTok carousel images as base64 data URLs.
-    Creates branded slides with market insights.
-    Returns list of data URLs that can be used as media.
+    Generate TikTok carousel images as PNG bytes.
+    Uses Pillow (with text overlay) if available, falls back to solid colors.
+    Returns list of (filename, PNG bytes) tuples.
     """
+    if HAS_PILLOW:
+        print("  [Pillow] Generating branded slides with text overlay")
+        return generate_carousel_images_pillow()
+
+    # Fallback: solid/gradient PNGs (no text)
+    print("  [Fallback] Pillow not available, generating solid-color slides")
     now = datetime.datetime.utcnow()
     day_of_year = now.timetuple().tm_yday
     topic_idx = day_of_year % len(CONTENT_TOPICS)
     topic = CONTENT_TOPICS[topic_idx]
 
-    # Brand colors
-    DARK_BG = (15, 23, 42)       # Dark navy
-    ACCENT = (59, 130, 246)      # Blue
-    ACCENT2 = (16, 185, 129)     # Green
-    WHITE = (255, 255, 255)
     GRADIENT_TOP = (15, 23, 42)
     GRADIENT_BOTTOM = (30, 58, 138)
+    DARK_BG = (15, 23, 42)
 
     images = []
 
