@@ -48,6 +48,10 @@ TWITTER_BEARER_TOKEN = os.environ.get("TWITTER_BEARER_TOKEN", "")
 # LinkedIn
 LINKEDIN_ACCESS_TOKEN = os.environ.get("LINKEDIN_ACCESS_TOKEN", "")
 
+# Mastodon
+MASTODON_ACCESS_TOKEN = os.environ.get("MASTODON_ACCESS_TOKEN", "")
+MASTODON_INSTANCE = os.environ.get("MASTODON_INSTANCE", "mastodon.social")
+
 # AI
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 
@@ -153,6 +157,93 @@ def post_tweet(text):
     except Exception as e:
         print("  X/Twitter: FAIL - " + str(e))
         return False
+
+
+# ============================================================
+# Mastodon Poster
+# ============================================================
+def post_mastodon(text):
+    """Post to Mastodon using access token."""
+    if not MASTODON_ACCESS_TOKEN or not MASTODON_INSTANCE:
+        print("  Mastodon: Missing MASTODON_ACCESS_TOKEN or MASTODON_INSTANCE")
+        return False
+    
+    url = "https://" + MASTODON_INSTANCE + "/api/v1/statuses"
+    headers = {
+        "Authorization": "Bearer " + MASTODON_ACCESS_TOKEN,
+        "Content-Type": "application/json",
+    }
+    # Mastodon limit is 500 chars
+    if len(text) > 480:
+        text = text[:477] + "..."
+    payload = {"status": text}
+    
+    try:
+        r = requests.post(url, headers=headers, json=payload, timeout=15)
+        if r.status_code == 200:
+            toot_id = r.json().get("id", "")
+            toot_url = r.json().get("url", "")
+            print("  Mastodon: Posted! ID: " + str(toot_id))
+            print("  URL: " + str(toot_url))
+            return True
+        else:
+            print("  Mastodon: FAIL HTTP " + str(r.status_code) + " - " + r.text[:300])
+            return False
+    except Exception as e:
+        print("  Mastodon: FAIL - " + str(e))
+        return False
+
+
+def generate_mastodon_content():
+    """Generate a Mastodon post (longer than tweet, up to 500 chars)."""
+    if not GROQ_API_KEY:
+        return get_fallback_mastodon()
+    
+    try:
+        from groq import Groq
+        client = Groq(api_key=GROQ_API_KEY)
+        
+        now = datetime.datetime.utcnow()
+        day = now.strftime("%A")
+        
+        tags = " ".join(HASHTAGS[:4])
+        
+        response = client.chat.completions.create(
+            model="llama-3.1-8b-instant",
+            messages=[{
+                "role": "user",
+                "content": (
+                    "You are a professional market analyst at BroadFSC. "
+                    "Write a market insight post for Mastodon.\n"
+                    "Today is " + day + ".\n\n"
+                    "Requirements:\n"
+                    "- Maximum 450 characters\n"
+                    "- Include 1-2 specific market observations\n"
+                    "- End with: " + tags + "\n"
+                    "- Do NOT promise returns"
+                )
+            }],
+            max_tokens=150,
+            temperature=0.8
+        )
+        return response.choices[0].message.content.strip()
+    except Exception as e:
+        print("  AI Mastodon generation failed: " + str(e))
+        return get_fallback_mastodon()
+
+
+def get_fallback_mastodon():
+    """Fallback Mastodon content."""
+    toots = [
+        "Global markets update: Central bank policy divergence continues to drive cross-currency flows. "
+        "Stay informed with daily pre-market briefings covering Asia, Europe, Middle East & Americas. "
+        "Subscribe free: https://t.me/BroadFSC #Investing #Trading #MarketAnalysis #Finance",
+        "Key themes this week: Fed signals, earnings season dynamics, and geopolitical risk premiums "
+        "shaping commodity markets. Get daily AI-powered market insights in English, Spanish & Arabic. "
+        "https://t.me/BroadFSC #StockMarket #Investing #Trading #MarketAnalysis",
+    ]
+    idx = datetime.datetime.utcnow().timetuple().tm_yday % len(toots)
+    return toots[idx]
 
 
 # ============================================================
@@ -374,6 +465,18 @@ def main():
     else:
         print("LinkedIn: Not configured")
         print("  To enable, set LINKEDIN_ACCESS_TOKEN in GitHub Secrets")
+    print()
+    
+    # --- Mastodon ---
+    print("--- Mastodon ---")
+    if MASTODON_ACCESS_TOKEN and MASTODON_INSTANCE:
+        print("Mastodon: Configured (" + MASTODON_INSTANCE + ")")
+        mastodon_post = generate_mastodon_content()
+        print("  Content: " + mastodon_post[:100] + "...")
+        post_mastodon(mastodon_post)
+    else:
+        print("Mastodon: Not configured")
+        print("  To enable, set MASTODON_ACCESS_TOKEN and MASTODON_INSTANCE in GitHub Secrets")
     print()
     
     print("=" * 50)
