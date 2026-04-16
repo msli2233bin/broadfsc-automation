@@ -56,6 +56,11 @@ MASTODON_INSTANCE = os.environ.get("MASTODON_INSTANCE", "mastodon.social")
 DISCORD_BOT_TOKEN = os.environ.get("DISCORD_BOT_TOKEN", "")
 DISCORD_CHANNEL_ID = os.environ.get("DISCORD_CHANNEL_ID", "")
 
+# TikTok (via Postproxy)
+POSTPROXY_API_KEY = os.environ.get("POSTPROXY_API_KEY", "")
+TIKTOK_VIDEO_URL = os.environ.get("TIKTOK_VIDEO_URL", "")
+TIKTOK_MODE = os.environ.get("TIKTOK_MODE", "image").lower()
+
 # AI
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 
@@ -518,6 +523,124 @@ def notify_telegram(message):
 
 
 # ============================================================
+# TikTok Poster (via Postproxy API)
+# ============================================================
+def post_tiktok(text, image_urls=None, video_url=None):
+    """Post to TikTok via Postproxy API. Supports image carousel or video."""
+    if not POSTPROXY_API_KEY:
+        print("  TikTok: Missing POSTPROXY_API_KEY")
+        return False
+
+    api_url = "https://api.postproxy.dev/api/posts"
+    headers = {
+        "Authorization": "Bearer " + POSTPROXY_API_KEY,
+        "Content-Type": "application/json",
+    }
+
+    # Determine mode: video if video URL provided, otherwise image
+    if video_url:
+        payload = {
+            "post": {"body": text},
+            "profiles": ["tiktok"],
+            "media": [video_url],
+            "platforms": {
+                "tiktok": {
+                    "format": "video",
+                    "privacy_status": "PUBLIC_TO_EVERYONE",
+                    "disable_comment": False,
+                    "disable_duet": False,
+                    "disable_stitch": False,
+                }
+            }
+        }
+    elif image_urls:
+        payload = {
+            "post": {"body": text},
+            "profiles": ["tiktok"],
+            "media": image_urls,
+            "platforms": {
+                "tiktok": {
+                    "format": "image",
+                    "privacy_status": "PUBLIC_TO_EVERYONE",
+                    "auto_add_music": True,
+                    "disable_comment": False,
+                }
+            }
+        }
+    else:
+        print("  TikTok: No media provided (need image_urls or video_url)")
+        return False
+
+    try:
+        r = requests.post(api_url, headers=headers, json=payload, timeout=60)
+        if r.status_code in [200, 201]:
+            post_id = r.json().get("id", "unknown")
+            print("  TikTok: Posted! ID: " + str(post_id))
+            return True
+        else:
+            print("  TikTok: FAIL HTTP " + str(r.status_code) + " - " + r.text[:400])
+            return False
+    except Exception as e:
+        print("  TikTok: FAIL - " + str(e))
+        return False
+
+
+def generate_tiktok_content():
+    """Generate a TikTok-optimized caption."""
+    if not GROQ_API_KEY:
+        return get_fallback_tiktok()
+
+    try:
+        from groq import Groq
+        client = Groq(api_key=GROQ_API_KEY)
+
+        now = datetime.datetime.utcnow()
+        day = now.strftime("%A")
+
+        response = client.chat.completions.create(
+            model="llama-3.1-8b-instant",
+            messages=[{
+                "role": "user",
+                "content": (
+                    "You are a financial content creator for BroadFSC on TikTok. "
+                    "Write an engaging short caption for a market insight post.\n"
+                    "Today is " + day + ".\n\n"
+                    "Requirements:\n"
+                    "- Maximum 300 characters\n"
+                    "- Hook in the first line\n"
+                    "- 2-3 relevant hashtags\n"
+                    "- Call to action: visit broadfsc.com/different\n"
+                    "- Do NOT promise guaranteed returns"
+                )
+            }],
+            max_tokens=120,
+            temperature=0.8
+        )
+        return response.choices[0].message.content.strip()
+    except Exception as e:
+        print("  AI TikTok generation failed: " + str(e))
+        return get_fallback_tiktok()
+
+
+def get_fallback_tiktok():
+    """Fallback TikTok content."""
+    captions = [
+        "Want to invest smarter in 2026? Here's what the pros watch every morning \U0001f4c8 "
+        "Daily global market briefings - FREE! broadfsc.com/different #Investing #StockMarket #FinanceTips",
+
+        "Markets move FAST. Don't get caught off guard \u26a1 "
+        "Pre-market briefings for Asia, Europe, Middle East & Americas. "
+        "Subscribe free: broadfsc.com/different #Trading #Investing #MarketAnalysis",
+
+        "3 things smart investors check before markets open \U0001f4ca "
+        "1. Overnight futures 2. Central bank signals 3. Key economic data. "
+        "Get all this daily at BroadFSC #Investing #StockMarket #WealthBuilding",
+    ]
+    idx = datetime.datetime.utcnow().timetuple().tm_yday % len(captions)
+    return captions[idx]
+
+
+# ============================================================
 # Main
 # ============================================================
 def main():
@@ -582,6 +705,26 @@ def main():
     else:
         print("Discord: Not configured")
         print("  To enable, set DISCORD_BOT_TOKEN and DISCORD_CHANNEL_ID in GitHub Secrets")
+    print()
+    
+    # --- TikTok ---
+    print("--- TikTok ---")
+    if POSTPROXY_API_KEY:
+        print("TikTok: Configured (via Postproxy)")
+        tiktok_caption = generate_tiktok_content()
+        print("  Caption: " + tiktok_caption[:100] + "...")
+        if TIKTOK_VIDEO_URL:
+            print("  Mode: Video")
+            post_tiktok(tiktok_caption, video_url=TIKTOK_VIDEO_URL)
+        elif TIKTOK_MODE == "image":
+            print("  Mode: Image (requires image URLs via TIKTOK_IMAGE_URLS env)")
+            print("  For full image carousel, run tiktok_poster.py separately")
+        else:
+            print("  No media configured. Set TIKTOK_VIDEO_URL or use tiktok_poster.py")
+    else:
+        print("TikTok: Not configured")
+        print("  To enable, set POSTPROXY_API_KEY in GitHub Secrets")
+        print("  Get your API key at postproxy.dev")
     print()
     
     print("=" * 50)

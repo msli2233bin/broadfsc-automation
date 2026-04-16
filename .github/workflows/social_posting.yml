@@ -38,9 +38,20 @@ jobs:
           MASTODON_INSTANCE: ${{ secrets.MASTODON_INSTANCE }}
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
           DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
+          POSTPROXY_API_KEY: ${{ secrets.POSTPROXY_API_KEY }}
+          TIKTOK_MODE: image
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
         run: python social_poster.py
+
+      - name: Post to TikTok (image carousel)
+        env:
+          POSTPROXY_API_KEY: ${{ secrets.POSTPROXY_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          TIKTOK_MODE: image
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+        run: python tiktok_poster.py
 
       - name: Post to Reddit (if enabled)
         env:
