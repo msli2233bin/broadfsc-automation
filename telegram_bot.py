@@ -256,7 +256,16 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if msg_count % 5 == 0:
             reply += "\n\n🔗 _Explore our services: https://www.broadfsc.com/different_"
 
-        await update.message.reply_text(reply, parse_mode="Markdown")
+        # Escape problematic Markdown chars in AI reply to avoid parse errors
+        import re
+        # Remove unmatched markdown bold/italic that causes parse errors
+        reply = re.sub(r'(?<!\*)\*(?!\*)', '', reply)  # remove stray single *
+        reply = re.sub(r'_{1,2}(?![\w])', '', reply)    # remove stray _ at end
+        try:
+            await update.message.reply_text(reply, parse_mode="Markdown")
+        except Exception:
+            # Fallback: send without markdown if parsing fails
+            await update.message.reply_text(reply)
 
     except Exception as e:
         logger.error(f"AI response error: {e}")
