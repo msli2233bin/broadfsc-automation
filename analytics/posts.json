@@ -1,0 +1,101 @@
+[
+  {
+    "id": 1,
+    "timestamp": "2026-04-16T15:01:55.184334Z",
+    "platform": "tiktok",
+    "type": "video_v4",
+    "content_preview": "\"keeping an eye on the markets. will they crash or bounce back? let's take a look at the latest tren",
+    "status": "failed",
+    "error_msg": "Video creation failed"
+  },
+  {
+    "id": 2,
+    "timestamp": "2026-04-16T15:08:50.843954Z",
+    "platform": "tiktok",
+    "type": "video_v4",
+    "content_preview": "\"looking back, I wish someone told me the importance of having multiple income streams at 25. now i'",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 3,
+    "timestamp": "2026-04-17T06:12:03.120546Z",
+    "platform": "tiktok",
+    "type": "video_v5_ai",
+    "content_preview": "\"That dollar-for-dollar matching thing you believe is wrong - it might be the smartest thing about y",
+    "status": "failed",
+    "error_msg": "Video creation failed"
+  },
+  {
+    "id": 4,
+    "timestamp": "2026-04-17T06:14:00.483022Z",
+    "platform": "tiktok",
+    "type": "video_v5_ai",
+    "content_preview": "\"You think the market goes up every year? Think again. I'm sharing the truth about market trends and",
+    "status": "failed",
+    "error_msg": "Video creation failed"
+  },
+  {
+    "id": 5,
+    "timestamp": "2026-04-17T06:16:16.957504Z",
+    "platform": "tiktok",
+    "type": "video_v5_ai",
+    "content_preview": "\"Stop. You've been sold a bill of goods about investing. It's time to separate fact from hype and ta",
+    "status": "failed",
+    "error_msg": "Video creation failed"
+  },
+  {
+    "id": 6,
+    "timestamp": "2026-04-17T06:19:48.481627Z",
+    "platform": "tiktok",
+    "type": "video_v5_mistake",
+    "content_preview": "Chasing dividend yield is a trap most beginners fall into. #dividends #investing #passiveincome #div",
+    "status": "failed",
+    "error_msg": "Video creation failed"
+  },
+  {
+    "id": 7,
+    "timestamp": "2026-04-17T06:21:37.242988Z",
+    "platform": "tiktok",
+    "type": "video_v5_mistake",
+    "content_preview": "Chasing dividend yield is a trap most beginners fall into. #dividends #investing #passiveincome #div",
+    "status": "failed",
+    "error_msg": "Video creation failed"
+  },
+  {
+    "id": 8,
+    "timestamp": "2026-04-17T06:24:35.825193Z",
+    "platform": "tiktok",
+    "type": "video_v5_mistake",
+    "content_preview": "Chasing dividend yield is a trap most beginners fall into. #dividends #investing #passiveincome #div",
+    "status": "failed",
+    "error_msg": "Video creation failed"
+  },
+  {
+    "id": 9,
+    "timestamp": "2026-04-17T06:27:16.118725Z",
+    "platform": "tiktok",
+    "type": "video_v5_mistake",
+    "content_preview": "Chasing dividend yield is a trap most beginners fall into. #dividends #investing #passiveincome #div",
+    "status": "failed",
+    "error_msg": "Video creation failed"
+  },
+  {
+    "id": 10,
+    "timestamp": "2026-04-17T06:30:49.724983Z",
+    "platform": "tiktok",
+    "type": "video_v5_mistake",
+    "content_preview": "Chasing dividend yield is a trap most beginners fall into. #dividends #investing #passiveincome #div",
+    "status": "failed",
+    "error_msg": "Video creation failed"
+  },
+  {
+    "id": 11,
+    "timestamp": "2026-04-17T06:32:08.445745Z",
+    "platform": "tiktok",
+    "type": "video_v5_mistake",
+    "content_preview": "Chasing dividend yield is a trap most beginners fall into. #dividends #investing #passiveincome #div",
+    "status": "failed",
+    "error_msg": "Video creation failed"
+  }
+]

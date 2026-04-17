@@ -38,6 +38,6 @@ jobs:
         run: |
           git config user.name "BroadFSC Bot"
           git config user.email "bot@broadfsc.com"
-          git add analytics/summary.json analytics/posts.json analytics/interactions.json dashboard.html
+          git add analytics/ dashboard.html || true
           git diff --staged --quiet || git commit -m "chore: update analytics dashboard [skip ci]"
           git push https://x-access-token:${GH_TOKEN}@github.com/msli2233bin/broadfsc-automation.git HEAD:main

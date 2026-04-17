@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-04-16T14:16:20.570345Z",
+  "period": {
+    "today": "2026-04-16",
+    "yesterday": "2026-04-15",
+    "week_ago": "2026-04-09",
+    "month_ago": "2026-03-17"
+  },
+  "totals": {
+    "posts_today": 0,
+    "posts_week": 0,
+    "posts_month": 0,
+    "interactions_today": 0,
+    "interactions_week": 0,
+    "interactions_month": 0,
+    "success_rate": 0.0
+  },
+  "platforms": {},
+  "interactions_by_platform": {},
+  "action_breakdown": {},
+  "daily_trend": {},
+  "hourly_distribution": {},
+  "recent_posts": [],
+  "recent_interactions": []
+}
