@@ -33,9 +33,11 @@ jobs:
         run: python analytics_logger.py
 
       - name: Commit & push analytics data
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "BroadFSC Bot"
           git config user.email "bot@broadfsc.com"
           git add analytics/summary.json analytics/posts.json analytics/interactions.json dashboard.html
           git diff --staged --quiet || git commit -m "chore: update analytics dashboard [skip ci]"
-          git push origin HEAD:main
+          git push https://x-access-token:${GH_TOKEN}@github.com/msli2233bin/broadfsc-automation.git HEAD:main
