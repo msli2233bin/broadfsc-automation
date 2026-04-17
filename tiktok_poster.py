@@ -487,14 +487,32 @@ def _script_to_spoken_format(s):
     """
     Convert a v5 script dict into the spoken-lines format used by video engine.
     Returns: {"hook": str, "scenes": [str, ...], "cta": str, "hashtags": str}
+
+    v5.2 timing optimization — target 25-30s total:
+    - Hook only (promise is shown as on-screen text only, NOT spoken)
+    - Body: 2 facts (the most punchy ones)
+    - Midpoint: hook sentence only (detail shown on screen but spoken briefly)
+    - CTA: short
     """
-    scenes = list(s["body"])
-    # Insert midpoint hook + detail as extra scenes (makes video longer / more engaging)
-    scenes.append(s["midpoint"])
-    scenes.append(s["midpoint_detail"])
+    scenes = []
+
+    # Body facts: take 2 most impactful (first two are always the strongest setup)
+    scenes.append(s["body"][0])
+    if len(s["body"]) > 1:
+        scenes.append(s["body"][1])
+
+    # Midpoint: just the hook line (snappy, not the long detail)
+    # BUT combine it with a short version of the detail
+    mid = s["midpoint"]
+    detail = s["midpoint_detail"]
+    # Truncate detail to first sentence only
+    import re
+    first_sent = re.split(r'(?<=[.!?])\s', detail)[0]
+    scenes.append(mid + " " + first_sent)
+
     return {
         "hook": s["hook"],
-        "promise": s.get("promise", ""),
+        "promise": s.get("promise", ""),  # shown on screen, NOT spoken separately
         "scenes": scenes,
         "cta": s["cta"],
         "hashtags": s.get("hashtags", "#investing #finance #money"),
@@ -745,54 +763,73 @@ async def generate_tts_audio(text, output_path, voice=None):
 
 
 def _build_word_timing_from_sentences(text, sentences, total_duration):
-    """Build word-level timing from SentenceBoundary events."""
-    word_data = []
-    words = text.split()
+    """
+    Build word-level timing from SentenceBoundary events.
 
+    Strategy: split sentences by punctuation, assign each sentence its time window,
+    then distribute words within each window proportionally by word length.
+    This gives much better karaoke sync than flat equal distribution.
+    """
+    words = text.split()
     if not sentences or not words:
         return _estimate_word_timing(text)
 
-    # Map each word to its containing sentence
-    char_pos = 0
-    word_sentence_map = []  # (word, start_char_pos)
-    for w in words:
-        word_sentence_map.append((w, char_pos))
-        char_pos += len(w) + 1  # word + space
+    # Split text into sentence chunks (by . ! ?)
+    import re
+    sent_texts = [s.strip() for s in re.split(r'(?<=[.!?])\s+', text) if s.strip()]
+    if len(sent_texts) == 0:
+        sent_texts = [text]
 
-    # Distribute time across sentences, then across words in each sentence
-    sent_idx = 0
-    for wi, (word, wcpos) in enumerate(word_sentence_map):
-        # Find which sentence this word belongs to
-        while sent_idx < len(sentences) - 1:
-            # Check next sentence start
-            if wcpos >= sentences[sent_idx].get("_end_char", 0):
-                sent_idx += 1
-            else:
-                break
+    # Pair sentence texts with timing events
+    # edge-tts SentenceBoundary count may differ — use min
+    n = min(len(sent_texts), len(sentences))
 
-        # Get sentence timing
-        s_start = sentences[sent_idx]["offset_sec"]
-        s_end = s_start + sentences[sent_idx]["duration_sec"]
-        s_dur = sentences[sent_idx]["duration_sec"]
-
-        # Words in this sentence
-        s_words = [x for x in range(len(words)) if word_sentence_map[x][1] < wcpos or x <= wi]
-        # Simpler: just distribute evenly within the sentence's time window
-        pass
-
-    # Fallback: even simpler approach — use sentence boundaries as anchors
     result = []
-    pos = 0.0
-    for i, w in enumerate(words):
-        wdur = max(total_duration / len(words) * (len(w) / 5.0), 0.25)
-        result.append({
-            "text": (" " if i > 0 else "") + w,
-            "offset_sec": pos,
-            "duration_sec": min(wdur, total_duration - pos),
-        })
-        pos += result[-1]["duration_sec"]
+    global_offset = 0.0
 
-    return result
+    for si in range(n):
+        s_dur = sentences[si]["duration_sec"]
+        s_words = sent_texts[si].split()
+        if not s_words:
+            global_offset += s_dur
+            continue
+
+        # Distribute s_dur across s_words proportional to word length
+        weights = []
+        for w in s_words:
+            clean = w.strip(".,!?;:'\"")
+            wt = max(len(clean) * 0.14 + 0.22, 0.22)
+            if any(p in w for p in ".,!?"):
+                wt += 0.25  # pause after punctuation
+            weights.append(wt)
+
+        tw = sum(weights) or 1
+        scale = s_dur / tw
+
+        pos = global_offset
+        for i, w in enumerate(s_words):
+            wdur = weights[i] * scale
+            result.append({
+                "text": (" " if (result or i > 0) else "") + w,
+                "offset_sec": pos,
+                "duration_sec": max(wdur, 0.15),
+            })
+            pos += result[-1]["duration_sec"]
+
+        global_offset += s_dur
+        # tiny inter-sentence pause
+        global_offset += 0.08
+
+    # Handle remaining sentences not covered by timing events
+    if len(sent_texts) > n:
+        remaining = " ".join(sent_texts[n:])
+        extra = _estimate_word_timing(remaining)
+        # shift offsets to start after current
+        for ew in extra:
+            ew["offset_sec"] += global_offset
+        result.extend(extra)
+
+    return result if result else _estimate_word_timing(text)
 
 
 def _estimate_word_timing(text):
@@ -840,13 +877,13 @@ def _estimate_duration(text):
 def build_spoken_lines(script):
     """
     Build full spoken text lines from v5 script with labels.
-    v5 structure: hook → promise → body[0..n] → midpoint → midpoint_detail → cta
+    v5.2: promise is shown on screen during the hook card, NOT spoken separately.
+    Structure: hook → body[0..n] → cta
     Returns: [(label, text), ...]
     """
     lines = []
     lines.append(("hook", script["hook"]))
-    if script.get("promise"):
-        lines.append(("promise", script["promise"]))
+    # Note: promise is intentionally skipped here — it's rendered on the hook card
     for i, scene in enumerate(script["scenes"]):
         lines.append((f"scene_{i}", scene))
     lines.append(("cta", script["cta"]))
@@ -964,7 +1001,7 @@ def _make_clean_bg(label):
 # ============================================================
 # v5 Scene Rendering — Large Bold Text Cards
 # ============================================================
-def _render_scene_v5(text, label, scene_number=None, total_scenes=None, is_hook=False, is_promise=False, is_cta=False):
+def _render_scene_v5(text, label, scene_number=None, total_scenes=None, is_hook=False, is_promise=False, is_cta=False, promise_text=""):
     """
     Render a scene card in v5 style:
     - Hook: HUGE text, full center, accent underline
@@ -993,7 +1030,7 @@ def _render_scene_v5(text, label, scene_number=None, total_scenes=None, is_hook=
         lines = _wrap(text, font_big, W - 100, draw)
         line_h = 98
         total_h = len(lines) * line_h
-        y = (H // 2) - (total_h // 2) - 60
+        y = (H // 2) - (total_h // 2) - 80
 
         for line in lines:
             # Shadow
@@ -1004,6 +1041,15 @@ def _render_scene_v5(text, label, scene_number=None, total_scenes=None, is_hook=
 
         # Bold accent underline
         draw.rectangle([(64, y + 20), (64 + 280, y + 26)], fill=accent_col)
+
+        # Promise sub-line (shown but not spoken)
+        if promise_text:
+            p_font = _font(36, bold=False)
+            p_lines = _wrap(promise_text, p_font, W - 140, draw)
+            py = y + 54
+            for pl in p_lines:
+                draw.text((W // 2, py), pl, font=p_font, fill=C["gray"], anchor="mm")
+                py += 48
 
         # Scroll hint at bottom
         hint_font = _font(26)
@@ -1466,6 +1512,7 @@ def create_video_v5(script, audio_info, output_path):
                 is_hook=st["is_hook"],
                 is_promise=st["is_promise"],
                 is_cta=st["is_cta"],
+                promise_text=script.get("promise", "") if st["is_hook"] else "",
             )
             scene_images[label] = img
             print(f"  [{label}] {st['text'][:60]}")
@@ -1477,6 +1524,16 @@ def create_video_v5(script, audio_info, output_path):
             temp_video, fps=FPS, codec='libx264',
             output_params=['-pix_fmt', 'yuv420p', '-preset', 'medium', '-crf', '22']
         )
+
+        # Pre-build KaraokeRenderer for each scene (avoid per-frame object creation)
+        karaoke_renderers = {}
+        for st in scene_timings:
+            if st["word_data"]:
+                karaoke_renderers[st["label"]] = KaraokeRenderer(
+                    st["word_data"],
+                    st["duration"],
+                    label=st["label"],
+                )
 
         for frame_num in range(total_frames):
             current_time = frame_num / FPS
@@ -1495,15 +1552,11 @@ def create_video_v5(script, audio_info, output_path):
             # Use pre-rendered static image as base
             frame = np.array(scene_images[label].copy())
 
-            # Apply karaoke subtitles
-            if active_scene["word_data"]:
-                karaoke = KaraokeRenderer(
-                    active_scene["word_data"],
-                    active_scene["duration"],
-                    label=label,
-                )
+            # Apply karaoke subtitles (use cached renderer)
+            kr = karaoke_renderers.get(label)
+            if kr is not None:
                 scene_time = current_time - active_scene["start"]
-                frame = karaoke.render_frame(frame, scene_time)
+                frame = kr.render_frame(frame, scene_time)
 
             # Add global progress bar at very bottom
             prog = min(1.0, current_time / total_duration)
