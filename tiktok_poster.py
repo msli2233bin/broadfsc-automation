@@ -1,15 +1,18 @@
 """
-BroadFSC TikTok Auto-Poster v4 — AI Voice + Karaoke Subtitles + Cinematic Video
-Major upgrade from v3: adds TTS voiceover, word-by-word karaoke subtitles,
-and cinematic stock-video-style backgrounds.
+BroadFSC TikTok Auto-Poster v5 — Viral Finance Content Engine
 
-Key improvements over v3:
-- Microsoft Edge TTS (free, unlimited, natural voices)
-- Karaoke-style subtitles (word-by-word highlight, like top TikTok creators)
-- Dynamic cinematic backgrounds with animated particles/lines
-- Audio waveform visualization
-- Voice-driven timing (each scene lasts as long as the spoken text)
-- Professional audio mixing (voice + ambient music)
+COMPLETE REWRITE based on viral TikTok finance creator analysis:
+- 12 hook frameworks (Pattern Interrupt, Pain First, Myth vs Fact, etc.)
+- 5-part retention engine (Hook → Promise → Body → Midpoint Hook → CTA)
+- 8 content categories x 3 variants each = 24 scripts in rotation
+- Human-like conversational tone (anti-AI-detection optimized)
+- Visual style matching top faceless finance creators:
+    Large bold text cards with scene numbers
+    Midpoint retention hooks ("But here's what most people miss...")
+    Progress indicator bar
+    Clean dark background (NO more noisy particles)
+- Edge TTS voice + karaoke subtitles
+- NO background music (clean voice-only, user feedback: "music too noisy")
 
 Postproxy API: https://postproxy.dev/reference/posts/
 Environment variables:
@@ -78,114 +81,434 @@ TELEGRAM_LINK = "https://t.me/BroadFSC"
 W, H = 1088, 1920  # 9:16, width divisible by 16
 FPS = 30
 
-# TTS voice config — using natural-sounding voices
-TTS_VOICE = "en-US-GuyNeural"      # Male, casual, young — like a finance bro
-TTS_VOICE_ALT = "en-US-AriaNeural"  # Female alternative (randomly picked sometimes)
-TTS_RATE = "+5%"                    # Slightly faster for energy
+# TTS voice config — 28yo male finance voice for credibility
+TTS_VOICE = "en-US-GuyNeural"
+TTS_VOICE_ALT = "en-US-AriaNeural"
+TTS_RATE = "+5%"
 
 # ============================================================
-# Color Palette — dark cinematic finance
+# Color Palette v5 — Clean & Bold (matching top creators)
 # ============================================================
 C = {
-    "bg_dark": (10, 12, 22),
-    "bg_mid": (16, 20, 38),
-    "accent": (65, 145, 255),
-    "accent_bright": (100, 180, 255),
-    "green": (0, 220, 140),
-    "gold": (255, 195, 15),
-    "red": (255, 65, 65),
-    "white": (255, 255, 255),
-    "gray": (140, 155, 185),
-    "dim": (60, 70, 100),
-    "highlight": (255, 200, 50),     # Karaoke highlight color
-    "highlight_bg": (40, 35, 80),    # Highlight background glow
+    "bg":      (8,  10,  18),   # near-black background
+    "bg2":     (14, 17,  30),   # slightly lighter panels
+    "accent":  (56, 134, 255),  # electric blue
+    "green":   (0,  214, 130),  # profit green
+    "gold":    (255, 196, 0),   # gold highlight
+    "red":     (255,  60,  60), # loss red
+    "white":   (255, 255, 255),
+    "gray":    (130, 145, 175),
+    "dim":     (50,  58,  85),
+    "kara_hi": (255, 200, 50),  # karaoke highlight (gold)
+    "kara_lo": (100, 115, 150), # karaoke inactive
 }
 
-
 # ============================================================
-# Human Conversational Scripts — optimized for SPOKEN delivery
+# v5 SCRIPT LIBRARY — 24 scripts across 8 viral content types
+#
+# Each script follows the 5-part retention engine:
+#   hook      → pattern interrupt (first 3 seconds)
+#   promise   → what they'll learn (sets expectation)
+#   body      → 2-3 punchy facts/insights
+#   midpoint  → re-engagement hook ("but wait...")
+#   cta       → clear action
+#
+# Content types rotated:
+#   A) Myth Buster   B) Market Signal  C) Wealth Principle
+#   D) Mistake Alert E) Beginner Truth F) Sector Spotlight
+#   G) Psychology    H) Numbers Tell
 # ============================================================
 SCRIPTS = [
+
+    # ── TYPE A: MYTH BUSTER ──────────────────────────────────
     {
-        "hook": "Nobody talks about this but...",
-        "scenes": [
-            "The stock market doesn't care about your feelings.",
-            "It cares about earnings, rates, and institutional flows.",
-            "Right now? Smart money is rotating into sectors most people ignore.",
-            "Defense, infrastructure, healthcare. Not just Big Tech.",
+        "type": "myth",
+        "hook": "That investing advice you heard is wrong.",
+        "promise": "Here's what the data actually says.",
+        "body": [
+            "Myth: you need a lot of money to start investing.",
+            "Reality: dollar cost averaging with fifty dollars a month beats trying to time a big lump sum.",
+            "Compound interest doesn't care how you started. It cares that you started.",
         ],
-        "cta": "Follow for what the market's actually doing.",
+        "midpoint": "But here's the part nobody tells beginners.",
+        "midpoint_detail": "The biggest returns don't come from picking winners. They come from not selling losers.",
+        "cta": "Save this. Share it with someone who keeps waiting to start.",
+        "hashtags": "#investing #beginners #wealthbuilding #money #finance",
     },
     {
-        "hook": "I wish someone told me this at twenty five.",
-        "scenes": [
-            "You don't need to pick winning stocks to build wealth.",
-            "Index funds beat ninety percent of active managers over ten years.",
-            "But when you buy matters more than what you buy.",
-            "Dollar cost averaging into dips? That's the real cheat code.",
+        "type": "myth",
+        "hook": "Stop. You've been lied to about the stock market.",
+        "promise": "Three myths that cost average investors thousands every year.",
+        "body": [
+            "Myth one: buying low and selling high sounds easy. In practice, seventy percent of retail traders lose money trying.",
+            "Myth two: you need to watch the market every day. Actually, the less you check, the better your returns.",
+            "Myth three: a good company equals a good stock. Price paid matters more than company quality.",
         ],
-        "cta": "Save this and thank me later.",
+        "midpoint": "So what actually works?",
+        "midpoint_detail": "Boring, consistent, diversified investing. Every time. It's not exciting but it's how wealth is built.",
+        "cta": "Follow for more truths the financial industry doesn't want you to know.",
+        "hashtags": "#stockmarket #investing #myths #personalfinance #money",
     },
     {
-        "hook": "The Fed just signaled something huge.",
-        "scenes": [
-            "And most people are completely ignoring it.",
-            "When the Fed pauses, bonds become the hidden play.",
-            "Short term yields still paying four to five percent while stocks swing wildly.",
-            "That's free money while you wait for clarity.",
+        "type": "myth",
+        "hook": "Real talk: active trading is a losing game.",
+        "promise": "And the numbers back this up completely.",
+        "body": [
+            "Over twenty years, over ninety percent of actively managed funds underperformed their benchmark index.",
+            "The funds that do beat the market one year rarely do it the next.",
+            "Meanwhile a simple S&P five hundred index fund has returned around ten percent annually on average.",
         ],
-        "cta": "Follow for daily market breakdowns.",
+        "midpoint": "Wait, but what about the people who do beat the market?",
+        "midpoint_detail": "Most are just lucky. Survivorship bias makes us see the winners. Not the thousands who failed.",
+        "cta": "Follow for data-driven investing breakdowns.",
+        "hashtags": "#indexfunds #passiveinvesting #SP500 #finance #wealthbuilding",
+    },
+
+    # ── TYPE B: MARKET SIGNAL ────────────────────────────────
+    {
+        "type": "signal",
+        "hook": "Something quiet is happening in global markets.",
+        "promise": "Most retail investors won't notice until it's too late.",
+        "body": [
+            "When the U.S. dollar weakens, emerging market stocks historically outperform.",
+            "Dollar's been sliding for three straight months now.",
+            "Smart money is already repositioning into international exposure.",
+        ],
+        "midpoint": "But there's a catch most people miss.",
+        "midpoint_detail": "Currency risk cuts both ways. Gains can be wiped out by exchange rate moves if you're not careful.",
+        "cta": "Follow for daily global market signals explained simply.",
+        "hashtags": "#forex #emergingmarkets #investing #globalmarkets #finance",
     },
     {
-        "hook": "Stop checking your portfolio every hour.",
-        "scenes": [
-            "Seriously. The people making real money? They set it and forget it.",
-            "The S&P 500's best days always come right after the worst days.",
-            "If you sold during the dip, you missed the bounce. Every single time.",
-            "Time in the market beats timing the market. Every. Single. Time.",
+        "type": "signal",
+        "hook": "The bond market is flashing a warning sign.",
+        "promise": "And historically this has always preceded a major shift.",
+        "body": [
+            "When short-term treasury yields exceed long-term ones, that's called an inverted yield curve.",
+            "It's happened before every U.S. recession in the past fifty years.",
+            "Right now? The curve has been inverted for over a year.",
         ],
-        "cta": "Share this with someone who needs to hear it.",
+        "midpoint": "Here's what smart investors are actually doing about it.",
+        "midpoint_detail": "Shortening bond duration, holding more cash, and looking at defensive sectors like healthcare and utilities.",
+        "cta": "Follow to stay ahead of what the market is really telling us.",
+        "hashtags": "#bonds #yieldcurve #recession #investing #macroeconomics",
     },
     {
-        "hook": "Three numbers that moved markets this week.",
-        "scenes": [
-            "Number one. C P I came in hot. Inflation's not dead yet.",
-            "Number two. Jobless claims hit a new low. Labor market still strong.",
-            "Number three. Ten year yield broke above four point five percent. That's your real signal.",
-            "When yields spike, growth stocks get nervous. Value stocks wake up.",
+        "type": "signal",
+        "hook": "Gold is doing something it hasn't done in years.",
+        "promise": "And it's not just about inflation this time.",
+        "body": [
+            "Central banks around the world bought more gold last year than any year since nineteen fifty.",
+            "China, India, and the Middle East are all de-dollarizing slowly.",
+            "Gold isn't just an inflation hedge anymore. It's a geopolitical hedge.",
         ],
-        "cta": "I break this down every day. Follow.",
+        "midpoint": "But should you actually buy gold right now?",
+        "midpoint_detail": "Gold pays no dividends and has long dead periods. Most advisors recommend five to ten percent max of any portfolio.",
+        "cta": "Follow for balanced takes on every asset class.",
+        "hashtags": "#gold #investing #inflation #commodities #portfoliostrategy",
+    },
+
+    # ── TYPE C: WEALTH PRINCIPLE ─────────────────────────────
+    {
+        "type": "principle",
+        "hook": "One financial habit separates the wealthy from everyone else.",
+        "promise": "And it has nothing to do with picking stocks.",
+        "body": [
+            "They pay themselves first. Before bills. Before fun. Before anything.",
+            "Set up an automatic transfer to your investment account on payday.",
+            "Then live on what's left. Not save what's left.",
+        ],
+        "midpoint": "Here's the psychology behind why this works.",
+        "midpoint_detail": "When money hits your account you don't miss what you never saw. Automation removes the willpower requirement entirely.",
+        "cta": "Start with one percent if that's all you can do. Just start. Follow for more.",
+        "hashtags": "#wealthbuilding #personalfinance #savingmoney #habits #investing",
     },
     {
-        "hook": "This is why rich people stay rich.",
-        "scenes": [
-            "It's not about picking the right stock. It's about asset allocation.",
-            "When stocks crash, bonds cushion. When bonds fall, commodities hedge.",
-            "The rich never bet everything on one thing. Ever.",
-            "And they rebalance quarterly. Most people never rebalance at all.",
+        "type": "principle",
+        "hook": "Rich people buy assets. Everyone else buys liabilities.",
+        "promise": "Robert Kiyosaki made this famous. Here's the actual breakdown.",
+        "body": [
+            "An asset puts money in your pocket. Stocks, rental property, a business.",
+            "A liability takes money out of your pocket. Car payments, credit card debt, subscriptions you forgot about.",
+            "Most people's biggest purchase is a house. But a house you live in is technically a liability.",
         ],
-        "cta": "Follow for smarter money moves.",
+        "midpoint": "Wait, does that mean don't buy a house?",
+        "midpoint_detail": "Not necessarily. But understand what you're buying. A home is lifestyle. An investment property is an asset. They're different.",
+        "cta": "Follow for clear explanations of wealth concepts.",
+        "hashtags": "#assets #liabilities #cashflow #realestate #wealthmindset",
     },
     {
-        "hook": "Everyone's buying the wrong thing right now.",
-        "scenes": [
-            "FOMO is not a strategy. Chasing last week's winner never works.",
-            "The real opportunity? Sectors that haven't moved yet.",
-            "Energy, financials, industrials. They're quietly setting up.",
-            "By the time everyone notices, the smart money is already out.",
+        "type": "principle",
+        "hook": "The rule of seventy two is the most powerful math in finance.",
+        "promise": "And most people have never heard of it.",
+        "body": [
+            "Divide seventy two by your annual return rate. That's how many years to double your money.",
+            "At eight percent returns, your money doubles every nine years.",
+            "At twelve percent, every six years. Starting at thirty, you could double three or four times before retirement.",
         ],
-        "cta": "Don't be last to know. Follow.",
+        "midpoint": "Now here's where it gets really interesting.",
+        "midpoint_detail": "The same rule works in reverse for debt. At eighteen percent credit card interest, your debt doubles every four years. That's why minimum payments are a trap.",
+        "cta": "Share this with anyone still carrying credit card debt. Follow for more.",
+        "hashtags": "#ruleof72 #compoundinterest #investing #debt #financialliteracy",
+    },
+
+    # ── TYPE D: MISTAKE ALERT ────────────────────────────────
+    {
+        "type": "mistake",
+        "hook": "I see investors make this mistake every single week.",
+        "promise": "And it silently destroys long-term returns.",
+        "body": [
+            "They panic sell during market drops. Then wait for it to feel safe before buying back in.",
+            "Problem: by the time it feels safe, the market has already recovered thirty to forty percent.",
+            "Missing just the ten best days in the market over twenty years cuts your total return in half.",
+        ],
+        "midpoint": "So what should you actually do when markets crash?",
+        "midpoint_detail": "Nothing. Or buy more if you can. Every major crash in history has fully recovered. Every single one.",
+        "cta": "Screenshot this for the next time you want to panic sell. Follow.",
+        "hashtags": "#investing #panicSelling #stockmarket #longterminvesting #wealthbuilding",
+    },
+    {
+        "type": "mistake",
+        "hook": "Most people invest backwards. Here's what I mean.",
+        "promise": "A mistake so common it's basically taught as normal.",
+        "body": [
+            "They put their safe money in savings accounts earning one percent.",
+            "And they put their risky money in speculative stocks chasing ten X.",
+            "Result: the boring money stays boring. The risky money gets wiped out.",
+        ],
+        "midpoint": "The flip works better for most people.",
+        "midpoint_detail": "Put the bulk in index funds. Keep a small portion for higher risk plays if you want the excitement. Not the other way around.",
+        "cta": "Is this you? Comment below. Follow for a full breakdown.",
+        "hashtags": "#investingmistakes #portfolioallocation #indexfunds #stockmarket #finance",
+    },
+    {
+        "type": "mistake",
+        "hook": "Chasing dividend yield is a trap most beginners fall into.",
+        "promise": "Here's what the high yield is actually hiding.",
+        "body": [
+            "A ten percent dividend yield sounds amazing. But ask why it's that high.",
+            "Usually it means the stock price dropped significantly. The yield went up because the price went down.",
+            "Companies in trouble often cut dividends suddenly. You get no income and a capital loss.",
+        ],
+        "midpoint": "So dividends are bad? No, that's not what I'm saying.",
+        "midpoint_detail": "Look for dividend growth, not just high current yield. A company growing its dividend five percent yearly is far more valuable long term.",
+        "cta": "Follow for dividend investing done right.",
+        "hashtags": "#dividends #investing #passiveincome #dividendstocks #finance",
+    },
+
+    # ── TYPE E: BEGINNER TRUTH ───────────────────────────────
+    {
+        "type": "beginner",
+        "hook": "If I was starting investing from zero today, here's exactly what I'd do.",
+        "promise": "Step by step. No fluff.",
+        "body": [
+            "Step one: build a three month emergency fund in a high yield savings account first. Don't touch this.",
+            "Step two: invest in a total market index fund. Something like V T I or equivalent. Set up automatic contributions.",
+            "Step three: never look at it more than once a quarter.",
+        ],
+        "midpoint": "That's it. Really?",
+        "midpoint_detail": "Yes. The complicated stuff is for people who want to feel smart. This is for people who actually want to build wealth.",
+        "cta": "Save this. Share it with someone who asked you how to start. Follow.",
+        "hashtags": "#beginnerinvesting #howtostart #indexfunds #personalfinance #wealthbuilding",
+    },
+    {
+        "type": "beginner",
+        "hook": "Nobody explained taxes to me when I started investing. Huge mistake.",
+        "promise": "Three things about investment taxes you should know before you start.",
+        "body": [
+            "One: long term capital gains are taxed lower than short term. Hold assets over a year when possible.",
+            "Two: tax-advantaged accounts like four oh one Ks and IRAs grow tax-free or tax-deferred. Use them first.",
+            "Three: tax-loss harvesting. You can sell losing positions to offset gains. It's legal. Most beginners don't know this.",
+        ],
+        "midpoint": "And the one move that changes everything.",
+        "midpoint_detail": "Max out your retirement accounts before investing in a regular brokerage. The tax savings compound just like returns.",
+        "cta": "Follow for investing concepts schools never taught you.",
+        "hashtags": "#taxes #investing #401k #IRA #financialeducation",
+    },
+    {
+        "type": "beginner",
+        "hook": "The difference between investing at twenty five versus thirty five is insane.",
+        "promise": "Let me show you the actual numbers.",
+        "body": [
+            "Invest two hundred dollars a month starting at twenty five: at sixty five you have over six hundred thousand assuming eight percent returns.",
+            "Wait until thirty five to start the same thing: you end up with less than three hundred thousand.",
+            "Same amount invested. Same returns. A ten year delay costs you over three hundred thousand dollars.",
+        ],
+        "midpoint": "But what if you're already past twenty five?",
+        "midpoint_detail": "Start today anyway. The second best time to plant a tree is right now. Every year you wait costs more than the last.",
+        "cta": "Follow. Share this with a younger sibling or friend who needs to hear it.",
+        "hashtags": "#compoundinterest #investing #youngadults #wealthbuilding #finance",
+    },
+
+    # ── TYPE F: SECTOR SPOTLIGHT ─────────────────────────────
+    {
+        "type": "sector",
+        "hook": "One sector has quietly outperformed every other for thirty years.",
+        "promise": "And almost no one talks about it.",
+        "body": [
+            "Healthcare. Not just pharma. Medical devices, insurance, biotech, healthcare REITs.",
+            "Aging population, chronic disease rates rising, new drugs in development. The tailwinds are structural.",
+            "And unlike tech, healthcare demand doesn't shrink during recessions. People still get sick.",
+        ],
+        "midpoint": "But healthcare stocks seem complicated and risky, right?",
+        "midpoint_detail": "ETFs make this easy. Something like X L V gives you diversified healthcare exposure without picking individual stocks.",
+        "cta": "Follow for weekly sector breakdowns.",
+        "hashtags": "#healthcare #investing #ETF #sectorinvesting #longterminvesting",
+    },
+    {
+        "type": "sector",
+        "hook": "AI is real. But most people are investing in it wrong.",
+        "promise": "Here's where the smart money is actually flowing.",
+        "body": [
+            "Everyone buys the obvious names: the big tech companies everyone's already heard of.",
+            "But the picks and shovels play is different. Semiconductors, cooling systems, data center REITs, energy infrastructure.",
+            "AI needs electricity, chips, and cooling. Those businesses profit regardless of which AI company wins.",
+        ],
+        "midpoint": "What does this mean for regular investors?",
+        "midpoint_detail": "Look at semiconductor ETFs and data infrastructure plays. Less headline risk, more stable cash flows, still massive upside.",
+        "cta": "Follow for AI investing breakdowns that go beyond the obvious.",
+        "hashtags": "#AI #artificialintelligence #semiconductors #techstocks #investing",
+    },
+    {
+        "type": "sector",
+        "hook": "Real estate without owning property is possible. Here's how.",
+        "promise": "REITs explained in under sixty seconds.",
+        "body": [
+            "A REIT is a company that owns income-producing real estate. Shopping malls, apartments, warehouses, cell towers.",
+            "By law they must pay out ninety percent of taxable income as dividends.",
+            "You get real estate exposure, regular income, and full liquidity. You can sell your shares anytime.",
+        ],
+        "midpoint": "What's the catch?",
+        "midpoint_detail": "REITs are sensitive to interest rates. When rates rise, REIT prices often drop. But long term, they've delivered strong total returns.",
+        "cta": "Follow for simple explanations of every major investment type.",
+        "hashtags": "#REITs #realestate #passiveincome #dividends #investing",
+    },
+
+    # ── TYPE G: PSYCHOLOGY ───────────────────────────────────
+    {
+        "type": "psychology",
+        "hook": "Your brain is literally wired to make you lose money.",
+        "promise": "Three cognitive biases that destroy investment returns.",
+        "body": [
+            "Loss aversion. Losing one hundred dollars hurts twice as much as gaining one hundred feels good. This makes us sell winners too early and hold losers too long.",
+            "Recency bias. Whatever just happened feels permanent. Markets crash and we think it's over forever. Markets rally and we think it'll never stop.",
+            "Overconfidence. After a few wins, everyone thinks they've found an edge. They haven't. The market humbles everyone eventually.",
+        ],
+        "midpoint": "How do you fight your own brain?",
+        "midpoint_detail": "Systems beat willpower. Automate your contributions. Set rules before you invest. Don't make decisions when markets are moving fast.",
+        "cta": "Follow for the psychology side of investing nobody talks about.",
+        "hashtags": "#investingpsychology #behavioralfinance #biases #stockmarket #mindset",
+    },
+    {
+        "type": "psychology",
+        "hook": "FOMO has destroyed more portfolios than any market crash.",
+        "promise": "Here's exactly how it plays out every cycle.",
+        "body": [
+            "Asset starts rising. Early buyers brag. You hear about it. You hesitate.",
+            "It keeps rising. You feel stupid for missing it. You buy at the top.",
+            "It crashes. You hold hoping it comes back. It doesn't come back to where you bought. You sell at a loss.",
+        ],
+        "midpoint": "Sound familiar? Here's the pattern break.",
+        "midpoint_detail": "If you missed the move, you missed it. Accept it. The next opportunity isn't the same asset at a higher price. It's a completely different trade.",
+        "cta": "Share this with someone who needed to hear it. Follow.",
+        "hashtags": "#FOMO #investing #stockmarket #tradingpsychology #wealthbuilding",
+    },
+    {
+        "type": "psychology",
+        "hook": "Checking your portfolio every day is making you worse at investing.",
+        "promise": "And there's actual research to prove it.",
+        "body": [
+            "A study found that investors who checked their portfolios daily made thirty percent less than those who checked quarterly.",
+            "More information led to more trading. More trading led to more fees and worse timing.",
+            "The best investors in history held for years or decades. Buffett's favorite holding period is forever.",
+        ],
+        "midpoint": "But what if something goes wrong?",
+        "midpoint_detail": "Set rules in advance. A stop loss. A rebalancing trigger. Then automate and step away. Rules beat real-time emotions every time.",
+        "cta": "Follow for investing discipline principles that actually work.",
+        "hashtags": "#investingdiscipline #longterminvesting #portfoliomanagement #behavioralfinance #money",
+    },
+
+    # ── TYPE H: NUMBERS TELL ─────────────────────────────────
+    {
+        "type": "numbers",
+        "hook": "These five numbers tell you everything about a stock.",
+        "promise": "No finance degree needed.",
+        "body": [
+            "Price to earnings ratio. How much you pay per dollar of profit. Lower is usually cheaper.",
+            "Revenue growth. Is the company actually getting bigger? Flat revenue is a red flag.",
+            "Free cash flow. Profit that's actually real cash, not accounting tricks.",
+        ],
+        "midpoint": "Two more numbers most retail investors ignore.",
+        "midpoint_detail": "Debt to equity ratio. High debt is fine in low rate environments, dangerous when rates rise. And insider ownership. If executives are buying shares with their own money, that's a good sign.",
+        "cta": "Follow for stock analysis breakdowns every week.",
+        "hashtags": "#stockanalysis #fundamentalanalysis #investing #stocks #finance",
+    },
+    {
+        "type": "numbers",
+        "hook": "Forty seven percent of Americans have zero stock market exposure.",
+        "promise": "Here's what that actually means for their financial future.",
+        "body": [
+            "Over the last one hundred years the U.S. stock market has returned roughly ten percent annually before inflation.",
+            "Someone who invested one thousand dollars in nineteen twenty four would have over five million dollars today.",
+            "The people with zero market exposure are relying entirely on Social Security and savings accounts.",
+        ],
+        "midpoint": "But stock markets are risky, people say.",
+        "midpoint_detail": "Yes, short term. Zero risk long term is actually the bigger risk. Inflation at three percent annually cuts your purchasing power in half every twenty four years.",
+        "cta": "Follow for financial education that changes how you think about money.",
+        "hashtags": "#financialliteracy #investing #stockmarket #retirement #wealthbuilding",
+    },
+    {
+        "type": "numbers",
+        "hook": "The average American household carries twenty two thousand dollars in non-mortgage debt.",
+        "promise": "And the math of paying this off before investing might surprise you.",
+        "body": [
+            "Credit card debt at eighteen percent interest is a guaranteed negative eighteen percent return on your money.",
+            "The stock market historically returns ten percent. So paying off credit card debt beats investing almost every time.",
+            "But student loans at four or five percent? The math actually favors investing over paying extra.",
+        ],
+        "midpoint": "So what's the actual order of operations?",
+        "midpoint_detail": "Pay off high interest debt first. Get your employer four oh one K match second. That's a hundred percent instant return. Then invest the rest.",
+        "cta": "Follow. This order of operations alone could be worth hundreds of thousands over a lifetime.",
+        "hashtags": "#debt #investing #personalfinance #401k #financialplanning",
     },
 ]
+
+
+# ============================================================
+# Script Helpers
+# ============================================================
+def _pick_script():
+    """Pick script from library based on day-of-year rotation."""
+    idx = datetime.datetime.utcnow().timetuple().tm_yday % len(SCRIPTS)
+    return SCRIPTS[idx]
+
+
+def _script_to_spoken_format(s):
+    """
+    Convert a v5 script dict into the spoken-lines format used by video engine.
+    Returns: {"hook": str, "scenes": [str, ...], "cta": str, "hashtags": str}
+    """
+    scenes = list(s["body"])
+    # Insert midpoint hook + detail as extra scenes (makes video longer / more engaging)
+    scenes.append(s["midpoint"])
+    scenes.append(s["midpoint_detail"])
+    return {
+        "hook": s["hook"],
+        "promise": s.get("promise", ""),
+        "scenes": scenes,
+        "cta": s["cta"],
+        "hashtags": s.get("hashtags", "#investing #finance #money"),
+        "type": s.get("type", "general"),
+    }
 
 
 # ============================================================
 # AI Script Generation
 # ============================================================
 def generate_script():
-    """Generate today's video script. AI first, fallback to library."""
+    """Generate today's video script. AI-first with v5 format, fallback to library."""
     if not GROQ_API_KEY:
-        return _pick_script()
+        return _script_to_spoken_format(_pick_script())
 
     try:
         from groq import Groq
@@ -194,37 +517,60 @@ def generate_script():
         now = datetime.datetime.utcnow()
         day = now.strftime("%A")
 
+        # Pick a random content type to generate
+        content_types = [
+            "myth buster (debunk a common investing misconception)",
+            "market signal (what's happening in markets right now)",
+            "wealth principle (a core concept about building wealth)",
+            "mistake alert (common investing mistake to avoid)",
+            "beginner truth (something every new investor must know)",
+            "sector spotlight (an interesting sector opportunity)",
+            "psychology (how emotions destroy investment returns)",
+            "numbers tell (surprising financial statistics)",
+        ]
+        chosen_type = random.choice(content_types)
+
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=[{
                 "role": "user",
                 "content": (
-                    "Write a TikTok finance VIDEO SCRIPT that will be READ ALOUD by TTS.\n"
+                    "Write a TikTok FINANCE video script in the style of top creators like @thinkarytok.\n"
+                    "Content type: " + chosen_type + "\n"
                     "Today is " + day + ".\n\n"
-                    "FORMAT — return ONLY valid JSON:\n"
-                    '{\n'
-                    '  "hook": "short hook sentence",\n'
-                    '  "scenes": ["line1", "line2", "line3", "line4"],\n'
-                    '  "cta": "call to action"\n'
-                    '}\n\n'
-                    "CRITICAL — This will be SPOKEN, so write how PEOPLE TALK:\n"
-                    "- Use contractions: it's, don't, won't, you're, they've\n"
-                    "- Spell out numbers as words: four point five percent (not 4.5%)\n"
-                    "- Write short punchy sentences (natural speech pauses)\n"
-                    "- Each scene max 12 words when spoken\n"
-                    "- Hook under 8 words, create curiosity or FOMO\n"
-                    "- CTA under 8 words, casual\n"
-                    "- Sound like a 28 year old talking to their friend\n"
-                    "- Use: gonna, wanna, kinda, tbh, literally, basically\n\n"
-                    "FORBIDDEN (sound robotic):\n"
-                    "- game changer, pro tip, ninja, hack, leverage, navigate\n"
-                    "- crucial, essential, paramount, comprehensive, landscape\n"
-                    "- moreover, furthermore, additionally, consequently\n\n"
-                    "TOPICS: Fed, earnings, inflation, diversification, market psychology\n"
+                    "FOLLOW THIS EXACT 5-PART STRUCTURE — return ONLY valid JSON:\n"
+                    "{\n"
+                    '  "hook": "Pattern interrupt opener — make them stop scrolling. Under 10 words.",\n'
+                    '  "promise": "One sentence: what they will learn. Under 12 words.",\n'
+                    '  "body": ["fact or insight 1", "fact or insight 2", "fact or insight 3"],\n'
+                    '  "midpoint": "Re-engagement hook at midpoint. Start with: But here\'s... / Wait... / So...",\n'
+                    '  "midpoint_detail": "The surprising reveal or deeper insight. 1-2 sentences.",\n'
+                    '  "cta": "Clear action. Save/Share/Follow. Under 12 words.",\n'
+                    '  "hashtags": "4-5 relevant lowercase hashtags"\n'
+                    "}\n\n"
+                    "CRITICAL — This is SPOKEN ALOUD by TTS voice. Write like a REAL PERSON talks:\n"
+                    "- Short punchy sentences. Natural pauses.\n"
+                    "- Use contractions: it's, don't, won't, they've, you're\n"
+                    "- Spell out numbers: 'four point five percent' NOT '4.5%'\n"
+                    "- Spell acronyms: 'S and P five hundred' NOT 'S&P500', 'C P I' NOT 'CPI'\n"
+                    "- Sound like a smart 28-year-old talking to a friend, not a textbook\n\n"
+                    "FORBIDDEN WORDS (AI giveaways, instant scroll-past):\n"
+                    "game changer, pro tip, ninja, hack, leverage, navigate, crucial, essential,\n"
+                    "paramount, comprehensive, landscape, moreover, furthermore, synergy, delve,\n"
+                    "actionable, empower, robust, streamline, holistic, cutting-edge\n\n"
+                    "HOOK FRAMEWORKS TO CHOOSE FROM:\n"
+                    "- 'That [thing] you believe is wrong.'\n"
+                    "- 'Nobody talks about [X] but it's costing you money.'\n"
+                    "- 'I see investors make this mistake every single week.'\n"
+                    "- 'The difference between [A] and [B] is [surprising number].'\n"
+                    "- '[Surprising statistic] about [topic].'\n"
+                    "- 'If I was starting from zero today, here's exactly what I'd do.'\n"
+                    "- 'Stop. You've been lied to about [X].'\n"
+                    "- 'One [thing] separates wealthy people from everyone else.'\n"
                 )
             }],
-            max_tokens=250,
-            temperature=0.95
+            max_tokens=400,
+            temperature=0.92
         )
 
         text = response.choices[0].message.content.strip()
@@ -240,27 +586,28 @@ def generate_script():
             text = text[start:end + 1]
 
         data = json.loads(text)
-        if "hook" in data and "scenes" in data and "cta" in data and len(data["scenes"]) >= 3:
-            return data
-        else:
-            return _pick_script()
+        # Validate required fields
+        required = ["hook", "body", "midpoint", "midpoint_detail", "cta"]
+        if all(k in data for k in required) and len(data["body"]) >= 2:
+            # Fill optional fields
+            data.setdefault("promise", "")
+            data.setdefault("hashtags", "#investing #finance #money #stocks")
+            data.setdefault("type", "ai")
+            return _script_to_spoken_format(data)
+
+        return _script_to_spoken_format(_pick_script())
 
     except Exception as e:
         print("  AI script generation failed: " + str(e))
-        return _pick_script()
-
-
-def _pick_script():
-    """Pick a script from the library based on day."""
-    idx = datetime.datetime.utcnow().timetuple().tm_yday % len(SCRIPTS)
-    return SCRIPTS[idx]
+        return _script_to_spoken_format(_pick_script())
 
 
 def generate_caption(script):
     """Generate TikTok caption from script."""
+    hashtags = script.get("hashtags", "#investing #finance #money")
+
     if not GROQ_API_KEY:
-        hook = script["hook"]
-        return hook + " #investing #finance #money #stockmarket"
+        return script["hook"] + " " + hashtags
 
     try:
         from groq import Groq
@@ -271,22 +618,27 @@ def generate_caption(script):
             messages=[{
                 "role": "user",
                 "content": (
-                    "Write a TikTok caption for a FINANCE video:\n"
+                    "Write a TikTok caption for a FINANCE video. Return ONLY the caption text, nothing else.\n"
                     "Hook: " + script["hook"] + "\n\n"
                     "Rules:\n"
-                    "- Max 150 characters\n"
-                    "- Sound like a real person\n"
-                    "- 3-4 hashtags, lowercase: #investing #money #stocks #finance\n"
-                    "- No emoji spam (max 2)\n"
-                    "- No financial advice promises\n"
+                    "- Max 130 characters (not counting hashtags)\n"
+                    "- Start with the hook or a slight variation of it\n"
+                    "- Sound like a real person, not a brand\n"
+                    "- End with these hashtags: " + hashtags + "\n"
+                    "- No emoji spam (1-2 max)\n"
+                    "- No financial advice disclaimers in the caption (too corporate)\n"
                 )
             }],
-            max_tokens=60,
-            temperature=0.9
+            max_tokens=80,
+            temperature=0.85
         )
-        return response.choices[0].message.content.strip()
+        caption = response.choices[0].message.content.strip()
+        # Ensure hashtags are present
+        if "#" not in caption:
+            caption += " " + hashtags
+        return caption
     except Exception:
-        return script["hook"] + " #investing #finance #money"
+        return script["hook"] + " " + hashtags
 
 
 # ============================================================
@@ -487,11 +839,14 @@ def _estimate_duration(text):
 
 def build_spoken_lines(script):
     """
-    Build full spoken text lines from script with labels.
-    Returns: [(label, text), ...] e.g. [("hook", "..."), ("scene_0", "...")]
+    Build full spoken text lines from v5 script with labels.
+    v5 structure: hook → promise → body[0..n] → midpoint → midpoint_detail → cta
+    Returns: [(label, text), ...]
     """
     lines = []
     lines.append(("hook", script["hook"]))
+    if script.get("promise"):
+        lines.append(("promise", script["promise"]))
     for i, scene in enumerate(script["scenes"]):
         lines.append((f"scene_{i}", scene))
     lines.append(("cta", script["cta"]))
@@ -530,15 +885,7 @@ def _gradient_bg(w, h, top, bot):
     return img
 
 
-def _noise(img, intensity=6):
-    """Add subtle noise texture."""
-    arr = np.array(img).copy()
-    noise = np.random.randint(-intensity, intensity + 1, arr.shape, dtype=np.int16)
-    arr = np.clip(arr.astype(np.int16) + noise, 0, 255).astype(np.uint8)
-    return Image.fromarray(arr)
-
-
-def _vignette(img, strength=0.4):
+def _vignette(img, strength=0.3):
     """Dark vignette around edges."""
     w, h = img.size
     arr = np.array(img, dtype=np.float32)
@@ -554,157 +901,194 @@ def _vignette(img, strength=0.4):
     return Image.fromarray(np.clip(arr, 0, 255).astype(np.uint8))
 
 
-# Different background styles per scene type
-BG_THEMES = {
-    "hook": {"top": (12, 8, 25), "bot": (25, 18, 55), "particle_color": (65, 145, 255)},
-    "scene_0": {"top": (8, 12, 22), "bot": (18, 28, 48), "particle_color": (0, 220, 140)},
-    "scene_1": {"top": (18, 10, 20), "bot": (30, 18, 35), "particle_color": (255, 195, 15)},
-    "scene_2": {"top": (8, 15, 25), "bot": (15, 30, 50), "particle_color": (100, 180, 255)},
-    "scene_3": {"top": (15, 12, 18), "bot": (28, 22, 38), "particle_color": (255, 120, 80)},
-    "cta": {"top": (8, 14, 20), "bot": (15, 28, 42), "particle_color": (0, 220, 140)},
+# ============================================================
+# v5 Background — Clean, Bold, Minimal (matching top creators)
+# ============================================================
+def _gradient_bg(w, h, top, bot):
+    """Smooth vertical gradient."""
+    img = Image.new("RGB", (w, h))
+    draw = ImageDraw.Draw(img)
+    for y in range(h):
+        r = y / max(h - 1, 1)
+        c = tuple(int(top[i] + (bot[i] - top[i]) * r) for i in range(3))
+        draw.line([(0, y), (w, y)], fill=c)
+    return img
+
+
+def _vignette(img, strength=0.3):
+    """Soft dark vignette around edges for depth."""
+    w, h = img.size
+    arr = np.array(img, dtype=np.float32)
+    cx, cy = w / 2, h / 2
+    max_dist = math.sqrt(cx * cx + cy * cy)
+    y_coords, x_coords = np.ogrid[:h, :w]
+    dist = np.sqrt((x_coords - cx) ** 2 + (y_coords - cy) ** 2)
+    vignette = 1 - (dist / max_dist) * strength
+    vignette = np.clip(vignette, 0.4, 1.0)
+    arr[:, :, 0] *= vignette
+    arr[:, :, 1] *= vignette
+    arr[:, :, 2] *= vignette
+    return Image.fromarray(np.clip(arr, 0, 255).astype(np.uint8))
+
+
+# v5: Subtle scene-type color tinting on the background
+SCENE_BG = {
+    "hook":     {"top": (10, 12, 22), "bot": (20, 22, 42), "accent_line": C["accent"]},
+    "promise":  {"top": (8,  11, 20), "bot": (18, 21, 38), "accent_line": C["gray"]},
+    "scene_0":  {"top": (8,  12, 22), "bot": (16, 24, 44), "accent_line": C["green"]},
+    "scene_1":  {"top": (12, 10, 20), "bot": (24, 18, 36), "accent_line": C["gold"]},
+    "scene_2":  {"top": (8,  13, 24), "bot": (14, 26, 46), "accent_line": C["accent"]},
+    "scene_3":  {"top": (14, 10, 18), "bot": (26, 20, 34), "accent_line": C["red"]},
+    "scene_4":  {"top": (10, 14, 20), "bot": (18, 26, 40), "accent_line": C["green"]},
+    "scene_5":  {"top": (12, 10, 22), "bot": (22, 18, 40), "accent_line": C["gold"]},
+    "cta":      {"top": (8,  14, 20), "bot": (14, 28, 40), "accent_line": C["green"]},
 }
 
 
-def _make_cinematic_bg(label, frame_idx=0, total_frames=90):
-    """
-    Create an animated cinematic background with floating particles.
-    frame_idx: current frame number (for animation)
-    total_frames: total frames in this scene
-    """
-    theme = BG_THEMES.get(label, BG_THEMES["scene_0"])
+def _make_clean_bg(label):
+    """Create clean dark gradient background — v5 style (no particles, no noise)."""
+    theme = SCENE_BG.get(label, SCENE_BG["scene_0"])
     img = _gradient_bg(W, H, theme["top"], theme["bot"])
-    img = _noise(img, 4)
+    img = _vignette(img, 0.28)
 
     draw = ImageDraw.Draw(img)
 
-    # Animated floating particles (light dots/stars effect)
-    pcolor = theme["particle_color"]
-    random.seed(hash(label) + frame_idx)  # Consistent per frame
-    num_particles = 25
-    for _ in range(num_particles):
-        px = random.randint(0, W)
-        py_base = random.randint(0, H)
-        # Slow upward drift
-        drift = int((frame_idx / total_frames) * 80) % H
-        py = (py_base - drift) % H
-        size = random.randint(1, 3)
-        alpha_val = random.randint(30, 120)
+    # Subtle top + bottom horizontal accent bars (like top creators' style)
+    bar_col = tuple(min(255, v + 20) for v in theme["top"])
+    draw.rectangle([(0, 0), (W, 4)], fill=theme["accent_line"])
+    draw.rectangle([(0, H - 4), (W, H)], fill=theme["accent_line"])
 
-        # Draw particle with glow
-        for s in range(size + 2, 0, -1):
-            a = alpha_val // (s + 1)
-            pc = tuple(min(255, c + a) for c in pcolor[:3])
-            draw.ellipse([px - s, py - s, px + s, py + s], fill=pc)
-
-    # Horizontal light streak (animated position)
-    streak_y = int(H * 0.4 + math.sin(frame_idx * 0.05) * 100)
-    for dy in range(-20, 20):
-        alpha = max(0, 12 - abs(dy))
-        if alpha > 0:
-            r = min(255, theme["particle_color"][0] // 3 + alpha)
-            g = min(255, theme["particle_color"][1] // 3 + alpha)
-            b = min(255, theme["particle_color"][2] // 3 + alpha)
-            draw.line([(0, streak_y + dy), (W, streak_y + dy)], fill=(r, g, b))
-
-    # Grid lines (subtle, tech/finance feel)
-    grid_alpha = 15
-    gc = (grid_alpha, grid_alpha + 5, grid_alpha + 12)
-    spacing = 80
-    offset = (frame_idx * 2) % spacing
-    for x in range(-offset, W + spacing, spacing):
-        draw.line([(x, 0), (x, H)], fill=(12, 14, 26), width=1)
-    for y in range(-offset, H + spacing, spacing):
-        draw.line([(0, y), (W, y)], fill=(12, 14, 26), width=1)
-
-    img = _vignette(img, 0.35)
     return img
 
 
 # ============================================================
-# Scene Rendering — Text Overlay on Cinematic Background
+# v5 Scene Rendering — Large Bold Text Cards
 # ============================================================
-def _render_text_on_bg(text, label, is_hook=False, is_cta=False):
+def _render_scene_v5(text, label, scene_number=None, total_scenes=None, is_hook=False, is_promise=False, is_cta=False):
     """
-    Render a scene: text overlaid on cinematic background.
-    Returns PIL Image.
+    Render a scene card in v5 style:
+    - Hook: HUGE text, full center, accent underline
+    - Promise: Medium text, subtitle style, gray
+    - Body scenes: Large text with scene number pill on left
+    - Midpoint scenes (scene_3/scene_4): Different accent color, "But wait..." feel
+    - CTA: Green text + BroadFSC pill + website
     """
-    img = _make_cinematic_bg(label)
+    img = _make_clean_bg(label)
     draw = ImageDraw.Draw(img)
 
-    # Brand tag (top-left) — only for non-hook scenes
-    if not is_hook:
-        tag_font = _font(20, bold=True)
-        tw = draw.textbbox((0, 0), "BroadFSC", font=tag_font)[2] - draw.textbbox((0, 0), "BroadFSC", font=tag_font)[0]
-        draw.rounded_rectangle((36, 56, tw + 52, 92), radius=14, fill=C["accent"])
-        draw.text((44 + tw // 2, 74), "BroadFSC", font=tag_font, fill=C["white"], anchor="mm")
+    # ── BRAND TAG (top-right corner) ────────────────────────
+    brand_font = _font(22, bold=True)
+    brand_text = "BroadFSC"
+    bw = draw.textbbox((0, 0), brand_text, font=brand_font)[2]
+    bx = W - bw - 52
+    draw.rounded_rectangle((bx - 12, 52, bx + bw + 12, 88), radius=14, fill=C["accent"])
+    draw.text((bx + bw // 2, 70), brand_text, font=brand_font, fill=C["white"], anchor="mm")
+
+    theme = SCENE_BG.get(label, SCENE_BG["scene_0"])
+    accent_col = theme["accent_line"]
 
     if is_hook:
-        # === HOOK SCENE — EXTRA LARGE impact text ===
-        font = _font(76, bold=True)
-        lines = _wrap(text, font, W - 120, draw)
-        total_h = len(lines) * 96
-        y = (H // 2) - (total_h // 2) - 50
+        # ──── HOOK: Giant text, full vertical center ─────────
+        font_big = _font(80, bold=True)
+        lines = _wrap(text, font_big, W - 100, draw)
+        line_h = 98
+        total_h = len(lines) * line_h
+        y = (H // 2) - (total_h // 2) - 60
 
         for line in lines:
-            draw.text((64, y + 3), line, font=font, fill=(0, 0, 0))
-            draw.text((62, y), line, font=font, fill=C["white"])
-            y += 96
+            # Shadow
+            draw.text((66, y + 4), line, font=font_big, fill=(0, 0, 0))
+            # Text
+            draw.text((64, y), line, font=font_big, fill=C["white"])
+            y += line_h
 
-        # Accent underline
-        draw.rectangle([(62, y + 30), (320, y + 34)], fill=C["green"])
+        # Bold accent underline
+        draw.rectangle([(64, y + 20), (64 + 280, y + 26)], fill=accent_col)
 
-        # "keep watching" hint
-        hint_font = _font(24)
-        draw.text((W // 2, H - 280), "keep watching...",
+        # Scroll hint at bottom
+        hint_font = _font(26)
+        draw.text((W // 2, H - 260), "watch to the end",
+                  font=hint_font, fill=C["dim"], anchor="mm")
+        draw.text((W // 2, H - 225), "▼",
                   font=hint_font, fill=C["dim"], anchor="mm")
 
-    elif is_cta:
-        # === CTA SCENE ===
-        font = _font(58, bold=True)
-        lines = _wrap(text, font, W - 140, draw)
-        y = H // 2 - 220
+    elif is_promise:
+        # ──── PROMISE: Italic-feel subtitle style ────────────
+        font_p = _font(46, bold=False)
+        lines = _wrap(text, font_p, W - 120, draw)
+        line_h = 62
+        total_h = len(lines) * line_h
+        y = (H // 2) - (total_h // 2)
+
+        # Left accent line
+        draw.rectangle([(48, y - 10), (54, y + total_h + 10)], fill=accent_col)
+
         for line in lines:
-            draw.text((72, y + 3), line, font=font, fill=(0, 0, 0))
-            draw.text((70, y), line, font=font, fill=C["green"])
-            y += 82
+            draw.text((74, y), line, font=font_p, fill=C["gray"])
+            y += line_h
+
+    elif is_cta:
+        # ──── CTA: Green + Website pill ──────────────────────
+        font_cta = _font(60, bold=True)
+        lines = _wrap(text, font_cta, W - 120, draw)
+        line_h = 80
+        total_h = len(lines) * line_h
+        y = (H // 2) - (total_h // 2) - 100
+
+        for line in lines:
+            draw.text((66, y + 3), line, font=font_cta, fill=(0, 0, 0))
+            draw.text((64, y), line, font=font_cta, fill=C["green"])
+            y += line_h
 
         # Divider
-        draw.rectangle([(W // 2 - 60, y + 40), (W // 2 + 60, y + 44)], fill=C["accent"])
+        draw.rectangle([(W // 2 - 80, y + 36), (W // 2 + 80, y + 40)], fill=C["dim"])
 
-        # Website pill
-        pill_w, pill_h = 550, 60
+        # Website pill button
+        pill_w, pill_h_px = 580, 66
         pill_x = W // 2 - pill_w // 2
-        pill_y = y + 90
-        draw.rounded_rectangle((pill_x, pill_y, pill_x + pill_w, pill_y + pill_h),
-                              radius=30, fill=C["accent"])
-        url_font = _font(26, bold=True)
-        draw.text((W // 2, pill_y + pill_h // 2), "broadfsc.com/different",
+        pill_y = y + 70
+        draw.rounded_rectangle((pill_x, pill_y, pill_x + pill_w, pill_y + pill_h_px),
+                                radius=33, fill=C["accent"])
+        url_font = _font(28, bold=True)
+        draw.text((W // 2, pill_y + pill_h_px // 2), "broadfsc.com/different",
                   font=url_font, fill=C["white"], anchor="mm")
 
+        # Telegram link
         tg_font = _font(22)
-        draw.text((W // 2, pill_y + pill_h + 50), "@BroadFSC | t.me/BroadFSC",
+        draw.text((W // 2, pill_y + pill_h_px + 48), "Telegram: @BroadFSC",
                   font=tg_font, fill=C["gray"], anchor="mm")
 
-        disc_font = _font(14)
-        draw.text((W // 2, H - 160),
-                  "Investing involves risk. Past performance does not guarantee future results.",
+        # Disclaimer (tiny, required)
+        disc_font = _font(16)
+        draw.text((W // 2, H - 150),
+                  "For educational purposes only. Not financial advice.",
                   font=disc_font, fill=C["dim"], anchor="mm")
 
     else:
-        # === CONTENT SCENE — large centered text ===
-        font = _font(54, bold=True)
-        lines = _wrap(text, font, W - 140, draw)
-        total_h = len(lines) * 74
-        y = (H // 2) - (total_h // 2) - 20
+        # ──── BODY SCENE: Large text + scene number ──────────
+        # Scene number pill (top-left)
+        if scene_number is not None:
+            num_font = _font(28, bold=True)
+            pill_label = f"  {scene_number}  "
+            pw = draw.textbbox((0, 0), pill_label, font=num_font)[2] + 4
+            draw.rounded_rectangle((48, 52, 48 + pw, 92), radius=20, fill=accent_col)
+            draw.text((48 + pw // 2, 72), pill_label, font=num_font, fill=(8, 10, 18), anchor="mm")
+
+        font_body = _font(58, bold=True)
+        lines = _wrap(text, font_body, W - 100, draw)
+        line_h = 76
+        total_h = len(lines) * line_h
+        y = (H // 2) - (total_h // 2)
 
         for line in lines:
-            draw.text((72, y + 3), line, font=font, fill=(0, 0, 0))
-            draw.text((70, y), line, font=font, fill=C["white"])
-            y += 74
+            # Shadow
+            draw.text((66, y + 3), line, font=font_body, fill=(0, 0, 0))
+            # Text
+            draw.text((64, y), line, font=font_body, fill=C["white"])
+            y += line_h
 
-        accent_colors = [C["accent"], C["green"], C["gold"]]
-        accent = accent_colors[hash(label) % len(accent_colors)]
-        draw.rectangle([(70, y + 35), (70 + 160, y + 39)], fill=accent)
+        # Accent bottom line under text
+        draw.rectangle([(64, y + 28), (64 + 140, y + 32)], fill=accent_col)
 
     return img
 
@@ -823,11 +1207,11 @@ class KaraokeRenderer:
 
             if is_highlighted:
                 # Highlighted: bright gold/yellow with glow
-                color = self._lerp_color(C["white"], C["highlight"], progress)
+                color = self._lerp_color(C["white"], C["kara_hi"], progress)
                 shadow = (0, 0, 0)
             else:
                 # Unhighlighted: dim gray
-                color = C["gray"]
+                color = C["kara_lo"]
                 shadow = None
 
             if shadow:
@@ -875,59 +1259,9 @@ def _generate_silence(duration_sec, sr=24000):
     return [0] * total_samples
 
 
-def _generate_ambient_music(duration_sec, sr=24000, volume=0.08):
+def _mix_audio_voice_only(voice_paths, gap_sec=0.5, sr=24000):
     """
-    Generate subtle ambient background music (very low volume).
-    Uses simple chord tones so it doesn't compete with TTS voice.
-    """
-    total = int(sr * duration_sec)
-    music = [0.0] * total
-
-    # Very gentle pad sound — just soft sustained chords
-    # Am7 → Fmaj7 → C → G (slow transitions)
-    chord_sets = [
-        [110.0, 130.81, 164.81],   # Am2
-        [87.31, 110.0, 130.81],    # F2
-        [130.81, 164.81, 196.00],  # C3
-        [98.0, 123.47, 146.83],    # G2
-    ]
-
-    chord_dur = total // len(chord_sets)
-
-    for ci, chord in enumerate(chord_sets):
-        start = ci * chord_dur
-        end = min(start + chord_dur, total)
-        for i in range(start, end):
-            t = i / sr
-            local_t = (i - start) / max(chord_dur - 1, 1)
-            env = 0.5 + 0.5 * math.sin(math.pi * local_t)  # smooth fade in/out per chord
-
-            s = 0.0
-            for freq in chord:
-                # Pure sine for clean pad sound
-                s += math.sin(2 * math.pi * freq * t) * 0.15
-                # Subtle octave above
-                s += math.sin(2 * math.pi * freq * 2 * t) * 0.04
-
-            music[i] = s * env * volume
-
-    # Fade in/out
-    fade_len = min(sr, total // 8)
-    for i in range(fade_len):
-        f = i / fade_len
-        music[i] *= f
-        music[total - 1 - i] *= f
-
-    # Normalize to prevent clipping
-    mx = max(abs(v) for v in music) or 1
-    music = [v / mx * 8000 for v in music]
-
-    return music
-
-
-def _mix_audio_voice_music(voice_paths, gap_sec=0.5, sr=24000, music_vol=0.06):
-    """
-    Mix all voice clips with gaps + ambient music into a single WAV file.
+    Mix all voice clips with gaps — NO background music (user feedback: too noisy).
     Returns path to mixed WAV file.
     """
     import wave
@@ -935,7 +1269,7 @@ def _mix_audio_voice_music(voice_paths, gap_sec=0.5, sr=24000, music_vol=0.06):
     temp_dir = tempfile.mkdtemp()
     mixed_path = os.path.join(temp_dir, "mixed_audio.wav")
 
-    # Step 1: Convert all MP3 to raw PCM samples
+    # Convert all MP3 to raw PCM samples
     all_clips = []
     for vp in voice_paths:
         if os.path.exists(vp) and os.path.getsize(vp) > 0:
@@ -949,43 +1283,28 @@ def _mix_audio_voice_music(voice_paths, gap_sec=0.5, sr=24000, music_vol=0.06):
         print("  ERROR: No audio clips available!")
         return None
 
-    # Step 2: Concatenate voice clips with gaps
-    gap_samples = int(sr * gap_sec)
-    voice_mixed = []
-    for clip in all_clips:
-        voice_mixed.extend(clip)
-        voice_mixed.extend(_generate_silence(gap_sec, sr))
+    # Concatenate voice clips with short silence gaps
+    gap_samples = _generate_silence(gap_sec, sr)
+    voice_final = []
+    for i, clip in enumerate(all_clips):
+        voice_final.extend(clip)
+        if i < len(all_clips) - 1:
+            voice_final.extend(gap_samples)
 
-    # Remove trailing gap
-    voice_mixed = voice_mixed[:-gap_samples] if gap_samples < len(voice_mixed) else voice_mixed
-
-    total_sec = len(voice_mixed) / sr
-    print(f"  Voice duration: {total_sec:.1f}s")
-
-    # Step 3: Generate ambient music at same length
-    music = _generate_ambient_music(total_sec, sr=sr, volume=music_vol)
-
-    # Step 4: Mix voice + music
-    # Pad shorter one
-    max_len = max(len(voice_mixed), len(music))
-    while len(voice_mixed) < max_len:
-        voice_mixed.append(0)
-    while len(music) < max_len:
-        music.append(0)
-
-    final = [int(a + b) for a, b in zip(voice_mixed, music)]
+    total_sec = len(voice_final) / sr
+    print(f"  Voice-only duration: {total_sec:.1f}s (no background music)")
 
     # Normalize
-    peak = max(abs(v) for v in final) or 1
+    peak = max(abs(v) for v in voice_final) or 1
     if peak > 30000:
-        final = [int(v * 28000 / peak) for v in final]
+        voice_final = [int(v * 28000 / peak) for v in voice_final]
 
     # Write WAV
     with wave.open(mixed_path, 'w') as wf:
         wf.setnchannels(1)
         wf.setsampwidth(2)
         wf.setframerate(sr)
-        data = struct.pack('<' + 'h' * len(final), *final)
+        data = struct.pack('<' + 'h' * len(voice_final), *voice_final)
         wf.writeframes(data)
 
     sz = os.path.getsize(mixed_path)
@@ -1050,57 +1369,51 @@ def merge_av_files(video_path, audio_path, output_path):
 # ============================================================
 # Video Generation — Voice-Synchronized
 # ============================================================
-def create_video_v4(script, audio_info, output_path):
+def create_video_v5(script, audio_info, output_path):
     """
-    Create TikTok video v4: voice-synchronized scenes with karaoke subtitles.
-
-    audio_info: [(label, audio_path, word_data), ...]
+    Create TikTok video v5: clean bold text cards + voice + karaoke subtitles.
+    NO background music. NO particles. Bold & clear like top creators.
     """
     if not HAS_IMAGEIO or not HAS_PILLOW:
         print("  Pillow + imageio required")
         return False
 
     try:
-        temp_dir = tempfile.mkdtemp(prefix="tiktok_v4_")
+        temp_dir = tempfile.mkdtemp(prefix="tiktok_v5_")
         print(f"  Temp dir: {temp_dir}")
 
-        # 1. Mix all audio into one file
-        print("--- Mixing Audio ---")
+        # 1. Mix voice-only audio (no music)
+        print("--- Mixing Audio (voice only) ---")
         voice_paths = [a[1] for a in audio_info]
-        mixed_audio = _mix_audio_voice_music(voice_paths, gap_sec=0.6)
+        mixed_audio = _mix_audio_voice_only(voice_paths, gap_sec=0.55)
 
         if not mixed_audio:
-            print("  Audio mix failed! Falling back to silent...")
+            print("  Audio mix failed!")
             return False
 
-        # 2. Calculate timing for each scene based on word_data
+        # 2. Calculate timing per scene
         print("--- Calculating Timings ---")
-        scene_timings = []  # (label, text, start_sec, end_sec, word_data)
+        scene_timings = []
         current_sec = 0.0
-        gap = 0.6  # gap between scenes
+        gap = 0.55
 
         spoken_lines = build_spoken_lines(script)
+
+        # Map labels to display metadata
+        body_scene_count = sum(1 for lbl, _ in spoken_lines if lbl.startswith("scene_"))
+        body_counter = [0]  # mutable counter for closure
 
         for idx, (label, text) in enumerate(spoken_lines):
             word_data = audio_info[idx][2] if idx < len(audio_info) else []
 
             if word_data:
-                first_word_start = word_data[0]["offset_sec"]
-                last_word_end = word_data[-1]["offset_sec"] + word_data[-1]["duration_sec"]
-
-                # Duration from TTS data
-                scene_dur = last_word_end + 0.3  # small tail padding
+                scene_dur = word_data[-1]["offset_sec"] + word_data[-1]["duration_sec"] + 0.3
             else:
-                # Fallback: estimate ~3 sec per scene
-                scene_dur = 3.0
-                first_word_start = 0.0
-                last_word_end = 3.0
+                scene_dur = max(3.0, len(text.split()) * 0.4)
 
-            # Map absolute times
             abs_start = current_sec
             abs_end = current_sec + scene_dur
 
-            # Adjust word timestamps to absolute timeline
             abs_word_data = []
             for wd in word_data:
                 abs_word_data.append({
@@ -1109,6 +1422,18 @@ def create_video_v4(script, audio_info, output_path):
                     "duration_sec": wd["duration_sec"],
                 })
 
+            # Determine display type flags
+            is_hook = (label == "hook")
+            is_promise = (label == "promise")
+            is_cta = (label == "cta")
+            is_body = label.startswith("scene_")
+
+            # Body scene number (1-based, only for actual body scenes)
+            scene_num = None
+            if is_body:
+                body_counter[0] += 1
+                scene_num = body_counter[0]
+
             scene_timings.append({
                 "label": label,
                 "text": text,
@@ -1116,88 +1441,85 @@ def create_video_v4(script, audio_info, output_path):
                 "end": abs_end,
                 "duration": scene_dur,
                 "word_data": abs_word_data,
-                "is_hook": label == "hook",
-                "is_cta": label == "cta",
+                "is_hook": is_hook,
+                "is_promise": is_promise,
+                "is_cta": is_cta,
+                "scene_num": scene_num,
+                "total_body": body_scene_count,
             })
 
             current_sec = abs_end + gap
 
-        total_duration = current_sec - gap  # remove trailing gap
+        total_duration = current_sec - gap
         total_frames = int(total_duration * FPS)
-        print(f"  Total duration: {total_duration:.1f}s, {total_frames} frames @ {FPS}fps")
+        print(f"  Total: {total_duration:.1f}s, {total_frames} frames @ {FPS}fps")
 
-        # 3. Pre-render static backgrounds (one per scene)
-        print("--- Rendering Scenes ---")
+        # 3. Pre-render static scene images
+        print("--- Rendering Scene Cards ---")
         scene_images = {}
         for st in scene_timings:
             label = st["label"]
-            is_hook = st["is_hook"]
-            is_cta = st["is_cta"]
-
-            img = _render_text_on_bg(st["text"], label, is_hook=is_hook, is_cta=is_cta)
+            img = _render_scene_v5(
+                st["text"], label,
+                scene_number=st["scene_num"],
+                total_scenes=st["total_body"],
+                is_hook=st["is_hook"],
+                is_promise=st["is_promise"],
+                is_cta=st["is_cta"],
+            )
             scene_images[label] = img
-            print(f"  Scene [{label}]: {st['text'][:50]}...")
+            print(f"  [{label}] {st['text'][:60]}")
 
-        # 4. Generate video frame by frame
+        # 4. Encode video frame by frame
         print("--- Encoding Video ---")
         temp_video = os.path.join(temp_dir, "video_noaudio.mp4")
-
-        writer = iio.get_writer(temp_video, fps=FPS, codec='libx264',
-                                output_params=['-pix_fmt', 'yuv420p', '-preset', 'medium', '-crf', '23'])
+        writer = iio.get_writer(
+            temp_video, fps=FPS, codec='libx264',
+            output_params=['-pix_fmt', 'yuv420p', '-preset', 'medium', '-crf', '22']
+        )
 
         for frame_num in range(total_frames):
             current_time = frame_num / FPS
 
-            # Which scene are we in?
+            # Find active scene
             active_scene = None
             for st in scene_timings:
                 if st["start"] <= current_time < st["end"]:
                     active_scene = st
                     break
             if active_scene is None:
-                # After last scene — show CTA
                 active_scene = scene_timings[-1]
 
             label = active_scene["label"]
 
-            # Get base background image (with animation)
-            scene_local_time = current_time - active_scene["start"]
-            local_total_frames = int(active_scene["duration"] * FPS)
-            local_frame = min(int(scene_local_time * FPS), max(local_total_frames - 1, 0))
+            # Use pre-rendered static image as base
+            frame = np.array(scene_images[label].copy())
 
-            # Re-render bg with animation frame
-            bg_img = _make_cinematic_bg(label, frame_idx=local_frame,
-                                         total_frames=max(local_total_frames, 1))
-
-            # Draw text on top (from pre-rendered)
-            text_img = scene_images[label]
-            # Blend text layer onto animated bg
-            bg_arr = np.array(bg_img).astype(np.float32)
-            text_arr = np.array(text_img).astype(np.float32)
-
-            # Composite: bg takes animated parts, text overlays
-            # Simple approach: use text_img as base, re-apply animated elements
-            # Actually let's use text_img as main visual (it has text already rendered)
-            frame = np.array(text_img.copy())
-
-            # Apply Ken Burns style zoom to the whole frame
-            zoom_amount = 1.0 + 0.03 * math.sin(frame_num * 0.01)  # very slow breathing
-            # (subtle, won't distort text much because text is part of the image)
-
-            # Add karaoke subtitles
+            # Apply karaoke subtitles
             if active_scene["word_data"]:
                 karaoke = KaraokeRenderer(
                     active_scene["word_data"],
                     active_scene["duration"],
-                    label=label
+                    label=label,
                 )
                 scene_time = current_time - active_scene["start"]
                 frame = karaoke.render_frame(frame, scene_time)
 
+            # Add global progress bar at very bottom
+            prog = min(1.0, current_time / total_duration)
+            bar_full_w = W - 96
+            bar_w = int(bar_full_w * prog)
+            bar_y = H - 28
+            img_tmp = Image.fromarray(frame)
+            dr = ImageDraw.Draw(img_tmp)
+            dr.rounded_rectangle((48, bar_y, 48 + bar_full_w, bar_y + 8), radius=4, fill=C["dim"])
+            if bar_w > 4:
+                dr.rounded_rectangle((48, bar_y, 48 + bar_w, bar_y + 8), radius=4, fill=C["accent"])
+            frame = np.array(img_tmp)
+
             writer.append_data(frame)
 
-            # Progress indicator
-            if frame_num % 60 == 0:
+            if frame_num % 90 == 0:
                 pct = frame_num / total_frames * 100
                 print(f"  Frame {frame_num}/{total_frames} ({pct:.0f}%)")
 
@@ -1205,8 +1527,7 @@ def create_video_v4(script, audio_info, output_path):
 
         # 5. Merge audio + video
         print("--- Merging A/V ---")
-        final_output = output_path or os.path.join(temp_dir, "final.mp4")
-        success = merge_av_files(temp_video, mixed_audio, final_output)
+        success = merge_av_files(temp_video, mixed_audio, output_path)
 
         # Cleanup
         try:
@@ -1219,22 +1540,21 @@ def create_video_v4(script, audio_info, output_path):
             pass
 
         if success:
-            sz = os.path.getsize(final_output)
-            print(f"\n  SUCCESS: {final_output} ({sz} bytes, {total_duration:.1f}s)")
+            sz = os.path.getsize(output_path)
+            print(f"\n  SUCCESS: {output_path} ({sz // 1024}KB, {total_duration:.1f}s)")
             return True
         else:
-            # Try to keep video without audio
             if os.path.exists(temp_video):
                 try:
                     os.rename(temp_video, output_path)
-                    print(f"  Fallback: saved video without audio")
+                    print("  Saved video without audio")
                     return True
                 except Exception:
                     pass
             return False
 
     except Exception as e:
-        print(f"  Video creation failed: {e}")
+        print(f"  Video v5 failed: {e}")
         import traceback
         traceback.print_exc()
         return False
@@ -1293,10 +1613,10 @@ def notify_telegram(message):
 # Main
 # ============================================================
 async def async_main():
-    print("=" * 55)
-    print(" BroadFSC TikTok Auto-Poster v4")
-    print(" AI Voice + Karaoke Subtitles + Cinematic Video")
-    print("=" * 55)
+    print("=" * 58)
+    print(" BroadFSC TikTok Auto-Poster v5")
+    print(" Viral Finance Content Engine")
+    print("=" * 58)
 
     now = datetime.datetime.utcnow()
     print("UTC: " + now.strftime("%Y-%m-%d %H:%M"))
@@ -1308,10 +1628,13 @@ async def async_main():
     # Step 1: Generate script
     print("--- Step 1: Generate Script ---")
     script = generate_script()
+    print(f"  Type: {script.get('type', 'general')}")
     print("  Hook: " + script["hook"])
-    print("  Scenes: " + str(len(script["scenes"])))
+    if script.get("promise"):
+        print("  Promise: " + script["promise"])
+    print(f"  Scenes: {len(script['scenes'])}")
     for i, s in enumerate(script["scenes"]):
-        print("    " + str(i + 1) + ". " + s)
+        print(f"    {i + 1}. {s[:70]}")
     print("  CTA: " + script["cta"])
     print()
 
@@ -1321,12 +1644,11 @@ async def async_main():
     print("  " + caption)
     print()
 
-    # Step 3: Check TTS availability
     if not HAS_TTS:
         print("ERROR: edge-tts not installed! Run: pip install edge-tts")
         return False
 
-    # Step 4: Generate TTS audio for all lines
+    # Step 3: TTS for all lines
     print("--- Step 3: Generate Voice Over ---")
     spoken_lines = build_spoken_lines(script)
     temp_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "_tts_cache")
@@ -1336,15 +1658,15 @@ async def async_main():
     print(f"  Generated {len(audio_info)} audio clips")
     print()
 
-    # Step 5: Create video with voice sync
-    print("--- Step 4: Create Video (v4 Voice-Synced) ---")
-    success = False
+    # Step 4: Create video v5
+    print("--- Step 4: Create Video (v5 Viral Engine) ---")
     video_dir = os.path.dirname(os.path.abspath(__file__))
-    video_path = os.path.join(video_dir, "tiktok_v4.mp4")
+    video_path = os.path.join(video_dir, "tiktok_v5.mp4")
 
+    success = False
     if HAS_PILLOW and HAS_IMAGEIO:
-        if create_video_v4(script, audio_info, video_path):
-            # Step 6: Post to TikTok
+        if create_video_v5(script, audio_info, video_path):
+            # Step 5: Post to TikTok
             print("--- Step 5: Post to TikTok ---")
             success = post_tiktok_video_file(caption, video_path)
             try:
@@ -1370,20 +1692,23 @@ async def async_main():
 
     print()
 
-    # Step 7: Notify & log
+    # Step 6: Notify & log
+    script_type = script.get("type", "general")
     if success:
-        notify_telegram("TikTok v4 post published: " + caption[:80])
-        print("SUCCESS: TikTok v4 posted with VOICE + KARAOKE SUBS!")
+        notify_telegram(f"TikTok v5 [{script_type}] posted: {caption[:70]}")
+        print(f"SUCCESS: TikTok v5 posted! ({script_type})")
         if HAS_ANALYTICS:
-            log_post(platform="tiktok", post_type="video_v4", content_preview=caption[:100], status="success")
+            log_post(platform="tiktok", post_type=f"video_v5_{script_type}",
+                     content_preview=caption[:100], status="success")
     else:
-        notify_telegram("TikTok v4 post FAILED")
-        print("FAILED: TikTok v4 not posted.")
+        notify_telegram("TikTok v5 post FAILED")
+        print("FAILED: TikTok v5 not posted.")
         if HAS_ANALYTICS:
-            log_post(platform="tiktok", post_type="video_v4", content_preview=caption[:100], status="failed", error_msg="Video creation failed")
+            log_post(platform="tiktok", post_type=f"video_v5_{script_type}",
+                     content_preview=caption[:100], status="failed", error_msg="Video creation failed")
 
     print()
-    print("=" * 55)
+    print("=" * 58)
     print("Done.")
     return success
 
