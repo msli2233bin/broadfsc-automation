@@ -1,0 +1,165 @@
+name: AI Learning Team
+
+on:
+  schedule:
+    # 每天 UTC 02:00 (北京时间10:00) - 金融学者
+    - cron: '0 2 * * *'
+    # 周一/四 UTC 04:00 - 销售侦察兵
+    - cron: '0 4 * * 1,4'
+    # 周日/二/四 UTC 04:00 - 推广研究员
+    - cron: '0 4 * * 0,2,4'
+    # 周一 UTC 04:00 - 竞品分析师
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+    inputs:
+      agent:
+        description: '选择学习Agent'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - finance
+          - sales
+          - marketing
+          - competitor
+
+permissions:
+  contents: write
+
+jobs:
+  finance-scholar:
+    runs-on: ubuntu-latest
+    name: "📈 金融学者"
+    if: github.event_name == 'workflow_dispatch' && (github.event.inputs.agent == 'all' || github.event.inputs.agent == 'finance') || github.event_name == 'schedule'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装依赖
+        run: pip install requests groq
+
+      - name: 运行金融学者
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_ADMIN_CHAT_ID: ${{ secrets.TELEGRAM_ADMIN_CHAT_ID }}
+          IMA_CLIENT_ID: ${{ secrets.IMA_CLIENT_ID }}
+          IMA_API_KEY: ${{ secrets.IMA_API_KEY }}
+          IMA_KB_ID: ${{ secrets.IMA_KB_ID }}
+        run: python ai_learning_agent.py --agent finance
+
+      - name: 提交知识库更新
+        run: |
+          git config user.name "AI Learning Bot"
+          git config user.email "ai-bot@broadfsc.com"
+          git add knowledge/ || true
+          git diff --staged --quiet || git commit -m "📚 [AI学习] 金融知识更新 $(date +%Y-%m-%d)"
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main || true
+
+  sales-scout:
+    runs-on: ubuntu-latest
+    name: "💼 销售侦察兵"
+    if: github.event_name == 'workflow_dispatch' && (github.event.inputs.agent == 'all' || github.event.inputs.agent == 'sales') || github.event_name == 'schedule'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装依赖
+        run: pip install requests groq
+
+      - name: 运行销售侦察兵
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_ADMIN_CHAT_ID: ${{ secrets.TELEGRAM_ADMIN_CHAT_ID }}
+          IMA_CLIENT_ID: ${{ secrets.IMA_CLIENT_ID }}
+          IMA_API_KEY: ${{ secrets.IMA_API_KEY }}
+          IMA_KB_ID: ${{ secrets.IMA_KB_ID }}
+        run: python ai_learning_agent.py --agent sales
+
+      - name: 提交知识库更新
+        run: |
+          git config user.name "AI Learning Bot"
+          git config user.email "ai-bot@broadfsc.com"
+          git add knowledge/ || true
+          git diff --staged --quiet || git commit -m "💼 [AI学习] 销售方法更新 $(date +%Y-%m-%d)"
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main || true
+
+  marketing-researcher:
+    runs-on: ubuntu-latest
+    name: "📱 推广研究员"
+    if: github.event_name == 'workflow_dispatch' && (github.event.inputs.agent == 'all' || github.event.inputs.agent == 'marketing') || github.event_name == 'schedule'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装依赖
+        run: pip install requests groq
+
+      - name: 运行推广研究员
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_ADMIN_CHAT_ID: ${{ secrets.TELEGRAM_ADMIN_CHAT_ID }}
+          IMA_CLIENT_ID: ${{ secrets.IMA_CLIENT_ID }}
+          IMA_API_KEY: ${{ secrets.IMA_API_KEY }}
+          IMA_KB_ID: ${{ secrets.IMA_KB_ID }}
+        run: python ai_learning_agent.py --agent marketing
+
+      - name: 提交知识库更新
+        run: |
+          git config user.name "AI Learning Bot"
+          git config user.email "ai-bot@broadfsc.com"
+          git add knowledge/ || true
+          git diff --staged --quiet || git commit -m "📱 [AI学习] 推广策略更新 $(date +%Y-%m-%d)"
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main || true
+
+  competitor-analyst:
+    runs-on: ubuntu-latest
+    name: "🔍 竞品分析师"
+    if: github.event_name == 'workflow_dispatch' && (github.event.inputs.agent == 'all' || github.event.inputs.agent == 'competitor') || github.event_name == 'schedule'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装依赖
+        run: pip install requests groq
+
+      - name: 运行竞品分析师
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_ADMIN_CHAT_ID: ${{ secrets.TELEGRAM_ADMIN_CHAT_ID }}
+          IMA_CLIENT_ID: ${{ secrets.IMA_CLIENT_ID }}
+          IMA_API_KEY: ${{ secrets.IMA_API_KEY }}
+          IMA_KB_ID: ${{ secrets.IMA_KB_ID }}
+        run: python ai_learning_agent.py --agent competitor
+
+      - name: 提交知识库更新
+        run: |
+          git config user.name "AI Learning Bot"
+          git config user.email "ai-bot@broadfsc.com"
+          git add knowledge/ || true
+          git diff --staged --quiet || git commit -m "🔍 [AI学习] 竞品分析更新 $(date +%Y-%m-%d)"
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main || true
