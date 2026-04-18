@@ -55,28 +55,55 @@
         .section-header p { color: rgba(255,255,255,0.5); max-width: 600px; margin: 0 auto; }
         .section-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); margin: 0 auto; max-width: 600px; }
 
-        /* === CHAT WIDGET - UPGRADED === */
+        /* === ADVISOR TEAM SELECTOR === */
+        .advisor-team { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+        .advisor-select-card { background: rgba(255,255,255,0.03); border: 2px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 20px; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 16px; }
+        .advisor-select-card:hover { border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); }
+        .advisor-select-card.active-alex { border-color: #42a5f5; background: rgba(66,165,245,0.08); }
+        .advisor-select-card.active-sarah { border-color: #ab47bc; background: rgba(171,71,188,0.08); }
+        .advisor-select-card .sel-avatar { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,255,255,0.1); }
+        .advisor-select-card.active-alex .sel-avatar { border-color: #42a5f5; }
+        .advisor-select-card.active-sarah .sel-avatar { border-color: #ab47bc; }
+        .sel-info .sel-name { font-weight: 700; font-size: 1.05em; color: #fff; }
+        .sel-info .sel-role { font-size: 0.85em; color: rgba(255,255,255,0.5); }
+        .sel-info .sel-spec { font-size: 0.8em; color: rgba(255,255,255,0.4); margin-top: 4px; }
+        .sel-online { display: inline-flex; align-items: center; gap: 4px; font-size: 0.75em; color: #4caf50; margin-top: 4px; }
+        .sel-online::before { content: ''; width: 6px; height: 6px; background: #4caf50; border-radius: 50%; animation: pulse 2s infinite; }
+
+        /* === CHAT WIDGET - DUAL ADVISOR === */
         .chat-section { background: linear-gradient(145deg, #141938, #1a2050); border-radius: 20px; padding: 40px; border: 1px solid rgba(255,255,255,0.06); margin-bottom: 80px; }
         .chat-container { display: grid; grid-template-columns: 280px 1fr; gap: 32px; align-items: start; }
         
         /* Advisor Profile Card */
-        .advisor-profile { text-align: center; }
-        .advisor-avatar-wrap { width: 120px; height: 120px; margin: 0 auto 16px; border-radius: 50%; padding: 3px; background: linear-gradient(135deg, #42a5f5, #66bb6a); position: relative; }
+        .advisor-profile { text-align: center; transition: all 0.3s; }
+        .advisor-avatar-wrap { width: 120px; height: 120px; margin: 0 auto 16px; border-radius: 50%; padding: 3px; position: relative; }
+        .advisor-avatar-wrap.alex-ring { background: linear-gradient(135deg, #42a5f5, #66bb6a); }
+        .advisor-avatar-wrap.sarah-ring { background: linear-gradient(135deg, #ab47bc, #ec407a); }
         .advisor-avatar-wrap img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid #0a0e27; }
         .advisor-online { position: absolute; bottom: 6px; right: 6px; width: 18px; height: 18px; background: #4caf50; border-radius: 50%; border: 3px solid #0a0e27; animation: pulse 2s infinite; }
         .advisor-profile h3 { font-size: 1.3em; color: #fff; margin-bottom: 4px; }
-        .advisor-profile .advisor-title { color: #42a5f5; font-size: 0.9em; margin-bottom: 12px; }
+        .advisor-profile .advisor-title { font-size: 0.9em; margin-bottom: 12px; }
+        .advisor-profile .advisor-title.alex-color { color: #42a5f5; }
+        .advisor-profile .advisor-title.sarah-color { color: #ab47bc; }
         .advisor-profile .advisor-bio { color: rgba(255,255,255,0.5); font-size: 0.85em; line-height: 1.6; margin-bottom: 16px; padding: 0 8px; }
         .advisor-tags { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 20px; }
-        .advisor-tag { background: rgba(66,165,245,0.1); border: 1px solid rgba(66,165,245,0.2); color: #42a5f5; padding: 4px 10px; border-radius: 6px; font-size: 0.75em; }
+        .advisor-tag { padding: 4px 10px; border-radius: 6px; font-size: 0.75em; }
+        .advisor-tag.alex-tag { background: rgba(66,165,245,0.1); border: 1px solid rgba(66,165,245,0.2); color: #42a5f5; }
+        .advisor-tag.sarah-tag { background: rgba(171,71,188,0.1); border: 1px solid rgba(171,71,188,0.2); color: #ab47bc; }
         .advisor-daily { background: rgba(255,255,255,0.04); border-radius: 12px; padding: 16px; margin-top: 8px; text-align: left; }
         .advisor-daily .daily-label { font-size: 0.75em; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
         .advisor-daily .daily-text { font-size: 0.85em; color: rgba(255,255,255,0.7); line-height: 1.6; font-style: italic; }
         .advisor-daily .daily-date { font-size: 0.7em; color: rgba(255,255,255,0.3); margin-top: 6px; }
 
+        /* Switch button */
+        .switch-advisor-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 12px; padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); color: rgba(255,255,255,0.6); font-size: 0.85em; cursor: pointer; transition: all 0.2s; }
+        .switch-advisor-btn:hover { background: rgba(255,255,255,0.06); color: #fff; border-color: rgba(255,255,255,0.2); }
+
         /* Chat Box */
         .chat-box { background: #0d1229; border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); overflow: hidden; display: flex; flex-direction: column; max-height: 600px; }
-        .chat-header { padding: 16px 20px; background: rgba(66,165,245,0.08); border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 12px; }
+        .chat-header { padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 12px; }
+        .chat-header.alex-header { background: rgba(66,165,245,0.08); }
+        .chat-header.sarah-header { background: rgba(171,71,188,0.08); }
         .chat-header-avatar { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
         .chat-header-info .name { font-weight: 600; font-size: 0.95em; color: #fff; }
         .chat-header-info .status { font-size: 0.8em; color: #4caf50; display: flex; align-items: center; gap: 4px; }
@@ -84,9 +111,13 @@
         .chat-messages { padding: 20px; min-height: 280px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
         .chat-msg { max-width: 85%; padding: 12px 16px; border-radius: 16px; font-size: 0.9em; line-height: 1.5; animation: msgIn 0.3s ease; }
         @keyframes msgIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-        .chat-msg.bot { background: rgba(66,165,245,0.1); color: #e0e6f0; align-self: flex-start; border-bottom-left-radius: 4px; }
+        .chat-msg.bot { color: #e0e6f0; align-self: flex-start; border-bottom-left-radius: 4px; }
+        .chat-msg.bot.alex-msg { background: rgba(66,165,245,0.1); }
+        .chat-msg.bot.sarah-msg { background: rgba(171,71,188,0.1); }
         .chat-msg.user { background: linear-gradient(135deg, #42a5f5, #1e88e5); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
-        .chat-msg.bot .msg-name { font-size: 0.75em; color: #42a5f5; margin-bottom: 4px; font-weight: 600; }
+        .chat-msg.bot .msg-name { font-size: 0.75em; margin-bottom: 4px; font-weight: 600; }
+        .chat-msg.bot .msg-name.alex-name { color: #42a5f5; }
+        .chat-msg.bot .msg-name.sarah-name { color: #ab47bc; }
         .chat-input-area { padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; gap: 10px; }
         .chat-input { flex: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 12px 16px; color: #fff; font-size: 0.9em; outline: none; font-family: inherit; }
         .chat-input:focus { border-color: #42a5f5; background: rgba(66,165,245,0.05); }
@@ -96,9 +127,8 @@
         .chat-send:disabled { opacity: 0.5; cursor: not-allowed; }
         .chat-disclaimer { font-size: 0.75em; color: rgba(255,255,255,0.3); text-align: center; padding: 8px; border-top: 1px solid rgba(255,255,255,0.03); }
 
-        /* Welcome message bubble */
-        .welcome-bubble { background: rgba(102,187,106,0.08); border: 1px solid rgba(102,187,106,0.15); border-radius: 12px; padding: 12px 16px; margin-bottom: 12px; font-size: 0.85em; color: rgba(255,255,255,0.7); }
-        .welcome-bubble .wb-label { color: #66bb6a; font-weight: 600; font-size: 0.75em; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+        /* Transfer notice */
+        .transfer-notice { background: rgba(255,183,77,0.08); border: 1px solid rgba(255,183,77,0.15); border-radius: 10px; padding: 10px 16px; font-size: 0.85em; color: rgba(255,255,255,0.7); text-align: center; }
 
         /* === LEARNING CARDS === */
         .learn-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; }
@@ -161,10 +191,12 @@
             .advisor-avatar-wrap { width: 80px; height: 80px; margin: 0; }
             .advisor-tags { justify-content: flex-start; }
             .advisor-daily { grid-column: 1 / -1; }
+            .advisor-team { grid-template-columns: 1fr; }
             .learn-grid { grid-template-columns: 1fr; }
             .nav-links { display: none; }
             .contact-grid { flex-direction: column; align-items: center; }
             .modal { padding: 24px; margin: 12px; }
+            .switch-advisor-btn { grid-column: 1 / -1; }
         }
     </style>
 </head>
@@ -175,7 +207,7 @@
     <div class="nav-inner">
         <a href="#" class="nav-logo"><div class="icon">B</div> BroadFSC</a>
         <div class="nav-links">
-            <a href="#chat">AI Advisor</a>
+            <a href="#chat">AI Advisors</a>
             <a href="#learn">Learning Center</a>
             <a href="#contact">Contact</a>
             <a href="https://www.broadfsc.com/different" target="_blank" class="nav-cta">Official Site →</a>
@@ -190,7 +222,7 @@
         <h1>Learn Investing.<br>Trade Smarter.</h1>
         <p>Free investment education, AI-powered advisory, and professional market insights from a licensed global firm. No sign-up required.</p>
         <div class="hero-buttons">
-            <a href="#chat" class="btn btn-primary">💬 Chat with Alex</a>
+            <a href="#chat" class="btn btn-primary">💬 Chat with Advisor</a>
             <a href="#learn" class="btn btn-secondary">📚 Explore Lessons</a>
         </div>
         <div class="hero-stats">
@@ -202,50 +234,51 @@
     </div>
 </section>
 
-<!-- AI CHAT - UPGRADED WITH ADVISOR PROFILE -->
+<!-- AI CHAT - DUAL ADVISOR -->
 <section class="section" id="chat">
     <div class="section-header">
-        <h2>💬 AI Investment Advisor</h2>
-        <p>Meet Alex — your personal AI advisor. He greets you by your culture, remembers your interests, and shares daily market insights.</p>
+        <h2>💬 AI Investment Advisors</h2>
+        <p>Choose your advisor — Alex for technical analysis & trading, or Sarah for fundamentals & portfolio strategy. Both remember you and speak your language.</p>
     </div>
     <div class="chat-section">
+        <!-- Advisor Team Selector -->
+        <div class="advisor-team">
+            <div class="advisor-select-card active-alex" id="selAlex" onclick="switchAdvisor('alex')">
+                <img src="assets/alex.jpg" alt="Alex Chen" class="sel-avatar">
+                <div class="sel-info">
+                    <div class="sel-name">Alex Chen</div>
+                    <div class="sel-role">Technical Analyst & Trader</div>
+                    <div class="sel-spec">📈 Charts • Indicators • Risk</div>
+                    <div class="sel-online">Online now</div>
+                </div>
+            </div>
+            <div class="advisor-select-card" id="selSarah" onclick="switchAdvisor('sarah')">
+                <img src="assets/sarah.jpg" alt="Sarah Mitchell" class="sel-avatar">
+                <div class="sel-info">
+                    <div class="sel-name">Sarah Mitchell</div>
+                    <div class="sel-role">Fundamental Analyst & Strategist</div>
+                    <div class="sel-spec">🏛️ Valuation • Portfolio • IPO</div>
+                    <div class="sel-online">Online now</div>
+                </div>
+            </div>
+        </div>
+
         <div class="chat-container">
-            <!-- LEFT: Advisor Profile Card -->
-            <div class="advisor-profile">
-                <div class="advisor-avatar-wrap">
-                    <img src="https://ui-avatars.com/api/?name=Alex+C&background=42a5f5&color=fff&size=200&bold=true&font-size=0.4" alt="Alex Chen">
-                    <div class="advisor-online"></div>
-                </div>
-                <h3>Alex Chen</h3>
-                <div class="advisor-title">Senior Investment Advisor</div>
-                <div class="advisor-bio">8+ years in global markets. Specializing in technical analysis & risk management. I believe every investor deserves professional guidance — that's why I'm here, 24/7, for free.</div>
-                <div class="advisor-tags">
-                    <span class="advisor-tag">📈 Technical Analysis</span>
-                    <span class="advisor-tag">🛡️ Risk Management</span>
-                    <span class="advisor-tag">💰 Fundamentals</span>
-                    <span class="advisor-tag">🌍 Global Markets</span>
-                </div>
-                <div class="advisor-daily">
-                    <div class="daily-label">💡 Alex's Daily Insight</div>
-                    <div class="daily-text" id="dailyInsight">Loading today's insight...</div>
-                    <div class="daily-date" id="dailyDate"></div>
-                </div>
+            <!-- LEFT: Active Advisor Profile Card -->
+            <div class="advisor-profile" id="advisorProfile">
+                <!-- Populated by JS -->
             </div>
 
             <!-- RIGHT: Chat Box -->
             <div class="chat-box">
-                <div class="chat-header">
-                    <img src="https://ui-avatars.com/api/?name=AC&background=42a5f5&color=fff&size=72&bold=true" alt="Alex" class="chat-header-avatar">
-                    <div class="chat-header-info">
-                        <div class="name">Alex Chen</div>
-                        <div class="status">Online — ready to help</div>
-                    </div>
+                <div class="chat-header" id="chatHeader">
+                    <!-- Populated by JS -->
                 </div>
                 <div class="chat-messages" id="chatMessages">
                     <!-- Welcome message injected by JS -->
                 </div>
                 <div class="chat-input-area">
-                    <input type="text" class="chat-input" id="chatInput" placeholder="Ask about RSI, MACD, support/resistance..." maxlength="500" autocomplete="off">
+                    <input type="text" class="chat-input" id="chatInput" placeholder="Ask about trading, analysis, risk management..." maxlength="500" autocomplete="off">
                     <button class="chat-send" id="chatSend" onclick="sendMessage()">➤</button>
                 </div>
                 <div class="chat-disclaimer">⚠️ AI-generated content for educational purposes only. Not financial advice. Investment involves risk.</div>
@@ -386,47 +419,96 @@
 </div>
 
 <script>
-// ============ ADVISOR IDENTITY ============
-const ADVISOR = {
-    name: 'Alex Chen',
-    role: 'Senior Investment Advisor at BroadFSC',
-    personality: 'warm, professional, slightly witty — never robotic',
-    values: ['Every investor deserves guidance', 'Risk management first', 'Education empowers'],
-    language: 'English' // default, auto-detected
+// ============ DUAL ADVISOR SYSTEM ============
+const ADVISORS = {
+    alex: {
+        id: 'alex',
+        name: 'Alex Chen',
+        role: 'Senior Technical Analyst & Trader',
+        personality: 'warm, energetic, slightly witty — loves chart patterns and clean setups',
+        bio: "8+ years navigating global markets. I live and breathe charts — support, resistance, RSI, MACD. My philosophy: every great trade starts with a great setup and a rock-solid stop loss. Let's find yours.",
+        avatar: 'assets/alex.jpg',
+        color: '#42a5f5',
+        colorClass: 'alex',
+        tags: ['📈 Technical Analysis', '📊 RSI & MACD', '🛡️ Risk Management', '🕯️ Candlestick Patterns'],
+        tagClass: 'alex-tag',
+        placeholder: "Ask about RSI, MACD, support/resistance, candlesticks...",
+        systemPrompt: "You are Alex Chen, Senior Technical Analyst & Trader at BroadFSC. Personality: warm, energetic, slightly witty — loves chart patterns and clean setups. You specialize in technical analysis, trading strategies, indicators (RSI, MACD, Bollinger Bands), candlestick patterns, and risk management. Give concise, educational answers (2-4 sentences max). Use trading analogies. Always include risk disclaimer if discussing investments. Never recommend specific stocks. If the question is about fundamentals, valuation, IPO, or portfolio allocation, suggest switching to Sarah Mitchell.",
+        insights: [
+            "Markets reward patience. The best trades come from waiting for the right setup, not from forcing entries.",
+            "Volume confirms price. A breakout without volume is like a car without fuel — it won't go far.",
+            "The trend is your friend until it ends. Don't fight the market — ride the wave.",
+            "Support and resistance aren't exact lines — they're zones. Give your levels room to breathe.",
+            "The 200-day MA is the institutional line in the sand. When price crosses it, big money notices."
+        ]
+    },
+    sarah: {
+        id: 'sarah',
+        name: 'Sarah Mitchell',
+        role: 'Senior Fundamental Analyst & Strategist',
+        personality: 'composed, insightful, articulate — makes complex valuations feel simple',
+        bio: "10 years in equity research and portfolio strategy. I dig into financials, industry trends, and macro forces to find real value. My approach: understand the business, then decide if the price is right. Think like an owner, not a trader.",
+        avatar: 'assets/sarah.jpg',
+        color: '#ab47bc',
+        colorClass: 'sarah',
+        tags: ['🏛️ Company Valuation', '💰 Earnings & Financials', '📊 Portfolio Strategy', '🏢 IPO & Listing'],
+        tagClass: 'sarah-tag',
+        placeholder: "Ask about P/E, EPS, portfolio allocation, IPO analysis...",
+        systemPrompt: "You are Sarah Mitchell, Senior Fundamental Analyst & Strategist at BroadFSC. Personality: composed, insightful, articulate — makes complex valuations feel simple. You specialize in fundamental analysis, company valuation (P/E, EPS, ROE, DCF), portfolio construction, sector analysis, IPO evaluation, and corporate research. Give concise, educational answers (2-4 sentences max). Use real-world business examples. Always include risk disclaimer if discussing investments. Never recommend specific stocks. If the question is about technical analysis, chart patterns, or trading indicators, suggest switching to Alex Chen.",
+        insights: [
+            "Price is what you pay, value is what you get. The gap between them is where opportunities live.",
+            "A great company at the wrong price is still a bad investment. Valuation always matters.",
+            "Read the footnotes — that's where companies hide what they don't want you to see.",
+            "Diversification isn't about owning many stocks — it's about owning uncorrelated return streams.",
+            "The best IPO investment is often waiting 6 months. Let the lockup expire, then decide."
+        ]
+    }
 };
+
+let currentAdvisor = 'alex';
 
 // ============ CULTURAL GREETINGS ============
 const GREETINGS = {
-    'en': { greeting: "Hey there! 👋", intro: "I'm Alex, your personal investment advisor. How can I help you today? Whether it's technical analysis, risk management, or just getting started — I'm here for you.", ask: "What would you like to learn about?" },
-    'zh': { greeting: "你好！👋", intro: "我是 Alex，你的专属投资顾问。无论你想了解技术分析、风控策略，还是刚刚入门——我随时为你服务。", ask: "你想了解什么？" },
-    'ja': { greeting: "こんにちは！👋", intro: "Alex です、あなたの投資アドバイザー。テクニカル分析でもリスク管理でも、何でもお気軽にどうぞ。", ask: "何について知りたいですか？" },
-    'ko': { greeting: "안녕하세요! 👋", intro: "저는 Alex입니다, 당신의 투자 어드바이저. 기술 분석이든 리스크 관리든 뭐든 물어보세요.", ask: "무엇이 궁금하신가요?" },
-    'es': { greeting: "¡Hola! 👋", intro: "Soy Alex, tu asesor de inversiones. Análisis técnico, gestión de riesgos, o lo que necesites — estoy aquí para ti.", ask: "¿De qué te gustaría aprender?" },
-    'de': { greeting: "Hallo! 👋", intro: "Ich bin Alex, dein Investmentberater. Technische Analyse, Risikomanagement oder einfach nur anfangen — ich bin für dich da.", ask: "Woran bist du interessiert?" },
-    'fr': { greeting: "Bonjour ! 👋", intro: "Je suis Alex, votre conseiller en investissement. Analyse technique, gestion des risques — je suis là pour vous.", ask: "Que souhaitez-vous apprendre ?" },
-    'pt': { greeting: "Olá! 👋", intro: "Sou Alex, seu consultor de investimentos. Análise técnica, gerenciamento de riscos — estou aqui para ajudar.", ask: "O que gostaria de aprender?" },
-    'ar': { greeting: "مرحبا! 👋", intro: "أنا أليكس، مستشارك الاستثماري. التحليل الفني، إدارة المخاطر — أنا هنا لمساعدتك.", ask: "ماذا تريد أن تتعلم؟" },
-    'hi': { greeting: "नमस्ते! 👋", intro: "मैं एलेक्स हूं, आपका निवेश सलाहकार। तकनीकी विश्लेषण, जोखिम प्रबंधन — मैं आपके लिए यहां हूं।", ask: "आप किस बारे में जानना चाहेंगे?" },
-    'ru': { greeting: "Привет! 👋", intro: "Я Алекс, ваш инвестиционный советник. Технический анализ, управление рисками — я к вашим услугам.", ask: "О чём хотите узнать?" },
-    'th': { greeting: "สวัสดีครับ! 👋", intro: "ผม Alex ที่ปรึกษาการลงทุนของคุณ วิเคราะห์เทคนิคหรือบริหารความเสี่ยง ถามได้เลยนะครับ", ask: "อยากรู้เรื่องอะไรครับ?" },
-    'vi': { greeting: "Xin chào! 👋", intro: "Tôi là Alex, cố vấn đầu tư của bạn. Phân tích kỹ thuật, quản lý rủi ro — tôi ở đây để giúp bạn.", ask: "Bạn muốn tìm hiểu về gì?" },
-    'id': { greeting: "Halo! 👋", intro: "Saya Alex, penasihat investasi Anda. Analisis teknikal, manajemen risiko — saya siap membantu.", ask: "Apa yang ingin Anda pelajari?" },
-    'tr': { greeting: "Merhaba! 👋", intro: "Ben Alex, yatırım danışmanınız. Teknik analiz, risk yönetimi — buradayım.", ask: "Ne hakkında bilgi almak istersiniz?" }
+    'en': { greeting: "Hey there! 👋", ask: "What would you like to learn about?" },
+    'zh': { greeting: "你好！👋", ask: "你想了解什么？" },
+    'ja': { greeting: "こんにちは！👋", ask: "何について知りたいですか？" },
+    'ko': { greeting: "안녕하세요! 👋", ask: "무엇이 궁금하신가요?" },
+    'es': { greeting: "¡Hola! 👋", ask: "¿De qué te gustaría aprender?" },
+    'de': { greeting: "Hallo! 👋", ask: "Woran bist du interessiert?" },
+    'fr': { greeting: "Bonjour ! 👋", ask: "Que souhaitez-vous apprendre ?" },
+    'pt': { greeting: "Olá! 👋", ask: "O que gostaria de aprender?" },
+    'ar': { greeting: "مرحبا! 👋", ask: "ماذا تريد أن تتعلم؟" },
+    'hi': { greeting: "नमस्ते! 👋", ask: "आप किस बारे में जानना चाहेंगे?" },
+    'ru': { greeting: "Привет! 👋", ask: "О чём хотите узнать?" },
+    'th': { greeting: "สวัสดีค่ะ! 👋", ask: "อยากรู้เรื่องอะไรคะ?" },
+    'vi': { greeting: "Xin chào! 👋", ask: "Bạn muốn tìm hiểu về gì?" },
+    'id': { greeting: "Halo! 👋", ask: "Apa yang ingin Anda pelajari?" },
+    'tr': { greeting: "Merhaba! 👋", ask: "Ne hakkında bilgi almak istersiniz?" }
 };
 
-// ============ DAILY INSIGHTS ============
-const DAILY_INSIGHTS = [
-    "Markets reward patience. The best trades often come from waiting for the right setup, not from forcing entries. Today, focus on your watchlist — not your FOMO.",
-    "Risk management isn't about being right — it's about surviving when you're wrong. Always set your stop loss before entering any trade.",
-    "Volume confirms price. A breakout without volume is like a car without fuel — it won't go far. Always check volume before trusting a move.",
-    "The trend is your friend until it ends. Don't fight the market — ride the wave, and know when to paddle back to shore.",
-    "Diversification isn't just about owning different stocks — it's about being exposed to different risk factors. Think sectors, geographies, and asset classes.",
-    "The best investors are students forever. Markets evolve, strategies adapt, and the learning never stops. Keep reading, keep practicing.",
-    "Emotional discipline is your edge. When everyone is panicking, stay calm. When everyone is greedy, stay cautious. Be the rational one in the room.",
-    "Support and resistance aren't exact lines — they're zones. Give your levels room to breathe, and don't obsess over pennies.",
-    "The 200-day moving average is the institutional line in the sand. When price crosses it, big money notices. So should you.",
-    "Don't overtrade. Sometimes the best action is no action. Cash is a position too — and often the most comfortable one."
-];
+// Advisor-specific greeting intros
+const ADVISOR_INTROS = {
+    alex: {
+        'en': "I'm Alex, your technical analysis specialist. Charts, indicators, risk management — I've got you covered.",
+        'zh': "我是 Alex，你的技术分析专家。图表、指标、风控——找我就对了。",
+        'ja': "Alex です、テクニカル分析のスペシャリスト。チャート、インジケーター、リスク管理 — 何でも聞いてください。",
+        'ko': "저는 Alex입니다, 기술 분석 전문가입니다. 차트, 지표, 리스크 관리 — 제가 도와드리겠습니다.",
+        'es': "Soy Alex, tu especialista en análisis técnico. Gráficos, indicadores, gestión de riesgos — estoy aquí para ti.",
+        'de': "Ich bin Alex, dein Technikanalyse-Experte. Charts, Indikatoren, Risikomanagement — ich bin für dich da.",
+        'fr': "Je suis Alex, votre spécialiste en analyse technique. Graphiques, indicateurs, gestion des risques — je suis là pour vous.",
+        'default': "I'm Alex, your technical analysis specialist. Charts, indicators, risk management — I've got you covered."
+    },
+    sarah: {
+        'en': "I'm Sarah, your fundamental analysis & strategy expert. Company valuations, earnings, portfolio construction — let's think like owners.",
+        'zh': "我是 Sarah，你的基本面与策略专家。公司估值、财报、组合构建——让我们像企业主一样思考。",
+        'ja': "Sarah です、ファンダメンタル分析と戦略のエキスパート。企業評価、決算、ポートフォリオ — 投資家として考えましょう。",
+        'ko': "저는 Sarah입니다, 펀더멘털 분석과 전략 전문가입니다. 기업 가치, 실적, 포트폴리오 — 소유자처럼 생각해봅시다.",
+        'es': "Soy Sarah, tu experta en análisis fundamental y estrategia. Valoraciones, resultados, carteras — pensemos como dueños.",
+        'de': "Ich bin Sarah, deine Fundamentalanalyse- und Strategie-Expertin. Bewertungen, Ergebnis, Portfolio — denken wir wie Eigentümer.",
+        'fr': "Je suis Sarah, votre experte en analyse fondamentale et stratégie. Valorisations, résultats, portefeuilles — pensons comme des propriétaires.",
+        'default': "I'm Sarah, your fundamental analysis & strategy expert. Company valuations, earnings, portfolio construction — let's think like owners."
+    }
+};
 
 // ============ CLIENT MEMORY (localStorage) ============
 function getClientMemory() {
@@ -452,7 +534,9 @@ function initClientMemory() {
             language: detectLanguage(),
             interests: [],
             name: null,
-            lastTopic: null
+            lastTopic: null,
+            lastAdvisor: 'alex',
+            chatHistories: { alex: [], sarah: [] }
         };
     } else {
         mem.visitCount = (mem.visitCount || 0) + 1;
@@ -467,14 +551,100 @@ function detectLanguage() {
     return GREETINGS[lang] ? lang : 'en';
 }
 
+// ============ ADVISOR UI RENDERING ============
+function renderAdvisorProfile(advisorId) {
+    const a = ADVISORS[advisorId];
+    const profileEl = document.getElementById('advisorProfile');
+    const otherAdvisor = advisorId === 'alex' ? 'sarah' : 'alex';
+    const otherName = ADVISORS[otherAdvisor].name;
+    
+    const today = new Date();
+    const dayIndex = today.getDate() % a.insights.length;
+    
+    profileEl.innerHTML = `
+        <div class="advisor-avatar-wrap ${a.colorClass}-ring">
+            <img src="${a.avatar}" alt="${a.name}">
+            <div class="advisor-online"></div>
+        </div>
+        <h3>${a.name}</h3>
+        <div class="advisor-title ${a.colorClass}-color">${a.role}</div>
+        <div class="advisor-bio">${a.bio}</div>
+        <div class="advisor-tags">
+            ${a.tags.map(t => `<span class="advisor-tag ${a.tagClass}">${t}</span>`).join('')}
+        </div>
+        <div class="advisor-daily">
+            <div class="daily-label">💡 ${a.name.split(' ')[0]}'s Daily Insight</div>
+            <div class="daily-text">${a.insights[dayIndex]}</div>
+            <div class="daily-date">${today.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' })}</div>
+        </div>
+        <button class="switch-advisor-btn" onclick="switchAdvisor('${otherAdvisor}')">
+            🔄 Switch to ${otherName}
+        </button>
+    `;
+}
+
+function renderChatHeader(advisorId) {
+    const a = ADVISORS[advisorId];
+    const headerEl = document.getElementById('chatHeader');
+    headerEl.className = `chat-header ${a.colorClass}-header`;
+    headerEl.innerHTML = `
+        <img src="${a.avatar}" alt="${a.name}" class="chat-header-avatar">
+        <div class="chat-header-info">
+            <div class="name">${a.name}</div>
+            <div class="status">Online — ready to help</div>
+        </div>
+    `;
+}
+
+function updateSelectorCards(advisorId) {
+    const selAlex = document.getElementById('selAlex');
+    const selSarah = document.getElementById('selSarah');
+    selAlex.className = 'advisor-select-card' + (advisorId === 'alex' ? ' active-alex' : '');
+    selSarah.className = 'advisor-select-card' + (advisorId === 'sarah' ? ' active-sarah' : '');
+}
+
+// ============ SWITCH ADVISOR ============
+function switchAdvisor(toAdvisor) {
+    if (toAdvisor === currentAdvisor) return;
+    
+    const prevAdvisor = currentAdvisor;
+    currentAdvisor = toAdvisor;
+    const a = ADVISORS[toAdvisor];
+    
+    // Save preference
+    const mem = getClientMemory();
+    if (mem) { mem.lastAdvisor = toAdvisor; saveClientMemory(mem); }
+    
+    // Update UI
+    renderAdvisorProfile(toAdvisor);
+    renderChatHeader(toAdvisor);
+    updateSelectorCards(toAdvisor);
+    document.getElementById('chatInput').placeholder = a.placeholder;
+    
+    // Transfer notice in chat
+    const transferDiv = document.createElement('div');
+    transferDiv.className = 'transfer-notice';
+    transferDiv.innerHTML = `🔄 Switched to <strong>${a.name}</strong> — ${a.role}. Your conversation history is preserved!`;
+    chatMessages.appendChild(transferDiv);
+    
+    // Welcome from new advisor
+    const welcome = generateAdvisorWelcome(toAdvisor, prevAdvisor);
+    addMessage(welcome, 'bot', true, toAdvisor);
+    
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
 // ============ WELCOME MESSAGE ============
-function generateWelcome() {
-    const mem = initClientMemory();
-    const greet = GREETINGS[mem.language] || GREETINGS['en'];
+function generateAdvisorWelcome(advisorId, fromAdvisor = null) {
+    const a = ADVISORS[advisorId];
+    const mem = getClientMemory();
+    const lang = mem ? mem.language : detectLanguage();
+    const greet = GREETINGS[lang] || GREETINGS['en'];
+    const intro = (ADVISOR_INTROS[advisorId][lang] || ADVISOR_INTROS[advisorId]['default']);
     const hour = new Date().getHours();
     let timeGreet = '';
     
-    if (mem.language === 'en') {
+    if (lang === 'en') {
         if (hour < 12) timeGreet = 'Good morning! ☀️';
         else if (hour < 18) timeGreet = 'Good afternoon! 🌤️';
         else timeGreet = 'Good evening! 🌙';
@@ -482,28 +652,29 @@ function generateWelcome() {
     
     let welcome = '';
     
-    if (mem.visitCount === 1) {
-        // First-time visitor
-        welcome = `${timeGreet} ${greet.greeting}\n\n${greet.intro}`;
-    } else if (mem.visitCount <= 3) {
-        // Returning visitor (2-3 visits)
-        welcome = `${timeGreet} ${greet.greeting} Welcome back! Great to see you again. `;
+    if (fromAdvisor) {
+        // Transfer from another advisor
+        const otherName = ADVISORS[fromAdvisor].name.split(' ')[0];
+        welcome = `${greet.greeting} ${intro}\n\n${otherName} mentioned you might need my expertise. ${greet.ask}`;
+    } else if (mem && mem.visitCount === 1) {
+        welcome = `${timeGreet} ${greet.greeting}\n\n${intro}\n\n${greet.ask}`;
+    } else if (mem && mem.visitCount <= 3) {
+        welcome = `${timeGreet} ${greet.greeting} Welcome back! `;
         if (mem.lastTopic) {
-            welcome += `Last time we were chatting about **${mem.lastTopic}** — want to dive deeper or explore something new?`;
+            welcome += `Last time we were chatting about **${mem.lastTopic}** — want to dive deeper?`;
         } else {
-            welcome += `${greet.ask}`;
+            welcome += greet.ask;
         }
-    } else {
-        // Regular visitor
-        welcome = `${timeGreet} ${greet.greeting} My favorite visitor is back! 😊 `;
-        if (mem.name) {
-            welcome = `${timeGreet} ${mem.name}! ${greet.greeting} Always a pleasure. `;
-        }
+    } else if (mem && mem.visitCount > 3) {
+        const name = mem.name ? `${mem.name}! ` : '';
+        welcome = `${timeGreet} ${name}${greet.greeting} Always great to see you! 😊 `;
         if (mem.lastTopic) {
             welcome += `We were discussing **${mem.lastTopic}** last time. What's on your mind today?`;
         } else {
-            welcome += `${greet.ask}`;
+            welcome += greet.ask;
         }
+    } else {
+        welcome = `${greet.greeting} ${intro}\n\n${greet.ask}`;
     }
     
     return welcome;
@@ -514,34 +685,44 @@ const chatMessages = document.getElementById('chatMessages');
 const chatInput = document.getElementById('chatInput');
 const chatSend = document.getElementById('chatSend');
 
-// Inject welcome message on load
+// Shared chat histories per advisor
+let chatHistories = { alex: [], sarah: [] };
+
 window.addEventListener('DOMContentLoaded', function() {
-    const welcome = generateWelcome();
-    addMessage(welcome, 'bot', true);
+    const mem = initClientMemory();
     
-    // Set daily insight
-    const today = new Date();
-    const dayIndex = today.getDate() % DAILY_INSIGHTS.length;
-    document.getElementById('dailyInsight').textContent = DAILY_INSIGHTS[dayIndex];
-    document.getElementById('dailyDate').textContent = today.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
+    // Restore last advisor
+    const startAdvisor = (mem && mem.lastAdvisor) || 'alex';
+    currentAdvisor = startAdvisor;
+    
+    renderAdvisorProfile(startAdvisor);
+    renderChatHeader(startAdvisor);
+    updateSelectorCards(startAdvisor);
+    document.getElementById('chatInput').placeholder = ADVISORS[startAdvisor].placeholder;
+    
+    const welcome = generateAdvisorWelcome(startAdvisor);
+    addMessage(welcome, 'bot', true, startAdvisor);
 });
 
 // Pre-built knowledge for offline/fallback mode
 const KNOWLEDGE = {
-    'support resistance': "Support and resistance are key price levels where buying or selling pressure tends to emerge. **Support** acts like a floor — price bounces up from it. **Resistance** acts like a ceiling — price gets rejected down. Pro tip: The more times a level is tested, the stronger it becomes. When resistance breaks, it often becomes new support (and vice versa).",
-    'rsi': "RSI (Relative Strength Index) measures momentum on a scale of 0-100. Above 70 = overbought (potential pullback). Below 30 = oversold (potential bounce). But beware: RSI can stay overbought in strong uptrends. The real edge is **RSI divergence** — when price makes a new high but RSI makes a lower high, that's a powerful reversal signal.",
-    'macd': "MACD (Moving Average Convergence Divergence) shows the relationship between two moving averages. When the MACD line crosses above the signal line = bullish (golden cross). Crosses below = bearish (death cross). The histogram shows momentum strength — growing bars mean increasing momentum.",
-    'moving average': "Moving Averages smooth price data to show trends. The 50-day and 200-day MAs are most watched. **Golden Cross** (50 crosses above 200) = long-term bullish. **Death Cross** (50 crosses below 200) = long-term bearish. Use MAs as dynamic support/resistance on higher timeframes.",
-    'stop loss': "Always set your stop loss BEFORE entering a trade. Place it just below support for longs, just above resistance for shorts. The key ratio: aim for **1:3 risk-reward** — risk $1 to make $3. Even with only 40% win rate, you'll be profitable with 1:3 R:R. Protecting capital > chasing profits.",
-    'candlestick': "Key candlestick patterns: **Hammer** (long lower shadow at bottom of downtrend = bullish reversal), **Engulfing** (large candle completely covers previous = strong reversal), **Doji** (open ≈ close = indecision, trend may change). Always confirm with volume and the next candle.",
-    'bollinger': "Bollinger Bands show volatility with three lines: middle (20-period MA), upper and lower bands (±2 standard deviations). Price touching upper band = overbought. Touching lower = oversold. **Band squeeze** (narrowing) signals a big move is coming soon.",
-    'pe ratio': "P/E Ratio (Price/Earnings) tells you how much you're paying per dollar of earnings. Lower P/E = cheaper (compare within same industry). But a low P/E might mean the market expects declining earnings. Always compare P/E to the company's historical average and industry peers.",
-    'eps': "EPS (Earnings Per Share) = Net Income ÷ Shares Outstanding. Rising EPS over multiple quarters is a strong bullish signal. Watch for the 'earnings surprise' — when actual EPS beats analyst expectations, the stock often jumps.",
-    'roe': "ROE (Return on Equity) measures how efficiently a company uses shareholder capital. Warren Buffett looks for companies with consistently high ROE (>15%). Compare ROE across the same industry for meaningful insights.",
-    'cpi': "CPI (Consumer Price Index) measures inflation. High CPI → Fed may raise rates → stocks typically fall. Low CPI → Fed may cut rates → stocks typically rise. Watch the CPI release monthly — it's one of the most market-moving economic reports.",
-    'gdp': "GDP measures total economic output. Growing GDP = healthy economy = generally bullish for stocks. Shrinking GDP for 2+ quarters = recession. The stock market is forward-looking — it reacts to GDP expectations, not just the number itself.",
-    'fed': "The Federal Reserve sets interest rates. Rate hikes make borrowing more expensive → slows economy → typically bearish for stocks. Rate cuts make borrowing cheaper → stimulates economy → typically bullish. The 'Fed pivot' (shifting from hiking to cutting) often triggers major market rallies.",
-    'default': "That's a great question! I'd recommend checking out our **Learning Center** below for in-depth tutorials, or ask me about specific topics like: RSI, MACD, support/resistance, candlestick patterns, stop loss strategies, or fundamental analysis."
+    'support resistance': "Support and resistance are key price levels where buying or selling pressure tends to emerge. **Support** acts like a floor — price bounces up from it. **Resistance** acts like a ceiling — price gets rejected down. Pro tip: The more times a level is tested, the stronger it becomes.",
+    'rsi': "RSI (Relative Strength Index) measures momentum on a scale of 0-100. Above 70 = overbought. Below 30 = oversold. The real edge is **RSI divergence** — when price makes a new high but RSI makes a lower high, that's a powerful reversal signal.",
+    'macd': "MACD shows the relationship between two moving averages. Golden cross (MACD above signal) = bullish. Death cross = bearish. The histogram shows momentum strength.",
+    'moving average': "The 50-day and 200-day MAs are most watched. **Golden Cross** (50 above 200) = long-term bullish. **Death Cross** = bearish. Use MAs as dynamic support/resistance.",
+    'stop loss': "Always set your stop loss BEFORE entering. Aim for **1:3 risk-reward** — risk $1 to make $3. Even with 40% win rate, you'll be profitable with 1:3 R:R.",
+    'candlestick': "Key patterns: **Hammer** (bullish reversal at bottom), **Engulfing** (strong reversal), **Doji** (indecision). Always confirm with volume.",
+    'bollinger': "Bollinger Bands show volatility. Price touching upper = overbought. Lower = oversold. **Band squeeze** signals a big move is coming.",
+    'pe ratio': "P/E Ratio tells you how much you're paying per dollar of earnings. Lower P/E = cheaper. But compare within the same industry. A low P/E might mean declining earnings expectations.",
+    'eps': "EPS (Earnings Per Share) = Net Income ÷ Shares. Rising EPS over multiple quarters is bullish. Watch for earnings surprises — beating expectations often triggers stock rallies.",
+    'roe': "ROE (Return on Equity) measures how efficiently a company uses shareholder capital. Buffett looks for consistent ROE > 15%.",
+    'ipo': "IPO investing is risky. Most IPOs underperform in the first year. Consider waiting for the lockup period to expire (usually 6 months) before investing. Read the S-1 filing carefully.",
+    'portfolio': "Diversification isn't just owning many stocks — it's owning uncorrelated return streams. Consider asset classes, sectors, and geographies. The 60/40 (stocks/bonds) portfolio is a classic starting point.",
+    'valuation': "Key valuation methods: **Comparable Analysis** (compare P/E, P/B, EV/EBITDA with peers), **DCF** (discount future cash flows), **NAV** (assets minus liabilities). No single method is perfect — use multiple approaches.",
+    'cpi': "CPI measures inflation. High CPI → Fed may raise rates → bearish for stocks. Low CPI → potential rate cuts → bullish.",
+    'gdp': "GDP measures economic output. Growing GDP = bullish. Two quarters of decline = recession. Markets react to expectations, not just the number.",
+    'fed': "Fed rate hikes = headwind for stocks. Rate cuts = tailwind. The 'Fed pivot' often triggers major rallies.",
+    'default': "That's a great question! I'd recommend checking out our **Learning Center** below for in-depth tutorials, or ask me about specific topics like: RSI, MACD, support/resistance, P/E ratio, portfolio strategy, or IPO analysis."
 };
 
 // Topic keywords for memory tracking
@@ -551,10 +732,10 @@ const TOPIC_KEYWORDS = {
     'Candlestick Patterns': ['candlestick', 'hammer', 'doji', 'engulfing', 'candle'],
     'Risk Management': ['stop loss', 'risk', 'profit', 'position', 'rr'],
     'Fundamental Analysis': ['pe ratio', 'eps', 'roe', 'earnings', 'revenue', 'valuation'],
+    'Portfolio Strategy': ['portfolio', 'allocation', 'diversif', 'asset class', 'rebalance'],
+    'IPO & Listing': ['ipo', 'listing', 's-1', 'lockup', 'public offering'],
     'Macroeconomics': ['cpi', 'gdp', 'fed', 'nfp', 'inflation', 'interest rate']
 };
-
-let chatHistory = [];
 
 function findBestAnswer(input) {
     const lower = input.toLowerCase();
@@ -574,7 +755,9 @@ function findBestAnswer(input) {
         'inflation': 'cpi', 'consumer price': 'cpi',
         'interest rate': 'fed', 'fomc': 'fed', 'federal reserve': 'fed',
         'macro': 'gdp', 'recession': 'gdp',
-        'fundamental': 'pe ratio', 'valuation': 'pe ratio'
+        'fundamental': 'pe ratio', 'valuation': 'valuation',
+        'ipo': 'ipo', 'listing': 'ipo', 'lockup': 'ipo',
+        'portfolio': 'portfolio', 'diversif': 'portfolio', 'allocat': 'portfolio'
     };
     for (const [kw, topic] of Object.entries(keywords)) {
         if (lower.includes(kw)) return KNOWLEDGE[topic];
@@ -601,12 +784,34 @@ function trackTopic(input) {
     }
 }
 
-function addMessage(text, type, isWelcome = false) {
+// Auto-suggest advisor switch based on topic
+function shouldSuggestSwitch(input) {
+    const lower = input.toLowerCase();
+    if (currentAdvisor === 'alex') {
+        // If asking about fundamentals, suggest Sarah
+        const sarahTopics = ['pe ratio', 'eps', 'roe', 'ipo', 'portfolio', 'valuation', 'earnings report', 'financial statement', 'balance sheet', 'cash flow', 'dividend', 'warren buffett'];
+        for (const t of sarahTopics) {
+            if (lower.includes(t)) return 'sarah';
+        }
+    } else {
+        // If asking about technicals, suggest Alex
+        const alexTopics = ['rsi', 'macd', 'support', 'resistance', 'candlestick', 'bollinger', 'moving average', 'chart pattern', 'breakout', 'trend line'];
+        for (const t of alexTopics) {
+            if (lower.includes(t)) return 'alex';
+        }
+    }
+    return null;
+}
+
+function addMessage(text, type, isWelcome = false, advisorId = null) {
+    const a = advisorId || currentAdvisor;
     const div = document.createElement('div');
-    div.className = `chat-msg ${type}`;
+    const advisorClass = ADVISORS[a].colorClass + '-msg';
+    div.className = `chat-msg ${type} ${type === 'bot' ? advisorClass : ''}`;
     
     if (type === 'bot' && !isWelcome) {
-        div.innerHTML = `<div class="msg-name">${ADVISOR.name}</div>` + text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+        const nameClass = ADVISORS[a].colorClass + '-name';
+        div.innerHTML = `<div class="msg-name ${nameClass}">${ADVISORS[a].name}</div>` + text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
     } else {
         div.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
     }
@@ -637,9 +842,10 @@ async function sendMessage() {
     chatSend.disabled = true;
     
     // Show typing
+    const a = ADVISORS[currentAdvisor];
     const typingDiv = document.createElement('div');
-    typingDiv.className = 'chat-msg bot';
-    typingDiv.innerHTML = '<span style="opacity:0.5">Alex is typing...</span>';
+    typingDiv.className = `chat-msg bot ${a.colorClass}-msg`;
+    typingDiv.innerHTML = `<span style="opacity:0.5">${a.name.split(' ')[0]} is typing...</span>`;
     chatMessages.appendChild(typingDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
     
@@ -648,7 +854,7 @@ async function sendMessage() {
     
     // Build context-aware system prompt
     const mem = getClientMemory();
-    let systemPrompt = `You are ${ADVISOR.name}, ${ADVISOR.role}. Personality: ${ADVISOR.personality}. Give concise, educational answers (2-4 sentences max). Always include risk disclaimer if discussing investments. Never recommend specific stocks.`;
+    let systemPrompt = ADVISORS[currentAdvisor].systemPrompt;
     
     if (mem) {
         if (mem.name) systemPrompt += ` The client's name is ${mem.name} — use it naturally.`;
@@ -670,7 +876,7 @@ async function sendMessage() {
                 model: 'llama-3.1-8b-instant',
                 messages: [
                     { role: 'system', content: systemPrompt },
-                    ...chatHistory.slice(-6),
+                    ...chatHistories[currentAdvisor].slice(-6),
                     { role: 'user', content: text }
                 ],
                 max_tokens: 300,
@@ -681,8 +887,8 @@ async function sendMessage() {
         if (response.ok) {
             const data = await response.json();
             reply = data.choices[0].message.content;
-            chatHistory.push({ role: 'user', content: text });
-            chatHistory.push({ role: 'assistant', content: reply });
+            chatHistories[currentAdvisor].push({ role: 'user', content: text });
+            chatHistories[currentAdvisor].push({ role: 'assistant', content: reply });
         } else {
             throw new Error('API error');
         }
@@ -697,6 +903,20 @@ async function sendMessage() {
     addMessage(reply, 'bot');
     chatSend.disabled = false;
     chatInput.focus();
+    
+    // Auto-suggest advisor switch if relevant
+    const suggestSwitch = shouldSuggestSwitch(text);
+    if (suggestSwitch && suggestSwitch !== currentAdvisor) {
+        const otherAdvisor = ADVISORS[suggestSwitch];
+        const suggestDiv = document.createElement('div');
+        suggestDiv.className = 'transfer-notice';
+        suggestDiv.style.cursor = 'pointer';
+        suggestDiv.style.marginTop = '8px';
+        suggestDiv.innerHTML = `💡 <strong>${otherAdvisor.name}</strong> specializes in this topic. <u>Click here to switch</u>`;
+        suggestDiv.onclick = function() { switchAdvisor(suggestSwitch); };
+        chatMessages.appendChild(suggestDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
 }
 
 chatInput.addEventListener('keydown', function(e) {
@@ -707,6 +927,7 @@ chatInput.addEventListener('keydown', function(e) {
 const MODAL_DATA = {
     ta: {
         title: '📈 Technical Analysis Basics',
+        advisor: 'alex',
         content: `
             <h3>What is Technical Analysis?</h3>
             <p>Technical analysis (TA) studies past price movements to predict future direction. It's based on three core principles:</p>
@@ -717,13 +938,13 @@ const MODAL_DATA = {
             </ul>
             
             <h3>Support & Resistance</h3>
-            <p><strong>Support</strong> is a price level where buying pressure emerges — like a floor that prevents further decline. <strong>Resistance</strong> is where selling pressure kicks in — like a ceiling blocking further rise.</p>
+            <p><strong>Support</strong> is a price level where buying pressure emerges — like a floor. <strong>Resistance</strong> is where selling pressure kicks in — like a ceiling.</p>
             <div class="highlight-box">
-                <strong>Key Rule:</strong> The more times a level is tested, the stronger it becomes. When resistance breaks, it often flips to become new support — and vice versa.
+                <strong>Key Rule:</strong> The more times a level is tested, the stronger it becomes. When resistance breaks, it often flips to become new support.
             </div>
             
             <h3>Trend Lines</h3>
-            <p>Connect at least two higher lows for an uptrend line, or two lower highs for a downtrend line. The more touches, the more valid the line. A trend line break often signals a trend change.</p>
+            <p>Connect at least two higher lows for an uptrend line, or two lower highs for a downtrend line. The more touches, the more valid the line.</p>
             
             <h3>Practical Tips</h3>
             <ul>
@@ -736,6 +957,7 @@ const MODAL_DATA = {
     },
     indicators: {
         title: '📊 Key Indicators: RSI, MACD & Moving Averages',
+        advisor: 'alex',
         content: `
             <h3>RSI (Relative Strength Index)</h3>
             <p>RSI measures momentum on a scale of 0-100. The magic numbers are <strong>30 and 70</strong>:</p>
@@ -758,44 +980,38 @@ const MODAL_DATA = {
             <ul>
                 <li><strong>50/200 Golden Cross</strong> — strong long-term bullish signal</li>
                 <li><strong>50/200 Death Cross</strong> — long-term bearish warning</li>
-                <li>MAs act as dynamic support in uptrends, dynamic resistance in downtrends</li>
+                <li>MAs act as dynamic support in uptrends</li>
             </ul>
             
-            <h3>Bollinger Bands</h3>
-            <p>Three lines: middle (20 MA), upper and lower (±2 std dev). Price touching upper = overbought, lower = oversold. <strong>Band squeeze</strong> (narrowing) signals a big move is coming.</p>
-            
             <div class="highlight-box">
-                <strong>Pro Tip:</strong> Never rely on a single indicator. Combine RSI with support/resistance, confirm MACD signals with volume, and always use multiple timeframes.
+                <strong>Pro Tip:</strong> Never rely on a single indicator. Combine RSI with support/resistance, confirm MACD signals with volume.
             </div>
         `
     },
     candlestick: {
         title: '🕯️ Candlestick Patterns',
+        advisor: 'alex',
         content: `
             <h3>Reading Candlesticks</h3>
-            <p>Each candle shows 4 data points: Open, High, Low, Close. The body shows the open-close range. The wicks (shadows) show the high-low range.</p>
+            <p>Each candle shows 4 data points: Open, High, Low, Close. The body shows the open-close range. The wicks show the high-low range.</p>
             
             <h3>Key Reversal Patterns</h3>
             <ul>
                 <li><strong>Hammer</strong> — small body at top, long lower shadow at bottom of downtrend = bullish reversal</li>
                 <li><strong>Engulfing</strong> — large candle completely covers the previous one = strong reversal</li>
                 <li><strong>Doji</strong> — open ≈ close = indecision, trend may be changing</li>
-                <li><strong>Morning Star</strong> — 3-candle bullish reversal pattern at bottom</li>
-                <li><strong>Evening Star</strong> — 3-candle bearish reversal pattern at top</li>
+                <li><strong>Morning Star</strong> — 3-candle bullish reversal pattern</li>
+                <li><strong>Evening Star</strong> — 3-candle bearish reversal pattern</li>
             </ul>
             
-            <h3>Important Notes</h3>
             <div class="highlight-box">
-                <strong>Always confirm:</strong> A single candlestick pattern is NOT a trade signal. Confirm with:
-                <br>• Volume (higher volume = more reliable)
-                <br>• Support/resistance level
-                <br>• The next candle's confirmation
-                <br>• Multiple timeframe alignment
+                <strong>Always confirm:</strong> A single candlestick pattern is NOT a trade signal. Confirm with volume, support/resistance, and the next candle.
             </div>
         `
     },
     risk: {
         title: '🛡️ Risk Management',
+        advisor: 'alex',
         content: `
             <h3>The #1 Rule: Protect Your Capital</h3>
             <p>Most traders lose money not because they're wrong about direction, but because they don't manage risk properly.</p>
@@ -803,13 +1019,12 @@ const MODAL_DATA = {
             <h3>Stop Loss Rules</h3>
             <ul>
                 <li><strong>ALWAYS</strong> set stop loss BEFORE entering a trade</li>
-                <li>For longs: place stop just below nearest support (give it room)</li>
+                <li>For longs: place stop just below nearest support</li>
                 <li>For shorts: place stop just above nearest resistance</li>
-                <li>Never move your stop loss further away to "give it more room"</li>
+                <li>Never move your stop loss further away</li>
             </ul>
             
             <h3>The 1:3 Risk-Reward Ratio</h3>
-            <p>If you risk $3 on your stop loss, aim for at least $9 on your take profit. This is the <strong>1:3 R:R ratio</strong>.</p>
             <div class="highlight-box">
                 <strong>The Math:</strong> With a 1:3 R:R ratio, even if you're only right 40% of the time:
                 <br>• 10 trades: 4 wins × $9 = $36, 6 losses × $3 = $18
@@ -817,21 +1032,22 @@ const MODAL_DATA = {
             </div>
             
             <h3>Position Sizing</h3>
-            <p>Never risk more than 1-2% of your total capital on a single trade. If you have $10,000, your maximum risk per trade is $100-$200.</p>
+            <p>Never risk more than 1-2% of your total capital on a single trade.</p>
         `
     },
     fundamentals: {
         title: '💰 Fundamental Analysis',
+        advisor: 'sarah',
         content: `
             <h3>What is Fundamental Analysis?</h3>
             <p>Fundamental analysis evaluates a company's intrinsic value by examining financial statements, industry position, and economic conditions.</p>
             
             <h3>Key Metrics</h3>
             <ul>
-                <li><strong>P/E Ratio</strong> — Price per share ÷ Earnings per share. Lower = cheaper (compare within same industry). A P/E of 15 means you pay $15 for every $1 of earnings.</li>
-                <li><strong>EPS (Earnings Per Share)</strong> — Net income ÷ shares outstanding. Rising EPS over multiple quarters is bullish. Watch for "earnings surprise" — beating expectations often triggers stock rallies.</li>
-                <li><strong>ROE (Return on Equity)</strong> — Net income ÷ shareholder equity. Buffett looks for consistent ROE > 15%. Measures how efficiently the company uses investor capital.</li>
-                <li><strong>Revenue Growth</strong> — Consistently growing revenue is the foundation of long-term stock appreciation.</li>
+                <li><strong>P/E Ratio</strong> — Price per share ÷ Earnings per share. Lower = cheaper (compare within same industry).</li>
+                <li><strong>EPS (Earnings Per Share)</strong> — Net income ÷ shares outstanding. Rising EPS is bullish.</li>
+                <li><strong>ROE (Return on Equity)</strong> — Buffett looks for consistent ROE > 15%.</li>
+                <li><strong>Revenue Growth</strong> — consistently growing revenue is the foundation of long-term appreciation.</li>
             </ul>
             
             <h3>Valuation Methods</h3>
@@ -842,27 +1058,27 @@ const MODAL_DATA = {
             </ul>
             
             <div class="highlight-box">
-                <strong>Key Insight:</strong> Fundamentals tell you WHAT to buy (which companies are strong). Technicals tell you WHEN to buy (timing your entry). The best investors use both.
+                <strong>Key Insight:</strong> Fundamentals tell you WHAT to buy. Technicals tell you WHEN to buy. The best investors use both.
             </div>
         `
     },
     macro: {
         title: '🌍 Macroeconomic Indicators',
+        advisor: 'sarah',
         content: `
             <h3>Why Macro Matters</h3>
-            <p>Individual stocks don't exist in a vacuum — they're influenced by the broader economy. Understanding macro helps you anticipate market direction.</p>
+            <p>Individual stocks don't exist in a vacuum — they're influenced by the broader economy.</p>
             
             <h3>Key Indicators</h3>
             <ul>
-                <li><strong>CPI (Consumer Price Index)</strong> — measures inflation. High CPI → Fed may raise rates → bearish for stocks. Low CPI → potential rate cuts → bullish.</li>
-                <li><strong>NFP (Non-Farm Payrolls)</strong> — monthly jobs report. Strong NFP = healthy economy = generally bullish. But too strong may mean Fed stays hawkish.</li>
-                <li><strong>GDP</strong> — total economic output. Growing GDP = bullish. Two quarters of decline = recession. Markets are forward-looking — they react to expectations.</li>
-                <li><strong>Fed Rate Decision</strong> — the single most important macro event. Rate hikes = headwind for stocks. Rate cuts = tailwind. The "Fed pivot" often triggers major rallies.</li>
+                <li><strong>CPI (Consumer Price Index)</strong> — measures inflation. High CPI → Fed may raise rates → bearish.</li>
+                <li><strong>NFP (Non-Farm Payrolls)</strong> — monthly jobs report. Strong NFP = healthy economy.</li>
+                <li><strong>GDP</strong> — total economic output. Growing GDP = bullish. Two quarters of decline = recession.</li>
+                <li><strong>Fed Rate Decision</strong> — the single most important macro event.</li>
             </ul>
             
-            <h3>How to Use Macro</h3>
             <div class="highlight-box">
-                <strong>Economic Calendar:</strong> Always check the economic calendar before trading. Major releases (CPI, NFP, FOMC) can cause significant volatility. Consider reducing position size around these events.
+                <strong>Economic Calendar:</strong> Always check the economic calendar before trading. Major releases can cause significant volatility.
             </div>
             
             <h3>Free Resources</h3>
@@ -878,12 +1094,13 @@ const MODAL_DATA = {
 function openModal(id) {
     const data = MODAL_DATA[id];
     if (!data) return;
+    const advisorName = ADVISORS[data.advisor].name;
     document.getElementById('modalContent').innerHTML = `
         <button class="modal-close" onclick="document.getElementById('modalOverlay').classList.remove('active')">✕</button>
         <h2>${data.title}</h2>
         ${data.content}
         <div style="margin-top:24px;text-align:center;">
-            <a href="#chat" class="btn btn-primary" onclick="document.getElementById('modalOverlay').classList.remove('active')" style="font-size:0.9em;padding:10px 20px;">💬 Ask Alex about this topic</a>
+            <a href="#chat" class="btn btn-primary" onclick="switchAdvisor('${data.advisor}'); document.getElementById('modalOverlay').classList.remove('active')" style="font-size:0.9em;padding:10px 20px;">💬 Ask ${advisorName.split(' ')[0]} about this</a>
         </div>
     `;
     document.getElementById('modalOverlay').classList.add('active');
