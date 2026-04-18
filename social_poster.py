@@ -68,6 +68,10 @@ POSTPROXY_API_KEY = os.environ.get("POSTPROXY_API_KEY", "")
 TIKTOK_VIDEO_URL = os.environ.get("TIKTOK_VIDEO_URL", "")
 TIKTOK_MODE = os.environ.get("TIKTOK_MODE", "slideshow").lower()
 
+# Bluesky
+BLUESKY_HANDLE = os.environ.get("BLUESKY_HANDLE", "")
+BLUESKY_APP_PASSWORD = os.environ.get("BLUESKY_APP_PASSWORD", "")
+
 # AI
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 
@@ -429,6 +433,120 @@ def post_linkedin(text):
 
 
 # ============================================================
+# Bluesky Poster (AT Protocol)
+# ============================================================
+PDS_URL = "https://bsky.social/xrpc"
+
+
+def post_bluesky(text):
+    """Post to Bluesky using AT Protocol API."""
+    if not BLUESKY_HANDLE or not BLUESKY_APP_PASSWORD:
+        print("  Bluesky: Missing BLUESKY_HANDLE or BLUESKY_APP_PASSWORD")
+        return False
+
+    # Step 1: Create session
+    try:
+        session_resp = requests.post(
+            f"{PDS_URL}/com.atproto.server.createSession",
+            json={"identifier": BLUESKY_HANDLE, "password": BLUESKY_APP_PASSWORD},
+            timeout=15,
+        )
+        if session_resp.status_code != 200:
+            print("  Bluesky: Auth FAIL HTTP " + str(session_resp.status_code) + " - " + session_resp.text[:200])
+            return False
+        session = session_resp.json()
+        access_jwt = session["accessJwt"]
+        did = session["did"]
+    except Exception as e:
+        print("  Bluesky: Auth FAIL - " + str(e))
+        return False
+
+    # Step 2: Create post (max 300 graphemes)
+    if len(text) > 290:
+        text = text[:287] + "..."
+
+    record = {
+        "$type": "app.bsky.feed.post",
+        "text": text,
+        "createdAt": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+    }
+
+    try:
+        r = requests.post(
+            f"{PDS_URL}/com.atproto.repo.createRecord",
+            headers={"Authorization": "Bearer " + access_jwt},
+            json={"repo": did, "collection": "app.bsky.feed.post", "record": record},
+            timeout=15,
+        )
+        if r.status_code in [200, 201]:
+            uri = r.json().get("uri", "")
+            print("  Bluesky: Posted! URI: " + str(uri))
+            if HAS_ANALYTICS:
+                log_post(platform="bluesky", post_type="post", content_preview=text[:100], post_id=str(uri), status="success")
+            return True
+        else:
+            print("  Bluesky: FAIL HTTP " + str(r.status_code) + " - " + r.text[:300])
+            if HAS_ANALYTICS:
+                log_post(platform="bluesky", post_type="post", content_preview=text[:100], status="failed", error_msg=f"HTTP {r.status_code}")
+            return False
+    except Exception as e:
+        print("  Bluesky: FAIL - " + str(e))
+        if HAS_ANALYTICS:
+            log_post(platform="bluesky", post_type="post", content_preview=text[:100], status="failed", error_msg=str(e)[:200])
+        return False
+
+
+def generate_bluesky_content():
+    """Generate a Bluesky post (max 300 chars)."""
+    if not GROQ_API_KEY:
+        return get_fallback_bluesky()
+
+    try:
+        from groq import Groq
+        client = Groq(api_key=GROQ_API_KEY)
+
+        now = datetime.datetime.utcnow()
+        day = now.strftime("%A")
+
+        tags = " ".join(HASHTAGS[:3])
+
+        response = client.chat.completions.create(
+            model="llama-3.1-8b-instant",
+            messages=[{
+                "role": "user",
+                "content": (
+                    "You are a professional market analyst at BroadFSC. "
+                    "Write ONE short market insight post for Bluesky.\n"
+                    "Today is " + day + ".\n\n"
+                    "Requirements:\n"
+                    "- Maximum 280 characters\n"
+                    "- Include 1 specific market observation\n"
+                    "- End with: " + tags + "\n"
+                    "- Do NOT include any links\n"
+                    "- Do NOT promise returns"
+                )
+            }],
+            max_tokens=100,
+            temperature=0.8
+        )
+        return response.choices[0].message.content.strip()
+    except Exception as e:
+        print("  AI Bluesky generation failed: " + str(e))
+        return get_fallback_bluesky()
+
+
+def get_fallback_bluesky():
+    """Fallback Bluesky content."""
+    posts = [
+        "Global markets update: Central bank policy divergence continues to drive cross-currency flows. Stay informed with daily briefings. #Investing #Trading #MarketAnalysis",
+        "Key themes this week: Fed signals, earnings season, and geopolitical risk premiums shaping commodity markets. #StockMarket #Investing #Finance",
+        "From Tokyo to New York, markets move fast. BroadFSC delivers AI-powered daily market briefings. #Investing #Trading #MarketAnalysis",
+    ]
+    idx = datetime.datetime.utcnow().timetuple().tm_yday % len(posts)
+    return posts[idx]
+
+
+# ============================================================
 # Content Generation
 # ============================================================
 def generate_tweet_content():
@@ -732,6 +850,21 @@ def main():
     else:
         print("Discord: Not configured")
         print("  To enable, set DISCORD_BOT_TOKEN and DISCORD_CHANNEL_ID in GitHub Secrets")
+    print()
+    
+    # --- Bluesky ---
+    print("--- Bluesky ---")
+    if BLUESKY_HANDLE and BLUESKY_APP_PASSWORD:
+        print("Bluesky: Configured (" + BLUESKY_HANDLE + ")")
+        bluesky_post = generate_bluesky_content()
+        print("  Content: " + bluesky_post[:100] + "...")
+        post_bluesky(bluesky_post)
+    else:
+        print("Bluesky: Not configured")
+        print("  To enable, set BLUESKY_HANDLE and BLUESKY_APP_PASSWORD in GitHub Secrets")
+        print("  1. Register at bsky.app")
+        print("  2. Go to Settings > App Passwords > Generate")
+        print("  3. Set BLUESKY_HANDLE=yourname.bsky.social and BLUESKY_APP_PASSWORD=xxxx-xxxx-xxxx-xxxx")
     print()
     
     # --- TikTok ---

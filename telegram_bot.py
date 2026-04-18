@@ -672,6 +672,7 @@ Return ONLY the JSON, nothing else:"""
             return []
         try:
             import urllib.request
+            _proxy = os.environ.get("TELEGRAM_PROXY", "http://127.0.0.1:10808")
             body = json.dumps({
                 "knowledge_base_id": self.ima_kb_id,
                 "query": query,
@@ -684,7 +685,10 @@ Return ONLY the JSON, nothing else:"""
             req.add_header("ima-openapi-clientid", self.ima_client_id)
             req.add_header("ima-openapi-apikey", self.ima_api_key)
             req.add_header("Content-Type", "application/json; charset=utf-8")
-            resp = json.loads(urllib.request.urlopen(req, timeout=15).read())
+            
+            _handler = urllib.request.ProxyHandler({"https": _proxy, "http": _proxy}) if _proxy else None
+            _opener = urllib.request.build_opener(_handler) if _handler else urllib.request.build_opener()
+            resp = json.loads(_opener.open(req, timeout=15).read())
             
             if resp.get("code") == 0 and resp.get("data", {}).get("result"):
                 results = resp["data"]["result"]
@@ -699,6 +703,7 @@ Return ONLY the JSON, nothing else:"""
             return False
         try:
             import urllib.request
+            _proxy = os.environ.get("TELEGRAM_PROXY", "http://127.0.0.1:10808")
             body = json.dumps({
                 "media_type": 11,  # 笔记类型
                 "title": title,
@@ -712,7 +717,9 @@ Return ONLY the JSON, nothing else:"""
             req.add_header("ima-openapi-clientid", self.ima_client_id)
             req.add_header("ima-openapi-apikey", self.ima_api_key)
             req.add_header("Content-Type", "application/json; charset=utf-8")
-            resp = json.loads(urllib.request.urlopen(req, timeout=15).read())
+            _handler = urllib.request.ProxyHandler({"https": _proxy, "http": _proxy}) if _proxy else None
+            _opener = urllib.request.build_opener(_handler) if _handler else urllib.request.build_opener()
+            resp = json.loads(_opener.open(req, timeout=15).read())
             return resp.get("code") == 0
         except Exception as e:
             logger.warning(f"IMA save failed: {e}")
@@ -1789,7 +1796,29 @@ def main():
     annoyance_file = os.path.join(memory_dir, "annoyance_scores.json")
     EmotionalIntelligence.load_annoyance(annoyance_file)
 
-    app = Application.builder().token(token).build()
+    # 代理配置（V2rayN / Clash 等本地代理）
+    _proxy = os.environ.get("TELEGRAM_PROXY", "http://127.0.0.1:10808")
+    # 验证代理是否可用（不强制，连不上也尝试直连）
+    try:
+        import urllib.request
+        _test = urllib.request.ProxyHandler({"https": _proxy, "http": _proxy})
+        _opener = urllib.request.build_opener(_test)
+        _opener.open("https://api.telegram.org", timeout=3)
+        logger.info(f"🌐 Proxy {_proxy} — OK")
+    except Exception:
+        logger.info(f"🌐 Proxy unavailable — trying direct connection")
+        _proxy = None
+
+    if _proxy:
+        app = (
+            Application.builder()
+            .token(token)
+            .proxy(_proxy)
+            .get_updates_proxy(_proxy)
+            .build()
+        )
+    else:
+        app = Application.builder().token(token).build()
 
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("help", help_command))
