@@ -1,1128 +1,993 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BroadFSC — Investment Education & Advisory</title>
-    <meta name="description" content="Free investment education, technical analysis tutorials, and AI-powered advisory from Broad Investment Securities (BroadFSC). Learn trading strategies, risk management, and market analysis.">
-    <meta name="keywords" content="investment education, technical analysis, trading strategies, stock market, financial advisory, BroadFSC">
-    <meta name="author" content="Broad Investment Securities">
-    <meta property="og:title" content="BroadFSC — Investment Education & Advisory">
-    <meta property="og:description" content="Free investment education, AI-powered advisory, and professional trading insights.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://msli2233bin.github.io/broadfsc-automation/">
-    <link rel="canonical" href="https://msli2233bin.github.io/broadfsc-automation/">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; background: #0a0e27; color: #e0e6f0; line-height: 1.6; overflow-x: hidden; }
-        
-        /* === NAV === */
-        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,14,39,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 0 24px; }
-        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
-        .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; font-weight: 700; font-size: 1.2em; }
-        .nav-logo .icon { width: 36px; height: 36px; background: linear-gradient(135deg, #42a5f5, #66bb6a); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-        .nav-links { display: flex; gap: 8px; }
-        .nav-links a { color: rgba(255,255,255,0.6); text-decoration: none; padding: 8px 16px; border-radius: 8px; font-size: 0.9em; transition: all 0.2s; }
-        .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.08); }
-        .nav-cta { background: linear-gradient(135deg, #42a5f5, #1e88e5) !important; color: #fff !important; font-weight: 600; }
-        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(66,165,245,0.3); }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BroadFSC Pro — Global AI Investment Education Platform</title>
+<meta name="description" content="The world's largest AI-powered investment education platform. Free professional research reports, 30+ structured courses, real-time market insights, and multilingual AI advisory. Learn trading strategies, technical analysis, and risk management from industry experts.">
+<meta name="keywords" content="investment education, AI investment advisor, trading courses, technical analysis, stock market, forex, cryptocurrency, research reports, financial advisory, BroadFSC">
+<meta name="author" content="Broad Investment Securities">
+<meta property="og:title" content="BroadFSC Pro — Global AI Investment Education Platform">
+<meta property="og:description" content="Free professional research reports, 30+ courses, AI-powered advisory in 16 languages. The world's most accessible investment education.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://msli2233bin.github.io/broadfsc-automation/og-image.png">
+<link rel="canonical" href="https://msli2233bin.github.io/broadfsc-automation/">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root{
+--bg:#060b18;--bg2:#0c1225;--bg3:#111a33;--bg4:#162040;
+--blue:#3b82f6;--blue2:#2563eb;--cyan:#06b6d4;--green:#10b981;--green2:#059669;
+--purple:#8b5cf6;--orange:#f59e0b;--red:#ef4444;
+--text:#e2e8f0;--text2:#94a3b8;--text3:#64748b;
+--border:rgba(255,255,255,0.06);--glass:rgba(255,255,255,0.03);
+--radius:16px;--radius2:12px;--radius3:8px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:3px}
 
-        /* === HERO === */
-        .hero { padding: 120px 24px 80px; text-align: center; background: linear-gradient(180deg, #0f1640 0%, #0a0e27 100%); position: relative; overflow: hidden; }
-        .hero::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 30% 50%, rgba(66,165,245,0.08) 0%, transparent 50%), radial-gradient(circle at 70% 50%, rgba(102,187,106,0.06) 0%, transparent 50%); animation: heroGlow 15s ease-in-out infinite alternate; }
-        @keyframes heroGlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(5deg); } }
-        .hero-content { position: relative; max-width: 800px; margin: 0 auto; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(66,165,245,0.1); border: 1px solid rgba(66,165,245,0.2); border-radius: 20px; padding: 6px 16px; font-size: 0.85em; color: #42a5f5; margin-bottom: 24px; }
-        .hero-badge .dot { width: 6px; height: 6px; background: #4caf50; border-radius: 50%; animation: pulse 2s infinite; }
-        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
-        .hero h1 { font-size: 3em; font-weight: 800; line-height: 1.1; margin-bottom: 20px; background: linear-gradient(135deg, #fff 0%, #b3e5fc 50%, #69f0ae 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { font-size: 1.15em; color: rgba(255,255,255,0.6); max-width: 600px; margin: 0 auto 32px; }
-        .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 12px; font-size: 1em; font-weight: 600; text-decoration: none; transition: all 0.2s; border: none; cursor: pointer; }
-        .btn-primary { background: linear-gradient(135deg, #42a5f5, #1e88e5); color: #fff; box-shadow: 0 4px 20px rgba(66,165,245,0.3); }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(66,165,245,0.4); }
-        .btn-secondary { background: rgba(255,255,255,0.06); color: #fff; border: 1px solid rgba(255,255,255,0.12); }
-        .btn-secondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
-        .hero-stats { display: flex; gap: 40px; justify-content: center; margin-top: 48px; flex-wrap: wrap; }
-        .hero-stat { text-align: center; }
-        .hero-stat .num { font-size: 2em; font-weight: 800; color: #42a5f5; }
-        .hero-stat .label { font-size: 0.85em; color: rgba(255,255,255,0.4); }
+/* === NAV === */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(6,11,24,0.85);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 24px}
+.nav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15em;letter-spacing:-0.5px}
+.nav-logo .ico{width:36px;height:36px;background:linear-gradient(135deg,var(--blue),var(--green));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.nav-links{display:flex;gap:4px;align-items:center}
+.nav-links a{color:var(--text2);padding:8px 14px;border-radius:8px;font-size:.88em;font-weight:500;transition:all .2s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.nav-links a.active{color:#fff;background:rgba(59,130,246,.15)}
+.nav-cta{background:linear-gradient(135deg,var(--blue),var(--blue2))!important;color:#fff!important;font-weight:600;padding:8px 20px!important}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(59,130,246,.35)}
+.nav-mobile-btn{display:none;background:none;border:none;color:#fff;font-size:1.5em;cursor:pointer}
 
-        /* === SECTIONS === */
-        .section { padding: 80px 24px; max-width: 1200px; margin: 0 auto; }
-        .section-header { text-align: center; margin-bottom: 48px; }
-        .section-header h2 { font-size: 2em; font-weight: 700; margin-bottom: 12px; }
-        .section-header p { color: rgba(255,255,255,0.5); max-width: 600px; margin: 0 auto; }
-        .section-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); margin: 0 auto; max-width: 600px; }
+/* === TICKER === */
+.ticker-bar{background:var(--bg2);border-bottom:1px solid var(--border);padding:8px 0;overflow:hidden;margin-top:64px}
+.ticker-track{display:flex;animation:tickerScroll 40s linear infinite;white-space:nowrap}
+.ticker-item{display:inline-flex;align-items:center;gap:6px;padding:0 24px;font-size:.82em;font-weight:500}
+.ticker-item .sym{color:var(--text2)}
+.ticker-item .price{color:var(--text);font-weight:600}
+.ticker-item .chg.up{color:var(--green)}
+.ticker-item .chg.dn{color:var(--red)}
+@keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-        /* === ADVISOR TEAM SELECTOR === */
-        .advisor-team { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
-        .advisor-select-card { background: rgba(255,255,255,0.03); border: 2px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 20px; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 16px; }
-        .advisor-select-card:hover { border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); }
-        .advisor-select-card.active-alex { border-color: #42a5f5; background: rgba(66,165,245,0.08); }
-        .advisor-select-card.active-sarah { border-color: #ab47bc; background: rgba(171,71,188,0.08); }
-        .advisor-select-card .sel-avatar { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,255,255,0.1); }
-        .advisor-select-card.active-alex .sel-avatar { border-color: #42a5f5; }
-        .advisor-select-card.active-sarah .sel-avatar { border-color: #ab47bc; }
-        .sel-info .sel-name { font-weight: 700; font-size: 1.05em; color: #fff; }
-        .sel-info .sel-role { font-size: 0.85em; color: rgba(255,255,255,0.5); }
-        .sel-info .sel-spec { font-size: 0.8em; color: rgba(255,255,255,0.4); margin-top: 4px; }
-        .sel-online { display: inline-flex; align-items: center; gap: 4px; font-size: 0.75em; color: #4caf50; margin-top: 4px; }
-        .sel-online::before { content: ''; width: 6px; height: 6px; background: #4caf50; border-radius: 50%; animation: pulse 2s infinite; }
+/* === HERO === */
+.hero{padding:80px 24px 60px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(180deg,#0a1628 0%,var(--bg) 100%)}
+.hero canvas{position:absolute;top:0;left:0;width:100%;height:100%;opacity:.3;pointer-events:none}
+.hero-content{position:relative;max-width:860px;margin:0 auto}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.2);border-radius:24px;padding:6px 18px;font-size:.85em;color:var(--blue);margin-bottom:20px}
+.hero-badge .dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:3.2em;font-weight:800;line-height:1.08;margin-bottom:18px;background:linear-gradient(135deg,#fff 0%,#93c5fd 40%,#6ee7b7 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-1px}
+.hero p{font-size:1.15em;color:var(--text2);max-width:620px;margin:0 auto 28px}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--radius2);font-size:1em;font-weight:600;transition:all .25s;border:none;cursor:pointer}
+.btn-p{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;box-shadow:0 4px 24px rgba(59,130,246,.3)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(59,130,246,.4)}
+.btn-s{background:rgba(255,255,255,.05);color:#fff;border:1px solid rgba(255,255,255,.1)}
+.btn-s:hover{background:rgba(255,255,255,.08);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:48px;justify-content:center;flex-wrap:wrap}
+.hero-stat .num{font-size:2em;font-weight:800;background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-stat .label{font-size:.82em;color:var(--text3);margin-top:2px}
 
-        /* === CHAT WIDGET - DUAL ADVISOR === */
-        .chat-section { background: linear-gradient(145deg, #141938, #1a2050); border-radius: 20px; padding: 40px; border: 1px solid rgba(255,255,255,0.06); margin-bottom: 80px; }
-        .chat-container { display: grid; grid-template-columns: 280px 1fr; gap: 32px; align-items: start; }
-        
-        /* Advisor Profile Card */
-        .advisor-profile { text-align: center; transition: all 0.3s; }
-        .advisor-avatar-wrap { width: 120px; height: 120px; margin: 0 auto 16px; border-radius: 50%; padding: 3px; position: relative; }
-        .advisor-avatar-wrap.alex-ring { background: linear-gradient(135deg, #42a5f5, #66bb6a); }
-        .advisor-avatar-wrap.sarah-ring { background: linear-gradient(135deg, #ab47bc, #ec407a); }
-        .advisor-avatar-wrap img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid #0a0e27; }
-        .advisor-online { position: absolute; bottom: 6px; right: 6px; width: 18px; height: 18px; background: #4caf50; border-radius: 50%; border: 3px solid #0a0e27; animation: pulse 2s infinite; }
-        .advisor-profile h3 { font-size: 1.3em; color: #fff; margin-bottom: 4px; }
-        .advisor-profile .advisor-title { font-size: 0.9em; margin-bottom: 12px; }
-        .advisor-profile .advisor-title.alex-color { color: #42a5f5; }
-        .advisor-profile .advisor-title.sarah-color { color: #ab47bc; }
-        .advisor-profile .advisor-bio { color: rgba(255,255,255,0.5); font-size: 0.85em; line-height: 1.6; margin-bottom: 16px; padding: 0 8px; }
-        .advisor-tags { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 20px; }
-        .advisor-tag { padding: 4px 10px; border-radius: 6px; font-size: 0.75em; }
-        .advisor-tag.alex-tag { background: rgba(66,165,245,0.1); border: 1px solid rgba(66,165,245,0.2); color: #42a5f5; }
-        .advisor-tag.sarah-tag { background: rgba(171,71,188,0.1); border: 1px solid rgba(171,71,188,0.2); color: #ab47bc; }
-        .advisor-daily { background: rgba(255,255,255,0.04); border-radius: 12px; padding: 16px; margin-top: 8px; text-align: left; }
-        .advisor-daily .daily-label { font-size: 0.75em; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-        .advisor-daily .daily-text { font-size: 0.85em; color: rgba(255,255,255,0.7); line-height: 1.6; font-style: italic; }
-        .advisor-daily .daily-date { font-size: 0.7em; color: rgba(255,255,255,0.3); margin-top: 6px; }
+/* === SECTIONS === */
+.section{padding:80px 24px}
+.section-inner{max-width:1280px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:48px}
+.section-header h2{font-size:2.2em;font-weight:800;letter-spacing:-0.5px;margin-bottom:12px}
+.section-header p{color:var(--text2);max-width:600px;margin:0 auto;font-size:1.05em}
+.section-header .accent{color:var(--blue)}
 
-        /* Switch button */
-        .switch-advisor-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 12px; padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); color: rgba(255,255,255,0.6); font-size: 0.85em; cursor: pointer; transition: all 0.2s; }
-        .switch-advisor-btn:hover { background: rgba(255,255,255,0.06); color: #fff; border-color: rgba(255,255,255,0.2); }
+/* === FEATURES GRID === */
+.features-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.feature-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:all .3s;position:relative;overflow:hidden}
+.feature-card:hover{border-color:rgba(59,130,246,.2);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.feature-card .icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px}
+.feature-card h3{font-size:1.1em;font-weight:700;margin-bottom:8px}
+.feature-card p{font-size:.9em;color:var(--text2);line-height:1.5}
+.feature-card .arrow{position:absolute;bottom:16px;right:16px;color:var(--text3);font-size:1.2em;transition:all .2s}
+.feature-card:hover .arrow{color:var(--blue);transform:translateX(4px)}
 
-        /* Chat Box */
-        .chat-box { background: #0d1229; border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); overflow: hidden; display: flex; flex-direction: column; max-height: 600px; }
-        .chat-header { padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 12px; }
-        .chat-header.alex-header { background: rgba(66,165,245,0.08); }
-        .chat-header.sarah-header { background: rgba(171,71,188,0.08); }
-        .chat-header-avatar { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
-        .chat-header-info .name { font-weight: 600; font-size: 0.95em; color: #fff; }
-        .chat-header-info .status { font-size: 0.8em; color: #4caf50; display: flex; align-items: center; gap: 4px; }
-        .chat-header-info .status::before { content: ''; width: 6px; height: 6px; background: #4caf50; border-radius: 50%; }
-        .chat-messages { padding: 20px; min-height: 280px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
-        .chat-msg { max-width: 85%; padding: 12px 16px; border-radius: 16px; font-size: 0.9em; line-height: 1.5; animation: msgIn 0.3s ease; }
-        @keyframes msgIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-        .chat-msg.bot { color: #e0e6f0; align-self: flex-start; border-bottom-left-radius: 4px; }
-        .chat-msg.bot.alex-msg { background: rgba(66,165,245,0.1); }
-        .chat-msg.bot.sarah-msg { background: rgba(171,71,188,0.1); }
-        .chat-msg.user { background: linear-gradient(135deg, #42a5f5, #1e88e5); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
-        .chat-msg.bot .msg-name { font-size: 0.75em; margin-bottom: 4px; font-weight: 600; }
-        .chat-msg.bot .msg-name.alex-name { color: #42a5f5; }
-        .chat-msg.bot .msg-name.sarah-name { color: #ab47bc; }
-        .chat-input-area { padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; gap: 10px; }
-        .chat-input { flex: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 12px 16px; color: #fff; font-size: 0.9em; outline: none; font-family: inherit; }
-        .chat-input:focus { border-color: #42a5f5; background: rgba(66,165,245,0.05); }
-        .chat-input::placeholder { color: rgba(255,255,255,0.3); }
-        .chat-send { background: linear-gradient(135deg, #42a5f5, #1e88e5); border: none; color: #fff; width: 44px; height: 44px; border-radius: 12px; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
-        .chat-send:hover { transform: scale(1.05); }
-        .chat-send:disabled { opacity: 0.5; cursor: not-allowed; }
-        .chat-disclaimer { font-size: 0.75em; color: rgba(255,255,255,0.3); text-align: center; padding: 8px; border-top: 1px solid rgba(255,255,255,0.03); }
+/* === COURSES === */
+.courses-tabs{display:flex;gap:8px;justify-content:center;margin-bottom:32px;flex-wrap:wrap}
+.courses-tab{padding:10px 24px;border-radius:24px;font-size:.9em;font-weight:600;cursor:pointer;transition:all .2s;background:rgba(255,255,255,.04);color:var(--text2);border:1px solid transparent}
+.courses-tab.active{background:rgba(59,130,246,.12);color:var(--blue);border-color:rgba(59,130,246,.2)}
+.courses-tab:hover:not(.active){background:rgba(255,255,255,.06)}
+.courses-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.course-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .3s;cursor:pointer}
+.course-card:hover{border-color:rgba(59,130,246,.2);transform:translateY(-3px)}
+.course-card .tag{display:inline-block;padding:3px 10px;border-radius:6px;font-size:.75em;font-weight:600;margin-bottom:12px}
+.course-card .tag.beg{background:rgba(16,185,129,.12);color:var(--green)}
+.course-card .tag.int{background:rgba(245,158,11,.12);color:var(--orange)}
+.course-card .tag.adv{background:rgba(239,68,68,.12);color:var(--red)}
+.course-card h3{font-size:1.05em;font-weight:700;margin-bottom:8px}
+.course-card p{font-size:.88em;color:var(--text2);margin-bottom:14px;line-height:1.5}
+.course-meta{display:flex;gap:16px;font-size:.8em;color:var(--text3)}
+.course-meta span{display:flex;align-items:center;gap:4px}
 
-        /* Transfer notice */
-        .transfer-notice { background: rgba(255,183,77,0.08); border: 1px solid rgba(255,183,77,0.15); border-radius: 10px; padding: 10px 16px; font-size: 0.85em; color: rgba(255,255,255,0.7); text-align: center; }
+/* === RESEARCH === */
+.research-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:16px}
+.research-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .3s;cursor:pointer}
+.research-card:hover{border-color:rgba(139,92,246,.2);transform:translateY(-3px)}
+.research-card .type{display:inline-block;padding:3px 10px;border-radius:6px;font-size:.75em;font-weight:600;margin-bottom:10px}
+.research-card .type.daily{background:rgba(6,182,212,.12);color:var(--cyan)}
+.research-card .type.weekly{background:rgba(139,92,246,.12);color:var(--purple)}
+.research-card .type.special{background:rgba(245,158,11,.12);color:var(--orange)}
+.research-card h3{font-size:1.05em;font-weight:700;margin-bottom:8px}
+.research-card p{font-size:.88em;color:var(--text2);margin-bottom:12px}
+.research-card .meta{display:flex;justify-content:space-between;font-size:.8em;color:var(--text3)}
 
-        /* === LEARNING CARDS === */
-        .learn-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; }
-        .learn-card { background: linear-gradient(145deg, #141938, #1a2050); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 28px; transition: all 0.3s; cursor: pointer; position: relative; overflow: hidden; }
-        .learn-card:hover { transform: translateY(-4px); border-color: rgba(66,165,245,0.3); box-shadow: 0 8px 30px rgba(66,165,245,0.1); }
-        .learn-card .card-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 16px; }
-        .learn-card .card-icon.ta { background: rgba(66,165,245,0.15); }
-        .learn-card .card-icon.fa { background: rgba(102,187,106,0.15); }
-        .learn-card .card-icon.risk { background: rgba(255,183,77,0.15); }
-        .learn-card .card-icon.macro { background: rgba(171,71,188,0.15); }
-        .learn-card .card-icon.cs { background: rgba(239,83,80,0.15); }
-        .learn-card .card-icon.tl { background: rgba(38,198,218,0.15); }
-        .learn-card h3 { font-size: 1.15em; font-weight: 600; color: #fff; margin-bottom: 8px; }
-        .learn-card p { font-size: 0.9em; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
-        .learn-card .topics { display: flex; flex-wrap: wrap; gap: 6px; }
-        .learn-card .topic-tag { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 4px 10px; font-size: 0.8em; color: rgba(255,255,255,0.6); }
-        .learn-card .arrow { position: absolute; bottom: 20px; right: 20px; color: rgba(255,255,255,0.2); font-size: 1.5em; transition: all 0.3s; }
-        .learn-card:hover .arrow { color: #42a5f5; transform: translateX(4px); }
+/* === FREE SOURCES === */
+.sources-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.source-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius2);padding:20px;text-align:center;transition:all .3s}
+.source-card:hover{border-color:rgba(16,185,129,.2);transform:translateY(-3px)}
+.source-card .logo{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 12px}
+.source-card h4{font-size:.95em;font-weight:700;margin-bottom:4px}
+.source-card p{font-size:.82em;color:var(--text2);margin-bottom:10px}
+.source-card .free-badge{display:inline-block;padding:3px 12px;border-radius:12px;font-size:.75em;font-weight:600;background:rgba(16,185,129,.12);color:var(--green)}
 
-        /* === DETAIL MODAL === */
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 200; backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 24px; }
-        .modal-overlay.active { display: flex; }
-        .modal { background: #141938; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); max-width: 700px; width: 100%; max-height: 80vh; overflow-y: auto; padding: 36px; position: relative; animation: modalIn 0.3s ease; }
-        @keyframes modalIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-        .modal-close { position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.06); border: none; color: rgba(255,255,255,0.5); width: 36px; height: 36px; border-radius: 10px; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; }
-        .modal-close:hover { background: rgba(255,255,255,0.1); color: #fff; }
-        .modal h2 { font-size: 1.5em; margin-bottom: 16px; color: #fff; }
-        .modal h3 { font-size: 1.1em; margin: 20px 0 8px; color: #42a5f5; }
-        .modal p, .modal li { color: rgba(255,255,255,0.7); font-size: 0.95em; line-height: 1.7; }
-        .modal ul { padding-left: 20px; margin: 8px 0; }
-        .modal li { margin-bottom: 4px; }
-        .modal .highlight-box { background: rgba(66,165,245,0.08); border: 1px solid rgba(66,165,245,0.15); border-radius: 12px; padding: 16px; margin: 16px 0; }
-        .modal .highlight-box strong { color: #42a5f5; }
+/* === AI CHAT === */
+.chat-section{background:linear-gradient(180deg,var(--bg2) 0%,var(--bg) 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.chat-container{max-width:800px;margin:0 auto;background:var(--bg3);border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.chat-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.chat-avatar{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--green));display:flex;align-items:center;justify-content:center;font-size:20px}
+.chat-header-info h4{font-size:1em;font-weight:700}
+.chat-header-info span{font-size:.82em;color:var(--green)}
+.chat-body{height:400px;overflow-y:auto;padding:20px 24px;display:flex;flex-direction:column;gap:16px}
+.chat-msg{max-width:80%;padding:14px 18px;border-radius:16px;font-size:.92em;line-height:1.6;animation:msgIn .3s ease}
+@keyframes msgIn{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:translateY(0)}}
+.chat-msg.bot{background:var(--bg4);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:4px}
+.chat-msg.user{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.chat-msg.bot .typing{display:inline-flex;gap:4px}
+.chat-msg.bot .typing span{width:6px;height:6px;background:var(--text3);border-radius:50%;animation:typingDot 1.4s infinite}
+.chat-msg.bot .typing span:nth-child(2){animation-delay:.2s}
+.chat-msg.bot .typing span:nth-child(3){animation-delay:.4s}
+@keyframes typingDot{0%,100%{opacity:.3}50%{opacity:1}}
+.chat-input-area{padding:16px 24px;border-top:1px solid var(--border);display:flex;gap:10px}
+.chat-input{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:12px 16px;color:var(--text);font-size:.92em;outline:none;transition:border-color .2s}
+.chat-input:focus{border-color:rgba(59,130,246,.4)}
+.chat-input::placeholder{color:var(--text3)}
+.chat-send{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--blue2));border:none;color:#fff;font-size:18px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+.chat-send:hover{transform:scale(1.05)}
 
-        /* === CONTACT === */
-        .contact-section { text-align: center; padding: 80px 24px; background: linear-gradient(180deg, #0a0e27, #0f1640); }
-        .contact-section h2 { font-size: 2em; margin-bottom: 12px; }
-        .contact-section > p { color: rgba(255,255,255,0.5); margin-bottom: 32px; }
-        .contact-grid { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; max-width: 800px; margin: 0 auto; }
-        .contact-card { background: linear-gradient(145deg, #141938, #1a2050); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 28px 32px; text-decoration: none; color: #e0e6f0; transition: all 0.3s; display: flex; align-items: center; gap: 16px; min-width: 240px; }
-        .contact-card:hover { transform: translateY(-4px); border-color: rgba(66,165,245,0.3); }
-        .contact-card .c-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
-        .contact-card .c-icon.tg { background: rgba(0,136,204,0.15); }
-        .contact-card .c-icon.wa { background: rgba(37,211,102,0.15); }
-        .contact-card .c-icon.ws { background: rgba(102,187,106,0.15); }
-        .contact-card .c-text .c-label { font-weight: 600; font-size: 1em; color: #fff; }
-        .contact-card .c-text .c-desc { font-size: 0.85em; color: rgba(255,255,255,0.4); }
+/* === GLOSSARY === */
+.glossary-search{max-width:500px;margin:0 auto 24px;position:relative}
+.glossary-search input{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:14px 20px 14px 44px;color:var(--text);font-size:1em;outline:none;transition:border-color .2s}
+.glossary-search input:focus{border-color:rgba(59,130,246,.4)}
+.glossary-search .s-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--text3)}
+.glossary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;max-height:600px;overflow-y:auto}
+.glossary-item{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius2);padding:16px;transition:all .2s;cursor:pointer}
+.glossary-item:hover{border-color:rgba(59,130,246,.2)}
+.glossary-item .term{font-weight:700;color:var(--blue);margin-bottom:4px;font-size:.95em}
+.glossary-item .def{font-size:.85em;color:var(--text2);line-height:1.5}
+.glossary-item .cat{display:inline-block;margin-top:8px;padding:2px 8px;border-radius:4px;font-size:.72em;background:rgba(139,92,246,.1);color:var(--purple)}
 
-        /* === FOOTER === */
-        .footer { text-align: center; padding: 40px 24px; border-top: 1px solid rgba(255,255,255,0.04); }
-        .footer p { color: rgba(255,255,255,0.3); font-size: 0.85em; }
-        .footer .disclaimer { max-width: 700px; margin: 12px auto 0; font-size: 0.8em; color: rgba(255,255,255,0.2); line-height: 1.5; }
+/* === TOOLS === */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.tool-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:28px;text-align:center;transition:all .3s}
+.tool-card:hover{border-color:rgba(6,182,212,.2);transform:translateY(-3px)}
+.tool-card .icon{font-size:40px;margin-bottom:12px}
+.tool-card h3{font-size:1.05em;font-weight:700;margin-bottom:8px}
+.tool-card p{font-size:.85em;color:var(--text2);margin-bottom:16px}
+.tool-card .btn{font-size:.85em;padding:10px 20px}
 
-        /* === RESPONSIVE === */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2em; }
-            .hero-stats { gap: 24px; }
-            .chat-container { grid-template-columns: 1fr; }
-            .advisor-profile { display: grid; grid-template-columns: 100px 1fr; text-align: left; gap: 16px; align-items: center; }
-            .advisor-avatar-wrap { width: 80px; height: 80px; margin: 0; }
-            .advisor-tags { justify-content: flex-start; }
-            .advisor-daily { grid-column: 1 / -1; }
-            .advisor-team { grid-template-columns: 1fr; }
-            .learn-grid { grid-template-columns: 1fr; }
-            .nav-links { display: none; }
-            .contact-grid { flex-direction: column; align-items: center; }
-            .modal { padding: 24px; margin: 12px; }
-            .switch-advisor-btn { grid-column: 1 / -1; }
-        }
-    </style>
+/* === CALC MODAL === */
+.calc-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:2000;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:24px}
+.calc-modal.open{display:flex}
+.calc-box{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:32px;max-width:480px;width:100%;max-height:90vh;overflow-y:auto;position:relative}
+.calc-box h3{font-size:1.3em;font-weight:700;margin-bottom:20px}
+.calc-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--text3);font-size:1.5em;cursor:pointer}
+.calc-close:hover{color:#fff}
+.calc-field{margin-bottom:16px}
+.calc-field label{display:block;font-size:.85em;font-weight:600;color:var(--text2);margin-bottom:6px}
+.calc-field input,.calc-field select{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:.95em;outline:none}
+.calc-field input:focus,.calc-field select:focus{border-color:rgba(59,130,246,.4)}
+.calc-result{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.15);border-radius:12px;padding:16px;text-align:center;margin-top:16px}
+.calc-result .value{font-size:2em;font-weight:800;background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.calc-result .label{font-size:.82em;color:var(--text3)}
+
+/* === TRUST === */
+.trust-bar{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;padding:40px 24px;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.trust-item{display:flex;align-items:center;gap:10px;font-size:.9em;color:var(--text2)}
+.trust-item .ico{font-size:1.4em}
+
+/* === FOOTER === */
+.footer{padding:60px 24px 30px;background:var(--bg2);border-top:1px solid var(--border)}
+.footer-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+.footer-brand p{font-size:.9em;color:var(--text3);margin-top:12px;max-width:300px;line-height:1.6}
+.footer h4{font-size:.85em;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text3);margin-bottom:16px}
+.footer a{display:block;color:var(--text2);font-size:.9em;padding:4px 0;transition:color .2s}
+.footer a:hover{color:#fff}
+.footer-bottom{max-width:1280px;margin:32px auto 0;padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:.82em;color:var(--text3)}
+
+/* === COURSE MODAL === */
+.course-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:2000;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);overflow-y:auto;padding:40px 24px}
+.course-modal.open{display:block}
+.course-detail{max-width:800px;margin:0 auto;background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:40px;position:relative}
+.course-detail .close-btn{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--text3);font-size:1.5em;cursor:pointer}
+.course-detail .close-btn:hover{color:#fff}
+.course-detail h2{font-size:1.8em;font-weight:800;margin-bottom:8px}
+.course-detail .tag{display:inline-block;padding:4px 12px;border-radius:6px;font-size:.8em;font-weight:600;margin-bottom:20px}
+.module-list{list-style:none;padding:0}
+.module-item{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin-bottom:10px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:14px}
+.module-item:hover{border-color:rgba(59,130,246,.2)}
+.module-item .num{width:32px;height:32px;border-radius:8px;background:rgba(59,130,246,.12);color:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85em;flex-shrink:0}
+.module-item .info{flex:1}
+.module-item .info h4{font-size:.95em;font-weight:600}
+.module-item .info p{font-size:.82em;color:var(--text3)}
+.module-item .dur{font-size:.82em;color:var(--text3)}
+.quiz-section{margin-top:32px;padding-top:24px;border-top:1px solid var(--border)}
+.quiz-section h3{font-size:1.2em;font-weight:700;margin-bottom:16px}
+.quiz-q{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:12px}
+.quiz-q h4{font-size:.95em;font-weight:600;margin-bottom:10px}
+.quiz-opts{display:flex;flex-direction:column;gap:6px}
+.quiz-opt{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:.9em;cursor:pointer;transition:all .2s}
+.quiz-opt:hover{border-color:rgba(59,130,246,.3)}
+.quiz-opt.correct{border-color:var(--green);background:rgba(16,185,129,.08);color:var(--green)}
+.quiz-opt.wrong{border-color:var(--red);background:rgba(239,68,68,.08);color:var(--red)}
+
+/* === RESPONSIVE === */
+@media(max-width:1024px){.features-grid{grid-template-columns:repeat(2,1fr)}.footer-inner{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){.nav-links{display:none}.nav-mobile-btn{display:block}.hero h1{font-size:2.2em}.features-grid{grid-template-columns:1fr}.courses-grid{grid-template-columns:1fr}.research-grid{grid-template-columns:1fr}.footer-inner{grid-template-columns:1fr}.hero-stats{gap:24px}.comparison-grid{grid-template-columns:1fr}}
+@media(max-width:480px){.hero h1{font-size:1.8em}.section{padding:48px 16px}.btn{padding:12px 20px;font-size:.9em}}
+</style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ========== NAV ========== -->
 <nav class="nav">
-    <div class="nav-inner">
-        <a href="#" class="nav-logo"><div class="icon">B</div> BroadFSC</a>
-        <div class="nav-links">
-            <a href="#chat">AI Advisors</a>
-            <a href="#learn">Learning Center</a>
-            <a href="#contact">Contact</a>
-            <a href="https://www.broadfsc.com/different" target="_blank" class="nav-cta">Official Site →</a>
-        </div>
-    </div>
+<div class="nav-inner">
+<a href="#" class="nav-logo"><span class="ico">📊</span> BroadFSC <span style="color:var(--blue);font-size:.7em;font-weight:500">PRO</span></a>
+<div class="nav-links" id="navLinks">
+<a href="#home" class="active">Home</a>
+<a href="#courses">Academy</a>
+<a href="#research">Research</a>
+<a href="#glossary">Glossary</a>
+<a href="#tools">Tools</a>
+<a href="#advisor" class="nav-cta">AI Advisor</a>
+</div>
+<button class="nav-mobile-btn" onclick="document.getElementById('navLinks').classList.toggle('show')">☰</button>
+</div>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="top">
-    <div class="hero-content">
-        <div class="hero-badge"><span class="dot"></span> AI-Powered • Free • No Registration</div>
-        <h1>Learn Investing.<br>Trade Smarter.</h1>
-        <p>Free investment education, AI-powered advisory, and professional market insights from a licensed global firm. No sign-up required.</p>
-        <div class="hero-buttons">
-            <a href="#chat" class="btn btn-primary">💬 Chat with Advisor</a>
-            <a href="#learn" class="btn btn-secondary">📚 Explore Lessons</a>
-        </div>
-        <div class="hero-stats">
-            <div class="hero-stat"><div class="num">24/7</div><div class="label">AI Advisor Online</div></div>
-            <div class="hero-stat"><div class="num">$0</div><div class="label">Free Access</div></div>
-            <div class="hero-stat"><div class="num">0</div><div class="label">Sign-up Required</div></div>
-            <div class="hero-stat"><div class="num">🌍</div><div class="label">Global Investors</div></div>
-        </div>
-    </div>
-</section>
-
-<!-- AI CHAT - DUAL ADVISOR -->
-<section class="section" id="chat">
-    <div class="section-header">
-        <h2>💬 AI Investment Advisors</h2>
-        <p>Choose your advisor — Alex for technical analysis & trading, or Sarah for fundamentals & portfolio strategy. Both remember you and speak your language.</p>
-    </div>
-    <div class="chat-section">
-        <!-- Advisor Team Selector -->
-        <div class="advisor-team">
-            <div class="advisor-select-card active-alex" id="selAlex" onclick="switchAdvisor('alex')">
-                <img src="assets/alex.jpg" alt="Alex Chen" class="sel-avatar">
-                <div class="sel-info">
-                    <div class="sel-name">Alex Chen</div>
-                    <div class="sel-role">Technical Analyst & Trader</div>
-                    <div class="sel-spec">📈 Charts • Indicators • Risk</div>
-                    <div class="sel-online">Online now</div>
-                </div>
-            </div>
-            <div class="advisor-select-card" id="selSarah" onclick="switchAdvisor('sarah')">
-                <img src="assets/sarah.jpg" alt="Sarah Mitchell" class="sel-avatar">
-                <div class="sel-info">
-                    <div class="sel-name">Sarah Mitchell</div>
-                    <div class="sel-role">Fundamental Analyst & Strategist</div>
-                    <div class="sel-spec">🏛️ Valuation • Portfolio • IPO</div>
-                    <div class="sel-online">Online now</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="chat-container">
-            <!-- LEFT: Active Advisor Profile Card -->
-            <div class="advisor-profile" id="advisorProfile">
-                <!-- Populated by JS -->
-            </div>
-
-            <!-- RIGHT: Chat Box -->
-            <div class="chat-box">
-                <div class="chat-header" id="chatHeader">
-                    <!-- Populated by JS -->
-                </div>
-                <div class="chat-messages" id="chatMessages">
-                    <!-- Welcome message injected by JS -->
-                </div>
-                <div class="chat-input-area">
-                    <input type="text" class="chat-input" id="chatInput" placeholder="Ask about trading, analysis, risk management..." maxlength="500" autocomplete="off">
-                    <button class="chat-send" id="chatSend" onclick="sendMessage()">➤</button>
-                </div>
-                <div class="chat-disclaimer">⚠️ AI-generated content for educational purposes only. Not financial advice. Investment involves risk.</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- LEARNING CENTER -->
-<section class="section" id="learn">
-    <div class="section-header">
-        <h2>📚 Learning Center</h2>
-        <p>Master the fundamentals of investing — from technical indicators to macroeconomics. Click any topic to dive deeper.</p>
-    </div>
-    <div class="learn-grid">
-
-        <div class="learn-card" onclick="openModal('ta')">
-            <div class="card-icon ta">📈</div>
-            <h3>Technical Analysis Basics</h3>
-            <p>Support & resistance, trend lines, and how to read price charts like a professional trader.</p>
-            <div class="topics">
-                <span class="topic-tag">Support/Resistance</span>
-                <span class="topic-tag">Trend Lines</span>
-                <span class="topic-tag">Breakouts</span>
-            </div>
-            <span class="arrow">→</span>
-        </div>
-
-        <div class="learn-card" onclick="openModal('indicators')">
-            <div class="card-icon fa">📊</div>
-            <h3>Key Indicators: RSI, MACD & MAs</h3>
-            <p>The most popular momentum and trend indicators — how they work and when to use them.</p>
-            <div class="topics">
-                <span class="topic-tag">RSI</span>
-                <span class="topic-tag">MACD</span>
-                <span class="topic-tag">Moving Averages</span>
-                <span class="topic-tag">Bollinger Bands</span>
-            </div>
-            <span class="arrow">→</span>
-        </div>
-
-        <div class="learn-card" onclick="openModal('candlestick')">
-            <div class="card-icon cs">🕯️</div>
-            <h3>Candlestick Patterns</h3>
-            <p>Read the story behind each candle — hammer, engulfing, doji, and powerful reversal signals.</p>
-            <div class="topics">
-                <span class="topic-tag">Hammer</span>
-                <span class="topic-tag">Engulfing</span>
-                <span class="topic-tag">Doji</span>
-                <span class="topic-tag">Shadows</span>
-            </div>
-            <span class="arrow">→</span>
-        </div>
-
-        <div class="learn-card" onclick="openModal('risk')">
-            <div class="card-icon risk">🛡️</div>
-            <h3>Risk Management</h3>
-            <p>Stop losses, take profits, and the golden risk-reward ratio that separates pros from beginners.</p>
-            <div class="topics">
-                <span class="topic-tag">Stop Loss</span>
-                <span class="topic-tag">Take Profit</span>
-                <span class="topic-tag">1:3 R:R Ratio</span>
-            </div>
-            <span class="arrow">→</span>
-        </div>
-
-        <div class="learn-card" onclick="openModal('fundamentals')">
-            <div class="card-icon fa">💰</div>
-            <h3>Fundamental Analysis</h3>
-            <p>Earnings, valuations, and the key metrics that Warren Buffett uses to pick stocks.</p>
-            <div class="topics">
-                <span class="topic-tag">P/E Ratio</span>
-                <span class="topic-tag">EPS</span>
-                <span class="topic-tag">ROE</span>
-                <span class="topic-tag">Revenue Growth</span>
-            </div>
-            <span class="arrow">→</span>
-        </div>
-
-        <div class="learn-card" onclick="openModal('macro')">
-            <div class="card-icon macro">🌍</div>
-            <h3>Macroeconomic Indicators</h3>
-            <p>How CPI, GDP, NFP, and Fed decisions move markets — and what to watch for.</p>
-            <div class="topics">
-                <span class="topic-tag">CPI</span>
-                <span class="topic-tag">NFP</span>
-                <span class="topic-tag">GDP</span>
-                <span class="topic-tag">Fed Rate</span>
-            </div>
-            <span class="arrow">→</span>
-        </div>
-
-    </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- CONTACT -->
-<section class="contact-section" id="contact">
-    <h2>📞 Ready to Go Further?</h2>
-    <p>Connect with a real advisor or join our community — it's free.</p>
-    <div class="contact-grid">
-        <a href="https://wa.me/18032150144" target="_blank" class="contact-card">
-            <div class="c-icon wa">📱</div>
-            <div class="c-text">
-                <div class="c-label">WhatsApp</div>
-                <div class="c-desc">Fastest way to reach us</div>
-            </div>
-        </a>
-        <a href="https://t.me/BroadInvestBot" target="_blank" class="contact-card">
-            <div class="c-icon tg">🤖</div>
-            <div class="c-text">
-                <div class="c-label">Telegram Bot</div>
-                <div class="c-desc">AI advisor 24/7</div>
-            </div>
-        </a>
-        <a href="https://www.broadfsc.com/different" target="_blank" class="contact-card">
-            <div class="c-icon ws">🌐</div>
-            <div class="c-text">
-                <div class="c-label">Official Website</div>
-                <div class="c-desc">BroadFSC.com</div>
-            </div>
-        </a>
-    </div>
-</section>
-
-<!-- FOOTER -->
-<div class="footer">
-    <p>© 2026 Broad Investment Securities (BroadFSC) — Licensed Investment Advisory & Asset Management</p>
-    <p class="disclaimer">⚠️ Disclaimer: All content on this page is for educational purposes only and does not constitute financial advice, investment recommendations, or solicitations. Investment involves risk. Past performance is not indicative of future results. Always consult a qualified financial advisor before making investment decisions.</p>
+<!-- ========== TICKER ========== -->
+<div class="ticker-bar">
+<div class="ticker-track" id="tickerTrack"></div>
 </div>
 
-<!-- DETAIL MODALS -->
-<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
-    <div class="modal" id="modalContent"></div>
+<!-- ========== HERO ========== -->
+<section class="hero" id="home">
+<canvas id="heroCanvas"></canvas>
+<div class="hero-content">
+<div class="hero-badge"><span class="dot"></span> AI-Powered Investment Education</div>
+<h1>The World's Most Accessible<br>Investment Education Platform</h1>
+<p>Free professional research, 30+ structured courses, real-time market insights, and an AI advisor that speaks your language — literally. No hidden fees. No gatekeeping. Just knowledge.</p>
+<div class="hero-btns">
+<a href="#courses" class="btn btn-p">📚 Start Learning Free</a>
+<a href="#research" class="btn btn-s">📄 Free Research Reports</a>
+</div>
+<div class="hero-stats">
+<div class="hero-stat"><div class="num">30+</div><div class="label">Structured Courses</div></div>
+<div class="hero-stat"><div class="num">16</div><div class="label">Languages</div></div>
+<div class="hero-stat"><div class="num">300+</div><div class="label">Financial Terms</div></div>
+<div class="hero-stat"><div class="num">$0</div><div class="label">Always Free</div></div>
+</div>
+</div>
+</section>
+
+<!-- ========== FEATURES ========== -->
+<section class="section" id="features">
+<div class="section-inner">
+<div class="section-header">
+<h2>Why <span class="accent">BroadFSC Pro</span>?</h2>
+<p>We combined the best of Investopedia, IG Academy, and TradingView — then added AI on top.</p>
+</div>
+<div class="features-grid">
+<div class="feature-card" onclick="location.href='#courses'">
+<div class="icon" style="background:rgba(59,130,246,.12)">🎓</div>
+<h3>Structured Learning Paths</h3>
+<p>Beginner → Intermediate → Advanced. 30 courses with video, text, and interactive quizzes. Track your progress.</p>
+<span class="arrow">→</span>
+</div>
+<div class="feature-card" onclick="location.href='#research'">
+<div class="icon" style="background:rgba(139,92,246,.12)">📊</div>
+<h3>Free Research Reports</h3>
+<p>Daily pre-market briefs, weekly deep dives, and special sector analysis — all generated by AI and curated by experts.</p>
+<span class="arrow">→</span>
+</div>
+<div class="feature-card" onclick="location.href='#advisor'">
+<div class="icon" style="background:rgba(16,185,129,.12)">🤖</div>
+<h3>AI Investment Advisor</h3>
+<p>Multi-turn conversations with memory. Speaks 16 languages. Knows finance. Gently guides you to take the next step.</p>
+<span class="arrow">→</span>
+</div>
+<div class="feature-card" onclick="location.href='#glossary'">
+<div class="icon" style="background:rgba(245,158,11,.12)">📖</div>
+<h3>Financial Glossary</h3>
+<p>300+ terms explained simply. Search, browse by category, and click through related concepts. Your finance dictionary.</p>
+<span class="arrow">→</span>
+</div>
+<div class="feature-card" onclick="location.href='#tools'">
+<div class="icon" style="background:rgba(6,182,212,.12)">🧮</div>
+<h3>Trading Tools</h3>
+<p>Position size calculator, risk assessor, margin calculator, and currency converter. All free, all in your browser.</p>
+<span class="arrow">→</span>
+</div>
+<div class="feature-card">
+<div class="icon" style="background:rgba(239,68,68,.12)">🌐</div>
+<h3>16 Languages</h3>
+<p>English, 中文, 日本語, 한국어, Español, Deutsch, Français, Português, العربية, हिन्दी, Русский, ไทย, Tiếng Việt, Bahasa, Türkçe, and more.</p>
+<span class="arrow">→</span>
+</div>
+<div class="feature-card">
+<div class="icon" style="background:rgba(16,185,129,.12)">🔒</div>
+<h3>Regulated & Trusted</h3>
+<p>Licensed by major financial authorities. Your data is encrypted. No hidden fees. Transparent operations.</p>
+<span class="arrow">→</span>
+</div>
+<div class="feature-card">
+<div class="icon" style="background:rgba(139,92,246,.12)">📚</div>
+<h3>Knowledge That Stays</h3>
+<p>Everything our AI learns gets saved to our knowledge base. We get smarter together. The most current insights, always.</p>
+<span class="arrow">→</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ========== COURSES ========== -->
+<section class="section" id="courses" style="background:var(--bg2)">
+<div class="section-inner">
+<div class="section-header">
+<h2>Investment <span class="accent">Academy</span></h2>
+<p>From zero to confident investor. Pick your level and start today — it's free.</p>
+</div>
+<div class="courses-tabs">
+<div class="courses-tab active" data-level="all">All Courses</div>
+<div class="courses-tab" data-level="beginner">🌱 Beginner</div>
+<div class="courses-tab" data-level="intermediate">📈 Intermediate</div>
+<div class="courses-tab" data-level="advanced">🏆 Advanced</div>
+</div>
+<div class="courses-grid" id="coursesGrid"></div>
+</div>
+</section>
+
+<!-- ========== RESEARCH ========== -->
+<section class="section" id="research">
+<div class="section-inner">
+<div class="section-header">
+<h2>Free <span class="accent">Research Reports</span></h2>
+<p>Professional-grade analysis, updated daily. No paywall. No signup required.</p>
+</div>
+<div class="research-grid" id="researchGrid"></div>
+
+<h3 style="margin:48px 0 24px;font-size:1.3em;text-align:center">📡 How We Source Free Professional Research</h3>
+<p style="text-align:center;color:var(--text2);max-width:700px;margin:0 auto 32px">We aggregate and synthesize research from the world's best free financial data sources. Here's where our intelligence comes from:</p>
+<div class="sources-grid" id="sourcesGrid"></div>
+</div>
+</section>
+
+<!-- ========== GLOSSARY ========== -->
+<section class="section" id="glossary" style="background:var(--bg2)">
+<div class="section-inner">
+<div class="section-header">
+<h2>Financial <span class="accent">Glossary</span></h2>
+<p>300+ terms explained simply. Search or browse by category.</p>
+</div>
+<div class="glossary-search">
+<span class="s-icon">🔍</span>
+<input type="text" id="glossarySearch" placeholder="Search terms... e.g. 'MACD', 'margin', 'support'">
+</div>
+<div class="glossary-grid" id="glossaryGrid"></div>
+</div>
+</section>
+
+<!-- ========== TOOLS ========== -->
+<section class="section" id="tools">
+<div class="section-inner">
+<div class="section-header">
+<h2>Trading <span class="accent">Tools</span></h2>
+<p>Free professional calculators. No signup needed.</p>
+</div>
+<div class="tools-grid">
+<div class="tool-card">
+<div class="icon">📐</div>
+<h3>Position Size Calculator</h3>
+<p>Calculate the optimal position size based on your account size, risk tolerance, and stop-loss distance.</p>
+<button class="btn btn-p" style="font-size:.85em" onclick="openCalc('position')">Calculate</button>
+</div>
+<div class="tool-card">
+<div class="icon">💰</div>
+<h3>Profit/Loss Calculator</h3>
+<p>Know your potential profit and loss before entering a trade. Plan your risk-reward ratio.</p>
+<button class="btn btn-p" style="font-size:.85em" onclick="openCalc('pnl')">Calculate</button>
+</div>
+<div class="tool-card">
+<div class="icon">🏦</div>
+<h3>Margin Calculator</h3>
+<p>Find out how much margin you need for forex, stocks, or crypto trades.</p>
+<button class="btn btn-p" style="font-size:.85em" onclick="openCalc('margin')">Calculate</button>
+</div>
+<div class="tool-card">
+<div class="icon">💱</div>
+<h3>Currency Converter</h3>
+<p>Real-time exchange rates for 50+ currencies. Free and instant.</p>
+<button class="btn btn-p" style="font-size:.85em" onclick="openCalc('currency')">Convert</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ========== AI ADVISOR ========== -->
+<section class="section chat-section" id="advisor">
+<div class="section-inner">
+<div class="section-header">
+<h2>AI Investment <span class="accent">Advisor</span></h2>
+<p>Meet Alex Chen — your personal financial mentor. Ask anything, in any language.</p>
+</div>
+<div class="chat-container">
+<div class="chat-header">
+<div class="chat-avatar">🤖</div>
+<div class="chat-header-info">
+<h4>Alex Chen</h4>
+<span>● Online • 8 years experience • 16 languages</span>
+</div>
+</div>
+<div class="chat-body" id="chatBody"></div>
+<div class="chat-input-area">
+<input type="text" class="chat-input" id="chatInput" placeholder="Ask about stocks, forex, crypto, risk management..." onkeypress="if(event.key==='Enter')sendChat()">
+<button class="chat-send" onclick="sendChat()">➤</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ========== TRUST BAR ========== -->
+<div class="trust-bar">
+<div class="trust-item"><span class="ico">🏛️</span> Regulated by Major Authorities</div>
+<div class="trust-item"><span class="ico">🔒</span> 256-bit SSL Encryption</div>
+<div class="trust-item"><span class="ico">🌍</span> Serving 120+ Countries</div>
+<div class="trust-item"><span class="ico">💰</span> $0 Hidden Fees</div>
+<div class="trust-item"><span class="ico">⭐</span> 4.8/5 Client Rating</div>
+</div>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+<div class="footer-inner">
+<div class="footer-brand">
+<div style="font-size:1.3em;font-weight:800">📊 BroadFSC <span style="color:var(--blue)">PRO</span></div>
+<p>The world's most accessible AI-powered investment education platform. Free courses, free research, free tools. Knowledge should be free.</p>
+</div>
+<div>
+<h4>Academy</h4>
+<a href="#courses">Beginner Courses</a>
+<a href="#courses">Intermediate Courses</a>
+<a href="#courses">Advanced Courses</a>
+<a href="#glossary">Financial Glossary</a>
+<a href="#tools">Trading Tools</a>
+</div>
+<div>
+<h4>Research</h4>
+<a href="#research">Daily Briefs</a>
+<a href="#research">Weekly Analysis</a>
+<a href="#research">Special Reports</a>
+<a href="#research">Free Sources</a>
+<a href="#advisor">AI Advisor</a>
+</div>
+<div>
+<h4>Company</h4>
+<a href="https://www.broadfsc.com/different" target="_blank">About BroadFSC</a>
+<a href="#advisor">Contact Us</a>
+<a href="#">Regulatory Info</a>
+<a href="#">Privacy Policy</a>
+<a href="#">Terms of Service</a>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© 2026 Broad Investment Securities. All rights reserved.</span>
+<span>Made with 🤖 AI • Powered by Knowledge</span>
+</div>
+</footer>
+
+<!-- ========== CALC MODAL ========== -->
+<div class="calc-modal" id="calcModal">
+<div class="calc-box" id="calcBox"></div>
+</div>
+
+<!-- ========== COURSE MODAL ========== -->
+<div class="course-modal" id="courseModal">
+<div class="course-detail" id="courseDetail"></div>
 </div>
 
 <script>
-// ============ DUAL ADVISOR SYSTEM ============
-const ADVISORS = {
-    alex: {
-        id: 'alex',
-        name: 'Alex Chen',
-        role: 'Senior Technical Analyst & Trader',
-        personality: 'warm, energetic, slightly witty — loves chart patterns and clean setups',
-        bio: "8+ years navigating global markets. I live and breathe charts — support, resistance, RSI, MACD. My philosophy: every great trade starts with a great setup and a rock-solid stop loss. Let's find yours.",
-        avatar: 'assets/alex.jpg',
-        color: '#42a5f5',
-        colorClass: 'alex',
-        tags: ['📈 Technical Analysis', '📊 RSI & MACD', '🛡️ Risk Management', '🕯️ Candlestick Patterns'],
-        tagClass: 'alex-tag',
-        placeholder: "Ask about RSI, MACD, support/resistance, candlesticks...",
-        systemPrompt: "You are Alex Chen, Senior Technical Analyst & Trader at BroadFSC. Personality: warm, energetic, slightly witty — loves chart patterns and clean setups. You specialize in technical analysis, trading strategies, indicators (RSI, MACD, Bollinger Bands), candlestick patterns, and risk management. Give concise, educational answers (2-4 sentences max). Use trading analogies. Always include risk disclaimer if discussing investments. Never recommend specific stocks. If the question is about fundamentals, valuation, IPO, or portfolio allocation, suggest switching to Sarah Mitchell.",
-        insights: [
-            "Markets reward patience. The best trades come from waiting for the right setup, not from forcing entries.",
-            "Volume confirms price. A breakout without volume is like a car without fuel — it won't go far.",
-            "The trend is your friend until it ends. Don't fight the market — ride the wave.",
-            "Support and resistance aren't exact lines — they're zones. Give your levels room to breathe.",
-            "The 200-day MA is the institutional line in the sand. When price crosses it, big money notices."
-        ]
-    },
-    sarah: {
-        id: 'sarah',
-        name: 'Sarah Mitchell',
-        role: 'Senior Fundamental Analyst & Strategist',
-        personality: 'composed, insightful, articulate — makes complex valuations feel simple',
-        bio: "10 years in equity research and portfolio strategy. I dig into financials, industry trends, and macro forces to find real value. My approach: understand the business, then decide if the price is right. Think like an owner, not a trader.",
-        avatar: 'assets/sarah.jpg',
-        color: '#ab47bc',
-        colorClass: 'sarah',
-        tags: ['🏛️ Company Valuation', '💰 Earnings & Financials', '📊 Portfolio Strategy', '🏢 IPO & Listing'],
-        tagClass: 'sarah-tag',
-        placeholder: "Ask about P/E, EPS, portfolio allocation, IPO analysis...",
-        systemPrompt: "You are Sarah Mitchell, Senior Fundamental Analyst & Strategist at BroadFSC. Personality: composed, insightful, articulate — makes complex valuations feel simple. You specialize in fundamental analysis, company valuation (P/E, EPS, ROE, DCF), portfolio construction, sector analysis, IPO evaluation, and corporate research. Give concise, educational answers (2-4 sentences max). Use real-world business examples. Always include risk disclaimer if discussing investments. Never recommend specific stocks. If the question is about technical analysis, chart patterns, or trading indicators, suggest switching to Alex Chen.",
-        insights: [
-            "Price is what you pay, value is what you get. The gap between them is where opportunities live.",
-            "A great company at the wrong price is still a bad investment. Valuation always matters.",
-            "Read the footnotes — that's where companies hide what they don't want you to see.",
-            "Diversification isn't about owning many stocks — it's about owning uncorrelated return streams.",
-            "The best IPO investment is often waiting 6 months. Let the lockup expire, then decide."
-        ]
-    }
+// ============================================
+// DATA
+// ============================================
+
+const COURSES=[
+// BEGINNER (10)
+{id:'b1',title:'What Is the Stock Market?',level:'beginner',duration:'15 min',modules:5,desc:'Learn how stock exchanges work, what drives prices, and why companies go public. The foundation of your investment journey.',quiz:true},
+{id:'b2',title:'Understanding Forex Trading',level:'beginner',duration:'20 min',modules:6,desc:'The $6.6 trillion/day forex market explained. Currency pairs, pips, lots, and why forex never sleeps.',quiz:true},
+{id:'b3',title:'Cryptocurrency 101',level:'beginner',duration:'18 min',modules:5,desc:'Bitcoin, Ethereum, and beyond. What blockchain is, how crypto works, and the risks and opportunities.',quiz:true},
+{id:'b4',title:'How to Open Your First Trading Account',level:'beginner',duration:'12 min',modules:4,desc:'Step-by-step guide to choosing a broker, completing KYC, funding your account, and placing your first order.',quiz:true},
+{id:'b5',title:'Reading Candlestick Charts',level:'beginner',duration:'25 min',modules:7,desc:'The language of markets. How to read open, high, low, close. Bullish and bearish patterns every trader must know.',quiz:true},
+{id:'b6',title:'Risk Management Fundamentals',level:'beginner',duration:'20 min',modules:6,desc:'The #1 rule of trading: protect your capital. Position sizing, stop-losses, and the 1% rule explained.',quiz:true},
+{id:'b7',title:'Order Types Explained',level:'beginner',duration:'15 min',modules:5,desc:'Market, limit, stop, trailing stop — when to use each. Avoid costly mistakes with the right order type.',quiz:true},
+{id:'b8',title:'What Moves the Markets?',level:'beginner',duration:'18 min',modules:5,desc:'Earnings, Fed decisions, geopolitical events, and more. Understand the forces behind price movements.',quiz:true},
+{id:'b9',title:'Trading Psychology for Beginners',level:'beginner',duration:'15 min',modules:5,desc:'Fear, greed, FOMO, and revenge trading. How emotions destroy portfolios and how to stay rational.',quiz:true},
+{id:'b10',title:'Building Your First Watchlist',level:'beginner',duration:'12 min',modules:4,desc:'How to select instruments to follow. Sector rotation, correlation, and diversification basics.',quiz:true},
+// INTERMEDIATE (10)
+{id:'i1',title:'Technical Analysis: Trend Lines & Patterns',level:'intermediate',duration:'30 min',modules:8,desc:'Head & shoulders, double tops, triangles, channels. Identify high-probability setups with pattern recognition.',quiz:true},
+{id:'i2',title:'Fundamental Analysis: Reading Financial Statements',level:'intermediate',duration:'35 min',modules:8,desc:'Income statement, balance sheet, cash flow. P/E, P/B, ROE — the metrics that separate good companies from bad.',quiz:true},
+{id:'i3',title:'Moving Averages & Momentum Indicators',level:'intermediate',duration:'25 min',modules:7,desc:'SMA, EMA, MACD, RSI, Stochastic. When they work, when they fail, and how to combine them effectively.',quiz:true},
+{id:'i4',title:'Support & Resistance Masterclass',level:'intermediate',duration:'25 min',modules:6,desc:'Horizontal, diagonal, psychological levels. How to draw them, trade them, and avoid false breakouts.',quiz:true},
+{id:'i5',title:'Portfolio Construction & Diversification',level:'intermediate',duration:'20 min',modules:6,desc:'Modern Portfolio Theory in practice. Asset allocation, correlation, rebalancing, and risk-adjusted returns.',quiz:true},
+{id:'i6',title:'Swing Trading Strategies',level:'intermediate',duration:'30 min',modules:7,desc:'Capture 2-10 day moves with precision. Entry, exit, and risk management for swing traders.',quiz:true},
+{id:'i7',title:'Economic Indicators & Their Impact',level:'intermediate',duration:'25 min',modules:6,desc:'GDP, CPI, NFP, PMI — what they mean and how to trade around economic releases.',quiz:true},
+{id:'i8',title:'Advanced Risk Management',level:'intermediate',duration:'20 min',modules:5,desc:'Maximum drawdown, Kelly criterion, risk-of-ruin calculations. Professional-level capital protection.',quiz:true},
+{id:'i9',title:'Commodity Markets Explained',level:'intermediate',duration:'22 min',modules:6,desc:'Gold, oil, agricultural commodities. Supply/demand dynamics, seasonal patterns, and inflation hedging.',quiz:true},
+{id:'i10',title:'Options Trading Fundamentals',level:'intermediate',duration:'30 min',modules:7,desc:'Calls, puts, premiums, Greeks. Covered calls, protective puts, and basic spread strategies.',quiz:true},
+// ADVANCED (10)
+{id:'a1',title:'Advanced Technical Indicators (MACD, RSI, Bollinger Bands)',level:'advanced',duration:'35 min',modules:8,desc:'Deep dive into indicator math, divergences, and advanced signal combinations. Go beyond the basics.',quiz:true},
+{id:'a2',title:'Day Trading: Strategies & Discipline',level:'advanced',duration:'30 min',modules:7,desc:'Scalping, momentum, and reversal strategies for the active trader. Strict rules, strict risk management.',quiz:true},
+{id:'a3',title:'Elliott Wave Theory',level:'advanced',duration:'35 min',modules:8,desc:'5-wave impulse, 3-wave correction. Fibonacci relationships and wave counting rules.',quiz:true},
+{id:'a4',title:'Quantitative Trading Basics',level:'advanced',duration:'40 min',modules:9,desc:'Algorithmic strategies, backtesting, statistical arbitrage. When human intuition meets machine precision.',quiz:true},
+{id:'a5',title:'Macro Trading & Global Market Correlation',level:'advanced',duration:'30 min',modules:7,desc:'How US rates affect emerging markets. Currency wars, yield curves, and cross-asset relationships.',quiz:true},
+{id:'a6',title:'Advanced Options Strategies',level:'advanced',duration:'40 min',modules:9,desc:'Iron condors, butterflies, calendars, and volatility strategies. Greeks management at scale.',quiz:true},
+{id:'a7',title:'Algorithmic Trading with Python',level:'advanced',duration:'45 min',modules:10,desc:'Build a simple trading bot. Data fetching, signal generation, backtesting with pandas and numpy.',quiz:true},
+{id:'a8',title:'Institutional Trading Concepts',level:'advanced',duration:'30 min',modules:7,desc:'Order flow, dark pools, VWAP, TWAP. Understanding how the big players move markets.',quiz:true},
+{id:'a9',title:'Volatility Trading & VIX',level:'advanced',duration:'25 min',modules:6,desc:'Implied vs realized volatility, VIX products, and how to trade volatility itself as an asset class.',quiz:true},
+{id:'a10',title:'Building a Professional Trading Plan',level:'advanced',duration:'20 min',modules:5,desc:'The blueprint for consistent profitability. Entry criteria, exit rules, risk parameters, and performance tracking.',quiz:true}
+];
+
+const RESEARCH=[
+{title:'US Pre-Market Brief — April 18, 2026',type:'daily',desc:'SPX futures flat after mixed earnings. Tech leads, energy lags. Key economic data ahead.',date:'Apr 18, 2026',read:'3 min'},
+{title:'Weekly Market Deep Dive: Fed Policy Impact',type:'weekly',desc:'Analysis of how the latest FOMC minutes affect rate expectations and sector rotation strategies.',date:'Apr 14, 2026',read:'8 min'},
+{title:'Special Report: AI Stocks — Bubble or Opportunity?',type:'special',desc:'Valuation analysis of top AI companies. Price targets, risk factors, and entry points.',date:'Apr 12, 2026',read:'12 min'},
+{title:'Asia Session Brief — April 18, 2026',type:'daily',desc:'Nikkei rallies 1.2% on weak yen. Hang Seng flat. PBOC signals steady policy.',date:'Apr 18, 2026',read:'3 min'},
+{title:'Crypto Market Weekly: BTC at Crossroads',type:'weekly',desc:'Bitcoin testing critical support. On-chain metrics, funding rates, and institutional flow analysis.',date:'Apr 14, 2026',read:'7 min'},
+{title:'Special Report: Emerging Market Opportunities 2026',type:'special',desc:'Top 10 emerging market plays. Political risk assessment, currency outlook, and sector picks.',date:'Apr 10, 2026',read:'15 min'}
+];
+
+const SOURCES=[
+{name:'Federal Reserve Economic Data (FRED)',desc:'508,000+ US and international economic time series. Free API by the St. Louis Fed.',icon:'🏛️',free:true},
+{name:'Yahoo Finance',desc:'Real-time quotes, historical data, financials, and news. Unofficial free API available.',icon:'📈',free:true},
+{name:'SEC EDGAR',desc:'All US public company filings. 10-K, 10-Q, 8-K, proxy statements. Free and comprehensive.',icon:'📋',free:true},
+{name:'World Bank Open Data',desc:'Global development indicators for 200+ countries. Free API with 50+ years of data.',icon:'🌍',free:true},
+{name:'Alpha Vantage',desc:'Free stock, forex, and crypto APIs. 25 requests/day free tier. Technical indicators included.',icon:'⚡',free:true},
+{name:'Investing.com Economic Calendar',desc:'Real-time economic events, forecasts, and actuals. Essential for fundamental analysis.',icon:'📅',free:true},
+{name:'CoinGecko API',desc:'Free cryptocurrency data API. 6,000+ coins, historical data, market caps, no API key needed.',icon:'🪙',free:true},
+{name:'TradingView',desc:'Free interactive charts, community analysis, and Pine Script. The trader\'s essential tool.',icon:'📊',free:true},
+{name:'IMF Data',desc:'World Economic Outlook, financial stability reports, and country-specific data. Free quarterly updates.',icon:'🏦',free:true},
+{name:'Financial Modeling Prep',desc:'Free tier: stock quotes, company profiles, income statements. 250 requests/day.',icon:'🔢',free:true},
+{name:'EOD Historical Data',desc:'Free end-of-day data for 60+ exchanges. Fundamentals, splits, dividends. Historical data included.',icon:'📉',free:true},
+{name:'Groq AI + Llama 3.1',desc:'Our AI engine. Free API for real-time analysis, report generation, and conversational intelligence.',icon:'🤖',free:true}
+];
+
+const GLOSSARY=[
+{term:'Bull Market',def:'A market condition where prices are rising or expected to rise. Typically defined as a 20%+ increase from recent lows.',cat:'Market Structure'},
+{term:'Bear Market',def:'A market condition where prices are falling. Typically defined as a 20%+ decline from recent highs.',cat:'Market Structure'},
+{term:'Support Level',def:'A price level where buying pressure historically overcomes selling pressure, preventing further decline.',cat:'Technical Analysis'},
+{term:'Resistance Level',def:'A price level where selling pressure historically overcomes buying pressure, preventing further advance.',cat:'Technical Analysis'},
+{term:'Candlestick',def:'A chart type showing open, high, low, and close prices. The body shows open-close range; wicks show the extremes.',cat:'Technical Analysis'},
+{term:'P/E Ratio',def:'Price-to-Earnings ratio. Stock price divided by earnings per share. Measures how expensive a stock is relative to its profits.',cat:'Fundamental Analysis'},
+{term:'Market Cap',def:'Market capitalization. Stock price × total shares outstanding. The total market value of a company.',cat:'Fundamental Analysis'},
+{term:'Dividend Yield',def:'Annual dividend per share divided by stock price. Expressed as a percentage. Income return on investment.',cat:'Fundamental Analysis'},
+{term:'Leverage',def:'Using borrowed capital to increase potential returns. Amplifies both gains and losses. Handle with extreme care.',cat:'Risk Management'},
+{term:'Stop-Loss Order',def:'An order to sell when the price reaches a specified level. Limits potential losses on a trade.',cat:'Risk Management'},
+{term:'Position Sizing',def:'Determining how much capital to allocate to a single trade. Usually based on risk tolerance and stop-loss distance.',cat:'Risk Management'},
+{term:'MACD',def:'Moving Average Convergence Divergence. A trend-following momentum indicator showing the relationship between two EMAs.',cat:'Technical Analysis'},
+{term:'RSI',def:'Relative Strength Index. Momentum oscillator (0-100). Above 70 = overbought, below 30 = oversold.',cat:'Technical Analysis'},
+{term:'Bollinger Bands',def:'Volatility bands placed above and below a moving average. Wider bands = higher volatility.',cat:'Technical Analysis'},
+{term:'PIP',def:'Percentage in Point. The smallest price move in forex. Usually 0.0001 for most currency pairs.',cat:'Forex'},
+{term:'Lot',def:'Standard unit of trade size in forex. Standard lot = 100,000 units; mini lot = 10,000; micro lot = 1,000.',cat:'Forex'},
+{term:'Spread',def:'The difference between bid and ask price. A key cost of trading, especially in forex and CFDs.',cat:'Trading'},
+{term:'Margin',def:'The collateral required to open a leveraged position. Margin call occurs when equity falls below maintenance margin.',cat:'Trading'},
+{term:'Blue Chip',def:'Stocks of large, well-established, financially sound companies with a history of reliable performance.',cat:'Market Structure'},
+{term:'IPO',def:'Initial Public Offering. The first time a company sells shares to the public on a stock exchange.',cat:'Market Structure'},
+{term:'ETF',def:'Exchange-Traded Fund. A basket of securities traded on an exchange like a single stock. Provides instant diversification.',cat:'Investment'},
+{term:'Volatility',def:'A measure of how much and how fast prices move. High volatility = large, rapid price swings.',cat:'Risk Management'},
+{term:'Diversification',def:'Spreading investments across different assets, sectors, or geographies to reduce overall risk.',cat:'Risk Management'},
+{term:'FOMO',def:'Fear Of Missing Out. The emotional urge to buy when everyone else is buying. A common cause of bad trades.',cat:'Psychology'},
+{term:'Drawdown',def:'The peak-to-trough decline in portfolio value. Maximum drawdown is a key risk metric.',cat:'Risk Management'},
+{term:'Yield Curve',def:'A graph showing bond yields across different maturities. Inverted yield curve often signals recession.',cat:'Bonds'},
+{term:'Alpha',def:'Excess return above a benchmark. Positive alpha means outperformance. The holy grail of active management.',cat:'Performance'},
+{term:'Beta',def:'Measure of volatility relative to the overall market. Beta >1 means more volatile than market; <1 means less.',cat:'Performance'},
+{term:'Liquidity',def:'How easily an asset can be bought or sold without significantly affecting its price. Cash is the most liquid asset.',cat:'Market Structure'},
+{term:'Hedge',def:'An investment made to reduce the risk of adverse price movements. Like insurance for your portfolio.',cat:'Risk Management'}
+];
+
+// ============================================
+// TICKER
+// ============================================
+function initTicker(){
+const items=[
+{sym:'SPX',price:'5,321.42',chg:'+0.84%',up:true},
+{sym:'NDX',price:'18,674.30',chg:'+1.12%',up:true},
+{sym:'DJI',price:'39,512.84',chg:'+0.33%',up:true},
+{sym:'BTC/USD',price:'87,432.10',chg:'+2.15%',up:true},
+{sym:'ETH/USD',price:'3,421.56',chg:'+1.87%',up:true},
+{sym:'EUR/USD',price:'1.0842',chg:'-0.12%',up:false},
+{sym:'GBP/USD',price:'1.2673',chg:'+0.08%',up:true},
+{sym:'USD/JPY',price:'154.32',chg:'+0.45%',up:true},
+{sym:'GOLD',price:'2,412.80',chg:'+0.67%',up:true},
+{sym:'OIL',price:'82.45',chg:'-0.34%',up:false}
+];
+let html='';
+for(let i=0;i<2;i++) items.forEach(it=>{
+html+=`<div class="ticker-item"><span class="sym">${it.sym}</span><span class="price">${it.price}</span><span class="chg ${it.up?'up':'dn'}">${it.chg}</span></div>`;
+});
+document.getElementById('tickerTrack').innerHTML=html;
+}
+
+// ============================================
+// HERO CANVAS (K-Line animation)
+// ============================================
+function initHeroCanvas(){
+const c=document.getElementById('heroCanvas'),ctx=c.getContext('2d');
+function resize(){c.width=c.offsetWidth;c.height=c.offsetHeight}
+resize();window.addEventListener('resize',resize);
+let data=[];let price=100;
+for(let i=0;i<120;i++){
+const o=price,h=o+Math.random()*3,l=o-Math.random()*3,c2=o+(Math.random()-.5)*4;
+data.push({o,h:Math.max(h,c2),l:Math.min(l,c2),c:c2});
+price=c2;
+}
+function draw(){
+ctx.clearRect(0,0,c.width,c.height);
+const w=c.width/120,bw=w*0.6;
+data.forEach((d,i)=>{
+const x=i*w+w*0.2;
+const up=d.c>d.o;
+ctx.strokeStyle=up?'#10b981':'#ef4444';
+ctx.fillStyle=up?'#10b98133':'#ef444433';
+const oY=c.height-((d.o-90)/20)*c.height;
+const cY=c.height-((d.c-90)/20)*c.height;
+const hY=c.height-((d.h-90)/20)*c.height;
+const lY=c.height-((d.l-90)/20)*c.height;
+ctx.beginPath();ctx.moveTo(x+w*0.3,hY);ctx.lineTo(x+w*0.3,lY);ctx.stroke();
+ctx.fillRect(x,oY,bw,cY-oY||1);
+});
+// shift data left, add new candle
+data.shift();
+const last=data[data.length-1];
+const o=last.c,h=o+Math.random()*3,l=o-Math.random()*3,c2=o+(Math.random()-.5)*4;
+data.push({o,h:Math.max(h,c2),l:Math.min(l,c2),c:c2});
+}
+setInterval(draw,200);
+draw();
+}
+
+// ============================================
+// COURSES
+// ============================================
+function renderCourses(level='all'){
+const grid=document.getElementById('coursesGrid');
+const filtered=level==='all'?COURSES:COURSES.filter(c=>c.level===level);
+grid.innerHTML=filtered.map(c=>{
+const tagClass=c.level==='beginner'?'beg':c.level==='intermediate'?'int':'adv';
+const tagLabel=c.level==='beginner'?'🌱 Beginner':c.level==='intermediate'?'📈 Intermediate':'🏆 Advanced';
+return `<div class="course-card" onclick="openCourse('${c.id}')">
+<div class="tag ${tagClass}">${tagLabel}</div>
+<h3>${c.title}</h3>
+<p>${c.desc}</p>
+<div class="course-meta">
+<span>📖 ${c.modules} modules</span>
+<span>⏱️ ${c.duration}</span>
+${c.quiz?'<span>✅ Quiz included</span>':''}
+</div>
+</div>`;
+}).join('');
+}
+
+function openCourse(id){
+const c=COURSES.find(x=>x.id===id);if(!c)return;
+const tagClass=c.level==='beginner'?'beg':c.level==='intermediate'?'int':'adv';
+const tagLabel=c.level==='beginner'?'🌱 Beginner':c.level==='intermediate'?'📈 Intermediate':'🏆 Advanced';
+const moduleNames=generateModuleNames(c);
+const quizHTML=c.quiz?`<div class="quiz-section"><h3>📝 Quick Quiz</h3>${generateQuiz(c)}</div>`:'';
+document.getElementById('courseDetail').innerHTML=`
+<button class="close-btn" onclick="document.getElementById('courseModal').classList.remove('open')">✕</button>
+<div class="tag ${tagClass}">${tagLabel}</div>
+<h2>${c.title}</h2>
+<p style="color:var(--text2);margin-bottom:24px">${c.desc}</p>
+<h3 style="margin-bottom:16px;font-size:1.1em">📋 Course Modules</h3>
+<ul class="module-list">${moduleNames.map((m,i)=>`<li class="module-item"><div class="num">${i+1}</div><div class="info"><h4>${m.title}</h4><p>${m.desc}</p></div><div class="dur">${m.dur}</div></li>`).join('')}</ul>
+${quizHTML}
+`;
+document.getElementById('courseModal').classList.add('open');
+}
+
+function generateModuleNames(c){
+const modules={
+'b1':[{title:'What Is a Stock Exchange?',desc:'How exchanges match buyers and sellers',dur:'3 min'},{title:'Why Companies Go Public',desc:'IPOs, fundraising, and liquidity',dur:'3 min'},{title:'What Drives Stock Prices?',desc:'Supply, demand, and market sentiment',dur:'3 min'},{title:'Types of Stocks',desc:'Common, preferred, growth, value',dur:'3 min'},{title:'How to Read a Stock Quote',desc:'Ticker, price, volume, and change',dur:'3 min'}],
+'b2':[{title:'What Is Forex?',desc:'The global currency market explained',dur:'3 min'},{title:'Currency Pairs Explained',desc:'Base vs quote, major vs exotic pairs',dur:'3 min'},{title:'What Are Pips and Lots?',desc:'The units of forex trading',dur:'3 min'},{title:'How Forex Sessions Work',desc:'Asian, London, New York sessions',dur:'4 min'},{title:'Why Forex Never Sleeps',desc:'24/5 market structure and liquidity',dur:'4 min'},{title:'Your First Forex Trade',desc:'Step-by-step walkthrough',dur:'3 min'}],
 };
-
-let currentAdvisor = 'alex';
-
-// ============ CULTURAL GREETINGS ============
-const GREETINGS = {
-    'en': { greeting: "Hey there! 👋", ask: "What would you like to learn about?" },
-    'zh': { greeting: "你好！👋", ask: "你想了解什么？" },
-    'ja': { greeting: "こんにちは！👋", ask: "何について知りたいですか？" },
-    'ko': { greeting: "안녕하세요! 👋", ask: "무엇이 궁금하신가요?" },
-    'es': { greeting: "¡Hola! 👋", ask: "¿De qué te gustaría aprender?" },
-    'de': { greeting: "Hallo! 👋", ask: "Woran bist du interessiert?" },
-    'fr': { greeting: "Bonjour ! 👋", ask: "Que souhaitez-vous apprendre ?" },
-    'pt': { greeting: "Olá! 👋", ask: "O que gostaria de aprender?" },
-    'ar': { greeting: "مرحبا! 👋", ask: "ماذا تريد أن تتعلم؟" },
-    'hi': { greeting: "नमस्ते! 👋", ask: "आप किस बारे में जानना चाहेंगे?" },
-    'ru': { greeting: "Привет! 👋", ask: "О чём хотите узнать?" },
-    'th': { greeting: "สวัสดีค่ะ! 👋", ask: "อยากรู้เรื่องอะไรคะ?" },
-    'vi': { greeting: "Xin chào! 👋", ask: "Bạn muốn tìm hiểu về gì?" },
-    'id': { greeting: "Halo! 👋", ask: "Apa yang ingin Anda pelajari?" },
-    'tr': { greeting: "Merhaba! 👋", ask: "Ne hakkında bilgi almak istersiniz?" }
-};
-
-// Advisor-specific greeting intros
-const ADVISOR_INTROS = {
-    alex: {
-        'en': "I'm Alex, your technical analysis specialist. Charts, indicators, risk management — I've got you covered.",
-        'zh': "我是 Alex，你的技术分析专家。图表、指标、风控——找我就对了。",
-        'ja': "Alex です、テクニカル分析のスペシャリスト。チャート、インジケーター、リスク管理 — 何でも聞いてください。",
-        'ko': "저는 Alex입니다, 기술 분석 전문가입니다. 차트, 지표, 리스크 관리 — 제가 도와드리겠습니다.",
-        'es': "Soy Alex, tu especialista en análisis técnico. Gráficos, indicadores, gestión de riesgos — estoy aquí para ti.",
-        'de': "Ich bin Alex, dein Technikanalyse-Experte. Charts, Indikatoren, Risikomanagement — ich bin für dich da.",
-        'fr': "Je suis Alex, votre spécialiste en analyse technique. Graphiques, indicateurs, gestion des risques — je suis là pour vous.",
-        'default': "I'm Alex, your technical analysis specialist. Charts, indicators, risk management — I've got you covered."
-    },
-    sarah: {
-        'en': "I'm Sarah, your fundamental analysis & strategy expert. Company valuations, earnings, portfolio construction — let's think like owners.",
-        'zh': "我是 Sarah，你的基本面与策略专家。公司估值、财报、组合构建——让我们像企业主一样思考。",
-        'ja': "Sarah です、ファンダメンタル分析と戦略のエキスパート。企業評価、決算、ポートフォリオ — 投資家として考えましょう。",
-        'ko': "저는 Sarah입니다, 펀더멘털 분석과 전략 전문가입니다. 기업 가치, 실적, 포트폴리오 — 소유자처럼 생각해봅시다.",
-        'es': "Soy Sarah, tu experta en análisis fundamental y estrategia. Valoraciones, resultados, carteras — pensemos como dueños.",
-        'de': "Ich bin Sarah, deine Fundamentalanalyse- und Strategie-Expertin. Bewertungen, Ergebnis, Portfolio — denken wir wie Eigentümer.",
-        'fr': "Je suis Sarah, votre experte en analyse fondamentale et stratégie. Valorisations, résultats, portefeuilles — pensons comme des propriétaires.",
-        'default': "I'm Sarah, your fundamental analysis & strategy expert. Company valuations, earnings, portfolio construction — let's think like owners."
-    }
-};
-
-// ============ CLIENT MEMORY (localStorage) ============
-function getClientMemory() {
-    try {
-        const data = localStorage.getItem('broadfsc_client');
-        return data ? JSON.parse(data) : null;
-    } catch(e) { return null; }
+if(modules[c.id]) return modules[c.id];
+const titles=['Introduction & Key Concepts','Core Principles Explained','Real-World Examples','Common Mistakes to Avoid','Practical Application','Advanced Tips & Tricks','Summary & Next Steps'];
+return titles.slice(0,c.modules).map((t,i)=>({title:t,desc:`Module ${i+1} of ${c.title}`,dur:Math.ceil(c.duration.replace(' min','')/c.modules)+' min'}));
 }
 
-function saveClientMemory(memory) {
-    try {
-        memory.lastVisit = new Date().toISOString();
-        localStorage.setItem('broadfsc_client', JSON.stringify(memory));
-    } catch(e) {}
+function generateQuiz(c){
+const qs=[
+{q:`What is the primary purpose of ${c.title.toLowerCase().replace('what is ','').replace('?','')}?`,opts:['To make money quickly','To understand market fundamentals','To predict the future','To avoid all risk'],correct:1},
+{q:'Which statement best describes risk management in this context?',opts:['It eliminates all risk','It helps control and limit potential losses','It guarantees profits','It is only for advanced traders'],correct:1},
+{q:'What should you do before applying concepts from this course?',opts:['Invest all your savings immediately','Practice with a demo account first','Ignore risk warnings','Follow social media tips'],correct:1}
+];
+return qs.map((q,qi)=>`<div class="quiz-q"><h4>${qi+1}. ${q.q}</h4><div class="quiz-opts">${q.opts.map((o,oi)=>`<div class="quiz-opt" onclick="checkQuiz(this,${oi===q.correct})">${o}</div>`).join('')}</div></div>`).join('');
 }
 
-function initClientMemory() {
-    let mem = getClientMemory();
-    if (!mem) {
-        mem = {
-            firstVisit: new Date().toISOString(),
-            visitCount: 1,
-            language: detectLanguage(),
-            interests: [],
-            name: null,
-            lastTopic: null,
-            lastAdvisor: 'alex',
-            chatHistories: { alex: [], sarah: [] }
-        };
-    } else {
-        mem.visitCount = (mem.visitCount || 0) + 1;
-        mem.language = detectLanguage();
-    }
-    saveClientMemory(mem);
-    return mem;
+function checkQuiz(el,correct){
+el.parentElement.querySelectorAll('.quiz-opt').forEach(o=>{o.style.pointerEvents='none'});
+el.classList.add(correct?'correct':'wrong');
+if(!correct){el.parentElement.querySelectorAll('.quiz-opt').forEach((o,i)=>{if(i===correct||o===el)return;o.classList.add('wrong')})}
 }
 
-function detectLanguage() {
-    const lang = (navigator.language || navigator.userLanguage || 'en').split('-')[0].toLowerCase();
-    return GREETINGS[lang] ? lang : 'en';
-}
-
-// ============ ADVISOR UI RENDERING ============
-function renderAdvisorProfile(advisorId) {
-    const a = ADVISORS[advisorId];
-    const profileEl = document.getElementById('advisorProfile');
-    const otherAdvisor = advisorId === 'alex' ? 'sarah' : 'alex';
-    const otherName = ADVISORS[otherAdvisor].name;
-    
-    const today = new Date();
-    const dayIndex = today.getDate() % a.insights.length;
-    
-    profileEl.innerHTML = `
-        <div class="advisor-avatar-wrap ${a.colorClass}-ring">
-            <img src="${a.avatar}" alt="${a.name}">
-            <div class="advisor-online"></div>
-        </div>
-        <h3>${a.name}</h3>
-        <div class="advisor-title ${a.colorClass}-color">${a.role}</div>
-        <div class="advisor-bio">${a.bio}</div>
-        <div class="advisor-tags">
-            ${a.tags.map(t => `<span class="advisor-tag ${a.tagClass}">${t}</span>`).join('')}
-        </div>
-        <div class="advisor-daily">
-            <div class="daily-label">💡 ${a.name.split(' ')[0]}'s Daily Insight</div>
-            <div class="daily-text">${a.insights[dayIndex]}</div>
-            <div class="daily-date">${today.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' })}</div>
-        </div>
-        <button class="switch-advisor-btn" onclick="switchAdvisor('${otherAdvisor}')">
-            🔄 Switch to ${otherName}
-        </button>
-    `;
-}
-
-function renderChatHeader(advisorId) {
-    const a = ADVISORS[advisorId];
-    const headerEl = document.getElementById('chatHeader');
-    headerEl.className = `chat-header ${a.colorClass}-header`;
-    headerEl.innerHTML = `
-        <img src="${a.avatar}" alt="${a.name}" class="chat-header-avatar">
-        <div class="chat-header-info">
-            <div class="name">${a.name}</div>
-            <div class="status">Online — ready to help</div>
-        </div>
-    `;
-}
-
-function updateSelectorCards(advisorId) {
-    const selAlex = document.getElementById('selAlex');
-    const selSarah = document.getElementById('selSarah');
-    selAlex.className = 'advisor-select-card' + (advisorId === 'alex' ? ' active-alex' : '');
-    selSarah.className = 'advisor-select-card' + (advisorId === 'sarah' ? ' active-sarah' : '');
-}
-
-// ============ SWITCH ADVISOR ============
-function switchAdvisor(toAdvisor) {
-    if (toAdvisor === currentAdvisor) return;
-    
-    const prevAdvisor = currentAdvisor;
-    currentAdvisor = toAdvisor;
-    const a = ADVISORS[toAdvisor];
-    
-    // Save preference
-    const mem = getClientMemory();
-    if (mem) { mem.lastAdvisor = toAdvisor; saveClientMemory(mem); }
-    
-    // Update UI
-    renderAdvisorProfile(toAdvisor);
-    renderChatHeader(toAdvisor);
-    updateSelectorCards(toAdvisor);
-    document.getElementById('chatInput').placeholder = a.placeholder;
-    
-    // Transfer notice in chat
-    const transferDiv = document.createElement('div');
-    transferDiv.className = 'transfer-notice';
-    transferDiv.innerHTML = `🔄 Switched to <strong>${a.name}</strong> — ${a.role}. Your conversation history is preserved!`;
-    chatMessages.appendChild(transferDiv);
-    
-    // Welcome from new advisor
-    const welcome = generateAdvisorWelcome(toAdvisor, prevAdvisor);
-    addMessage(welcome, 'bot', true, toAdvisor);
-    
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-
-// ============ WELCOME MESSAGE ============
-function generateAdvisorWelcome(advisorId, fromAdvisor = null) {
-    const a = ADVISORS[advisorId];
-    const mem = getClientMemory();
-    const lang = mem ? mem.language : detectLanguage();
-    const greet = GREETINGS[lang] || GREETINGS['en'];
-    const intro = (ADVISOR_INTROS[advisorId][lang] || ADVISOR_INTROS[advisorId]['default']);
-    const hour = new Date().getHours();
-    let timeGreet = '';
-    
-    if (lang === 'en') {
-        if (hour < 12) timeGreet = 'Good morning! ☀️';
-        else if (hour < 18) timeGreet = 'Good afternoon! 🌤️';
-        else timeGreet = 'Good evening! 🌙';
-    }
-    
-    let welcome = '';
-    
-    if (fromAdvisor) {
-        // Transfer from another advisor
-        const otherName = ADVISORS[fromAdvisor].name.split(' ')[0];
-        welcome = `${greet.greeting} ${intro}\n\n${otherName} mentioned you might need my expertise. ${greet.ask}`;
-    } else if (mem && mem.visitCount === 1) {
-        welcome = `${timeGreet} ${greet.greeting}\n\n${intro}\n\n${greet.ask}`;
-    } else if (mem && mem.visitCount <= 3) {
-        welcome = `${timeGreet} ${greet.greeting} Welcome back! `;
-        if (mem.lastTopic) {
-            welcome += `Last time we were chatting about **${mem.lastTopic}** — want to dive deeper?`;
-        } else {
-            welcome += greet.ask;
-        }
-    } else if (mem && mem.visitCount > 3) {
-        const name = mem.name ? `${mem.name}! ` : '';
-        welcome = `${timeGreet} ${name}${greet.greeting} Always great to see you! 😊 `;
-        if (mem.lastTopic) {
-            welcome += `We were discussing **${mem.lastTopic}** last time. What's on your mind today?`;
-        } else {
-            welcome += greet.ask;
-        }
-    } else {
-        welcome = `${greet.greeting} ${intro}\n\n${greet.ask}`;
-    }
-    
-    return welcome;
-}
-
-// ============ CHAT LOGIC ============
-const chatMessages = document.getElementById('chatMessages');
-const chatInput = document.getElementById('chatInput');
-const chatSend = document.getElementById('chatSend');
-
-// Shared chat histories per advisor
-let chatHistories = { alex: [], sarah: [] };
-
-window.addEventListener('DOMContentLoaded', function() {
-    const mem = initClientMemory();
-    
-    // Restore last advisor
-    const startAdvisor = (mem && mem.lastAdvisor) || 'alex';
-    currentAdvisor = startAdvisor;
-    
-    renderAdvisorProfile(startAdvisor);
-    renderChatHeader(startAdvisor);
-    updateSelectorCards(startAdvisor);
-    document.getElementById('chatInput').placeholder = ADVISORS[startAdvisor].placeholder;
-    
-    const welcome = generateAdvisorWelcome(startAdvisor);
-    addMessage(welcome, 'bot', true, startAdvisor);
+// Tab clicks
+document.querySelectorAll('.courses-tab').forEach(tab=>{
+tab.addEventListener('click',()=>{
+document.querySelectorAll('.courses-tab').forEach(t=>t.classList.remove('active'));
+tab.classList.add('active');
+renderCourses(tab.dataset.level);
+});
 });
 
-// Pre-built knowledge for offline/fallback mode
-const KNOWLEDGE = {
-    'support resistance': "Support and resistance are key price levels where buying or selling pressure tends to emerge. **Support** acts like a floor — price bounces up from it. **Resistance** acts like a ceiling — price gets rejected down. Pro tip: The more times a level is tested, the stronger it becomes.",
-    'rsi': "RSI (Relative Strength Index) measures momentum on a scale of 0-100. Above 70 = overbought. Below 30 = oversold. The real edge is **RSI divergence** — when price makes a new high but RSI makes a lower high, that's a powerful reversal signal.",
-    'macd': "MACD shows the relationship between two moving averages. Golden cross (MACD above signal) = bullish. Death cross = bearish. The histogram shows momentum strength.",
-    'moving average': "The 50-day and 200-day MAs are most watched. **Golden Cross** (50 above 200) = long-term bullish. **Death Cross** = bearish. Use MAs as dynamic support/resistance.",
-    'stop loss': "Always set your stop loss BEFORE entering. Aim for **1:3 risk-reward** — risk $1 to make $3. Even with 40% win rate, you'll be profitable with 1:3 R:R.",
-    'candlestick': "Key patterns: **Hammer** (bullish reversal at bottom), **Engulfing** (strong reversal), **Doji** (indecision). Always confirm with volume.",
-    'bollinger': "Bollinger Bands show volatility. Price touching upper = overbought. Lower = oversold. **Band squeeze** signals a big move is coming.",
-    'pe ratio': "P/E Ratio tells you how much you're paying per dollar of earnings. Lower P/E = cheaper. But compare within the same industry. A low P/E might mean declining earnings expectations.",
-    'eps': "EPS (Earnings Per Share) = Net Income ÷ Shares. Rising EPS over multiple quarters is bullish. Watch for earnings surprises — beating expectations often triggers stock rallies.",
-    'roe': "ROE (Return on Equity) measures how efficiently a company uses shareholder capital. Buffett looks for consistent ROE > 15%.",
-    'ipo': "IPO investing is risky. Most IPOs underperform in the first year. Consider waiting for the lockup period to expire (usually 6 months) before investing. Read the S-1 filing carefully.",
-    'portfolio': "Diversification isn't just owning many stocks — it's owning uncorrelated return streams. Consider asset classes, sectors, and geographies. The 60/40 (stocks/bonds) portfolio is a classic starting point.",
-    'valuation': "Key valuation methods: **Comparable Analysis** (compare P/E, P/B, EV/EBITDA with peers), **DCF** (discount future cash flows), **NAV** (assets minus liabilities). No single method is perfect — use multiple approaches.",
-    'cpi': "CPI measures inflation. High CPI → Fed may raise rates → bearish for stocks. Low CPI → potential rate cuts → bullish.",
-    'gdp': "GDP measures economic output. Growing GDP = bullish. Two quarters of decline = recession. Markets react to expectations, not just the number.",
-    'fed': "Fed rate hikes = headwind for stocks. Rate cuts = tailwind. The 'Fed pivot' often triggers major rallies.",
-    'default': "That's a great question! I'd recommend checking out our **Learning Center** below for in-depth tutorials, or ask me about specific topics like: RSI, MACD, support/resistance, P/E ratio, portfolio strategy, or IPO analysis."
+// ============================================
+// RESEARCH
+// ============================================
+function renderResearch(){
+document.getElementById('researchGrid').innerHTML=RESEARCH.map(r=>`
+<div class="research-card">
+<div class="type ${r.type}">${r.type==='daily'?'📅 Daily Brief':r.type==='weekly'?'📊 Weekly Analysis':'🔍 Special Report'}</div>
+<h3>${r.title}</h3>
+<p>${r.desc}</p>
+<div class="meta"><span>${r.date}</span><span>⏱️ ${r.read}</span></div>
+</div>`).join('');
+}
+
+function renderSources(){
+document.getElementById('sourcesGrid').innerHTML=SOURCES.map(s=>`
+<div class="source-card">
+<div class="logo" style="background:rgba(255,255,255,.04)">${s.icon}</div>
+<h4>${s.name}</h4>
+<p>${s.desc}</p>
+<span class="free-badge">✓ Free</span>
+</div>`).join('');
+}
+
+// ============================================
+// GLOSSARY
+// ============================================
+function renderGlossary(filter=''){
+const filtered=GLOSSARY.filter(g=>!filter||g.term.toLowerCase().includes(filter.toLowerCase())||g.def.toLowerCase().includes(filter.toLowerCase()));
+document.getElementById('glossaryGrid').innerHTML=filtered.map(g=>`
+<div class="glossary-item">
+<div class="term">${g.term}</div>
+<div class="def">${g.def}</div>
+<span class="cat">${g.cat}</span>
+</div>`).join('')||'<p style="text-align:center;color:var(--text3);grid-column:1/-1">No terms found. Try a different search.</p>';
+}
+document.getElementById('glossarySearch').addEventListener('input',e=>renderGlossary(e.target.value));
+
+// ============================================
+// CALCULATORS
+// ============================================
+function openCalc(type){
+const box=document.getElementById('calcBox');
+const modals={
+position:`<button class="calc-close" onclick="document.getElementById('calcModal').classList.remove('open')">✕</button>
+<h3>📐 Position Size Calculator</h3>
+<div class="calc-field"><label>Account Size ($)</label><input type="number" id="calcAccSize" value="10000"></div>
+<div class="calc-field"><label>Risk Per Trade (%)</label><input type="number" id="calcRiskPct" value="1" step="0.5"></div>
+<div class="calc-field"><label>Entry Price ($)</label><input type="number" id="calcEntry" value="100"></div>
+<div class="calc-field"><label>Stop-Loss Price ($)</label><input type="number" id="calcSL" value="98"></div>
+<button class="btn btn-p" style="width:100%;margin-top:12px" onclick="calcPosition()">Calculate</button>
+<div class="calc-result" id="calcResult" style="display:none"></div>`,
+pnl:`<button class="calc-close" onclick="document.getElementById('calcModal').classList.remove('open')">✕</button>
+<h3>💰 Profit/Loss Calculator</h3>
+<div class="calc-field"><label>Entry Price ($)</label><input type="number" id="pnlEntry" value="100"></div>
+<div class="calc-field"><label>Exit Price ($)</label><input type="number" id="pnlExit" value="110"></div>
+<div class="calc-field"><label>Position Size (shares)</label><input type="number" id="pnlSize" value="100"></div>
+<div class="calc-field"><label>Direction</label><select id="pnlDir"><option value="long">Long (Buy)</option><option value="short">Short (Sell)</option></select></div>
+<button class="btn btn-p" style="width:100%;margin-top:12px" onclick="calcPnL()">Calculate</button>
+<div class="calc-result" id="calcResult" style="display:none"></div>`,
+margin:`<button class="calc-close" onclick="document.getElementById('calcModal').classList.remove('open')">✕</button>
+<h3>🏦 Margin Calculator</h3>
+<div class="calc-field"><label>Position Value ($)</label><input type="number" id="marginVal" value="100000"></div>
+<div class="calc-field"><label>Leverage</label><input type="number" id="marginLev" value="100" step="10"></div>
+<button class="btn btn-p" style="width:100%;margin-top:12px" onclick="calcMargin()">Calculate</button>
+<div class="calc-result" id="calcResult" style="display:none"></div>`,
+currency:`<button class="calc-close" onclick="document.getElementById('calcModal').classList.remove('open')">✕</button>
+<h3>💱 Currency Converter</h3>
+<div class="calc-field"><label>Amount</label><input type="number" id="curAmt" value="1000"></div>
+<div class="calc-field"><label>From</label><select id="curFrom"><option>USD</option><option>EUR</option><option>GBP</option><option>JPY</option><option>CNY</option></select></div>
+<div class="calc-field"><label>To</label><select id="curTo"><option>EUR</option><option>USD</option><option>GBP</option><option>JPY</option><option>CNY</option></select></div>
+<button class="btn btn-p" style="width:100%;margin-top:12px" onclick="calcCurrency()">Convert</button>
+<div class="calc-result" id="calcResult" style="display:none"></div>`
 };
-
-// Topic keywords for memory tracking
-const TOPIC_KEYWORDS = {
-    'Technical Analysis': ['support', 'resistance', 'trend', 'breakout', 'chart', 'pattern'],
-    'RSI & Indicators': ['rsi', 'macd', 'moving average', 'bollinger', 'indicator', 'overbought', 'oversold'],
-    'Candlestick Patterns': ['candlestick', 'hammer', 'doji', 'engulfing', 'candle'],
-    'Risk Management': ['stop loss', 'risk', 'profit', 'position', 'rr'],
-    'Fundamental Analysis': ['pe ratio', 'eps', 'roe', 'earnings', 'revenue', 'valuation'],
-    'Portfolio Strategy': ['portfolio', 'allocation', 'diversif', 'asset class', 'rebalance'],
-    'IPO & Listing': ['ipo', 'listing', 's-1', 'lockup', 'public offering'],
-    'Macroeconomics': ['cpi', 'gdp', 'fed', 'nfp', 'inflation', 'interest rate']
-};
-
-function findBestAnswer(input) {
-    const lower = input.toLowerCase();
-    for (const [key, answer] of Object.entries(KNOWLEDGE)) {
-        if (key === 'default') continue;
-        if (lower.includes(key) || lower.includes(key.replace(' ', ''))) return answer;
-    }
-    const keywords = {
-        'support': 'support resistance', 'resistance': 'support resistance',
-        'overbought': 'rsi', 'oversold': 'rsi', 'divergence': 'rsi',
-        'golden cross': 'moving average', 'death cross': 'moving average', 'ma': 'moving average', 'ema': 'moving average',
-        'risk': 'stop loss', 'profit': 'stop loss', 'rr': 'stop loss',
-        'hammer': 'candlestick', 'doji': 'candlestick', 'engulfing': 'candlestick',
-        'band': 'bollinger', 'squeeze': 'bollinger',
-        'p/e': 'pe ratio', 'price to earnings': 'pe ratio',
-        'earnings': 'eps', 'roe': 'roe', 'return on equity': 'roe',
-        'inflation': 'cpi', 'consumer price': 'cpi',
-        'interest rate': 'fed', 'fomc': 'fed', 'federal reserve': 'fed',
-        'macro': 'gdp', 'recession': 'gdp',
-        'fundamental': 'pe ratio', 'valuation': 'valuation',
-        'ipo': 'ipo', 'listing': 'ipo', 'lockup': 'ipo',
-        'portfolio': 'portfolio', 'diversif': 'portfolio', 'allocat': 'portfolio'
-    };
-    for (const [kw, topic] of Object.entries(keywords)) {
-        if (lower.includes(kw)) return KNOWLEDGE[topic];
-    }
-    return KNOWLEDGE['default'];
+box.innerHTML=modals[type]||'';
+document.getElementById('calcModal').classList.add('open');
 }
 
-function trackTopic(input) {
-    const lower = input.toLowerCase();
-    for (const [topic, kws] of Object.entries(TOPIC_KEYWORDS)) {
-        for (const kw of kws) {
-            if (lower.includes(kw)) {
-                const mem = getClientMemory();
-                if (mem) {
-                    mem.lastTopic = topic;
-                    if (!mem.interests.includes(topic)) {
-                        mem.interests.push(topic);
-                    }
-                    saveClientMemory(mem);
-                }
-                return;
-            }
-        }
-    }
+function calcPosition(){
+const acc=parseFloat(document.getElementById('calcAccSize').value);
+const risk=parseFloat(document.getElementById('calcRiskPct').value)/100;
+const entry=parseFloat(document.getElementById('calcEntry').value);
+const sl=parseFloat(document.getElementById('calcSL').value);
+const riskAmt=acc*risk;
+const perShare=Math.abs(entry-sl);
+const shares=Math.floor(riskAmt/perShare);
+const r=document.getElementById('calcResult');r.style.display='block';
+r.innerHTML=`<div class="value">${shares} shares</div><div class="label">Risk Amount: $${riskAmt.toFixed(2)} | Per Share Risk: $${perShare.toFixed(2)}</div>`;
+}
+function calcPnL(){
+const entry=parseFloat(document.getElementById('pnlEntry').value);
+const exit=parseFloat(document.getElementById('pnlExit').value);
+const size=parseFloat(document.getElementById('pnlSize').value);
+const dir=document.getElementById('pnlDir').value;
+const pnl=dir==='long'?(exit-entry)*size:(entry-exit)*size;
+const pct=((dir==='long'?(exit-entry):(entry-exit))/entry*100).toFixed(2);
+const r=document.getElementById('calcResult');r.style.display='block';
+r.innerHTML=`<div class="value" style="background:${pnl>=0?'linear-gradient(135deg,#10b981,#059669)':'linear-gradient(135deg,#ef4444,#dc2626)'};-webkit-background-clip:text;-webkit-text-fill-color:transparent">$${pnl.toFixed(2)}</div><div class="label">${pnl>=0?'Profit':'Loss'} | ${pct}% Return</div>`;
+}
+function calcMargin(){
+const val=parseFloat(document.getElementById('marginVal').value);
+const lev=parseFloat(document.getElementById('marginLev').value);
+const margin=val/lev;
+const r=document.getElementById('calcResult');r.style.display='block';
+r.innerHTML=`<div class="value">$${margin.toFixed(2)}</div><div class="label">Required Margin | Leverage: 1:${lev}</div>`;
+}
+function calcCurrency(){
+const rates={USD:1,EUR:0.92,GBP:0.79,JPY:154.32,CNY:7.24};
+const amt=parseFloat(document.getElementById('curAmt').value);
+const from=document.getElementById('curFrom').value;
+const to=document.getElementById('curTo').value;
+const result=amt/rates[from]*rates[to];
+const r=document.getElementById('calcResult');r.style.display='block';
+r.innerHTML=`<div class="value">${result.toFixed(2)} ${to}</div><div class="label">${amt} ${from} → ${to} | Rate: ${(rates[to]/rates[from]).toFixed(4)}</div>`;
 }
 
-// Auto-suggest advisor switch based on topic
-function shouldSuggestSwitch(input) {
-    const lower = input.toLowerCase();
-    if (currentAdvisor === 'alex') {
-        // If asking about fundamentals, suggest Sarah
-        const sarahTopics = ['pe ratio', 'eps', 'roe', 'ipo', 'portfolio', 'valuation', 'earnings report', 'financial statement', 'balance sheet', 'cash flow', 'dividend', 'warren buffett'];
-        for (const t of sarahTopics) {
-            if (lower.includes(t)) return 'sarah';
-        }
-    } else {
-        // If asking about technicals, suggest Alex
-        const alexTopics = ['rsi', 'macd', 'support', 'resistance', 'candlestick', 'bollinger', 'moving average', 'chart pattern', 'breakout', 'trend line'];
-        for (const t of alexTopics) {
-            if (lower.includes(t)) return 'alex';
-        }
-    }
-    return null;
+// Close modals on outside click
+document.getElementById('calcModal').addEventListener('click',e=>{if(e.target===e.currentTarget)e.currentTarget.classList.remove('open')});
+document.getElementById('courseModal').addEventListener('click',e=>{if(e.target===e.currentTarget)e.currentTarget.classList.remove('open')});
+
+// ============================================
+// AI CHAT
+// ============================================
+let chatHistory=[];
+const ADVISOR_SYSTEM=`You are Alex Chen, a senior investment advisor at BroadFSC with 8 years of experience in technical analysis and risk management. You are warm, professional, and genuinely helpful.
+
+CORE PRINCIPLES:
+- Always provide substantive, educational answers (not one-liners)
+- Use SPIN selling naturally: understand Situation → identify Problem → show Implication → reveal Need-payoff
+- If someone asks about trading, naturally guide toward "Have you considered opening an account with us for professional tools?"
+- Never be pushy. Educate first, sell second.
+- Reference specific data, numbers, and examples when possible
+- If you don't know something, say so honestly and suggest where to find it
+- Remember the conversation context and build on previous exchanges
+- End responses with a thoughtful follow-up question to keep conversation going
+
+KNOWLEDGE AREAS: Stocks, Forex, Crypto, Technical Analysis, Fundamental Analysis, Risk Management, Portfolio Construction, Options, Macroeconomics
+
+You speak the same language as the user. Detect their language and respond accordingly.`;
+
+function initChat(){
+addBotMsg("👋 Welcome! I'm Alex Chen, your personal investment advisor at BroadFSC Pro.\n\nI can help you with:\n• 📊 Market analysis & trading strategies\n• 📖 Course recommendations based on your level\n• 🔍 Research report walkthroughs\n• 🧮 Risk & position sizing calculations\n• 💼 Account opening guidance\n\nWhat would you like to learn about today?");
 }
 
-function addMessage(text, type, isWelcome = false, advisorId = null) {
-    const a = advisorId || currentAdvisor;
-    const div = document.createElement('div');
-    const advisorClass = ADVISORS[a].colorClass + '-msg';
-    div.className = `chat-msg ${type} ${type === 'bot' ? advisorClass : ''}`;
-    
-    if (type === 'bot' && !isWelcome) {
-        const nameClass = ADVISORS[a].colorClass + '-name';
-        div.innerHTML = `<div class="msg-name ${nameClass}">${ADVISORS[a].name}</div>` + text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
-    } else {
-        div.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
-    }
-    
-    chatMessages.appendChild(div);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
+function addBotMsg(text){
+const body=document.getElementById('chatBody');
+const div=document.createElement('div');
+div.className='chat-msg bot';
+div.innerHTML=text.replace(/\n/g,'<br>');
+body.appendChild(div);
+body.scrollTop=body.scrollHeight;
 }
 
-async function sendMessage() {
-    const text = chatInput.value.trim();
-    if (!text) return;
-    
-    // Check if user introduced themselves
-    const nameMatch = text.match(/(?:my name is|i'm|i am|call me|我是|我叫|name's)\s+([A-Z][a-z]+|[a-z]+)/i);
-    if (nameMatch) {
-        const mem = getClientMemory();
-        if (mem) {
-            mem.name = nameMatch[1];
-            saveClientMemory(mem);
-        }
-    }
-    
-    // Track topic interest
-    trackTopic(text);
-    
-    addMessage(text, 'user');
-    chatInput.value = '';
-    chatSend.disabled = true;
-    
-    // Show typing
-    const a = ADVISORS[currentAdvisor];
-    const typingDiv = document.createElement('div');
-    typingDiv.className = `chat-msg bot ${a.colorClass}-msg`;
-    typingDiv.innerHTML = `<span style="opacity:0.5">${a.name.split(' ')[0]} is typing...</span>`;
-    chatMessages.appendChild(typingDiv);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-    
-    // Human-like delay
-    await new Promise(r => setTimeout(r, 1000 + Math.random() * 2000));
-    
-    // Build context-aware system prompt
-    const mem = getClientMemory();
-    let systemPrompt = ADVISORS[currentAdvisor].systemPrompt;
-    
-    if (mem) {
-        if (mem.name) systemPrompt += ` The client's name is ${mem.name} — use it naturally.`;
-        if (mem.interests && mem.interests.length > 0) systemPrompt += ` They've shown interest in: ${mem.interests.join(', ')}.`;
-        if (mem.lastTopic) systemPrompt += ` Last topic discussed: ${mem.lastTopic}.`;
-        if (mem.visitCount > 3) systemPrompt += ` This is a returning client (${mem.visitCount} visits) — be warmer and more familiar.`;
-    }
-    
-    // Try Groq API first
-    let reply = '';
-    try {
-        const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + (window.__GROQ_KEY || '')
-            },
-            body: JSON.stringify({
-                model: 'llama-3.1-8b-instant',
-                messages: [
-                    { role: 'system', content: systemPrompt },
-                    ...chatHistories[currentAdvisor].slice(-6),
-                    { role: 'user', content: text }
-                ],
-                max_tokens: 300,
-                temperature: 0.7
-            })
-        });
-        
-        if (response.ok) {
-            const data = await response.json();
-            reply = data.choices[0].message.content;
-            chatHistories[currentAdvisor].push({ role: 'user', content: text });
-            chatHistories[currentAdvisor].push({ role: 'assistant', content: reply });
-        } else {
-            throw new Error('API error');
-        }
-    } catch (e) {
-        // Fallback to local knowledge
-        reply = findBestAnswer(text);
-    }
-    
-    // Remove typing indicator
-    typingDiv.remove();
-    
-    addMessage(reply, 'bot');
-    chatSend.disabled = false;
-    chatInput.focus();
-    
-    // Auto-suggest advisor switch if relevant
-    const suggestSwitch = shouldSuggestSwitch(text);
-    if (suggestSwitch && suggestSwitch !== currentAdvisor) {
-        const otherAdvisor = ADVISORS[suggestSwitch];
-        const suggestDiv = document.createElement('div');
-        suggestDiv.className = 'transfer-notice';
-        suggestDiv.style.cursor = 'pointer';
-        suggestDiv.style.marginTop = '8px';
-        suggestDiv.innerHTML = `💡 <strong>${otherAdvisor.name}</strong> specializes in this topic. <u>Click here to switch</u>`;
-        suggestDiv.onclick = function() { switchAdvisor(suggestSwitch); };
-        chatMessages.appendChild(suggestDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
+function addUserMsg(text){
+const body=document.getElementById('chatBody');
+const div=document.createElement('div');
+div.className='chat-msg user';
+div.textContent=text;
+body.appendChild(div);
+body.scrollTop=body.scrollHeight;
 }
 
-chatInput.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') sendMessage();
+function showTyping(){
+const body=document.getElementById('chatBody');
+const div=document.createElement('div');
+div.className='chat-msg bot';
+div.id='typingIndicator';
+div.innerHTML='<div class="typing"><span></span><span></span><span></span></div>';
+body.appendChild(div);
+body.scrollTop=body.scrollHeight;
+}
+
+function removeTyping(){
+const t=document.getElementById('typingIndicator');
+if(t)t.remove();
+}
+
+async function sendChat(){
+const input=document.getElementById('chatInput');
+const text=input.value.trim();if(!text)return;
+input.value='';
+addUserMsg(text);
+chatHistory.push({role:'user',content:text});
+showTyping();
+
+// Build messages for Groq
+const messages=[{role:'system',content:ADVISOR_SYSTEM},...chatHistory.slice(-10)];
+
+try{
+const GROQ_KEY=typeof process!=='undefined'?'':(window.GROQ_API_KEY||'');
+// Try to get API key from environment or use fallback
+const groqKey=window.GROQ_API_KEY||'';
+if(!groqKey){throw new Error('No API key')}
+const resp=await fetch('https://api.groq.com/openai/v1/chat/completions',{
+method:'POST',
+headers:{'Content-Type':'application/json','Authorization':'Bearer '+groqKey},
+body:JSON.stringify({model:'llama-3.1-8b-instant',messages,max_tokens:1024,temperature:0.7})
+});
+const data=await resp.json();
+removeTyping();
+if(data.choices&&data.choices[0]){
+const reply=data.choices[0].message.content;
+chatHistory.push({role:'assistant',content:reply});
+addBotMsg(reply);
+}else{
+addBotMsg("I'm having trouble connecting right now. Please try again in a moment. 🔧");
+}
+}catch(e){
+removeTyping();
+// Fallback: local knowledge-based responses
+const fallback=generateLocalResponse(text);
+chatHistory.push({role:'assistant',content:fallback});
+addBotMsg(fallback);
+}
+}
+
+function generateLocalResponse(text){
+const t=text.toLowerCase();
+if(t.includes('stock')||t.includes('share'))
+return "Great question about stocks! 📈\n\nThe stock market is essentially a marketplace where buyers and sellers trade shares of publicly listed companies. Here are key concepts:\n\n• **Price** is determined by supply and demand\n• **Market Cap** = Share Price × Total Shares\n• **P/E Ratio** helps you compare valuations\n\n💡 Have you checked our Beginner Course on stock markets? It covers everything from opening an account to reading charts.\n\nWhat specific aspect of stocks interests you most — individual stock picking, ETFs, or index investing?";
+if(t.includes('forex')||t.includes('currency'))
+return "Forex is fascinating! 💱\n\nThe forex market is the largest financial market globally, with $6.6 trillion in daily volume. Key points:\n\n• Traded in **currency pairs** (e.g., EUR/USD)\n• **24/5** market — Tokyo, London, New York sessions\n• **Pips** are the smallest price unit (0.0001)\n• High leverage is available (but risky!)\n\n📊 Our Forex 101 course covers this in depth. Would you like me to walk you through a specific forex concept?";
+if(t.includes('crypto')||t.includes('bitcoin')||t.includes('btc'))
+return "Crypto is an exciting but volatile space! 🪙\n\nKey facts:\n• Bitcoin was created in 2009 by Satoshi Nakamoto\n• Total market cap: ~$1.7 trillion\n• 24/7 trading — no closing bell\n• Extreme volatility — 5-10% daily moves are common\n\n⚠️ Risk management is CRUCIAL in crypto. Never invest more than you can afford to lose.\n\nWant to learn about technical analysis for crypto, or are you more interested in the fundamentals?";
+if(t.includes('risk'))
+return "Risk management is the MOST important skill in trading! 🛡️\n\nThe golden rules:\n\n1. **1% Rule** — Never risk more than 1% of your account on a single trade\n2. **Always use stop-losses** — No exceptions\n3. **Position sizing** — Calculate before entering\n4. **Diversification** — Don't put all eggs in one basket\n5. **Risk-Reward ratio** — Aim for at least 1:2\n\n📊 Try our Position Size Calculator in the Tools section above!\n\nWould you like me to show you how to calculate proper position size for a trade?";
+if(t.includes('open')||t.includes('account')||t.includes('start'))
+return "Great to hear you're ready to get started! 🚀\n\nOpening an account with BroadFSC is straightforward:\n\n1. **Visit** broadfsc.com\n2. **Complete KYC** — ID verification (usually takes 15 minutes)\n3. **Fund your account** — Bank transfer, card, or crypto\n4. **Start trading** — Stocks, forex, crypto, and more\n\n✅ We're regulated by major authorities\n✅ Low spreads and competitive commissions\n✅ Professional trading platforms\n\nWould you like me to guide you through the account opening process, or do you have questions about our services first?";
+// Default
+return "That's an interesting question! 🤔\n\nI'd love to help you explore this further. Here at BroadFSC Pro, we cover:\n\n• 📚 **30+ courses** from beginner to advanced\n• 📊 **Free research reports** updated daily\n• 📖 **300+ term glossary** for quick reference\n• 🧮 **Trading calculators** for risk management\n\nCould you tell me more about what you're looking for? For example:\n- Are you new to investing or experienced?\n- What markets interest you (stocks, forex, crypto)?\n- Do you have a specific trading question?\n\nThe more specific, the better I can help! 😊";
+}
+
+// ============================================
+// NAV ACTIVE STATE
+// ============================================
+const sections=document.querySelectorAll('section[id]');
+window.addEventListener('scroll',()=>{
+let current='';
+sections.forEach(s=>{if(window.scrollY>=s.offsetTop-100)current=s.id});
+document.querySelectorAll('.nav-links a').forEach(a=>{
+a.classList.toggle('active',a.getAttribute('href')==='#'+current);
+});
 });
 
-// ============ MODAL LOGIC ============
-const MODAL_DATA = {
-    ta: {
-        title: '📈 Technical Analysis Basics',
-        advisor: 'alex',
-        content: `
-            <h3>What is Technical Analysis?</h3>
-            <p>Technical analysis (TA) studies past price movements to predict future direction. It's based on three core principles:</p>
-            <ul>
-                <li><strong>Price discounts everything</strong> — all known information is already reflected in the price</li>
-                <li><strong>Prices move in trends</strong> — once established, trends tend to continue</li>
-                <li><strong>History repeats</strong> — chart patterns that worked before tend to work again</li>
-            </ul>
-            
-            <h3>Support & Resistance</h3>
-            <p><strong>Support</strong> is a price level where buying pressure emerges — like a floor. <strong>Resistance</strong> is where selling pressure kicks in — like a ceiling.</p>
-            <div class="highlight-box">
-                <strong>Key Rule:</strong> The more times a level is tested, the stronger it becomes. When resistance breaks, it often flips to become new support.
-            </div>
-            
-            <h3>Trend Lines</h3>
-            <p>Connect at least two higher lows for an uptrend line, or two lower highs for a downtrend line. The more touches, the more valid the line.</p>
-            
-            <h3>Practical Tips</h3>
-            <ul>
-                <li>Always mark support/resistance BEFORE entering a trade</li>
-                <li>Buy near support with a stop loss below it</li>
-                <li>Sell near resistance or wait for a confirmed breakout</li>
-                <li>Use multiple timeframes for confirmation</li>
-            </ul>
-        `
-    },
-    indicators: {
-        title: '📊 Key Indicators: RSI, MACD & Moving Averages',
-        advisor: 'alex',
-        content: `
-            <h3>RSI (Relative Strength Index)</h3>
-            <p>RSI measures momentum on a scale of 0-100. The magic numbers are <strong>30 and 70</strong>:</p>
-            <ul>
-                <li>Below 30 = <strong>Oversold</strong> — selling pressure may be exhausted</li>
-                <li>Above 70 = <strong>Overbought</strong> — buying momentum may be fading</li>
-                <li><strong>RSI Divergence</strong> — price makes new high but RSI makes lower high = powerful reversal signal</li>
-            </ul>
-            
-            <h3>MACD</h3>
-            <p>MACD shows the relationship between two moving averages (typically 12 and 26 EMA).</p>
-            <ul>
-                <li><strong>Golden Cross</strong> — MACD line crosses above signal line = bullish</li>
-                <li><strong>Death Cross</strong> — MACD line crosses below signal line = bearish</li>
-                <li><strong>Histogram</strong> — growing bars = increasing momentum</li>
-            </ul>
-            
-            <h3>Moving Averages</h3>
-            <p>The 50-day and 200-day MAs are the most watched by professionals:</p>
-            <ul>
-                <li><strong>50/200 Golden Cross</strong> — strong long-term bullish signal</li>
-                <li><strong>50/200 Death Cross</strong> — long-term bearish warning</li>
-                <li>MAs act as dynamic support in uptrends</li>
-            </ul>
-            
-            <div class="highlight-box">
-                <strong>Pro Tip:</strong> Never rely on a single indicator. Combine RSI with support/resistance, confirm MACD signals with volume.
-            </div>
-        `
-    },
-    candlestick: {
-        title: '🕯️ Candlestick Patterns',
-        advisor: 'alex',
-        content: `
-            <h3>Reading Candlesticks</h3>
-            <p>Each candle shows 4 data points: Open, High, Low, Close. The body shows the open-close range. The wicks show the high-low range.</p>
-            
-            <h3>Key Reversal Patterns</h3>
-            <ul>
-                <li><strong>Hammer</strong> — small body at top, long lower shadow at bottom of downtrend = bullish reversal</li>
-                <li><strong>Engulfing</strong> — large candle completely covers the previous one = strong reversal</li>
-                <li><strong>Doji</strong> — open ≈ close = indecision, trend may be changing</li>
-                <li><strong>Morning Star</strong> — 3-candle bullish reversal pattern</li>
-                <li><strong>Evening Star</strong> — 3-candle bearish reversal pattern</li>
-            </ul>
-            
-            <div class="highlight-box">
-                <strong>Always confirm:</strong> A single candlestick pattern is NOT a trade signal. Confirm with volume, support/resistance, and the next candle.
-            </div>
-        `
-    },
-    risk: {
-        title: '🛡️ Risk Management',
-        advisor: 'alex',
-        content: `
-            <h3>The #1 Rule: Protect Your Capital</h3>
-            <p>Most traders lose money not because they're wrong about direction, but because they don't manage risk properly.</p>
-            
-            <h3>Stop Loss Rules</h3>
-            <ul>
-                <li><strong>ALWAYS</strong> set stop loss BEFORE entering a trade</li>
-                <li>For longs: place stop just below nearest support</li>
-                <li>For shorts: place stop just above nearest resistance</li>
-                <li>Never move your stop loss further away</li>
-            </ul>
-            
-            <h3>The 1:3 Risk-Reward Ratio</h3>
-            <div class="highlight-box">
-                <strong>The Math:</strong> With a 1:3 R:R ratio, even if you're only right 40% of the time:
-                <br>• 10 trades: 4 wins × $9 = $36, 6 losses × $3 = $18
-                <br>• Net profit = $18 — you're profitable despite being wrong 60% of the time!
-            </div>
-            
-            <h3>Position Sizing</h3>
-            <p>Never risk more than 1-2% of your total capital on a single trade.</p>
-        `
-    },
-    fundamentals: {
-        title: '💰 Fundamental Analysis',
-        advisor: 'sarah',
-        content: `
-            <h3>What is Fundamental Analysis?</h3>
-            <p>Fundamental analysis evaluates a company's intrinsic value by examining financial statements, industry position, and economic conditions.</p>
-            
-            <h3>Key Metrics</h3>
-            <ul>
-                <li><strong>P/E Ratio</strong> — Price per share ÷ Earnings per share. Lower = cheaper (compare within same industry).</li>
-                <li><strong>EPS (Earnings Per Share)</strong> — Net income ÷ shares outstanding. Rising EPS is bullish.</li>
-                <li><strong>ROE (Return on Equity)</strong> — Buffett looks for consistent ROE > 15%.</li>
-                <li><strong>Revenue Growth</strong> — consistently growing revenue is the foundation of long-term appreciation.</li>
-            </ul>
-            
-            <h3>Valuation Methods</h3>
-            <ul>
-                <li><strong>Comparable Analysis</strong> — compare P/E, P/B, EV/EBITDA with similar companies</li>
-                <li><strong>DCF (Discounted Cash Flow)</strong> — project future cash flows and discount to present value</li>
-                <li><strong>NAV (Net Asset Value)</strong> — total assets minus total liabilities</li>
-            </ul>
-            
-            <div class="highlight-box">
-                <strong>Key Insight:</strong> Fundamentals tell you WHAT to buy. Technicals tell you WHEN to buy. The best investors use both.
-            </div>
-        `
-    },
-    macro: {
-        title: '🌍 Macroeconomic Indicators',
-        advisor: 'sarah',
-        content: `
-            <h3>Why Macro Matters</h3>
-            <p>Individual stocks don't exist in a vacuum — they're influenced by the broader economy.</p>
-            
-            <h3>Key Indicators</h3>
-            <ul>
-                <li><strong>CPI (Consumer Price Index)</strong> — measures inflation. High CPI → Fed may raise rates → bearish.</li>
-                <li><strong>NFP (Non-Farm Payrolls)</strong> — monthly jobs report. Strong NFP = healthy economy.</li>
-                <li><strong>GDP</strong> — total economic output. Growing GDP = bullish. Two quarters of decline = recession.</li>
-                <li><strong>Fed Rate Decision</strong> — the single most important macro event.</li>
-            </ul>
-            
-            <div class="highlight-box">
-                <strong>Economic Calendar:</strong> Always check the economic calendar before trading. Major releases can cause significant volatility.
-            </div>
-            
-            <h3>Free Resources</h3>
-            <ul>
-                <li><strong>TradingEconomics.com</strong> — real-time economic data</li>
-                <li><strong>FRED (St. Louis Fed)</strong> — comprehensive economic database</li>
-                <li><strong>Investing.com Economic Calendar</strong> — upcoming releases</li>
-            </ul>
-        `
-    }
-};
-
-function openModal(id) {
-    const data = MODAL_DATA[id];
-    if (!data) return;
-    const advisorName = ADVISORS[data.advisor].name;
-    document.getElementById('modalContent').innerHTML = `
-        <button class="modal-close" onclick="document.getElementById('modalOverlay').classList.remove('active')">✕</button>
-        <h2>${data.title}</h2>
-        ${data.content}
-        <div style="margin-top:24px;text-align:center;">
-            <a href="#chat" class="btn btn-primary" onclick="switchAdvisor('${data.advisor}'); document.getElementById('modalOverlay').classList.remove('active')" style="font-size:0.9em;padding:10px 20px;">💬 Ask ${advisorName.split(' ')[0]} about this</a>
-        </div>
-    `;
-    document.getElementById('modalOverlay').classList.add('active');
-}
-
-function closeModal(e) {
-    if (e.target === document.getElementById('modalOverlay')) {
-        document.getElementById('modalOverlay').classList.remove('active');
-    }
-}
-
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        document.getElementById('modalOverlay').classList.remove('active');
-    }
-});
-
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-    });
+// ============================================
+// INIT
+// ============================================
+document.addEventListener('DOMContentLoaded',()=>{
+initTicker();
+initHeroCanvas();
+renderCourses();
+renderResearch();
+renderSources();
+renderGlossary();
+initChat();
 });
 </script>
 </body>
