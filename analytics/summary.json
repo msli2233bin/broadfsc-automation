@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-04-17T22:24:19.098129Z",
+  "generated_at": "2026-04-18T00:07:09.856448Z",
   "period": {
-    "today": "2026-04-17",
-    "yesterday": "2026-04-16",
-    "week_ago": "2026-04-10",
-    "month_ago": "2026-03-18"
+    "today": "2026-04-18",
+    "yesterday": "2026-04-17",
+    "week_ago": "2026-04-11",
+    "month_ago": "2026-03-19"
   },
   "totals": {
-    "posts_today": 9,
+    "posts_today": 0,
     "posts_week": 11,
     "posts_month": 11,
-    "interactions_today": 17,
+    "interactions_today": 0,
     "interactions_week": 17,
     "interactions_month": 17,
     "success_rate": 9.1
   },
   "platforms": {
     "tiktok": {
-      "today": 9,
+      "today": 0,
       "week": 11,
       "month": 11,
       "success": 1,
@@ -26,7 +26,7 @@
   },
   "interactions_by_platform": {
     "telegram_bot": {
-      "today": 17,
+      "today": 0,
       "week": 17,
       "month": 17
     }
