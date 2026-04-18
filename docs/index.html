@@ -63,6 +63,19 @@ a{color:inherit;text-decoration:none}
 .hero h1{font-size:3.2em;font-weight:800;line-height:1.08;margin-bottom:18px;background:linear-gradient(135deg,#fff 0%,#93c5fd 40%,#6ee7b7 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-1px}
 .hero p{font-size:1.15em;color:var(--text2);max-width:620px;margin:0 auto 28px}
 .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+
+/* === ADVISOR CARDS (TOP) === */
+.advisors-row{display:flex;gap:16px;justify-content:center;margin-bottom:32px;flex-wrap:wrap}
+.advisor-card{display:flex;align-items:center;gap:14px;background:rgba(12,18,37,.9);backdrop-filter:blur(16px);border:1px solid rgba(59,130,246,.2);border-radius:16px;padding:16px 20px;cursor:pointer;transition:all .3s;max-width:340px;flex:1}
+.advisor-card:hover{border-color:rgba(59,130,246,.5);transform:translateY(-3px);box-shadow:0 8px 32px rgba(59,130,246,.2)}
+.advisor-avatar{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.advisor-info{flex:1;text-align:left}
+.advisor-name{font-weight:700;font-size:.95em;color:#fff}
+.advisor-role{font-size:.78em;color:var(--text2)}
+.advisor-status{font-size:.72em;color:var(--green);display:flex;align-items:center;gap:4px}
+.status-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+.advisor-chat-btn{font-size:.8em;font-weight:600;color:var(--blue);white-space:nowrap;padding:6px 14px;border-radius:8px;background:rgba(59,130,246,.1);transition:all .2s}
+.advisor-card:hover .advisor-chat-btn{background:rgba(59,130,246,.2)}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--radius2);font-size:1em;font-weight:600;transition:all .25s;border:none;cursor:pointer}
 .btn-p{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;box-shadow:0 4px 24px rgba(59,130,246,.3)}
 .btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(59,130,246,.4)}
@@ -218,6 +231,13 @@ a{color:inherit;text-decoration:none}
 .module-item .info h4{font-size:.95em;font-weight:600}
 .module-item .info p{font-size:.82em;color:var(--text3)}
 .module-item .dur{font-size:.82em;color:var(--text3)}
+.module-item .expand-icon{color:var(--text3);font-size:.9em;transition:transform .2s}
+.module-item.expanded .expand-icon{transform:rotate(180deg)}
+.module-content{display:none;background:var(--bg3);border:1px solid var(--border);border-radius:0 0 12px 12px;padding:20px 24px;margin-top:-10px;margin-bottom:10px;font-size:.92em;line-height:1.8;color:var(--text2)}
+.module-content.show{display:block}
+.module-content strong{color:var(--text)}
+.module-content ul{padding-left:20px;margin:8px 0}
+.module-content li{margin:4px 0}
 .quiz-section{margin-top:32px;padding-top:24px;border-top:1px solid var(--border)}
 .quiz-section h3{font-size:1.2em;font-weight:700;margin-bottom:16px}
 .quiz-q{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:12px}
@@ -261,6 +281,27 @@ a{color:inherit;text-decoration:none}
 <section class="hero" id="home">
 <canvas id="heroCanvas"></canvas>
 <div class="hero-content">
+<!-- AI ADVISORS — TOP POSITION -->
+<div class="advisors-row" id="advisorCards">
+<div class="advisor-card" onclick="openAdvisorChat('alex')">
+<div class="advisor-avatar" style="background:linear-gradient(135deg,#3b82f6,#10b981)">👨‍💼</div>
+<div class="advisor-info">
+<div class="advisor-name">Alex Chen</div>
+<div class="advisor-role">Senior Investment Advisor</div>
+<div class="advisor-status"><span class="status-dot"></span> Online • 8 yrs exp</div>
+</div>
+<div class="advisor-chat-btn">Chat Now →</div>
+</div>
+<div class="advisor-card" onclick="openAdvisorChat('sarah')">
+<div class="advisor-avatar" style="background:linear-gradient(135deg,#8b5cf6,#f59e0b)">👩‍💼</div>
+<div class="advisor-info">
+<div class="advisor-name">Sarah Kim</div>
+<div class="advisor-role">Risk Management Specialist</div>
+<div class="advisor-status"><span class="status-dot"></span> Online • 6 yrs exp</div>
+</div>
+<div class="advisor-chat-btn">Chat Now →</div>
+</div>
+</div>
 <div class="hero-badge"><span class="dot"></span> AI-Powered Investment Education</div>
 <h1>The World's Most Accessible<br>Investment Education Platform</h1>
 <p>Free professional research, 30+ structured courses, real-time market insights, and an AI advisor that speaks your language — literally. No hidden fees. No gatekeeping. Just knowledge.</p>
@@ -693,8 +734,8 @@ document.getElementById('courseDetail').innerHTML=`
 <div class="tag ${tagClass}">${tagLabel}</div>
 <h2>${c.title}</h2>
 <p style="color:var(--text2);margin-bottom:24px">${c.desc}</p>
-<h3 style="margin-bottom:16px;font-size:1.1em">📋 Course Modules</h3>
-<ul class="module-list">${moduleNames.map((m,i)=>`<li class="module-item"><div class="num">${i+1}</div><div class="info"><h4>${m.title}</h4><p>${m.desc}</p></div><div class="dur">${m.dur}</div></li>`).join('')}</ul>
+<h3 style="margin-bottom:16px;font-size:1.1em">📋 Course Modules <span style="font-size:.75em;color:var(--text3)">(Click to expand)</span></h3>
+<ul class="module-list">${moduleNames.map((m,i)=>`<li class="module-item" onclick="toggleModule(this,${i})"><div class="num">${i+1}</div><div class="info"><h4>${m.title}</h4><p>${m.desc}</p></div><div class="dur">${m.dur}</div><span class="expand-icon">▼</span></li>${m.content?`<div class="module-content" id="modContent${i}">${formatContent(m.content)}</div>`:''}`).join('')}</ul>
 ${quizHTML}
 `;
 document.getElementById('courseModal').classList.add('open');
@@ -702,8 +743,10 @@ document.getElementById('courseModal').classList.add('open');
 
 function generateModuleNames(c){
 const modules={
-'b1':[{title:'What Is a Stock Exchange?',desc:'How exchanges match buyers and sellers',dur:'3 min'},{title:'Why Companies Go Public',desc:'IPOs, fundraising, and liquidity',dur:'3 min'},{title:'What Drives Stock Prices?',desc:'Supply, demand, and market sentiment',dur:'3 min'},{title:'Types of Stocks',desc:'Common, preferred, growth, value',dur:'3 min'},{title:'How to Read a Stock Quote',desc:'Ticker, price, volume, and change',dur:'3 min'}],
-'b2':[{title:'What Is Forex?',desc:'The global currency market explained',dur:'3 min'},{title:'Currency Pairs Explained',desc:'Base vs quote, major vs exotic pairs',dur:'3 min'},{title:'What Are Pips and Lots?',desc:'The units of forex trading',dur:'3 min'},{title:'How Forex Sessions Work',desc:'Asian, London, New York sessions',dur:'4 min'},{title:'Why Forex Never Sleeps',desc:'24/5 market structure and liquidity',dur:'4 min'},{title:'Your First Forex Trade',desc:'Step-by-step walkthrough',dur:'3 min'}],
+'b1':[{title:'What Is a Stock Exchange?',desc:'How exchanges match buyers and sellers',dur:'3 min',content:'A stock exchange is a centralized marketplace where buyers and sellers trade shares of publicly listed companies. Think of it like a farmers market — but instead of vegetables, people trade ownership stakes in businesses.\n\nKey concepts:\n• Exchanges match buy orders (bids) with sell orders (asks)\n• Prices move based on supply and demand\n• Major exchanges: NYSE, NASDAQ, LSE, TSE\n• Trading hours: typically 9:30 AM - 4:00 PM local time\n\nWhen you buy a stock, you\'re buying a tiny piece of a real company. If the company grows and earns more money, your piece becomes more valuable.'},{title:'Why Companies Go Public',desc:'IPOs, fundraising, and liquidity',dur:'3 min',content:'Companies go public through an Initial Public Offering (IPO) to raise capital from everyday investors. Before an IPO, a company is private — only founders, employees, and venture capitalists can own shares.\n\nWhy go public?\n• Raise massive capital for expansion (billions in some cases)\n• Early investors and employees can cash out\n• Use stock as currency for acquisitions\n• Increase brand visibility and credibility\n\nThe IPO process involves investment banks (underwriters) who set the initial price, file regulatory documents (S-1 in the US), and market the shares to institutional investors.'},{title:'What Drives Stock Prices?',desc:'Supply, demand, and market sentiment',dur:'3 min',content:'Stock prices move based on the balance between buyers and sellers. But what makes people want to buy or sell?\n\nFundamental drivers:\n• Earnings and revenue growth — the #1 long-term driver\n• Interest rates — lower rates = cheaper borrowing = higher valuations\n• Industry trends — AI boom, EV revolution, etc.\n• Economic data — GDP, employment, inflation\n\nSentiment drivers:\n• News and media coverage\n• Analyst upgrades/downgrades\n• Social media and Reddit (remember GameStop?)\n• Fear and greed cycles\n\nShort-term: sentiment rules. Long-term: fundamentals win.'},{title:'Types of Stocks',desc:'Common, preferred, growth, value',dur:'3 min',content:'Not all stocks are created equal. Here are the main categories:\n\nBy ownership type:\n• Common stock — voting rights, variable dividends (most common)\n• Preferred stock — no voting rights, fixed dividends, priority in bankruptcy\n\nBy investment style:\n• Growth stocks — high revenue growth, reinvest profits, high P/E (e.g., Tesla, Nvidia)\n• Value stocks — undervalued by metrics, pay dividends, low P/E (e.g., Coca-Cola, AT&T)\n• Blue chips — large, stable, industry leaders (e.g., Apple, Microsoft)\n• Penny stocks — under $5, extremely risky, avoid as a beginner\n\nBy size (market cap):\n• Large cap: $10B+ | Mid cap: $2-10B | Small cap: $300M-2B | Micro cap: below $300M'},{title:'How to Read a Stock Quote',desc:'Ticker, price, volume, and change',dur:'3 min',content:'When you look up a stock, you\'ll see a lot of numbers. Here\'s what they mean:\n\n• Ticker symbol: AAPL (Apple), MSFT (Microsoft) — the short name\n• Last price: The most recent trade price\n• Change: How much it moved today (+$2.34 or -1.2%)\n• Volume: Number of shares traded today\n• Open/High/Low: Today\'s opening, highest, and lowest prices\n• 52-week High/Low: The range over the past year\n• Market Cap: Total value of all shares\n• P/E Ratio: Price relative to earnings\n• Dividend Yield: Annual dividend as % of price\n\nPro tip: Volume tells you how "liquid" a stock is. Higher volume = easier to buy/sell without affecting the price. Stocks under 100K daily volume are risky for beginners.'}],
+'b2':[{title:'What Is Forex?',desc:'The global currency market explained',dur:'3 min',content:'Forex (Foreign Exchange) is the world\'s largest financial market, with $6.6 trillion traded daily. That\'s 30x the size of all US stock markets combined!\n\nUnlike stocks, forex has no central exchange. It\'s an over-the-counter (OTC) market — trades happen directly between participants via electronic networks.\n\nWho trades forex?\n• Central banks (manage currency reserves)\n• Commercial banks (facilitate international business)\n• Hedge funds (speculate on currency movements)\n• Corporations (hedge foreign revenue)\n• Retail traders like you and me\n\nForex trades 24 hours a day, 5 days a week — from Monday morning in Tokyo to Friday evening in New York.'},{title:'Currency Pairs Explained',desc:'Base vs quote, major vs exotic pairs',dur:'3 min',content:'In forex, you always trade in pairs — you\'re buying one currency while selling another.\n\nEUR/USD = 1.0842 means:\n• 1 Euro costs 1.0842 US Dollars\n• EUR is the BASE currency (what you\'re buying/selling)\n• USD is the QUOTE currency (what you\'re paying in)\n\nMajor pairs (most traded, tightest spreads):\n• EUR/USD, GBP/USD, USD/JPY, USD/CHF\n\nMinor pairs (less liquid):\n• EUR/GBP, GBP/JPY, EUR/CHF\n\nExotic pairs (high risk, wide spreads):\n• USD/TRY, EUR/ZAR, USD/MXN\n\nAs a beginner, stick to major pairs. They have the tightest spreads (lowest trading costs) and most predictable patterns.'},{title:'What Are Pips and Lots?',desc:'The units of forex trading',dur:'3 min',content:'PIP (Percentage in Point) is the smallest price move in forex.\n\nFor most pairs, 1 pip = 0.0001 (the 4th decimal place)\nFor JPY pairs, 1 pip = 0.01 (the 2nd decimal place)\n\nExample: EUR/USD moves from 1.0842 to 1.0847 = 5 pips\n\nLOT is the standard trade size:\n• Standard lot = 100,000 units ($10 per pip)\n• Mini lot = 10,000 units ($1 per pip)\n• Micro lot = 1,000 units ($0.10 per pip)\n\nFor a $1,000 account, use micro lots! A 50-pip move on a standard lot = $500 (half your account!). On a micro lot = $5 (manageable).'}],
+'b5':[{title:'Anatomy of a Candlestick',desc:'Open, high, low, close — the four data points',dur:'4 min',content:'A candlestick chart shows 4 key prices for each time period:\n\n• Open: The first trade price of the period\n• High: The highest price reached\n• Low: The lowest price reached  \n• Close: The last trade price of the period\n\nThe rectangular BODY shows the open-to-close range.\nThe thin WICKS (shadows) show the high and low.\n\nGreen/white candle: Close > Open (bullish — buyers won)\nRed/black candle: Close < Open (bearish — sellers won)\n\nA long body = strong conviction. A small body = indecision. Long wicks = rejection at that price level.'},{title:'Key Candlestick Patterns',desc:'Doji, hammer, engulfing, and more',dur:'5 min',content:'Here are the patterns every trader must know:\n\n reversal patterns:\n• DOJI — Open ≈ Close, long wicks. Market is undecided. Often signals a reversal.\n• HAMMER — Small body at top, long lower wick. Buyers rejected lower prices. Bullish signal after a downtrend.\n• SHOOTING STAR — Small body at bottom, long upper wick. Sellers rejected higher prices. Bearish signal after an uptrend.\n\nStrong reversal patterns:\n• BULLISH ENGULFING — Red candle followed by a larger green candle. Buyers overwhelmed sellers.\n• BEARISH ENGULFING — Green candle followed by a larger red candle. Sellers overwhelmed buyers.\n• MORNING STAR — 3-candle pattern: red → small body → green. Strong bullish reversal.\n• EVENING STAR — 3-candle pattern: green → small body → red. Strong bearish reversal.\n\nContinuation patterns:\n• THREE WHITE SOLDIERS — 3 consecutive green candles. Strong uptrend.\n• THREE BLACK CROWS — 3 consecutive red candles. Strong downtrend.'},{title:'How to Read Candlestick Charts in Practice',desc:'Timeframes, context, and confirmation',dur:'4 min',content:'A single candlestick tells you little. Context is everything.\n\nTimeframes matter:\n• 1-minute chart — Day trading, very noisy\n• 5/15-minute — Scalping and intraday\n• 1-hour — Swing trading entries\n• 4-hour — Swing trading analysis\n• Daily — Position trading, most reliable signals\n• Weekly — Long-term trend identification\n\nRules for reading patterns:\n1. ALWAYS look at the context — a hammer after a downtrend is bullish; after an uptrend, it means nothing\n2. Wait for CONFIRMATION — don\'t trade on a single candle. Wait for the next candle to confirm the signal\n3. Multiple timeframes — If the daily chart shows a bullish engulfing AND the 4-hour shows a hammer, that\'s a much stronger signal\n4. Volume matters — A pattern with high volume is more reliable than one with low volume\n5. Support/Resistance — Patterns near key S/R levels are far more meaningful'}],
+'b6':[{title:'The 1% Rule',desc:'The most important rule in trading',dur:'3 min',content:'The 1% Rule: Never risk more than 1% of your total account balance on a single trade.\n\nExample: $10,000 account → Maximum risk per trade = $100\n\nThis doesn\'t mean you only invest $100. It means if your stop-loss is hit, you lose at most $100.\n\nWhy 1%?\n• If you lose 10 trades in a row (it happens!), you\'re down 10% — recoverable\n• Without this rule, 5 bad trades could wipe out 50%+ of your account\n• Math works against you: A 50% loss requires a 100% gain to recover\n\nProfessional traders often risk even less: 0.5% or 0.25% per trade. The goal is to survive long enough to let your winning trades compound.'},{title:'Stop-Loss Orders',desc:'Your safety net in every trade',dur:'3 min',content:'A stop-loss is an automatic order to close your position when the price hits a predetermined level. It\'s your emergency exit.\n\nTypes:\n• Fixed stop: Set at a specific price (e.g., buy at $100, stop at $95)\n• Percentage stop: Set at X% below entry (e.g., 5% below)\n• ATR stop: Based on Average True Range — adapts to volatility\n• Trailing stop: Moves up as price moves up, locks in profits\n\nRules:\n1. ALWAYS set a stop-loss BEFORE entering a trade\n2. Never move your stop-loss further away (wider risk)\n3. Place stops below support (long) or above resistance (short)\n4. Give your trade room to breathe — too tight and you\'ll get stopped out by noise\n\nCommon mistake: Setting stops too tight. If your stock regularly moves 2% in a day, a 1% stop will get hit constantly.'},{title:'Position Sizing Formula',desc:'Calculate exactly how much to trade',dur:'4 min',content:'Position sizing determines HOW MUCH to buy/sell. Here\'s the formula:\n\nPosition Size = (Account × Risk %) ÷ (Entry Price - Stop-Loss Price)\n\nExample:\n• Account: $10,000\n• Risk: 1% = $100 max loss\n• Entry: $50\n• Stop-Loss: $48\n• Risk per share: $50 - $48 = $2\n• Position Size: $100 ÷ $2 = 50 shares\n• Total investment: 50 × $50 = $2,500 (25% of account)\n• Maximum loss: $100 (1% of account) ✅\n\nTry our Position Size Calculator in the Tools section to practice!\n\nThe beauty of position sizing: It keeps your risk constant regardless of the trade. A volatile stock gets fewer shares; a stable stock gets more. The dollar risk stays the same.'}]
 };
 if(modules[c.id]) return modules[c.id];
 const titles=['Introduction & Key Concepts','Core Principles Explained','Real-World Examples','Common Mistakes to Avoid','Practical Application','Advanced Tips & Tricks','Summary & Next Steps'];
@@ -723,6 +766,35 @@ function checkQuiz(el,correct){
 el.parentElement.querySelectorAll('.quiz-opt').forEach(o=>{o.style.pointerEvents='none'});
 el.classList.add(correct?'correct':'wrong');
 if(!correct){el.parentElement.querySelectorAll('.quiz-opt').forEach((o,i)=>{if(i===correct||o===el)return;o.classList.add('wrong')})}
+}
+
+function toggleModule(el,index){
+const content=document.getElementById('modContent'+index);
+if(!content)return;
+const isShown=content.classList.contains('show');
+content.classList.toggle('show');
+el.classList.toggle('expanded');
+// Close others in same course
+if(!isShown){
+el.parentElement.querySelectorAll('.module-content').forEach((c,i)=>{
+if(i!==index){c.classList.remove('show')}
+});
+el.parentElement.querySelectorAll('.module-item').forEach((m,i)=>{
+if(i!==index){m.classList.remove('expanded')}
+});
+}
+}
+
+function formatContent(text){
+// Convert markdown-like formatting to HTML
+let html=text
+.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
+.replace(/\n• /g,'<br>• ')
+.replace(/\n\n/g,'<br><br>')
+.replace(/\n/g,'<br>');
+// Wrap bullet sections in ul
+html=html.replace(/(?:<br>)• (.*?)(?=(?:<br>)(?:<br>)• |<br><br>|$)/g,'<li>$1</li>');
+return html;
 }
 
 // Tab clicks
@@ -857,24 +929,59 @@ document.getElementById('courseModal').addEventListener('click',e=>{if(e.target=
 // AI CHAT
 // ============================================
 let chatHistory=[];
-const ADVISOR_SYSTEM=`You are Alex Chen, a senior investment advisor at BroadFSC with 8 years of experience in technical analysis and risk management. You are warm, professional, and genuinely helpful.
+let currentAdvisor='alex';
+const ADVISORS={
+alex:{name:'Alex Chen',emoji:'👨‍💼',title:'Senior Investment Advisor',specialty:'Technical analysis, portfolio strategy, and market timing'},
+sarah:{name:'Sarah Kim',emoji:'👩‍💼',title:'Risk Management Specialist',specialty:'Position sizing, stop-losses, and capital protection'}
+};
+const ADVISOR_SYSTEM=`You are {ADVISOR_NAME}, a senior investment advisor at BroadFSC. You have 8 years of experience in technical analysis, risk management, and portfolio construction.
 
-CORE PRINCIPLES:
-- Always provide substantive, educational answers (not one-liners)
-- Use SPIN selling naturally: understand Situation → identify Problem → show Implication → reveal Need-payoff
-- If someone asks about trading, naturally guide toward "Have you considered opening an account with us for professional tools?"
-- Never be pushy. Educate first, sell second.
-- Reference specific data, numbers, and examples when possible
-- If you don't know something, say so honestly and suggest where to find it
-- Remember the conversation context and build on previous exchanges
-- End responses with a thoughtful follow-up question to keep conversation going
+CRITICAL RULES:
+1. NEVER give one-sentence answers. Always provide DETAILED, EDUCATIONAL responses (3-5 paragraphs minimum)
+2. Use SPIN selling naturally:
+   - SITUATION: Ask about their experience level and goals
+   - PROBLEM: Identify gaps in their knowledge or trading approach
+   - IMPLICATION: Explain why those gaps are costly (lost money, missed opportunities)
+   - NEED-PAYOFF: Show how BroadFSC's tools and education can help
+3. Every response must include at least ONE of: specific numbers, real examples, actionable advice
+4. End EVERY response with a relevant follow-up question to continue the conversation
+5. If they mention trading or investing, naturally suggest "Have you considered opening an account with BroadFSC for professional tools and guidance?"
+6. Reference our website features: 30+ free courses, trading calculators, research reports, glossary
+7. Remember and reference what they said earlier in the conversation
+8. Detect their language and respond in the SAME language
 
-KNOWLEDGE AREAS: Stocks, Forex, Crypto, Technical Analysis, Fundamental Analysis, Risk Management, Portfolio Construction, Options, Macroeconomics
+KNOWLEDGE AREAS:
+- Stocks: P/E ratios, earnings, sector rotation, IPOs, blue chips vs penny stocks
+- Forex: Currency pairs, pips, lots, leverage, sessions (Tokyo/London/NY), carry trade
+- Crypto: Bitcoin, Ethereum, DeFi, staking, on-chain metrics, 24/7 trading
+- Technical Analysis: Candlestick patterns, support/resistance, MACD, RSI, Bollinger Bands
+- Fundamental Analysis: Income statement, balance sheet, cash flow, economic indicators
+- Risk Management: 1% rule, position sizing, stop-losses, diversification, risk-reward ratio
+- Portfolio: Modern Portfolio Theory, asset allocation, rebalancing, correlation
 
-You speak the same language as the user. Detect their language and respond accordingly.`;
+You are warm, professional, and genuinely helpful. Educate first, sell second — but always guide toward action.`;
+
+function openAdvisorChat(advisor){
+currentAdvisor=advisor;
+const adv=ADVISORS[advisor];
+// Scroll to chat section
+document.getElementById('advisor').scrollIntoView({behavior:'smooth'});
+// Update chat header
+document.querySelector('.chat-avatar').textContent=adv.emoji;
+document.querySelector('.chat-header-info h4').textContent=adv.name;
+document.querySelector('.chat-header-info span').textContent='● Online • '+adv.title;
+// Clear and re-init chat
+chatHistory=[];
+document.getElementById('chatBody').innerHTML='';
+const greetings={
+alex:"👋 Welcome! I'm Alex Chen, your personal investment advisor at BroadFSC Pro.\n\nI specialize in technical analysis, portfolio strategy, and market timing. I can help you with:\n\n• 📊 Market analysis & trading strategies — from candlestick patterns to macro trends\n• 📖 Course recommendations — based on your experience level\n• 🔍 Research report walkthroughs — understand what moves markets\n• 🧮 Risk & position sizing — protect your capital\n• 💼 Professional trading tools & account opening\n\nTo get started, tell me: What's your experience level with investing? Are you just starting out, or have you been trading for a while?",
+sarah:"👋 Hi there! I'm Sarah Kim, BroadFSC's Risk Management Specialist.\n\nMy passion is helping traders protect their capital. I've seen too many people lose money not because of bad analysis, but because of bad risk management. I can help you with:\n\n• 🛡️ Position sizing — how much to risk on each trade\n• 📍 Stop-loss placement — where and when to cut losses\n• ⚖️ Risk-reward analysis — only take trades worth taking\n• 📉 Drawdown management — survive the losing streaks\n• 📊 Portfolio risk — correlation, diversification, allocation\n\nLet me ask you: Do you currently use a risk management system in your trading? If not, you're not alone — but we should fix that!"
+};
+addBotMsg(greetings[advisor]);
+}
 
 function initChat(){
-addBotMsg("👋 Welcome! I'm Alex Chen, your personal investment advisor at BroadFSC Pro.\n\nI can help you with:\n• 📊 Market analysis & trading strategies\n• 📖 Course recommendations based on your level\n• 🔍 Research report walkthroughs\n• 🧮 Risk & position sizing calculations\n• 💼 Account opening guidance\n\nWhat would you like to learn about today?");
+openAdvisorChat('alex');
 }
 
 function addBotMsg(text){
@@ -919,7 +1026,8 @@ chatHistory.push({role:'user',content:text});
 showTyping();
 
 // Build messages for Groq
-const messages=[{role:'system',content:ADVISOR_SYSTEM},...chatHistory.slice(-10)];
+const sysPrompt=ADVISOR_SYSTEM.replace('{ADVISOR_NAME}',ADVISORS[currentAdvisor].name);
+const messages=[{role:'system',content:sysPrompt},...chatHistory.slice(-10)];
 
 try{
 const GROQ_KEY=typeof process!=='undefined'?'':(window.GROQ_API_KEY||'');
@@ -951,18 +1059,37 @@ addBotMsg(fallback);
 
 function generateLocalResponse(text){
 const t=text.toLowerCase();
-if(t.includes('stock')||t.includes('share'))
-return "Great question about stocks! 📈\n\nThe stock market is essentially a marketplace where buyers and sellers trade shares of publicly listed companies. Here are key concepts:\n\n• **Price** is determined by supply and demand\n• **Market Cap** = Share Price × Total Shares\n• **P/E Ratio** helps you compare valuations\n\n💡 Have you checked our Beginner Course on stock markets? It covers everything from opening an account to reading charts.\n\nWhat specific aspect of stocks interests you most — individual stock picking, ETFs, or index investing?";
-if(t.includes('forex')||t.includes('currency'))
-return "Forex is fascinating! 💱\n\nThe forex market is the largest financial market globally, with $6.6 trillion in daily volume. Key points:\n\n• Traded in **currency pairs** (e.g., EUR/USD)\n• **24/5** market — Tokyo, London, New York sessions\n• **Pips** are the smallest price unit (0.0001)\n• High leverage is available (but risky!)\n\n📊 Our Forex 101 course covers this in depth. Would you like me to walk you through a specific forex concept?";
-if(t.includes('crypto')||t.includes('bitcoin')||t.includes('btc'))
-return "Crypto is an exciting but volatile space! 🪙\n\nKey facts:\n• Bitcoin was created in 2009 by Satoshi Nakamoto\n• Total market cap: ~$1.7 trillion\n• 24/7 trading — no closing bell\n• Extreme volatility — 5-10% daily moves are common\n\n⚠️ Risk management is CRUCIAL in crypto. Never invest more than you can afford to lose.\n\nWant to learn about technical analysis for crypto, or are you more interested in the fundamentals?";
-if(t.includes('risk'))
-return "Risk management is the MOST important skill in trading! 🛡️\n\nThe golden rules:\n\n1. **1% Rule** — Never risk more than 1% of your account on a single trade\n2. **Always use stop-losses** — No exceptions\n3. **Position sizing** — Calculate before entering\n4. **Diversification** — Don't put all eggs in one basket\n5. **Risk-Reward ratio** — Aim for at least 1:2\n\n📊 Try our Position Size Calculator in the Tools section above!\n\nWould you like me to show you how to calculate proper position size for a trade?";
-if(t.includes('open')||t.includes('account')||t.includes('start'))
-return "Great to hear you're ready to get started! 🚀\n\nOpening an account with BroadFSC is straightforward:\n\n1. **Visit** broadfsc.com\n2. **Complete KYC** — ID verification (usually takes 15 minutes)\n3. **Fund your account** — Bank transfer, card, or crypto\n4. **Start trading** — Stocks, forex, crypto, and more\n\n✅ We're regulated by major authorities\n✅ Low spreads and competitive commissions\n✅ Professional trading platforms\n\nWould you like me to guide you through the account opening process, or do you have questions about our services first?";
-// Default
-return "That's an interesting question! 🤔\n\nI'd love to help you explore this further. Here at BroadFSC Pro, we cover:\n\n• 📚 **30+ courses** from beginner to advanced\n• 📊 **Free research reports** updated daily\n• 📖 **300+ term glossary** for quick reference\n• 🧮 **Trading calculators** for risk management\n\nCould you tell me more about what you're looking for? For example:\n- Are you new to investing or experienced?\n- What markets interest you (stocks, forex, crypto)?\n- Do you have a specific trading question?\n\nThe more specific, the better I can help! 😊";
+
+// 20+ topic knowledge base with multi-paragraph educational responses
+const KB=[
+{keywords:['stock','share','equity'],response:"Great question about stocks! 📈\n\nThe stock market is essentially a marketplace where ownership in publicly traded companies changes hands. Let me break it down:\n\n**How it works:** When you buy a share of Apple (AAPL), you own a tiny piece of Apple Inc. If Apple's business grows and profits increase, your share becomes more valuable. The price is determined by supply and demand — more buyers than sellers = price goes up.\n\n**Key metrics to know:**\n• P/E Ratio (Price/Earnings) — How expensive a stock is relative to its profits. AAPL at P/E 28 means you pay $28 for every $1 of earnings\n• Market Cap — Total value of all shares. Large cap ($10B+), Mid cap ($2-10B), Small cap (under $2B)\n• Dividend Yield — Cash payments as % of stock price. Great for income investors\n• Volume — Number of shares traded daily. Higher = more liquid = safer for beginners\n\n**My advice for beginners:** Start with broad ETFs like SPY (S&P 500) rather than picking individual stocks. You get instant diversification and lower risk. Then gradually add individual stocks as you learn more.\n\n💡 Check out our 'What Is the Stock Market?' course in the Academy section — it covers all the fundamentals.\n\nWhat specifically interests you about stocks — are you looking to invest long-term, or are you more interested in active trading?"},
+{keywords:['forex','currency','pip','lot'],response:"Forex is fascinating! 💱\n\nThe forex market is the world's largest financial market, with $6.6 trillion traded daily — that's 30x the US stock market! Here's what you need to know:\n\n**Currency Pairs:** You always trade in pairs. EUR/USD = 1.0842 means 1 Euro costs $1.0842. The first currency (EUR) is the BASE, the second (USD) is the QUOTE. When you buy EUR/USD, you're buying Euros with Dollars.\n\n**Key concepts:**\n• PIP — Smallest price unit. For most pairs, 1 pip = 0.0001. For JPY pairs, 1 pip = 0.01\n• LOT — Trade size. Standard = 100,000 units ($10/pip), Mini = 10,000 ($1/pip), Micro = 1,000 ($0.10/pip)\n• SPREAD — Difference between buy and sell price. This is your main trading cost\n• LEVERAGE — Borrowed capital to control larger positions. 1:100 leverage means $1,000 controls $100,000. Powerful but dangerous!\n\n**Sessions:** The market runs 24/5 through three main sessions: Tokyo (Asian), London (European), New York (American). The London-NY overlap (1-5pm GMT) has the highest volume and volatility.\n\n⚠️ **Critical warning:** Forex leverage can wipe your account in minutes. Always use proper position sizing and stop-losses. Never risk more than 1% of your account per trade.\n\n📊 Our Forex 101 course covers everything step by step. What aspect would you like to dive deeper into — technical analysis for forex, or the fundamentals that drive currency movements?"},
+{keywords:['crypto','bitcoin','btc','ethereum','eth','defi'],response:"Crypto is an exciting but volatile space! 🪙\n\nLet me give you the full picture:\n\n**What is cryptocurrency?** Digital assets built on blockchain technology — a decentralized, immutable ledger that records all transactions. Bitcoin, created in 2009 by the pseudonymous Satoshi Nakamoto, was the first and remains the largest by market cap (~$1.7T).\n\n**Key differences from traditional markets:**\n• 24/7 trading — no closing bell, no weekends off\n• Extreme volatility — 5-10% daily moves are common (vs 1-2% in stocks)\n• No circuit breakers — no trading halts during crashes\n• Regulatory uncertainty — rules vary by country and change frequently\n\n**Major categories:**\n• Store of value: Bitcoin (digital gold)\n• Smart contracts: Ethereum, Solana, Cardano\n• DeFi: Uniswap, Aave, Compound (decentralized financial services)\n• Stablecoins: USDT, USDC (pegged to USD, used for trading)\n\n**Risk management for crypto:**\n1. Never invest more than you can afford to lose completely\n2. Use hardware wallets for long-term holdings (Ledger, Trezor)\n3. Set stop-losses — crypto crashes happen fast\n4. Diversify — don't go all-in on one coin\n5. Be wary of 'guaranteed returns' — they're always scams\n\nWant to learn about technical analysis for crypto, or are you more interested in understanding the blockchain technology behind it?"},
+{keywords:['risk','stop','loss','position','size','manage'],response:"Risk management is the MOST important skill in trading! 🛡️\n\nI've seen traders with 70% win rates still lose money because they didn't manage risk properly. Here's your complete guide:\n\n**The 1% Rule (non-negotiable):**\nNever risk more than 1% of your account on a single trade. $10,000 account = max $100 risk per trade. This isn't your investment amount — it's your maximum loss if the trade goes wrong.\n\n**Position Sizing Formula:**\nShares = (Account × Risk%) ÷ (Entry - Stop-Loss)\n\nExample: $10,000 account, 1% risk = $100 max loss\nEntry $50, Stop-Loss $48 = $2 risk per share\nPosition = $100 ÷ $2 = 50 shares ($2,500 invested)\nIf stopped out: you lose $100 (1%) ✅ Not $500 (5%) ❌\n\n**Stop-Loss Types:**\n• Fixed stop: Set at a specific price level\n• Trailing stop: Moves up with price, locks in profits\n• ATR stop: Adapts to current volatility (professional choice)\n• Time stop: Close if trade doesn't move within X days\n\n**Risk-Reward Ratio:**\nAlways aim for at least 1:2. If you risk $100, your target should be $200+. Even with a 40% win rate, you're profitable: 4 wins × $200 = $800, 6 losses × $100 = $600, Net = +$200\n\n📊 Try our Position Size Calculator in the Tools section — it does the math for you!\n\nWould you like me to walk through a real example of position sizing for a trade you're considering?"},
+{keywords:['candle','candlestick','pattern','chart'],response:"Candlestick charts are the language of markets! 🕯️\n\nLet me teach you to read them fluently:\n\n**Anatomy of a Candle:**\n• Body (rectangle): Shows open-to-close range\n• Upper wick: Highest price reached\n• Lower wick: Lowest price reached\n• Green/white: Close > Open (bullish)\n• Red/black: Close < Open (bearish)\n\n**Must-Know Patterns:**\n\n🔴 Reversal signals:\n• DOJI: Open ≈ Close, long wicks. Market indecision → often signals reversal\n• HAMMER: Small body at top, long lower wick after downtrend. Buyers rejected lower prices → bullish\n• SHOOTING STAR: Opposite of hammer. Bearish reversal after uptrend\n• ENGULFING: Opposite-color candle completely covers previous one. Very strong signal\n\n🟢 Continuation signals:\n• THREE WHITE SOLDIERS: 3 strong green candles in a row\n• THREE BLACK CROWS: 3 strong red candles in a row\n\n**Pro Tips:**\n1. Context matters — a hammer AFTER a downtrend is meaningful; after an uptrend it's not\n2. Higher timeframe patterns are more reliable (daily > hourly > 5-min)\n3. Always wait for CONFIRMATION — the next candle confirming the signal\n4. Volume adds weight — patterns with high volume are much more reliable\n\n📖 Our 'Reading Candlestick Charts' course has interactive examples. Want me to explain a specific pattern, or shall we move on to technical indicators?"},
+{keywords:['support','resistance','level','breakout'],response:"Support and resistance are the foundation of ALL technical analysis! 📊\n\n**What are they?**\n• SUPPORT: A price level where buying pressure overcomes selling — price bounces UP\n• RESISTANCE: A price level where selling pressure overcomes buying — price bounces DOWN\n\nThink of it like a ball bouncing between a floor (support) and ceiling (resistance).\n\n**How to identify them:**\n• Look for price levels where the stock has reversed multiple times\n• Round numbers often act as psychological levels ($100, $150, $200)\n• Previous highs become new resistance; previous lows become new support\n• Volume spikes at S/R levels confirm their significance\n\n**Types of S/R:**\n• Horizontal: Same price level touched multiple times\n• Diagonal: Trend lines connecting higher lows (uptrend) or lower highs (downtrend)\n• Dynamic: Moving averages act as dynamic S/R\n• Psychological: Round numbers, all-time highs, 52-week highs/lows\n\n**Trading strategies:**\n1. BOUNCE: Buy at support, sell at resistance (range trading)\n2. BREAKOUT: Buy when price breaks above resistance with volume\n3. PULLBACK: Wait for breakout, then buy the retest of broken resistance (now support)\n\n⚠️ **False breakouts** are common! Always wait for a candle CLOSE above/below the level, not just a wick.\n\nWant to learn how to draw trend lines properly, or should we discuss breakout trading strategies?"},
+{keywords:['macd','rsi','bollinger','indicator','moving','average','ema','sma'],response:"Technical indicators are powerful tools — when used correctly! 📈\n\nLet me break down the most important ones:\n\n**Moving Averages (MA):**\n• SMA (Simple): Average of last N periods. Smooths price action\n• EMA (Exponential): Gives more weight to recent prices. Faster to react\n• Common periods: 20 (short-term), 50 (medium), 200 (long-term trend)\n• Golden Cross (50 SMA crosses above 200 SMA) = Bullish. Death Cross = Bearish\n\n**RSI (Relative Strength Index):**\n• Ranges from 0-100. Measures momentum\n• Above 70 = Overbought (might reverse down)\n• Below 30 = Oversold (might reverse up)\n• Divergence: Price makes new high but RSI doesn't = bearish divergence (reversal coming)\n\n**MACD:**\n• Two lines: MACD line and Signal line\n• Bullish: MACD crosses above Signal line\n• Bearish: MACD crosses below Signal line\n• Histogram shows the gap between the two lines\n\n**Bollinger Bands:**\n• Three lines: Middle (20 SMA), Upper and Lower bands\n• Bands widen when volatility increases, narrow when it decreases\n• Price touching upper band = potentially overbought\n• Price touching lower band = potentially oversold\n• Squeeze (bands narrow) → Big move coming\n\n⚠️ **Critical rule:** Never use indicators alone. Always combine with price action, S/R levels, and market context.\n\nWhich indicator would you like me to explain in more detail, or should we discuss how to combine them effectively?"},
+{keywords:['open','account','start','sign up','register','begin'],response:"Great to hear you're ready to get started! 🚀\n\nOpening an account with BroadFSC is straightforward and secure:\n\n**Step-by-step process:**\n1. **Visit** broadfsc.com — our official website\n2. **Click 'Open Account'** — starts the registration process\n3. **Complete KYC verification** — government-issued ID + proof of address (usually takes 15-30 minutes for approval)\n4. **Fund your account** — Bank transfer, credit/debit card, or cryptocurrency\n5. **Choose your platform** — Web trader, mobile app, or MT4/MT5\n6. **Start trading** — Stocks, forex, crypto, commodities, and more\n\n**Why choose BroadFSC?**\n✅ Regulated by major financial authorities — your funds are protected\n✅ Competitive spreads — as low as 0.0 pips on major forex pairs\n✅ Professional trading platforms with advanced charting\n✅ 24/5 customer support in 16 languages\n✅ Free educational resources — 30+ courses, daily research, AI advisory\n✅ No hidden fees — transparent pricing\n\n**Minimum deposit:** Just $100 to get started. But I recommend starting with at least $1,000 to properly apply risk management (1% rule = $10 risk per trade).\n\nWould you like me to guide you through the account opening process step by step, or do you have questions about our trading platforms first?"},
+{keywords:['etf','index','fund','diversif'],response:"ETFs are one of the smartest investment tools ever created! 📊\n\n**What is an ETF?**\nAn Exchange-Traded Fund is a basket of securities that trades on an exchange like a single stock. Buy one share of SPY, and you instantly own a tiny piece of all 500 companies in the S&P 500.\n\n**Why ETFs are great for beginners:**\n• Instant diversification — one purchase = hundreds of stocks\n• Low fees — SPY charges 0.09% annually vs 1-2% for mutual funds\n• High liquidity — trade anytime the market is open\n• Transparent — you always know what's inside\n\n**Popular ETFs by category:**\n• US Large Cap: SPY (S&P 500), QQQ (Nasdaq 100)\n• International: VXUS (ex-US), EFA (developed markets)\n• Bonds: BND (total bond), TLT (long-term treasury)\n• Sector: XLF (financials), XLK (tech), XLE (energy)\n• Gold: GLD, IAU\n• Crypto: BITO (Bitcoin futures), BTF\n\n**My recommended starter portfolio (for $5,000+):**\n• 60% SPY (US stocks)\n• 20% VXUS (international stocks)\n• 15% BND (bonds for stability)\n• 5% GLD (gold as hedge)\n\nThis gives you global diversification across stocks, bonds, and gold — with just 4 purchases!\n\nWould you like to learn about more advanced portfolio strategies, or are you interested in sector-specific ETFs?"},
+{keywords:['option','call','put','premium','greek'],response:"Options are powerful but complex — let me break them down simply! 🎯\n\n**What are options?**\nOptions are contracts that give you the RIGHT (but not obligation) to buy or sell an asset at a predetermined price before a specific date.\n\n**Two types:**\n• CALL option: Right to BUY at the strike price (you profit when price goes UP)\n• PUT option: Right to SELL at the strike price (you profit when price goes DOWN)\n\n**Key terms:**\n• Strike Price: The predetermined price in the contract\n• Premium: What you pay to buy the option (your max risk)\n• Expiration: When the contract expires (options decay over time)\n• In-the-money (ITM): Option has intrinsic value\n• Out-of-the-money (OTM): Option has no intrinsic value (only time value)\n\n**The Greeks (risk measures):**\n• Delta: How much option price moves per $1 stock move (0-1 for calls)\n• Theta: Time decay — options lose value every day (enemy of buyers, friend of sellers)\n• Vega: Sensitivity to volatility changes\n• Gamma: Rate of delta change\n\n**Beginner strategies:**\n1. Buy calls: Bullish bet, limited risk (premium paid)\n2. Buy puts: Bearish bet, limited risk\n3. Covered calls: Own stock + sell calls against it (income generation)\n4. Protective puts: Own stock + buy puts (insurance against crash)\n\n⚠️ Never sell naked options as a beginner. Your risk is unlimited!\n\nWant me to explain a specific strategy in detail, or should we cover how to read an options chain?"},
+{keywords:['dividend','income','yield','passive'],response:"Dividend investing is one of the most reliable wealth-building strategies! 💰\n\n**What are dividends?**\nCash payments companies make to shareholders from their profits. Usually paid quarterly. Think of it as getting paid to hold stocks.\n\n**Key metrics:**\n• Dividend Yield: Annual dividend ÷ Stock price. A $100 stock paying $3/year = 3% yield\n• Payout Ratio: % of earnings paid as dividends. Below 60% is healthy; above 80% is risky\n• Dividend Growth: Companies that INCREASE dividends annually are the best long-term holds\n• Ex-Dividend Date: Buy before this date to receive the next dividend\n\n**Dividend Aristocrats:** Companies that have raised dividends for 25+ consecutive years. Examples:\n• Coca-Cola (KO) — 60+ years of increases, ~3% yield\n• Johnson & Johnson (JNJ) — 60+ years, ~3% yield\n• Procter & Gamble (PG) — 65+ years, ~2.5% yield\n• 3M (MMM) — 60+ years, ~4% yield\n\n**The power of compounding:**\nIf you invest $10,000 in a 3% yield stock and reinvest dividends:\n• After 10 years: ~$13,439 (without dividend growth)\n• With 5% annual dividend growth: ~$16,288\n• With 8% dividend growth: ~$19,671\n\nThat's nearly doubling your money from dividends alone!\n\nInterested in building a dividend portfolio, or want to learn about other income strategies?"},
+{keywords:['tax','capital','gain','loss','wash'],response:"Tax considerations are crucial for your net returns! 💡\n\n**Capital Gains Tax:**\n• Short-term (held <1 year): Taxed as ordinary income (up to 37% in the US)\n• Long-term (held >1 year): Much lower rates (0%, 15%, or 20% depending on income)\n\nThis is why holding stocks >1 year can save you significantly on taxes!\n\n**Tax-Loss Harvesting:**\nSell losing positions to offset gains. If you made $5,000 on AAPL but lost $3,000 on TSLA, sell TSLA to reduce your taxable gain to $2,000.\n\n⚠️ **Wash Sale Rule:** If you sell a stock at a loss and buy it back within 30 days, the loss is DISALLOWED for tax purposes. Wait 31 days or buy a similar (but not substantially identical) ETF.\n\n**Tax-advantaged accounts (US):**\n• 401(k): Pre-tax contributions, tax-deferred growth\n• Roth IRA: After-tax contributions, TAX-FREE growth and withdrawals\n• Traditional IRA: Pre-tax or after-tax, tax-deferred growth\n\n**For international investors:** Tax treatment varies by country. Always consult a local tax professional.\n\nNote: I'm an investment advisor, not a tax professional. For specific tax advice, please consult a qualified tax professional.\n\nWould you like to discuss portfolio optimization strategies, or do you have questions about account types?"},
+{keywords:['commoditi','gold','oil','silver','crude'],response:"Commodities are essential for diversification and inflation hedging! 🛢️\n\n**What are commodities?** Raw materials and primary products traded on exchanges. They fall into four categories:\n\n1. **Energy:** Crude oil (WTI, Brent), natural gas, gasoline\n2. **Metals:** Gold, silver, copper, platinum\n3. **Agriculture:** Wheat, corn, soybeans, coffee, cotton\n4. **Livestock:** Cattle, hogs\n\n**Gold — The ultimate safe haven:**\n• Historically preserves purchasing power during inflation\n• Inverse correlation with real interest rates\n• Trades in USD — weaker dollar = higher gold\n• Ways to invest: Physical (bars/coins), GLD ETF, gold miners (GDX)\n\n**Oil — The economic indicator:**\n• Driven by supply (OPEC+, US shale) and demand (global growth)\n• Contango: Future price > spot price (normal market)\n• Backwardation: Future price < spot price (supply shortage)\n• WTI (US) vs Brent (international) spread matters\n\n**How to trade commodities:**\n• Futures contracts (advanced, high leverage)\n• ETFs: GLD (gold), USO (oil), DBA (agriculture)\n• Stocks: Gold miners, oil companies\n• CFDs: Flexible, but watch the spreads\n\n⚠️ Commodities are cyclical — they can go sideways for years then surge. Position sizing is crucial.\n\nWant to learn about specific commodity strategies, or shall we discuss how commodities fit into a diversified portfolio?"},
+{keywords:['bond','treasury','yield','interest','rate','fed'],response:"Bonds and interest rates are the backbone of global finance! 🏦\n\n**What are bonds?**\nLoans you make to governments or corporations. In return, they pay you regular interest (coupon) and return your principal at maturity.\n\n**Key relationship:**\n📈 Interest rates UP → Bond prices DOWN\n📉 Interest rates DOWN → Bond prices UP\n\nThis is THE most important concept in bond investing. When the Fed raises rates, existing bonds with lower rates become less valuable.\n\n**Types of bonds:**\n• US Treasuries: Safest, backed by US government\n  - T-Bills: <1 year\n  - T-Notes: 1-10 years\n  - T-Bonds: 10-30 years\n• Corporate bonds: Higher yield, higher risk\n• Municipal bonds: Tax-exempt (US)\n• High-yield (junk) bonds: 6-10%+ yield, significant default risk\n\n**The Yield Curve:**\n• Normal: Long-term rates > short-term (economy growing)\n• Flat: All rates similar (transition period)\n• Inverted: Short-term > long-term (recession signal!)\n\n**Current context:** The Fed has been navigating rate decisions carefully. Watch the 10-year Treasury yield — it drives mortgage rates, stock valuations, and global capital flows.\n\n📊 Our Economic Indicators course covers how to trade around Fed decisions.\n\nWant to learn about bond trading strategies, or shall we discuss how interest rates affect different asset classes?"}
+];
+
+// Find best matching response
+let bestMatch=null;let bestScore=0;
+for(const entry of KB){
+const score=entry.keywords.reduce((s,kw)=>s+(t.includes(kw)?1:0),0);
+if(score>bestScore){bestScore=score;bestMatch=entry}
+}
+
+if(bestMatch&&bestScore>0)return bestMatch.response;
+
+// Smart default — try to keep conversation going
+const name=ADVISORS[currentAdvisor].name;
+return `That's a great topic! 🤔\n\nLet me share some thoughts and then ask you a few questions to give you better advice.\n\nAt BroadFSC Pro, we believe education comes first. Here's what I'd suggest:\n\n1. **Start with the basics** — If you're new to investing, our Beginner courses cover everything from 'What is the Stock Market?' to 'Reading Candlestick Charts'\n\n2. **Use the right tools** — Our Trading Tools section has free calculators for position sizing, profit/loss, and margin. These are essential before you place any real trade\n\n3. **Stay informed** — Our Research section has free daily market briefs and weekly deep analysis. Knowledge is your edge\n\n4. **Practice first** — Before risking real money, paper trade. Learn the mechanics without the emotional pressure\n\nNow, to give you more specific advice, could you tell me:\n• What's your current experience level with investing?\n• Are you interested in stocks, forex, crypto, or something else?\n• What's your main goal — long-term wealth building or active trading?\n\nThe more I know, the better I can help! 😊`;
 }
 
 // ============================================
