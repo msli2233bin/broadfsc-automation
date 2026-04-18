@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BroadFSC — Investment Education & Advisory</title>
+    <meta name="description" content="Free investment education, technical analysis tutorials, and AI-powered advisory from Broad Investment Securities (BroadFSC). Learn trading strategies, risk management, and market analysis.">
+    <meta name="keywords" content="investment education, technical analysis, trading strategies, stock market, financial advisory, BroadFSC">
+    <meta name="author" content="Broad Investment Securities">
+    <meta property="og:title" content="BroadFSC — Investment Education & Advisory">
+    <meta property="og:description" content="Free investment education, AI-powered advisory, and professional trading insights.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://msli2233bin.github.io/broadfsc-automation/">
+    <link rel="canonical" href="https://msli2233bin.github.io/broadfsc-automation/">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; background: #0a0e27; color: #e0e6f0; line-height: 1.6; overflow-x: hidden; }
+        
+        /* === NAV === */
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,14,39,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 0 24px; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+        .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; font-weight: 700; font-size: 1.2em; }
+        .nav-logo .icon { width: 36px; height: 36px; background: linear-gradient(135deg, #42a5f5, #66bb6a); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+        .nav-links { display: flex; gap: 8px; }
+        .nav-links a { color: rgba(255,255,255,0.6); text-decoration: none; padding: 8px 16px; border-radius: 8px; font-size: 0.9em; transition: all 0.2s; }
+        .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.08); }
+        .nav-cta { background: linear-gradient(135deg, #42a5f5, #1e88e5) !important; color: #fff !important; font-weight: 600; }
+        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(66,165,245,0.3); }
+
+        /* === HERO === */
+        .hero { padding: 120px 24px 80px; text-align: center; background: linear-gradient(180deg, #0f1640 0%, #0a0e27 100%); position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 30% 50%, rgba(66,165,245,0.08) 0%, transparent 50%), radial-gradient(circle at 70% 50%, rgba(102,187,106,0.06) 0%, transparent 50%); animation: heroGlow 15s ease-in-out infinite alternate; }
+        @keyframes heroGlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(5deg); } }
+        .hero-content { position: relative; max-width: 800px; margin: 0 auto; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(66,165,245,0.1); border: 1px solid rgba(66,165,245,0.2); border-radius: 20px; padding: 6px 16px; font-size: 0.85em; color: #42a5f5; margin-bottom: 24px; }
+        .hero-badge .dot { width: 6px; height: 6px; background: #4caf50; border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+        .hero h1 { font-size: 3em; font-weight: 800; line-height: 1.1; margin-bottom: 20px; background: linear-gradient(135deg, #fff 0%, #b3e5fc 50%, #69f0ae 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 1.15em; color: rgba(255,255,255,0.6); max-width: 600px; margin: 0 auto 32px; }
+        .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 12px; font-size: 1em; font-weight: 600; text-decoration: none; transition: all 0.2s; border: none; cursor: pointer; }
+        .btn-primary { background: linear-gradient(135deg, #42a5f5, #1e88e5); color: #fff; box-shadow: 0 4px 20px rgba(66,165,245,0.3); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(66,165,245,0.4); }
+        .btn-secondary { background: rgba(255,255,255,0.06); color: #fff; border: 1px solid rgba(255,255,255,0.12); }
+        .btn-secondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+        .hero-stats { display: flex; gap: 40px; justify-content: center; margin-top: 48px; flex-wrap: wrap; }
+        .hero-stat { text-align: center; }
+        .hero-stat .num { font-size: 2em; font-weight: 800; color: #42a5f5; }
+        .hero-stat .label { font-size: 0.85em; color: rgba(255,255,255,0.4); }
+
+        /* === SECTIONS === */
+        .section { padding: 80px 24px; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 48px; }
+        .section-header h2 { font-size: 2em; font-weight: 700; margin-bottom: 12px; }
+        .section-header p { color: rgba(255,255,255,0.5); max-width: 600px; margin: 0 auto; }
+        .section-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); margin: 0 auto; max-width: 600px; }
+
+        /* === CHAT WIDGET === */
+        .chat-section { background: linear-gradient(145deg, #141938, #1a2050); border-radius: 20px; padding: 40px; border: 1px solid rgba(255,255,255,0.06); margin-bottom: 80px; }
+        .chat-container { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+        .chat-info h3 { font-size: 1.5em; margin-bottom: 12px; color: #fff; }
+        .chat-info p { color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+        .chat-features { list-style: none; }
+        .chat-features li { padding: 10px 0; color: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 10px; font-size: 0.95em; }
+        .chat-features li .icon { width: 28px; height: 28px; background: rgba(66,165,245,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+        .chat-box { background: #0d1229; border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); overflow: hidden; }
+        .chat-header { padding: 16px 20px; background: rgba(66,165,245,0.08); border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 12px; }
+        .chat-avatar { width: 36px; height: 36px; background: linear-gradient(135deg, #42a5f5, #66bb6a); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+        .chat-header-info .name { font-weight: 600; font-size: 0.95em; color: #fff; }
+        .chat-header-info .status { font-size: 0.8em; color: #4caf50; display: flex; align-items: center; gap: 4px; }
+        .chat-header-info .status::before { content: ''; width: 6px; height: 6px; background: #4caf50; border-radius: 50%; }
+        .chat-messages { padding: 20px; min-height: 280px; max-height: 400px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+        .chat-msg { max-width: 85%; padding: 12px 16px; border-radius: 16px; font-size: 0.9em; line-height: 1.5; animation: msgIn 0.3s ease; }
+        @keyframes msgIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .chat-msg.bot { background: rgba(66,165,245,0.1); color: #e0e6f0; align-self: flex-start; border-bottom-left-radius: 4px; }
+        .chat-msg.user { background: linear-gradient(135deg, #42a5f5, #1e88e5); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+        .chat-input-area { padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; gap: 10px; }
+        .chat-input { flex: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 12px 16px; color: #fff; font-size: 0.9em; outline: none; font-family: inherit; }
+        .chat-input:focus { border-color: #42a5f5; background: rgba(66,165,245,0.05); }
+        .chat-input::placeholder { color: rgba(255,255,255,0.3); }
+        .chat-send { background: linear-gradient(135deg, #42a5f5, #1e88e5); border: none; color: #fff; width: 44px; height: 44px; border-radius: 12px; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+        .chat-send:hover { transform: scale(1.05); }
+        .chat-send:disabled { opacity: 0.5; cursor: not-allowed; }
+        .chat-disclaimer { font-size: 0.75em; color: rgba(255,255,255,0.3); text-align: center; padding: 8px; border-top: 1px solid rgba(255,255,255,0.03); }
+
+        /* === LEARNING CARDS === */
+        .learn-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; }
+        .learn-card { background: linear-gradient(145deg, #141938, #1a2050); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 28px; transition: all 0.3s; cursor: pointer; position: relative; overflow: hidden; }
+        .learn-card:hover { transform: translateY(-4px); border-color: rgba(66,165,245,0.3); box-shadow: 0 8px 30px rgba(66,165,245,0.1); }
+        .learn-card .card-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 16px; }
+        .learn-card .card-icon.ta { background: rgba(66,165,245,0.15); }
+        .learn-card .card-icon.fa { background: rgba(102,187,106,0.15); }
+        .learn-card .card-icon.risk { background: rgba(255,183,77,0.15); }
+        .learn-card .card-icon.macro { background: rgba(171,71,188,0.15); }
+        .learn-card .card-icon.cs { background: rgba(239,83,80,0.15); }
+        .learn-card .card-icon.tl { background: rgba(38,198,218,0.15); }
+        .learn-card h3 { font-size: 1.15em; font-weight: 600; color: #fff; margin-bottom: 8px; }
+        .learn-card p { font-size: 0.9em; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+        .learn-card .topics { display: flex; flex-wrap: wrap; gap: 6px; }
+        .learn-card .topic-tag { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 4px 10px; font-size: 0.8em; color: rgba(255,255,255,0.6); }
+        .learn-card .arrow { position: absolute; bottom: 20px; right: 20px; color: rgba(255,255,255,0.2); font-size: 1.5em; transition: all 0.3s; }
+        .learn-card:hover .arrow { color: #42a5f5; transform: translateX(4px); }
+
+        /* === DETAIL MODAL === */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 200; backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 24px; }
+        .modal-overlay.active { display: flex; }
+        .modal { background: #141938; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); max-width: 700px; width: 100%; max-height: 80vh; overflow-y: auto; padding: 36px; position: relative; animation: modalIn 0.3s ease; }
+        @keyframes modalIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        .modal-close { position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.06); border: none; color: rgba(255,255,255,0.5); width: 36px; height: 36px; border-radius: 10px; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; }
+        .modal-close:hover { background: rgba(255,255,255,0.1); color: #fff; }
+        .modal h2 { font-size: 1.5em; margin-bottom: 16px; color: #fff; }
+        .modal h3 { font-size: 1.1em; margin: 20px 0 8px; color: #42a5f5; }
+        .modal p, .modal li { color: rgba(255,255,255,0.7); font-size: 0.95em; line-height: 1.7; }
+        .modal ul { padding-left: 20px; margin: 8px 0; }
+        .modal li { margin-bottom: 4px; }
+        .modal .highlight-box { background: rgba(66,165,245,0.08); border: 1px solid rgba(66,165,245,0.15); border-radius: 12px; padding: 16px; margin: 16px 0; }
+        .modal .highlight-box strong { color: #42a5f5; }
+
+        /* === CONTACT === */
+        .contact-section { text-align: center; padding: 80px 24px; background: linear-gradient(180deg, #0a0e27, #0f1640); }
+        .contact-section h2 { font-size: 2em; margin-bottom: 12px; }
+        .contact-section > p { color: rgba(255,255,255,0.5); margin-bottom: 32px; }
+        .contact-grid { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; max-width: 800px; margin: 0 auto; }
+        .contact-card { background: linear-gradient(145deg, #141938, #1a2050); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 28px 32px; text-decoration: none; color: #e0e6f0; transition: all 0.3s; display: flex; align-items: center; gap: 16px; min-width: 240px; }
+        .contact-card:hover { transform: translateY(-4px); border-color: rgba(66,165,245,0.3); }
+        .contact-card .c-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+        .contact-card .c-icon.tg { background: rgba(0,136,204,0.15); }
+        .contact-card .c-icon.wa { background: rgba(37,211,102,0.15); }
+        .contact-card .c-icon.ws { background: rgba(102,187,106,0.15); }
+        .contact-card .c-text .c-label { font-weight: 600; font-size: 1em; color: #fff; }
+        .contact-card .c-text .c-desc { font-size: 0.85em; color: rgba(255,255,255,0.4); }
+
+        /* === FOOTER === */
+        .footer { text-align: center; padding: 40px 24px; border-top: 1px solid rgba(255,255,255,0.04); }
+        .footer p { color: rgba(255,255,255,0.3); font-size: 0.85em; }
+        .footer .disclaimer { max-width: 700px; margin: 12px auto 0; font-size: 0.8em; color: rgba(255,255,255,0.2); line-height: 1.5; }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2em; }
+            .hero-stats { gap: 24px; }
+            .chat-container { grid-template-columns: 1fr; }
+            .learn-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .contact-grid { flex-direction: column; align-items: center; }
+            .modal { padding: 24px; margin: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="#" class="nav-logo"><div class="icon">B</div> BroadFSC</a>
+        <div class="nav-links">
+            <a href="#chat">AI Advisor</a>
+            <a href="#learn">Learning Center</a>
+            <a href="#contact">Contact</a>
+            <a href="https://www.broadfsc.com/different" target="_blank" class="nav-cta">Official Site →</a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+    <div class="hero-content">
+        <div class="hero-badge"><span class="dot"></span> AI-Powered • Free • No Registration</div>
+        <h1>Learn Investing.<br>Trade Smarter.</h1>
+        <p>Free investment education, AI-powered advisory, and professional market insights from a licensed global firm. No sign-up required.</p>
+        <div class="hero-buttons">
+            <a href="#chat" class="btn btn-primary">💬 Chat with AI Advisor</a>
+            <a href="#learn" class="btn btn-secondary">📚 Explore Lessons</a>
+        </div>
+        <div class="hero-stats">
+            <div class="hero-stat"><div class="num">6+</div><div class="label">Core Topics</div></div>
+            <div class="hero-stat"><div class="num">24/7</div><div class="label">AI Support</div></div>
+            <div class="hero-stat"><div class="num">0</div><div class="label">Cost / Registration</div></div>
+            <div class="hero-stat"><div class="num">8+</div><div class="label">Languages</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- AI CHAT -->
+<section class="section" id="chat">
+    <div class="section-header">
+        <h2>💬 AI Investment Advisor</h2>
+        <p>Ask anything about investing — technical analysis, fundamentals, risk management. No registration, no fees, instant answers.</p>
+    </div>
+    <div class="chat-section">
+        <div class="chat-container">
+            <div class="chat-info">
+                <h3>Meet Alex — Your AI Advisor</h3>
+                <p>Alex is a virtual investment advisor powered by AI. Ask about trading strategies, market indicators, or how to get started with investing.</p>
+                <ul class="chat-features">
+                    <li><span class="icon">📈</span> Technical analysis explanations</li>
+                    <li><span class="icon">📊</span> Fundamental analysis guidance</li>
+                    <li><span class="icon">🛡️</span> Risk management strategies</li>
+                    <li><span class="icon">🌍</span> Multi-language support (8+ languages)</li>
+                    <li><span class="icon">⚡</span> Instant responses, 24/7</li>
+                    <li><span class="icon">🔒</span> No registration, no data collection</li>
+                </ul>
+                <div style="margin-top:24px;">
+                    <a href="https://t.me/BroadInvestBot" target="_blank" class="btn btn-primary" style="font-size:0.9em;padding:12px 24px;">📱 Open in Telegram</a>
+                </div>
+            </div>
+            <div class="chat-box">
+                <div class="chat-header">
+                    <div class="chat-avatar">🤖</div>
+                    <div class="chat-header-info">
+                        <div class="name">Alex Chen</div>
+                        <div class="status">Online now</div>
+                    </div>
+                </div>
+                <div class="chat-messages" id="chatMessages">
+                    <div class="chat-msg bot">Hey there! 👋 I'm Alex, your AI investment advisor. Ask me anything about trading, technical analysis, or market strategies!</div>
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" class="chat-input" id="chatInput" placeholder="Ask about support/resistance, RSI, MACD..." maxlength="500" autocomplete="off">
+                    <button class="chat-send" id="chatSend" onclick="sendMessage()">➤</button>
+                </div>
+                <div class="chat-disclaimer">⚠️ AI-generated content for educational purposes only. Not financial advice. Investment involves risk.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- LEARNING CENTER -->
+<section class="section" id="learn">
+    <div class="section-header">
+        <h2>📚 Learning Center</h2>
+        <p>Master the fundamentals of investing — from technical indicators to macroeconomics. Click any topic to dive deeper.</p>
+    </div>
+    <div class="learn-grid">
+
+        <div class="learn-card" onclick="openModal('ta')">
+            <div class="card-icon ta">📈</div>
+            <h3>Technical Analysis Basics</h3>
+            <p>Support & resistance, trend lines, and how to read price charts like a professional trader.</p>
+            <div class="topics">
+                <span class="topic-tag">Support/Resistance</span>
+                <span class="topic-tag">Trend Lines</span>
+                <span class="topic-tag">Breakouts</span>
+            </div>
+            <span class="arrow">→</span>
+        </div>
+
+        <div class="learn-card" onclick="openModal('indicators')">
+            <div class="card-icon fa">📊</div>
+            <h3>Key Indicators: RSI, MACD & MAs</h3>
+            <p>The most popular momentum and trend indicators — how they work and when to use them.</p>
+            <div class="topics">
+                <span class="topic-tag">RSI</span>
+                <span class="topic-tag">MACD</span>
+                <span class="topic-tag">Moving Averages</span>
+                <span class="topic-tag">Bollinger Bands</span>
+            </div>
+            <span class="arrow">→</span>
+        </div>
+
+        <div class="learn-card" onclick="openModal('candlestick')">
+            <div class="card-icon cs">🕯️</div>
+            <h3>Candlestick Patterns</h3>
+            <p>Read the story behind each candle — hammer, engulfing, doji, and powerful reversal signals.</p>
+            <div class="topics">
+                <span class="topic-tag">Hammer</span>
+                <span class="topic-tag">Engulfing</span>
+                <span class="topic-tag">Doji</span>
+                <span class="topic-tag">Shadows</span>
+            </div>
+            <span class="arrow">→</span>
+        </div>
+
+        <div class="learn-card" onclick="openModal('risk')">
+            <div class="card-icon risk">🛡️</div>
+            <h3>Risk Management</h3>
+            <p>Stop losses, take profits, and the golden risk-reward ratio that separates pros from beginners.</p>
+            <div class="topics">
+                <span class="topic-tag">Stop Loss</span>
+                <span class="topic-tag">Take Profit</span>
+                <span class="topic-tag">1:3 R:R Ratio</span>
+            </div>
+            <span class="arrow">→</span>
+        </div>
+
+        <div class="learn-card" onclick="openModal('fundamentals')">
+            <div class="card-icon fa">💰</div>
+            <h3>Fundamental Analysis</h3>
+            <p>Earnings, valuations, and the key metrics that Warren Buffett uses to pick stocks.</p>
+            <div class="topics">
+                <span class="topic-tag">P/E Ratio</span>
+                <span class="topic-tag">EPS</span>
+                <span class="topic-tag">ROE</span>
+                <span class="topic-tag">Revenue Growth</span>
+            </div>
+            <span class="arrow">→</span>
+        </div>
+
+        <div class="learn-card" onclick="openModal('macro')">
+            <div class="card-icon macro">🌍</div>
+            <h3>Macroeconomic Indicators</h3>
+            <p>How CPI, GDP, NFP, and Fed decisions move markets — and what to watch for.</p>
+            <div class="topics">
+                <span class="topic-tag">CPI</span>
+                <span class="topic-tag">NFP</span>
+                <span class="topic-tag">GDP</span>
+                <span class="topic-tag">Fed Rate</span>
+            </div>
+            <span class="arrow">→</span>
+        </div>
+
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+    <h2>📞 Ready to Go Further?</h2>
+    <p>Connect with a real advisor or join our community — it's free.</p>
+    <div class="contact-grid">
+        <a href="https://wa.me/18032150144" target="_blank" class="contact-card">
+            <div class="c-icon wa">📱</div>
+            <div class="c-text">
+                <div class="c-label">WhatsApp</div>
+                <div class="c-desc">Fastest way to reach us</div>
+            </div>
+        </a>
+        <a href="https://t.me/BroadInvestBot" target="_blank" class="contact-card">
+            <div class="c-icon tg">🤖</div>
+            <div class="c-text">
+                <div class="c-label">Telegram Bot</div>
+                <div class="c-desc">AI advisor 24/7</div>
+            </div>
+        </a>
+        <a href="https://www.broadfsc.com/different" target="_blank" class="contact-card">
+            <div class="c-icon ws">🌐</div>
+            <div class="c-text">
+                <div class="c-label">Official Website</div>
+                <div class="c-desc">BroadFSC.com</div>
+            </div>
+        </a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+    <p>© 2026 Broad Investment Securities (BroadFSC) — Licensed Investment Advisory & Asset Management</p>
+    <p class="disclaimer">⚠️ Disclaimer: All content on this page is for educational purposes only and does not constitute financial advice, investment recommendations, or solicitations. Investment involves risk. Past performance is not indicative of future results. Always consult a qualified financial advisor before making investment decisions.</p>
+</div>
+
+<!-- DETAIL MODALS -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+    <div class="modal" id="modalContent"></div>
+</div>
+
+<script>
+// ============ CHAT LOGIC ============
+const GROQ_API_KEY = '';  // Will be set via proxy
+const chatMessages = document.getElementById('chatMessages');
+const chatInput = document.getElementById('chatInput');
+const chatSend = document.getElementById('chatSend');
+
+// Pre-built knowledge for offline/fallback mode
+const KNOWLEDGE = {
+    'support resistance': "Support and resistance are key price levels where buying or selling pressure tends to emerge. **Support** acts like a floor — price bounces up from it. **Resistance** acts like a ceiling — price gets rejected down. Pro tip: The more times a level is tested, the stronger it becomes. When resistance breaks, it often becomes new support (and vice versa).",
+    'rsi': "RSI (Relative Strength Index) measures momentum on a scale of 0-100. Above 70 = overbought (potential pullback). Below 30 = oversold (potential bounce). But beware: RSI can stay overbought in strong uptrends. The real edge is **RSI divergence** — when price makes a new high but RSI makes a lower high, that's a powerful reversal signal.",
+    'macd': "MACD (Moving Average Convergence Divergence) shows the relationship between two moving averages. When the MACD line crosses above the signal line = bullish (golden cross). Crosses below = bearish (death cross). The histogram shows momentum strength — growing bars mean increasing momentum.",
+    'moving average': "Moving Averages smooth price data to show trends. The 50-day and 200-day MAs are most watched. **Golden Cross** (50 crosses above 200) = long-term bullish. **Death Cross** (50 crosses below 200) = long-term bearish. Use MAs as dynamic support/resistance on higher timeframes.",
+    'stop loss': "Always set your stop loss BEFORE entering a trade. Place it just below support for longs, just above resistance for shorts. The key ratio: aim for **1:3 risk-reward** — risk $1 to make $3. Even with only 40% win rate, you'll be profitable with 1:3 R:R. Protecting capital > chasing profits.",
+    'candlestick': "Key candlestick patterns: **Hammer** (long lower shadow at bottom of downtrend = bullish reversal), **Engulfing** (large candle completely covers previous = strong reversal), **Doji** (open ≈ close = indecision, trend may change). Always confirm with volume and the next candle.",
+    'bollinger': "Bollinger Bands show volatility with three lines: middle (20-period MA), upper and lower bands (±2 standard deviations). Price touching upper band = overbought. Touching lower = oversold. **Band squeeze** (narrowing) signals a big move is coming soon.",
+    'pe ratio': "P/E Ratio (Price/Earnings) tells you how much you're paying per dollar of earnings. Lower P/E = cheaper (compare within same industry). But a low P/E might mean the market expects declining earnings. Always compare P/E to the company's historical average and industry peers.",
+    'eps': "EPS (Earnings Per Share) = Net Income ÷ Shares Outstanding. Rising EPS over multiple quarters is a strong bullish signal. Watch for the 'earnings surprise' — when actual EPS beats analyst expectations, the stock often jumps.",
+    'roe': "ROE (Return on Equity) measures how efficiently a company uses shareholder capital. Warren Buffett looks for companies with consistently high ROE (>15%). Compare ROE across the same industry for meaningful insights.",
+    'cpi': "CPI (Consumer Price Index) measures inflation. High CPI → Fed may raise rates → stocks typically fall. Low CPI → Fed may cut rates → stocks typically rise. Watch the CPI release monthly — it's one of the most market-moving economic reports.",
+    'gdp': "GDP measures total economic output. Growing GDP = healthy economy = generally bullish for stocks. Shrinking GDP for 2+ quarters = recession. The stock market is forward-looking — it reacts to GDP expectations, not just the number itself.",
+    'fed': "The Federal Reserve sets interest rates. Rate hikes make borrowing more expensive → slows economy → typically bearish for stocks. Rate cuts make borrowing cheaper → stimulates economy → typically bullish. The 'Fed pivot' (shifting from hiking to cutting) often triggers major market rallies.",
+    'default': "That's a great question! For detailed investment education, I'd recommend checking out our Learning Center below, or asking about specific topics like: RSI, MACD, support/resistance, candlestick patterns, stop loss strategies, fundamental analysis, or macro indicators."
+};
+
+let chatHistory = [];
+
+function findBestAnswer(input) {
+    const lower = input.toLowerCase();
+    for (const [key, answer] of Object.entries(KNOWLEDGE)) {
+        if (key === 'default') continue;
+        if (lower.includes(key) || lower.includes(key.replace(' ', ''))) return answer;
+    }
+    // Check partial matches
+    const keywords = {
+        'support': 'support resistance', 'resistance': 'support resistance',
+        'overbought': 'rsi', 'oversold': 'rsi', 'divergence': 'rsi',
+        'golden cross': 'moving average', 'death cross': 'moving average', 'ma': 'moving average', 'ema': 'moving average',
+        'risk': 'stop loss', 'profit': 'stop loss', 'rr': 'stop loss',
+        'hammer': 'candlestick', 'doji': 'candlestick', 'engulfing': 'candlestick',
+        'band': 'bollinger', 'squeeze': 'bollinger',
+        'p/e': 'pe ratio', 'price to earnings': 'pe ratio',
+        'earnings': 'eps', 'roe': 'roe', 'return on equity': 'roe',
+        'inflation': 'cpi', 'consumer price': 'cpi',
+        'interest rate': 'fed', 'fomc': 'fed', 'federal reserve': 'fed',
+        'macro': 'gdp', 'recession': 'gdp',
+        'fundamental': 'pe ratio', 'valuation': 'pe ratio'
+    };
+    for (const [kw, topic] of Object.entries(keywords)) {
+        if (lower.includes(kw)) return KNOWLEDGE[topic];
+    }
+    return KNOWLEDGE['default'];
+}
+
+function addMessage(text, type) {
+    const div = document.createElement('div');
+    div.className = `chat-msg ${type}`;
+    // Simple markdown bold
+    div.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+async function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+    
+    addMessage(text, 'user');
+    chatInput.value = '';
+    chatSend.disabled = true;
+    
+    // Show typing
+    const typingDiv = document.createElement('div');
+    typingDiv.className = 'chat-msg bot';
+    typingDiv.innerHTML = '<span style="opacity:0.5">Alex is typing...</span>';
+    chatMessages.appendChild(typingDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    
+    // Simulate human-like delay
+    await new Promise(r => setTimeout(r, 1000 + Math.random() * 2000));
+    
+    // Try Groq API first
+    let reply = '';
+    try {
+        const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + (window.__GROQ_KEY || '')
+            },
+            body: JSON.stringify({
+                model: 'llama-3.1-8b-instant',
+                messages: [
+                    { role: 'system', content: 'You are Alex Chen, a senior investment advisor at BroadFSC. Give concise, educational answers (2-4 sentences max). Always include risk disclaimer if discussing investments. Never recommend specific stocks. Be warm and professional.' },
+                    ...chatHistory.slice(-6),
+                    { role: 'user', content: text }
+                ],
+                max_tokens: 300,
+                temperature: 0.7
+            })
+        });
+        
+        if (response.ok) {
+            const data = await response.json();
+            reply = data.choices[0].message.content;
+            chatHistory.push({ role: 'user', content: text });
+            chatHistory.push({ role: 'assistant', content: reply });
+        } else {
+            throw new Error('API error');
+        }
+    } catch (e) {
+        // Fallback to local knowledge
+        reply = findBestAnswer(text);
+    }
+    
+    // Remove typing indicator
+    typingDiv.remove();
+    
+    addMessage(reply, 'bot');
+    chatSend.disabled = false;
+    chatInput.focus();
+}
+
+chatInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') sendMessage();
+});
+
+// ============ MODAL LOGIC ============
+const MODAL_DATA = {
+    ta: {
+        title: '📈 Technical Analysis Basics',
+        content: `
+            <h3>What is Technical Analysis?</h3>
+            <p>Technical analysis (TA) studies past price movements to predict future direction. It's based on three core principles:</p>
+            <ul>
+                <li><strong>Price discounts everything</strong> — all known information is already reflected in the price</li>
+                <li><strong>Prices move in trends</strong> — once established, trends tend to continue</li>
+                <li><strong>History repeats</strong> — chart patterns that worked before tend to work again</li>
+            </ul>
+            
+            <h3>Support & Resistance</h3>
+            <p><strong>Support</strong> is a price level where buying pressure emerges — like a floor that prevents further decline. <strong>Resistance</strong> is where selling pressure kicks in — like a ceiling blocking further rise.</p>
+            <div class="highlight-box">
+                <strong>Key Rule:</strong> The more times a level is tested, the stronger it becomes. When resistance breaks, it often flips to become new support — and vice versa.
+            </div>
+            
+            <h3>Trend Lines</h3>
+            <p>Connect at least two higher lows for an uptrend line, or two lower highs for a downtrend line. The more touches, the more valid the line. A trend line break often signals a trend change.</p>
+            
+            <h3>Practical Tips</h3>
+            <ul>
+                <li>Always mark support/resistance BEFORE entering a trade</li>
+                <li>Buy near support with a stop loss below it</li>
+                <li>Sell near resistance or wait for a confirmed breakout</li>
+                <li>Use multiple timeframes for confirmation</li>
+            </ul>
+        `
+    },
+    indicators: {
+        title: '📊 Key Indicators: RSI, MACD & Moving Averages',
+        content: `
+            <h3>RSI (Relative Strength Index)</h3>
+            <p>RSI measures momentum on a scale of 0-100. The magic numbers are <strong>30 and 70</strong>:</p>
+            <ul>
+                <li>Below 30 = <strong>Oversold</strong> — selling pressure may be exhausted</li>
+                <li>Above 70 = <strong>Overbought</strong> — buying momentum may be fading</li>
+                <li><strong>RSI Divergence</strong> — price makes new high but RSI makes lower high = powerful reversal signal</li>
+            </ul>
+            
+            <h3>MACD</h3>
+            <p>MACD shows the relationship between two moving averages (typically 12 and 26 EMA).</p>
+            <ul>
+                <li><strong>Golden Cross</strong> — MACD line crosses above signal line = bullish</li>
+                <li><strong>Death Cross</strong> — MACD line crosses below signal line = bearish</li>
+                <li><strong>Histogram</strong> — growing bars = increasing momentum</li>
+            </ul>
+            
+            <h3>Moving Averages</h3>
+            <p>The 50-day and 200-day MAs are the most watched by professionals:</p>
+            <ul>
+                <li><strong>50/200 Golden Cross</strong> — strong long-term bullish signal</li>
+                <li><strong>50/200 Death Cross</strong> — long-term bearish warning</li>
+                <li>MAs act as dynamic support in uptrends, dynamic resistance in downtrends</li>
+            </ul>
+            
+            <h3>Bollinger Bands</h3>
+            <p>Three lines: middle (20 MA), upper and lower (±2 std dev). Price touching upper = overbought, lower = oversold. <strong>Band squeeze</strong> (narrowing) signals a big move is coming.</p>
+            
+            <div class="highlight-box">
+                <strong>Pro Tip:</strong> Never rely on a single indicator. Combine RSI with support/resistance, confirm MACD signals with volume, and always use multiple timeframes.
+            </div>
+        `
+    },
+    candlestick: {
+        title: '🕯️ Candlestick Patterns',
+        content: `
+            <h3>Reading Candlesticks</h3>
+            <p>Each candle shows 4 data points: Open, High, Low, Close. The body shows the open-close range. The wicks (shadows) show the high-low range.</p>
+            
+            <h3>Key Reversal Patterns</h3>
+            <ul>
+                <li><strong>Hammer</strong> — small body at top, long lower shadow at bottom of downtrend = bullish reversal</li>
+                <li><strong>Engulfing</strong> — large candle completely covers the previous one = strong reversal</li>
+                <li><strong>Doji</strong> — open ≈ close = indecision, trend may be changing</li>
+                <li><strong>Morning Star</strong> — 3-candle bullish reversal pattern at bottom</li>
+                <li><strong>Evening Star</strong> — 3-candle bearish reversal pattern at top</li>
+            </ul>
+            
+            <h3>Important Notes</h3>
+            <div class="highlight-box">
+                <strong>Always confirm:</strong> A single candlestick pattern is NOT a trade signal. Confirm with:
+                <br>• Volume (higher volume = more reliable)
+                <br>• Support/resistance level
+                <br>• The next candle's confirmation
+                <br>• Multiple timeframe alignment
+            </div>
+        `
+    },
+    risk: {
+        title: '🛡️ Risk Management',
+        content: `
+            <h3>The #1 Rule: Protect Your Capital</h3>
+            <p>Most traders lose money not because they're wrong about direction, but because they don't manage risk properly.</p>
+            
+            <h3>Stop Loss Rules</h3>
+            <ul>
+                <li><strong>ALWAYS</strong> set stop loss BEFORE entering a trade</li>
+                <li>For longs: place stop just below nearest support (give it room)</li>
+                <li>For shorts: place stop just above nearest resistance</li>
+                <li>Never move your stop loss further away to "give it more room"</li>
+            </ul>
+            
+            <h3>The 1:3 Risk-Reward Ratio</h3>
+            <p>If you risk $3 on your stop loss, aim for at least $9 on your take profit. This is the <strong>1:3 R:R ratio</strong>.</p>
+            <div class="highlight-box">
+                <strong>The Math:</strong> With a 1:3 R:R ratio, even if you're only right 40% of the time:
+                <br>• 10 trades: 4 wins × $9 = $36, 6 losses × $3 = $18
+                <br>• Net profit = $18 — you're profitable despite being wrong 60% of the time!
+            </div>
+            
+            <h3>Position Sizing</h3>
+            <p>Never risk more than 1-2% of your total capital on a single trade. If you have $10,000, your maximum risk per trade is $100-$200.</p>
+        `
+    },
+    fundamentals: {
+        title: '💰 Fundamental Analysis',
+        content: `
+            <h3>What is Fundamental Analysis?</h3>
+            <p>Fundamental analysis evaluates a company's intrinsic value by examining financial statements, industry position, and economic conditions.</p>
+            
+            <h3>Key Metrics</h3>
+            <ul>
+                <li><strong>P/E Ratio</strong> — Price per share ÷ Earnings per share. Lower = cheaper (compare within same industry). A P/E of 15 means you pay $15 for every $1 of earnings.</li>
+                <li><strong>EPS (Earnings Per Share)</strong> — Net income ÷ shares outstanding. Rising EPS over multiple quarters is bullish. Watch for "earnings surprise" — beating expectations often triggers stock rallies.</li>
+                <li><strong>ROE (Return on Equity)</strong> — Net income ÷ shareholder equity. Buffett looks for consistent ROE > 15%. Measures how efficiently the company uses investor capital.</li>
+                <li><strong>Revenue Growth</strong> — Consistently growing revenue is the foundation of long-term stock appreciation.</li>
+            </ul>
+            
+            <h3>Valuation Methods</h3>
+            <ul>
+                <li><strong>Comparable Analysis</strong> — compare P/E, P/B, EV/EBITDA with similar companies</li>
+                <li><strong>DCF (Discounted Cash Flow)</strong> — project future cash flows and discount to present value</li>
+                <li><strong>NAV (Net Asset Value)</strong> — total assets minus total liabilities</li>
+            </ul>
+            
+            <div class="highlight-box">
+                <strong>Key Insight:</strong> Fundamentals tell you WHAT to buy (which companies are strong). Technicals tell you WHEN to buy (timing your entry). The best investors use both.
+            </div>
+        `
+    },
+    macro: {
+        title: '🌍 Macroeconomic Indicators',
+        content: `
+            <h3>Why Macro Matters</h3>
+            <p>Individual stocks don't exist in a vacuum — they're influenced by the broader economy. Understanding macro helps you anticipate market direction.</p>
+            
+            <h3>Key Indicators</h3>
+            <ul>
+                <li><strong>CPI (Consumer Price Index)</strong> — measures inflation. High CPI → Fed may raise rates → bearish for stocks. Low CPI → potential rate cuts → bullish.</li>
+                <li><strong>NFP (Non-Farm Payrolls)</strong> — monthly jobs report. Strong NFP = healthy economy = generally bullish. But too strong may mean Fed stays hawkish.</li>
+                <li><strong>GDP</strong> — total economic output. Growing GDP = bullish. Two quarters of decline = recession. Markets are forward-looking — they react to expectations.</li>
+                <li><strong>Fed Rate Decision</strong> — the single most important macro event. Rate hikes = headwind for stocks. Rate cuts = tailwind. The "Fed pivot" often triggers major rallies.</li>
+            </ul>
+            
+            <h3>How to Use Macro</h3>
+            <div class="highlight-box">
+                <strong>Economic Calendar:</strong> Always check the economic calendar before trading. Major releases (CPI, NFP, FOMC) can cause significant volatility. Consider reducing position size around these events.
+            </div>
+            
+            <h3>Free Resources</h3>
+            <ul>
+                <li><strong>TradingEconomics.com</strong> — real-time economic data</li>
+                <li><strong>FRED (St. Louis Fed)</strong> — comprehensive economic database</li>
+                <li><strong>Investing.com Economic Calendar</strong> — upcoming releases</li>
+            </ul>
+        `
+    }
+};
+
+function openModal(id) {
+    const data = MODAL_DATA[id];
+    if (!data) return;
+    document.getElementById('modalContent').innerHTML = `
+        <button class="modal-close" onclick="document.getElementById('modalOverlay').classList.remove('active')">✕</button>
+        <h2>${data.title}</h2>
+        ${data.content}
+        <div style="margin-top:24px;text-align:center;">
+            <a href="#chat" class="btn btn-primary" onclick="document.getElementById('modalOverlay').classList.remove('active')" style="font-size:0.9em;padding:10px 20px;">💬 Ask Alex about this topic</a>
+        </div>
+    `;
+    document.getElementById('modalOverlay').classList.add('active');
+}
+
+function closeModal(e) {
+    if (e.target === document.getElementById('modalOverlay')) {
+        document.getElementById('modalOverlay').classList.remove('active');
+    }
+}
+
+// Close modal on Escape
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        document.getElementById('modalOverlay').classList.remove('active');
+    }
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+    });
+});
+</script>
+</body>
+</html>
