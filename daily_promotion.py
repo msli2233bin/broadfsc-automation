@@ -1,4 +1,4 @@
-"""
+﻿"""
 BroadFSC Global Market Pre-Market Briefing System (Multi-Language)
 Sends targeted market insights 30 min before each major market opens.
 Covers: US, Europe, Asia-Pacific, Middle East, Latin America.
@@ -102,7 +102,7 @@ LANG_CONFIG = {
             "Europe": "EUROPE PRE-MARKET BRIEFING",
             "Americas": "AMERICAS PRE-MARKET BRIEFING",
         },
-        "cta": "Learn more: broadfsc.com/different",
+        "cta": "Free education: https://msli2233bin.github.io/broadfsc-automation/ | broadfsc.com/different",
         "disclaimer": DISCLAIMER,
     },
     "es": {
@@ -113,7 +113,7 @@ LANG_CONFIG = {
             "Europe": "INFORME PRE-MERCADO EUROPA",
             "Americas": "INFORME PRE-MERCADO AMERICAS",
         },
-        "cta": "Mas informacion: broadfsc.com/different",
+        "cta": "Aprende gratis: https://msli2233bin.github.io/broadfsc-automation/ | broadfsc.com/different",
         "disclaimer": (
             "\n\n<i>Aviso de riesgo: La inversion implica riesgo. "
             "El rendimiento pasado no es indicativo de resultados futuros. "
@@ -128,7 +128,7 @@ LANG_CONFIG = {
             "Europe": "EUROPE - ",
             "Americas": "AMERICAS - ",
         },
-        "cta": "broadfsc.com/different",
+        "cta": "https://msli2233bin.github.io/broadfsc-automation/ | broadfsc.com/different",
         "disclaimer": (
             "\n\n<i> .    .</i>"
         ),
@@ -165,7 +165,7 @@ FALLBACK_TEMPLATES = {
             "- Semiconductor sector momentum (TSMC, Samsung)\n"
             "- Asia FX movements (JPY, CNY, AUD)\n\n"
             "Stay ahead of Asian session volatility.\n\n"
-            "Learn more: broadfsc.com/different"
+            "Free education: https://msli2233bin.github.io/broadfsc-automation/ | broadfsc.com/different"
         ),
         "es": (
             "{emoji} INFORME PRE-MERCADO ASIA | {date}\n\n"
@@ -177,7 +177,7 @@ FALLBACK_TEMPLATES = {
             "- Momento del sector de semiconductores (TSMC, Samsung)\n"
             "- Movimientos FX en Asia (JPY, CNY, AUD)\n\n"
             "Mantengase adelante de la volatilidad de la sesion asiatica.\n\n"
-            "Mas informacion: broadfsc.com/different"
+            "Aprende gratis: https://msli2233bin.github.io/broadfsc-automation/ | broadfsc.com/different"
         ),
         "ar": (
             "{emoji}  | {date}\n\n"
@@ -203,7 +203,7 @@ FALLBACK_TEMPLATES = {
             "- Saudi Aramco and regional blue chips\n"
             "- UAE real estate and tourism sector trends\n\n"
             "Position for Gulf market opportunities.\n\n"
-            "Learn more: broadfsc.com/different"
+            "Free education: https://msli2233bin.github.io/broadfsc-automation/ | broadfsc.com/different"
         ),
         "es": (
             "{emoji} INFORME PRE-MERCADO MEDIO ORIENTE | {date}\n\n"
@@ -215,7 +215,7 @@ FALLBACK_TEMPLATES = {
             "- Saudi Aramco y blue chips regionales\n"
             "- Tendencias del sector inmobiliario y turistico de EAU\n\n"
             "Posicionese para las oportunidades del mercado del Golfo.\n\n"
-            "Mas informacion: broadfsc.com/different"
+            "Aprende gratis: https://msli2233bin.github.io/broadfsc-automation/ | broadfsc.com/different"
         ),
         "ar": (
             "{emoji}  | {date}\n\n"
@@ -241,7 +241,7 @@ FALLBACK_TEMPLATES = {
             "- European energy prices (TTF gas)\n"
             "- DAX 40, CAC 40, FTSE 100 key technicals\n\n"
             "Prepare for European session moves.\n\n"
-            "Learn more: broadfsc.com/different"
+            "Free education: https://msli2233bin.github.io/broadfsc-automation/ | broadfsc.com/different"
         ),
         "es": (
             "{emoji} INFORME PRE-MERCADO EUROPA | {date}\n\n"
@@ -253,7 +253,7 @@ FALLBACK_TEMPLATES = {
             "- Precios de energia europea (gas TTF)\n"
             "- Tecnicos clave de DAX 40, CAC 40, FTSE 100\n\n"
             "Preparese para los movimientos de la sesion europea.\n\n"
-            "Mas informacion: broadfsc.com/different"
+            "Aprende gratis: https://msli2233bin.github.io/broadfsc-automation/ | broadfsc.com/different"
         ),
         "ar": (
             "{emoji}  | {date}\n\n"
@@ -280,7 +280,7 @@ FALLBACK_TEMPLATES = {
             "- US 10Y Treasury yield and USD index\n"
             "- Latin America: BRL/MXN FX, Bovespa trends\n\n"
             "Get ready for the main session.\n\n"
-            "Learn more: broadfsc.com/different"
+            "Free education: https://msli2233bin.github.io/broadfsc-automation/ | broadfsc.com/different"
         ),
         "es": (
             "{emoji} INFORME PRE-MERCADO AMERICAS | {date}\n\n"
@@ -293,7 +293,7 @@ FALLBACK_TEMPLATES = {
             "- Rendimiento del Treasury estadounidense a 10Y e indice USD\n"
             "- America Latina: FX BRL/MXN, tendencias de Bovespa\n\n"
             "Prepareses para la sesion principal.\n\n"
-            "Mas informacion: broadfsc.com/different"
+            "Aprende gratis: https://msli2233bin.github.io/broadfsc-automation/ | broadfsc.com/different"
         ),
         "ar": (
             "{emoji}  | {date}\n\n"
@@ -491,3 +491,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

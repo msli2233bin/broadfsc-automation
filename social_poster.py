@@ -77,6 +77,7 @@ CHANNEL_ID = os.environ.get("TELEGRAM_CHANNEL_ID", "")
 
 TELEGRAM_LINK = "https://t.me/BroadFSC"
 WEBSITE_LINK = "https://www.broadfsc.com/different"
+HUB_LINK = "https://msli2233bin.github.io/broadfsc-automation/"
 
 # Tags
 HASHTAGS = ["#Investing", "#Trading", "#MarketAnalysis", "#StockMarket", "#Finance"]
@@ -265,10 +266,10 @@ def get_fallback_mastodon():
     toots = [
         "Global markets update: Central bank policy divergence continues to drive cross-currency flows. "
         "Stay informed with daily pre-market briefings covering Asia, Europe, Middle East & Americas. "
-        "Subscribe free: https://t.me/BroadFSC #Investing #Trading #MarketAnalysis #Finance",
+        "Subscribe free: https://t.me/BroadFSC | Learn investing: https://msli2233bin.github.io/broadfsc-automation/ #Investing #Trading #MarketAnalysis #Finance",
         "Key themes this week: Fed signals, earnings season dynamics, and geopolitical risk premiums "
         "shaping commodity markets. Get daily AI-powered market insights in English, Spanish & Arabic. "
-        "https://t.me/BroadFSC #StockMarket #Investing #Trading #MarketAnalysis",
+        "https://t.me/BroadFSC | Free education: https://msli2233bin.github.io/broadfsc-automation/ #StockMarket #Investing #Trading #MarketAnalysis",
     ]
     idx = datetime.datetime.utcnow().timetuple().tm_yday % len(toots)
     return toots[idx]
@@ -364,6 +365,7 @@ def get_fallback_discord():
         "Stay informed with daily pre-market briefings covering "
         "Asia, Europe, Middle East & Americas.\n\n"
         "Subscribe free: https://t.me/BroadFSC\n"
+        "Learn investing free: https://msli2233bin.github.io/broadfsc-automation/\n"
         "Website: https://www.broadfsc.com/different\n\n"
         "#Investing #Trading #MarketAnalysis #StockMarket #Finance"
     )
@@ -651,11 +653,11 @@ def get_fallback_tiktok():
     """Fallback TikTok content."""
     captions = [
         "Want to invest smarter in 2026? Here's what the pros watch every morning \U0001f4c8 "
-        "Daily global market briefings - FREE! broadfsc.com/different #Investing #StockMarket #FinanceTips",
+        "Daily global market briefings - FREE! https://msli2233bin.github.io/broadfsc-automation/ #Investing #StockMarket #FinanceTips",
 
         "Markets move FAST. Don't get caught off guard \u26a1 "
         "Pre-market briefings for Asia, Europe, Middle East & Americas. "
-        "Subscribe free: broadfsc.com/different #Trading #Investing #MarketAnalysis",
+        "Subscribe free: https://msli2233bin.github.io/broadfsc-automation/ #Trading #Investing #MarketAnalysis",
 
         "3 things smart investors check before markets open \U0001f4ca "
         "1. Overnight futures 2. Central bank signals 3. Key economic data. "
