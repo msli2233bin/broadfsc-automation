@@ -55,25 +55,38 @@
         .section-header p { color: rgba(255,255,255,0.5); max-width: 600px; margin: 0 auto; }
         .section-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); margin: 0 auto; max-width: 600px; }
 
-        /* === CHAT WIDGET === */
+        /* === CHAT WIDGET - UPGRADED === */
         .chat-section { background: linear-gradient(145deg, #141938, #1a2050); border-radius: 20px; padding: 40px; border: 1px solid rgba(255,255,255,0.06); margin-bottom: 80px; }
-        .chat-container { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
-        .chat-info h3 { font-size: 1.5em; margin-bottom: 12px; color: #fff; }
-        .chat-info p { color: rgba(255,255,255,0.5); margin-bottom: 20px; }
-        .chat-features { list-style: none; }
-        .chat-features li { padding: 10px 0; color: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 10px; font-size: 0.95em; }
-        .chat-features li .icon { width: 28px; height: 28px; background: rgba(66,165,245,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; }
-        .chat-box { background: #0d1229; border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); overflow: hidden; }
+        .chat-container { display: grid; grid-template-columns: 280px 1fr; gap: 32px; align-items: start; }
+        
+        /* Advisor Profile Card */
+        .advisor-profile { text-align: center; }
+        .advisor-avatar-wrap { width: 120px; height: 120px; margin: 0 auto 16px; border-radius: 50%; padding: 3px; background: linear-gradient(135deg, #42a5f5, #66bb6a); position: relative; }
+        .advisor-avatar-wrap img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid #0a0e27; }
+        .advisor-online { position: absolute; bottom: 6px; right: 6px; width: 18px; height: 18px; background: #4caf50; border-radius: 50%; border: 3px solid #0a0e27; animation: pulse 2s infinite; }
+        .advisor-profile h3 { font-size: 1.3em; color: #fff; margin-bottom: 4px; }
+        .advisor-profile .advisor-title { color: #42a5f5; font-size: 0.9em; margin-bottom: 12px; }
+        .advisor-profile .advisor-bio { color: rgba(255,255,255,0.5); font-size: 0.85em; line-height: 1.6; margin-bottom: 16px; padding: 0 8px; }
+        .advisor-tags { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 20px; }
+        .advisor-tag { background: rgba(66,165,245,0.1); border: 1px solid rgba(66,165,245,0.2); color: #42a5f5; padding: 4px 10px; border-radius: 6px; font-size: 0.75em; }
+        .advisor-daily { background: rgba(255,255,255,0.04); border-radius: 12px; padding: 16px; margin-top: 8px; text-align: left; }
+        .advisor-daily .daily-label { font-size: 0.75em; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        .advisor-daily .daily-text { font-size: 0.85em; color: rgba(255,255,255,0.7); line-height: 1.6; font-style: italic; }
+        .advisor-daily .daily-date { font-size: 0.7em; color: rgba(255,255,255,0.3); margin-top: 6px; }
+
+        /* Chat Box */
+        .chat-box { background: #0d1229; border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); overflow: hidden; display: flex; flex-direction: column; max-height: 600px; }
         .chat-header { padding: 16px 20px; background: rgba(66,165,245,0.08); border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 12px; }
-        .chat-avatar { width: 36px; height: 36px; background: linear-gradient(135deg, #42a5f5, #66bb6a); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+        .chat-header-avatar { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
         .chat-header-info .name { font-weight: 600; font-size: 0.95em; color: #fff; }
         .chat-header-info .status { font-size: 0.8em; color: #4caf50; display: flex; align-items: center; gap: 4px; }
         .chat-header-info .status::before { content: ''; width: 6px; height: 6px; background: #4caf50; border-radius: 50%; }
-        .chat-messages { padding: 20px; min-height: 280px; max-height: 400px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+        .chat-messages { padding: 20px; min-height: 280px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
         .chat-msg { max-width: 85%; padding: 12px 16px; border-radius: 16px; font-size: 0.9em; line-height: 1.5; animation: msgIn 0.3s ease; }
         @keyframes msgIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
         .chat-msg.bot { background: rgba(66,165,245,0.1); color: #e0e6f0; align-self: flex-start; border-bottom-left-radius: 4px; }
         .chat-msg.user { background: linear-gradient(135deg, #42a5f5, #1e88e5); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+        .chat-msg.bot .msg-name { font-size: 0.75em; color: #42a5f5; margin-bottom: 4px; font-weight: 600; }
         .chat-input-area { padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; gap: 10px; }
         .chat-input { flex: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 12px 16px; color: #fff; font-size: 0.9em; outline: none; font-family: inherit; }
         .chat-input:focus { border-color: #42a5f5; background: rgba(66,165,245,0.05); }
@@ -82,6 +95,10 @@
         .chat-send:hover { transform: scale(1.05); }
         .chat-send:disabled { opacity: 0.5; cursor: not-allowed; }
         .chat-disclaimer { font-size: 0.75em; color: rgba(255,255,255,0.3); text-align: center; padding: 8px; border-top: 1px solid rgba(255,255,255,0.03); }
+
+        /* Welcome message bubble */
+        .welcome-bubble { background: rgba(102,187,106,0.08); border: 1px solid rgba(102,187,106,0.15); border-radius: 12px; padding: 12px 16px; margin-bottom: 12px; font-size: 0.85em; color: rgba(255,255,255,0.7); }
+        .welcome-bubble .wb-label { color: #66bb6a; font-weight: 600; font-size: 0.75em; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
 
         /* === LEARNING CARDS === */
         .learn-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; }
@@ -140,6 +157,10 @@
             .hero h1 { font-size: 2em; }
             .hero-stats { gap: 24px; }
             .chat-container { grid-template-columns: 1fr; }
+            .advisor-profile { display: grid; grid-template-columns: 100px 1fr; text-align: left; gap: 16px; align-items: center; }
+            .advisor-avatar-wrap { width: 80px; height: 80px; margin: 0; }
+            .advisor-tags { justify-content: flex-start; }
+            .advisor-daily { grid-column: 1 / -1; }
             .learn-grid { grid-template-columns: 1fr; }
             .nav-links { display: none; }
             .contact-grid { flex-direction: column; align-items: center; }
@@ -169,7 +190,7 @@
         <h1>Learn Investing.<br>Trade Smarter.</h1>
         <p>Free investment education, AI-powered advisory, and professional market insights from a licensed global firm. No sign-up required.</p>
         <div class="hero-buttons">
-            <a href="#chat" class="btn btn-primary">💬 Chat with AI Advisor</a>
+            <a href="#chat" class="btn btn-primary">💬 Chat with Alex</a>
             <a href="#learn" class="btn btn-secondary">📚 Explore Lessons</a>
         </div>
         <div class="hero-stats">
@@ -181,42 +202,50 @@
     </div>
 </section>
 
-<!-- AI CHAT -->
+<!-- AI CHAT - UPGRADED WITH ADVISOR PROFILE -->
 <section class="section" id="chat">
     <div class="section-header">
         <h2>💬 AI Investment Advisor</h2>
-        <p>Ask anything about investing — technical analysis, fundamentals, risk management. No registration, no fees, instant answers.</p>
+        <p>Meet Alex — your personal AI advisor. He greets you by your culture, remembers your interests, and shares daily market insights.</p>
     </div>
     <div class="chat-section">
         <div class="chat-container">
-            <div class="chat-info">
-                <h3>Meet Alex — Your AI Advisor</h3>
-                <p>Alex is a virtual investment advisor powered by AI. Ask about trading strategies, market indicators, or how to get started with investing.</p>
-                <ul class="chat-features">
-                    <li><span class="icon">📈</span> Technical analysis explanations</li>
-                    <li><span class="icon">📊</span> Fundamental analysis guidance</li>
-                    <li><span class="icon">🛡️</span> Risk management strategies</li>
-                    <li><span class="icon">🌍</span> Multi-language support (8+ languages)</li>
-                    <li><span class="icon">⚡</span> Instant responses, 24/7</li>
-                    <li><span class="icon">🔒</span> No registration, no data collection</li>
-                </ul>
-                <div style="margin-top:24px;">
-                    <a href="https://t.me/BroadInvestBot" target="_blank" class="btn btn-primary" style="font-size:0.9em;padding:12px 24px;">📱 Open in Telegram</a>
+            <!-- LEFT: Advisor Profile Card -->
+            <div class="advisor-profile">
+                <div class="advisor-avatar-wrap">
+                    <img src="https://ui-avatars.com/api/?name=Alex+C&background=42a5f5&color=fff&size=200&bold=true&font-size=0.4" alt="Alex Chen">
+                    <div class="advisor-online"></div>
+                </div>
+                <h3>Alex Chen</h3>
+                <div class="advisor-title">Senior Investment Advisor</div>
+                <div class="advisor-bio">8+ years in global markets. Specializing in technical analysis & risk management. I believe every investor deserves professional guidance — that's why I'm here, 24/7, for free.</div>
+                <div class="advisor-tags">
+                    <span class="advisor-tag">📈 Technical Analysis</span>
+                    <span class="advisor-tag">🛡️ Risk Management</span>
+                    <span class="advisor-tag">💰 Fundamentals</span>
+                    <span class="advisor-tag">🌍 Global Markets</span>
+                </div>
+                <div class="advisor-daily">
+                    <div class="daily-label">💡 Alex's Daily Insight</div>
+                    <div class="daily-text" id="dailyInsight">Loading today's insight...</div>
+                    <div class="daily-date" id="dailyDate"></div>
                 </div>
             </div>
+
+            <!-- RIGHT: Chat Box -->
             <div class="chat-box">
                 <div class="chat-header">
-                    <div class="chat-avatar">🤖</div>
+                    <img src="https://ui-avatars.com/api/?name=AC&background=42a5f5&color=fff&size=72&bold=true" alt="Alex" class="chat-header-avatar">
                     <div class="chat-header-info">
                         <div class="name">Alex Chen</div>
-                        <div class="status">Online now</div>
+                        <div class="status">Online — ready to help</div>
                     </div>
                 </div>
                 <div class="chat-messages" id="chatMessages">
-                    <div class="chat-msg bot">Hey there! 👋 I'm Alex, your AI investment advisor. Ask me anything about trading, technical analysis, or market strategies!</div>
+                    <!-- Welcome message injected by JS -->
                 </div>
                 <div class="chat-input-area">
-                    <input type="text" class="chat-input" id="chatInput" placeholder="Ask about support/resistance, RSI, MACD..." maxlength="500" autocomplete="off">
+                    <input type="text" class="chat-input" id="chatInput" placeholder="Ask about RSI, MACD, support/resistance..." maxlength="500" autocomplete="off">
                     <button class="chat-send" id="chatSend" onclick="sendMessage()">➤</button>
                 </div>
                 <div class="chat-disclaimer">⚠️ AI-generated content for educational purposes only. Not financial advice. Investment involves risk.</div>
@@ -357,11 +386,145 @@
 </div>
 
 <script>
+// ============ ADVISOR IDENTITY ============
+const ADVISOR = {
+    name: 'Alex Chen',
+    role: 'Senior Investment Advisor at BroadFSC',
+    personality: 'warm, professional, slightly witty — never robotic',
+    values: ['Every investor deserves guidance', 'Risk management first', 'Education empowers'],
+    language: 'English' // default, auto-detected
+};
+
+// ============ CULTURAL GREETINGS ============
+const GREETINGS = {
+    'en': { greeting: "Hey there! 👋", intro: "I'm Alex, your personal investment advisor. How can I help you today? Whether it's technical analysis, risk management, or just getting started — I'm here for you.", ask: "What would you like to learn about?" },
+    'zh': { greeting: "你好！👋", intro: "我是 Alex，你的专属投资顾问。无论你想了解技术分析、风控策略，还是刚刚入门——我随时为你服务。", ask: "你想了解什么？" },
+    'ja': { greeting: "こんにちは！👋", intro: "Alex です、あなたの投資アドバイザー。テクニカル分析でもリスク管理でも、何でもお気軽にどうぞ。", ask: "何について知りたいですか？" },
+    'ko': { greeting: "안녕하세요! 👋", intro: "저는 Alex입니다, 당신의 투자 어드바이저. 기술 분석이든 리스크 관리든 뭐든 물어보세요.", ask: "무엇이 궁금하신가요?" },
+    'es': { greeting: "¡Hola! 👋", intro: "Soy Alex, tu asesor de inversiones. Análisis técnico, gestión de riesgos, o lo que necesites — estoy aquí para ti.", ask: "¿De qué te gustaría aprender?" },
+    'de': { greeting: "Hallo! 👋", intro: "Ich bin Alex, dein Investmentberater. Technische Analyse, Risikomanagement oder einfach nur anfangen — ich bin für dich da.", ask: "Woran bist du interessiert?" },
+    'fr': { greeting: "Bonjour ! 👋", intro: "Je suis Alex, votre conseiller en investissement. Analyse technique, gestion des risques — je suis là pour vous.", ask: "Que souhaitez-vous apprendre ?" },
+    'pt': { greeting: "Olá! 👋", intro: "Sou Alex, seu consultor de investimentos. Análise técnica, gerenciamento de riscos — estou aqui para ajudar.", ask: "O que gostaria de aprender?" },
+    'ar': { greeting: "مرحبا! 👋", intro: "أنا أليكس، مستشارك الاستثماري. التحليل الفني، إدارة المخاطر — أنا هنا لمساعدتك.", ask: "ماذا تريد أن تتعلم؟" },
+    'hi': { greeting: "नमस्ते! 👋", intro: "मैं एलेक्स हूं, आपका निवेश सलाहकार। तकनीकी विश्लेषण, जोखिम प्रबंधन — मैं आपके लिए यहां हूं।", ask: "आप किस बारे में जानना चाहेंगे?" },
+    'ru': { greeting: "Привет! 👋", intro: "Я Алекс, ваш инвестиционный советник. Технический анализ, управление рисками — я к вашим услугам.", ask: "О чём хотите узнать?" },
+    'th': { greeting: "สวัสดีครับ! 👋", intro: "ผม Alex ที่ปรึกษาการลงทุนของคุณ วิเคราะห์เทคนิคหรือบริหารความเสี่ยง ถามได้เลยนะครับ", ask: "อยากรู้เรื่องอะไรครับ?" },
+    'vi': { greeting: "Xin chào! 👋", intro: "Tôi là Alex, cố vấn đầu tư của bạn. Phân tích kỹ thuật, quản lý rủi ro — tôi ở đây để giúp bạn.", ask: "Bạn muốn tìm hiểu về gì?" },
+    'id': { greeting: "Halo! 👋", intro: "Saya Alex, penasihat investasi Anda. Analisis teknikal, manajemen risiko — saya siap membantu.", ask: "Apa yang ingin Anda pelajari?" },
+    'tr': { greeting: "Merhaba! 👋", intro: "Ben Alex, yatırım danışmanınız. Teknik analiz, risk yönetimi — buradayım.", ask: "Ne hakkında bilgi almak istersiniz?" }
+};
+
+// ============ DAILY INSIGHTS ============
+const DAILY_INSIGHTS = [
+    "Markets reward patience. The best trades often come from waiting for the right setup, not from forcing entries. Today, focus on your watchlist — not your FOMO.",
+    "Risk management isn't about being right — it's about surviving when you're wrong. Always set your stop loss before entering any trade.",
+    "Volume confirms price. A breakout without volume is like a car without fuel — it won't go far. Always check volume before trusting a move.",
+    "The trend is your friend until it ends. Don't fight the market — ride the wave, and know when to paddle back to shore.",
+    "Diversification isn't just about owning different stocks — it's about being exposed to different risk factors. Think sectors, geographies, and asset classes.",
+    "The best investors are students forever. Markets evolve, strategies adapt, and the learning never stops. Keep reading, keep practicing.",
+    "Emotional discipline is your edge. When everyone is panicking, stay calm. When everyone is greedy, stay cautious. Be the rational one in the room.",
+    "Support and resistance aren't exact lines — they're zones. Give your levels room to breathe, and don't obsess over pennies.",
+    "The 200-day moving average is the institutional line in the sand. When price crosses it, big money notices. So should you.",
+    "Don't overtrade. Sometimes the best action is no action. Cash is a position too — and often the most comfortable one."
+];
+
+// ============ CLIENT MEMORY (localStorage) ============
+function getClientMemory() {
+    try {
+        const data = localStorage.getItem('broadfsc_client');
+        return data ? JSON.parse(data) : null;
+    } catch(e) { return null; }
+}
+
+function saveClientMemory(memory) {
+    try {
+        memory.lastVisit = new Date().toISOString();
+        localStorage.setItem('broadfsc_client', JSON.stringify(memory));
+    } catch(e) {}
+}
+
+function initClientMemory() {
+    let mem = getClientMemory();
+    if (!mem) {
+        mem = {
+            firstVisit: new Date().toISOString(),
+            visitCount: 1,
+            language: detectLanguage(),
+            interests: [],
+            name: null,
+            lastTopic: null
+        };
+    } else {
+        mem.visitCount = (mem.visitCount || 0) + 1;
+        mem.language = detectLanguage();
+    }
+    saveClientMemory(mem);
+    return mem;
+}
+
+function detectLanguage() {
+    const lang = (navigator.language || navigator.userLanguage || 'en').split('-')[0].toLowerCase();
+    return GREETINGS[lang] ? lang : 'en';
+}
+
+// ============ WELCOME MESSAGE ============
+function generateWelcome() {
+    const mem = initClientMemory();
+    const greet = GREETINGS[mem.language] || GREETINGS['en'];
+    const hour = new Date().getHours();
+    let timeGreet = '';
+    
+    if (mem.language === 'en') {
+        if (hour < 12) timeGreet = 'Good morning! ☀️';
+        else if (hour < 18) timeGreet = 'Good afternoon! 🌤️';
+        else timeGreet = 'Good evening! 🌙';
+    }
+    
+    let welcome = '';
+    
+    if (mem.visitCount === 1) {
+        // First-time visitor
+        welcome = `${timeGreet} ${greet.greeting}\n\n${greet.intro}`;
+    } else if (mem.visitCount <= 3) {
+        // Returning visitor (2-3 visits)
+        welcome = `${timeGreet} ${greet.greeting} Welcome back! Great to see you again. `;
+        if (mem.lastTopic) {
+            welcome += `Last time we were chatting about **${mem.lastTopic}** — want to dive deeper or explore something new?`;
+        } else {
+            welcome += `${greet.ask}`;
+        }
+    } else {
+        // Regular visitor
+        welcome = `${timeGreet} ${greet.greeting} My favorite visitor is back! 😊 `;
+        if (mem.name) {
+            welcome = `${timeGreet} ${mem.name}! ${greet.greeting} Always a pleasure. `;
+        }
+        if (mem.lastTopic) {
+            welcome += `We were discussing **${mem.lastTopic}** last time. What's on your mind today?`;
+        } else {
+            welcome += `${greet.ask}`;
+        }
+    }
+    
+    return welcome;
+}
+
 // ============ CHAT LOGIC ============
-const GROQ_API_KEY = '';  // Will be set via proxy
 const chatMessages = document.getElementById('chatMessages');
 const chatInput = document.getElementById('chatInput');
 const chatSend = document.getElementById('chatSend');
+
+// Inject welcome message on load
+window.addEventListener('DOMContentLoaded', function() {
+    const welcome = generateWelcome();
+    addMessage(welcome, 'bot', true);
+    
+    // Set daily insight
+    const today = new Date();
+    const dayIndex = today.getDate() % DAILY_INSIGHTS.length;
+    document.getElementById('dailyInsight').textContent = DAILY_INSIGHTS[dayIndex];
+    document.getElementById('dailyDate').textContent = today.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
+});
 
 // Pre-built knowledge for offline/fallback mode
 const KNOWLEDGE = {
@@ -378,7 +541,17 @@ const KNOWLEDGE = {
     'cpi': "CPI (Consumer Price Index) measures inflation. High CPI → Fed may raise rates → stocks typically fall. Low CPI → Fed may cut rates → stocks typically rise. Watch the CPI release monthly — it's one of the most market-moving economic reports.",
     'gdp': "GDP measures total economic output. Growing GDP = healthy economy = generally bullish for stocks. Shrinking GDP for 2+ quarters = recession. The stock market is forward-looking — it reacts to GDP expectations, not just the number itself.",
     'fed': "The Federal Reserve sets interest rates. Rate hikes make borrowing more expensive → slows economy → typically bearish for stocks. Rate cuts make borrowing cheaper → stimulates economy → typically bullish. The 'Fed pivot' (shifting from hiking to cutting) often triggers major market rallies.",
-    'default': "That's a great question! For detailed investment education, I'd recommend checking out our Learning Center below, or asking about specific topics like: RSI, MACD, support/resistance, candlestick patterns, stop loss strategies, fundamental analysis, or macro indicators."
+    'default': "That's a great question! I'd recommend checking out our **Learning Center** below for in-depth tutorials, or ask me about specific topics like: RSI, MACD, support/resistance, candlestick patterns, stop loss strategies, or fundamental analysis."
+};
+
+// Topic keywords for memory tracking
+const TOPIC_KEYWORDS = {
+    'Technical Analysis': ['support', 'resistance', 'trend', 'breakout', 'chart', 'pattern'],
+    'RSI & Indicators': ['rsi', 'macd', 'moving average', 'bollinger', 'indicator', 'overbought', 'oversold'],
+    'Candlestick Patterns': ['candlestick', 'hammer', 'doji', 'engulfing', 'candle'],
+    'Risk Management': ['stop loss', 'risk', 'profit', 'position', 'rr'],
+    'Fundamental Analysis': ['pe ratio', 'eps', 'roe', 'earnings', 'revenue', 'valuation'],
+    'Macroeconomics': ['cpi', 'gdp', 'fed', 'nfp', 'inflation', 'interest rate']
 };
 
 let chatHistory = [];
@@ -389,7 +562,6 @@ function findBestAnswer(input) {
         if (key === 'default') continue;
         if (lower.includes(key) || lower.includes(key.replace(' ', ''))) return answer;
     }
-    // Check partial matches
     const keywords = {
         'support': 'support resistance', 'resistance': 'support resistance',
         'overbought': 'rsi', 'oversold': 'rsi', 'divergence': 'rsi',
@@ -410,11 +582,35 @@ function findBestAnswer(input) {
     return KNOWLEDGE['default'];
 }
 
-function addMessage(text, type) {
+function trackTopic(input) {
+    const lower = input.toLowerCase();
+    for (const [topic, kws] of Object.entries(TOPIC_KEYWORDS)) {
+        for (const kw of kws) {
+            if (lower.includes(kw)) {
+                const mem = getClientMemory();
+                if (mem) {
+                    mem.lastTopic = topic;
+                    if (!mem.interests.includes(topic)) {
+                        mem.interests.push(topic);
+                    }
+                    saveClientMemory(mem);
+                }
+                return;
+            }
+        }
+    }
+}
+
+function addMessage(text, type, isWelcome = false) {
     const div = document.createElement('div');
     div.className = `chat-msg ${type}`;
-    // Simple markdown bold
-    div.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    
+    if (type === 'bot' && !isWelcome) {
+        div.innerHTML = `<div class="msg-name">${ADVISOR.name}</div>` + text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+    } else {
+        div.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+    }
+    
     chatMessages.appendChild(div);
     chatMessages.scrollTop = chatMessages.scrollHeight;
 }
@@ -422,6 +618,19 @@ function addMessage(text, type) {
 async function sendMessage() {
     const text = chatInput.value.trim();
     if (!text) return;
+    
+    // Check if user introduced themselves
+    const nameMatch = text.match(/(?:my name is|i'm|i am|call me|我是|我叫|name's)\s+([A-Z][a-z]+|[a-z]+)/i);
+    if (nameMatch) {
+        const mem = getClientMemory();
+        if (mem) {
+            mem.name = nameMatch[1];
+            saveClientMemory(mem);
+        }
+    }
+    
+    // Track topic interest
+    trackTopic(text);
     
     addMessage(text, 'user');
     chatInput.value = '';
@@ -434,8 +643,19 @@ async function sendMessage() {
     chatMessages.appendChild(typingDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
     
-    // Simulate human-like delay
+    // Human-like delay
     await new Promise(r => setTimeout(r, 1000 + Math.random() * 2000));
+    
+    // Build context-aware system prompt
+    const mem = getClientMemory();
+    let systemPrompt = `You are ${ADVISOR.name}, ${ADVISOR.role}. Personality: ${ADVISOR.personality}. Give concise, educational answers (2-4 sentences max). Always include risk disclaimer if discussing investments. Never recommend specific stocks.`;
+    
+    if (mem) {
+        if (mem.name) systemPrompt += ` The client's name is ${mem.name} — use it naturally.`;
+        if (mem.interests && mem.interests.length > 0) systemPrompt += ` They've shown interest in: ${mem.interests.join(', ')}.`;
+        if (mem.lastTopic) systemPrompt += ` Last topic discussed: ${mem.lastTopic}.`;
+        if (mem.visitCount > 3) systemPrompt += ` This is a returning client (${mem.visitCount} visits) — be warmer and more familiar.`;
+    }
     
     // Try Groq API first
     let reply = '';
@@ -449,7 +669,7 @@ async function sendMessage() {
             body: JSON.stringify({
                 model: 'llama-3.1-8b-instant',
                 messages: [
-                    { role: 'system', content: 'You are Alex Chen, a senior investment advisor at BroadFSC. Give concise, educational answers (2-4 sentences max). Always include risk disclaimer if discussing investments. Never recommend specific stocks. Be warm and professional.' },
+                    { role: 'system', content: systemPrompt },
                     ...chatHistory.slice(-6),
                     { role: 'user', content: text }
                 ],
@@ -675,14 +895,12 @@ function closeModal(e) {
     }
 }
 
-// Close modal on Escape
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         document.getElementById('modalOverlay').classList.remove('active');
     }
 });
 
-// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', function(e) {
         e.preventDefault();
