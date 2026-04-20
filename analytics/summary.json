@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-20T11:58:18.021879Z",
+  "generated_at": "2026-04-20T16:20:30.311759Z",
   "period": {
     "today": "2026-04-20",
     "yesterday": "2026-04-19",
@@ -10,9 +10,9 @@
     "posts_today": 0,
     "posts_week": 11,
     "posts_month": 11,
-    "interactions_today": 0,
-    "interactions_week": 17,
-    "interactions_month": 17,
+    "interactions_today": 7,
+    "interactions_week": 24,
+    "interactions_month": 24,
     "success_rate": 9.1
   },
   "platforms": {
@@ -26,13 +26,13 @@
   },
   "interactions_by_platform": {
     "telegram_bot": {
-      "today": 0,
-      "week": 17,
-      "month": 17
+      "today": 7,
+      "week": 24,
+      "month": 24
     }
   },
   "action_breakdown": {
-    "message": 16,
+    "message": 23,
     "start": 1
   },
   "daily_trend": {
@@ -43,6 +43,10 @@
     "2026-04-17": {
       "posts": 9,
       "interactions": 17
+    },
+    "2026-04-20": {
+      "posts": 0,
+      "interactions": 7
     }
   },
   "hourly_distribution": {
@@ -151,38 +155,6 @@
   ],
   "recent_interactions": [
     {
-      "id": 1,
-      "timestamp": "2026-04-17T07:45:29.746219Z",
-      "platform": "telegram_bot",
-      "action": "message",
-      "user_id": "8327500544",
-      "details": "/start"
-    },
-    {
-      "id": 2,
-      "timestamp": "2026-04-17T07:45:45.969263Z",
-      "platform": "telegram_bot",
-      "action": "message",
-      "user_id": "8327500544",
-      "details": "hi"
-    },
-    {
-      "id": 3,
-      "timestamp": "2026-04-17T07:45:57.210229Z",
-      "platform": "telegram_bot",
-      "action": "start",
-      "user_id": "8639358750",
-      "details": ""
-    },
-    {
-      "id": 4,
-      "timestamp": "2026-04-17T07:46:18.699387Z",
-      "platform": "telegram_bot",
-      "action": "message",
-      "user_id": "8327500544",
-      "details": "hi"
-    },
-    {
       "id": 5,
       "timestamp": "2026-04-17T07:46:43.502561Z",
       "platform": "telegram_bot",
@@ -285,6 +257,78 @@
       "action": "message",
       "user_id": "8639358750",
       "details": "How to contact your customer service"
+    },
+    {
+      "id": 18,
+      "timestamp": "2026-04-20T13:18:20.815180Z",
+      "platform": "telegram_bot",
+      "action": "message",
+      "user_id": "8327500544",
+      "details": "你好"
+    },
+    {
+      "id": 19,
+      "timestamp": "2026-04-20T13:18:52.914224Z",
+      "platform": "telegram_bot",
+      "action": "message",
+      "user_id": "8327500544",
+      "details": "我想问下你们是怎么合作的"
+    },
+    {
+      "id": 20,
+      "timestamp": "2026-04-20T13:19:24.805571Z",
+      "platform": "telegram_bot",
+      "action": "message",
+      "user_id": "8327500544",
+      "details": "怎么联系你们"
+    },
+    {
+      "id": 21,
+      "timestamp": "2026-04-20T13:20:09.737123Z",
+      "platform": "telegram_bot",
+      "action": "message",
+      "user_id": "8327500544",
+      "details": "我不会交易你会帮我交易吗"
+    },
+    {
+      "id": 22,
+      "timestamp": "2026-04-20T13:22:00.163784Z",
+      "platform": "telegram_bot",
+      "action": "message",
+      "user_id": "8327500544",
+      "details": "帮我分析一下一建筑这个股票"
+    },
+    {
+      "id": 23,
+      "timestamp": "2026-04-20T13:22:33.257561Z",
+      "platform": "telegram_bot",
+      "action": "message",
+      "user_id": "8327500544",
+      "details": "一建筑"
+    },
+    {
+      "id": 24,
+      "timestamp": "2026-04-20T13:23:02.840527Z",
+      "platform": "telegram_bot",
+      "action": "message",
+      "user_id": "8327500544",
+      "details": "一建筑是美国股票"
     }
-  ]
+  ],
+  "clicks": {
+    "today": 0,
+    "week": 0,
+    "month": 0,
+    "by_source": {},
+    "recent": []
+  },
+  "registrations": {
+    "today": 0,
+    "week": 0,
+    "month": 0,
+    "total": 0,
+    "by_source": {},
+    "by_interest": {},
+    "recent": []
+  }
 }
