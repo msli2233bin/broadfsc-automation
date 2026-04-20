@@ -104,7 +104,8 @@ const ADVISORS = {
 
 // ── AI State ──
 let currentAdvisor = 'alex';
-let chatHistories = { alex: [], sarah: [], mike: [] };  // Separate history per advisor
+let chatHistories = { alex: '', sarah: '', mike: '' };  // HTML string per advisor
+let chatMessages = { alex: [], sarah: [], mike: [] };   // Message objects for AI context
 let userName = localStorage.getItem('bfs_username') || '';
 let userEmail = localStorage.getItem('bfs_email') || '';
 let isRegistered = !!userEmail;
@@ -185,7 +186,9 @@ function submitRegistration() {
     setTimeout(() => {
       const resp = `${advisor.emoji} Great to have you with us, ${name}! I've noted your interest in ${interests || 'investing'}. Feel free to ask me anything — I'm here to help you succeed. By the way, you'll receive our best research reports directly at ${email}.`;
       addBotMessage(resp);
-      chatHistories[currentAdvisor].push({ role: 'bot', text: resp });
+      // Save updated HTML to history
+      const b = document.getElementById('chatBody');
+      if (b) chatHistories[currentAdvisor] = b.innerHTML;
     }, 800);
   }
 
@@ -642,9 +645,10 @@ Change: ${stockData.change} (${stockData.changePct}%)
 Previous Close: ${stockData.previousClose}
 Market: ${stockData.marketState} | Exchange: ${stockData.exchange}
 Mention prices naturally like "its trading at X right now"`;
+  }
 
   // Build conversation history (last 6 messages for context)
-  const history = (chatHistories[currentAdvisor] || []).slice(-6).map(m => ({
+  const history = (chatMessages[currentAdvisor] || []).slice(-6).map(m => ({
     role: m.role === 'user' ? 'user' : 'assistant',
     content: m.text
   }));
@@ -788,7 +792,10 @@ function sendChat() {
   isSending = true;
 
   addUserMessage(text);
-  chatHistories[currentAdvisor].push({ role: 'user', text });
+  chatMessages[currentAdvisor].push({ role: 'user', text });
+  // Save updated HTML to history after adding user message
+  const bodyEl = document.getElementById('chatBody');
+  if (bodyEl) chatHistories[currentAdvisor] = bodyEl.innerHTML;
   input.value = '';
 
   showTyping();
@@ -796,20 +803,21 @@ function sendChat() {
   // Try AI first, then local fallback
   callAI(text).then(aiResponse => {
     removeTyping();
-    if (aiResponse) {
-      addBotMessage(aiResponse);
-      chatHistories[currentAdvisor].push({ role: 'bot', text: aiResponse });
-    } else {
-      const response = getLocalResponse(text);
-      addBotMessage(response);
-      chatHistories[currentAdvisor].push({ role: 'bot', text: response });
-    }
+    const botText = aiResponse || getLocalResponse(text);
+    addBotMessage(botText);
+    chatMessages[currentAdvisor].push({ role: 'bot', text: botText });
+    // Save updated HTML to history after bot response
+    const bodyAfter = document.getElementById('chatBody');
+    if (bodyAfter) chatHistories[currentAdvisor] = bodyAfter.innerHTML;
     isSending = false;
   }).catch(() => {
     removeTyping();
     const response = getLocalResponse(text);
     addBotMessage(response);
-    chatHistories[currentAdvisor].push({ role: 'bot', text: response });
+    chatMessages[currentAdvisor].push({ role: 'bot', text: response });
+    // Save updated HTML to history after fallback response
+    const bodyAfter = document.getElementById('chatBody');
+    if (bodyAfter) chatHistories[currentAdvisor] = bodyAfter.innerHTML;
     isSending = false;
   });
 }
@@ -1594,7 +1602,7 @@ document.addEventListener('DOMContentLoaded', () => {
     div.innerHTML = greeting;
     body.appendChild(div);
     // Save initial greeting to Alex's history
-    chatHistories[currentAdvisor].push({ role: 'bot', text: greeting });
+    chatHistories[currentAdvisor] = body.innerHTML;
   }
 
   // Update nav CTA for registered users
