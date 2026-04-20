@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-20T16:20:30.311759Z",
+  "generated_at": "2026-04-20T20:05:39.494884Z",
   "period": {
     "today": "2026-04-20",
     "yesterday": "2026-04-19",
@@ -10,9 +10,9 @@
     "posts_today": 0,
     "posts_week": 11,
     "posts_month": 11,
-    "interactions_today": 7,
-    "interactions_week": 24,
-    "interactions_month": 24,
+    "interactions_today": 14,
+    "interactions_week": 31,
+    "interactions_month": 31,
     "success_rate": 9.1
   },
   "platforms": {
@@ -26,13 +26,13 @@
   },
   "interactions_by_platform": {
     "telegram_bot": {
-      "today": 7,
-      "week": 24,
-      "month": 24
+      "today": 14,
+      "week": 31,
+      "month": 31
     }
   },
   "action_breakdown": {
-    "message": 23,
+    "message": 30,
     "start": 1
   },
   "daily_trend": {
@@ -46,7 +46,7 @@
     },
     "2026-04-20": {
       "posts": 0,
-      "interactions": 7
+      "interactions": 14
     }
   },
   "hourly_distribution": {
@@ -155,62 +155,6 @@
   ],
   "recent_interactions": [
     {
-      "id": 5,
-      "timestamp": "2026-04-17T07:46:43.502561Z",
-      "platform": "telegram_bot",
-      "action": "message",
-      "user_id": "8327500544",
-      "details": "你好"
-    },
-    {
-      "id": 6,
-      "timestamp": "2026-04-17T07:47:21.921346Z",
-      "platform": "telegram_bot",
-      "action": "message",
-      "user_id": "8327500544",
-      "details": "哦，我今天很不好，"
-    },
-    {
-      "id": 7,
-      "timestamp": "2026-04-17T07:47:49.727965Z",
-      "platform": "telegram_bot",
-      "action": "message",
-      "user_id": "8327500544",
-      "details": "你可以帮我分析一下昆药集团这支股票吗"
-    },
-    {
-      "id": 8,
-      "timestamp": "2026-04-17T07:48:48.221604Z",
-      "platform": "telegram_bot",
-      "action": "message",
-      "user_id": "8327500544",
-      "details": "你可以分析一下对于他未来的发展及2026年一季报的预期吗"
-    },
-    {
-      "id": 9,
-      "timestamp": "2026-04-17T07:49:49.169239Z",
-      "platform": "telegram_bot",
-      "action": "message",
-      "user_id": "8327500544",
-      "details": "好的谢谢你"
-    },
-    {
-      "id": 10,
-      "timestamp": "2026-04-17T07:50:17.410141Z",
-      "platform": "telegram_bot",
-      "action": "message",
-      "user_id": "8327500544",
-      "details": "如何与你们进行合作呢"
-    },
-    {
-      "id": 11,
-      "timestamp": "2026-04-17T07:51:24.220317Z",
-      "platform": "telegram_bot",
-      "action": "message",
-      "user_id": "8639358750",
-      "details": "What are you doing?"
-    },
-    {
       "id": 12,
       "timestamp": "2026-04-17T07:51:57.516418Z",
       "platform": "telegram_bot",
@@ -313,6 +257,62 @@
       "action": "message",
       "user_id": "8327500544",
       "details": "一建筑是美国股票"
+    },
+    {
+      "id": 25,
+      "timestamp": "2026-04-20T13:54:52.554313Z",
+      "platform": "telegram_bot",
+      "action": "message",
+      "user_id": "8327500544",
+      "details": "帮我分析一下一建筑这个股票"
+    },
+    {
+      "id": 26,
+      "timestamp": "2026-04-20T13:55:42.427486Z",
+      "platform": "telegram_bot",
+      "action": "message",
+      "user_id": "8327500544",
+      "details": "昆药集团这个股怎么样"
+    },
+    {
+      "id": 27,
+      "timestamp": "2026-04-20T14:08:47.808318Z",
+      "platform": "telegram_bot",
+      "action": "message",
+      "user_id": "8327500544",
+      "details": "美股  一建筑这个公司怎么样"
+    },
+    {
+      "id": 28,
+      "timestamp": "2026-04-20T14:29:45.881898Z",
+      "platform": "telegram_bot",
+      "action": "message",
+      "user_id": "8327500544",
+      "details": "巨龙在线  美股  这个公司怎么样"
+    },
+    {
+      "id": 29,
+      "timestamp": "2026-04-20T14:30:46.753730Z",
+      "platform": "telegram_bot",
+      "action": "message",
+      "user_id": "8327500544",
+      "details": "US JLHL这个股票怎么样"
+    },
+    {
+      "id": 30,
+      "timestamp": "2026-04-20T14:31:49.582205Z",
+      "platform": "telegram_bot",
+      "action": "message",
+      "user_id": "8327500544",
+      "details": "US FCHL可否参与"
+    },
+    {
+      "id": 31,
+      "timestamp": "2026-04-20T14:34:37.697240Z",
+      "platform": "telegram_bot",
+      "action": "message",
+      "user_id": "8327500544",
+      "details": "US FCHL"
     }
   ],
   "clicks": {
