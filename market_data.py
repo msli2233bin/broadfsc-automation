@@ -1,11 +1,16 @@
 """
-📈 BroadFSC Real-Time Market Data Module
-========================================
+📈 BroadFSC Real-Time Market Data Module v5
+=============================================
 Uses yfinance (free, no API key) to fetch real-time stock/crypto/commodity/index data.
 Automatically detects stock-related queries and injects live data into AI context.
 
+Key feature (v5): Universal stock lookup via yfinance.Search
+  - Any English company name → auto-search via yfinance
+  - Chinese company names → AI translation to English → yfinance search
+  - Works for ANY stock in the world, not just pre-mapped ones
+
 Supported markets:
-  - US Stocks (AAPL, TSLA, NVDA, etc.)
+  - US Stocks (any ticker on NYSE/NASDAQ/AMEX)
   - A-Shares (600519.SS, 000001.SZ, etc.)
   - HK Stocks (9988.HK, 0700.HK, etc.)
   - Crypto (BTC-USD, ETH-USD, etc.)
@@ -24,7 +29,7 @@ logger = logging.getLogger(__name__)
 # 📋 股票/市场关键词检测 — 中英文支持
 # ============================================================
 
-# 美股 ticker → 名称映射
+# 美股 ticker → 名称映射（高频预映射，加速常见查询）
 US_STOCK_MAP = {
     # Tech
     "aapl": "AAPL", "apple": "AAPL", "苹果": "AAPL",
@@ -38,6 +43,7 @@ US_STOCK_MAP = {
     "pltr": "PLTR", "palantir": "PLTR",
     "amd": "AMD", "超微": "AMD", "超微半导体": "AMD",
     "tsm": "TSM", "台积电": "TSM", "tsmc": "TSM",
+    "moutai": "600519.SS",
     "nflx": "NFLX", "netflix": "NFLX", "奈飞": "NFLX",
     "dis": "DIS", "disney": "DIS", "迪士尼": "DIS",
     "crm": "CRM", "salesforce": "CRM",
@@ -45,7 +51,7 @@ US_STOCK_MAP = {
     "avgo": "AVGO", "broadcom": "AVGO", "博通": "AVGO",
     "orcl": "ORCL", "oracle": "ORCL", "甲骨文": "ORCL",
     "adbe": "ADBE", "adobe": "ADBE",
-    "ibm": "IBM", "ibm": "IBM",
+    "ibm": "IBM",
     "pypl": "PYPL", "paypal": "PYPL", "贝宝": "PYPL",
     "sq": "SQ", "block": "SQ", "square": "SQ",
     "uber": "UBER", "优步": "UBER",
@@ -55,7 +61,7 @@ US_STOCK_MAP = {
     "crwd": "CRWD", "crowdstrike": "CRWD",
     "panw": "PANW", "mdb": "MDB", "mongodb": "MDB",
     "shop": "SHOP", "shopify": "SHOP",
-    "roi": "ROI", "roku": "ROKU",
+    "roku": "ROKU",
     # Finance
     "brk.b": "BRK-B", "brk.a": "BRK-A", "巴菲特": "BRK-B", "berkshire": "BRK-B", "伯克希尔": "BRK-B",
     "jpm": "JPM", "摩根大通": "JPM",
@@ -73,7 +79,7 @@ US_STOCK_MAP = {
     "pfe": "PFE", "pfizer": "PFE", "辉瑞": "PFE",
     "unh": "UNH", "unitedhealth": "UNH", "联合健康": "UNH",
     "abbv": "ABBV", "abbvie": "ABBV", "艾伯维": "ABBV",
-    "mrxn": "MRK", "merck": "MRK", "默沙东": "MRK", "默克": "MRK",
+    "mrk": "MRK", "merck": "MRK", "默沙东": "MRK", "默克": "MRK",
     "lly": "LLY", "lilly": "LLY", "礼来": "LLY",
     "roche": "RHHBY", "罗氏": "RHHBY",
     "novartis": "NVS", "诺华": "NVS",
@@ -85,7 +91,6 @@ US_STOCK_MAP = {
     "amgn": "AMGN", "amgen": "AMGN", "安进": "AMGN",
     "biib": "BIIB", "biogen": "BIIB",
     "regeneron": "REGN", "regn": "REGN",
-    "mrk": "MRK",
     # Consumer
     "wmt": "WMT", "沃尔玛": "WMT",
     "ko": "KO", "coca-cola": "KO", "可口可乐": "KO",
@@ -202,7 +207,6 @@ HK_STOCK_MAP = {
     "6862": "6862.HK", "海底捞": "6862.HK",
     "2020": "2020.HK", "安踏": "2020.HK", "安踏体育": "2020.HK",
     # 新能源
-    "9618": "9618.HK",
     "0175": "0175.HK", "吉利汽车": "0175.HK",
     # 物业/地产
     "1209": "1209.HK", "华润万象": "1209.HK",
@@ -249,6 +253,10 @@ INDEX_MAP = {
 ALL_MAPS = {**US_STOCK_MAP, **A_STOCK_MAP, **HK_STOCK_MAP, 
             **CRYPTO_MAP, **COMMODITY_MAP, **FOREX_MAP, **INDEX_MAP}
 
+# 短键名列表（1-2字符）：这些键需要用词边界匹配，避免子串误匹配
+# 例如 "c" 不应匹配 "microsoft" 中的 c
+_SHORT_KEYS = {k for k in ALL_MAPS if len(k) <= 2}
+
 # ============================================================
 # 🔍 股票查询意图检测
 # ============================================================
@@ -262,6 +270,7 @@ STOCK_KEYWORDS = [
     "support", "resistance", "moving average", "ma", "rsi", "macd",
     "gold", "oil", "bitcoin", "crypto", "forex", "index", "futures",
     "btc", "eth", "xau", "s&p", "nasdaq", "dow", "hsi",
+    "company", "corp", "inc", "ltd", "group",
     # Chinese
     "股价", "股票", "行情", "报价", "市值", "涨跌", "涨停", "跌停",
     "买入", "卖出", "持有", "牛市", "熊市", "反弹", "暴跌", "回调",
@@ -269,24 +278,123 @@ STOCK_KEYWORDS = [
     "支撑", "阻力", "均线", "技术面", "基本面", "资金流",
     "黄金", "原油", "比特币", "加密", "汇率", "指数", "期货",
     "分析", "走势", "预测", "目标价", "标普", "纳指", "恒指",
+    "怎么样", "好不好", "如何", "什么", "这个", "那只",
 ]
 
-def detect_stock_query(message: str) -> list:
+# 🆕 中文公司名 → 英文搜索词映射（常见A股/港股公司）
+# 用于 yfinance.Search，因为中文搜索不支持
+CHINESE_COMPANY_SEARCH_MAP = {
+    # A股公司（英文名 → yfinance能搜到）
+    "昆药集团": "KPC Pharmaceuticals",
+    "恒瑞医药": "Hengrui Pharmaceuticals",
+    "云南白药": "Yunnan Baiyao",
+    "迈瑞医疗": "Mindray Medical",
+    "药明康德": "WuXi AppTec",
+    "爱尔眼科": "Aier Eye Hospital",
+    "智飞生物": "Zhifei Biological",
+    "华东医药": "Huadong Medicine",
+    "贵州茅台": "Kweichow Moutai",
+    "五粮液": "Wuliangye",
+    "宁德时代": "CATL",
+    "比亚迪": "BYD Company",
+    "中国平安": "Ping An Insurance",
+    "招商银行": "China Merchants Bank",
+    "海康威视": "Hikvision",
+    "美的集团": "Midea Group",
+    "格力电器": "Gree Electric",
+    "万科": "China Vanke",
+    "隆基绿能": "LONGi Green Energy",
+    "长江电力": "Yangtze Power",
+    "中国建筑": "China State Construction",
+    "一建筑": "China State Construction International",
+    "建筑": "China State Construction",
+    "工商银行": "ICBC",
+    "农业银行": "Agricultural Bank of China",
+    "中国银行": "Bank of China",
+    "中芯国际": "SMIC",
+    "金山办公": "Kingsoft Office",
+    # 港股公司
+    "阿里巴巴": "Alibaba",
+    "腾讯": "Tencent",
+    "美团": "Meituan",
+    "京东": "JD.com",
+    "小米": "Xiaomi",
+    "网易": "NetEase",
+    "百度": "Baidu",
+    "快手": "Kuaishou",
+    "泡泡玛特": "Pop Mart",
+    "海底捞": "Haidilao",
+    "安踏": "Anta Sports",
+    "吉利汽车": "Geely Automobile",
+    "药明生物": "WuXi Biologics",
+    "石药集团": "CSPC Pharmaceutical",
+    "中国生物制药": "Sino Biopharmaceutical",
+}
+
+
+def _yfinance_search(query: str, max_results: int = 3) -> list[str]:
+    """
+    使用 yfinance.Search API 搜索股票代码。
+    返回匹配的 ticker 列表（按相关性排序）。
+    """
+    try:
+        import yfinance as yf
+        search = yf.Search(query)
+        quotes = search.quotes
+        if not quotes:
+            return []
+        
+        tickers = []
+        preferred_exchanges = {"NMS", "NYQ", "ASE", "SHH", "SHZ", "HKG", "PNK"}
+        
+        for q in quotes[:max_results * 2]:  # 多取一些，后面过滤
+            symbol = q.get("symbol", "")
+            quote_type = q.get("quoteType", "")
+            exchange = q.get("exchange", "")
+            
+            # 只取股票和ETF，排除期权、期货等
+            if quote_type not in ("EQUITY", "ETF"):
+                continue
+            
+            # 优先选择主流交易所
+            if symbol not in tickers:
+                tickers.append(symbol)
+            
+            if len(tickers) >= max_results:
+                break
+        
+        return tickers
+    except Exception as e:
+        logger.warning(f"yfinance search failed for '{query}': {e}")
+        return []
+
+
+def detect_stock_query(message: str, groq_client=None) -> list:
     """
     检测用户消息中是否包含股票/市场查询意图。
     返回需要查询的 yfinance ticker 列表。
+    
+    v5 新增：当关键词映射无法匹配时，使用 yfinance.Search 搜索。
     """
     msg_lower = message.lower().strip()
     tickers = []
+    search_fallback_needed = False  # 是否需要 fallback 搜索
     
     # 1. 直接匹配关键词映射
+    #    短键名（1-2字符）用词边界匹配，避免子串误匹配
+    #    长键名用子串匹配（更宽容）
     for keyword, ticker in ALL_MAPS.items():
-        if keyword in msg_lower:
-            if ticker not in tickers:
-                tickers.append(ticker)
+        if keyword in _SHORT_KEYS:
+            # 词边界匹配：\bkeyword\b
+            if re.search(r'\b' + re.escape(keyword) + r'\b', msg_lower):
+                if ticker not in tickers:
+                    tickers.append(ticker)
+        else:
+            if keyword in msg_lower:
+                if ticker not in tickers:
+                    tickers.append(ticker)
     
     # 2. 检测纯 ticker 格式（如 "AAPL", "TSLA"）
-    #    注意：需要排除被关键词映射已匹配到的部分（如 "9988.HK" 中的 "HK"）
     already_matched_parts = set()
     for t in tickers:
         for part in t.replace(".", " ").split():
@@ -295,7 +403,6 @@ def detect_stock_query(message: str) -> list:
     ticker_pattern = r'\b([A-Z]{2,5}(?:\.[A-Z]{1,2})?)\b'
     for match in re.finditer(ticker_pattern, message):
         candidate = match.group(1)
-        # 排除常见英文单词
         common_words = {"THE", "AND", "FOR", "NOT", "ARE", "BUT", "ALL", "CAN", "HAS",
                        "THIS", "THAT", "WITH", "FROM", "HAVE", "WILL", "BEEN", "THEY",
                        "WANT", "LIKE", "JUST", "KNOW", "GOOD", "LOOK", "THAN", "MORE",
@@ -305,11 +412,13 @@ def detect_stock_query(message: str) -> list:
                        "STILL", "EACH", "VERY", "MUCH", "OWN", "SAID", "WENT", "CAME",
                        "MADE", "DID", "GOT", "SEE", "WAY", "DAY", "SAY", "TOO", "ANY",
                        "NOW", "OVER", "SUCH", "THROUGH", "INTO", "JUST", "ONLY",
-                       # 排除交易所后缀（它们是已匹配 ticker 的一部分）
                        "HK", "SS", "SZ", "SH", "US"}
-        # 排除太短的纯字母（2字母大多是介词/代词，除了已知的 US ticker）
         base = candidate.split('.')[0]
-        if len(base) <= 2 and candidate not in US_STOCK_MAP:
+        # 1字母 ticker 几乎总是误匹配（C=花旗），忽略
+        if len(base) <= 1:
+            continue
+        # 2-3字母 ticker 太容易误匹配，只接受已知映射
+        if len(base) <= 3 and candidate not in US_STOCK_MAP:
             continue
         if candidate in common_words or candidate in already_matched_parts:
             continue
@@ -340,11 +449,102 @@ def detect_stock_query(message: str) -> list:
         if ticker not in tickers:
             tickers.append(ticker)
     
-    # 5. 如果消息包含股票关键词但没有匹配到具体 ticker，不返回任何 ticker
-    #    （让 AI 用通用知识回答）
+    # 5. 🆕 yfinance.Search 通配符搜索
+    # 如果消息包含股票相关意图但没有匹配到 ticker，尝试搜索
+    is_related = any(kw in msg_lower for kw in STOCK_KEYWORDS)
+    
+    if not tickers and is_related:
+        # 先尝试中文公司名映射
+        for cn_name, en_search in CHINESE_COMPANY_SEARCH_MAP.items():
+            if cn_name in message:
+                found_tickers = _yfinance_search(en_search, max_results=1)
+                if found_tickers:
+                    tickers.extend(found_tickers)
+                    break
+        
+        # 如果中文映射也没匹配到，用 AI 翻译后搜索
+        if not tickers and groq_client:
+            search_tickers = _ai_translate_and_search(message, groq_client)
+            if search_tickers:
+                tickers.extend(search_tickers)
+    
+    # 如果有股票意图但关键词映射没匹配全，也尝试搜索补充
+    # 比如用户说 "Apple and Microsoft stock" 但只匹配了 Apple
+    if is_related and tickers:
+        # 提取消息中可能的英文公司名
+        # 检查消息中是否有可能是公司名但没被映射的英文词
+        words = re.findall(r'\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\b', message)
+        for word in words:
+            word_lower = word.lower()
+            if word_lower in ALL_MAPS:
+                continue  # 已经映射过了
+            if len(word) > 3:  # 太短的跳过
+                found = _yfinance_search(word, max_results=1)
+                for t in found:
+                    if t not in tickers:
+                        tickers.append(t)
+                        if len(tickers) >= 5:
+                            break
     
     # 限制最多 5 个 ticker（避免 API 过载）
     return tickers[:5]
+
+
+def _ai_translate_and_search(message: str, groq_client) -> list:
+    """
+    用 AI 模型从用户消息中提取公司名并翻译为英文搜索词，
+    然后用 yfinance.Search 查找 ticker。
+    
+    这个函数只在关键词映射全部失败时才调用。
+    """
+    try:
+        response = groq_client.chat.completions.create(
+            model="llama-3.1-8b-instant",
+            messages=[
+                {
+                    "role": "system",
+                    "content": (
+                        "You are a stock ticker lookup assistant. "
+                        "Given a user message, identify any company names or stock references. "
+                        "Return ONLY the English company names that can be used to search on Yahoo Finance. "
+                        "Format: one name per line. If no company found, return 'NONE'. "
+                        "Examples:\n"
+                        "User: 昆药集团怎么样 → KPC Pharmaceuticals\n"
+                        "User: 帮我看看一建筑 → China State Construction International\n"
+                        "User: What about that pharma company → NONE (too vague)\n"
+                        "User: 恒瑞医药股价 → Jiangsu Hengrui Pharmaceuticals\n"
+                        "User: 建筑行业龙头股 → NONE (asking about sector, not specific company)\n"
+                    )
+                },
+                {
+                    "role": "user",
+                    "content": message
+                }
+            ],
+            max_tokens=100,
+            temperature=0.1,  # 低温度，精确提取
+        )
+        
+        result = response.choices[0].message.content.strip()
+        if result == "NONE" or not result:
+            return []
+        
+        # 逐行搜索
+        tickers = []
+        for line in result.split("\n"):
+            line = line.strip()
+            if not line or line == "NONE":
+                continue
+            found = _yfinance_search(line, max_results=1)
+            tickers.extend(found)
+            if len(tickers) >= 3:
+                break
+        
+        return tickers
+        
+    except Exception as e:
+        logger.warning(f"AI translate+search failed: {e}")
+        return []
 
 
 def is_stock_related(message: str) -> bool:
@@ -576,6 +776,9 @@ if __name__ == "__main__":
         "EURUSD汇率",
         "I want to invest in NVDA",
         "Hello, how are you?",  # 非股票消息
+        "昆药集团怎么样",  # 中文公司名
+        "一建筑这个公司",  # 模糊中文
+        "Moutai stock price",
     ]
     
     print("=== Stock Query Detection ===")
@@ -584,8 +787,13 @@ if __name__ == "__main__":
         related = is_stock_related(msg)
         print(f"  '{msg}' → tickers={tickers}, related={related}")
     
+    print("\n=== yfinance Search Test ===")
+    test_searches = ["Apple", "KPC Pharmaceuticals", "Tencent", "CATL", "BYD Company"]
+    for q in test_searches:
+        results = _yfinance_search(q)
+        print(f"  '{q}' → {results}")
+    
     print("\n=== Real-Time Data Fetch ===")
-    # Test fetching
     test_tickers = ["AAPL", "600519.SS", "BTC-USD", "GC=F"]
     for t in test_tickers:
         data = fetch_stock_data(t)

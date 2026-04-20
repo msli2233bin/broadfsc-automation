@@ -2187,7 +2187,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         # 🆕 ===== 实时市场数据注入 =====
         if HAS_MARKET_DATA:
             try:
-                stock_tickers = detect_stock_query(user_message)
+                stock_tickers = detect_stock_query(user_message, groq_client=groq_client)
                 if stock_tickers:
                     market_context = format_market_data_for_ai(stock_tickers)
                     if market_context:
