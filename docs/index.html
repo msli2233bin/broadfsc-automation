@@ -70,7 +70,7 @@
 <div class="hero-chat">
 <div class="chat-header"><div class="chat-avatar" id="chatAvatar">👨‍💼</div><div class="chat-header-info"><h4 id="chatName">Alex Chen</h4><span id="chatStatus">● Online • 8 yrs experience</span></div></div>
 <div class="chat-body" id="chatBody"></div>
-<div class="chat-input-area"><input type="text" class="chat-input" id="chatInput" placeholder="Ask about stocks, forex, crypto, risk..." onkeypress="if(event.key==='Enter')sendChat()"><button class="chat-send" onclick="sendChat()">➤</button></div>
+<div class="chat-input-area"><input type="text" class="chat-input" id="chatInput" placeholder="Ask about stocks, forex, crypto, risk..." onkeydown="if(event.key==='Enter'){event.preventDefault();sendChat()}"><button class="chat-send" onclick="sendChat()">➤</button></div>
 </div>
 </div>
 </section>

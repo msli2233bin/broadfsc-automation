@@ -59,6 +59,12 @@ const KNOWLEDGE = {
     'tsmc semiconductor': "TSMC (TSM) is the world's most important company nobody talks about. They manufacture 90%+ of the world's most advanced chips — NVIDIA, Apple, AMD all depend on them. Revenue growing 30%+ YoY on AI demand. The moat is extraordinary: it takes 10+ years and $20B+ to build leading-edge fab capacity. Risks: geopolitical (Taiwan Strait) and customer concentration. If you want AI exposure without the Magnificent 7 premium, TSMC is the backdoor play. Buy on geopolitical fear dips.",
     'berkshire hathaway': "Berkshire Hathaway (BRK.A/BRK.B) is the ultimate defensive play. Warren Buffett's cash pile hit $300B+ in 2026 — he's selling stocks and waiting for opportunity. When Buffett builds this much cash, it historically signals market froth. Berkshire's portfolio: heavy on Apple, Bank of America, American Express, Chevron. Insurance float is the real secret weapon — essentially free leverage. The stock tends to outperform in bear markets and underperform in bull markets. If you're worried about a correction, add BRK.B as a hedge. It's the 'sleep well at night' stock.",
     'jpmorgan chase': "JPMorgan (JPM) is the king of banks — the only major bank that got STRONGER after the 2023 regional banking crisis. Jamie Dimon is the most respected CEO in finance. Net interest income hitting records as rates stay 'higher for longer.' Key advantage: fortress balance sheet allows them to lend when others can't. The stock is never cheap (12-15x earnings), but you're paying for the best-in-class franchise. If the yield curve steepens (long rates rise), JPM is the biggest beneficiary. Buy on recession fears — that's when Dimon deploys the war chest.",
+    'marathon petroleum mpc': "Marathon Petroleum (MPC) is the largest US independent refiner with 16 refineries and ~3M barrels/day capacity. Key thesis: (1) US refining margins remain strong due to limited new capacity — no major refineries built in 40+ years. (2) Midstream business (MPLX) provides steady cash flow via pipeline and logistics. (3) Aggressive capital return — $5B+ buyback + growing dividend. (4) Crack spreads (the difference between crude and product prices) are MPC's primary driver — when gasoline/diesel demand is strong, MPC prints money. Risks: Energy transition reducing long-term fuel demand, regulatory pressure on emissions, and crack spread compression in recession. Valuation: typically 6-9x earnings — cheap for a reason (cyclical). Best play: buy when crack spreads are depressed and sentiment is bearish, sell when everyone loves energy. Currently benefiting from strong US fuel exports and limited global refining capacity.",
+    'exxonmobil xom': "ExxonMobil (XOM) is the largest Western oil major with integrated operations across upstream, downstream, and chemicals. Key thesis: (1) Pioneer Natural Resources acquisition doubled Permian Basin position — now the #1 producer. (2) Guyana discoveries (Stabroek Block) are a generational asset with 11B+ barrels of recoverable reserves. (3) Dividend Aristocrat — 40+ consecutive years of increases. (4) Low break-even costs (~$35-40/barrel) protect profits even in oil downturns. Risks: Energy transition, climate litigation, OPEC+ production decisions. Valuation: 10-13x earnings, ~4% dividend yield. Treat as a defensive income stock with upside from oil price spikes.",
+    'chevron cvx': "Chevron (CVX) is the #2 US oil major with a cleaner balance sheet than most peers. Key thesis: (1) Permian Basin growth — targeting 1M boe/day by 2027. (2) Hess acquisition adds Guyana assets alongside Exxon. (3) Strong cash generation at $70+ oil — returns $15-20B annually to shareholders. (4) Payout ratio below 50% — dividend is rock-solid. Risks: Guyana acquisition uncertainty (arbitration with Exxon), energy transition, oil price volatility. Buy below $150 for a 4.5%+ yield with growth optionality.",
+    'palantir pltr': "Palantir (PLTR) is the most controversial AI stock — a $100B+ company with $2.5B revenue. Bull case: (1) AIP (AI Platform) is driving explosive commercial revenue growth (50%+ YoY). (2) Government contracts are sticky — once integrated, nearly impossible to replace. (3) Alex Karp is building an 'AI operating system for Western institutions.' Bear case: (1) Valuation at 35-40x SALES is extreme. (2) Stock-based compensation is massive (~20% of revenue). (3) Government revenue growth slowing to single digits. (4) Insider selling has been relentless. This is a high-conviction, high-risk bet. Position size max 2-3%. Buy on 20%+ pullbacks, sell into strength.",
+    'amd': "AMD is NVIDIA's only serious competitor in AI chips. MI300X is competitive with H100 for inference workloads. Key thesis: (1) Server CPU market share gaining on Intel — now ~25%+. (2) AI GPU revenue growing 100%+ but from a small base. (3) Lisa Su is one of the best CEOs in tech. Risks: Still far behind NVIDIA in AI software ecosystem (ROCm vs CUDA), Intel's turnaround attempt could compress CPU margins, and AI chip market may not support two $100B+ players. Valuation at 25-30x earnings is reasonable if AI revenue accelerates. Buy the 50 SMA, but don't expect NVIDIA-level upside.",
+    'coca cola ko': "Coca-Cola (KO) is Warren Buffett's longest-held stock for good reason. (1) Pricing power — people pay 2-3x for the brand over generic cola. (2) Global distribution in 200+ countries. (3) Dividend King — 60+ consecutive years of increases. (4) recession-resistant — people still buy Coke when money is tight. The stock won't make you rich fast, but it's one of the safest 3-4% yields in the market with 5-7% annual dividend growth. Ideal for income portfolios and conservative investors.",
   }
 };
 
@@ -99,6 +105,7 @@ let chatHistories = { alex: [], sarah: [], mike: [] };  // Separate history per 
 let userName = localStorage.getItem('bfs_username') || '';
 let userEmail = localStorage.getItem('bfs_email') || '';
 let isRegistered = !!userEmail;
+let isSending = false;  // Prevent duplicate sends
 
 // ── Registration System ──
 function showRegisterModal(source) {
@@ -272,21 +279,27 @@ function getAIResponse(input) {
       if (isRegistered) return `As a registered member, you have full access to all our research, ${userName || 'friend'}! 📊 Check out the Research section below for our latest reports. If you want a specific stock or market analysis, just ask — I'm happy to discuss it with you.`;
       return `We publish professional-grade research daily — and it's completely free! 📊 You can browse our latest reports in the Research section below. For exclusive deep-dive analysis and personalized stock reports, I'd recommend registering — it takes just 30 seconds and gives you full access. Want me to help you sign up?`;
     }},
-    // Stock / company queries
-    { test: /apple|aapl|iphone|tim cook/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['apple aapl'], 'stocks') },
-    { test: /nvidia|nvda|jensen|gpu|ai chip/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['nvidia nvda'], 'stocks') },
-    { test: /tesla|tsla|elon|ev car|electric vehicle/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['tesla tsla'], 'stocks') },
-    { test: /microsoft|msft|satya|azure|copilot/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['microsoft msft'], 'stocks') },
-    { test: /amazon|amzn|bezos|aws\b/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['amazon amzn'], 'stocks') },
-    { test: /google|alphabet|googl|youtube|gemini ai/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['google alphabet'], 'stocks') },
-    { test: /meta|facebook|fb\b|zuckerberg|instagram|threads/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['meta facebook'], 'stocks') },
-    { test: /s&p|spx|spy|sp500|s&p500|index fund|market index/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['s&p 500 spx'], 'stocks') },
-    { test: /gold|xau|precious metal|de.dollar/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['gold xau'], 'stocks') },
-    { test: /tsmc|taiwan semiconductor|chip maker|semiconductor/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['tsmc semiconductor'], 'stocks') },
-    { test: /berkshire|buffett|warren|brk/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['berkshire hathaway'], 'stocks') },
-    { test: /jpmorgan|jpm|chase bank|jamie dimon/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['jpmorgan chase'], 'stocks') },
-    { test: /stock|share|equity|market|invest in|portfolio/i, resp: () => {
-      return "I can give you analysis on specific stocks or the broader market! Here are some I cover in depth: 🍎 Apple (AAPL), 🟢 NVIDIA (NVDA), 🚗 Tesla (TSLA), 💻 Microsoft (MSFT), 📦 Amazon (AMZN), 🔍 Google (GOOGL), 📱 Meta (META), 🏦 JPMorgan (JPM), 🏭 TSMC (TSM), 💰 Berkshire (BRK), 🥇 Gold, or 📊 S&P 500. Just ask about any of these — or a general investing topic like 'how to start' or 'risk management'. What interests you?";
+    // Stock / company queries (English + Chinese)
+    { test: /apple|aapl|iphone|tim cook|苹果/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['apple aapl'], 'stocks') },
+    { test: /nvidia|nvda|jensen|gpu|ai chip|英伟达/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['nvidia nvda'], 'stocks') },
+    { test: /tesla|tsla|elon|ev car|electric vehicle|特斯拉/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['tesla tsla'], 'stocks') },
+    { test: /microsoft|msft|satya|azure|copilot|微软/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['microsoft msft'], 'stocks') },
+    { test: /amazon|amzn|bezos|aws\b|亚马逊/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['amazon amzn'], 'stocks') },
+    { test: /google|alphabet|googl|youtube|gemini ai|谷歌/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['google alphabet'], 'stocks') },
+    { test: /meta|facebook|fb\b|zuckerberg|instagram|threads|脸书/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['meta facebook'], 'stocks') },
+    { test: /s&p|spx|spy|sp500|s&p500|index fund|market index|标普/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['s&p 500 spx'], 'stocks') },
+    { test: /gold|xau|precious metal|de.dollar|黄金/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['gold xau'], 'stocks') },
+    { test: /tsmc|taiwan semiconductor|chip maker|semiconductor|台积电/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['tsmc semiconductor'], 'stocks') },
+    { test: /berkshire|buffett|warren|brk|巴菲特/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['berkshire hathaway'], 'stocks') },
+    { test: /jpmorgan|jpm|chase bank|jamie dimon|摩根/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['jpmorgan chase'], 'stocks') },
+    { test: /marathon|mpc|马拉松|炼油|refiner|crack spread/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['marathon petroleum mpc'], 'stocks') },
+    { test: /exxon|xom|埃克森|美孚/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['exxonmobil xom'], 'stocks') },
+    { test: /chevron|cvx|雪佛龙/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['chevron cvx'], 'stocks') },
+    { test: /palantir|pltr|帕兰提尔/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['palantir pltr'], 'stocks') },
+    { test: /amd|advanced micro|苏妈|超微/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['amd'], 'stocks') },
+    { test: /coca.col|ko\b|可口可乐|可乐/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['coca cola ko'], 'stocks') },
+    { test: /stock|share|equity|market|invest in|portfolio|股票|原油|石油|oil|energy/i, resp: () => {
+      return "I can give you analysis on specific stocks or the broader market! Here are some I cover in depth: 🍎 Apple (AAPL), 🟢 NVIDIA (NVDA), 🚗 Tesla (TSLA), 💻 Microsoft (MSFT), 📦 Amazon (AMZN), 🔍 Google (GOOGL), 📱 Meta (META), 🏦 JPMorgan (JPM), 🏭 TSMC (TSM), 💰 Berkshire (BRK), 🥇 Gold, ⛽ Marathon Petroleum (MPC), 🛢️ ExxonMobil (XOM), 🛢️ Chevron (CVX), 🔮 Palantir (PLTR), 💻 AMD, 🥤 Coca-Cola (KO), or 📊 S&P 500. Just ask about any of these — or a general investing topic like 'how to start' or 'risk management'. What interests you?";
     }},
   ];
 
@@ -318,6 +331,16 @@ function getAIResponse(input) {
     'apple': 'stocks', 'nvidia': 'stocks', 'tesla': 'stocks', 'microsoft': 'stocks',
     'amazon': 'stocks', 'google': 'stocks', 'facebook': 'stocks', 'berkshire': 'stocks',
     'gold': 'stocks', 'xau': 'stocks', 'semiconductor': 'stocks',
+    'mpc': 'stocks', 'marathon': 'stocks', 'xom': 'stocks', 'exxon': 'stocks',
+    'cvx': 'stocks', 'chevron': 'stocks', 'pltr': 'stocks', 'palantir': 'stocks',
+    'amd': 'stocks', 'ko': 'stocks', 'coca': 'stocks',
+    // Chinese keywords
+    '苹果': 'stocks', '英伟达': 'stocks', '特斯拉': 'stocks', '微软': 'stocks',
+    '亚马逊': 'stocks', '谷歌': 'stocks', '脸书': 'stocks', '巴菲特': 'stocks',
+    '黄金': 'stocks', '台积电': 'stocks', '摩根': 'stocks',
+    '马拉松': 'stocks', '炼油': 'stocks', '埃克森': 'stocks', '雪佛龙': 'stocks',
+    '原油': 'stocks', '石油': 'stocks', '股票': 'stocks',
+    '可乐': 'stocks', '超微': 'stocks',
   };
 
   for (const [kw, cat] of Object.entries(kwMap)) {
@@ -336,7 +359,7 @@ function getAIResponse(input) {
         strategy: "Strategy depends on your style and available time. Swing trading is best for most people — 30 min/day, 2-14 day holds, and you can keep your day job. What's your situation?",
         crypto: "Crypto is its own beast — 24/7, extreme volatility, and most altcoins go to zero. Keep crypto to max 15% of portfolio, BTC/ETH only for beginners, and NEVER use leverage in crypto. The volatility is already leveraged enough.",
         platform: "I can tell you about BroadFSC's services, account setup, or fees. What specifically interests you?",
-        stocks: "I cover detailed analysis on major stocks: Apple, NVIDIA, Tesla, Microsoft, Amazon, Google, Meta, JPMorgan, TSMC, Berkshire, and more. I also cover Gold and the S&P 500. Which stock or market are you interested in?"
+        stocks: "I cover detailed analysis on major stocks: Apple, NVIDIA, Tesla, Microsoft, Amazon, Google, Meta, JPMorgan, TSMC, Berkshire, Marathon Petroleum, ExxonMobil, Chevron, Palantir, AMD, Coca-Cola, Gold, and the S&P 500. Which stock or market are you interested in? You can ask in English or Chinese (中文也可以问)."
       };
       return catResponses[cat] || "Tell me more about what you're looking for and I'll give you my best take.";
     }
@@ -416,9 +439,12 @@ function switchAdvisor(id) {
 }
 
 function sendChat() {
+  if (isSending) return;  // Prevent duplicate sends
   const input = document.getElementById('chatInput');
   const text = input.value.trim();
   if (!text) return;
+
+  isSending = true;  // Lock
 
   // Add user message
   addUserMessage(text);
@@ -435,6 +461,7 @@ function sendChat() {
     const response = getAIResponse(text);
     addBotMessage(response);
     chatHistories[currentAdvisor].push({ role: 'bot', text: response });  // Use per-advisor history
+    isSending = false;  // Unlock
   }, delay);
 }
 
