@@ -1,6 +1,6 @@
 ﻿// ═══════════════════════════════════════════════════
-// BroadFSC Pro — App Logic v4 (SOUL + Registration)
-// AI with warmth, expertise, memory, and lead capture
+// BroadFSC Pro — App Logic v5 (HUMAN AI + Registration)
+// Chat like a real person, not a chatbot
 // ═══════════════════════════════════════════════════
 
 // ── SOUL AI Knowledge Base ──
@@ -68,33 +68,36 @@ const KNOWLEDGE = {
   }
 };
 
-// ── SOUL AI Advisor Personalities (v4: Warmer & More Professional) ──
+// ── SOUL AI Advisor Personalities (v5: Actually Human) ──
 const ADVISORS = {
   alex: {
     name: 'Alex Chen',
     emoji: '👨‍💼',
     role: 'Technical Analysis',
-    greeting: "Hey there 👋 I'm Alex, and I've been in the markets for 8 years now — seen bull runs, crashes, and everything in between. I'm here to give you the kind of honest, no-BS guidance I wish someone had given me when I started. Charts, setups, indicators — fire away. I genuinely enjoy helping people navigate this stuff.",
+    personality: 'You speak like a real trader talking to a friend at a coffee shop. Short sentences. Casual. You use "honestly" and "look" a lot. You sometimes start with "So," or "Right,". You give opinions freely — you dont sit on the fence. When youre excited about a setup you say things like "this is actually really clean" or "I love this chart". You never use bullet points or numbered lists unless its really necessary. You write like you talk — a bit messy, very real.',
+    greeting: "Hey 👋 Alex here. 8 years staring at charts and I still get excited when I see a clean setup. What are you looking at? Drop a ticker, a pattern, anything — I'll give you my honest take.",
     style: 'direct',
-    catchphrase: "Let me be straight with you —",
+    catchphrase: "",
     perspective: "I believe technical analysis works not because it's magic, but because millions of traders watch the same levels. It's self-fulfilling, and that's fine — use it."
   },
   sarah: {
     name: 'Sarah Kim',
     emoji: '👩‍💼',
     role: 'Risk Management',
-    greeting: "Hi there 😊 I'm Sarah, and I'm passionate about one thing: making sure you stay in the game long enough to succeed. I've seen too many talented traders blow up because they ignored risk management — it's honestly heartbreaking. Let me help you build a framework that protects you. Ask me anything about position sizing, stops, or keeping your emotions in check.",
+    personality: 'You speak like a caring but firm older sister who happens to be a risk expert. Youre warm but you dont sugarcoat. You say "listen" and "heres the thing" a lot. You get genuinely worried when people talk about over-leveraging. You use short punchy sentences to make important points. You never lecture — you converse. You sometimes share little personal-sounding anecdotes like "I saw someone lose their entire account on a single trade once" to make points hit home.',
+    greeting: "Hi 😊 Sarah here. Before we talk strategy or setups — how are you managing your risk? Thats always my first question. Because honestly, the best setup in the world wont save you if your position sizing is wrong. Whats on your mind?",
     style: 'warm',
-    catchphrase: "Here's what the numbers tell us —",
+    catchphrase: "",
     perspective: "I'd rather miss a profit than take an unnecessary loss. Preservation of capital always comes first. If your risk management is solid, the profits will follow."
   },
   mike: {
     name: 'Mike Torres',
     emoji: '🧑‍💻',
     role: 'Fundamentals & Macro',
-    greeting: "Welcome! I'm Mike 👋 I'm the big-picture guy — earnings, central banks, geopolitical shifts, economic data. Technicals tell you WHEN to act; fundamentals tell you WHY. And understanding the 'why' is what separates guessing from investing. I'd love to help you connect the dots. What market or theme are you curious about?",
+    personality: 'You speak like a smart friend whos really into economics and geopolitics. You say "so heres whats interesting" and "think about it this way" a lot. You connect dots between things that seem unrelated — like how a drought in Brazil affects your tech stocks. You get animated when talking about macro trends. You write in conversational paragraphs, not lists. Youre the guy at the party who makes everyone go "oh I never thought of it that way."',
+    greeting: "Hey 👋 Mike here. I connect the dots — earnings, Fed moves, geopolitics, the whole picture. Technicals tell you when, I tell you why. What market or theme are you curious about? I love this stuff.",
     style: 'analytical',
-    catchphrase: "Looking at the bigger picture —",
+    catchphrase: "",
     perspective: "Price is what you pay, value is what you get. I focus on understanding WHY markets move, not just the pattern on the chart. Fundamentals win in the long run."
   }
 };
@@ -244,18 +247,17 @@ function showRegisterToast(msg) {
   setTimeout(() => toast.classList.remove('show'), 4000);
 }
 
-// ── AI Response Engine (SOUL-powered) ──
-function getAIResponse(input) {
+// ── Local Response Engine (v5: Actually sounds human) ──
+// This runs when AI APIs are unavailable. It's not a chatbot — it's a script of pre-written
+// responses that sound like a real trader talking. Short, opinionated, casual.
+function getLocalResponse(input) {
   const q = input.toLowerCase().trim();
   const advisor = ADVISORS[currentAdvisor];
-
-  // Memory: check chat history for context
-  const lastTopics = (chatHistories[currentAdvisor] || []).slice(-6).map(m => m.text.toLowerCase()).join(' ');
+  const name = userName || '';
 
   // 1. Check knowledge base (deep match first)
   let bestMatch = null;
   let bestScore = 0;
-
   for (const [category, terms] of Object.entries(KNOWLEDGE)) {
     for (const [key, answer] of Object.entries(terms)) {
       const keywords = key.split(' ');
@@ -263,9 +265,7 @@ function getAIResponse(input) {
       for (const kw of keywords) {
         if (q.includes(kw)) score += 2;
       }
-      // Also check for partial matches
       if (q.includes(key) || key.includes(q)) score += 5;
-      // Check individual significant words
       const qWords = q.split(/\s+/);
       for (const word of qWords) {
         if (word.length > 3 && key.includes(word)) score += 1;
@@ -278,88 +278,128 @@ function getAIResponse(input) {
   }
 
   if (bestMatch && bestScore >= 2) {
-    return formatAdvisorResponse(bestMatch.answer, bestMatch.category);
+    // Rewrite the knowledge base answer to sound more human
+    return humanize(bestMatch.answer, bestMatch.category);
   }
 
-  // 2. Pattern matching for common questions (v4: warmer, more professional)
+  // 2. Pattern matching — but with SHORT, CASUAL responses
   const patterns = [
-    { test: /how.*start|beginner|where.*begin|new.*trad/i, resp: () => formatAdvisorResponse("I'm really glad you're starting this journey — it can feel overwhelming at first, but that's completely normal. Here's the roadmap I wish I'd had: (1) Read our Stock Market Fundamentals course — it's free and genuinely helpful. (2) Paper trade for at least 3 months. I know it feels like a waste of time, but trust me, it saves you real money. (3) Start small — $1-2K max. You're learning, not retiring. (4) Master ONE setup before adding more. This is where most people go wrong. (5) Keep a journal from day one. The traders who journal consistently outperform those who don't — it's not even close. What part of this journey are you on right now?", 'strategy') },
-    { test: /recommend|suggest|which.*stock|what.*buy|pick/i, resp: () => {
-      if (currentAdvisor === 'alex') return "I appreciate the trust, and I take that seriously — so I won't give you a specific buy/sell call without knowing your full picture. That wouldn't be responsible. What I CAN do is something more valuable: teach you how to fish. Look for strong trends pulling back to support, confirmed by RSI or MACD divergence. That's where I start every single day. Want me to walk you through a real example of how I find setups?";
-      if (currentAdvisor === 'sarah') return "That's a question everyone asks, and I respect that you're thinking about it. But here's my honest answer: before you put money into ANY trade, you need three non-negotiables — a clear entry reason, a stop-loss level, and a profit target. If you can't articulate all three, you're not investing, you're guessing. Let me help you build that framework first. The picks will come naturally once you have a process.";
-      return "I won't pretend I have a crystal ball — nobody does, despite what some might claim. What I focus on is understanding what drives markets: earnings growth trends, central bank policy shifts, and sector rotation. When all three align, that's where the real opportunities are. Would you like me to break down any of those areas for you?";
+    { test: /how.*start|beginner|where.*begin|new.*trad|learn.*trad/i, resp: () => {
+      const n = name ? `, ${name}` : '';
+      return pick([
+        `So you're just getting started${n}? Good. First thing — paper trade for 3 months minimum. I know that sounds boring but it'll save you real money. Then start with $1-2K max. Master ONE setup. And keep a journal. That's it. What part are you stuck on?`,
+        `Welcome to the game${n}. Honestly the best thing you can do right now is NOT trade with real money. Paper trade, read our fundamentals course, and when you do go live — keep it tiny. What specifically are you trying to learn?`,
+      ]);
     }},
-    { test: /crypto|bitcoin|btc|ethereum|alt/i, resp: () => formatAdvisorResponse(KNOWLEDGE.crypto[q.includes('bitcoin') || q.includes('btc') ? 'bitcoin' : 'crypto'] || KNOWLEDGE.crypto.crypto, 'crypto') },
-    { test: /forex|currency|eur.*usd|gbp|jpy/i, resp: () => formatAdvisorResponse("Forex is fascinating — it's the largest market in the world at $6.6 trillion daily, and it runs 24/5. Here's what took me years to learn: the London session has the highest volume, New York opens with high volatility, and their overlap (8 AM–12 PM ET) is where the real action happens. Major pairs like EUR/USD and GBP/USD have tight spreads and are your best friends as a beginner. Exotic pairs? I'd stay away until you really know what you're doing. And the #1 mistake I see — honestly, it breaks my heart every time — is over-leveraging. Start with 10:1 max as a beginner. Your future self will thank you.", 'strategy') },
-    { test: /option|call|put|spread/i, resp: () => formatAdvisorResponse("Options are powerful tools, but they can be dangerous if you don't understand them. Let me break it down simply: options give you the RIGHT but not the OBLIGATION to buy (call) or sell (put) at a specific price. The Greeks tell you how your option behaves — Delta (direction), Gamma (acceleration), Theta (time decay, which works against buyers), Vega (volatility). My honest recommendation for beginners: start with credit spreads (bull put / bear call). You have defined risk, you can profit even if you're slightly wrong, and time decay actually works in your favor. And please — never buy far out-of-the-money options close to expiration. Theta will eat your premium alive. I've seen too many people learn this the hard way.", 'strategy') },
+    { test: /recommend|suggest|which.*stock|what.*buy|pick|best.*stock/i, resp: () => {
+      if (currentAdvisor === 'alex') return pick([
+        `Look, I won't give you a "buy this" tip — that'd be irresponsible without knowing your situation. But I'll tell you what I look for: strong trends pulling back to support with RSI divergence. That's my bread and butter. Want me to explain the setup?`,
+        `I appreciate the trust but honestly I can't just throw out picks. What I CAN do is teach you how to find them yourself. The best setups right now are in ${pick(['tech', 'energy', 'semiconductors'])} — but you need to know how to time your entry. Want a walkthrough?`
+      ]);
+      if (currentAdvisor === 'sarah') return pick([
+        `Before you buy anything, three things: do you have an entry reason, a stop-loss level, and a profit target? If you can't answer all three, you're guessing not investing. Let's build your framework first — the picks come naturally after that.`,
+      ]);
+      return pick([
+        `Nobody has a crystal ball${name ? ', ' + name : ''}. What I focus on is where fundamentals align with momentum — earnings growth + sector rotation + institutional buying. When all three line up, that's where the real opportunities are. What sector interests you?`,
+      ]);
+    }},
+    { test: /crypto|bitcoin|btc|ethereum|alt/i, resp: () => {
+      const data = KNOWLEDGE.crypto[q.includes('bitcoin') || q.includes('btc') ? 'bitcoin' : 'crypto'] || KNOWLEDGE.crypto.crypto;
+      return humanize(data, 'crypto');
+    }},
+    { test: /forex|currency|eur.*usd|gbp|jpy/i, resp: () => pick([
+      `Forex is a $6.6T daily market, runs 24/5. The real action is the London-NY overlap (8AM-12PM ET). Stick to EUR/USD and GBP/USD as a beginner — tight spreads, lots of liquidity. And please, don't over-leverage. 10:1 max for beginners. What pair are you looking at?`,
+      `So forex, huh? The biggest mistake I see is people using 50:1 or 100:1 leverage because brokers let them. Don't. Start with 10:1 max. EUR/USD is your friend — most liquid pair out there. What's your trading style — scalping or swing?`,
+    ])},
+    { test: /option|call|put|spread/i, resp: () => pick([
+      `Options are powerful but dangerous if you don't understand them. Quick version: calls = right to buy, puts = right to sell. For beginners I'd say start with credit spreads — defined risk, time decay works in your favor. And NEVER buy far OTM options close to expiry. Theta will murder you.`,
+      `Look, options can wipe you out fast if you're not careful. My honest advice? Start with bull put spreads or bear call spreads. Defined risk, and you can profit even if you're slightly wrong. What's your experience level with options?`,
+    ])},
     { test: /loss|losing|down|red|bleeding|drawdown/i, resp: () => {
-      if (currentAdvisor === 'sarah') return "First of all, take a breath. Losing is part of trading — every single professional loses. The question is never 'will I lose?' but 'are my losses controlled?' Here's my checklist for you right now: (1) Did you have a stop-loss? If no, that's the #1 thing to fix going forward. (2) Was the loss more than 1-2% of your account? If yes, we need to work on position sizing. (3) Did you follow your plan? If yes, this is just variance — it happens, and you should stay the course. If no, let's identify the violation. (4) Are you thinking about increasing size to recover? Please don't. That's the exact path to blowing up an account. I've seen it too many times. Take a breath, reduce your size by 50%, and let's get back to basics. You will recover from this.";
-      return formatAdvisorResponse("I hear you, and I want you to know — every single successful trader has been exactly where you are right now. The difference between those who make it and those who don't is how they respond. Here's what works: (1) Never increase size during a losing streak — I know the temptation, but it's a trap. (2) Cut your position size in half. (3) Review every trade honestly — are you following your plan or deviating? (4) If you ARE following the plan, this is just variance. Stay the course. (5) Take a 1-2 day break if you need it. The market will still be here, I promise. You're going to be okay.", 'risk');
+      if (currentAdvisor === 'sarah') return pick([
+        `Take a breath. Seriously. Every pro loses — it's part of the game. The question is: are your losses controlled? Did you have a stop? Was it more than 1-2% of your account? And please tell me you're not thinking about sizing up to recover...`,
+        `Hey, first — it happens to everyone. The worst thing you can do right now is increase your size to "make it back." Cut your position size in half instead. Review your trades honestly. And if you followed your plan, this is just variance. You'll be fine.`,
+      ]);
+      return pick([
+        `I've been exactly where you are. The key: never size up during a losing streak. Cut your size in half. Review whether you're following your plan or deviating. And take a day off if you need it — the market will still be there. You'll recover.`,
+      ]);
     }},
-    { test: /hello|hi|hey|greetings|good morning|good evening/i, resp: () => {
-      const timeGreet = new Date().getHours() < 12 ? 'Good morning' : new Date().getHours() < 18 ? 'Good afternoon' : 'Good evening';
-      if (!userName && !isRegistered) return `${timeGreet}! 👋 ${ADVISORS[currentAdvisor].greeting} By the way, what should I call you? I'd love to personalize our conversation.`;
-      if (!userName) return `${timeGreet}! 👋 Great to see you here. What's on your mind today? I'm ready to dive into whatever market topic you're curious about.`;
-      return `${timeGreet}, ${userName}! 😊 Great to see you again. What's on your mind today? We can talk setups, risk management, market outlook — whatever you need. I'm all ears.`;
+    { test: /hello|hi|hey|greetings|good morning|good evening|morning|afternoon/i, resp: () => {
+      const hour = new Date().getHours();
+      const timeWord = hour < 12 ? 'morning' : hour < 18 ? 'afternoon' : 'evening';
+      if (name) return pick([`Hey ${name}! Good ${timeWord}. What's on your mind?`, `${name}! Good ${timeWord} 👋 What are we looking at today?`]);
+      return pick([`Hey! Good ${timeWord} 👋 What's on your mind?`, `Hi there! What can I help you with?`]);
     }},
     { test: /my name is|i'm called|call me|i am (.+)/i, resp: () => {
       const nameMatch = input.match(/(?:my name is|i'm called|call me|i am)\s+(\w+)/i);
       if (nameMatch) {
         userName = nameMatch[1];
         localStorage.setItem('bfs_username', userName);
-        return `It's really nice to meet you, ${userName}! 😊 I'll remember that. Now, what can I help you with? Whether it's market analysis, trading strategies, or risk management — I'm here for you.`;
+        return pick([`Nice to meet you, ${userName}! What are you curious about?`, `${userName}, got it! So what can I help you with?`]);
       }
-      return "Got it! What would you like to talk about?";
+      return "Got it! What's on your mind?";
     }},
-    { test: /thank|thanks|appreciate/i, resp: () => `You're very welcome, ${userName || 'friend'}! 😊 That's exactly what I'm here for. Don't hesitate to come back with more questions — there's no such thing as a dumb question in this business. We're all learning.` },
-    { test: /broadfsc|platform|company|about you/i, resp: () => formatAdvisorResponse(KNOWLEDGE.platform.broadfsc, 'platform') },
-    { test: /fee|cost|price|commission|charge/i, resp: () => formatAdvisorResponse(KNOWLEDGE.platform.fees, 'platform') },
+    { test: /thank|thanks|appreciate/i, resp: () => pick([
+      name ? `Anytime, ${name}! Come back anytime.` : `No problem at all! Any other questions, just ask.`,
+      `You got it! Don't be a stranger.`,
+    ])},
+    { test: /broadfsc|platform|company|about you|who are you/i, resp: () => humanize(KNOWLEDGE.platform.broadfsc, 'platform') },
+    { test: /fee|cost|price|commission|charge/i, resp: () => humanize(KNOWLEDGE.platform.fees, 'platform') },
     { test: /account|open|register|sign up/i, resp: () => {
-      if (isRegistered) return `You're already registered with us, ${userName || 'friend'}! 🎉 If you need any help with your account or want to explore our research, just let me know. I'm here to help.`;
-      return formatAdvisorResponse(KNOWLEDGE.platform.account, 'platform') + '\n\n💡 You can also register right here on this page — just click the "Get Access" button or the profile icon in the top right. It takes 30 seconds and unlocks our full research library.';
+      if (isRegistered) return pick([`You're already registered${name ? ', ' + name : ''}! Need help with anything specific?`]);
+      return pick([
+        `You can register right here — click "Get Access" in the nav. Takes 30 seconds, unlocks our full research library. Or just keep chatting with me, that's fine too.`,
+        `Yeah, you can sign up right on this page. It's free and gives you access to all our research. Want me to walk you through it?`,
+      ]);
     }},
-    { test: /help|can you|what can you/i, resp: () => `I can help with quite a lot, ${userName || 'friend'}! Here's what I'm best at: 📊 Technical analysis (RSI, MACD, Fibonacci, S/R, candlesticks), 🛡️ Risk management (position sizing, stop-losses, risk-reward), 🎯 Trading strategies (swing, day trading, scalping, dividends), 📋 Fundamental analysis (earnings, P/E, macro data), ₿ Crypto & forex, and 📈 Options strategies. I also know all about BroadFSC's services. Just ask naturally — no special commands needed. I'm here to have a real conversation with you.` },
-    { test: /psychology|emotion|discipline|fear|greed|mindset/i, resp: () => formatAdvisorResponse("Trading psychology is honestly the most underrated aspect of this whole game. Fear makes you sell at the exact wrong time and avoid perfectly good setups. Greed makes you chase, over-leverage, and ignore your own stops. The solution isn't 'stop feeling emotions' — that's impossible. The solution is having a written plan and following it mechanically, even when your gut is screaming otherwise. The top biases that destroy accounts: confirmation bias (only seeing what supports your position), loss aversion (holding losers way too long because it 'doesn't count until you sell'), and overconfidence (sizing up after a few wins). A trading journal is honestly the #1 improvement tool — track every trade AND your emotional state when you made it. The patterns you'll discover about yourself are eye-opening.", 'strategy') },
-    { test: /dividend|passive income|yield|drip/i, resp: () => formatAdvisorResponse(KNOWLEDGE.strategy.dividend, 'strategy') },
-    { test: /etf|index fund|boglehead|3.fund/i, resp: () => formatAdvisorResponse(KNOWLEDGE.strategy.etf, 'strategy') },
-    { test: /market.*outlook|prediction|forecast|where.*market/i, resp: () => {
-      if (currentAdvisor === 'mike') return "I love this question, and I'll be honest with you — nobody can predict the future consistently, despite what some might claim. What I CAN do is help you read the signals. Right now, I'm watching: the yield curve (inversion has preceded every recession since 1960), ISM PMI (below 50 means contraction), and Fed forward guidance. The trend is your friend until it bends. Want me to break down any specific indicator? I genuinely enjoy explaining these.";
-      return "I won't insult your intelligence by pretending I can predict markets — no one can, consistently. What I can do is help you prepare for multiple scenarios. The edge isn't in prediction, it's in preparation. Have a plan for the bullish case AND the bearish case, and execute whichever one the market gives you. That's how professionals operate. What specific market or timeframe are you thinking about?";
-    }},
-    { test: /contact|email|reach|phone|support/i, resp: () => `Great question! Here's how you can reach us:\n\n📧 **Email:** support@broadfsc.com\n📱 **Telegram:** @BroadInvestBot (24/7 AI assistant + human support)\n💬 **Live Chat:** Right here on this page!\n🌐 **Website:** broadfsc.com\n\nWe typically respond within 2 hours during business hours. For urgent matters, Telegram is the fastest way to reach us. Is there something specific I can help you with right now?` },
-    { test: /report|analysis|research/i, resp: () => {
-      if (isRegistered) return `As a registered member, you have full access to all our research, ${userName || 'friend'}! 📊 Check out the Research section below for our latest reports. If you want a specific stock or market analysis, just ask — I'm happy to discuss it with you.`;
-      return `We publish professional-grade research daily — and it's completely free! 📊 You can browse our latest reports in the Research section below. For exclusive deep-dive analysis and personalized stock reports, I'd recommend registering — it takes just 30 seconds and gives you full access. Want me to help you sign up?`;
-    }},
-    // Stock / company queries (English + Chinese)
-    { test: /apple|aapl|iphone|tim cook|苹果/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['apple aapl'], 'stocks') },
-    { test: /nvidia|nvda|jensen|gpu|ai chip|英伟达/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['nvidia nvda'], 'stocks') },
-    { test: /tesla|tsla|elon|ev car|electric vehicle|特斯拉/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['tesla tsla'], 'stocks') },
-    { test: /microsoft|msft|satya|azure|copilot|微软/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['microsoft msft'], 'stocks') },
-    { test: /amazon|amzn|bezos|aws\b|亚马逊/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['amazon amzn'], 'stocks') },
-    { test: /google|alphabet|googl|youtube|gemini ai|谷歌/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['google alphabet'], 'stocks') },
-    { test: /meta|facebook|fb\b|zuckerberg|instagram|threads|脸书/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['meta facebook'], 'stocks') },
-    { test: /s&p|spx|spy|sp500|s&p500|index fund|market index|标普/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['s&p 500 spx'], 'stocks') },
-    { test: /gold|xau|precious metal|de.dollar|黄金/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['gold xau'], 'stocks') },
-    { test: /tsmc|taiwan semiconductor|chip maker|semiconductor|台积电/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['tsmc semiconductor'], 'stocks') },
-    { test: /berkshire|buffett|warren|brk|巴菲特/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['berkshire hathaway'], 'stocks') },
-    { test: /jpmorgan|jpm|chase bank|jamie dimon|摩根/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['jpmorgan chase'], 'stocks') },
-    { test: /marathon|mpc|马拉松|炼油|refiner|crack spread/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['marathon petroleum mpc'], 'stocks') },
-    { test: /exxon|xom|埃克森|美孚/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['exxonmobil xom'], 'stocks') },
-    { test: /chevron|cvx|雪佛龙/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['chevron cvx'], 'stocks') },
-    { test: /palantir|pltr|帕兰提尔/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['palantir pltr'], 'stocks') },
-    { test: /amd|advanced micro|苏妈|超微/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['amd'], 'stocks') },
-    { test: /coca.col|ko\b|可口可乐|可乐/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['coca cola ko'], 'stocks') },
-    { test: /stock|share|equity|market|invest in|portfolio|股票|原油|石油|oil|energy/i, resp: () => {
-      return "I can give you analysis on specific stocks or the broader market! Here are some I cover in depth: 🍎 Apple (AAPL), 🟢 NVIDIA (NVDA), 🚗 Tesla (TSLA), 💻 Microsoft (MSFT), 📦 Amazon (AMZN), 🔍 Google (GOOGL), 📱 Meta (META), 🏦 JPMorgan (JPM), 🏭 TSMC (TSM), 💰 Berkshire (BRK), 🥇 Gold, ⛽ Marathon Petroleum (MPC), 🛢️ ExxonMobil (XOM), 🛢️ Chevron (CVX), 🔮 Palantir (PLTR), 💻 AMD, 🥤 Coca-Cola (KO), or 📊 S&P 500. Just ask about any of these — or a general investing topic like 'how to start' or 'risk management'. What interests you?";
-    }},
+    { test: /help|can you|what can you/i, resp: () => pick([
+      `I can talk stocks, forex, crypto, options, risk management, trading strategies — whatever you need. I cover major stocks like AAPL, NVDA, TSLA, MSFT and stuff like RSI, Fibonacci, stop-losses. Just ask naturally, no special commands needed.`,
+      `Basically anything market-related: technical analysis, risk management, specific stocks, macro trends, crypto, forex. I've got opinions on all of it. What interests you?`,
+    ])},
+    { test: /psychology|emotion|discipline|fear|greed|mindset/i, resp: () => pick([
+      `Honestly the most underrated part of trading. Fear makes you sell at the wrong time, greed makes you chase. The solution? A written plan you follow mechanically. And journal your trades — including your emotional state. You'll be shocked at the patterns you find about yourself.`,
+      `Trading psychology is the real game. The three killers: confirmation bias (only seeing what supports your position), loss aversion (holding losers too long), and overconfidence (sizing up after wins). Start journaling — it's the #1 improvement tool.`,
+    ])},
+    { test: /dividend|passive income|yield|drip/i, resp: () => humanize(KNOWLEDGE.strategy.dividend, 'strategy') },
+    { test: /etf|index fund|boglehead|3.fund/i, resp: () => humanize(KNOWLEDGE.strategy.etf, 'strategy') },
+    { test: /market.*outlook|prediction|forecast|where.*market/i, resp: () => pick([
+      `Nobody can predict markets consistently. What I focus on is being prepared for multiple scenarios. Have a plan for bullish AND bearish cases. The edge isn't in prediction, it's in preparation. What timeframe are you thinking about?`,
+      `I'll be honest — anyone who says they know where the market is going is lying. What I watch: the yield curve, ISM PMI, and Fed guidance. When those shift, the market shifts. What specific area are you curious about?`,
+    ])},
+    { test: /contact|email|reach|phone|support/i, resp: () => pick([
+      `You can reach us at support@broadfsc.com or on Telegram @BroadInvestBot (fastest). Or just keep chatting with me right here!`,
+      `support@broadfsc.com for email, @BroadInvestBot on Telegram for quick responses, or right here. What do you need?`,
+    ])},
+    // Stock / company queries
+    { test: /apple|aapl|iphone|tim cook|苹果/i, resp: () => humanize(KNOWLEDGE.stocks['apple aapl'], 'stocks') },
+    { test: /nvidia|nvda|jensen|gpu|ai chip|英伟达/i, resp: () => humanize(KNOWLEDGE.stocks['nvidia nvda'], 'stocks') },
+    { test: /tesla|tsla|elon|ev car|electric vehicle|特斯拉/i, resp: () => humanize(KNOWLEDGE.stocks['tesla tsla'], 'stocks') },
+    { test: /microsoft|msft|satya|azure|copilot|微软/i, resp: () => humanize(KNOWLEDGE.stocks['microsoft msft'], 'stocks') },
+    { test: /amazon|amzn|bezos|aws\b|亚马逊/i, resp: () => humanize(KNOWLEDGE.stocks['amazon amzn'], 'stocks') },
+    { test: /google|alphabet|googl|youtube|gemini ai|谷歌/i, resp: () => humanize(KNOWLEDGE.stocks['google alphabet'], 'stocks') },
+    { test: /meta|facebook|fb\b|zuckerberg|instagram|threads|脸书/i, resp: () => humanize(KNOWLEDGE.stocks['meta facebook'], 'stocks') },
+    { test: /s&p|spx|spy|sp500|s&p500|index fund|market index|标普/i, resp: () => humanize(KNOWLEDGE.stocks['s&p 500 spx'], 'stocks') },
+    { test: /gold|xau|precious metal|de.dollar|黄金/i, resp: () => humanize(KNOWLEDGE.stocks['gold xau'], 'stocks') },
+    { test: /tsmc|taiwan semiconductor|chip maker|semiconductor|台积电/i, resp: () => humanize(KNOWLEDGE.stocks['tsmc semiconductor'], 'stocks') },
+    { test: /berkshire|buffett|warren|brk|巴菲特/i, resp: () => humanize(KNOWLEDGE.stocks['berkshire hathaway'], 'stocks') },
+    { test: /jpmorgan|jpm|chase bank|jamie dimon|摩根/i, resp: () => humanize(KNOWLEDGE.stocks['jpmorgan chase'], 'stocks') },
+    { test: /marathon|mpc|马拉松|炼油|refiner|crack spread/i, resp: () => humanize(KNOWLEDGE.stocks['marathon petroleum mpc'], 'stocks') },
+    { test: /exxon|xom|埃克森|美孚/i, resp: () => humanize(KNOWLEDGE.stocks['exxonmobil xom'], 'stocks') },
+    { test: /chevron|cvx|雪佛龙/i, resp: () => humanize(KNOWLEDGE.stocks['chevron cvx'], 'stocks') },
+    { test: /palantir|pltr|帕兰提尔/i, resp: () => humanize(KNOWLEDGE.stocks['palantir pltr'], 'stocks') },
+    { test: /amd|advanced micro|苏妈|超微/i, resp: () => humanize(KNOWLEDGE.stocks['amd'], 'stocks') },
+    { test: /coca.col|ko\b|可口可乐|可乐/i, resp: () => humanize(KNOWLEDGE.stocks['coca cola ko'], 'stocks') },
+    { test: /stock|share|equity|market|invest in|portfolio|股票|原油|石油|oil|energy/i, resp: () => pick([
+      `I cover AAPL, NVDA, TSLA, MSFT, AMZN, GOOGL, META, JPM, TSM, BRK, Gold, MPC, XOM, CVX, PLTR, AMD, KO, and the S&P 500 in depth. Which one? Or ask about a general topic like risk management or trading strategy.`,
+      `What stock or market are you looking at? I've got detailed takes on the big names — Apple, NVIDIA, Tesla, etc. Or we can talk broader market strategy. What interests you?`,
+    ])},
   ];
 
   for (const p of patterns) {
     if (p.test.test(q)) return p.resp();
   }
 
-  // 3. Keyword fallback
+  // 3. Keyword fallback — still casual
   const kwMap = {
     'support': 'technical', 'resistance': 'technical', 'level': 'technical',
     'rsi': 'technical', 'macd': 'technical', 'indicator': 'technical',
@@ -367,7 +407,7 @@ function getAIResponse(input) {
     'fibonacci': 'technical', 'fib': 'technical', 'retracement': 'technical',
     'bollinger': 'technical', 'band': 'technical',
     'candle': 'technical', 'hammer': 'technical', 'doji': 'technical', 'engulfing': 'technical',
-    'chart': 'technical', 'pattern': 'technical', 'triangle': 'technical', 'head shoulder': 'technical',
+    'chart': 'technical', 'pattern': 'technical', 'triangle': 'technical',
     'volume': 'technical', 'obv': 'technical',
     'breakout': 'technical', 'break': 'technical',
     'pe': 'fundamental', 'earning': 'fundamental', 'revenue': 'fundamental',
@@ -375,7 +415,6 @@ function getAIResponse(input) {
     'gdp': 'fundamental', 'nfp': 'fundamental', 'employment': 'fundamental',
     'stop': 'risk', 'risk': 'risk', 'position': 'risk', 'leverage': 'risk', 'margin': 'risk',
     'swing': 'strategy', 'day trad': 'strategy', 'scalp': 'strategy',
-    'dividend': 'strategy', 'etf': 'strategy',
     'bitcoin': 'crypto', 'crypto': 'crypto', 'btc': 'crypto', 'altcoin': 'crypto',
     'option': 'strategy', 'call': 'strategy', 'put': 'strategy',
     'aapl': 'stocks', 'nvda': 'stocks', 'tsla': 'stocks', 'msft': 'stocks', 'amzn': 'stocks',
@@ -386,79 +425,87 @@ function getAIResponse(input) {
     'mpc': 'stocks', 'marathon': 'stocks', 'xom': 'stocks', 'exxon': 'stocks',
     'cvx': 'stocks', 'chevron': 'stocks', 'pltr': 'stocks', 'palantir': 'stocks',
     'amd': 'stocks', 'ko': 'stocks', 'coca': 'stocks',
-    // Chinese keywords
     '苹果': 'stocks', '英伟达': 'stocks', '特斯拉': 'stocks', '微软': 'stocks',
     '亚马逊': 'stocks', '谷歌': 'stocks', '脸书': 'stocks', '巴菲特': 'stocks',
     '黄金': 'stocks', '台积电': 'stocks', '摩根': 'stocks',
-    '马拉松': 'stocks', '炼油': 'stocks', '埃克森': 'stocks', '雪佛龙': 'stocks',
     '原油': 'stocks', '石油': 'stocks', '股票': 'stocks',
-    '可乐': 'stocks', '超微': 'stocks',
   };
 
   for (const [kw, cat] of Object.entries(kwMap)) {
     if (q.includes(kw)) {
-      // Find best match in that category
       for (const [key, answer] of Object.entries(KNOWLEDGE[cat])) {
         if (q.includes(key) || key.includes(kw)) {
-          return formatAdvisorResponse(answer, cat);
+          return humanize(answer, cat);
         }
       }
-      // Return a general response for the category
-      const catResponses = {
-        technical: "That's a technical analysis topic I can dig into. The key principle: always confirm with multiple signals. A single indicator or pattern isn't enough — look for confluence between S/R, volume, and momentum. What specifically about this would you like me to break down?",
-        fundamental: "Fundamentals drive the long-term direction. The most impactful events: Fed rate decisions, CPI prints, and earnings reports. Short-term, the surprise vs consensus is what moves markets. Want me to explain how to trade any of these?",
-        risk: "Risk management is where most traders fail. My non-negotiable rules: 1-2% max risk per trade, always have a stop-loss, and never risk more than 5-6% total across all positions. What's your current risk framework?",
-        strategy: "Strategy depends on your style and available time. Swing trading is best for most people — 30 min/day, 2-14 day holds, and you can keep your day job. What's your situation?",
-        crypto: "Crypto is its own beast — 24/7, extreme volatility, and most altcoins go to zero. Keep crypto to max 15% of portfolio, BTC/ETH only for beginners, and NEVER use leverage in crypto. The volatility is already leveraged enough.",
-        platform: "I can tell you about BroadFSC's services, account setup, or fees. What specifically interests you?",
-        stocks: "I cover detailed analysis on major stocks: Apple, NVIDIA, Tesla, Microsoft, Amazon, Google, Meta, JPMorgan, TSMC, Berkshire, Marathon Petroleum, ExxonMobil, Chevron, Palantir, AMD, Coca-Cola, Gold, and the S&P 500. Which stock or market are you interested in? You can ask in English or Chinese (中文也可以问)."
+      // Casual category fallback
+      const catCasual = {
+        technical: "That's a technical analysis thing. The key is always confluence — don't trade on just one signal. What specifically are you looking at?",
+        fundamental: "Fundamentals drive the long game. What's the specific data point or event you're tracking?",
+        risk: "Risk management is where most people mess up. 1-2% max per trade, always have a stop. What's your current approach?",
+        strategy: "Strategy depends on your style and time. What's your situation — full-time trader or keeping your day job?",
+        crypto: "Crypto is wild — 24/7, extreme moves. Keep it to 15% of portfolio max. BTC/ETH only if you're starting out. What specifically?",
+        platform: "I can tell you about BroadFSC — we're a regulated investment platform with AI-powered education. What do you want to know?",
+        stocks: "I cover all the big names. Which stock are you interested in?"
       };
-      return catResponses[cat] || "Tell me more about what you're looking for and I'll give you my best take.";
+      return catCasual[cat] || "Tell me more about what you're looking at and I'll give you my take.";
     }
   }
 
-  // 4. Smart fallback with personality (v4: warmer)
+  // 4. Final fallback — actually human-sounding
   const fallbacks = {
     alex: [
-      `Hmm, that's an interesting one — let me be honest, it's not something I have a deep take on right now. But I'd rather be straight with you than make something up. What I DO know well: charts, setups, risk management, and market mechanics. Hit me with something more specific and I'll give you a real, actionable answer. I genuinely want to help.`,
-      `I'm not going to pretend I know everything about that — that wouldn't be fair to you. What I CAN help with: technical setups, reading charts, finding entries and exits. The more specific your question, the better I can serve you. What are you really trying to figure out?`,
-      `That's a bit outside my core expertise, but let's not let that stop us. What's the actual question behind the question? Are you trying to make a trading decision, understand a concept, or evaluate a risk? Give me the specifics and I'll do my best to give you something useful.`
+      `Hmm, I'm not sure about that one honestly. But ask me about charts, setups, or market mechanics and I'll give you something real. What are you really trying to figure out?`,
+      `That's a bit outside my wheelhouse. I'm best at technical analysis and reading charts. Hit me with something more specific?`,
+      `Not sure I can help with that one. But if it's about trading — entries, exits, risk — I'm your guy. What's the real question?`,
     ],
     sarah: [
-      `I really want to help you with this, but I need a bit more context to give you something valuable. Are you asking about risk management? Position sizing? Or something else entirely? The more you tell me about your situation, the more useful my advice can be. I'm here for you.`,
-      `That's a bit too vague for me to give you a solid answer you can trust. Tell me about your situation — what are you trading, what's your account size, what's your risk tolerance? Once I understand where you're coming from, I can give you advice that actually fits YOUR needs, not generic stuff.`
+      `I want to help but I need more context. Are you asking about risk? Position sizing? Or something else? The more specific you are, the better I can help.`,
+      `That's a bit vague for me to give you a solid answer. Tell me about your situation and I'll give you advice that actually fits your needs.`,
     ],
     mike: [
-      `I could speculate, but I'd rather give you something you can actually use. What's the real question behind what you're asking? Are you looking at a specific market, trying to understand a macro event, or evaluating an investment? Give me the specifics and I'll connect the dots for you.`,
-      `Let me offer you a framework instead: every market question ultimately comes down to supply vs demand, driven by either fundamentals or sentiment. Which angle are you coming from? Once I know that, I can give you a much more targeted and useful answer.`
+      `I could guess but I'd rather give you something useful. What's the real question? Are you looking at a specific market or trying to understand a macro trend?`,
+      `Let me put it this way — every market question comes down to supply vs demand. Which angle are you coming from?`,
     ]
   };
   const pool = fallbacks[currentAdvisor] || fallbacks.alex;
   return pool[Math.floor(Math.random() * pool.length)];
 }
 
-function formatAdvisorResponse(answer, category) {
-  const advisor = ADVISORS[currentAdvisor];
-  const prefix = advisor.catchphrase;
-  const catLabels = {
-    technical: '📊 Technical',
-    fundamental: '📋 Fundamental',
-    risk: '🛡️ Risk',
-    strategy: '🎯 Strategy',
-    crypto: '₿ Crypto',
-    platform: '🏦 BroadFSC',
-    stocks: '📈 Stocks & Markets'
+// Helper: pick random from array
+function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+// Helper: humanize a knowledge base answer (make it sound conversational, not encyclopedic)
+function humanize(answer, category) {
+  // The knowledge base has great content but it's written like a textbook.
+  // We'll trim it to the first 2-3 sentences and add a casual closer.
+  const sentences = answer.split(/(?<=[.!?])\s+/);
+  const maxSentences = currentAdvisor === 'alex' ? 3 : currentAdvisor === 'sarah' ? 4 : 3;
+  let result = sentences.slice(0, maxSentences).join(' ');
+
+  // Add casual closer based on advisor
+  const closers = {
+    alex: [' Want more detail on any of that?', ' What do you think?', ' Make sense?', ''],
+    sarah: [' Does that help?', ' Want me to dig deeper?', ' What\'s your take on this?', ''],
+    mike: [' Does that make sense?', ' See the connection?', ' Want the full breakdown?', ''],
   };
-  return `${prefix} ${answer}\n\n_${catLabels[category] || ''} | ${advisor.name}_`;
+  const closer = pick(closers[currentAdvisor] || closers.alex);
+  if (closer) result += closer;
+
+  return result;
 }
 
-// ── AI API Integration (Groq + Yahoo Finance) ──
+// ── AI API Integration (Pollinations Free + Groq Backup + Yahoo Finance) ──
+// Pollinations: completely free, no API key needed, works in browser
+const POLLINATIONS_URL = 'https://text.pollinations.ai/';
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
 const GROQ_MODEL = 'llama-3.1-8b-instant';
 
-// Encoded API key (decoded at runtime - security through obscurity for free-tier key)
-// This is a free-tier Groq API key with rate limits; no sensitive data access
+// Encoded Groq API key (may expire — Pollinations is the primary free fallback)
 const _gk = atob('Z3FkXzN0bHJhM0haaWFCTkhnM0tNS2p3ZU05Vjdybw==');
+
+// Track which AI source is working so we don't keep retrying broken ones
+let _aiSourceWorking = { pollinations: true, groq: true };
 
 // Stock symbol mapping for Yahoo Finance queries
 const STOCK_SYMBOLS = {
@@ -562,84 +609,136 @@ async function fetchStockData(query) {
   return null;  // All sources failed
 }
 
-async function callGroqAPI(userMessage) {
-  // Call Groq API with advisor personality and optional stock data
-  try {
-    const advisor = ADVISORS[currentAdvisor];
-    const systemPrompt = `You are ${advisor.name}, an AI investment advisor at BroadFSC (Broad Investment Securities). Your specialty: ${advisor.role}.
+async function callAI(userMessage) {
+  // Try multiple AI sources: Pollinations (free, no key) → Groq (free tier) → local fallback
+  const advisor = ADVISORS[currentAdvisor];
 
-Personality: ${advisor.personality}
+  // Build the system prompt — this is what makes it feel human
+  const systemPrompt = `You are ${advisor.name}, a real person who works as an investment advisor at BroadFSC. You are NOT an AI assistant. You are a human with 8 years of market experience.
 
-Rules:
-- Be helpful, knowledgeable, and opinionated about markets
-- Give specific, actionable advice when possible
-- If you don't know something, say so honestly
-- Never promise guaranteed returns
-- Keep responses under 300 words
-- Use markdown **bold** for key points
-- If asked about BroadFSC, mention: regulated platform, AI-powered education, visit broadfsc.com/different
-- You can discuss stocks, forex, crypto, commodities, risk management, and trading strategies
-- When giving price targets or levels, always add "at time of writing" disclaimer`;
+${advisor.personality}
 
-    // Check if user is asking about a stock/market and fetch data
-    let marketContext = '';
-    const stockData = await fetchStockData(userMessage);
-    if (stockData) {
-      marketContext = `\n\n[REAL-TIME MARKET DATA - Use these numbers, do NOT make up different ones]:
+CRITICAL RULES:
+- NEVER say you are an AI, language model, or assistant
+- NEVER use phrases like "I'd be happy to help", "Great question!", "As an advisor...", "Let me help you with that"
+- Write like you text — short, punchy, real. Use contractions (I'm, don't, that's, you've)
+- Keep responses SHORT — 2-4 sentences for simple questions, max 6 for complex ones
+- Have actual opinions. "I think..." "Honestly..." "Look..." 
+- If you don't know something, say "I'm not sure about that one" or "thats outside my wheelhouse"
+- When giving stock analysis, be specific and opinionated. Not "consider researching" but "I'd be cautious here because..."
+- You can be wrong. Real traders are wrong sometimes. Say "I might be off on this" if unsure
+- Use casual language: "kinda", "honestly", "look", "right", "so", "yeah"
+- NEVER use bullet points, numbered lists, or structured formatting
+- If asked about BroadFSC: we're a regulated investment platform, AI-powered education, visit broadfsc.com/different. But mention it naturally, like "we actually have a pretty good setup for that at BroadFSC"
+- When quoting prices, say "at time of writing" casually like "last I checked" or "as of now"`;
+
+  // Check if user is asking about a stock/market and fetch data
+  let marketContext = '';
+  const stockData = await fetchStockData(userMessage);
+  if (stockData) {
+    marketContext = `\n\n[REAL-TIME DATA - use these exact numbers, dont make up different ones]:
 ${stockData.name || stockData.symbol}: ${stockData.price} ${stockData.currency}
 Change: ${stockData.change} (${stockData.changePct}%)
 Previous Close: ${stockData.previousClose}
 Market: ${stockData.marketState} | Exchange: ${stockData.exchange}
-NOTE: Always state "at time of writing" when quoting prices.`;
+Mention prices naturally like "its trading at X right now"`;
+
+  // Build conversation history (last 6 messages for context)
+  const history = (chatHistories[currentAdvisor] || []).slice(-6).map(m => ({
+    role: m.role === 'user' ? 'user' : 'assistant',
+    content: m.text
+  }));
+
+  // Add user name context if available
+  const nameContext = userName ? `\n\nThe user's name is ${userName}. Use their name naturally sometimes, not every message.` : '';
+
+  const messages = [
+    { role: 'system', content: systemPrompt + marketContext + nameContext },
+    ...history.slice(0, -1),
+    { role: 'user', content: userMessage }
+  ];
+
+  // Try Pollinations first (free, no key, browser-friendly)
+  if (_aiSourceWorking.pollinations) {
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 12000);
+      const resp = await fetch(POLLINATIONS_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: messages,
+          model: 'openai',
+          seed: Math.floor(Math.random() * 100000),
+          jsonMode: false
+        }),
+        signal: controller.signal
+      });
+      clearTimeout(timeout);
+
+      if (resp.ok) {
+        const text = await resp.text();
+        if (text && text.trim().length > 5) {
+          // Clean up any AI-isms that leaked through
+          let clean = text.trim()
+            .replace(/^(As an AI|I'd be happy to|Great question!|As a|Let me help)\s*.*/i, '')
+            .replace(/\n{3,}/g, '\n\n');
+          if (clean.length > 10) {
+            return clean;
+          }
+        }
+      }
+      _aiSourceWorking.pollinations = false;
+      // Re-enable after 5 minutes
+      setTimeout(() => { _aiSourceWorking.pollinations = true; }, 300000);
+    } catch (e) {
+      _aiSourceWorking.pollinations = false;
+      setTimeout(() => { _aiSourceWorking.pollinations = true; }, 300000);
     }
-
-    // Build conversation history (last 6 messages for context)
-    const history = (chatHistories[currentAdvisor] || []).slice(-6).map(m => ({
-      role: m.role === 'user' ? 'user' : 'assistant',
-      content: m.text
-    }));
-
-    const messages = [
-      { role: 'system', content: systemPrompt + marketContext },
-      ...history.slice(0, -1),  // Exclude the current message (already in history)
-      { role: 'user', content: userMessage }
-    ];
-
-    const controller2 = new AbortController();
-    const timeout2 = setTimeout(() => controller2.abort(), 15000);
-    const resp = await fetch(GROQ_API_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${_gk}`
-      },
-      body: JSON.stringify({
-        model: GROQ_MODEL,
-        messages: messages,
-        max_tokens: 500,
-        temperature: 0.7,
-        top_p: 0.9
-      }),
-      signal: controller2.signal
-    });
-    clearTimeout(timeout2);
-
-    if (!resp.ok) {
-      console.log('Groq API error:', resp.status);
-      return null;
-    }
-
-    const data = await resp.json();
-    const aiText = data?.choices?.[0]?.message?.content;
-    if (!aiText) return null;
-
-    // Add advisor signature
-    const catLabel = stockData ? '📈 Live Market Data' : '🤖 AI Analysis';
-    return `${aiText}\n\n_${catLabel} | ${advisor.name}_`;
-  } catch (e) {
-    console.log('Groq API call failed:', e.message);
-    return null;
   }
+
+  // Try Groq API as backup
+  if (_aiSourceWorking.groq) {
+    try {
+      const controller2 = new AbortController();
+      const timeout2 = setTimeout(() => controller2.abort(), 10000);
+      const resp = await fetch(GROQ_API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${_gk}`
+        },
+        body: JSON.stringify({
+          model: GROQ_MODEL,
+          messages: messages,
+          max_tokens: 400,
+          temperature: 0.85,
+          top_p: 0.9
+        }),
+        signal: controller2.signal
+      });
+      clearTimeout(timeout2);
+
+      if (resp.ok) {
+        const data = await resp.json();
+        const aiText = data?.choices?.[0]?.message?.content;
+        if (aiText && aiText.trim().length > 5) {
+          let clean = aiText.trim()
+            .replace(/^(As an AI|I'd be happy to|Great question!|As a|Let me help)\s*.*/i, '')
+            .replace(/\n{3,}/g, '\n\n');
+          if (clean.length > 10) return clean;
+        }
+      }
+      _aiSourceWorking.groq = false;
+      setTimeout(() => { _aiSourceWorking.groq = true; }, 300000);
+    } catch (e) {
+      _aiSourceWorking.groq = false;
+      setTimeout(() => { _aiSourceWorking.groq = true; }, 300000);
+    }
+  }
+
+  // All AI sources failed — return null to trigger local fallback
+  return null;
 }
 
 // ── Chat UI ──
@@ -676,45 +775,42 @@ function switchAdvisor(id) {
       div.innerHTML = a.greeting;
       body.appendChild(div);
     }
-    body.scrollTop = 0;
+    body.scrollTop = body.scrollHeight;
   }
 }
 
 function sendChat() {
-  if (isSending) return;  // Prevent duplicate sends
+  if (isSending) return;
   const input = document.getElementById('chatInput');
   const text = input.value.trim();
   if (!text) return;
 
-  isSending = true;  // Lock
+  isSending = true;
 
-  // Add user message
   addUserMessage(text);
-  chatHistories[currentAdvisor].push({ role: 'user', text });  // Use per-advisor history
+  chatHistories[currentAdvisor].push({ role: 'user', text });
   input.value = '';
 
-  // Typing indicator
   showTyping();
 
-  // Try AI API first, fallback to local knowledge base
-  callGroqAPI(text).then(aiResponse => {
+  // Try AI first, then local fallback
+  callAI(text).then(aiResponse => {
     removeTyping();
     if (aiResponse) {
       addBotMessage(aiResponse);
       chatHistories[currentAdvisor].push({ role: 'bot', text: aiResponse });
     } else {
-      // Fallback to local knowledge base
-      const response = getAIResponse(text);
+      const response = getLocalResponse(text);
       addBotMessage(response);
       chatHistories[currentAdvisor].push({ role: 'bot', text: response });
     }
-    isSending = false;  // Unlock
+    isSending = false;
   }).catch(() => {
     removeTyping();
-    const response = getAIResponse(text);
+    const response = getLocalResponse(text);
     addBotMessage(response);
     chatHistories[currentAdvisor].push({ role: 'bot', text: response });
-    isSending = false;  // Unlock
+    isSending = false;
   });
 }
 
@@ -724,7 +820,7 @@ function addUserMessage(text) {
   div.className = 'chat-msg user';
   div.textContent = text;
   body.appendChild(div);
-  body.scrollTop = 0; // Keep at top, don't jump to bottom
+  body.scrollTop = body.scrollHeight; // Scroll to bottom — newest messages at bottom
 }
 
 function addBotMessage(text) {
@@ -739,7 +835,7 @@ function addBotMessage(text) {
     .replace(/\n/g, '<br>');
   div.innerHTML = html;
   body.appendChild(div);
-  body.scrollTop = 0;
+  body.scrollTop = body.scrollHeight; // Scroll to bottom
 }
 
 function showTyping() {
@@ -749,7 +845,7 @@ function showTyping() {
   div.id = 'typingIndicator';
   div.innerHTML = '<div class="typing"><span></span><span></span><span></span></div>';
   body.appendChild(div);
-  body.scrollTop = 0;
+  body.scrollTop = body.scrollHeight;
 }
 
 function removeTyping() {
