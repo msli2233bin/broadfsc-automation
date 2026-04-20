@@ -26,6 +26,7 @@ logger = logging.getLogger(__name__)
 
 # 美股 ticker → 名称映射
 US_STOCK_MAP = {
+    # Tech
     "aapl": "AAPL", "apple": "AAPL", "苹果": "AAPL",
     "tsla": "TSLA", "tesla": "TSLA", "特斯拉": "TSLA",
     "nvda": "NVDA", "nvidia": "NVDA", "英伟达": "NVDA",
@@ -34,53 +35,178 @@ US_STOCK_MAP = {
     "googl": "GOOGL", "google": "GOOGL", "谷歌": "GOOGL",
     "goog": "GOOG",
     "meta": "META", "facebook": "META", "脸书": "META",
-    "brk.b": "BRK-B", "brk.a": "BRK-A", "巴菲特": "BRK-B", "berkshire": "BRK-B",
-    "jpm": "JPM", "摩根大通": "JPM",
-    "v": "V", "visa": "V",
-    "jnj": "JNJ", "强生": "JNJ",
-    "wmt": "WMT", "沃尔玛": "WMT",
-    "xom": "XOM", "exxon": "XOM", "埃克森": "XOM",
-    "cvx": "CVX", "chevron": "CVX", "雪佛龙": "CVX",
-    "mpc": "MPC", "marathon": "MPC", "马拉松": "MPC",
-    "ko": "KO", "coca-cola": "KO", "可口可乐": "KO",
     "pltr": "PLTR", "palantir": "PLTR",
-    "amd": "AMD", "超微": "AMD",
+    "amd": "AMD", "超微": "AMD", "超微半导体": "AMD",
     "tsm": "TSM", "台积电": "TSM", "tsmc": "TSM",
-    "nflx": "NFLX", "netflix": "NFLX",
-    "dis": "DIS", "disney": "DIS",
-    "ba": "BA", "boeing": "BA", "波音": "BA",
+    "nflx": "NFLX", "netflix": "NFLX", "奈飞": "NFLX",
+    "dis": "DIS", "disney": "DIS", "迪士尼": "DIS",
     "crm": "CRM", "salesforce": "CRM",
     "intc": "INTC", "intel": "INTC", "英特尔": "INTC",
+    "avgo": "AVGO", "broadcom": "AVGO", "博通": "AVGO",
+    "orcl": "ORCL", "oracle": "ORCL", "甲骨文": "ORCL",
+    "adbe": "ADBE", "adobe": "ADBE",
+    "ibm": "IBM", "ibm": "IBM",
+    "pypl": "PYPL", "paypal": "PYPL", "贝宝": "PYPL",
+    "sq": "SQ", "block": "SQ", "square": "SQ",
+    "uber": "UBER", "优步": "UBER",
+    "abnb": "ABNB", "airbnb": "ABNB",
+    "spot": "SPOT", "spotify": "SPOT",
+    "snap": "SNAP", "snowflake": "SNOW", "snow": "SNOW",
+    "crwd": "CRWD", "crowdstrike": "CRWD",
+    "panw": "PANW", "mdb": "MDB", "mongodb": "MDB",
+    "shop": "SHOP", "shopify": "SHOP",
+    "roi": "ROI", "roku": "ROKU",
+    # Finance
+    "brk.b": "BRK-B", "brk.a": "BRK-A", "巴菲特": "BRK-B", "berkshire": "BRK-B", "伯克希尔": "BRK-B",
+    "jpm": "JPM", "摩根大通": "JPM",
+    "v": "V", "visa": "V", "维萨": "V",
+    "ma": "MA", "mastercard": "MA", "万事达": "MA",
+    "gs": "GS", "goldman sachs": "GS", "高盛": "GS",
+    "ms": "MS", "morgan stanley": "MS", "摩根士丹利": "MS",
+    "bac": "BAC", "bank of america": "BAC", "美国银行": "BAC",
+    "c": "C", "citigroup": "C", "花旗": "C",
+    "wfc": "WFC", "wells fargo": "WFC", "富国银行": "WFC",
+    "blk": "BLK", "blackrock": "BLK", "贝莱德": "BLK",
+    "axp": "AXP", "amex": "AXP", "american express": "AXP", "美国运通": "AXP",
+    # Healthcare / Pharma
+    "jnj": "JNJ", "强生": "JNJ",
+    "pfe": "PFE", "pfizer": "PFE", "辉瑞": "PFE",
+    "unh": "UNH", "unitedhealth": "UNH", "联合健康": "UNH",
+    "abbv": "ABBV", "abbvie": "ABBV", "艾伯维": "ABBV",
+    "mrxn": "MRK", "merck": "MRK", "默沙东": "MRK", "默克": "MRK",
+    "lly": "LLY", "lilly": "LLY", "礼来": "LLY",
+    "roche": "RHHBY", "罗氏": "RHHBY",
+    "novartis": "NVS", "诺华": "NVS",
+    "azn": "AZN", "astrazeneca": "AZN", "阿斯利康": "AZN",
+    "nvo": "NVO", "novo nordisk": "NVO", "诺和诺德": "NVO",
+    "mrna": "MRNA", "moderna": "MRNA",
+    "biontech": "BNTX", "bntx": "BNTX",
+    "gild": "GILD", "gilead": "GILD", "吉利德": "GILD",
+    "amgn": "AMGN", "amgen": "AMGN", "安进": "AMGN",
+    "biib": "BIIB", "biogen": "BIIB",
+    "regeneron": "REGN", "regn": "REGN",
+    "mrk": "MRK",
+    # Consumer
+    "wmt": "WMT", "沃尔玛": "WMT",
+    "ko": "KO", "coca-cola": "KO", "可口可乐": "KO",
+    "pep": "PEP", "pepsico": "PEP", "百事": "PEP",
+    "mcd": "MCD", "mcdonalds": "MCD", "麦当劳": "MCD",
+    "sbux": "SBUX", "starbucks": "SBUX", "星巴克": "SBUX",
+    "nke": "NKE", "nike": "NKE", "耐克": "NKE",
+    "pg": "PG", "procter": "PG", "宝洁": "PG",
+    "cost": "COST", "costco": "COST", "好市多": "COST",
+    # Energy
+    "xom": "XOM", "exxon": "XOM", "埃克森": "XOM", "埃克森美孚": "XOM",
+    "cvx": "CVX", "chevron": "CVX", "雪佛龙": "CVX",
+    "mpc": "MPC", "marathon": "MPC",
+    "cop": "COP", "conocophillips": "COP",
+    "slb": "SLB", "schlumberger": "SLB",
+    # Industrial / Aerospace
+    "ba": "BA", "boeing": "BA", "波音": "BA",
+    "cat": "CAT", "caterpillar": "CAT", "卡特彼勒": "CAT",
+    "ge": "GE", "general electric": "GE", "通用电气": "GE",
+    "mmm": "MMM", "3m": "MMM",
+    "hon": "HON", "honeywell": "HON", "霍尼韦尔": "HON",
+    "rtx": "RTX", "raytheon": "RTX",
+    "lmt": "LMT", "lockheed": "LMT", "洛克希德": "LMT",
+    # Semis
+    "mu": "MU", "micron": "MU", "美光": "MU",
+    "qcom": "QCOM", "qualcomm": "QCOM", "高通": "QCOM",
+    "txn": "TXN", "texas instruments": "TXN", "德州仪器": "TXN",
+    "nxpi": "NXPI", "nxp": "NXPI",
+    "asml": "ASML", "阿斯麦": "ASML",
 }
 
 # A股代码 → yfinance 格式
 A_STOCK_MAP = {
+    # 白酒/消费
     "600519": "600519.SS", "茅台": "600519.SS", "贵州茅台": "600519.SS",
     "000858": "000858.SZ", "五粮液": "000858.SZ",
+    "000568": "000568.SZ", "泸州老窖": "000568.SZ",
+    "603369": "603369.SS", "今世缘": "603369.SS",
+    # 新能源/汽车
     "300750": "300750.SZ", "宁德时代": "300750.SZ",
+    "002594": "002594.SZ", "比亚迪": "002594.SZ",
+    "601012": "601012.SS", "隆基绿能": "601012.SS", "隆基": "601012.SS",
+    "600438": "600438.SS", "通威股份": "600438.SS",
+    "002475": "002475.SZ", "立讯精密": "002475.SZ",
+    # 金融
     "601318": "601318.SS", "中国平安": "601318.SS",
     "600036": "600036.SS", "招商银行": "600036.SS",
     "000001": "000001.SZ", "平安银行": "000001.SZ",
-    "600900": "600900.SS", "长江电力": "600900.SS",
-    "002594": "002594.SZ", "比亚迪": "002594.SZ",
-    "601012": "601012.SS", "隆基绿能": "601012.SS",
-    "000333": "000333.SZ", "美的集团": "000333.SZ",
-    "600276": "600276.SS", "恒瑞医药": "600276.SS",
     "601398": "601398.SS", "工商银行": "601398.SS",
+    "601288": "601288.SS", "农业银行": "601288.SS",
+    "600016": "600016.SS", "民生银行": "600016.SS",
+    "601166": "601166.SS", "兴业银行": "601166.SS",
+    "600000": "600000.SS", "浦发银行": "600000.SS",
+    "601988": "601988.SS", "中国银行": "601988.SS",
+    "601328": "601328.SS", "交通银行": "601328.SS",
+    # 医药
+    "600276": "600276.SS", "恒瑞医药": "600276.SS",
+    "000538": "000538.SZ", "云南白药": "000538.SZ",
+    "600422": "600422.SS", "昆药集团": "600422.SS", "昆药": "600422.SS",
+    "300760": "300760.SZ", "迈瑞医疗": "300760.SZ",
+    "603259": "603259.SS", "药明康德": "603259.SS",
+    "300015": "300015.SZ", "爱尔眼科": "300015.SZ",
+    "002007": "002007.SZ", "华兰生物": "002007.SZ",
+    "300122": "300122.SZ", "智飞生物": "300122.SZ",
+    "000963": "000963.SZ", "华东医药": "000963.SZ",
+    "300347": "300347.SZ", "泰格医药": "300347.SZ",
+    "688111": "688111.SS", "金山办公": "688111.SS",
+    # 科技
+    "000333": "000333.SZ", "美的集团": "000333.SZ", "美的": "000333.SZ",
+    "000651": "000651.SZ", "格力电器": "000651.SZ", "格力": "000651.SZ",
+    "002415": "002415.SZ", "海康威视": "002415.SZ",
+    "600588": "600588.SS", "用友网络": "600588.SS",
+    "688981": "688981.SS", "中芯国际": "688981.SS",
+    # 电力/基建
+    "600900": "600900.SS", "长江电力": "600900.SS",
+    "601668": "601668.SS", "中国建筑": "601668.SS",
+    "601669": "601669.SS", "中国电建": "601669.SS",
+    "600585": "600585.SS", "海螺水泥": "600585.SS",
+    # 地产
+    "000002": "000002.SZ", "万科": "000002.SZ", "万科A": "000002.SZ",
+    # 保险
+    "601601": "601601.SS", "中国太保": "601601.SS",
+    "601628": "601628.SS", "中国人寿": "601628.SS",
 }
 
 # 港股代码 → yfinance 格式
 HK_STOCK_MAP = {
+    # 互联网/科技
     "9988": "9988.HK", "9988.HK": "9988.HK", "阿里": "9988.HK", "阿里巴巴": "9988.HK",
     "0700": "0700.HK", "0700.HK": "0700.HK", "腾讯": "0700.HK",
     "9999": "9999.HK", "网易": "9999.HK",
     "3690": "3690.HK", "美团": "3690.HK",
     "9618": "9618.HK", "京东": "9618.HK",
     "1810": "1810.HK", "小米": "1810.HK",
-    "9868": "9868.HK", "小鹏": "9868.HK",
-    "9866": "9866.HK", "蔚来": "9866.HK",
+    "9868": "9868.HK", "小鹏": "9868.HK", "小鹏汽车": "9868.HK",
+    "9866": "9866.HK", "蔚来": "9866.HK", "蔚来汽车": "9866.HK",
     "0241": "0241.HK", "阿里健康": "0241.HK",
     "2382": "2382.HK", "舜宇光学": "2382.HK",
+    "9992": "9992.HK", "泡泡玛特": "9992.HK",
+    "1024": "1024.HK", "快手": "1024.HK",
+    "9888": "9888.HK", "百度": "9888.HK",
+    "0772": "0772.HK", "阅文集团": "0772.HK",
+    # 医药
+    "2269": "2269.HK", "药明生物": "2269.HK",
+    "1093": "1093.HK", "石药集团": "1093.HK",
+    "1177": "1177.HK", "中国生物制药": "1177.HK",
+    "2359": "2359.HK", "药明康德h": "2359.HK",
+    # 金融
+    "2318": "2318.HK", "中国平安h": "2318.HK",
+    "1398": "1398.HK", "工商银行h": "1398.HK",
+    "3988": "3988.HK", "中国银行h": "3988.HK",
+    # 消费
+    "0291": "0291.HK", "华润啤酒": "0291.HK",
+    "6862": "6862.HK", "海底捞": "6862.HK",
+    "2020": "2020.HK", "安踏": "2020.HK", "安踏体育": "2020.HK",
+    # 新能源
+    "9618": "9618.HK",
+    "0175": "0175.HK", "吉利汽车": "0175.HK",
+    # 物业/地产
+    "1209": "1209.HK", "华润万象": "1209.HK",
+    "0688": "0688.HK", "中国海外发展": "0688.HK",
 }
 
 # 加密货币
@@ -279,9 +405,19 @@ def fetch_stock_data(ticker: str) -> dict | None:
             change = round(price - prev_close, 4)
             change_pct = round((change / prev_close) * 100, 2)
         
+        # 公司简介截取（前200字符，避免太长）
+        business_summary = info.get("longBusinessSummary") or info.get("businessSummary") or ""
+        if len(business_summary) > 200:
+            business_summary = business_summary[:200] + "..."
+
         result = {
             "symbol": ticker,
             "name": info.get("shortName") or info.get("longName") or ticker,
+            "long_name": info.get("longName") or info.get("shortName") or ticker,
+            "sector": info.get("sector") or "",
+            "industry": info.get("industry") or "",
+            "business_summary": business_summary,
+            "country": info.get("country") or "",
             "price": round(price, 2) if price else None,
             "currency": info.get("currency", "USD"),
             "prev_close": round(prev_close, 2) if prev_close else None,
@@ -330,6 +466,7 @@ def format_market_data_for_ai(tickers: list) -> str:
     """
     格式化实时市场数据，注入 AI system prompt。
     返回格式化的文本，AI 可以基于此数据回答用户问题。
+    包含：公司名、行业、简介、实时行情数据。
     """
     if not tickers:
         return ""
@@ -339,21 +476,40 @@ def format_market_data_for_ai(tickers: list) -> str:
         return ""
     
     lines = [
-        "📈 REAL-TIME MARKET DATA (inject into your answer — use these ACTUAL numbers, do NOT fabricate data):",
+        "📈 REAL-TIME MARKET DATA (CRITICAL: use ONLY these actual numbers and company info. NEVER fabricate stock prices, company descriptions, or industry information):",
         ""
     ]
     
     for r in results:
         symbol = r["symbol"]
         name = r["name"]
+        long_name = r.get("long_name", name)
         price = r["price"]
         currency = r["currency"]
         change = r["change"]
         change_pct = r["change_pct"]
         data_time = r["data_time"]
         
+        # 公司基本信息行（行业+简介 — 这是最关键的修复）
+        sector = r.get("sector", "")
+        industry = r.get("industry", "")
+        country = r.get("country", "")
+        business = r.get("business_summary", "")
+        
+        company_info = f"  🏢 {long_name} ({symbol})"
+        if sector:
+            company_info += f" | Sector: {sector}"
+        if industry:
+            company_info += f" | Industry: {industry}"
+        if country:
+            company_info += f" | Country: {country}"
+        lines.append(company_info)
+        
+        if business:
+            lines.append(f"  📋 About: {business}")
+        
         # 价格行
-        price_str = f"  {name} ({symbol}): {currency} {price:,.2f}"
+        price_str = f"  💰 Price: {currency} {price:,.2f}"
         if change is not None and change_pct is not None:
             arrow = "🔺" if change > 0 else "🔻" if change < 0 else "➡️"
             price_str += f"  {arrow} {change:+,.2f} ({change_pct:+.2f}%)"
@@ -373,6 +529,8 @@ def format_market_data_for_ai(tickers: list) -> str:
                 details.append(f"MktCap: ${mc/1e12:.1f}T")
             elif mc >= 1e9:
                 details.append(f"MktCap: ${mc/1e9:.1f}B")
+            elif mc >= 1e6:
+                details.append(f"MktCap: ${mc/1e6:.1f}M")
         if r.get("pe_ratio"):
             details.append(f"P/E: {r['pe_ratio']:.1f}")
         if r.get("52w_high") and r.get("52w_low"):
@@ -382,10 +540,16 @@ def format_market_data_for_ai(tickers: list) -> str:
         
         if details:
             lines.append(f"    {' | '.join(details)}")
+        
+        lines.append("")  # 空行分隔
     
-    lines.append("")
     lines.append(f"⏰ Data as of: {results[0]['data_time']}")
-    lines.append("⚠️ IMPORTANT: Use ONLY these real-time numbers. NEVER make up stock prices or financial data.")
+    lines.append("")
+    lines.append("⚠️ CRITICAL RULES:")
+    lines.append("  1. Use ONLY the company name, sector, industry, and description shown above. Do NOT substitute with different company info.")
+    lines.append("  2. Use ONLY the real-time prices shown above. Do NOT make up or estimate stock prices.")
+    lines.append("  3. If the user asks about a stock NOT listed above, say you don't have real-time data for it rather than guessing.")
+    lines.append("  4. Clearly state the stock symbol and exchange when discussing any stock.")
     
     return "\n".join(lines)
 
