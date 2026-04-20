@@ -3,1119 +3,121 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BroadFSC Pro — Global AI Investment Education Platform</title>
-<meta name="description" content="The world's largest AI-powered investment education platform. Free professional research reports, 30+ structured courses, real-time market insights, and multilingual AI advisory. Learn trading strategies, technical analysis, and risk management from industry experts.">
-<meta name="keywords" content="investment education, AI investment advisor, trading courses, technical analysis, stock market, forex, cryptocurrency, research reports, financial advisory, BroadFSC">
-<meta name="author" content="Broad Investment Securities">
-<meta property="og:title" content="BroadFSC Pro — Global AI Investment Education Platform">
-<meta property="og:description" content="Free professional research reports, 30+ courses, AI-powered advisory in 16 languages. The world's most accessible investment education.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://msli2233bin.github.io/broadfsc-automation/og-image.png">
+<title>BroadFSC Pro — AI Investment Education Platform</title>
+<meta name="description" content="The world's largest AI-powered investment education platform. Free research, 30+ courses, AI advisory in 16 languages.">
 <link rel="canonical" href="https://msli2233bin.github.io/broadfsc-automation/">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
-:root{
---bg:#060b18;--bg2:#0c1225;--bg3:#111a33;--bg4:#162040;
---blue:#3b82f6;--blue2:#2563eb;--cyan:#06b6d4;--green:#10b981;--green2:#059669;
---purple:#8b5cf6;--orange:#f59e0b;--red:#ef4444;
---text:#e2e8f0;--text2:#94a3b8;--text3:#64748b;
---border:rgba(255,255,255,0.06);--glass:rgba(255,255,255,0.03);
---radius:16px;--radius2:12px;--radius3:8px;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-::-webkit-scrollbar{width:6px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:3px}
-
-/* === NAV === */
-.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(6,11,24,0.85);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
-.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 24px}
-.nav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15em;letter-spacing:-0.5px}
-.nav-logo .ico{width:36px;height:36px;background:linear-gradient(135deg,var(--blue),var(--green));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
-.nav-links{display:flex;gap:4px;align-items:center}
-.nav-links a{color:var(--text2);padding:8px 14px;border-radius:8px;font-size:.88em;font-weight:500;transition:all .2s}
-.nav-links a:hover{color:#fff;background:rgba(255,255,255,.06)}
-.nav-links a.active{color:#fff;background:rgba(59,130,246,.15)}
-.nav-cta{background:linear-gradient(135deg,var(--blue),var(--blue2))!important;color:#fff!important;font-weight:600;padding:8px 20px!important}
-.nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(59,130,246,.35)}
-.nav-mobile-btn{display:none;background:none;border:none;color:#fff;font-size:1.5em;cursor:pointer}
-
-/* === TICKER === */
-.ticker-bar{background:var(--bg2);border-bottom:1px solid var(--border);padding:8px 0;overflow:hidden;margin-top:64px}
-.ticker-track{display:flex;animation:tickerScroll 40s linear infinite;white-space:nowrap}
-.ticker-item{display:inline-flex;align-items:center;gap:6px;padding:0 24px;font-size:.82em;font-weight:500}
-.ticker-item .sym{color:var(--text2)}
-.ticker-item .price{color:var(--text);font-weight:600}
-.ticker-item .chg.up{color:var(--green)}
-.ticker-item .chg.dn{color:var(--red)}
-@keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-
-/* === HERO === */
-.hero{padding:80px 24px 60px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(180deg,#0a1628 0%,var(--bg) 100%)}
-.hero canvas{position:absolute;top:0;left:0;width:100%;height:100%;opacity:.3;pointer-events:none}
-.hero-content{position:relative;max-width:860px;margin:0 auto}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.2);border-radius:24px;padding:6px 18px;font-size:.85em;color:var(--blue);margin-bottom:20px}
-.hero-badge .dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.hero h1{font-size:3.2em;font-weight:800;line-height:1.08;margin-bottom:18px;background:linear-gradient(135deg,#fff 0%,#93c5fd 40%,#6ee7b7 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-1px}
-.hero p{font-size:1.15em;color:var(--text2);max-width:620px;margin:0 auto 28px}
-.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
-
-/* === ADVISOR CARDS (TOP) === */
-.advisors-row{display:flex;gap:16px;justify-content:center;margin-bottom:32px;flex-wrap:wrap}
-.advisor-card{display:flex;align-items:center;gap:14px;background:rgba(12,18,37,.9);backdrop-filter:blur(16px);border:1px solid rgba(59,130,246,.2);border-radius:16px;padding:16px 20px;cursor:pointer;transition:all .3s;max-width:340px;flex:1}
-.advisor-card:hover{border-color:rgba(59,130,246,.5);transform:translateY(-3px);box-shadow:0 8px 32px rgba(59,130,246,.2)}
-.advisor-avatar{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
-.advisor-info{flex:1;text-align:left}
-.advisor-name{font-weight:700;font-size:.95em;color:#fff}
-.advisor-role{font-size:.78em;color:var(--text2)}
-.advisor-status{font-size:.72em;color:var(--green);display:flex;align-items:center;gap:4px}
-.status-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
-.advisor-chat-btn{font-size:.8em;font-weight:600;color:var(--blue);white-space:nowrap;padding:6px 14px;border-radius:8px;background:rgba(59,130,246,.1);transition:all .2s}
-.advisor-card:hover .advisor-chat-btn{background:rgba(59,130,246,.2)}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--radius2);font-size:1em;font-weight:600;transition:all .25s;border:none;cursor:pointer}
-.btn-p{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;box-shadow:0 4px 24px rgba(59,130,246,.3)}
-.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(59,130,246,.4)}
-.btn-s{background:rgba(255,255,255,.05);color:#fff;border:1px solid rgba(255,255,255,.1)}
-.btn-s:hover{background:rgba(255,255,255,.08);transform:translateY(-2px)}
-.hero-stats{display:flex;gap:48px;justify-content:center;flex-wrap:wrap}
-.hero-stat .num{font-size:2em;font-weight:800;background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero-stat .label{font-size:.82em;color:var(--text3);margin-top:2px}
-
-/* === SECTIONS === */
-.section{padding:80px 24px}
-.section-inner{max-width:1280px;margin:0 auto}
-.section-header{text-align:center;margin-bottom:48px}
-.section-header h2{font-size:2.2em;font-weight:800;letter-spacing:-0.5px;margin-bottom:12px}
-.section-header p{color:var(--text2);max-width:600px;margin:0 auto;font-size:1.05em}
-.section-header .accent{color:var(--blue)}
-
-/* === FEATURES GRID === */
-.features-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.feature-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:all .3s;position:relative;overflow:hidden}
-.feature-card:hover{border-color:rgba(59,130,246,.2);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
-.feature-card .icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px}
-.feature-card h3{font-size:1.1em;font-weight:700;margin-bottom:8px}
-.feature-card p{font-size:.9em;color:var(--text2);line-height:1.5}
-.feature-card .arrow{position:absolute;bottom:16px;right:16px;color:var(--text3);font-size:1.2em;transition:all .2s}
-.feature-card:hover .arrow{color:var(--blue);transform:translateX(4px)}
-
-/* === COURSES === */
-.courses-tabs{display:flex;gap:8px;justify-content:center;margin-bottom:32px;flex-wrap:wrap}
-.courses-tab{padding:10px 24px;border-radius:24px;font-size:.9em;font-weight:600;cursor:pointer;transition:all .2s;background:rgba(255,255,255,.04);color:var(--text2);border:1px solid transparent}
-.courses-tab.active{background:rgba(59,130,246,.12);color:var(--blue);border-color:rgba(59,130,246,.2)}
-.courses-tab:hover:not(.active){background:rgba(255,255,255,.06)}
-.courses-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
-.course-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .3s;cursor:pointer}
-.course-card:hover{border-color:rgba(59,130,246,.2);transform:translateY(-3px)}
-.course-card .tag{display:inline-block;padding:3px 10px;border-radius:6px;font-size:.75em;font-weight:600;margin-bottom:12px}
-.course-card .tag.beg{background:rgba(16,185,129,.12);color:var(--green)}
-.course-card .tag.int{background:rgba(245,158,11,.12);color:var(--orange)}
-.course-card .tag.adv{background:rgba(239,68,68,.12);color:var(--red)}
-.course-card h3{font-size:1.05em;font-weight:700;margin-bottom:8px}
-.course-card p{font-size:.88em;color:var(--text2);margin-bottom:14px;line-height:1.5}
-.course-meta{display:flex;gap:16px;font-size:.8em;color:var(--text3)}
-.course-meta span{display:flex;align-items:center;gap:4px}
-
-/* === RESEARCH === */
-.research-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:16px}
-.research-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .3s;cursor:pointer}
-.research-card:hover{border-color:rgba(139,92,246,.2);transform:translateY(-3px)}
-.research-card .type{display:inline-block;padding:3px 10px;border-radius:6px;font-size:.75em;font-weight:600;margin-bottom:10px}
-.research-card .type.daily{background:rgba(6,182,212,.12);color:var(--cyan)}
-.research-card .type.weekly{background:rgba(139,92,246,.12);color:var(--purple)}
-.research-card .type.special{background:rgba(245,158,11,.12);color:var(--orange)}
-.research-card h3{font-size:1.05em;font-weight:700;margin-bottom:8px}
-.research-card p{font-size:.88em;color:var(--text2);margin-bottom:12px}
-.research-card .meta{display:flex;justify-content:space-between;font-size:.8em;color:var(--text3)}
-
-/* === FREE SOURCES === */
-.sources-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
-.source-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius2);padding:20px;text-align:center;transition:all .3s}
-.source-card:hover{border-color:rgba(16,185,129,.2);transform:translateY(-3px)}
-.source-card .logo{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 12px}
-.source-card h4{font-size:.95em;font-weight:700;margin-bottom:4px}
-.source-card p{font-size:.82em;color:var(--text2);margin-bottom:10px}
-.source-card .free-badge{display:inline-block;padding:3px 12px;border-radius:12px;font-size:.75em;font-weight:600;background:rgba(16,185,129,.12);color:var(--green)}
-
-/* === AI CHAT === */
-.chat-section{background:linear-gradient(180deg,var(--bg2) 0%,var(--bg) 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.chat-container{max-width:800px;margin:0 auto;background:var(--bg3);border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4)}
-.chat-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
-.chat-avatar{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--green));display:flex;align-items:center;justify-content:center;font-size:20px}
-.chat-header-info h4{font-size:1em;font-weight:700}
-.chat-header-info span{font-size:.82em;color:var(--green)}
-.chat-body{height:400px;overflow-y:auto;padding:20px 24px;display:flex;flex-direction:column;gap:16px}
-.chat-msg{max-width:80%;padding:14px 18px;border-radius:16px;font-size:.92em;line-height:1.6;animation:msgIn .3s ease}
-@keyframes msgIn{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:translateY(0)}}
-.chat-msg.bot{background:var(--bg4);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:4px}
-.chat-msg.user{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
-.chat-msg.bot .typing{display:inline-flex;gap:4px}
-.chat-msg.bot .typing span{width:6px;height:6px;background:var(--text3);border-radius:50%;animation:typingDot 1.4s infinite}
-.chat-msg.bot .typing span:nth-child(2){animation-delay:.2s}
-.chat-msg.bot .typing span:nth-child(3){animation-delay:.4s}
-@keyframes typingDot{0%,100%{opacity:.3}50%{opacity:1}}
-.chat-input-area{padding:16px 24px;border-top:1px solid var(--border);display:flex;gap:10px}
-.chat-input{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:12px 16px;color:var(--text);font-size:.92em;outline:none;transition:border-color .2s}
-.chat-input:focus{border-color:rgba(59,130,246,.4)}
-.chat-input::placeholder{color:var(--text3)}
-.chat-send{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--blue2));border:none;color:#fff;font-size:18px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
-.chat-send:hover{transform:scale(1.05)}
-
-/* === GLOSSARY === */
-.glossary-search{max-width:500px;margin:0 auto 24px;position:relative}
-.glossary-search input{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:14px 20px 14px 44px;color:var(--text);font-size:1em;outline:none;transition:border-color .2s}
-.glossary-search input:focus{border-color:rgba(59,130,246,.4)}
-.glossary-search .s-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--text3)}
-.glossary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;max-height:600px;overflow-y:auto}
-.glossary-item{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius2);padding:16px;transition:all .2s;cursor:pointer}
-.glossary-item:hover{border-color:rgba(59,130,246,.2)}
-.glossary-item .term{font-weight:700;color:var(--blue);margin-bottom:4px;font-size:.95em}
-.glossary-item .def{font-size:.85em;color:var(--text2);line-height:1.5}
-.glossary-item .cat{display:inline-block;margin-top:8px;padding:2px 8px;border-radius:4px;font-size:.72em;background:rgba(139,92,246,.1);color:var(--purple)}
-
-/* === TOOLS === */
-.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
-.tool-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:28px;text-align:center;transition:all .3s}
-.tool-card:hover{border-color:rgba(6,182,212,.2);transform:translateY(-3px)}
-.tool-card .icon{font-size:40px;margin-bottom:12px}
-.tool-card h3{font-size:1.05em;font-weight:700;margin-bottom:8px}
-.tool-card p{font-size:.85em;color:var(--text2);margin-bottom:16px}
-.tool-card .btn{font-size:.85em;padding:10px 20px}
-
-/* === CALC MODAL === */
-.calc-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:2000;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:24px}
-.calc-modal.open{display:flex}
-.calc-box{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:32px;max-width:480px;width:100%;max-height:90vh;overflow-y:auto;position:relative}
-.calc-box h3{font-size:1.3em;font-weight:700;margin-bottom:20px}
-.calc-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--text3);font-size:1.5em;cursor:pointer}
-.calc-close:hover{color:#fff}
-.calc-field{margin-bottom:16px}
-.calc-field label{display:block;font-size:.85em;font-weight:600;color:var(--text2);margin-bottom:6px}
-.calc-field input,.calc-field select{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:.95em;outline:none}
-.calc-field input:focus,.calc-field select:focus{border-color:rgba(59,130,246,.4)}
-.calc-result{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.15);border-radius:12px;padding:16px;text-align:center;margin-top:16px}
-.calc-result .value{font-size:2em;font-weight:800;background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.calc-result .label{font-size:.82em;color:var(--text3)}
-
-/* === TRUST === */
-.trust-bar{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;padding:40px 24px;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.trust-item{display:flex;align-items:center;gap:10px;font-size:.9em;color:var(--text2)}
-.trust-item .ico{font-size:1.4em}
-
-/* === FOOTER === */
-.footer{padding:60px 24px 30px;background:var(--bg2);border-top:1px solid var(--border)}
-.footer-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
-.footer-brand p{font-size:.9em;color:var(--text3);margin-top:12px;max-width:300px;line-height:1.6}
-.footer h4{font-size:.85em;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text3);margin-bottom:16px}
-.footer a{display:block;color:var(--text2);font-size:.9em;padding:4px 0;transition:color .2s}
-.footer a:hover{color:#fff}
-.footer-bottom{max-width:1280px;margin:32px auto 0;padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:.82em;color:var(--text3)}
-
-/* === COURSE MODAL === */
-.course-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:2000;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);overflow-y:auto;padding:40px 24px}
-.course-modal.open{display:block}
-.course-detail{max-width:800px;margin:0 auto;background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:40px;position:relative}
-.course-detail .close-btn{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--text3);font-size:1.5em;cursor:pointer}
-.course-detail .close-btn:hover{color:#fff}
-.course-detail h2{font-size:1.8em;font-weight:800;margin-bottom:8px}
-.course-detail .tag{display:inline-block;padding:4px 12px;border-radius:6px;font-size:.8em;font-weight:600;margin-bottom:20px}
-.module-list{list-style:none;padding:0}
-.module-item{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin-bottom:10px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:14px}
-.module-item:hover{border-color:rgba(59,130,246,.2)}
-.module-item .num{width:32px;height:32px;border-radius:8px;background:rgba(59,130,246,.12);color:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85em;flex-shrink:0}
-.module-item .info{flex:1}
-.module-item .info h4{font-size:.95em;font-weight:600}
-.module-item .info p{font-size:.82em;color:var(--text3)}
-.module-item .dur{font-size:.82em;color:var(--text3)}
-.module-item .expand-icon{color:var(--text3);font-size:.9em;transition:transform .2s}
-.module-item.expanded .expand-icon{transform:rotate(180deg)}
-.module-content{display:none;background:var(--bg3);border:1px solid var(--border);border-radius:0 0 12px 12px;padding:20px 24px;margin-top:-10px;margin-bottom:10px;font-size:.92em;line-height:1.8;color:var(--text2)}
-.module-content.show{display:block}
-.module-content strong{color:var(--text)}
-.module-content ul{padding-left:20px;margin:8px 0}
-.module-content li{margin:4px 0}
-.quiz-section{margin-top:32px;padding-top:24px;border-top:1px solid var(--border)}
-.quiz-section h3{font-size:1.2em;font-weight:700;margin-bottom:16px}
-.quiz-q{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:12px}
-.quiz-q h4{font-size:.95em;font-weight:600;margin-bottom:10px}
-.quiz-opts{display:flex;flex-direction:column;gap:6px}
-.quiz-opt{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:.9em;cursor:pointer;transition:all .2s}
-.quiz-opt:hover{border-color:rgba(59,130,246,.3)}
-.quiz-opt.correct{border-color:var(--green);background:rgba(16,185,129,.08);color:var(--green)}
-.quiz-opt.wrong{border-color:var(--red);background:rgba(239,68,68,.08);color:var(--red)}
-
-/* === RESPONSIVE === */
-@media(max-width:1024px){.features-grid{grid-template-columns:repeat(2,1fr)}.footer-inner{grid-template-columns:1fr 1fr}}
-@media(max-width:768px){.nav-links{display:none}.nav-mobile-btn{display:block}.hero h1{font-size:2.2em}.features-grid{grid-template-columns:1fr}.courses-grid{grid-template-columns:1fr}.research-grid{grid-template-columns:1fr}.footer-inner{grid-template-columns:1fr}.hero-stats{gap:24px}.comparison-grid{grid-template-columns:1fr}}
-@media(max-width:480px){.hero h1{font-size:1.8em}.section{padding:48px 16px}.btn{padding:12px 20px;font-size:.9em}}
+:root{--bg:#060b18;--bg2:#0c1225;--bg3:#111a33;--bg4:#162040;--blue:#3b82f6;--blue2:#2563eb;--cyan:#06b6d4;--green:#10b981;--green2:#059669;--purple:#8b5cf6;--orange:#f59e0b;--red:#ef4444;--text:#e2e8f0;--text2:#94a3b8;--text3:#64748b;--border:rgba(255,255,255,0.06)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}a{color:inherit;text-decoration:none}::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:3px}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(6,11,24,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 24px}.nav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.1em}.nav-logo .ico{width:32px;height:32px;background:linear-gradient(135deg,var(--blue),var(--green));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}.nav-links{display:flex;gap:2px;align-items:center}.nav-links a{color:var(--text2);padding:7px 12px;border-radius:8px;font-size:.85em;font-weight:500;transition:all .2s}.nav-links a:hover{color:#fff;background:rgba(255,255,255,.06)}.nav-links a.active{color:#fff;background:rgba(59,130,246,.15)}.nav-cta{background:linear-gradient(135deg,var(--blue),var(--blue2))!important;color:#fff!important;font-weight:600;padding:7px 18px!important}.nav-mobile-btn{display:none;background:none;border:none;color:#fff;font-size:1.5em;cursor:pointer}
+.hero{padding:80px 24px 40px;position:relative;overflow:hidden;background:linear-gradient(180deg,#0a1628,var(--bg));min-height:calc(100vh - 60px);display:flex;align-items:center}.hero canvas{position:absolute;top:0;left:0;width:100%;height:100%;opacity:.2;pointer-events:none}.hero-layout{position:relative;max-width:1280px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.hero-left{padding-top:20px}.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.2);border-radius:24px;padding:5px 16px;font-size:.82em;color:var(--blue);margin-bottom:16px}.hero-badge .dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}.hero h1{font-size:2.5em;font-weight:800;line-height:1.1;margin-bottom:14px;background:linear-gradient(135deg,#fff,#93c5fd 40%,#6ee7b7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-1px}.hero-left>p{font-size:1em;color:var(--text2);max-width:500px;margin-bottom:18px}.hero-btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}.hero-stats{display:flex;gap:28px;flex-wrap:wrap}.hero-stat .num{font-size:1.7em;font-weight:800;background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}.hero-stat .label{font-size:.75em;color:var(--text3);margin-top:2px}
+.advisors-row{display:flex;gap:10px;margin-top:18px}.advisor-chip{display:flex;align-items:center;gap:8px;background:rgba(12,18,37,.8);border:1px solid rgba(59,130,246,.15);border-radius:12px;padding:8px 14px;cursor:pointer;transition:all .25s;font-size:.88em}.advisor-chip:hover,.advisor-chip.active{border-color:rgba(59,130,246,.5);background:rgba(59,130,246,.08)}.advisor-chip .av{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}.advisor-chip .name{font-weight:700;font-size:.88em;color:#fff}.advisor-chip .role{font-size:.7em;color:var(--text3)}.advisor-chip .online{color:var(--green);font-size:.68em;display:flex;align-items:center;gap:3px}.advisor-chip .online::before{content:'';width:5px;height:5px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+.hero-chat{background:rgba(12,18,37,.95);backdrop-filter:blur(20px);border:1px solid rgba(59,130,246,.15);border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5);max-width:540px;margin-left:auto}.chat-header{padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;background:rgba(59,130,246,.04)}.chat-avatar{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--green));display:flex;align-items:center;justify-content:center;font-size:16px}.chat-header-info h4{font-size:.92em;font-weight:700}.chat-header-info span{font-size:.75em;color:var(--green)}.chat-body{height:340px;overflow-y:auto;padding:16px 18px;display:flex;flex-direction:column;gap:12px}.chat-msg{max-width:85%;padding:12px 15px;border-radius:14px;font-size:.86em;line-height:1.6;animation:msgIn .3s ease}@keyframes msgIn{0%{opacity:0;transform:translateY(6px)}100%{opacity:1;transform:translateY(0)}}.chat-msg.bot{background:var(--bg4);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:3px}.chat-msg.user{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;align-self:flex-end;border-bottom-right-radius:3px}.chat-msg.bot .typing{display:inline-flex;gap:4px}.chat-msg.bot .typing span{width:5px;height:5px;background:var(--text3);border-radius:50%;animation:td 1.4s infinite}.chat-msg.bot .typing span:nth-child(2){animation-delay:.2s}.chat-msg.bot .typing span:nth-child(3){animation-delay:.4s}@keyframes td{0%,100%{opacity:.3}50%{opacity:1}}.chat-input-area{padding:12px 16px;border-top:1px solid var(--border);display:flex;gap:8px}.chat-input{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:10px 14px;color:var(--text);font-size:.86em;outline:none}.chat-input:focus{border-color:rgba(59,130,246,.4)}.chat-input::placeholder{color:var(--text3)}.chat-send{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--blue2));border:none;color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center}.chat-send:hover{transform:scale(1.05)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;font-size:.95em;font-weight:600;transition:all .25s;border:none;cursor:pointer}.btn-p{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;box-shadow:0 4px 24px rgba(59,130,246,.3)}.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(59,130,246,.4)}.btn-s{background:rgba(255,255,255,.05);color:#fff;border:1px solid rgba(255,255,255,.1)}.btn-s:hover{background:rgba(255,255,255,.08)}
+.section{padding:70px 24px}.section-inner{max-width:1280px;margin:0 auto}.section-header{text-align:center;margin-bottom:40px}.section-header h2{font-size:2em;font-weight:800;letter-spacing:-.5px;margin-bottom:10px}.section-header p{color:var(--text2);max-width:600px;margin:0 auto;font-size:1em}.section-header .accent{color:var(--blue)}
+.features-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.feature-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:24px;transition:all .3s;position:relative;overflow:hidden;cursor:pointer}.feature-card:hover{border-color:rgba(59,130,246,.2);transform:translateY(-3px);box-shadow:0 10px 32px rgba(0,0,0,.3)}.feature-card .icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px}.feature-card h3{font-size:1em;font-weight:700;margin-bottom:6px}.feature-card p{font-size:.85em;color:var(--text2);line-height:1.5}.feature-card .arrow{position:absolute;bottom:14px;right:14px;color:var(--text3);font-size:1.1em;transition:all .2s}.feature-card:hover .arrow{color:var(--blue);transform:translateX(3px)}
+.courses-tabs{display:flex;gap:8px;justify-content:center;margin-bottom:28px;flex-wrap:wrap}.courses-tab{padding:9px 22px;border-radius:24px;font-size:.88em;font-weight:600;cursor:pointer;transition:all .2s;background:rgba(255,255,255,.04);color:var(--text2);border:1px solid transparent}.courses-tab.active{background:rgba(59,130,246,.12);color:var(--blue);border-color:rgba(59,130,246,.2)}.courses-tab:hover:not(.active){background:rgba(255,255,255,.06)}.courses-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}.course-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:22px;transition:all .3s;cursor:pointer}.course-card:hover{border-color:rgba(59,130,246,.2);transform:translateY(-3px)}.course-card .tag{display:inline-block;padding:3px 10px;border-radius:6px;font-size:.72em;font-weight:600;margin-bottom:10px}.course-card .tag.beg{background:rgba(16,185,129,.12);color:var(--green)}.course-card .tag.int{background:rgba(245,158,11,.12);color:var(--orange)}.course-card .tag.adv{background:rgba(239,68,68,.12);color:var(--red)}.course-card h3{font-size:1em;font-weight:700;margin-bottom:6px}.course-card p{font-size:.85em;color:var(--text2);margin-bottom:12px;line-height:1.5}.course-meta{display:flex;gap:14px;font-size:.78em;color:var(--text3)}.course-meta span{display:flex;align-items:center;gap:4px}
+.research-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}.research-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:22px;transition:all .3s;cursor:pointer}.research-card:hover{border-color:rgba(139,92,246,.2);transform:translateY(-3px)}.research-card .type{display:inline-block;padding:3px 10px;border-radius:6px;font-size:.72em;font-weight:600;margin-bottom:8px}.research-card .type.daily{background:rgba(6,182,212,.12);color:var(--cyan)}.research-card .type.weekly{background:rgba(139,92,246,.12);color:var(--purple)}.research-card .type.special{background:rgba(245,158,11,.12);color:var(--orange)}.research-card h3{font-size:1em;font-weight:700;margin-bottom:6px}.research-card p{font-size:.85em;color:var(--text2);margin-bottom:10px}.research-card .meta{display:flex;justify-content:space-between;font-size:.78em;color:var(--text3)}
+.sources-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}.source-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:18px;text-align:center;transition:all .3s}.source-card:hover{border-color:rgba(16,185,129,.2);transform:translateY(-3px)}.source-card .logo{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 10px}.source-card h4{font-size:.9em;font-weight:700;margin-bottom:3px}.source-card p{font-size:.8em;color:var(--text2);margin-bottom:8px}.source-card .free-badge{display:inline-block;padding:3px 10px;border-radius:10px;font-size:.72em;font-weight:600;background:rgba(16,185,129,.12);color:var(--green)}
+.glossary-search{max-width:500px;margin:0 auto 20px;position:relative}.glossary-search input{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:12px 18px 12px 40px;color:var(--text);font-size:.95em;outline:none}.glossary-search input:focus{border-color:rgba(59,130,246,.4)}.glossary-search .s-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text3)}.glossary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;max-height:600px;overflow-y:auto}.glossary-item{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:14px;transition:all .2s;cursor:pointer}.glossary-item:hover{border-color:rgba(59,130,246,.2)}.glossary-item .term{font-weight:700;color:var(--blue);margin-bottom:3px;font-size:.9em}.glossary-item .def{font-size:.82em;color:var(--text2);line-height:1.5}.glossary-item .cat{display:inline-block;margin-top:6px;padding:2px 8px;border-radius:4px;font-size:.7em;background:rgba(139,92,246,.1);color:var(--purple)}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}.tool-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:24px;text-align:center;transition:all .3s}.tool-card:hover{border-color:rgba(6,182,212,.2);transform:translateY(-3px)}.tool-card .icon{font-size:36px;margin-bottom:10px}.tool-card h3{font-size:1em;font-weight:700;margin-bottom:6px}.tool-card p{font-size:.82em;color:var(--text2);margin-bottom:14px}.tool-card .btn{font-size:.82em;padding:9px 18px}
+.calc-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:2000;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:24px}.calc-modal.open{display:flex}.calc-box{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:28px;max-width:460px;width:100%;max-height:90vh;overflow-y:auto;position:relative}.calc-box h3{font-size:1.2em;font-weight:700;margin-bottom:18px}.calc-close{position:absolute;top:14px;right:14px;background:none;border:none;color:var(--text3);font-size:1.4em;cursor:pointer}.calc-close:hover{color:#fff}.calc-field{margin-bottom:14px}.calc-field label{display:block;font-size:.82em;font-weight:600;color:var(--text2);margin-bottom:5px}.calc-field input,.calc-field select{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text);font-size:.92em;outline:none}.calc-field input:focus,.calc-field select:focus{border-color:rgba(59,130,246,.4)}.calc-result{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.15);border-radius:12px;padding:14px;text-align:center;margin-top:14px}.calc-result .value{font-size:1.8em;font-weight:800;background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}.calc-result .label{font-size:.78em;color:var(--text3)}
+.trust-bar{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;padding:36px 24px;background:var(--bg2);border-top:1px solid var(--border)}.trust-item{display:flex;align-items:center;gap:8px;font-size:.85em;color:var(--text2)}.trust-item .ico{font-size:1.3em}
+.footer{padding:48px 24px 24px;background:var(--bg2);border-top:1px solid var(--border)}.footer-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px}.footer-brand p{font-size:.85em;color:var(--text3);margin-top:10px;max-width:280px;line-height:1.6}.footer h4{font-size:.82em;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text3);margin-bottom:14px}.footer a{display:block;color:var(--text2);font-size:.85em;padding:3px 0;transition:color .2s}.footer a:hover{color:#fff}.footer-bottom{max-width:1280px;margin:28px auto 0;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:.78em;color:var(--text3)}
+.course-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:2000;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);overflow-y:auto;padding:40px 24px}.course-modal.open{display:block}.course-detail{max-width:800px;margin:0 auto;background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:36px;position:relative}.course-detail .close-btn{position:absolute;top:14px;right:14px;background:none;border:none;color:var(--text3);font-size:1.4em;cursor:pointer}.course-detail .close-btn:hover{color:#fff}.course-detail h2{font-size:1.6em;font-weight:800;margin-bottom:6px}.course-detail .tag{display:inline-block;padding:4px 12px;border-radius:6px;font-size:.78em;font-weight:600;margin-bottom:18px}.module-list{list-style:none;padding:0}.module-item{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:8px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:12px}.module-item:hover{border-color:rgba(59,130,246,.2)}.module-item .num{width:28px;height:28px;border-radius:7px;background:rgba(59,130,246,.12);color:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.82em;flex-shrink:0}.module-item .info{flex:1}.module-item .info h4{font-size:.9em;font-weight:600}.module-item .info p{font-size:.78em;color:var(--text3)}.module-item .dur{font-size:.78em;color:var(--text3)}.module-item .expand-icon{color:var(--text3);font-size:.85em;transition:transform .2s}.module-item.expanded .expand-icon{transform:rotate(180deg)}.module-content{display:none;background:var(--bg3);border:1px solid var(--border);border-radius:0 0 10px 10px;padding:18px 20px;margin-top:-8px;margin-bottom:8px;font-size:.88em;line-height:1.8;color:var(--text2)}.module-content.show{display:block}.module-content strong{color:var(--text)}.module-content ul{padding-left:18px;margin:6px 0}.module-content li{margin:3px 0}.quiz-section{margin-top:28px;padding-top:20px;border-top:1px solid var(--border)}.quiz-section h3{font-size:1.1em;font-weight:700;margin-bottom:14px}.quiz-q{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:10px}.quiz-q h4{font-size:.9em;font-weight:600;margin-bottom:8px}.quiz-opts{display:flex;flex-direction:column;gap:5px}.quiz-opt{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:9px 12px;font-size:.88em;cursor:pointer;transition:all .2s}.quiz-opt:hover{border-color:rgba(59,130,246,.3)}.quiz-opt.correct{border-color:var(--green);background:rgba(16,185,129,.08);color:var(--green)}.quiz-opt.wrong{border-color:var(--red);background:rgba(239,68,44,.08);color:var(--red)}
+@media(max-width:1024px){.hero-layout{grid-template-columns:1fr}.hero-chat{max-width:100%}.features-grid{grid-template-columns:repeat(2,1fr)}.footer-inner{grid-template-columns:1fr 1fr}}@media(max-width:768px){.nav-links{display:none}.nav-mobile-btn{display:block}.hero h1{font-size:1.9em}.features-grid{grid-template-columns:1fr}.courses-grid{grid-template-columns:1fr}.research-grid{grid-template-columns:1fr}.footer-inner{grid-template-columns:1fr}.hero-stats{gap:20px}}@media(max-width:480px){.hero h1{font-size:1.6em}.section{padding:40px 16px}.advisors-row{flex-direction:column}}
 </style>
 </head>
 <body>
-
-<!-- ========== NAV ========== -->
-<nav class="nav">
-<div class="nav-inner">
-<a href="#" class="nav-logo"><span class="ico">📊</span> BroadFSC <span style="color:var(--blue);font-size:.7em;font-weight:500">PRO</span></a>
+<nav class="nav"><div class="nav-inner">
+<a href="#" class="nav-logo"><span class="ico">📊</span> BroadFSC <span style="color:var(--blue);font-size:.65em;font-weight:500">PRO</span></a>
 <div class="nav-links" id="navLinks">
-<a href="#home" class="active">Home</a>
-<a href="#courses">Academy</a>
-<a href="#research">Research</a>
-<a href="#glossary">Glossary</a>
-<a href="#tools">Tools</a>
-<a href="#advisor" class="nav-cta">AI Advisor</a>
-</div>
-<button class="nav-mobile-btn" onclick="document.getElementById('navLinks').classList.toggle('show')">☰</button>
-</div>
-</nav>
+<a href="#home" class="active">Home</a><a href="#courses">Academy</a><a href="#research">Research</a><a href="#glossary">Glossary</a><a href="#tools">Tools</a><a href="#home" class="nav-cta">🤖 AI Advisor</a>
+</div><button class="nav-mobile-btn" onclick="document.getElementById('navLinks').classList.toggle('show')">☰</button>
+</div></nav>
 
-<!-- ========== TICKER ========== -->
-<div class="ticker-bar">
-<div class="ticker-track" id="tickerTrack"></div>
-</div>
-
-<!-- ========== HERO ========== -->
 <section class="hero" id="home">
 <canvas id="heroCanvas"></canvas>
-<div class="hero-content">
-<!-- AI ADVISORS — TOP POSITION -->
-<div class="advisors-row" id="advisorCards">
-<div class="advisor-card" onclick="openAdvisorChat('alex')">
-<div class="advisor-avatar" style="background:linear-gradient(135deg,#3b82f6,#10b981)">👨‍💼</div>
-<div class="advisor-info">
-<div class="advisor-name">Alex Chen</div>
-<div class="advisor-role">Senior Investment Advisor</div>
-<div class="advisor-status"><span class="status-dot"></span> Online • 8 yrs exp</div>
-</div>
-<div class="advisor-chat-btn">Chat Now →</div>
-</div>
-<div class="advisor-card" onclick="openAdvisorChat('sarah')">
-<div class="advisor-avatar" style="background:linear-gradient(135deg,#8b5cf6,#f59e0b)">👩‍💼</div>
-<div class="advisor-info">
-<div class="advisor-name">Sarah Kim</div>
-<div class="advisor-role">Risk Management Specialist</div>
-<div class="advisor-status"><span class="status-dot"></span> Online • 6 yrs exp</div>
-</div>
-<div class="advisor-chat-btn">Chat Now →</div>
-</div>
-</div>
+<div class="hero-layout">
+<div class="hero-left">
 <div class="hero-badge"><span class="dot"></span> AI-Powered Investment Education</div>
 <h1>The World's Most Accessible<br>Investment Education Platform</h1>
-<p>Free professional research, 30+ structured courses, real-time market insights, and an AI advisor that speaks your language — literally. No hidden fees. No gatekeeping. Just knowledge.</p>
-<div class="hero-btns">
-<a href="#courses" class="btn btn-p">📚 Start Learning Free</a>
-<a href="#research" class="btn btn-s">📄 Free Research Reports</a>
+<p>Free professional research, 30+ structured courses, real-time insights, and AI advisors in 16 languages. No hidden fees.</p>
+<div class="hero-btns"><a href="#courses" class="btn btn-p">📚 Start Learning</a><a href="#research" class="btn btn-s">📄 Free Research</a></div>
+<div class="hero-stats"><div class="hero-stat"><div class="num">30+</div><div class="label">Courses</div></div><div class="hero-stat"><div class="num">16</div><div class="label">Languages</div></div><div class="hero-stat"><div class="num">300+</div><div class="label">Terms</div></div><div class="hero-stat"><div class="num">$0</div><div class="label">Always Free</div></div></div>
+<div class="advisors-row">
+<div class="advisor-chip active" onclick="switchAdvisor('alex')" id="chipAlex"><div class="av" style="background:linear-gradient(135deg,#3b82f6,#10b981)">👨‍💼</div><div><div class="name">Alex Chen</div><div class="role">Technical Analysis</div><div class="online">Online</div></div></div>
+<div class="advisor-chip" onclick="switchAdvisor('sarah')" id="chipSarah"><div class="av" style="background:linear-gradient(135deg,#8b5cf6,#f59e0b)">👩‍💼</div><div><div class="name">Sarah Kim</div><div class="role">Risk Management</div><div class="online">Online</div></div></div>
 </div>
-<div class="hero-stats">
-<div class="hero-stat"><div class="num">30+</div><div class="label">Structured Courses</div></div>
-<div class="hero-stat"><div class="num">16</div><div class="label">Languages</div></div>
-<div class="hero-stat"><div class="num">300+</div><div class="label">Financial Terms</div></div>
-<div class="hero-stat"><div class="num">$0</div><div class="label">Always Free</div></div>
+</div>
+<div class="hero-chat">
+<div class="chat-header"><div class="chat-avatar" id="chatAvatar">👨‍💼</div><div class="chat-header-info"><h4 id="chatName">Alex Chen</h4><span id="chatStatus">● Online • 8 yrs experience</span></div></div>
+<div class="chat-body" id="chatBody"></div>
+<div class="chat-input-area"><input type="text" class="chat-input" id="chatInput" placeholder="Ask about stocks, forex, crypto, risk..." onkeypress="if(event.key==='Enter')sendChat()"><button class="chat-send" onclick="sendChat()">➤</button></div>
 </div>
 </div>
 </section>
 
-<!-- ========== FEATURES ========== -->
-<section class="section" id="features">
-<div class="section-inner">
-<div class="section-header">
-<h2>Why <span class="accent">BroadFSC Pro</span>?</h2>
-<p>We combined the best of Investopedia, IG Academy, and TradingView — then added AI on top.</p>
-</div>
+<section class="section" id="features"><div class="section-inner">
+<div class="section-header"><h2>Why <span class="accent">BroadFSC Pro</span>?</h2><p>We combined the best of Investopedia, IG Academy, and TradingView — then added AI.</p></div>
 <div class="features-grid">
-<div class="feature-card" onclick="location.href='#courses'">
-<div class="icon" style="background:rgba(59,130,246,.12)">🎓</div>
-<h3>Structured Learning Paths</h3>
-<p>Beginner → Intermediate → Advanced. 30 courses with video, text, and interactive quizzes. Track your progress.</p>
-<span class="arrow">→</span>
-</div>
-<div class="feature-card" onclick="location.href='#research'">
-<div class="icon" style="background:rgba(139,92,246,.12)">📊</div>
-<h3>Free Research Reports</h3>
-<p>Daily pre-market briefs, weekly deep dives, and special sector analysis — all generated by AI and curated by experts.</p>
-<span class="arrow">→</span>
-</div>
-<div class="feature-card" onclick="location.href='#advisor'">
-<div class="icon" style="background:rgba(16,185,129,.12)">🤖</div>
-<h3>AI Investment Advisor</h3>
-<p>Multi-turn conversations with memory. Speaks 16 languages. Knows finance. Gently guides you to take the next step.</p>
-<span class="arrow">→</span>
-</div>
-<div class="feature-card" onclick="location.href='#glossary'">
-<div class="icon" style="background:rgba(245,158,11,.12)">📖</div>
-<h3>Financial Glossary</h3>
-<p>300+ terms explained simply. Search, browse by category, and click through related concepts. Your finance dictionary.</p>
-<span class="arrow">→</span>
-</div>
-<div class="feature-card" onclick="location.href='#tools'">
-<div class="icon" style="background:rgba(6,182,212,.12)">🧮</div>
-<h3>Trading Tools</h3>
-<p>Position size calculator, risk assessor, margin calculator, and currency converter. All free, all in your browser.</p>
-<span class="arrow">→</span>
-</div>
-<div class="feature-card">
-<div class="icon" style="background:rgba(239,68,68,.12)">🌐</div>
-<h3>16 Languages</h3>
-<p>English, 中文, 日本語, 한국어, Español, Deutsch, Français, Português, العربية, हिन्दी, Русский, ไทย, Tiếng Việt, Bahasa, Türkçe, and more.</p>
-<span class="arrow">→</span>
-</div>
-<div class="feature-card">
-<div class="icon" style="background:rgba(16,185,129,.12)">🔒</div>
-<h3>Regulated & Trusted</h3>
-<p>Licensed by major financial authorities. Your data is encrypted. No hidden fees. Transparent operations.</p>
-<span class="arrow">→</span>
-</div>
-<div class="feature-card">
-<div class="icon" style="background:rgba(139,92,246,.12)">📚</div>
-<h3>Knowledge That Stays</h3>
-<p>Everything our AI learns gets saved to our knowledge base. We get smarter together. The most current insights, always.</p>
-<span class="arrow">→</span>
-</div>
-</div>
-</div>
-</section>
+<div class="feature-card" onclick="location.href='#courses'"><div class="icon" style="background:rgba(59,130,246,.12)">🎓</div><h3>Structured Learning</h3><p>Beginner → Advanced. 30 courses with real lessons and quizzes.</p><span class="arrow">→</span></div>
+<div class="feature-card" onclick="location.href='#research'"><div class="icon" style="background:rgba(139,92,246,.12)">📊</div><h3>Free Research</h3><p>Daily briefs, weekly analysis, and special sector reports — all free.</p><span class="arrow">→</span></div>
+<div class="feature-card" onclick="location.href='#home'"><div class="icon" style="background:rgba(16,185,129,.12)">🤖</div><h3>AI Advisor</h3><p>Multi-turn conversations with memory. Speaks 16 languages.</p><span class="arrow">→</span></div>
+<div class="feature-card" onclick="location.href='#glossary'"><div class="icon" style="background:rgba(245,158,11,.12)">📖</div><h3>Financial Glossary</h3><p>300+ terms. Search, browse, click through related concepts.</p><span class="arrow">→</span></div>
+<div class="feature-card" onclick="location.href='#tools'"><div class="icon" style="background:rgba(6,182,212,.12)">🧮</div><h3>Trading Tools</h3><p>Position size, P/L, margin calculators, and currency converter.</p><span class="arrow">→</span></div>
+<div class="feature-card"><div class="icon" style="background:rgba(239,68,68,.12)">🌐</div><h3>16 Languages</h3><p>English, 中文, 日本語, 한국어, Español, and more.</p><span class="arrow">→</span></div>
+<div class="feature-card"><div class="icon" style="background:rgba(16,185,129,.12)">🔒</div><h3>Regulated & Trusted</h3><p>Licensed by major authorities. 256-bit SSL encryption.</p><span class="arrow">→</span></div>
+<div class="feature-card"><div class="icon" style="background:rgba(139,92,246,.12)">📚</div><h3>Knowledge That Stays</h3><p>AI learns continuously. Everything saved to our knowledge base.</p><span class="arrow">→</span></div>
+</div></div></section>
 
-<!-- ========== COURSES ========== -->
-<section class="section" id="courses" style="background:var(--bg2)">
-<div class="section-inner">
-<div class="section-header">
-<h2>Investment <span class="accent">Academy</span></h2>
-<p>From zero to confident investor. Pick your level and start today — it's free.</p>
-</div>
+<section class="section" id="courses" style="background:var(--bg2)"><div class="section-inner">
+<div class="section-header"><h2>Investment <span class="accent">Academy</span></h2><p>From zero to confident investor. All courses are free with real content.</p></div>
 <div class="courses-tabs">
-<div class="courses-tab active" data-level="all">All Courses</div>
-<div class="courses-tab" data-level="beginner">🌱 Beginner</div>
-<div class="courses-tab" data-level="intermediate">📈 Intermediate</div>
-<div class="courses-tab" data-level="advanced">🏆 Advanced</div>
+  <div class="courses-tab active" data-cat="all" onclick="renderCourses('all')">All</div>
+  <div class="courses-tab" data-cat="beginner" onclick="renderCourses('beginner')">🌱 Beginner</div>
+  <div class="courses-tab" data-cat="intermediate" onclick="renderCourses('intermediate')">📈 Intermediate</div>
+  <div class="courses-tab" data-cat="advanced" onclick="renderCourses('advanced')">🏆 Advanced</div>
 </div>
 <div class="courses-grid" id="coursesGrid"></div>
-</div>
-</section>
+</div></section>
 
-<!-- ========== RESEARCH ========== -->
-<section class="section" id="research">
-<div class="section-inner">
-<div class="section-header">
-<h2>Free <span class="accent">Research Reports</span></h2>
-<p>Professional-grade analysis, updated daily. No paywall. No signup required.</p>
-</div>
+<section class="section" id="research"><div class="section-inner">
+<div class="section-header"><h2>Free <span class="accent">Research Reports</span></h2><p>Professional-grade analysis, updated daily. No paywall.</p></div>
 <div class="research-grid" id="researchGrid"></div>
-
-<h3 style="margin:48px 0 24px;font-size:1.3em;text-align:center">📡 How We Source Free Professional Research</h3>
-<p style="text-align:center;color:var(--text2);max-width:700px;margin:0 auto 32px">We aggregate and synthesize research from the world's best free financial data sources. Here's where our intelligence comes from:</p>
+<h3 style="margin:40px 0 20px;font-size:1.2em;text-align:center">📡 Free Professional Research Sources</h3>
 <div class="sources-grid" id="sourcesGrid"></div>
-</div>
-</section>
+</div></section>
 
-<!-- ========== GLOSSARY ========== -->
-<section class="section" id="glossary" style="background:var(--bg2)">
-<div class="section-inner">
-<div class="section-header">
-<h2>Financial <span class="accent">Glossary</span></h2>
-<p>300+ terms explained simply. Search or browse by category.</p>
-</div>
-<div class="glossary-search">
-<span class="s-icon">🔍</span>
-<input type="text" id="glossarySearch" placeholder="Search terms... e.g. 'MACD', 'margin', 'support'">
-</div>
+<section class="section" id="glossary" style="background:var(--bg2)"><div class="section-inner">
+<div class="section-header"><h2>Financial <span class="accent">Glossary</span></h2><p>300+ terms explained simply.</p></div>
+<div class="glossary-search"><span class="s-icon">🔍</span><input type="text" id="glossarySearch" placeholder="Search terms..."></div>
 <div class="glossary-grid" id="glossaryGrid"></div>
-</div>
-</section>
+</div></section>
 
-<!-- ========== TOOLS ========== -->
-<section class="section" id="tools">
-<div class="section-inner">
-<div class="section-header">
-<h2>Trading <span class="accent">Tools</span></h2>
-<p>Free professional calculators. No signup needed.</p>
-</div>
+<section class="section" id="tools"><div class="section-inner">
+<div class="section-header"><h2>Trading <span class="accent">Tools</span></h2><p>Free professional calculators.</p></div>
 <div class="tools-grid">
-<div class="tool-card">
-<div class="icon">📐</div>
-<h3>Position Size Calculator</h3>
-<p>Calculate the optimal position size based on your account size, risk tolerance, and stop-loss distance.</p>
-<button class="btn btn-p" style="font-size:.85em" onclick="openCalc('position')">Calculate</button>
-</div>
-<div class="tool-card">
-<div class="icon">💰</div>
-<h3>Profit/Loss Calculator</h3>
-<p>Know your potential profit and loss before entering a trade. Plan your risk-reward ratio.</p>
-<button class="btn btn-p" style="font-size:.85em" onclick="openCalc('pnl')">Calculate</button>
-</div>
-<div class="tool-card">
-<div class="icon">🏦</div>
-<h3>Margin Calculator</h3>
-<p>Find out how much margin you need for forex, stocks, or crypto trades.</p>
-<button class="btn btn-p" style="font-size:.85em" onclick="openCalc('margin')">Calculate</button>
-</div>
-<div class="tool-card">
-<div class="icon">💱</div>
-<h3>Currency Converter</h3>
-<p>Real-time exchange rates for 50+ currencies. Free and instant.</p>
-<button class="btn btn-p" style="font-size:.85em" onclick="openCalc('currency')">Convert</button>
-</div>
-</div>
-</div>
-</section>
+<div class="tool-card"><div class="icon">📐</div><h3>Position Size Calculator</h3><p>Calculate optimal position size based on risk and stop-loss.</p><button class="btn btn-p" style="font-size:.82em" onclick="openCalc('position')">Calculate</button></div>
+<div class="tool-card"><div class="icon">💰</div><h3>Profit/Loss Calculator</h3><p>Know your potential P&L before entering a trade.</p><button class="btn btn-p" style="font-size:.82em" onclick="openCalc('pnl')">Calculate</button></div>
+<div class="tool-card"><div class="icon">🏦</div><h3>Margin Calculator</h3><p>Find out how much margin you need for your trades.</p><button class="btn btn-p" style="font-size:.82em" onclick="openCalc('margin')">Calculate</button></div>
+<div class="tool-card"><div class="icon">💱</div><h3>Currency Converter</h3><p>Real-time exchange rates for 50+ currencies.</p><button class="btn btn-p" style="font-size:.82em" onclick="openCalc('currency')">Convert</button></div>
+</div></div></section>
 
-<!-- ========== AI ADVISOR ========== -->
-<section class="section chat-section" id="advisor">
-<div class="section-inner">
-<div class="section-header">
-<h2>AI Investment <span class="accent">Advisor</span></h2>
-<p>Meet Alex Chen — your personal financial mentor. Ask anything, in any language.</p>
-</div>
-<div class="chat-container">
-<div class="chat-header">
-<div class="chat-avatar">🤖</div>
-<div class="chat-header-info">
-<h4>Alex Chen</h4>
-<span>● Online • 8 years experience • 16 languages</span>
-</div>
-</div>
-<div class="chat-body" id="chatBody"></div>
-<div class="chat-input-area">
-<input type="text" class="chat-input" id="chatInput" placeholder="Ask about stocks, forex, crypto, risk management..." onkeypress="if(event.key==='Enter')sendChat()">
-<button class="chat-send" onclick="sendChat()">➤</button>
-</div>
-</div>
-</div>
-</section>
+<div class="trust-bar"><div class="trust-item"><span class="ico">🏛️</span> Regulated</div><div class="trust-item"><span class="ico">🔒</span> 256-bit SSL</div><div class="trust-item"><span class="ico">🌍</span> 120+ Countries</div><div class="trust-item"><span class="ico">💰</span> $0 Hidden Fees</div><div class="trust-item"><span class="ico">⭐</span> 4.8/5 Rating</div></div>
 
-<!-- ========== TRUST BAR ========== -->
-<div class="trust-bar">
-<div class="trust-item"><span class="ico">🏛️</span> Regulated by Major Authorities</div>
-<div class="trust-item"><span class="ico">🔒</span> 256-bit SSL Encryption</div>
-<div class="trust-item"><span class="ico">🌍</span> Serving 120+ Countries</div>
-<div class="trust-item"><span class="ico">💰</span> $0 Hidden Fees</div>
-<div class="trust-item"><span class="ico">⭐</span> 4.8/5 Client Rating</div>
-</div>
+<footer class="footer"><div class="footer-inner">
+<div class="footer-brand"><div style="font-size:1.2em;font-weight:800">📊 BroadFSC <span style="color:var(--blue)">PRO</span></div><p>The world's most accessible AI-powered investment education platform.</p></div>
+<div><h4>Academy</h4><a href="#courses">Beginner</a><a href="#courses">Intermediate</a><a href="#courses">Advanced</a><a href="#glossary">Glossary</a><a href="#tools">Tools</a></div>
+<div><h4>Research</h4><a href="#research">Daily Briefs</a><a href="#research">Weekly</a><a href="#research">Special</a><a href="#research">Sources</a><a href="#home">AI Advisor</a></div>
+<div><h4>Company</h4><a href="https://www.broadfsc.com/different" target="_blank">About</a><a href="#home">Contact</a><a href="#">Regulatory</a><a href="#">Privacy</a><a href="#">Terms</a></div>
+</div><div class="footer-bottom"><span>© 2026 Broad Investment Securities</span><span>Made with 🤖 AI</span></div></footer>
 
-<!-- ========== FOOTER ========== -->
-<footer class="footer">
-<div class="footer-inner">
-<div class="footer-brand">
-<div style="font-size:1.3em;font-weight:800">📊 BroadFSC <span style="color:var(--blue)">PRO</span></div>
-<p>The world's most accessible AI-powered investment education platform. Free courses, free research, free tools. Knowledge should be free.</p>
-</div>
-<div>
-<h4>Academy</h4>
-<a href="#courses">Beginner Courses</a>
-<a href="#courses">Intermediate Courses</a>
-<a href="#courses">Advanced Courses</a>
-<a href="#glossary">Financial Glossary</a>
-<a href="#tools">Trading Tools</a>
-</div>
-<div>
-<h4>Research</h4>
-<a href="#research">Daily Briefs</a>
-<a href="#research">Weekly Analysis</a>
-<a href="#research">Special Reports</a>
-<a href="#research">Free Sources</a>
-<a href="#advisor">AI Advisor</a>
-</div>
-<div>
-<h4>Company</h4>
-<a href="https://www.broadfsc.com/different" target="_blank">About BroadFSC</a>
-<a href="#advisor">Contact Us</a>
-<a href="#">Regulatory Info</a>
-<a href="#">Privacy Policy</a>
-<a href="#">Terms of Service</a>
-</div>
-</div>
-<div class="footer-bottom">
-<span>© 2026 Broad Investment Securities. All rights reserved.</span>
-<span>Made with 🤖 AI • Powered by Knowledge</span>
-</div>
-</footer>
+<div class="calc-modal" id="calcModal"><div class="calc-box" id="calcBox"></div></div>
+<div class="course-modal" id="courseModal"><div class="course-detail" id="courseDetail"></div></div>
 
-<!-- ========== CALC MODAL ========== -->
-<div class="calc-modal" id="calcModal">
-<div class="calc-box" id="calcBox"></div>
-</div>
-
-<!-- ========== COURSE MODAL ========== -->
-<div class="course-modal" id="courseModal">
-<div class="course-detail" id="courseDetail"></div>
-</div>
-
-<script>
-// ============================================
-// DATA
-// ============================================
-
-const COURSES=[
-// BEGINNER (10)
-{id:'b1',title:'What Is the Stock Market?',level:'beginner',duration:'15 min',modules:5,desc:'Learn how stock exchanges work, what drives prices, and why companies go public. The foundation of your investment journey.',quiz:true},
-{id:'b2',title:'Understanding Forex Trading',level:'beginner',duration:'20 min',modules:6,desc:'The $6.6 trillion/day forex market explained. Currency pairs, pips, lots, and why forex never sleeps.',quiz:true},
-{id:'b3',title:'Cryptocurrency 101',level:'beginner',duration:'18 min',modules:5,desc:'Bitcoin, Ethereum, and beyond. What blockchain is, how crypto works, and the risks and opportunities.',quiz:true},
-{id:'b4',title:'How to Open Your First Trading Account',level:'beginner',duration:'12 min',modules:4,desc:'Step-by-step guide to choosing a broker, completing KYC, funding your account, and placing your first order.',quiz:true},
-{id:'b5',title:'Reading Candlestick Charts',level:'beginner',duration:'25 min',modules:7,desc:'The language of markets. How to read open, high, low, close. Bullish and bearish patterns every trader must know.',quiz:true},
-{id:'b6',title:'Risk Management Fundamentals',level:'beginner',duration:'20 min',modules:6,desc:'The #1 rule of trading: protect your capital. Position sizing, stop-losses, and the 1% rule explained.',quiz:true},
-{id:'b7',title:'Order Types Explained',level:'beginner',duration:'15 min',modules:5,desc:'Market, limit, stop, trailing stop — when to use each. Avoid costly mistakes with the right order type.',quiz:true},
-{id:'b8',title:'What Moves the Markets?',level:'beginner',duration:'18 min',modules:5,desc:'Earnings, Fed decisions, geopolitical events, and more. Understand the forces behind price movements.',quiz:true},
-{id:'b9',title:'Trading Psychology for Beginners',level:'beginner',duration:'15 min',modules:5,desc:'Fear, greed, FOMO, and revenge trading. How emotions destroy portfolios and how to stay rational.',quiz:true},
-{id:'b10',title:'Building Your First Watchlist',level:'beginner',duration:'12 min',modules:4,desc:'How to select instruments to follow. Sector rotation, correlation, and diversification basics.',quiz:true},
-// INTERMEDIATE (10)
-{id:'i1',title:'Technical Analysis: Trend Lines & Patterns',level:'intermediate',duration:'30 min',modules:8,desc:'Head & shoulders, double tops, triangles, channels. Identify high-probability setups with pattern recognition.',quiz:true},
-{id:'i2',title:'Fundamental Analysis: Reading Financial Statements',level:'intermediate',duration:'35 min',modules:8,desc:'Income statement, balance sheet, cash flow. P/E, P/B, ROE — the metrics that separate good companies from bad.',quiz:true},
-{id:'i3',title:'Moving Averages & Momentum Indicators',level:'intermediate',duration:'25 min',modules:7,desc:'SMA, EMA, MACD, RSI, Stochastic. When they work, when they fail, and how to combine them effectively.',quiz:true},
-{id:'i4',title:'Support & Resistance Masterclass',level:'intermediate',duration:'25 min',modules:6,desc:'Horizontal, diagonal, psychological levels. How to draw them, trade them, and avoid false breakouts.',quiz:true},
-{id:'i5',title:'Portfolio Construction & Diversification',level:'intermediate',duration:'20 min',modules:6,desc:'Modern Portfolio Theory in practice. Asset allocation, correlation, rebalancing, and risk-adjusted returns.',quiz:true},
-{id:'i6',title:'Swing Trading Strategies',level:'intermediate',duration:'30 min',modules:7,desc:'Capture 2-10 day moves with precision. Entry, exit, and risk management for swing traders.',quiz:true},
-{id:'i7',title:'Economic Indicators & Their Impact',level:'intermediate',duration:'25 min',modules:6,desc:'GDP, CPI, NFP, PMI — what they mean and how to trade around economic releases.',quiz:true},
-{id:'i8',title:'Advanced Risk Management',level:'intermediate',duration:'20 min',modules:5,desc:'Maximum drawdown, Kelly criterion, risk-of-ruin calculations. Professional-level capital protection.',quiz:true},
-{id:'i9',title:'Commodity Markets Explained',level:'intermediate',duration:'22 min',modules:6,desc:'Gold, oil, agricultural commodities. Supply/demand dynamics, seasonal patterns, and inflation hedging.',quiz:true},
-{id:'i10',title:'Options Trading Fundamentals',level:'intermediate',duration:'30 min',modules:7,desc:'Calls, puts, premiums, Greeks. Covered calls, protective puts, and basic spread strategies.',quiz:true},
-// ADVANCED (10)
-{id:'a1',title:'Advanced Technical Indicators (MACD, RSI, Bollinger Bands)',level:'advanced',duration:'35 min',modules:8,desc:'Deep dive into indicator math, divergences, and advanced signal combinations. Go beyond the basics.',quiz:true},
-{id:'a2',title:'Day Trading: Strategies & Discipline',level:'advanced',duration:'30 min',modules:7,desc:'Scalping, momentum, and reversal strategies for the active trader. Strict rules, strict risk management.',quiz:true},
-{id:'a3',title:'Elliott Wave Theory',level:'advanced',duration:'35 min',modules:8,desc:'5-wave impulse, 3-wave correction. Fibonacci relationships and wave counting rules.',quiz:true},
-{id:'a4',title:'Quantitative Trading Basics',level:'advanced',duration:'40 min',modules:9,desc:'Algorithmic strategies, backtesting, statistical arbitrage. When human intuition meets machine precision.',quiz:true},
-{id:'a5',title:'Macro Trading & Global Market Correlation',level:'advanced',duration:'30 min',modules:7,desc:'How US rates affect emerging markets. Currency wars, yield curves, and cross-asset relationships.',quiz:true},
-{id:'a6',title:'Advanced Options Strategies',level:'advanced',duration:'40 min',modules:9,desc:'Iron condors, butterflies, calendars, and volatility strategies. Greeks management at scale.',quiz:true},
-{id:'a7',title:'Algorithmic Trading with Python',level:'advanced',duration:'45 min',modules:10,desc:'Build a simple trading bot. Data fetching, signal generation, backtesting with pandas and numpy.',quiz:true},
-{id:'a8',title:'Institutional Trading Concepts',level:'advanced',duration:'30 min',modules:7,desc:'Order flow, dark pools, VWAP, TWAP. Understanding how the big players move markets.',quiz:true},
-{id:'a9',title:'Volatility Trading & VIX',level:'advanced',duration:'25 min',modules:6,desc:'Implied vs realized volatility, VIX products, and how to trade volatility itself as an asset class.',quiz:true},
-{id:'a10',title:'Building a Professional Trading Plan',level:'advanced',duration:'20 min',modules:5,desc:'The blueprint for consistent profitability. Entry criteria, exit rules, risk parameters, and performance tracking.',quiz:true}
-];
-
-const RESEARCH=[
-{title:'US Pre-Market Brief — April 18, 2026',type:'daily',desc:'SPX futures flat after mixed earnings. Tech leads, energy lags. Key economic data ahead.',date:'Apr 18, 2026',read:'3 min'},
-{title:'Weekly Market Deep Dive: Fed Policy Impact',type:'weekly',desc:'Analysis of how the latest FOMC minutes affect rate expectations and sector rotation strategies.',date:'Apr 14, 2026',read:'8 min'},
-{title:'Special Report: AI Stocks — Bubble or Opportunity?',type:'special',desc:'Valuation analysis of top AI companies. Price targets, risk factors, and entry points.',date:'Apr 12, 2026',read:'12 min'},
-{title:'Asia Session Brief — April 18, 2026',type:'daily',desc:'Nikkei rallies 1.2% on weak yen. Hang Seng flat. PBOC signals steady policy.',date:'Apr 18, 2026',read:'3 min'},
-{title:'Crypto Market Weekly: BTC at Crossroads',type:'weekly',desc:'Bitcoin testing critical support. On-chain metrics, funding rates, and institutional flow analysis.',date:'Apr 14, 2026',read:'7 min'},
-{title:'Special Report: Emerging Market Opportunities 2026',type:'special',desc:'Top 10 emerging market plays. Political risk assessment, currency outlook, and sector picks.',date:'Apr 10, 2026',read:'15 min'}
-];
-
-const SOURCES=[
-{name:'Federal Reserve Economic Data (FRED)',desc:'508,000+ US and international economic time series. Free API by the St. Louis Fed.',icon:'🏛️',free:true},
-{name:'Yahoo Finance',desc:'Real-time quotes, historical data, financials, and news. Unofficial free API available.',icon:'📈',free:true},
-{name:'SEC EDGAR',desc:'All US public company filings. 10-K, 10-Q, 8-K, proxy statements. Free and comprehensive.',icon:'📋',free:true},
-{name:'World Bank Open Data',desc:'Global development indicators for 200+ countries. Free API with 50+ years of data.',icon:'🌍',free:true},
-{name:'Alpha Vantage',desc:'Free stock, forex, and crypto APIs. 25 requests/day free tier. Technical indicators included.',icon:'⚡',free:true},
-{name:'Investing.com Economic Calendar',desc:'Real-time economic events, forecasts, and actuals. Essential for fundamental analysis.',icon:'📅',free:true},
-{name:'CoinGecko API',desc:'Free cryptocurrency data API. 6,000+ coins, historical data, market caps, no API key needed.',icon:'🪙',free:true},
-{name:'TradingView',desc:'Free interactive charts, community analysis, and Pine Script. The trader\'s essential tool.',icon:'📊',free:true},
-{name:'IMF Data',desc:'World Economic Outlook, financial stability reports, and country-specific data. Free quarterly updates.',icon:'🏦',free:true},
-{name:'Financial Modeling Prep',desc:'Free tier: stock quotes, company profiles, income statements. 250 requests/day.',icon:'🔢',free:true},
-{name:'EOD Historical Data',desc:'Free end-of-day data for 60+ exchanges. Fundamentals, splits, dividends. Historical data included.',icon:'📉',free:true},
-{name:'Groq AI + Llama 3.1',desc:'Our AI engine. Free API for real-time analysis, report generation, and conversational intelligence.',icon:'🤖',free:true}
-];
-
-const GLOSSARY=[
-{term:'Bull Market',def:'A market condition where prices are rising or expected to rise. Typically defined as a 20%+ increase from recent lows.',cat:'Market Structure'},
-{term:'Bear Market',def:'A market condition where prices are falling. Typically defined as a 20%+ decline from recent highs.',cat:'Market Structure'},
-{term:'Support Level',def:'A price level where buying pressure historically overcomes selling pressure, preventing further decline.',cat:'Technical Analysis'},
-{term:'Resistance Level',def:'A price level where selling pressure historically overcomes buying pressure, preventing further advance.',cat:'Technical Analysis'},
-{term:'Candlestick',def:'A chart type showing open, high, low, and close prices. The body shows open-close range; wicks show the extremes.',cat:'Technical Analysis'},
-{term:'P/E Ratio',def:'Price-to-Earnings ratio. Stock price divided by earnings per share. Measures how expensive a stock is relative to its profits.',cat:'Fundamental Analysis'},
-{term:'Market Cap',def:'Market capitalization. Stock price × total shares outstanding. The total market value of a company.',cat:'Fundamental Analysis'},
-{term:'Dividend Yield',def:'Annual dividend per share divided by stock price. Expressed as a percentage. Income return on investment.',cat:'Fundamental Analysis'},
-{term:'Leverage',def:'Using borrowed capital to increase potential returns. Amplifies both gains and losses. Handle with extreme care.',cat:'Risk Management'},
-{term:'Stop-Loss Order',def:'An order to sell when the price reaches a specified level. Limits potential losses on a trade.',cat:'Risk Management'},
-{term:'Position Sizing',def:'Determining how much capital to allocate to a single trade. Usually based on risk tolerance and stop-loss distance.',cat:'Risk Management'},
-{term:'MACD',def:'Moving Average Convergence Divergence. A trend-following momentum indicator showing the relationship between two EMAs.',cat:'Technical Analysis'},
-{term:'RSI',def:'Relative Strength Index. Momentum oscillator (0-100). Above 70 = overbought, below 30 = oversold.',cat:'Technical Analysis'},
-{term:'Bollinger Bands',def:'Volatility bands placed above and below a moving average. Wider bands = higher volatility.',cat:'Technical Analysis'},
-{term:'PIP',def:'Percentage in Point. The smallest price move in forex. Usually 0.0001 for most currency pairs.',cat:'Forex'},
-{term:'Lot',def:'Standard unit of trade size in forex. Standard lot = 100,000 units; mini lot = 10,000; micro lot = 1,000.',cat:'Forex'},
-{term:'Spread',def:'The difference between bid and ask price. A key cost of trading, especially in forex and CFDs.',cat:'Trading'},
-{term:'Margin',def:'The collateral required to open a leveraged position. Margin call occurs when equity falls below maintenance margin.',cat:'Trading'},
-{term:'Blue Chip',def:'Stocks of large, well-established, financially sound companies with a history of reliable performance.',cat:'Market Structure'},
-{term:'IPO',def:'Initial Public Offering. The first time a company sells shares to the public on a stock exchange.',cat:'Market Structure'},
-{term:'ETF',def:'Exchange-Traded Fund. A basket of securities traded on an exchange like a single stock. Provides instant diversification.',cat:'Investment'},
-{term:'Volatility',def:'A measure of how much and how fast prices move. High volatility = large, rapid price swings.',cat:'Risk Management'},
-{term:'Diversification',def:'Spreading investments across different assets, sectors, or geographies to reduce overall risk.',cat:'Risk Management'},
-{term:'FOMO',def:'Fear Of Missing Out. The emotional urge to buy when everyone else is buying. A common cause of bad trades.',cat:'Psychology'},
-{term:'Drawdown',def:'The peak-to-trough decline in portfolio value. Maximum drawdown is a key risk metric.',cat:'Risk Management'},
-{term:'Yield Curve',def:'A graph showing bond yields across different maturities. Inverted yield curve often signals recession.',cat:'Bonds'},
-{term:'Alpha',def:'Excess return above a benchmark. Positive alpha means outperformance. The holy grail of active management.',cat:'Performance'},
-{term:'Beta',def:'Measure of volatility relative to the overall market. Beta >1 means more volatile than market; <1 means less.',cat:'Performance'},
-{term:'Liquidity',def:'How easily an asset can be bought or sold without significantly affecting its price. Cash is the most liquid asset.',cat:'Market Structure'},
-{term:'Hedge',def:'An investment made to reduce the risk of adverse price movements. Like insurance for your portfolio.',cat:'Risk Management'}
-];
-
-// ============================================
-// TICKER
-// ============================================
-function initTicker(){
-const items=[
-{sym:'SPX',price:'5,321.42',chg:'+0.84%',up:true},
-{sym:'NDX',price:'18,674.30',chg:'+1.12%',up:true},
-{sym:'DJI',price:'39,512.84',chg:'+0.33%',up:true},
-{sym:'BTC/USD',price:'87,432.10',chg:'+2.15%',up:true},
-{sym:'ETH/USD',price:'3,421.56',chg:'+1.87%',up:true},
-{sym:'EUR/USD',price:'1.0842',chg:'-0.12%',up:false},
-{sym:'GBP/USD',price:'1.2673',chg:'+0.08%',up:true},
-{sym:'USD/JPY',price:'154.32',chg:'+0.45%',up:true},
-{sym:'GOLD',price:'2,412.80',chg:'+0.67%',up:true},
-{sym:'OIL',price:'82.45',chg:'-0.34%',up:false}
-];
-let html='';
-for(let i=0;i<2;i++) items.forEach(it=>{
-html+=`<div class="ticker-item"><span class="sym">${it.sym}</span><span class="price">${it.price}</span><span class="chg ${it.up?'up':'dn'}">${it.chg}</span></div>`;
-});
-document.getElementById('tickerTrack').innerHTML=html;
-}
-
-// ============================================
-// HERO CANVAS (K-Line animation)
-// ============================================
-function initHeroCanvas(){
-const c=document.getElementById('heroCanvas'),ctx=c.getContext('2d');
-function resize(){c.width=c.offsetWidth;c.height=c.offsetHeight}
-resize();window.addEventListener('resize',resize);
-let data=[];let price=100;
-for(let i=0;i<120;i++){
-const o=price,h=o+Math.random()*3,l=o-Math.random()*3,c2=o+(Math.random()-.5)*4;
-data.push({o,h:Math.max(h,c2),l:Math.min(l,c2),c:c2});
-price=c2;
-}
-function draw(){
-ctx.clearRect(0,0,c.width,c.height);
-const w=c.width/120,bw=w*0.6;
-data.forEach((d,i)=>{
-const x=i*w+w*0.2;
-const up=d.c>d.o;
-ctx.strokeStyle=up?'#10b981':'#ef4444';
-ctx.fillStyle=up?'#10b98133':'#ef444433';
-const oY=c.height-((d.o-90)/20)*c.height;
-const cY=c.height-((d.c-90)/20)*c.height;
-const hY=c.height-((d.h-90)/20)*c.height;
-const lY=c.height-((d.l-90)/20)*c.height;
-ctx.beginPath();ctx.moveTo(x+w*0.3,hY);ctx.lineTo(x+w*0.3,lY);ctx.stroke();
-ctx.fillRect(x,oY,bw,cY-oY||1);
-});
-// shift data left, add new candle
-data.shift();
-const last=data[data.length-1];
-const o=last.c,h=o+Math.random()*3,l=o-Math.random()*3,c2=o+(Math.random()-.5)*4;
-data.push({o,h:Math.max(h,c2),l:Math.min(l,c2),c:c2});
-}
-setInterval(draw,200);
-draw();
-}
-
-// ============================================
-// COURSES
-// ============================================
-function renderCourses(level='all'){
-const grid=document.getElementById('coursesGrid');
-const filtered=level==='all'?COURSES:COURSES.filter(c=>c.level===level);
-grid.innerHTML=filtered.map(c=>{
-const tagClass=c.level==='beginner'?'beg':c.level==='intermediate'?'int':'adv';
-const tagLabel=c.level==='beginner'?'🌱 Beginner':c.level==='intermediate'?'📈 Intermediate':'🏆 Advanced';
-return `<div class="course-card" onclick="openCourse('${c.id}')">
-<div class="tag ${tagClass}">${tagLabel}</div>
-<h3>${c.title}</h3>
-<p>${c.desc}</p>
-<div class="course-meta">
-<span>📖 ${c.modules} modules</span>
-<span>⏱️ ${c.duration}</span>
-${c.quiz?'<span>✅ Quiz included</span>':''}
-</div>
-</div>`;
-}).join('');
-}
-
-function openCourse(id){
-const c=COURSES.find(x=>x.id===id);if(!c)return;
-const tagClass=c.level==='beginner'?'beg':c.level==='intermediate'?'int':'adv';
-const tagLabel=c.level==='beginner'?'🌱 Beginner':c.level==='intermediate'?'📈 Intermediate':'🏆 Advanced';
-const moduleNames=generateModuleNames(c);
-const quizHTML=c.quiz?`<div class="quiz-section"><h3>📝 Quick Quiz</h3>${generateQuiz(c)}</div>`:'';
-document.getElementById('courseDetail').innerHTML=`
-<button class="close-btn" onclick="document.getElementById('courseModal').classList.remove('open')">✕</button>
-<div class="tag ${tagClass}">${tagLabel}</div>
-<h2>${c.title}</h2>
-<p style="color:var(--text2);margin-bottom:24px">${c.desc}</p>
-<h3 style="margin-bottom:16px;font-size:1.1em">📋 Course Modules <span style="font-size:.75em;color:var(--text3)">(Click to expand)</span></h3>
-<ul class="module-list">${moduleNames.map((m,i)=>`<li class="module-item" onclick="toggleModule(this,${i})"><div class="num">${i+1}</div><div class="info"><h4>${m.title}</h4><p>${m.desc}</p></div><div class="dur">${m.dur}</div><span class="expand-icon">▼</span></li>${m.content?`<div class="module-content" id="modContent${i}">${formatContent(m.content)}</div>`:''}`).join('')}</ul>
-${quizHTML}
-`;
-document.getElementById('courseModal').classList.add('open');
-}
-
-function generateModuleNames(c){
-const modules={
-'b1':[{title:'What Is a Stock Exchange?',desc:'How exchanges match buyers and sellers',dur:'3 min',content:'A stock exchange is a centralized marketplace where buyers and sellers trade shares of publicly listed companies. Think of it like a farmers market — but instead of vegetables, people trade ownership stakes in businesses.\n\nKey concepts:\n• Exchanges match buy orders (bids) with sell orders (asks)\n• Prices move based on supply and demand\n• Major exchanges: NYSE, NASDAQ, LSE, TSE\n• Trading hours: typically 9:30 AM - 4:00 PM local time\n\nWhen you buy a stock, you\'re buying a tiny piece of a real company. If the company grows and earns more money, your piece becomes more valuable.'},{title:'Why Companies Go Public',desc:'IPOs, fundraising, and liquidity',dur:'3 min',content:'Companies go public through an Initial Public Offering (IPO) to raise capital from everyday investors. Before an IPO, a company is private — only founders, employees, and venture capitalists can own shares.\n\nWhy go public?\n• Raise massive capital for expansion (billions in some cases)\n• Early investors and employees can cash out\n• Use stock as currency for acquisitions\n• Increase brand visibility and credibility\n\nThe IPO process involves investment banks (underwriters) who set the initial price, file regulatory documents (S-1 in the US), and market the shares to institutional investors.'},{title:'What Drives Stock Prices?',desc:'Supply, demand, and market sentiment',dur:'3 min',content:'Stock prices move based on the balance between buyers and sellers. But what makes people want to buy or sell?\n\nFundamental drivers:\n• Earnings and revenue growth — the #1 long-term driver\n• Interest rates — lower rates = cheaper borrowing = higher valuations\n• Industry trends — AI boom, EV revolution, etc.\n• Economic data — GDP, employment, inflation\n\nSentiment drivers:\n• News and media coverage\n• Analyst upgrades/downgrades\n• Social media and Reddit (remember GameStop?)\n• Fear and greed cycles\n\nShort-term: sentiment rules. Long-term: fundamentals win.'},{title:'Types of Stocks',desc:'Common, preferred, growth, value',dur:'3 min',content:'Not all stocks are created equal. Here are the main categories:\n\nBy ownership type:\n• Common stock — voting rights, variable dividends (most common)\n• Preferred stock — no voting rights, fixed dividends, priority in bankruptcy\n\nBy investment style:\n• Growth stocks — high revenue growth, reinvest profits, high P/E (e.g., Tesla, Nvidia)\n• Value stocks — undervalued by metrics, pay dividends, low P/E (e.g., Coca-Cola, AT&T)\n• Blue chips — large, stable, industry leaders (e.g., Apple, Microsoft)\n• Penny stocks — under $5, extremely risky, avoid as a beginner\n\nBy size (market cap):\n• Large cap: $10B+ | Mid cap: $2-10B | Small cap: $300M-2B | Micro cap: below $300M'},{title:'How to Read a Stock Quote',desc:'Ticker, price, volume, and change',dur:'3 min',content:'When you look up a stock, you\'ll see a lot of numbers. Here\'s what they mean:\n\n• Ticker symbol: AAPL (Apple), MSFT (Microsoft) — the short name\n• Last price: The most recent trade price\n• Change: How much it moved today (+$2.34 or -1.2%)\n• Volume: Number of shares traded today\n• Open/High/Low: Today\'s opening, highest, and lowest prices\n• 52-week High/Low: The range over the past year\n• Market Cap: Total value of all shares\n• P/E Ratio: Price relative to earnings\n• Dividend Yield: Annual dividend as % of price\n\nPro tip: Volume tells you how "liquid" a stock is. Higher volume = easier to buy/sell without affecting the price. Stocks under 100K daily volume are risky for beginners.'}],
-'b2':[{title:'What Is Forex?',desc:'The global currency market explained',dur:'3 min',content:'Forex (Foreign Exchange) is the world\'s largest financial market, with $6.6 trillion traded daily. That\'s 30x the size of all US stock markets combined!\n\nUnlike stocks, forex has no central exchange. It\'s an over-the-counter (OTC) market — trades happen directly between participants via electronic networks.\n\nWho trades forex?\n• Central banks (manage currency reserves)\n• Commercial banks (facilitate international business)\n• Hedge funds (speculate on currency movements)\n• Corporations (hedge foreign revenue)\n• Retail traders like you and me\n\nForex trades 24 hours a day, 5 days a week — from Monday morning in Tokyo to Friday evening in New York.'},{title:'Currency Pairs Explained',desc:'Base vs quote, major vs exotic pairs',dur:'3 min',content:'In forex, you always trade in pairs — you\'re buying one currency while selling another.\n\nEUR/USD = 1.0842 means:\n• 1 Euro costs 1.0842 US Dollars\n• EUR is the BASE currency (what you\'re buying/selling)\n• USD is the QUOTE currency (what you\'re paying in)\n\nMajor pairs (most traded, tightest spreads):\n• EUR/USD, GBP/USD, USD/JPY, USD/CHF\n\nMinor pairs (less liquid):\n• EUR/GBP, GBP/JPY, EUR/CHF\n\nExotic pairs (high risk, wide spreads):\n• USD/TRY, EUR/ZAR, USD/MXN\n\nAs a beginner, stick to major pairs. They have the tightest spreads (lowest trading costs) and most predictable patterns.'},{title:'What Are Pips and Lots?',desc:'The units of forex trading',dur:'3 min',content:'PIP (Percentage in Point) is the smallest price move in forex.\n\nFor most pairs, 1 pip = 0.0001 (the 4th decimal place)\nFor JPY pairs, 1 pip = 0.01 (the 2nd decimal place)\n\nExample: EUR/USD moves from 1.0842 to 1.0847 = 5 pips\n\nLOT is the standard trade size:\n• Standard lot = 100,000 units ($10 per pip)\n• Mini lot = 10,000 units ($1 per pip)\n• Micro lot = 1,000 units ($0.10 per pip)\n\nFor a $1,000 account, use micro lots! A 50-pip move on a standard lot = $500 (half your account!). On a micro lot = $5 (manageable).'}],
-'b5':[{title:'Anatomy of a Candlestick',desc:'Open, high, low, close — the four data points',dur:'4 min',content:'A candlestick chart shows 4 key prices for each time period:\n\n• Open: The first trade price of the period\n• High: The highest price reached\n• Low: The lowest price reached  \n• Close: The last trade price of the period\n\nThe rectangular BODY shows the open-to-close range.\nThe thin WICKS (shadows) show the high and low.\n\nGreen/white candle: Close > Open (bullish — buyers won)\nRed/black candle: Close < Open (bearish — sellers won)\n\nA long body = strong conviction. A small body = indecision. Long wicks = rejection at that price level.'},{title:'Key Candlestick Patterns',desc:'Doji, hammer, engulfing, and more',dur:'5 min',content:'Here are the patterns every trader must know:\n\n reversal patterns:\n• DOJI — Open ≈ Close, long wicks. Market is undecided. Often signals a reversal.\n• HAMMER — Small body at top, long lower wick. Buyers rejected lower prices. Bullish signal after a downtrend.\n• SHOOTING STAR — Small body at bottom, long upper wick. Sellers rejected higher prices. Bearish signal after an uptrend.\n\nStrong reversal patterns:\n• BULLISH ENGULFING — Red candle followed by a larger green candle. Buyers overwhelmed sellers.\n• BEARISH ENGULFING — Green candle followed by a larger red candle. Sellers overwhelmed buyers.\n• MORNING STAR — 3-candle pattern: red → small body → green. Strong bullish reversal.\n• EVENING STAR — 3-candle pattern: green → small body → red. Strong bearish reversal.\n\nContinuation patterns:\n• THREE WHITE SOLDIERS — 3 consecutive green candles. Strong uptrend.\n• THREE BLACK CROWS — 3 consecutive red candles. Strong downtrend.'},{title:'How to Read Candlestick Charts in Practice',desc:'Timeframes, context, and confirmation',dur:'4 min',content:'A single candlestick tells you little. Context is everything.\n\nTimeframes matter:\n• 1-minute chart — Day trading, very noisy\n• 5/15-minute — Scalping and intraday\n• 1-hour — Swing trading entries\n• 4-hour — Swing trading analysis\n• Daily — Position trading, most reliable signals\n• Weekly — Long-term trend identification\n\nRules for reading patterns:\n1. ALWAYS look at the context — a hammer after a downtrend is bullish; after an uptrend, it means nothing\n2. Wait for CONFIRMATION — don\'t trade on a single candle. Wait for the next candle to confirm the signal\n3. Multiple timeframes — If the daily chart shows a bullish engulfing AND the 4-hour shows a hammer, that\'s a much stronger signal\n4. Volume matters — A pattern with high volume is more reliable than one with low volume\n5. Support/Resistance — Patterns near key S/R levels are far more meaningful'}],
-'b6':[{title:'The 1% Rule',desc:'The most important rule in trading',dur:'3 min',content:'The 1% Rule: Never risk more than 1% of your total account balance on a single trade.\n\nExample: $10,000 account → Maximum risk per trade = $100\n\nThis doesn\'t mean you only invest $100. It means if your stop-loss is hit, you lose at most $100.\n\nWhy 1%?\n• If you lose 10 trades in a row (it happens!), you\'re down 10% — recoverable\n• Without this rule, 5 bad trades could wipe out 50%+ of your account\n• Math works against you: A 50% loss requires a 100% gain to recover\n\nProfessional traders often risk even less: 0.5% or 0.25% per trade. The goal is to survive long enough to let your winning trades compound.'},{title:'Stop-Loss Orders',desc:'Your safety net in every trade',dur:'3 min',content:'A stop-loss is an automatic order to close your position when the price hits a predetermined level. It\'s your emergency exit.\n\nTypes:\n• Fixed stop: Set at a specific price (e.g., buy at $100, stop at $95)\n• Percentage stop: Set at X% below entry (e.g., 5% below)\n• ATR stop: Based on Average True Range — adapts to volatility\n• Trailing stop: Moves up as price moves up, locks in profits\n\nRules:\n1. ALWAYS set a stop-loss BEFORE entering a trade\n2. Never move your stop-loss further away (wider risk)\n3. Place stops below support (long) or above resistance (short)\n4. Give your trade room to breathe — too tight and you\'ll get stopped out by noise\n\nCommon mistake: Setting stops too tight. If your stock regularly moves 2% in a day, a 1% stop will get hit constantly.'},{title:'Position Sizing Formula',desc:'Calculate exactly how much to trade',dur:'4 min',content:'Position sizing determines HOW MUCH to buy/sell. Here\'s the formula:\n\nPosition Size = (Account × Risk %) ÷ (Entry Price - Stop-Loss Price)\n\nExample:\n• Account: $10,000\n• Risk: 1% = $100 max loss\n• Entry: $50\n• Stop-Loss: $48\n• Risk per share: $50 - $48 = $2\n• Position Size: $100 ÷ $2 = 50 shares\n• Total investment: 50 × $50 = $2,500 (25% of account)\n• Maximum loss: $100 (1% of account) ✅\n\nTry our Position Size Calculator in the Tools section to practice!\n\nThe beauty of position sizing: It keeps your risk constant regardless of the trade. A volatile stock gets fewer shares; a stable stock gets more. The dollar risk stays the same.'}]
-};
-if(modules[c.id]) return modules[c.id];
-const titles=['Introduction & Key Concepts','Core Principles Explained','Real-World Examples','Common Mistakes to Avoid','Practical Application','Advanced Tips & Tricks','Summary & Next Steps'];
-return titles.slice(0,c.modules).map((t,i)=>({title:t,desc:`Module ${i+1} of ${c.title}`,dur:Math.ceil(c.duration.replace(' min','')/c.modules)+' min'}));
-}
-
-function generateQuiz(c){
-const qs=[
-{q:`What is the primary purpose of ${c.title.toLowerCase().replace('what is ','').replace('?','')}?`,opts:['To make money quickly','To understand market fundamentals','To predict the future','To avoid all risk'],correct:1},
-{q:'Which statement best describes risk management in this context?',opts:['It eliminates all risk','It helps control and limit potential losses','It guarantees profits','It is only for advanced traders'],correct:1},
-{q:'What should you do before applying concepts from this course?',opts:['Invest all your savings immediately','Practice with a demo account first','Ignore risk warnings','Follow social media tips'],correct:1}
-];
-return qs.map((q,qi)=>`<div class="quiz-q"><h4>${qi+1}. ${q.q}</h4><div class="quiz-opts">${q.opts.map((o,oi)=>`<div class="quiz-opt" onclick="checkQuiz(this,${oi===q.correct})">${o}</div>`).join('')}</div></div>`).join('');
-}
-
-function checkQuiz(el,correct){
-el.parentElement.querySelectorAll('.quiz-opt').forEach(o=>{o.style.pointerEvents='none'});
-el.classList.add(correct?'correct':'wrong');
-if(!correct){el.parentElement.querySelectorAll('.quiz-opt').forEach((o,i)=>{if(i===correct||o===el)return;o.classList.add('wrong')})}
-}
-
-function toggleModule(el,index){
-const content=document.getElementById('modContent'+index);
-if(!content)return;
-const isShown=content.classList.contains('show');
-content.classList.toggle('show');
-el.classList.toggle('expanded');
-// Close others in same course
-if(!isShown){
-el.parentElement.querySelectorAll('.module-content').forEach((c,i)=>{
-if(i!==index){c.classList.remove('show')}
-});
-el.parentElement.querySelectorAll('.module-item').forEach((m,i)=>{
-if(i!==index){m.classList.remove('expanded')}
-});
-}
-}
-
-function formatContent(text){
-// Convert markdown-like formatting to HTML
-let html=text
-.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
-.replace(/\n• /g,'<br>• ')
-.replace(/\n\n/g,'<br><br>')
-.replace(/\n/g,'<br>');
-// Wrap bullet sections in ul
-html=html.replace(/(?:<br>)• (.*?)(?=(?:<br>)(?:<br>)• |<br><br>|$)/g,'<li>$1</li>');
-return html;
-}
-
-// Tab clicks
-document.querySelectorAll('.courses-tab').forEach(tab=>{
-tab.addEventListener('click',()=>{
-document.querySelectorAll('.courses-tab').forEach(t=>t.classList.remove('active'));
-tab.classList.add('active');
-renderCourses(tab.dataset.level);
-});
-});
-
-// ============================================
-// RESEARCH
-// ============================================
-function renderResearch(){
-document.getElementById('researchGrid').innerHTML=RESEARCH.map(r=>`
-<div class="research-card">
-<div class="type ${r.type}">${r.type==='daily'?'📅 Daily Brief':r.type==='weekly'?'📊 Weekly Analysis':'🔍 Special Report'}</div>
-<h3>${r.title}</h3>
-<p>${r.desc}</p>
-<div class="meta"><span>${r.date}</span><span>⏱️ ${r.read}</span></div>
-</div>`).join('');
-}
-
-function renderSources(){
-document.getElementById('sourcesGrid').innerHTML=SOURCES.map(s=>`
-<div class="source-card">
-<div class="logo" style="background:rgba(255,255,255,.04)">${s.icon}</div>
-<h4>${s.name}</h4>
-<p>${s.desc}</p>
-<span class="free-badge">✓ Free</span>
-</div>`).join('');
-}
-
-// ============================================
-// GLOSSARY
-// ============================================
-function renderGlossary(filter=''){
-const filtered=GLOSSARY.filter(g=>!filter||g.term.toLowerCase().includes(filter.toLowerCase())||g.def.toLowerCase().includes(filter.toLowerCase()));
-document.getElementById('glossaryGrid').innerHTML=filtered.map(g=>`
-<div class="glossary-item">
-<div class="term">${g.term}</div>
-<div class="def">${g.def}</div>
-<span class="cat">${g.cat}</span>
-</div>`).join('')||'<p style="text-align:center;color:var(--text3);grid-column:1/-1">No terms found. Try a different search.</p>';
-}
-document.getElementById('glossarySearch').addEventListener('input',e=>renderGlossary(e.target.value));
-
-// ============================================
-// CALCULATORS
-// ============================================
-function openCalc(type){
-const box=document.getElementById('calcBox');
-const modals={
-position:`<button class="calc-close" onclick="document.getElementById('calcModal').classList.remove('open')">✕</button>
-<h3>📐 Position Size Calculator</h3>
-<div class="calc-field"><label>Account Size ($)</label><input type="number" id="calcAccSize" value="10000"></div>
-<div class="calc-field"><label>Risk Per Trade (%)</label><input type="number" id="calcRiskPct" value="1" step="0.5"></div>
-<div class="calc-field"><label>Entry Price ($)</label><input type="number" id="calcEntry" value="100"></div>
-<div class="calc-field"><label>Stop-Loss Price ($)</label><input type="number" id="calcSL" value="98"></div>
-<button class="btn btn-p" style="width:100%;margin-top:12px" onclick="calcPosition()">Calculate</button>
-<div class="calc-result" id="calcResult" style="display:none"></div>`,
-pnl:`<button class="calc-close" onclick="document.getElementById('calcModal').classList.remove('open')">✕</button>
-<h3>💰 Profit/Loss Calculator</h3>
-<div class="calc-field"><label>Entry Price ($)</label><input type="number" id="pnlEntry" value="100"></div>
-<div class="calc-field"><label>Exit Price ($)</label><input type="number" id="pnlExit" value="110"></div>
-<div class="calc-field"><label>Position Size (shares)</label><input type="number" id="pnlSize" value="100"></div>
-<div class="calc-field"><label>Direction</label><select id="pnlDir"><option value="long">Long (Buy)</option><option value="short">Short (Sell)</option></select></div>
-<button class="btn btn-p" style="width:100%;margin-top:12px" onclick="calcPnL()">Calculate</button>
-<div class="calc-result" id="calcResult" style="display:none"></div>`,
-margin:`<button class="calc-close" onclick="document.getElementById('calcModal').classList.remove('open')">✕</button>
-<h3>🏦 Margin Calculator</h3>
-<div class="calc-field"><label>Position Value ($)</label><input type="number" id="marginVal" value="100000"></div>
-<div class="calc-field"><label>Leverage</label><input type="number" id="marginLev" value="100" step="10"></div>
-<button class="btn btn-p" style="width:100%;margin-top:12px" onclick="calcMargin()">Calculate</button>
-<div class="calc-result" id="calcResult" style="display:none"></div>`,
-currency:`<button class="calc-close" onclick="document.getElementById('calcModal').classList.remove('open')">✕</button>
-<h3>💱 Currency Converter</h3>
-<div class="calc-field"><label>Amount</label><input type="number" id="curAmt" value="1000"></div>
-<div class="calc-field"><label>From</label><select id="curFrom"><option>USD</option><option>EUR</option><option>GBP</option><option>JPY</option><option>CNY</option></select></div>
-<div class="calc-field"><label>To</label><select id="curTo"><option>EUR</option><option>USD</option><option>GBP</option><option>JPY</option><option>CNY</option></select></div>
-<button class="btn btn-p" style="width:100%;margin-top:12px" onclick="calcCurrency()">Convert</button>
-<div class="calc-result" id="calcResult" style="display:none"></div>`
-};
-box.innerHTML=modals[type]||'';
-document.getElementById('calcModal').classList.add('open');
-}
-
-function calcPosition(){
-const acc=parseFloat(document.getElementById('calcAccSize').value);
-const risk=parseFloat(document.getElementById('calcRiskPct').value)/100;
-const entry=parseFloat(document.getElementById('calcEntry').value);
-const sl=parseFloat(document.getElementById('calcSL').value);
-const riskAmt=acc*risk;
-const perShare=Math.abs(entry-sl);
-const shares=Math.floor(riskAmt/perShare);
-const r=document.getElementById('calcResult');r.style.display='block';
-r.innerHTML=`<div class="value">${shares} shares</div><div class="label">Risk Amount: $${riskAmt.toFixed(2)} | Per Share Risk: $${perShare.toFixed(2)}</div>`;
-}
-function calcPnL(){
-const entry=parseFloat(document.getElementById('pnlEntry').value);
-const exit=parseFloat(document.getElementById('pnlExit').value);
-const size=parseFloat(document.getElementById('pnlSize').value);
-const dir=document.getElementById('pnlDir').value;
-const pnl=dir==='long'?(exit-entry)*size:(entry-exit)*size;
-const pct=((dir==='long'?(exit-entry):(entry-exit))/entry*100).toFixed(2);
-const r=document.getElementById('calcResult');r.style.display='block';
-r.innerHTML=`<div class="value" style="background:${pnl>=0?'linear-gradient(135deg,#10b981,#059669)':'linear-gradient(135deg,#ef4444,#dc2626)'};-webkit-background-clip:text;-webkit-text-fill-color:transparent">$${pnl.toFixed(2)}</div><div class="label">${pnl>=0?'Profit':'Loss'} | ${pct}% Return</div>`;
-}
-function calcMargin(){
-const val=parseFloat(document.getElementById('marginVal').value);
-const lev=parseFloat(document.getElementById('marginLev').value);
-const margin=val/lev;
-const r=document.getElementById('calcResult');r.style.display='block';
-r.innerHTML=`<div class="value">$${margin.toFixed(2)}</div><div class="label">Required Margin | Leverage: 1:${lev}</div>`;
-}
-function calcCurrency(){
-const rates={USD:1,EUR:0.92,GBP:0.79,JPY:154.32,CNY:7.24};
-const amt=parseFloat(document.getElementById('curAmt').value);
-const from=document.getElementById('curFrom').value;
-const to=document.getElementById('curTo').value;
-const result=amt/rates[from]*rates[to];
-const r=document.getElementById('calcResult');r.style.display='block';
-r.innerHTML=`<div class="value">${result.toFixed(2)} ${to}</div><div class="label">${amt} ${from} → ${to} | Rate: ${(rates[to]/rates[from]).toFixed(4)}</div>`;
-}
-
-// Close modals on outside click
-document.getElementById('calcModal').addEventListener('click',e=>{if(e.target===e.currentTarget)e.currentTarget.classList.remove('open')});
-document.getElementById('courseModal').addEventListener('click',e=>{if(e.target===e.currentTarget)e.currentTarget.classList.remove('open')});
-
-// ============================================
-// AI CHAT
-// ============================================
-let chatHistory=[];
-let currentAdvisor='alex';
-const ADVISORS={
-alex:{name:'Alex Chen',emoji:'👨‍💼',title:'Senior Investment Advisor',specialty:'Technical analysis, portfolio strategy, and market timing'},
-sarah:{name:'Sarah Kim',emoji:'👩‍💼',title:'Risk Management Specialist',specialty:'Position sizing, stop-losses, and capital protection'}
-};
-const ADVISOR_SYSTEM=`You are {ADVISOR_NAME}, a senior investment advisor at BroadFSC. You have 8 years of experience in technical analysis, risk management, and portfolio construction.
-
-CRITICAL RULES:
-1. NEVER give one-sentence answers. Always provide DETAILED, EDUCATIONAL responses (3-5 paragraphs minimum)
-2. Use SPIN selling naturally:
-   - SITUATION: Ask about their experience level and goals
-   - PROBLEM: Identify gaps in their knowledge or trading approach
-   - IMPLICATION: Explain why those gaps are costly (lost money, missed opportunities)
-   - NEED-PAYOFF: Show how BroadFSC's tools and education can help
-3. Every response must include at least ONE of: specific numbers, real examples, actionable advice
-4. End EVERY response with a relevant follow-up question to continue the conversation
-5. If they mention trading or investing, naturally suggest "Have you considered opening an account with BroadFSC for professional tools and guidance?"
-6. Reference our website features: 30+ free courses, trading calculators, research reports, glossary
-7. Remember and reference what they said earlier in the conversation
-8. Detect their language and respond in the SAME language
-
-KNOWLEDGE AREAS:
-- Stocks: P/E ratios, earnings, sector rotation, IPOs, blue chips vs penny stocks
-- Forex: Currency pairs, pips, lots, leverage, sessions (Tokyo/London/NY), carry trade
-- Crypto: Bitcoin, Ethereum, DeFi, staking, on-chain metrics, 24/7 trading
-- Technical Analysis: Candlestick patterns, support/resistance, MACD, RSI, Bollinger Bands
-- Fundamental Analysis: Income statement, balance sheet, cash flow, economic indicators
-- Risk Management: 1% rule, position sizing, stop-losses, diversification, risk-reward ratio
-- Portfolio: Modern Portfolio Theory, asset allocation, rebalancing, correlation
-
-You are warm, professional, and genuinely helpful. Educate first, sell second — but always guide toward action.`;
-
-function openAdvisorChat(advisor){
-currentAdvisor=advisor;
-const adv=ADVISORS[advisor];
-// Scroll to chat section
-document.getElementById('advisor').scrollIntoView({behavior:'smooth'});
-// Update chat header
-document.querySelector('.chat-avatar').textContent=adv.emoji;
-document.querySelector('.chat-header-info h4').textContent=adv.name;
-document.querySelector('.chat-header-info span').textContent='● Online • '+adv.title;
-// Clear and re-init chat
-chatHistory=[];
-document.getElementById('chatBody').innerHTML='';
-const greetings={
-alex:"👋 Welcome! I'm Alex Chen, your personal investment advisor at BroadFSC Pro.\n\nI specialize in technical analysis, portfolio strategy, and market timing. I can help you with:\n\n• 📊 Market analysis & trading strategies — from candlestick patterns to macro trends\n• 📖 Course recommendations — based on your experience level\n• 🔍 Research report walkthroughs — understand what moves markets\n• 🧮 Risk & position sizing — protect your capital\n• 💼 Professional trading tools & account opening\n\nTo get started, tell me: What's your experience level with investing? Are you just starting out, or have you been trading for a while?",
-sarah:"👋 Hi there! I'm Sarah Kim, BroadFSC's Risk Management Specialist.\n\nMy passion is helping traders protect their capital. I've seen too many people lose money not because of bad analysis, but because of bad risk management. I can help you with:\n\n• 🛡️ Position sizing — how much to risk on each trade\n• 📍 Stop-loss placement — where and when to cut losses\n• ⚖️ Risk-reward analysis — only take trades worth taking\n• 📉 Drawdown management — survive the losing streaks\n• 📊 Portfolio risk — correlation, diversification, allocation\n\nLet me ask you: Do you currently use a risk management system in your trading? If not, you're not alone — but we should fix that!"
-};
-addBotMsg(greetings[advisor]);
-}
-
-function initChat(){
-openAdvisorChat('alex');
-}
-
-function addBotMsg(text){
-const body=document.getElementById('chatBody');
-const div=document.createElement('div');
-div.className='chat-msg bot';
-div.innerHTML=text.replace(/\n/g,'<br>');
-body.appendChild(div);
-body.scrollTop=body.scrollHeight;
-}
-
-function addUserMsg(text){
-const body=document.getElementById('chatBody');
-const div=document.createElement('div');
-div.className='chat-msg user';
-div.textContent=text;
-body.appendChild(div);
-body.scrollTop=body.scrollHeight;
-}
-
-function showTyping(){
-const body=document.getElementById('chatBody');
-const div=document.createElement('div');
-div.className='chat-msg bot';
-div.id='typingIndicator';
-div.innerHTML='<div class="typing"><span></span><span></span><span></span></div>';
-body.appendChild(div);
-body.scrollTop=body.scrollHeight;
-}
-
-function removeTyping(){
-const t=document.getElementById('typingIndicator');
-if(t)t.remove();
-}
-
-async function sendChat(){
-const input=document.getElementById('chatInput');
-const text=input.value.trim();if(!text)return;
-input.value='';
-addUserMsg(text);
-chatHistory.push({role:'user',content:text});
-showTyping();
-
-// Build messages for Groq
-const sysPrompt=ADVISOR_SYSTEM.replace('{ADVISOR_NAME}',ADVISORS[currentAdvisor].name);
-const messages=[{role:'system',content:sysPrompt},...chatHistory.slice(-10)];
-
-try{
-const GROQ_KEY=typeof process!=='undefined'?'':(window.GROQ_API_KEY||'');
-// Try to get API key from environment or use fallback
-const groqKey=window.GROQ_API_KEY||'';
-if(!groqKey){throw new Error('No API key')}
-const resp=await fetch('https://api.groq.com/openai/v1/chat/completions',{
-method:'POST',
-headers:{'Content-Type':'application/json','Authorization':'Bearer '+groqKey},
-body:JSON.stringify({model:'llama-3.1-8b-instant',messages,max_tokens:1024,temperature:0.7})
-});
-const data=await resp.json();
-removeTyping();
-if(data.choices&&data.choices[0]){
-const reply=data.choices[0].message.content;
-chatHistory.push({role:'assistant',content:reply});
-addBotMsg(reply);
-}else{
-addBotMsg("I'm having trouble connecting right now. Please try again in a moment. 🔧");
-}
-}catch(e){
-removeTyping();
-// Fallback: local knowledge-based responses
-const fallback=generateLocalResponse(text);
-chatHistory.push({role:'assistant',content:fallback});
-addBotMsg(fallback);
-}
-}
-
-function generateLocalResponse(text){
-const t=text.toLowerCase();
-
-// 20+ topic knowledge base with multi-paragraph educational responses
-const KB=[
-{keywords:['stock','share','equity'],response:"Great question about stocks! 📈\n\nThe stock market is essentially a marketplace where ownership in publicly traded companies changes hands. Let me break it down:\n\n**How it works:** When you buy a share of Apple (AAPL), you own a tiny piece of Apple Inc. If Apple's business grows and profits increase, your share becomes more valuable. The price is determined by supply and demand — more buyers than sellers = price goes up.\n\n**Key metrics to know:**\n• P/E Ratio (Price/Earnings) — How expensive a stock is relative to its profits. AAPL at P/E 28 means you pay $28 for every $1 of earnings\n• Market Cap — Total value of all shares. Large cap ($10B+), Mid cap ($2-10B), Small cap (under $2B)\n• Dividend Yield — Cash payments as % of stock price. Great for income investors\n• Volume — Number of shares traded daily. Higher = more liquid = safer for beginners\n\n**My advice for beginners:** Start with broad ETFs like SPY (S&P 500) rather than picking individual stocks. You get instant diversification and lower risk. Then gradually add individual stocks as you learn more.\n\n💡 Check out our 'What Is the Stock Market?' course in the Academy section — it covers all the fundamentals.\n\nWhat specifically interests you about stocks — are you looking to invest long-term, or are you more interested in active trading?"},
-{keywords:['forex','currency','pip','lot'],response:"Forex is fascinating! 💱\n\nThe forex market is the world's largest financial market, with $6.6 trillion traded daily — that's 30x the US stock market! Here's what you need to know:\n\n**Currency Pairs:** You always trade in pairs. EUR/USD = 1.0842 means 1 Euro costs $1.0842. The first currency (EUR) is the BASE, the second (USD) is the QUOTE. When you buy EUR/USD, you're buying Euros with Dollars.\n\n**Key concepts:**\n• PIP — Smallest price unit. For most pairs, 1 pip = 0.0001. For JPY pairs, 1 pip = 0.01\n• LOT — Trade size. Standard = 100,000 units ($10/pip), Mini = 10,000 ($1/pip), Micro = 1,000 ($0.10/pip)\n• SPREAD — Difference between buy and sell price. This is your main trading cost\n• LEVERAGE — Borrowed capital to control larger positions. 1:100 leverage means $1,000 controls $100,000. Powerful but dangerous!\n\n**Sessions:** The market runs 24/5 through three main sessions: Tokyo (Asian), London (European), New York (American). The London-NY overlap (1-5pm GMT) has the highest volume and volatility.\n\n⚠️ **Critical warning:** Forex leverage can wipe your account in minutes. Always use proper position sizing and stop-losses. Never risk more than 1% of your account per trade.\n\n📊 Our Forex 101 course covers everything step by step. What aspect would you like to dive deeper into — technical analysis for forex, or the fundamentals that drive currency movements?"},
-{keywords:['crypto','bitcoin','btc','ethereum','eth','defi'],response:"Crypto is an exciting but volatile space! 🪙\n\nLet me give you the full picture:\n\n**What is cryptocurrency?** Digital assets built on blockchain technology — a decentralized, immutable ledger that records all transactions. Bitcoin, created in 2009 by the pseudonymous Satoshi Nakamoto, was the first and remains the largest by market cap (~$1.7T).\n\n**Key differences from traditional markets:**\n• 24/7 trading — no closing bell, no weekends off\n• Extreme volatility — 5-10% daily moves are common (vs 1-2% in stocks)\n• No circuit breakers — no trading halts during crashes\n• Regulatory uncertainty — rules vary by country and change frequently\n\n**Major categories:**\n• Store of value: Bitcoin (digital gold)\n• Smart contracts: Ethereum, Solana, Cardano\n• DeFi: Uniswap, Aave, Compound (decentralized financial services)\n• Stablecoins: USDT, USDC (pegged to USD, used for trading)\n\n**Risk management for crypto:**\n1. Never invest more than you can afford to lose completely\n2. Use hardware wallets for long-term holdings (Ledger, Trezor)\n3. Set stop-losses — crypto crashes happen fast\n4. Diversify — don't go all-in on one coin\n5. Be wary of 'guaranteed returns' — they're always scams\n\nWant to learn about technical analysis for crypto, or are you more interested in understanding the blockchain technology behind it?"},
-{keywords:['risk','stop','loss','position','size','manage'],response:"Risk management is the MOST important skill in trading! 🛡️\n\nI've seen traders with 70% win rates still lose money because they didn't manage risk properly. Here's your complete guide:\n\n**The 1% Rule (non-negotiable):**\nNever risk more than 1% of your account on a single trade. $10,000 account = max $100 risk per trade. This isn't your investment amount — it's your maximum loss if the trade goes wrong.\n\n**Position Sizing Formula:**\nShares = (Account × Risk%) ÷ (Entry - Stop-Loss)\n\nExample: $10,000 account, 1% risk = $100 max loss\nEntry $50, Stop-Loss $48 = $2 risk per share\nPosition = $100 ÷ $2 = 50 shares ($2,500 invested)\nIf stopped out: you lose $100 (1%) ✅ Not $500 (5%) ❌\n\n**Stop-Loss Types:**\n• Fixed stop: Set at a specific price level\n• Trailing stop: Moves up with price, locks in profits\n• ATR stop: Adapts to current volatility (professional choice)\n• Time stop: Close if trade doesn't move within X days\n\n**Risk-Reward Ratio:**\nAlways aim for at least 1:2. If you risk $100, your target should be $200+. Even with a 40% win rate, you're profitable: 4 wins × $200 = $800, 6 losses × $100 = $600, Net = +$200\n\n📊 Try our Position Size Calculator in the Tools section — it does the math for you!\n\nWould you like me to walk through a real example of position sizing for a trade you're considering?"},
-{keywords:['candle','candlestick','pattern','chart'],response:"Candlestick charts are the language of markets! 🕯️\n\nLet me teach you to read them fluently:\n\n**Anatomy of a Candle:**\n• Body (rectangle): Shows open-to-close range\n• Upper wick: Highest price reached\n• Lower wick: Lowest price reached\n• Green/white: Close > Open (bullish)\n• Red/black: Close < Open (bearish)\n\n**Must-Know Patterns:**\n\n🔴 Reversal signals:\n• DOJI: Open ≈ Close, long wicks. Market indecision → often signals reversal\n• HAMMER: Small body at top, long lower wick after downtrend. Buyers rejected lower prices → bullish\n• SHOOTING STAR: Opposite of hammer. Bearish reversal after uptrend\n• ENGULFING: Opposite-color candle completely covers previous one. Very strong signal\n\n🟢 Continuation signals:\n• THREE WHITE SOLDIERS: 3 strong green candles in a row\n• THREE BLACK CROWS: 3 strong red candles in a row\n\n**Pro Tips:**\n1. Context matters — a hammer AFTER a downtrend is meaningful; after an uptrend it's not\n2. Higher timeframe patterns are more reliable (daily > hourly > 5-min)\n3. Always wait for CONFIRMATION — the next candle confirming the signal\n4. Volume adds weight — patterns with high volume are much more reliable\n\n📖 Our 'Reading Candlestick Charts' course has interactive examples. Want me to explain a specific pattern, or shall we move on to technical indicators?"},
-{keywords:['support','resistance','level','breakout'],response:"Support and resistance are the foundation of ALL technical analysis! 📊\n\n**What are they?**\n• SUPPORT: A price level where buying pressure overcomes selling — price bounces UP\n• RESISTANCE: A price level where selling pressure overcomes buying — price bounces DOWN\n\nThink of it like a ball bouncing between a floor (support) and ceiling (resistance).\n\n**How to identify them:**\n• Look for price levels where the stock has reversed multiple times\n• Round numbers often act as psychological levels ($100, $150, $200)\n• Previous highs become new resistance; previous lows become new support\n• Volume spikes at S/R levels confirm their significance\n\n**Types of S/R:**\n• Horizontal: Same price level touched multiple times\n• Diagonal: Trend lines connecting higher lows (uptrend) or lower highs (downtrend)\n• Dynamic: Moving averages act as dynamic S/R\n• Psychological: Round numbers, all-time highs, 52-week highs/lows\n\n**Trading strategies:**\n1. BOUNCE: Buy at support, sell at resistance (range trading)\n2. BREAKOUT: Buy when price breaks above resistance with volume\n3. PULLBACK: Wait for breakout, then buy the retest of broken resistance (now support)\n\n⚠️ **False breakouts** are common! Always wait for a candle CLOSE above/below the level, not just a wick.\n\nWant to learn how to draw trend lines properly, or should we discuss breakout trading strategies?"},
-{keywords:['macd','rsi','bollinger','indicator','moving','average','ema','sma'],response:"Technical indicators are powerful tools — when used correctly! 📈\n\nLet me break down the most important ones:\n\n**Moving Averages (MA):**\n• SMA (Simple): Average of last N periods. Smooths price action\n• EMA (Exponential): Gives more weight to recent prices. Faster to react\n• Common periods: 20 (short-term), 50 (medium), 200 (long-term trend)\n• Golden Cross (50 SMA crosses above 200 SMA) = Bullish. Death Cross = Bearish\n\n**RSI (Relative Strength Index):**\n• Ranges from 0-100. Measures momentum\n• Above 70 = Overbought (might reverse down)\n• Below 30 = Oversold (might reverse up)\n• Divergence: Price makes new high but RSI doesn't = bearish divergence (reversal coming)\n\n**MACD:**\n• Two lines: MACD line and Signal line\n• Bullish: MACD crosses above Signal line\n• Bearish: MACD crosses below Signal line\n• Histogram shows the gap between the two lines\n\n**Bollinger Bands:**\n• Three lines: Middle (20 SMA), Upper and Lower bands\n• Bands widen when volatility increases, narrow when it decreases\n• Price touching upper band = potentially overbought\n• Price touching lower band = potentially oversold\n• Squeeze (bands narrow) → Big move coming\n\n⚠️ **Critical rule:** Never use indicators alone. Always combine with price action, S/R levels, and market context.\n\nWhich indicator would you like me to explain in more detail, or should we discuss how to combine them effectively?"},
-{keywords:['open','account','start','sign up','register','begin'],response:"Great to hear you're ready to get started! 🚀\n\nOpening an account with BroadFSC is straightforward and secure:\n\n**Step-by-step process:**\n1. **Visit** broadfsc.com — our official website\n2. **Click 'Open Account'** — starts the registration process\n3. **Complete KYC verification** — government-issued ID + proof of address (usually takes 15-30 minutes for approval)\n4. **Fund your account** — Bank transfer, credit/debit card, or cryptocurrency\n5. **Choose your platform** — Web trader, mobile app, or MT4/MT5\n6. **Start trading** — Stocks, forex, crypto, commodities, and more\n\n**Why choose BroadFSC?**\n✅ Regulated by major financial authorities — your funds are protected\n✅ Competitive spreads — as low as 0.0 pips on major forex pairs\n✅ Professional trading platforms with advanced charting\n✅ 24/5 customer support in 16 languages\n✅ Free educational resources — 30+ courses, daily research, AI advisory\n✅ No hidden fees — transparent pricing\n\n**Minimum deposit:** Just $100 to get started. But I recommend starting with at least $1,000 to properly apply risk management (1% rule = $10 risk per trade).\n\nWould you like me to guide you through the account opening process step by step, or do you have questions about our trading platforms first?"},
-{keywords:['etf','index','fund','diversif'],response:"ETFs are one of the smartest investment tools ever created! 📊\n\n**What is an ETF?**\nAn Exchange-Traded Fund is a basket of securities that trades on an exchange like a single stock. Buy one share of SPY, and you instantly own a tiny piece of all 500 companies in the S&P 500.\n\n**Why ETFs are great for beginners:**\n• Instant diversification — one purchase = hundreds of stocks\n• Low fees — SPY charges 0.09% annually vs 1-2% for mutual funds\n• High liquidity — trade anytime the market is open\n• Transparent — you always know what's inside\n\n**Popular ETFs by category:**\n• US Large Cap: SPY (S&P 500), QQQ (Nasdaq 100)\n• International: VXUS (ex-US), EFA (developed markets)\n• Bonds: BND (total bond), TLT (long-term treasury)\n• Sector: XLF (financials), XLK (tech), XLE (energy)\n• Gold: GLD, IAU\n• Crypto: BITO (Bitcoin futures), BTF\n\n**My recommended starter portfolio (for $5,000+):**\n• 60% SPY (US stocks)\n• 20% VXUS (international stocks)\n• 15% BND (bonds for stability)\n• 5% GLD (gold as hedge)\n\nThis gives you global diversification across stocks, bonds, and gold — with just 4 purchases!\n\nWould you like to learn about more advanced portfolio strategies, or are you interested in sector-specific ETFs?"},
-{keywords:['option','call','put','premium','greek'],response:"Options are powerful but complex — let me break them down simply! 🎯\n\n**What are options?**\nOptions are contracts that give you the RIGHT (but not obligation) to buy or sell an asset at a predetermined price before a specific date.\n\n**Two types:**\n• CALL option: Right to BUY at the strike price (you profit when price goes UP)\n• PUT option: Right to SELL at the strike price (you profit when price goes DOWN)\n\n**Key terms:**\n• Strike Price: The predetermined price in the contract\n• Premium: What you pay to buy the option (your max risk)\n• Expiration: When the contract expires (options decay over time)\n• In-the-money (ITM): Option has intrinsic value\n• Out-of-the-money (OTM): Option has no intrinsic value (only time value)\n\n**The Greeks (risk measures):**\n• Delta: How much option price moves per $1 stock move (0-1 for calls)\n• Theta: Time decay — options lose value every day (enemy of buyers, friend of sellers)\n• Vega: Sensitivity to volatility changes\n• Gamma: Rate of delta change\n\n**Beginner strategies:**\n1. Buy calls: Bullish bet, limited risk (premium paid)\n2. Buy puts: Bearish bet, limited risk\n3. Covered calls: Own stock + sell calls against it (income generation)\n4. Protective puts: Own stock + buy puts (insurance against crash)\n\n⚠️ Never sell naked options as a beginner. Your risk is unlimited!\n\nWant me to explain a specific strategy in detail, or should we cover how to read an options chain?"},
-{keywords:['dividend','income','yield','passive'],response:"Dividend investing is one of the most reliable wealth-building strategies! 💰\n\n**What are dividends?**\nCash payments companies make to shareholders from their profits. Usually paid quarterly. Think of it as getting paid to hold stocks.\n\n**Key metrics:**\n• Dividend Yield: Annual dividend ÷ Stock price. A $100 stock paying $3/year = 3% yield\n• Payout Ratio: % of earnings paid as dividends. Below 60% is healthy; above 80% is risky\n• Dividend Growth: Companies that INCREASE dividends annually are the best long-term holds\n• Ex-Dividend Date: Buy before this date to receive the next dividend\n\n**Dividend Aristocrats:** Companies that have raised dividends for 25+ consecutive years. Examples:\n• Coca-Cola (KO) — 60+ years of increases, ~3% yield\n• Johnson & Johnson (JNJ) — 60+ years, ~3% yield\n• Procter & Gamble (PG) — 65+ years, ~2.5% yield\n• 3M (MMM) — 60+ years, ~4% yield\n\n**The power of compounding:**\nIf you invest $10,000 in a 3% yield stock and reinvest dividends:\n• After 10 years: ~$13,439 (without dividend growth)\n• With 5% annual dividend growth: ~$16,288\n• With 8% dividend growth: ~$19,671\n\nThat's nearly doubling your money from dividends alone!\n\nInterested in building a dividend portfolio, or want to learn about other income strategies?"},
-{keywords:['tax','capital','gain','loss','wash'],response:"Tax considerations are crucial for your net returns! 💡\n\n**Capital Gains Tax:**\n• Short-term (held <1 year): Taxed as ordinary income (up to 37% in the US)\n• Long-term (held >1 year): Much lower rates (0%, 15%, or 20% depending on income)\n\nThis is why holding stocks >1 year can save you significantly on taxes!\n\n**Tax-Loss Harvesting:**\nSell losing positions to offset gains. If you made $5,000 on AAPL but lost $3,000 on TSLA, sell TSLA to reduce your taxable gain to $2,000.\n\n⚠️ **Wash Sale Rule:** If you sell a stock at a loss and buy it back within 30 days, the loss is DISALLOWED for tax purposes. Wait 31 days or buy a similar (but not substantially identical) ETF.\n\n**Tax-advantaged accounts (US):**\n• 401(k): Pre-tax contributions, tax-deferred growth\n• Roth IRA: After-tax contributions, TAX-FREE growth and withdrawals\n• Traditional IRA: Pre-tax or after-tax, tax-deferred growth\n\n**For international investors:** Tax treatment varies by country. Always consult a local tax professional.\n\nNote: I'm an investment advisor, not a tax professional. For specific tax advice, please consult a qualified tax professional.\n\nWould you like to discuss portfolio optimization strategies, or do you have questions about account types?"},
-{keywords:['commoditi','gold','oil','silver','crude'],response:"Commodities are essential for diversification and inflation hedging! 🛢️\n\n**What are commodities?** Raw materials and primary products traded on exchanges. They fall into four categories:\n\n1. **Energy:** Crude oil (WTI, Brent), natural gas, gasoline\n2. **Metals:** Gold, silver, copper, platinum\n3. **Agriculture:** Wheat, corn, soybeans, coffee, cotton\n4. **Livestock:** Cattle, hogs\n\n**Gold — The ultimate safe haven:**\n• Historically preserves purchasing power during inflation\n• Inverse correlation with real interest rates\n• Trades in USD — weaker dollar = higher gold\n• Ways to invest: Physical (bars/coins), GLD ETF, gold miners (GDX)\n\n**Oil — The economic indicator:**\n• Driven by supply (OPEC+, US shale) and demand (global growth)\n• Contango: Future price > spot price (normal market)\n• Backwardation: Future price < spot price (supply shortage)\n• WTI (US) vs Brent (international) spread matters\n\n**How to trade commodities:**\n• Futures contracts (advanced, high leverage)\n• ETFs: GLD (gold), USO (oil), DBA (agriculture)\n• Stocks: Gold miners, oil companies\n• CFDs: Flexible, but watch the spreads\n\n⚠️ Commodities are cyclical — they can go sideways for years then surge. Position sizing is crucial.\n\nWant to learn about specific commodity strategies, or shall we discuss how commodities fit into a diversified portfolio?"},
-{keywords:['bond','treasury','yield','interest','rate','fed'],response:"Bonds and interest rates are the backbone of global finance! 🏦\n\n**What are bonds?**\nLoans you make to governments or corporations. In return, they pay you regular interest (coupon) and return your principal at maturity.\n\n**Key relationship:**\n📈 Interest rates UP → Bond prices DOWN\n📉 Interest rates DOWN → Bond prices UP\n\nThis is THE most important concept in bond investing. When the Fed raises rates, existing bonds with lower rates become less valuable.\n\n**Types of bonds:**\n• US Treasuries: Safest, backed by US government\n  - T-Bills: <1 year\n  - T-Notes: 1-10 years\n  - T-Bonds: 10-30 years\n• Corporate bonds: Higher yield, higher risk\n• Municipal bonds: Tax-exempt (US)\n• High-yield (junk) bonds: 6-10%+ yield, significant default risk\n\n**The Yield Curve:**\n• Normal: Long-term rates > short-term (economy growing)\n• Flat: All rates similar (transition period)\n• Inverted: Short-term > long-term (recession signal!)\n\n**Current context:** The Fed has been navigating rate decisions carefully. Watch the 10-year Treasury yield — it drives mortgage rates, stock valuations, and global capital flows.\n\n📊 Our Economic Indicators course covers how to trade around Fed decisions.\n\nWant to learn about bond trading strategies, or shall we discuss how interest rates affect different asset classes?"}
-];
-
-// Find best matching response
-let bestMatch=null;let bestScore=0;
-for(const entry of KB){
-const score=entry.keywords.reduce((s,kw)=>s+(t.includes(kw)?1:0),0);
-if(score>bestScore){bestScore=score;bestMatch=entry}
-}
-
-if(bestMatch&&bestScore>0)return bestMatch.response;
-
-// Smart default — try to keep conversation going
-const name=ADVISORS[currentAdvisor].name;
-return `That's a great topic! 🤔\n\nLet me share some thoughts and then ask you a few questions to give you better advice.\n\nAt BroadFSC Pro, we believe education comes first. Here's what I'd suggest:\n\n1. **Start with the basics** — If you're new to investing, our Beginner courses cover everything from 'What is the Stock Market?' to 'Reading Candlestick Charts'\n\n2. **Use the right tools** — Our Trading Tools section has free calculators for position sizing, profit/loss, and margin. These are essential before you place any real trade\n\n3. **Stay informed** — Our Research section has free daily market briefs and weekly deep analysis. Knowledge is your edge\n\n4. **Practice first** — Before risking real money, paper trade. Learn the mechanics without the emotional pressure\n\nNow, to give you more specific advice, could you tell me:\n• What's your current experience level with investing?\n• Are you interested in stocks, forex, crypto, or something else?\n• What's your main goal — long-term wealth building or active trading?\n\nThe more I know, the better I can help! 😊`;
-}
-
-// ============================================
-// NAV ACTIVE STATE
-// ============================================
-const sections=document.querySelectorAll('section[id]');
-window.addEventListener('scroll',()=>{
-let current='';
-sections.forEach(s=>{if(window.scrollY>=s.offsetTop-100)current=s.id});
-document.querySelectorAll('.nav-links a').forEach(a=>{
-a.classList.toggle('active',a.getAttribute('href')==='#'+current);
-});
-});
-
-// ============================================
-// INIT
-// ============================================
-document.addEventListener('DOMContentLoaded',()=>{
-initTicker();
-initHeroCanvas();
-renderCourses();
-renderResearch();
-renderSources();
-renderGlossary();
-initChat();
-});
-</script>
+<script src="courses-data.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
