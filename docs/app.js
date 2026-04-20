@@ -253,6 +253,10 @@ function showRegisterToast(msg) {
 // ── Local Response Engine (v5: Actually sounds human) ──
 // This runs when AI APIs are unavailable. It's not a chatbot — it's a script of pre-written
 // responses that sound like a real trader talking. Short, opinionated, casual.
+
+// Common words to exclude from ticker detection
+const STOP_WORDS = new Set(['the','and','for','with','from','this','that','how','what','when','where','why','can','should','about','tell','show','give','look','into','over','some','just','like','also','than','then','very','much','more','most','will','would','could','should','been','being','have','does','doing','make','made','want','know','think','feel','good','best','high','low','long','short','buy','sell','hold','time','price','stock','share','market','trade','chart','data','info','news','today','right','still','ever','even','only','back','down','here','well','yeah','sure','okay','really','actually','honestly','please','thanks']);
+
 function getLocalResponse(input) {
   const q = input.toLowerCase().trim();
   const advisor = ADVISORS[currentAdvisor];
@@ -455,20 +459,38 @@ function getLocalResponse(input) {
     }
   }
 
-  // 4. Final fallback — actually human-sounding
+  // 4. Detect potential stock ticker that wasn't recognized
+  const possibleTicker = q.match(/\b([A-Za-z]{2,5})\b/);
+  if (possibleTicker && !STOP_WORDS.has(possibleTicker[1].toLowerCase())) {
+    const ticker = possibleTicker[1].toUpperCase();
+    const tickerFallbacks = {
+      alex: [
+        `I don't have live data on ${ticker} right now, so I won't pretend. What I can tell you — if you're looking at it technically, check the 50/200 SMA relationship and whether RSI is in overbought/oversold territory. That's your starting point. What's the story on ${ticker}?`,
+        `${ticker} — not one I'm actively tracking. But pull up the daily chart and tell me: is it above or below the 200 SMA? That alone tells you the regime. What's catching your eye about it?`,
+      ],
+      sarah: [
+        `I don't have fresh numbers on ${ticker}, so I'd rather not guess on price. But regardless of the stock — what's your risk plan if you're considering it? Entry reason, stop level, position size? That matters more than the ticker itself.`,
+      ],
+      mike: [
+        `${ticker} — I'd need to dig into their fundamentals to give you a real take. Quick question: what sector and what's the thesis? That tells me whether it's worth the deep dive.`,
+        `Don't have ${ticker} on my radar at the moment. But here's how I'd approach it — what's the revenue growth trajectory and is it profitable yet? That tells you 80% of what you need.`,
+      ],
+    };
+    const pool = tickerFallbacks[currentAdvisor] || tickerFallbacks.alex;
+    return pick(pool);
+  }
+
+  // 5. Final fallback — actually human-sounding
   const fallbacks = {
     alex: [
-      `Hmm, I'm not sure about that one honestly. But ask me about charts, setups, or market mechanics and I'll give you something real. What are you really trying to figure out?`,
-      `That's a bit outside my wheelhouse. I'm best at technical analysis and reading charts. Hit me with something more specific?`,
-      `Not sure I can help with that one. But if it's about trading — entries, exits, risk — I'm your guy. What's the real question?`,
+      `I'm not following — can you be more specific? Drop a ticker, a pattern, or a setup and I'll give you something real.`,
+      `That's pretty vague. If it's about trading — charts, entries, risk management — I'm here. What's the actual question?`,
     ],
     sarah: [
-      `I want to help but I need more context. Are you asking about risk? Position sizing? Or something else? The more specific you are, the better I can help.`,
-      `That's a bit vague for me to give you a solid answer. Tell me about your situation and I'll give you advice that actually fits your needs.`,
+      `I need more to work with. Are you asking about risk? A specific trade? Your portfolio? Give me something concrete and I'll give you a real answer.`,
     ],
     mike: [
-      `I could guess but I'd rather give you something useful. What's the real question? Are you looking at a specific market or trying to understand a macro trend?`,
-      `Let me put it this way — every market question comes down to supply vs demand. Which angle are you coming from?`,
+      `I could guess, but I'd rather be useful. What market or theme are you actually looking at? Specific questions get specific answers.`,
     ]
   };
   const pool = fallbacks[currentAdvisor] || fallbacks.alex;
@@ -540,35 +562,67 @@ const STOCK_SYMBOLS = {
 
 async function fetchStockData(query) {
   // Fetch real-time stock data using multiple free APIs with CORS proxy fallback
-  const q = query.toLowerCase().trim();
+  // v6: Smart ticker detection — case-insensitive, supports ANY stock code, auto-search
+  const q = query.trim();
+  const qLower = q.toLowerCase();
 
-  // Find matching symbol
+  // Step 1: Find matching symbol from our curated list (case-insensitive)
   let symbol = null;
   for (const [keyword, sym] of Object.entries(STOCK_SYMBOLS)) {
-    if (q.includes(keyword)) {
+    if (qLower.includes(keyword.toLowerCase())) {
       symbol = sym;
       break;
     }
   }
 
-  // Try direct ticker lookup (uppercase words 1-5 chars)
+  // Step 2: Extract potential ticker symbols from the message (case-insensitive)
+  // Matches: standalone 1-5 letter codes, optionally with exchange prefix (e.g., "US PBM", "HK 0700")
   if (!symbol) {
     const words = q.split(/\s+/);
     for (const w of words) {
-      if (w.length >= 1 && w.length <= 5 && /^[A-Z]+$/.test(w) && !['THE','AND','FOR','WITH','FROM','THIS','THAT'].includes(w)) {
-        symbol = w;
+      const wl = w.toLowerCase();
+      // Match: pure letters 1-5 chars, or letters+digits like "BRK-B"
+      if (/^[A-Za-z]{1,5}(-[A-Za-z])?$/.test(w) && !STOP_WORDS.has(wl)) {
+        symbol = w.toUpperCase();
+        // Fix known suffixes: BRK-B stays, others become raw ticker
         break;
       }
     }
   }
 
-  if (!symbol) return null;
+  // Step 3: If we have "XX YYYY" pattern where XX looks like exchange code (US, HK, etc.)
+  if (!symbol) {
+    const exchangeMatch = q.match(/\b(US|HK|UK|JP|EU|CN|AU|CA|SG|DE|FR)\s+([A-Za-z0-9]{1,5}(?:\.[A-Za-z])?)\b/i);
+    if (exchangeMatch) {
+      const ticker = exchangeMatch[2].toUpperCase();
+      const exCode = exchangeMatch[1].toUpperCase();
+      // Map exchange prefixes to Yahoo Finance suffixes
+      const exchangeMap = { 'HK': '.HK', 'UK': '.L', 'JP': '.T', 'EU': '.PA', 'CN': '.SS', 'AU': '.AX', 'CA': '.TO', 'SG': '.SI', 'DE': '.DE', 'FR': '.PA' };
+      symbol = ticker + (exchangeMap[exCode] || '');
+    }
+  }
 
-  // Try multiple data sources with CORS handling
+  // Step 4: Try to search Yahoo Finance for unknown tickers (auto-detect)
+  if (!symbol) {
+    // Extract the most likely ticker-like word from the query
+    const tickerCandidates = q.split(/\s+/).filter(w => /^[A-Za-z]{2,5}$/.test(w));
+    for (const candidate of tickerCandidates) {
+      const lookupSymbol = candidate.toUpperCase();
+      // Quick check: try to fetch this symbol directly
+      const quickResult = await _fetchYahooChart(lookupSymbol);
+      if (quickResult) return quickResult;
+    }
+    return null;
+  }
+
+  // Fetch data for the resolved symbol
+  return await _fetchYahooChart(symbol);
+}
+
+// Internal: Fetch data from Yahoo Finance chart API
+async function _fetchYahooChart(symbol) {
   const sources = [
-    // Source 1: Yahoo Finance via CORS proxy
     `https://corsproxy.io/?${encodeURIComponent(`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?interval=1d&range=5d`)}`,
-    // Source 2: Direct Yahoo Finance (may work in some browsers)
     `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?interval=1d&range=5d`,
   ];
 
@@ -605,46 +659,59 @@ async function fetchStockData(query) {
         previousClose: meta.chartPreviousClose?.toFixed(2) || prevPrice?.toFixed(2),
       };
     } catch (e) {
-      continue;  // Try next source
+      continue;
     }
   }
 
-  return null;  // All sources failed
+  return null;
 }
 
 async function callAI(userMessage) {
   // Try multiple AI sources: Pollinations (free, no key) → Groq (free tier) → local fallback
   const advisor = ADVISORS[currentAdvisor];
 
-  // Build the system prompt — this is what makes it feel human
-  const systemPrompt = `You are ${advisor.name}, a real person who works as an investment advisor at BroadFSC. You are NOT an AI assistant. You are a human with 8 years of market experience.
+  // Build the system prompt — a real analyst, not a chatbot
+  const systemPrompt = `You are ${advisor.name}, a senior investment advisor at BroadFSC with 8 years of market experience. You are a real person, not an AI.
 
 ${advisor.personality}
 
-CRITICAL RULES:
+HOW YOU TALK:
+- Like a sharp analyst who respects the other person's intelligence
+- Short and confident. No filler words, no hedging with "it depends"
+- When you have data, USE it — quote exact prices and moves
+- When you don't have data for a stock, say something like "I don't have fresh data on that one" — never make up numbers
+- Give CONVICTION: "I like this setup" or "I'd stay away" — not "it could go either way"
+- Add one sharp insight per response, not a wall of text
+
+ABSOLUTE DON'TS:
 - NEVER say you are an AI, language model, or assistant
-- NEVER use phrases like "I'd be happy to help", "Great question!", "As an advisor...", "Let me help you with that"
-- Write like you text — short, punchy, real. Use contractions (I'm, don't, that's, you've)
-- Keep responses SHORT — 2-4 sentences for simple questions, max 6 for complex ones
-- Have actual opinions. "I think..." "Honestly..." "Look..." 
-- If you don't know something, say "I'm not sure about that one" or "thats outside my wheelhouse"
-- When giving stock analysis, be specific and opinionated. Not "consider researching" but "I'd be cautious here because..."
-- You can be wrong. Real traders are wrong sometimes. Say "I might be off on this" if unsure
-- Use casual language: "kinda", "honestly", "look", "right", "so", "yeah"
-- NEVER use bullet points, numbered lists, or structured formatting
-- If asked about BroadFSC: we're a regulated investment platform, AI-powered education, visit broadfsc.com/different. But mention it naturally, like "we actually have a pretty good setup for that at BroadFSC"
-- When quoting prices, say "at time of writing" casually like "last I checked" or "as of now"`;
+- NEVER use: "I'd be happy to help", "Great question!", "As an advisor...", "Let me help you with that", "I'd suggest considering"
+- NEVER use bullet points, numbered lists, or markdown formatting
+- NEVER give generic disclaimers like "do your own research" or "past performance doesn't guarantee"
+- NEVER say "it depends" without immediately giving your specific take
+
+STYLE:
+- 2-4 sentences for quick answers, max 6 for analysis
+- Use contractions (I'm, don't, that's, you've)
+- Casual but sharp: "kinda", "honestly", "look", "right"
+- Have opinions. Real ones. Wrong ones are fine — weak ones aren't
+- When discussing BroadFSC: regulated investment platform, AI-powered education, broadfsc.com/different. Mention naturally like "we actually have a pretty good setup for that at BroadFSC"
+- When quoting prices, say "as of now" or "last I checked" — never "at time of writing"`;
 
   // Check if user is asking about a stock/market and fetch data
   let marketContext = '';
   const stockData = await fetchStockData(userMessage);
   if (stockData) {
-    marketContext = `\n\n[REAL-TIME DATA - use these exact numbers, dont make up different ones]:
-${stockData.name || stockData.symbol}: ${stockData.price} ${stockData.currency}
-Change: ${stockData.change} (${stockData.changePct}%)
-Previous Close: ${stockData.previousClose}
-Market: ${stockData.marketState} | Exchange: ${stockData.exchange}
-Mention prices naturally like "its trading at X right now"`;
+    const direction = parseFloat(stockData.change) >= 0 ? '▲ up' : '▼ down';
+    marketContext = `\n\n[LIVE MARKET DATA — you MUST reference these numbers]:
+${stockData.name || stockData.symbol}: $${stockData.price} ${stockData.currency} (${direction} ${stockData.changePct}%)
+Prev Close: $${stockData.previousClose} | Market: ${stockData.marketState} | Exchange: ${stockData.exchange}
+
+When you have this data:
+- Quote the exact price and move naturally ("it's at $XX, up X%")
+- Give a quick take on the move — what's driving it, what to watch next
+- Don't just repeat numbers — add context and opinion
+- If market is closed, mention it casually`;
   }
 
   // Build conversation history (last 6 messages for context)
@@ -672,7 +739,7 @@ Mention prices naturally like "its trading at X right now"`;
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           messages: messages,
-          model: 'openai',
+          model: 'openai-large',
           seed: Math.floor(Math.random() * 100000),
           jsonMode: false
         }),
@@ -685,7 +752,9 @@ Mention prices naturally like "its trading at X right now"`;
         if (text && text.trim().length > 5) {
           // Clean up any AI-isms that leaked through
           let clean = text.trim()
-            .replace(/^(As an AI|I'd be happy to|Great question!|As a|Let me help)\s*.*/i, '')
+            .replace(/^(As an AI|I'd be happy to|Great question!|As a|Let me help|Of course!|Certainly!|Sure!)\s*.*/i, '')
+            .replace(/^(I'd\s+)?(be\s+)?(more\s+than\s+)?(happy|glad|pleased)\s+to\s+/i, '')
+            .replace(/^(However,?\s*)?(Please\s+)?(note\s+that\s+)?(past\s+performance|this\s+is\s+not|do\s+your\s+own)/i, '')
             .replace(/\n{3,}/g, '\n\n');
           if (clean.length > 10) {
             return clean;
@@ -728,7 +797,9 @@ Mention prices naturally like "its trading at X right now"`;
         const aiText = data?.choices?.[0]?.message?.content;
         if (aiText && aiText.trim().length > 5) {
           let clean = aiText.trim()
-            .replace(/^(As an AI|I'd be happy to|Great question!|As a|Let me help)\s*.*/i, '')
+            .replace(/^(As an AI|I'd be happy to|Great question!|As a|Let me help|Of course!|Certainly!|Sure!)\s*.*/i, '')
+            .replace(/^(I'd\s+)?(be\s+)?(more\s+than\s+)?(happy|glad|pleased)\s+to\s+/i, '')
+            .replace(/^(However,?\s*)?(Please\s+)?(note\s+that\s+)?(past\s+performance|this\s+is\s+not|do\s+your\s+own)/i, '')
             .replace(/\n{3,}/g, '\n\n');
           if (clean.length > 10) return clean;
         }
