@@ -15,6 +15,7 @@
 
 - [README](finance/README.md) - finance
 - [README](sales/README.md) - sales
+- [2026-04-20-sales_tactics](sales/2026-04-20-sales_tactics.md) - sales
 - [README](marketing/README.md) - marketing
 - [README](competitor/README.md) - competitor
 
