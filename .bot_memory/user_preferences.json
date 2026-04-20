@@ -1,0 +1,141 @@
+{
+  "8327500544": {
+    "name": "Award Winning",
+    "language": "zh-hans",
+    "username": "George_Sanji",
+    "last_contact": "2026-04-17T07:50:17.412142+00:00",
+    "conversation_count": 9,
+    "first_contact": "2026-04-17T07:45:29.748225+00:00",
+    "topics_discussed": [
+      "investment journey",
+      "goals",
+      "areas to explore",
+      "天气",
+      "投资",
+      "昆药集团",
+      "市场动态",
+      "分析",
+      "股价",
+      "盈利能力",
+      "增长潜力",
+      "营收",
+      "利润率",
+      "市盈率",
+      "市场趋势",
+      "行业对比",
+      "未来发展",
+      "2026年一季报",
+      "cooperation",
+      "services",
+      "products",
+      "investment consulting",
+      "financial planning",
+      "asset management"
+    ],
+    "sentiment_history": [
+      {
+        "sentiment": "neutral",
+        "time": "2026-04-17T07:45:44.954174+00:00"
+      },
+      {
+        "sentiment": "neutral",
+        "time": "2026-04-17T07:45:56.238701+00:00"
+      },
+      {
+        "sentiment": "neutral",
+        "time": "2026-04-17T07:46:30.363201+00:00"
+      },
+      {
+        "sentiment": "neutral",
+        "time": "2026-04-17T07:47:00.448400+00:00"
+      },
+      {
+        "sentiment": "negative",
+        "time": "2026-04-17T07:47:38.731373+00:00"
+      },
+      {
+        "sentiment": "neutral",
+        "time": "2026-04-17T07:48:06.410145+00:00"
+      },
+      {
+        "sentiment": "neutral",
+        "time": "2026-04-17T07:49:02.255545+00:00"
+      },
+      {
+        "sentiment": "positive",
+        "time": "2026-04-17T07:50:01.797225+00:00"
+      },
+      {
+        "sentiment": "neutral",
+        "time": "2026-04-17T07:50:29.456945+00:00"
+      }
+    ],
+    "personal_details_mentioned": [
+      "不顺利",
+      "投资",
+      "investment experience",
+      "concerns"
+    ],
+    "investment_interests": [
+      "昆药集团",
+      "investment consulting",
+      "financial planning",
+      "asset management"
+    ]
+  },
+  "8639358750": {
+    "name": "@BotFathet",
+    "language": "zh-hans",
+    "username": "",
+    "last_contact": "2026-04-17T14:02:13.373874+00:00",
+    "conversation_count": 8,
+    "first_contact": "2026-04-17T07:45:57.208026+00:00",
+    "topics_discussed": [
+      "market trends",
+      "emerging markets",
+      "economic indicators",
+      "interest rate changes",
+      "stock markets",
+      "investments",
+      "markets",
+      "economics",
+      "PMI",
+      "Eurozone"
+    ],
+    "sentiment_history": [
+      {
+        "sentiment": "neutral",
+        "time": "2026-04-17T07:51:35.615888+00:00"
+      },
+      {
+        "sentiment": "neutral",
+        "time": "2026-04-17T07:52:10.130689+00:00"
+      },
+      {
+        "sentiment": "neutral",
+        "time": "2026-04-17T07:52:22.392593+00:00"
+      },
+      {
+        "sentiment": "neutral",
+        "time": "2026-04-17T07:52:55.201882+00:00"
+      },
+      {
+        "sentiment": "neutral",
+        "time": "2026-04-17T14:00:51.635268+00:00"
+      },
+      {
+        "sentiment": "neutral",
+        "time": "2026-04-17T14:01:31.729540+00:00"
+      },
+      {
+        "sentiment": "neutral",
+        "time": "2026-04-17T14:02:29.681127+00:00"
+      }
+    ],
+    "investment_interests": [
+      "stock markets",
+      "economic indicators",
+      "economics"
+    ]
+  }
+}

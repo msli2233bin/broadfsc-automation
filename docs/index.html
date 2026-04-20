@@ -23,6 +23,21 @@
 .glossary-search{max-width:500px;margin:0 auto 20px;position:relative}.glossary-search input{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:12px 18px 12px 40px;color:var(--text);font-size:.95em;outline:none}.glossary-search input:focus{border-color:rgba(59,130,246,.4)}.glossary-search .s-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text3)}.glossary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;max-height:600px;overflow-y:auto}.glossary-item{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:14px;transition:all .2s;cursor:pointer}.glossary-item:hover{border-color:rgba(59,130,246,.2)}.glossary-item .term{font-weight:700;color:var(--blue);margin-bottom:3px;font-size:.9em}.glossary-item .def{font-size:.82em;color:var(--text2);line-height:1.5}.glossary-item .cat{display:inline-block;margin-top:6px;padding:2px 8px;border-radius:4px;font-size:.7em;background:rgba(139,92,246,.1);color:var(--purple)}
 .tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}.tool-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:24px;text-align:center;transition:all .3s}.tool-card:hover{border-color:rgba(6,182,212,.2);transform:translateY(-3px)}.tool-card .icon{font-size:36px;margin-bottom:10px}.tool-card h3{font-size:1em;font-weight:700;margin-bottom:6px}.tool-card p{font-size:.82em;color:var(--text2);margin-bottom:14px}.tool-card .btn{font-size:.82em;padding:9px 18px}
 .calc-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:2000;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:24px}.calc-modal.open{display:flex}.calc-box{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:28px;max-width:460px;width:100%;max-height:90vh;overflow-y:auto;position:relative}.calc-box h3{font-size:1.2em;font-weight:700;margin-bottom:18px}.calc-close{position:absolute;top:14px;right:14px;background:none;border:none;color:var(--text3);font-size:1.4em;cursor:pointer}.calc-close:hover{color:#fff}.calc-field{margin-bottom:14px}.calc-field label{display:block;font-size:.82em;font-weight:600;color:var(--text2);margin-bottom:5px}.calc-field input,.calc-field select{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text);font-size:.92em;outline:none}.calc-field input:focus,.calc-field select:focus{border-color:rgba(59,130,246,.4)}.calc-result{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.15);border-radius:12px;padding:14px;text-align:center;margin-top:14px}.calc-result .value{font-size:1.8em;font-weight:800;background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}.calc-result .label{font-size:.78em;color:var(--text3)}
+
+/* Register Modal */
+.reg-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:3000;background:rgba(0,0,0,.8);backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:24px}.reg-modal.open{display:flex}.reg-box{background:var(--bg2);border:1px solid rgba(59,130,246,.2);border-radius:24px;padding:36px;max-width:480px;width:100%;position:relative;box-shadow:0 24px 80px rgba(59,130,246,.15)}.reg-box .reg-header{text-align:center;margin-bottom:24px}.reg-box .reg-header .reg-icon{font-size:48px;margin-bottom:12px}.reg-box .reg-header h2{font-size:1.4em;font-weight:800;margin-bottom:6px}.reg-box .reg-header p{font-size:.88em;color:var(--text2)}.reg-field{margin-bottom:16px}.reg-field label{display:block;font-size:.82em;font-weight:600;color:var(--text2);margin-bottom:5px}.reg-field input,.reg-field select{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:11px 14px;color:var(--text);font-size:.92em;outline:none;transition:border-color .2s}.reg-field input:focus,.reg-field select:focus{border-color:rgba(59,130,246,.5);box-shadow:0 0 0 3px rgba(59,130,246,.1)}.reg-error{color:var(--red);font-size:.82em;display:none;margin-bottom:10px;padding:8px 12px;background:rgba(239,68,68,.08);border-radius:8px}.reg-benefits{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px}.reg-benefit{display:flex;align-items:center;gap:6px;font-size:.82em;color:var(--text2);padding:6px 8px;background:rgba(16,185,129,.06);border-radius:8px}.reg-benefit .check{color:var(--green);font-size:1em}.reg-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--text3);font-size:1.4em;cursor:pointer}.reg-close:hover{color:#fff}.reg-privacy{font-size:.75em;color:var(--text3);text-align:center;margin-top:12px;line-height:1.5}
+
+/* Registration Toast */
+.reg-toast{position:fixed;top:80px;right:24px;z-index:4000;background:var(--bg2);border:1px solid rgba(16,185,129,.3);border-radius:16px;padding:16px 24px;font-size:.9em;color:var(--green);box-shadow:0 12px 40px rgba(0,0,0,.4);transform:translateX(120%);transition:transform .4s cubic-bezier(.2,.8,.2,1);max-width:400px}.reg-toast.show{transform:translateX(0)}
+
+/* Research CTA Card */
+.research-cta{border-color:rgba(59,130,246,.3)!important;background:linear-gradient(135deg,rgba(59,130,246,.06),rgba(139,92,246,.06))!important;cursor:pointer}.research-cta:hover{border-color:rgba(59,130,246,.5)!important;transform:translateY(-4px)!important;box-shadow:0 12px 40px rgba(59,130,246,.15)!important}
+
+/* Contact Section */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:30px}.contact-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:24px;text-align:center;transition:all .3s}.contact-card:hover{border-color:rgba(59,130,246,.2);transform:translateY(-3px)}.contact-card .c-icon{font-size:36px;margin-bottom:10px}.contact-card h4{font-size:1em;font-weight:700;margin-bottom:4px}.contact-card p{font-size:.85em;color:var(--text2);margin-bottom:12px;line-height:1.5}.contact-card .c-link{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:10px;font-size:.85em;font-weight:600;transition:all .2s}.contact-card .c-link.primary{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff}.contact-card .c-link.secondary{background:rgba(255,255,255,.05);color:var(--text);border:1px solid rgba(255,255,255,.1)}.contact-card .c-link:hover{transform:scale(1.05)}
+
+/* Social Row */
+.social-row{display:flex;gap:14px;justify-content:center;margin-top:28px;flex-wrap:wrap}.social-btn{display:flex;align-items:center;gap:8px;padding:10px 20px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--border);font-size:.88em;font-weight:500;transition:all .2s;cursor:pointer;color:var(--text2)}.social-btn:hover{border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.08);color:#fff}
 .trust-bar{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;padding:36px 24px;background:var(--bg2);border-top:1px solid var(--border)}.trust-item{display:flex;align-items:center;gap:8px;font-size:.85em;color:var(--text2)}.trust-item .ico{font-size:1.3em}
 .footer{padding:48px 24px 24px;background:var(--bg2);border-top:1px solid var(--border)}.footer-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px}.footer-brand p{font-size:.85em;color:var(--text3);margin-top:10px;max-width:280px;line-height:1.6}.footer h4{font-size:.82em;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text3);margin-bottom:14px}.footer a{display:block;color:var(--text2);font-size:.85em;padding:3px 0;transition:color .2s}.footer a:hover{color:#fff}.footer-bottom{max-width:1280px;margin:28px auto 0;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:.78em;color:var(--text3)}
 .course-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:2000;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);overflow-y:auto;padding:40px 24px}.course-modal.open{display:block}.course-detail{max-width:800px;margin:0 auto;background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:36px;position:relative}.course-detail .close-btn{position:absolute;top:14px;right:14px;background:none;border:none;color:var(--text3);font-size:1.4em;cursor:pointer}.course-detail .close-btn:hover{color:#fff}.course-detail h2{font-size:1.6em;font-weight:800;margin-bottom:6px}.course-detail .tag{display:inline-block;padding:4px 12px;border-radius:6px;font-size:.78em;font-weight:600;margin-bottom:18px}.module-list{list-style:none;padding:0}.module-item{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:8px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:12px}.module-item:hover{border-color:rgba(59,130,246,.2)}.module-item .num{width:28px;height:28px;border-radius:7px;background:rgba(59,130,246,.12);color:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.82em;flex-shrink:0}.module-item .info{flex:1}.module-item .info h4{font-size:.9em;font-weight:600}.module-item .info p{font-size:.78em;color:var(--text3)}.module-item .dur{font-size:.78em;color:var(--text3)}.module-item .expand-icon{color:var(--text3);font-size:.85em;transition:transform .2s}.module-item.expanded .expand-icon{transform:rotate(180deg)}.module-content{display:none;background:var(--bg3);border:1px solid var(--border);border-radius:0 0 10px 10px;padding:18px 20px;margin-top:-8px;margin-bottom:8px;font-size:.88em;line-height:1.8;color:var(--text2)}.module-content.show{display:block}.module-content strong{color:var(--text)}.module-content ul{padding-left:18px;margin:6px 0}.module-content li{margin:3px 0}.quiz-section{margin-top:28px;padding-top:20px;border-top:1px solid var(--border)}.quiz-section h3{font-size:1.1em;font-weight:700;margin-bottom:14px}.quiz-q{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:10px}.quiz-q h4{font-size:.9em;font-weight:600;margin-bottom:8px}.quiz-opts{display:flex;flex-direction:column;gap:5px}.quiz-opt{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:9px 12px;font-size:.88em;cursor:pointer;transition:all .2s}.quiz-opt:hover{border-color:rgba(59,130,246,.3)}.quiz-opt.correct{border-color:var(--green);background:rgba(16,185,129,.08);color:var(--green)}.quiz-opt.wrong{border-color:var(--red);background:rgba(239,68,44,.08);color:var(--red)}
@@ -33,7 +48,7 @@
 <nav class="nav"><div class="nav-inner">
 <a href="#" class="nav-logo"><span class="ico">📊</span> BroadFSC <span style="color:var(--blue);font-size:.65em;font-weight:500">PRO</span></a>
 <div class="nav-links" id="navLinks">
-<a href="#home" class="active">Home</a><a href="#courses">Academy</a><a href="#research">Research</a><a href="#glossary">Glossary</a><a href="#tools">Tools</a><a href="#home" class="nav-cta">🤖 AI Advisor</a>
+<a href="#home" class="active">Home</a><a href="#courses">Academy</a><a href="#research">Research</a><a href="#glossary">Glossary</a><a href="#tools">Tools</a><a href="#contact">Contact</a><a href="javascript:void(0)" class="nav-cta" onclick="showRegisterModal('nav_cta')">🤖 Get Access</a>
 </div><button class="nav-mobile-btn" onclick="document.getElementById('navLinks').classList.toggle('show')">☰</button>
 </div></nav>
 
@@ -105,17 +120,68 @@
 <div class="tool-card"><div class="icon">💱</div><h3>Currency Converter</h3><p>Real-time exchange rates for 50+ currencies.</p><button class="btn btn-p" style="font-size:.82em" onclick="openCalc('currency')">Convert</button></div>
 </div></div></section>
 
-<div class="trust-bar"><div class="trust-item"><span class="ico">🏛️</span> Regulated</div><div class="trust-item"><span class="ico">🔒</span> 256-bit SSL</div><div class="trust-item"><span class="ico">🌍</span> 120+ Countries</div><div class="trust-item"><span class="ico">💰</span> $0 Hidden Fees</div><div class="trust-item"><span class="ico">⭐</span> 4.8/5 Rating</div></div>
+<section class="section" id="contact" style="background:var(--bg2)"><div class="section-inner">
+<div class="section-header"><h2>Get in <span class="accent">Touch</span></h2><p>We're here to help. Reach us through any channel — we typically respond within 2 hours.</p></div>
+<div class="contact-grid">
+<div class="contact-card"><div class="c-icon">📧</div><h4>Email Support</h4><p>For detailed inquiries, research requests, and account support.</p><a href="mailto:support@broadfsc.com" class="c-link primary">support@broadfsc.com</a></div>
+<div class="contact-card"><div class="c-icon">💬</div><h4>Telegram</h4><p>24/7 AI assistant + human support. Fastest response time.</p><a href="https://t.me/BroadInvestBot" target="_blank" class="c-link primary">@BroadInvestBot</a></div>
+<div class="contact-card"><div class="c-icon">🌐</div><h4>Website</h4><p>Full services, account management, and regulatory info.</p><a href="https://www.broadfsc.com/different" target="_blank" class="c-link secondary">broadfsc.com →</a></div>
+<div class="contact-card"><div class="c-icon">🤖</div><h4>Live AI Advisor</h4><p>Chat with Alex, Sarah, or Mike right now — free, instant, no login needed.</p><a href="#home" class="c-link primary" onclick="document.getElementById('chatInput').focus()">Start Chat →</a></div>
+</div>
+<div class="social-row">
+<a href="https://t.me/BroadFSC" target="_blank" class="social-btn">📱 Telegram Channel</a>
+<a href="https://x.com/BroadFSC" target="_blank" class="social-btn">🐦 X / Twitter</a>
+<a href="https://broadfsc.bsky.social" target="_blank" class="social-btn">🦋 Bluesky</a>
+<a href="https://mastodon.social/@msli2233bin" target="_blank" class="social-btn">🐘 Mastodon</a>
+</div>
+</div></section>
+
+<div class="trust-bar"><div class="trust-item"><span class="ico">🏛️</span> Regulated</div><div class="trust-item"><span class="ico">🔒</span> 256-bit SSL</div><div class="trust-item"><span class="ico">🌍</span> 120+ Countries</div><div class="trust-item"><span class="ico">📧</span> support@broadfsc.com</div><div class="trust-item"><span class="ico">💬</span> 24/7 Support</div></div>
 
 <footer class="footer"><div class="footer-inner">
-<div class="footer-brand"><div style="font-size:1.2em;font-weight:800">📊 BroadFSC <span style="color:var(--blue)">PRO</span></div><p>The world's most accessible AI-powered investment education platform.</p></div>
+<div class="footer-brand"><div style="font-size:1.2em;font-weight:800">📊 BroadFSC <span style="color:var(--blue)">PRO</span></div><p>The world's most accessible AI-powered investment education platform.</p><div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap"><a href="mailto:support@broadfsc.com" style="display:inline-flex;align-items:center;gap:4px;color:var(--text2);font-size:.82em">📧 support@broadfsc.com</a><a href="https://t.me/BroadInvestBot" target="_blank" style="display:inline-flex;align-items:center;gap:4px;color:var(--text2);font-size:.82em">💬 @BroadInvestBot</a></div></div>
 <div><h4>Academy</h4><a href="#courses">Beginner</a><a href="#courses">Intermediate</a><a href="#courses">Advanced</a><a href="#glossary">Glossary</a><a href="#tools">Tools</a></div>
 <div><h4>Research</h4><a href="#research">Daily Briefs</a><a href="#research">Weekly</a><a href="#research">Special</a><a href="#research">Sources</a><a href="#home">AI Advisor</a></div>
-<div><h4>Company</h4><a href="https://www.broadfsc.com/different" target="_blank">About</a><a href="#home">Contact</a><a href="#">Regulatory</a><a href="#">Privacy</a><a href="#">Terms</a></div>
-</div><div class="footer-bottom"><span>© 2026 Broad Investment Securities</span><span>Made with 🤖 AI</span></div></footer>
+<div><h4>Company</h4><a href="https://www.broadfsc.com/different" target="_blank">About BroadFSC</a><a href="#contact">Contact Us</a><a href="mailto:support@broadfsc.com">Email Support</a><a href="https://t.me/BroadInvestBot" target="_blank">Telegram Bot</a><a href="#">Regulatory</a><a href="#">Privacy</a><a href="#">Terms</a></div>
+</div><div class="footer-bottom"><span>© 2026 Broad Investment Securities — Licensed & Regulated</span><span>Made with 🤖 AI | <a href="#contact" style="color:var(--blue)">Contact</a></span></div></footer>
 
 <div class="calc-modal" id="calcModal"><div class="calc-box" id="calcBox"></div></div>
 <div class="course-modal" id="courseModal"><div class="course-detail" id="courseDetail"></div></div>
+
+<div class="reg-modal" id="registerModal">
+  <div class="reg-box">
+    <button class="reg-close" onclick="closeRegisterModal()">✕</button>
+    <div class="reg-header">
+      <div class="reg-icon">🚀</div>
+      <h2>Unlock Full Access</h2>
+      <p>Free forever. Get personalized research, AI advisory, and market alerts.</p>
+    </div>
+    <div class="reg-benefits">
+      <div class="reg-benefit"><span class="check">✓</span> Custom stock analysis</div>
+      <div class="reg-benefit"><span class="check">✓</span> Real-time alerts</div>
+      <div class="reg-benefit"><span class="check">✓</span> 1-on-1 AI advisory</div>
+      <div class="reg-benefit"><span class="check">✓</span> All research reports</div>
+    </div>
+    <div class="reg-field"><label>Your Name</label><input type="text" id="regName" placeholder="e.g. John Smith"></div>
+    <div class="reg-field"><label>Email Address</label><input type="email" id="regEmail" placeholder="you@example.com"></div>
+    <div class="reg-field"><label>Primary Interest</label>
+      <select id="regInterests">
+        <option value="stocks">Stocks & ETFs</option>
+        <option value="forex">Forex & Currencies</option>
+        <option value="crypto">Crypto & Digital Assets</option>
+        <option value="commodities">Commodities & Gold</option>
+        <option value="options">Options & Derivatives</option>
+        <option value="all">All of the above</option>
+      </select>
+    </div>
+    <input type="hidden" id="regSource" value="general">
+    <div id="regError" class="reg-error"></div>
+    <button class="btn btn-p" style="width:100%;padding:14px;font-size:1em" onclick="submitRegistration()">Get Free Access →</button>
+    <div class="reg-privacy">🔒 Your data is protected by 256-bit SSL encryption. We never sell your information. <a href="#" style="color:var(--blue)">Privacy Policy</a></div>
+  </div>
+</div>
+
+<div class="reg-toast" id="regToast"></div>
 
 <script src="courses-data.js"></script>
 <script src="app.js"></script>

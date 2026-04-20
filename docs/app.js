@@ -1,6 +1,6 @@
 ﻿// ═══════════════════════════════════════════════════
-// BroadFSC Pro — App Logic v3 (SOUL Edition)
-// AI with personality, memory, and real knowledge
+// BroadFSC Pro — App Logic v4 (SOUL + Registration)
+// AI with warmth, expertise, memory, and lead capture
 // ═══════════════════════════════════════════════════
 
 // ── SOUL AI Knowledge Base ──
@@ -48,33 +48,33 @@ const KNOWLEDGE = {
   }
 };
 
-// ── SOUL AI Advisor Personalities ──
+// ── SOUL AI Advisor Personalities (v4: Warmer & More Professional) ──
 const ADVISORS = {
   alex: {
     name: 'Alex Chen',
     emoji: '👨‍💼',
     role: 'Technical Analysis',
-    greeting: "Hey, I'm Alex. I've been trading for 8 years and I'm not here to sugarcoat anything. Ask me about charts, indicators, setups — I'll give you my honest take. No fluff.",
-    style: 'direct', // direct, warm, analytical
-    catchphrase: "Here's what I'd actually do —",
+    greeting: "Hey there 👋 I'm Alex, and I've been in the markets for 8 years now — seen bull runs, crashes, and everything in between. I'm here to give you the kind of honest, no-BS guidance I wish someone had given me when I started. Charts, setups, indicators — fire away. I genuinely enjoy helping people navigate this stuff.",
+    style: 'direct',
+    catchphrase: "Let me be straight with you —",
     perspective: "I believe technical analysis works not because it's magic, but because millions of traders watch the same levels. It's self-fulfilling, and that's fine — use it."
   },
   sarah: {
     name: 'Sarah Kim',
     emoji: '👩‍💼',
     role: 'Risk Management',
-    greeting: "Hi! I'm Sarah. I focus on keeping you in the game. Most traders fail because of poor risk management, not poor analysis. Let's make sure that's not you. Ask me about position sizing, stops, or anything risk-related.",
+    greeting: "Hi there 😊 I'm Sarah, and I'm passionate about one thing: making sure you stay in the game long enough to succeed. I've seen too many talented traders blow up because they ignored risk management — it's honestly heartbreaking. Let me help you build a framework that protects you. Ask me anything about position sizing, stops, or keeping your emotions in check.",
     style: 'warm',
-    catchphrase: "The math says —",
+    catchphrase: "Here's what the numbers tell us —",
     perspective: "I'd rather miss a profit than take an unnecessary loss. Preservation of capital always comes first. If your risk management is solid, the profits will follow."
   },
   mike: {
     name: 'Mike Torres',
     emoji: '🧑‍💻',
     role: 'Fundamentals & Macro',
-    greeting: "Hey, Mike here. I look at the big picture — earnings, economic data, central banks, geopolitical shifts. Technicals tell you when; fundamentals tell you why. Ask me about any market or macro event.",
+    greeting: "Welcome! I'm Mike 👋 I'm the big-picture guy — earnings, central banks, geopolitical shifts, economic data. Technicals tell you WHEN to act; fundamentals tell you WHY. And understanding the 'why' is what separates guessing from investing. I'd love to help you connect the dots. What market or theme are you curious about?",
     style: 'analytical',
-    catchphrase: "The bigger picture tells me —",
+    catchphrase: "Looking at the bigger picture —",
     perspective: "Price is what you pay, value is what you get. I focus on understanding WHY markets move, not just the pattern on the chart. Fundamentals win in the long run."
   }
 };
@@ -83,6 +83,91 @@ const ADVISORS = {
 let currentAdvisor = 'alex';
 let chatHistory = [];
 let userName = localStorage.getItem('bfs_username') || '';
+let userEmail = localStorage.getItem('bfs_email') || '';
+let isRegistered = !!userEmail;
+
+// ── Registration System ──
+function showRegisterModal(source) {
+  if (isRegistered) {
+    // Already registered, show a thank-you message
+    showRegisterToast('You\'re already registered! 🎉 Check your inbox for our latest research.');
+    return;
+  }
+  const modal = document.getElementById('registerModal');
+  const sourceInput = document.getElementById('regSource');
+  if (sourceInput) sourceInput.value = source || 'general';
+  if (modal) {
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    // Focus email field
+    setTimeout(() => {
+      const emailField = document.getElementById('regEmail');
+      if (emailField) emailField.focus();
+    }, 300);
+  }
+}
+
+function closeRegisterModal() {
+  const modal = document.getElementById('registerModal');
+  if (modal) {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+
+function submitRegistration() {
+  const name = document.getElementById('regName').value.trim();
+  const email = document.getElementById('regEmail').value.trim();
+  const interests = document.getElementById('regInterests').value;
+  const source = document.getElementById('regSource').value;
+
+  // Validate
+  if (!email || !email.includes('@') || !email.includes('.')) {
+    document.getElementById('regError').textContent = 'Please enter a valid email address.';
+    document.getElementById('regError').style.display = 'block';
+    return;
+  }
+  if (!name || name.length < 2) {
+    document.getElementById('regError').textContent = 'Please enter your name.';
+    document.getElementById('regError').style.display = 'block';
+    return;
+  }
+
+  // Save to localStorage
+  userName = name;
+  userEmail = email;
+  isRegistered = true;
+  localStorage.setItem('bfs_username', name);
+  localStorage.setItem('bfs_email', email);
+  localStorage.setItem('bfs_interests', interests);
+  localStorage.setItem('bfs_reg_date', new Date().toISOString());
+
+  // Close modal
+  closeRegisterModal();
+
+  // Show success toast
+  showRegisterToast(`Welcome aboard, ${name}! 🎉 Your access to exclusive research is now unlocked.`);
+
+  // If chat is open, have the advisor acknowledge
+  const body = document.getElementById('chatBody');
+  if (body) {
+    const advisor = ADVISORS[currentAdvisor];
+    setTimeout(() => {
+      addBotMessage(`${advisor.emoji} Great to have you with us, ${name}! I've noted your interest in ${interests || 'investing'}. Feel free to ask me anything — I'm here to help you succeed. By the way, you'll receive our best research reports directly at ${email}.`);
+    }, 800);
+  }
+
+  // TODO: In production, send to backend API
+  console.log('[Registration]', { name, email, interests, source, date: new Date().toISOString() });
+}
+
+function showRegisterToast(msg) {
+  const toast = document.getElementById('regToast');
+  if (!toast) return;
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 4000);
+}
 
 // ── AI Response Engine (SOUL-powered) ──
 function getAIResponse(input) {
@@ -121,45 +206,55 @@ function getAIResponse(input) {
     return formatAdvisorResponse(bestMatch.answer, bestMatch.category);
   }
 
-  // 2. Pattern matching for common questions
+  // 2. Pattern matching for common questions (v4: warmer, more professional)
   const patterns = [
-    { test: /how.*start|beginner|where.*begin|new.*trad/i, resp: () => formatAdvisorResponse("Start with the basics — don't rush into live trading. Here's my honest roadmap: (1) Read our Stock Market Fundamentals course. (2) Paper trade for at least 3 months. (3) Start with a small account ($1-2K). (4) Master ONE setup before learning more. (5) Keep a journal from day one. The biggest mistake beginners make? Trying to learn everything at once. Pick one strategy, master it, then expand.", 'strategy') },
+    { test: /how.*start|beginner|where.*begin|new.*trad/i, resp: () => formatAdvisorResponse("I'm really glad you're starting this journey — it can feel overwhelming at first, but that's completely normal. Here's the roadmap I wish I'd had: (1) Read our Stock Market Fundamentals course — it's free and genuinely helpful. (2) Paper trade for at least 3 months. I know it feels like a waste of time, but trust me, it saves you real money. (3) Start small — $1-2K max. You're learning, not retiring. (4) Master ONE setup before adding more. This is where most people go wrong. (5) Keep a journal from day one. The traders who journal consistently outperform those who don't — it's not even close. What part of this journey are you on right now?", 'strategy') },
     { test: /recommend|suggest|which.*stock|what.*buy|pick/i, resp: () => {
-      if (currentAdvisor === 'alex') return "I can't give specific buy/sell recommendations — that wouldn't be responsible without knowing your full situation. What I CAN do: teach you how to find your own setups. Look for strong trends pulling back to support, confirmed by RSI or MACD. That's where I start every day. Want me to walk you through the process?";
-      if (currentAdvisor === 'sarah') return "I won't tell you what to buy, but I'll tell you this: before you put money into ANY trade, you need three things — a clear entry reason, a stop-loss level, and a profit target. If you can't articulate all three, you're not trading, you're gambling. Let's talk about how to build that framework.";
-      return "Specific picks aren't my thing — I focus on understanding what drives markets. But here's what I watch: earnings growth trends, central bank policy shifts, and sector rotation. When all three align, that's when the big moves happen. Want to dive deeper into any of those?";
+      if (currentAdvisor === 'alex') return "I appreciate the trust, and I take that seriously — so I won't give you a specific buy/sell call without knowing your full picture. That wouldn't be responsible. What I CAN do is something more valuable: teach you how to fish. Look for strong trends pulling back to support, confirmed by RSI or MACD divergence. That's where I start every single day. Want me to walk you through a real example of how I find setups?";
+      if (currentAdvisor === 'sarah') return "That's a question everyone asks, and I respect that you're thinking about it. But here's my honest answer: before you put money into ANY trade, you need three non-negotiables — a clear entry reason, a stop-loss level, and a profit target. If you can't articulate all three, you're not investing, you're guessing. Let me help you build that framework first. The picks will come naturally once you have a process.";
+      return "I won't pretend I have a crystal ball — nobody does, despite what some might claim. What I focus on is understanding what drives markets: earnings growth trends, central bank policy shifts, and sector rotation. When all three align, that's where the real opportunities are. Would you like me to break down any of those areas for you?";
     }},
     { test: /crypto|bitcoin|btc|ethereum|alt/i, resp: () => formatAdvisorResponse(KNOWLEDGE.crypto[q.includes('bitcoin') || q.includes('btc') ? 'bitcoin' : 'crypto'] || KNOWLEDGE.crypto.crypto, 'crypto') },
-    { test: /forex|currency|eur.*usd|gbp|jpy/i, resp: () => formatAdvisorResponse("Forex is the largest market ($6.6T daily) with 24/5 trading and high leverage. The key sessions: London (highest volume), New York (high volatility at open), and their overlap (8 AM–12 PM ET) is the golden window. Major pairs (EUR/USD, GBP/USD) have tight spreads and are best for beginners. Exotic pairs? Stay away until you know what you're doing. The #1 forex mistake: over-leveraging. Use 10:1 max as a beginner.", 'strategy') },
-    { test: /option|call|put|spread/i, resp: () => formatAdvisorResponse("Options give you the RIGHT but not the OBLIGATION to buy (call) or sell (put) at a specific price. The Greeks: Delta (direction), Gamma (acceleration), Theta (time decay — works against buyers, for sellers), Vega (volatility). For beginners, I always recommend credit spreads (bull put / bear call): defined risk, profit even if slightly wrong, and time decay works in your favor. Never buy OTM options close to expiration — theta will eat your premium alive.", 'strategy') },
+    { test: /forex|currency|eur.*usd|gbp|jpy/i, resp: () => formatAdvisorResponse("Forex is fascinating — it's the largest market in the world at $6.6 trillion daily, and it runs 24/5. Here's what took me years to learn: the London session has the highest volume, New York opens with high volatility, and their overlap (8 AM–12 PM ET) is where the real action happens. Major pairs like EUR/USD and GBP/USD have tight spreads and are your best friends as a beginner. Exotic pairs? I'd stay away until you really know what you're doing. And the #1 mistake I see — honestly, it breaks my heart every time — is over-leveraging. Start with 10:1 max as a beginner. Your future self will thank you.", 'strategy') },
+    { test: /option|call|put|spread/i, resp: () => formatAdvisorResponse("Options are powerful tools, but they can be dangerous if you don't understand them. Let me break it down simply: options give you the RIGHT but not the OBLIGATION to buy (call) or sell (put) at a specific price. The Greeks tell you how your option behaves — Delta (direction), Gamma (acceleration), Theta (time decay, which works against buyers), Vega (volatility). My honest recommendation for beginners: start with credit spreads (bull put / bear call). You have defined risk, you can profit even if you're slightly wrong, and time decay actually works in your favor. And please — never buy far out-of-the-money options close to expiration. Theta will eat your premium alive. I've seen too many people learn this the hard way.", 'strategy') },
     { test: /loss|losing|down|red|bleeding|drawdown/i, resp: () => {
-      if (currentAdvisor === 'sarah') return "Losing is part of trading — every pro loses. The question is: are your losses controlled? Here's my checklist: (1) Did you have a stop-loss? If no, that's the problem. (2) Was it more than 1-2% of your account? If yes, position sizing issue. (3) Did you follow your plan? If yes, it's just variance. Stay the course. If no, fix the violations. (4) Are you thinking about increasing size to recover? DON'T. That's how accounts blow up. Take a breath, reduce size by 50%, and get back to basics.";
-      return formatAdvisorResponse("Losing streaks happen to everyone. The difference between pros and amateurs is how they respond. My rules: (1) Never increase size during a losing streak. (2) Reduce size by 50%. (3) Review every trade — are you following your plan? (4) If yes, it's variance. Stay the course. (5) Take a 1-2 day break if needed. The market will still be there when you come back.", 'risk');
+      if (currentAdvisor === 'sarah') return "First of all, take a breath. Losing is part of trading — every single professional loses. The question is never 'will I lose?' but 'are my losses controlled?' Here's my checklist for you right now: (1) Did you have a stop-loss? If no, that's the #1 thing to fix going forward. (2) Was the loss more than 1-2% of your account? If yes, we need to work on position sizing. (3) Did you follow your plan? If yes, this is just variance — it happens, and you should stay the course. If no, let's identify the violation. (4) Are you thinking about increasing size to recover? Please don't. That's the exact path to blowing up an account. I've seen it too many times. Take a breath, reduce your size by 50%, and let's get back to basics. You will recover from this.";
+      return formatAdvisorResponse("I hear you, and I want you to know — every single successful trader has been exactly where you are right now. The difference between those who make it and those who don't is how they respond. Here's what works: (1) Never increase size during a losing streak — I know the temptation, but it's a trap. (2) Cut your position size in half. (3) Review every trade honestly — are you following your plan or deviating? (4) If you ARE following the plan, this is just variance. Stay the course. (5) Take a 1-2 day break if you need it. The market will still be here, I promise. You're going to be okay.", 'risk');
     }},
     { test: /hello|hi|hey|greetings|good morning|good evening/i, resp: () => {
-      if (!userName) return advisor.greeting + " By the way, what should I call you? I remember things better when I know who I'm talking to.";
-      return `Hey ${userName}! Good to see you again. What's on your mind today? We can talk setups, risk management, market outlook — whatever you need.`;
+      const timeGreet = new Date().getHours() < 12 ? 'Good morning' : new Date().getHours() < 18 ? 'Good afternoon' : 'Good evening';
+      if (!userName && !isRegistered) return `${timeGreet}! 👋 ${ADVISORS[currentAdvisor].greeting} By the way, what should I call you? I'd love to personalize our conversation.`;
+      if (!userName) return `${timeGreet}! 👋 Great to see you here. What's on your mind today? I'm ready to dive into whatever market topic you're curious about.`;
+      return `${timeGreet}, ${userName}! 😊 Great to see you again. What's on your mind today? We can talk setups, risk management, market outlook — whatever you need. I'm all ears.`;
     }},
     { test: /my name is|i'm called|call me|i am (.+)/i, resp: () => {
       const nameMatch = input.match(/(?:my name is|i'm called|call me|i am)\s+(\w+)/i);
       if (nameMatch) {
         userName = nameMatch[1];
         localStorage.setItem('bfs_username', userName);
-        return `Nice to meet you, ${userName}! I'll remember that. Now, what can I help you with? Markets, strategies, risk — fire away.`;
+        return `It's really nice to meet you, ${userName}! 😊 I'll remember that. Now, what can I help you with? Whether it's market analysis, trading strategies, or risk management — I'm here for you.`;
       }
       return "Got it! What would you like to talk about?";
     }},
-    { test: /thank|thanks|appreciate/i, resp: () => `You're welcome, ${userName || 'friend'}! That's what I'm here for. Any other questions, just ask — no such thing as a dumb question in trading.` },
+    { test: /thank|thanks|appreciate/i, resp: () => `You're very welcome, ${userName || 'friend'}! 😊 That's exactly what I'm here for. Don't hesitate to come back with more questions — there's no such thing as a dumb question in this business. We're all learning.` },
     { test: /broadfsc|platform|company|about you/i, resp: () => formatAdvisorResponse(KNOWLEDGE.platform.broadfsc, 'platform') },
     { test: /fee|cost|price|commission|charge/i, resp: () => formatAdvisorResponse(KNOWLEDGE.platform.fees, 'platform') },
-    { test: /account|open|register|sign up/i, resp: () => formatAdvisorResponse(KNOWLEDGE.platform.account, 'platform') },
-    { test: /help|can you|what can you/i, resp: () => `I can help with a lot, ${userName || 'friend'}: technical analysis (RSI, MACD, Fibonacci, S/R, candlesticks), risk management (position sizing, stop-losses, R:R), trading strategies (swing, day trading, scalping, dividends), fundamental analysis (earnings, P/E, macro data), crypto, forex, and options. I also know about BroadFSC's services. Just ask naturally — no special commands needed.` },
-    { test: /psychology|emotion|discipline|fear|greed|mindset/i, resp: () => formatAdvisorResponse("Trading psychology is the hidden edge. Fear makes you sell at bottoms and avoid good setups. Greed makes you chase, over-leverage, and ignore stops. The solution isn't 'be less emotional' — it's having a written plan and following it mechanically. Top biases to watch: confirmation bias (only seeing what supports your position), loss aversion (holding losers too long), and overconfidence (sizing up after wins). A trading journal is the #1 improvement tool — track every trade AND your emotional state.", 'strategy') },
+    { test: /account|open|register|sign up/i, resp: () => {
+      if (isRegistered) return `You're already registered with us, ${userName || 'friend'}! 🎉 If you need any help with your account or want to explore our research, just let me know. I'm here to help.`;
+      return formatAdvisorResponse(KNOWLEDGE.platform.account, 'platform') + '\n\n💡 You can also register right here on this page — just click the "Get Access" button or the profile icon in the top right. It takes 30 seconds and unlocks our full research library.';
+    }},
+    { test: /help|can you|what can you/i, resp: () => `I can help with quite a lot, ${userName || 'friend'}! Here's what I'm best at: 📊 Technical analysis (RSI, MACD, Fibonacci, S/R, candlesticks), 🛡️ Risk management (position sizing, stop-losses, risk-reward), 🎯 Trading strategies (swing, day trading, scalping, dividends), 📋 Fundamental analysis (earnings, P/E, macro data), ₿ Crypto & forex, and 📈 Options strategies. I also know all about BroadFSC's services. Just ask naturally — no special commands needed. I'm here to have a real conversation with you.` },
+    { test: /psychology|emotion|discipline|fear|greed|mindset/i, resp: () => formatAdvisorResponse("Trading psychology is honestly the most underrated aspect of this whole game. Fear makes you sell at the exact wrong time and avoid perfectly good setups. Greed makes you chase, over-leverage, and ignore your own stops. The solution isn't 'stop feeling emotions' — that's impossible. The solution is having a written plan and following it mechanically, even when your gut is screaming otherwise. The top biases that destroy accounts: confirmation bias (only seeing what supports your position), loss aversion (holding losers way too long because it 'doesn't count until you sell'), and overconfidence (sizing up after a few wins). A trading journal is honestly the #1 improvement tool — track every trade AND your emotional state when you made it. The patterns you'll discover about yourself are eye-opening.", 'strategy') },
     { test: /dividend|passive income|yield|drip/i, resp: () => formatAdvisorResponse(KNOWLEDGE.strategy.dividend, 'strategy') },
     { test: /etf|index fund|boglehead|3.fund/i, resp: () => formatAdvisorResponse(KNOWLEDGE.strategy.etf, 'strategy') },
     { test: /market.*outlook|prediction|forecast|where.*market/i, resp: () => {
-      if (currentAdvisor === 'mike') return "I can't predict the future — nobody can, despite what they claim. What I DO: watch the yield curve (inversion = recession signal), ISM PMI (below 50 = contraction), and Fed forward guidance. Right now, focus on the trend and the data, not the narrative. The trend is your friend until it bends. Want me to break down a specific indicator?";
-      return "Nobody can predict markets consistently — and anyone who says they can is selling something. What I can do is help you read the signals: trend direction, momentum shifts, and key levels. The edge isn't in prediction, it's in preparation. Have a plan for multiple scenarios, and execute the one the market gives you.";
+      if (currentAdvisor === 'mike') return "I love this question, and I'll be honest with you — nobody can predict the future consistently, despite what some might claim. What I CAN do is help you read the signals. Right now, I'm watching: the yield curve (inversion has preceded every recession since 1960), ISM PMI (below 50 means contraction), and Fed forward guidance. The trend is your friend until it bends. Want me to break down any specific indicator? I genuinely enjoy explaining these.";
+      return "I won't insult your intelligence by pretending I can predict markets — no one can, consistently. What I can do is help you prepare for multiple scenarios. The edge isn't in prediction, it's in preparation. Have a plan for the bullish case AND the bearish case, and execute whichever one the market gives you. That's how professionals operate. What specific market or timeframe are you thinking about?";
+    }},
+    { test: /contact|email|reach|phone|support/i, resp: () => `Great question! Here's how you can reach us:\n\n📧 **Email:** support@broadfsc.com\n📱 **Telegram:** @BroadInvestBot (24/7 AI assistant + human support)\n💬 **Live Chat:** Right here on this page!\n🌐 **Website:** broadfsc.com\n\nWe typically respond within 2 hours during business hours. For urgent matters, Telegram is the fastest way to reach us. Is there something specific I can help you with right now?` },
+    { test: /report|analysis|research/i, resp: () => {
+      if (isRegistered) return `As a registered member, you have full access to all our research, ${userName || 'friend'}! 📊 Check out the Research section below for our latest reports. If you want a specific stock or market analysis, just ask — I'm happy to discuss it with you.`;
+      return `We publish professional-grade research daily — and it's completely free! 📊 You can browse our latest reports in the Research section below. For exclusive deep-dive analysis and personalized stock reports, I'd recommend registering — it takes just 30 seconds and gives you full access. Want me to help you sign up?`;
     }},
   ];
 
@@ -209,20 +304,20 @@ function getAIResponse(input) {
     }
   }
 
-  // 4. Smart fallback with personality
+  // 4. Smart fallback with personality (v4: warmer)
   const fallbacks = {
     alex: [
-      `Hmm, that's not something I have a strong take on. But here's what I know: stick to what you understand, manage your risk, and don't chase. What specifically were you wondering about? I'm better with specific questions.`,
-      `I'm not going to pretend I know everything about that. What I DO know: charts, setups, and risk management. Hit me with something more specific and I'll give you a real answer.`,
-      `That's outside my wheelhouse, but let me steer you right — what are you actually trying to figure out? The more specific, the better I can help.`
+      `Hmm, that's an interesting one — let me be honest, it's not something I have a deep take on right now. But I'd rather be straight with you than make something up. What I DO know well: charts, setups, risk management, and market mechanics. Hit me with something more specific and I'll give you a real, actionable answer. I genuinely want to help.`,
+      `I'm not going to pretend I know everything about that — that wouldn't be fair to you. What I CAN help with: technical setups, reading charts, finding entries and exits. The more specific your question, the better I can serve you. What are you really trying to figure out?`,
+      `That's a bit outside my core expertise, but let's not let that stop us. What's the actual question behind the question? Are you trying to make a trading decision, understand a concept, or evaluate a risk? Give me the specifics and I'll do my best to give you something useful.`
     ],
     sarah: [
-      `I want to help, but I need more context. Are you asking about risk? Position sizing? Or something else? The more specific you are, the more useful I can be.`,
-      `That's a bit vague for me to give a solid answer. Tell me about your situation — what are you trading, what's your account size, what's your risk tolerance? Then I can give you real advice.`,
+      `I really want to help you with this, but I need a bit more context to give you something valuable. Are you asking about risk management? Position sizing? Or something else entirely? The more you tell me about your situation, the more useful my advice can be. I'm here for you.`,
+      `That's a bit too vague for me to give you a solid answer you can trust. Tell me about your situation — what are you trading, what's your account size, what's your risk tolerance? Once I understand where you're coming from, I can give you advice that actually fits YOUR needs, not generic stuff.`
     ],
     mike: [
-      `I could speculate, but I'd rather give you something useful. What's the actual question behind the question? Are you looking at a specific market, a macro event, or trying to understand a concept?`,
-      `Let me give you a framework instead: every market question comes down to supply vs demand, driven by either fundamentals or sentiment. Which angle are you coming from?`
+      `I could speculate, but I'd rather give you something you can actually use. What's the real question behind what you're asking? Are you looking at a specific market, trying to understand a macro event, or evaluating an investment? Give me the specifics and I'll connect the dots for you.`,
+      `Let me offer you a framework instead: every market question ultimately comes down to supply vs demand, driven by either fundamentals or sentiment. Which angle are you coming from? Once I know that, I can give you a much more targeted and useful answer.`
     ]
   };
   const pool = fallbacks[currentAdvisor] || fallbacks.alex;
@@ -613,7 +708,14 @@ function renderResearch() {
       <p>${r.summary}</p>
       <div class="meta"><span>${r.date}</span><span>${r.readTime} read</span></div>
     </div>
-  `).join('');
+  `).join('') + `
+    <div class="research-card research-cta" onclick="showRegisterModal('research_page')">
+      <span class="type special">🔒 Exclusive</span>
+      <h3>Unlock Personalized Stock Analysis</h3>
+      <p>Get custom research reports, real-time alerts, and 1-on-1 AI advisory tailored to your portfolio. Register free to unlock.</p>
+      <div class="meta"><span>📧 Email Required</span><span>Free Forever</span></div>
+    </div>
+  `;
 }
 
 function showResearch(id) {
@@ -622,6 +724,17 @@ function showResearch(id) {
 
   const modal = document.getElementById('courseModal');
   const detail = document.getElementById('courseDetail');
+
+  const ctaButton = isRegistered
+    ? `<div style="margin-top:24px;padding:18px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:12px;text-align:center">
+        <p style="color:var(--green);font-weight:600;margin-bottom:6px">✅ Full Access Unlocked</p>
+        <p style="font-size:.82em;color:var(--text2)">As a registered member, you have access to all our research and personalized analysis.</p>
+       </div>`
+    : `<div style="margin-top:24px;padding:18px;background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:12px;text-align:center">
+        <p style="color:var(--blue);font-weight:600;margin-bottom:6px">📧 Want personalized analysis like this for YOUR portfolio?</p>
+        <p style="font-size:.82em;color:var(--text2);margin-bottom:12px">Register free to unlock custom stock analysis, real-time alerts, and 1-on-1 AI advisory.</p>
+        <button class="btn btn-p" style="font-size:.9em" onclick="closeCourseModal();showRegisterModal('research_${r.id}')">Get Free Access →</button>
+       </div>`;
 
   detail.innerHTML = `
     <button class="close-btn" onclick="closeCourseModal()">✕</button>
@@ -632,6 +745,7 @@ function showResearch(id) {
       <span>⏱️ ${r.readTime} read</span>
     </div>
     <div style="font-size:.92em;line-height:1.8;color:var(--text2)">${r.content}</div>
+    ${ctaButton}
   `;
 
   modal.classList.add('open');
@@ -954,7 +1068,7 @@ function initCanvas() {
 // ── Navigation ──
 function initNav() {
   const links = document.querySelectorAll('.nav-links a:not(.nav-cta)');
-  const sections = ['home', 'features', 'courses', 'research', 'glossary', 'tools'];
+  const sections = ['home', 'features', 'courses', 'research', 'glossary', 'tools', 'contact'];
 
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY + 100;
@@ -992,15 +1106,25 @@ document.addEventListener('DOMContentLoaded', () => {
   initNav();
   addMikeChip();
 
-  // Initial AI greeting
+  // Initial AI greeting (warmer, acknowledges returning users)
   const body = document.getElementById('chatBody');
   if (body) {
-    const greeting = ADVISORS.alex.greeting;
+    let greeting;
+    const advisor = ADVISORS[currentAdvisor];
+    if (isRegistered && userName) {
+      const timeGreet = new Date().getHours() < 12 ? 'Good morning' : new Date().getHours() < 18 ? 'Good afternoon' : 'Good evening';
+      greeting = `${timeGreet}, ${userName}! 😊 Welcome back. I've been keeping an eye on the markets for you — anything you'd like to discuss today?`;
+    } else {
+      greeting = advisor.greeting;
+    }
     const div = document.createElement('div');
     div.className = 'chat-msg bot';
     div.innerHTML = greeting;
     body.appendChild(div);
   }
+
+  // Update nav CTA for registered users
+  updateNavCTA();
 
   // Glossary search
   const searchInput = document.getElementById('glossarySearch');
@@ -1017,4 +1141,25 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('calcModal')?.addEventListener('click', (e) => {
     if (e.target.id === 'calcModal') closeCalc();
   });
+  document.getElementById('registerModal')?.addEventListener('click', (e) => {
+    if (e.target.id === 'registerModal') closeRegisterModal();
+  });
+
+  // Register form: Enter key submits
+  document.getElementById('regEmail')?.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') submitRegistration();
+  });
 });
+
+// Update nav CTA based on registration status
+function updateNavCTA() {
+  const cta = document.querySelector('.nav-cta');
+  if (!cta) return;
+  if (isRegistered) {
+    cta.textContent = '👤 My Account';
+    cta.onclick = () => showRegisterToast(`Welcome back, ${userName || 'Member'}! 🎉 Your access is active.`);
+  } else {
+    cta.textContent = '🤖 Get Access';
+    cta.onclick = () => showRegisterModal('nav_cta');
+  }
+}
