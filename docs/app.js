@@ -45,6 +45,20 @@ const KNOWLEDGE = {
     'broadfsc': "BroadFSC is a regulated investment advisory platform. We're licensed by major financial authorities and serve global investors (except mainland China). What makes us different: AI-powered education, transparent fees, and actual human support when you need it. Think of us as the platform that actually wants you to learn, not just trade.",
     'account': "Opening a BroadFSC account is straightforward — verified ID, proof of address, and you're in. We support multiple currencies and offer both advisory and self-directed accounts. Minimums are kept low because we believe everyone deserves access to professional tools. Contact our team through this chat or visit broadfsc.com for details.",
     'fees': "We keep fees transparent — no hidden charges. Our structure is competitive with major platforms, and we don't nickel-and-dime on small transactions. The specific fee schedule depends on your account type and services. What I can tell you: we're not the cheapest, but we're far from the most expensive, and the value you get in education and support more than covers it."
+  },
+  stocks: {
+    'apple aapl': "Apple (AAPL) is the world's most valuable company with a $3+ trillion market cap. Key investment thesis: (1) Services revenue growing 15%+ YoY — this is the real margin driver, now 25% of revenue but 40%+ of gross profit. (2) iPhone remains the cash cow, but growth has plateaued at 2-5% annually. (3) AI integration (Apple Intelligence) could trigger the next upgrade supercycle. (4) Massive $100B+ annual buyback program supports the stock. Risks: China sales declining, regulatory pressure on App Store fees, and slower innovation cycles. Valuation typically ranges 25-30x earnings — not cheap, but the ecosystem lock-in justifies a premium. Key support: 150-week MA. Resistance: ATH zone.",
+    'nvidia nvda': "NVIDIA (NVDA) has been the undisputed king of the AI trade. Data center revenue is growing 100%+ YoY driven by insatiable demand for AI training and inference chips. The bull case: AI capex from Big Tech is projected at $650-700B in 2026, and NVIDIA captures ~80% of the GPU market. The bear case: any deceleration in data center revenue growth could trigger a 15-20% selloff — the stock is priced for perfection at 35-40x forward earnings. Key levels: 50 SMA for trend, 200 SMA for macro trend. The real risk isn't competition (AMD is years behind) — it's a capex slowdown if AI ROI doesn't materialize. Position sizing is critical here: max 3-5% of portfolio due to volatility.",
+    'tesla tsla': "Tesla (TSLA) is the most polarizing stock in the market. Bull case: (1) Energy storage business growing 100%+ YoY with fatter margins than cars. (2) FSD/autonomy — if they crack it, the robotaxi TAM is $10T+. (3) Optimus robot could be transformative long-term. Bear case: (1) Auto margins compressed from 25%+ to under 18% due to price wars. (2) EV demand slowing globally. (3) CEO distraction risk. The stock trades on narrative, not fundamentals — 50-60x PE even in a 'bad' year. Technically, it's extremely volatile: 30-40% swings are normal. Only for risk-tolerant investors with 5+ year horizons.",
+    'microsoft msft': "Microsoft (MSFT) might be the safest big-tech play. Azure is gaining cloud market share (now ~25%), and AI integration via Copilot is driving real revenue growth. FY2026 capex expected above $88B, mostly for AI infrastructure. Key metrics: Cloud revenue growing 25%+, Microsoft 365 commercial revenue growing 15%+. The stock rarely gets cheap — 30-35x earnings is the normal range. But it's one of the few mega-caps with both growth AND a Warren Buffett-style moat. Buy the 50 SMA pullbacks, hold for years.",
+    'amazon amzn': "Amazon (AMZN) is a two-headed beast: AWS (cloud) growing 20%+ and retail improving margins. AWS is the profit engine — 65%+ of operating income despite being 15% of revenue. The AI play: AWS Bedrock and custom Trainium chips position Amazon as the 'AI infrastructure for everyone.' Capex surging past $100B in 2026. Retail is finally showing discipline on costs, pushing operating margins above 10%. Risks: antitrust regulation, AWS growth deceleration, and retail margin compression in recession. Valuation is reasonable at 25-30x forward earnings given the dual growth engines.",
+    'google alphabet': "Alphabet/Google (GOOGL) is the most undervalued of the Magnificent 7 on a PEG basis. Search still generates $250B+ annually with 30%+ margins. YouTube is a $40B business growing 15%. Cloud (GCP) is finally profitable and growing 30%+. AI integration via Gemini and Search Generative Experience is a double-edged sword: it could enhance search OR disrupt it. The antitrust overhang is real — potential forced divestiture of Chrome/Android could fundamentally change the company. But at 20-22x earnings, the market is pricing in significant risk. I see value here with a 12-month horizon.",
+    'meta facebook': "Meta (META) has executed one of the greatest pivots in corporate history — from metaverse money-burner to AI-powered profit machine. Reality Labs still burns $15B+ annually, but the core ads business is firing on all cylinders. AI-powered ad targeting (Advantage+) is driving 20%+ ad revenue growth. Threads hit 300M+ users. Reels monetization is now on par with Feed. The stock is surprisingly cheap at 22-25x earnings given 25%+ revenue growth. Key risk: regulatory (EU AI Act, US ad targeting restrictions). Buy the 50 SMA, target new highs.",
+    's&p 500 spx': "The S&P 500 is the benchmark for US equities, comprising the 500 largest companies. In 2026, it's been driven by AI capex ($650-700B from Big Tech), resilient earnings, and Middle East ceasefire hopes. Key levels: support at 5,850 (20 EMA) and 5,700 (50 SMA), resistance at 6,100 (ATH zone). The Magnificent 7 still account for 30%+ of index weight — concentration risk is real. For most investors, a simple VTI (total market) or SPY allocation of 60-70% of their equity portfolio is the smartest move.",
+    'gold xau': "Gold has been the trade of the decade — surging from $2,000 to $4,800+ in 18 months. This isn't speculative; it's structural. Central banks bought 1,200+ tonnes in 2025 (record pace), driven by de-dollarization. China's PBOC has bought for 24+ consecutive months. Add geopolitical risk premium and $2T+ US fiscal deficits, and gold's floor keeps rising. Key levels: support $4,650, $4,400; targets $5,000, $5,500. The play: buy dips to $4,650, stop at $4,400, or use gold miners (GDX/GDXJ) for 2-3x leverage. Not too late, but use stops — a Middle East peace breakthrough could trigger 5-8% pullback.",
+    'tsmc semiconductor': "TSMC (TSM) is the world's most important company nobody talks about. They manufacture 90%+ of the world's most advanced chips — NVIDIA, Apple, AMD all depend on them. Revenue growing 30%+ YoY on AI demand. The moat is extraordinary: it takes 10+ years and $20B+ to build leading-edge fab capacity. Risks: geopolitical (Taiwan Strait) and customer concentration. If you want AI exposure without the Magnificent 7 premium, TSMC is the backdoor play. Buy on geopolitical fear dips.",
+    'berkshire hathaway': "Berkshire Hathaway (BRK.A/BRK.B) is the ultimate defensive play. Warren Buffett's cash pile hit $300B+ in 2026 — he's selling stocks and waiting for opportunity. When Buffett builds this much cash, it historically signals market froth. Berkshire's portfolio: heavy on Apple, Bank of America, American Express, Chevron. Insurance float is the real secret weapon — essentially free leverage. The stock tends to outperform in bear markets and underperform in bull markets. If you're worried about a correction, add BRK.B as a hedge. It's the 'sleep well at night' stock.",
+    'jpmorgan chase': "JPMorgan (JPM) is the king of banks — the only major bank that got STRONGER after the 2023 regional banking crisis. Jamie Dimon is the most respected CEO in finance. Net interest income hitting records as rates stay 'higher for longer.' Key advantage: fortress balance sheet allows them to lend when others can't. The stock is never cheap (12-15x earnings), but you're paying for the best-in-class franchise. If the yield curve steepens (long rates rise), JPM is the biggest beneficiary. Buy on recession fears — that's when Dimon deploys the war chest.",
   }
 };
 
@@ -81,7 +95,7 @@ const ADVISORS = {
 
 // ── AI State ──
 let currentAdvisor = 'alex';
-let chatHistory = [];
+let chatHistories = { alex: [], sarah: [], mike: [] };  // Separate history per advisor
 let userName = localStorage.getItem('bfs_username') || '';
 let userEmail = localStorage.getItem('bfs_email') || '';
 let isRegistered = !!userEmail;
@@ -153,7 +167,9 @@ function submitRegistration() {
   if (body) {
     const advisor = ADVISORS[currentAdvisor];
     setTimeout(() => {
-      addBotMessage(`${advisor.emoji} Great to have you with us, ${name}! I've noted your interest in ${interests || 'investing'}. Feel free to ask me anything — I'm here to help you succeed. By the way, you'll receive our best research reports directly at ${email}.`);
+      const resp = `${advisor.emoji} Great to have you with us, ${name}! I've noted your interest in ${interests || 'investing'}. Feel free to ask me anything — I'm here to help you succeed. By the way, you'll receive our best research reports directly at ${email}.`;
+      addBotMessage(resp);
+      chatHistories[currentAdvisor].push({ role: 'bot', text: resp });
     }, 800);
   }
 
@@ -175,7 +191,7 @@ function getAIResponse(input) {
   const advisor = ADVISORS[currentAdvisor];
 
   // Memory: check chat history for context
-  const lastTopics = chatHistory.slice(-6).map(m => m.text.toLowerCase()).join(' ');
+  const lastTopics = (chatHistories[currentAdvisor] || []).slice(-6).map(m => m.text.toLowerCase()).join(' ');
 
   // 1. Check knowledge base (deep match first)
   let bestMatch = null;
@@ -256,6 +272,22 @@ function getAIResponse(input) {
       if (isRegistered) return `As a registered member, you have full access to all our research, ${userName || 'friend'}! 📊 Check out the Research section below for our latest reports. If you want a specific stock or market analysis, just ask — I'm happy to discuss it with you.`;
       return `We publish professional-grade research daily — and it's completely free! 📊 You can browse our latest reports in the Research section below. For exclusive deep-dive analysis and personalized stock reports, I'd recommend registering — it takes just 30 seconds and gives you full access. Want me to help you sign up?`;
     }},
+    // Stock / company queries
+    { test: /apple|aapl|iphone|tim cook/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['apple aapl'], 'stocks') },
+    { test: /nvidia|nvda|jensen|gpu|ai chip/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['nvidia nvda'], 'stocks') },
+    { test: /tesla|tsla|elon|ev car|electric vehicle/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['tesla tsla'], 'stocks') },
+    { test: /microsoft|msft|satya|azure|copilot/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['microsoft msft'], 'stocks') },
+    { test: /amazon|amzn|bezos|aws\b/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['amazon amzn'], 'stocks') },
+    { test: /google|alphabet|googl|youtube|gemini ai/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['google alphabet'], 'stocks') },
+    { test: /meta|facebook|fb\b|zuckerberg|instagram|threads/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['meta facebook'], 'stocks') },
+    { test: /s&p|spx|spy|sp500|s&p500|index fund|market index/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['s&p 500 spx'], 'stocks') },
+    { test: /gold|xau|precious metal|de.dollar/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['gold xau'], 'stocks') },
+    { test: /tsmc|taiwan semiconductor|chip maker|semiconductor/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['tsmc semiconductor'], 'stocks') },
+    { test: /berkshire|buffett|warren|brk/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['berkshire hathaway'], 'stocks') },
+    { test: /jpmorgan|jpm|chase bank|jamie dimon/i, resp: () => formatAdvisorResponse(KNOWLEDGE.stocks['jpmorgan chase'], 'stocks') },
+    { test: /stock|share|equity|market|invest in|portfolio/i, resp: () => {
+      return "I can give you analysis on specific stocks or the broader market! Here are some I cover in depth: 🍎 Apple (AAPL), 🟢 NVIDIA (NVDA), 🚗 Tesla (TSLA), 💻 Microsoft (MSFT), 📦 Amazon (AMZN), 🔍 Google (GOOGL), 📱 Meta (META), 🏦 JPMorgan (JPM), 🏭 TSMC (TSM), 💰 Berkshire (BRK), 🥇 Gold, or 📊 S&P 500. Just ask about any of these — or a general investing topic like 'how to start' or 'risk management'. What interests you?";
+    }},
   ];
 
   for (const p of patterns) {
@@ -281,6 +313,11 @@ function getAIResponse(input) {
     'dividend': 'strategy', 'etf': 'strategy',
     'bitcoin': 'crypto', 'crypto': 'crypto', 'btc': 'crypto', 'altcoin': 'crypto',
     'option': 'strategy', 'call': 'strategy', 'put': 'strategy',
+    'aapl': 'stocks', 'nvda': 'stocks', 'tsla': 'stocks', 'msft': 'stocks', 'amzn': 'stocks',
+    'googl': 'stocks', 'meta': 'stocks', 'jpm': 'stocks', 'tsm': 'stocks',
+    'apple': 'stocks', 'nvidia': 'stocks', 'tesla': 'stocks', 'microsoft': 'stocks',
+    'amazon': 'stocks', 'google': 'stocks', 'facebook': 'stocks', 'berkshire': 'stocks',
+    'gold': 'stocks', 'xau': 'stocks', 'semiconductor': 'stocks',
   };
 
   for (const [kw, cat] of Object.entries(kwMap)) {
@@ -298,7 +335,8 @@ function getAIResponse(input) {
         risk: "Risk management is where most traders fail. My non-negotiable rules: 1-2% max risk per trade, always have a stop-loss, and never risk more than 5-6% total across all positions. What's your current risk framework?",
         strategy: "Strategy depends on your style and available time. Swing trading is best for most people — 30 min/day, 2-14 day holds, and you can keep your day job. What's your situation?",
         crypto: "Crypto is its own beast — 24/7, extreme volatility, and most altcoins go to zero. Keep crypto to max 15% of portfolio, BTC/ETH only for beginners, and NEVER use leverage in crypto. The volatility is already leveraged enough.",
-        platform: "I can tell you about BroadFSC's services, account setup, or fees. What specifically interests you?"
+        platform: "I can tell you about BroadFSC's services, account setup, or fees. What specifically interests you?",
+        stocks: "I cover detailed analysis on major stocks: Apple, NVIDIA, Tesla, Microsoft, Amazon, Google, Meta, JPMorgan, TSMC, Berkshire, and more. I also cover Gold and the S&P 500. Which stock or market are you interested in?"
       };
       return catResponses[cat] || "Tell me more about what you're looking for and I'll give you my best take.";
     }
@@ -333,13 +371,22 @@ function formatAdvisorResponse(answer, category) {
     risk: '🛡️ Risk',
     strategy: '🎯 Strategy',
     crypto: '₿ Crypto',
-    platform: '🏦 BroadFSC'
+    platform: '🏦 BroadFSC',
+    stocks: '📈 Stocks & Markets'
   };
   return `${prefix} ${answer}\n\n_${catLabels[category] || ''} | ${advisor.name}_`;
 }
 
 // ── Chat UI ──
 function switchAdvisor(id) {
+  if (currentAdvisor === id) return;  // Already on this advisor
+
+  // Save current chat body HTML to history before switching
+  const body = document.getElementById('chatBody');
+  if (body) {
+    chatHistories[currentAdvisor] = body.innerHTML;
+  }
+
   currentAdvisor = id;
   const a = ADVISORS[id];
 
@@ -353,8 +400,19 @@ function switchAdvisor(id) {
   const chip = document.getElementById(chipId);
   if (chip) chip.classList.add('active');
 
-  // Add switch message
-  addBotMessage(`Switched to ${a.name}. ${a.greeting}`);
+  // Restore this advisor's chat history (or show greeting if empty)
+  if (body) {
+    if (chatHistories[id] && chatHistories[id].trim()) {
+      body.innerHTML = chatHistories[id];
+    } else {
+      body.innerHTML = '';
+      const div = document.createElement('div');
+      div.className = 'chat-msg bot';
+      div.innerHTML = a.greeting;
+      body.appendChild(div);
+    }
+    body.scrollTop = 0;
+  }
 }
 
 function sendChat() {
@@ -364,7 +422,7 @@ function sendChat() {
 
   // Add user message
   addUserMessage(text);
-  chatHistory.push({ role: 'user', text });
+  chatHistories[currentAdvisor].push({ role: 'user', text });  // Use per-advisor history
   input.value = '';
 
   // Typing indicator
@@ -376,7 +434,7 @@ function sendChat() {
     removeTyping();
     const response = getAIResponse(text);
     addBotMessage(response);
-    chatHistory.push({ role: 'bot', text: response });
+    chatHistories[currentAdvisor].push({ role: 'bot', text: response });  // Use per-advisor history
   }, delay);
 }
 
@@ -1121,6 +1179,8 @@ document.addEventListener('DOMContentLoaded', () => {
     div.className = 'chat-msg bot';
     div.innerHTML = greeting;
     body.appendChild(div);
+    // Save initial greeting to Alex's history
+    chatHistories[currentAdvisor].push({ role: 'bot', text: greeting });
   }
 
   // Update nav CTA for registered users
