@@ -134,5 +134,61 @@
     "action": "message",
     "user_id": "8639358750",
     "details": "How to contact your customer service"
+  },
+  {
+    "id": 18,
+    "timestamp": "2026-04-20T13:18:20.815180Z",
+    "platform": "telegram_bot",
+    "action": "message",
+    "user_id": "8327500544",
+    "details": "你好"
+  },
+  {
+    "id": 19,
+    "timestamp": "2026-04-20T13:18:52.914224Z",
+    "platform": "telegram_bot",
+    "action": "message",
+    "user_id": "8327500544",
+    "details": "我想问下你们是怎么合作的"
+  },
+  {
+    "id": 20,
+    "timestamp": "2026-04-20T13:19:24.805571Z",
+    "platform": "telegram_bot",
+    "action": "message",
+    "user_id": "8327500544",
+    "details": "怎么联系你们"
+  },
+  {
+    "id": 21,
+    "timestamp": "2026-04-20T13:20:09.737123Z",
+    "platform": "telegram_bot",
+    "action": "message",
+    "user_id": "8327500544",
+    "details": "我不会交易你会帮我交易吗"
+  },
+  {
+    "id": 22,
+    "timestamp": "2026-04-20T13:22:00.163784Z",
+    "platform": "telegram_bot",
+    "action": "message",
+    "user_id": "8327500544",
+    "details": "帮我分析一下一建筑这个股票"
+  },
+  {
+    "id": 23,
+    "timestamp": "2026-04-20T13:22:33.257561Z",
+    "platform": "telegram_bot",
+    "action": "message",
+    "user_id": "8327500544",
+    "details": "一建筑"
+  },
+  {
+    "id": 24,
+    "timestamp": "2026-04-20T13:23:02.840527Z",
+    "platform": "telegram_bot",
+    "action": "message",
+    "user_id": "8327500544",
+    "details": "一建筑是美国股票"
   }
 ]
