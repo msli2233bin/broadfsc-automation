@@ -95,6 +95,58 @@ LEARNING_SOURCES = {
             'url': 'https://blog.hubspot.com/email-marketing',
             'topic': 'email_marketing'
         },
+        # 🆕 全球顶级销售方法论学习源
+        {
+            'name': 'SPIN Selling - Huthwaite International',
+            'url': 'https://huthwaite.com/resources/blog/',
+            'topic': 'spin_selling'
+        },
+        {
+            'name': 'Challenger Sale - Challenger Inc',
+            'url': 'https://www.challenger.com/blog/',
+            'topic': 'challenger_sale'
+        },
+        {
+            'name': 'Sandler Training Blog',
+            'url': 'https://www.sandler.com/blog',
+            'topic': 'sandler_method'
+        },
+        {
+            'name': 'FirstSales - Sales Methodologies 2026',
+            'url': 'https://firstsales.io/blog/sales-methodologies/',
+            'topic': 'sales_methodologies'
+        },
+        {
+            'name': 'Gong Labs - Sales Research',
+            'url': 'https://www.gong.io/blog/',
+            'topic': 'sales_research'
+        },
+        {
+            'name': 'Sales Hacker - Modern Sales Techniques',
+            'url': 'https://www.saleshacker.com/',
+            'topic': 'modern_sales'
+        },
+        {
+            'name': 'Corporate Visions - Sales Psychology',
+            'url': 'https://www.corporatevisions.com/blog/',
+            'topic': 'sales_psychology'
+        },
+        # 🆕 金融投资领域专用销售学习源
+        {
+            'name': 'Deloitte - AI in Investment Management Sales',
+            'url': 'https://www.deloitte.com/us/en/insights/industry/financial-services/ai-investment-management-sales-marketing.html',
+            'topic': 'fintech_sales'
+        },
+        {
+            'name': 'Investopedia - Financial Advisor Tips',
+            'url': 'https://www.investopedia.com/financial-advisor-4427703',
+            'topic': 'advisor_sales'
+        },
+        {
+            'name': 'WealthManagement.com - Practice Management',
+            'url': 'https://www.wealthmanagement.com/practice-management',
+            'topic': 'wealth_sales'
+        },
     ],
     'marketing': [
         {

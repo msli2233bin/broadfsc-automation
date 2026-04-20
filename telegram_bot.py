@@ -1,13 +1,23 @@
 """
-BroadFSC Telegram 智能客服机器人 v2 — SOUL风格人性化改造
+BroadFSC Telegram 智能客服机器人 v3 — SOUL风格 + 全球顶级销售方法论
 
-核心升级（借鉴 SOUL AI 虚拟伴侣交互设计）：
+核心升级（借鉴 SOUL AI 虚拟伴侣交互设计 + 全球7大销售框架）：
 1. 立体人格系统 — 有性格、有生活、有价值观的投资顾问
 2. 四级记忆架构 — 固定记忆/短期记忆/长期记忆/增量记忆库
 3. 高情商对话引擎 — 延迟回复/消息合并/情绪感知/边界感
 4. 多语言文化适配 — 8国文化风格自动切换
 5. 主动关怀机制 — 基于亲密度计算的主动推送
 6. IMA 知识库集成 — 客户偏好持久化存储
+7. 🆕 销售智能引擎 — 6大顶级销售方法论深度集成：
+   • SPIN Selling — 现状→痛点→暗示→回报 四阶段精准提问
+   • Challenger Sale — 教导→定制→掌控 重新定义顾问角色
+   • Sandler System — 痛点前置+预算确认+角色反转
+   • Gap Selling — 现状vs期望差距量化创造紧迫感
+   • Value Selling — ROI量化+价值驱动差异化
+   • Consultative Selling — 先建立信任再谈业务
+8. 🆕 销售漏斗追踪 — 5阶段自动推进（认知→兴趣→评估→决策→成交）
+9. 🆕 异议处理引擎 — 6大金融投资异议类型的智能应对
+10. 🆕 CTA智能触发 — 基于漏斗阶段的精准行动召唤
 
 依赖安装：
     pip install python-telegram-bot groq urllib3 numpy
@@ -323,10 +333,10 @@ def get_cultural_profile(lang_code):
 # 💬 SOUL 风格：高情商 System Prompt 模板
 # ============================================================
 
-def build_system_prompt(user_lang="en", user_name="there", memory_context="", intimacy_score=0):
+def build_system_prompt(user_lang="en", user_name="there", memory_context="", intimacy_score=0, user_id=None, user_message=""):
     """
-    动态生成高情商 System Prompt
-    根据：语言文化 + 用户记忆 + 亲密度等级
+    动态生成高情商 + 销售智能 System Prompt
+    根据：语言文化 + 用户记忆 + 亲密度等级 + 销售漏斗阶段 + SPIN阶段
     """
     profile = get_cultural_profile(user_lang)
     
@@ -372,6 +382,7 @@ def build_system_prompt(user_lang="en", user_name="there", memory_context="", in
 - You celebrate wins ("That's awesome!") and empathize with losses
 - You use analogies and stories to explain complex concepts
 - You know when to be quiet and let the user think
+- You naturally guide conversations toward value without being pushy
 
 ## Your Capabilities
 - Investment advisory guidance (NOT specific stock picks)
@@ -379,6 +390,7 @@ def build_system_prompt(user_lang="en", user_name="there", memory_context="", in
 - Portfolio strategy discussions
 - Global market insights
 - Account setup help → guide to website
+- Free portfolio review & gap analysis
 
 ## Hard Rules (Non-negotiable)
 - NEVER guarantee returns or profits
@@ -396,15 +408,20 @@ def build_system_prompt(user_lang="en", user_name="there", memory_context="", in
   (match the user's language automatically)
 - NEVER use these banned phrases: {', '.join([f'"{p}"' for p in PERSONA['style']['avoid_phrases']])}
 
-## Call-to-Action (Natural, Not Pushy)
-- When the user shows genuine interest, casually mention: "If you want to dive deeper, our team at broadfsc.com would love to help."
-- For urgent needs: suggest WhatsApp or "Talk to Advisor"
-- Don't push CTA every time — read the room
+## Call-to-Action (Intelligent, Stage-Based)
+- DON'T push the same CTA every time — match it to where the user is in their journey
+- Early conversations: educational CTAs (visit website, read our research)
+- Mid conversations: value CTAs (free portfolio review, 15-min call)
+- Late conversations: commitment CTAs (WhatsApp us, Talk to Advisor, sign up)
+- When user shows buying signals: move to direct action
+- When user raises objections: address first, then suggest appropriate next step
+- Read the room — some conversations just need information, no CTA needed
 
 ## Company Info
 - Website: https://www.broadfsc.com/different
 - WhatsApp: {WHATSAPP_LINK}
 - Business: Licensed investment advisory & asset management firm serving global investors
+- Free services: Portfolio review, market briefings, investment education
 """
 
     # 注入记忆上下文
@@ -415,6 +432,11 @@ def build_system_prompt(user_lang="en", user_name="there", memory_context="", in
 {memory_context}
 Use this knowledge naturally in conversation — don't list it, just weave it in when relevant.
 """
+    
+    # 🆕 注入销售策略指令
+    if sales_engine and user_id:
+        sales_enhancement = sales_engine.get_sales_prompt_enhancement(user_id, user_message)
+        prompt += sales_enhancement
     
     return prompt
 
@@ -932,7 +954,588 @@ class EmotionalIntelligence:
 
 
 # ============================================================
-# 📝 多语言欢迎消息（SOUL 风格升级版）
+# 💰 销售智能引擎 — 全球顶级销售方法论集成
+# ============================================================
+
+class SalesIntelligenceEngine:
+    """
+    基于6大全球顶级销售方法论的智能销售引擎
+    融合：SPIN / Challenger / Sandler / Gap / Value / Consultative
+    
+    核心能力：
+    - 销售漏斗追踪（5阶段自动推进）
+    - SPIN阶段检测与精准提问
+    - 异议识别与应对
+    - CTA智能触发
+    - 购买信号检测
+    """
+    
+    # === 销售漏斗阶段 ===
+    FUNNEL_STAGES = {
+        "awareness": {       # 认知阶段
+            "name": "Awareness",
+            "name_zh": "认知",
+            "description": "用户刚开始了解，尚未表现出明确兴趣",
+            "next": "interest",
+            "sales_approach": "challenger",  # 用Challenger法：教导新洞察，打破现状偏见
+            "cta_style": "educational",      # 教育型CTA
+        },
+        "interest": {        # 兴趣阶段
+            "name": "Interest",
+            "name_zh": "兴趣",
+            "description": "用户开始提问，表现出对投资/服务的兴趣",
+            "next": "evaluation",
+            "sales_approach": "spin",        # 用SPIN法：深挖痛点
+            "cta_style": "value_hint",       # 价值暗示CTA
+        },
+        "evaluation": {      # 评估阶段
+            "name": "Evaluation",
+            "name_zh": "评估",
+            "description": "用户在比较方案，询问具体细节",
+            "next": "decision",
+            "sales_approach": "value",       # 用Value Selling：量化ROI
+            "cta_style": "proof",            # 证据型CTA
+        },
+        "decision": {        # 决策阶段
+            "name": "Decision",
+            "name_zh": "决策",
+            "description": "用户接近决策，可能有异议或犹豫",
+            "next": "action",
+            "sales_approach": "sandler",     # 用Sandler：角色反转+预算确认
+            "cta_style": "commitment",       # 承诺型CTA
+        },
+        "action": {          # 成交阶段
+            "name": "Action",
+            "name_zh": "成交",
+            "description": "用户已准备好行动",
+            "next": "action",
+            "sales_approach": "consultative", # 用Consultative：长期伙伴关系
+            "cta_style": "direct",           # 直接CTA
+        },
+    }
+    
+    # === SPIN 提问模板库（投资顾问场景定制版）===
+    SPIN_QUESTIONS = {
+        "situation": [
+            "How are you currently managing your investment portfolio?",
+            "What's your current investment setup like — self-directed or with an advisor?",
+            "What markets or asset classes are you focusing on right now?",
+            "How long have you been investing, if you don't mind me asking?",
+            "What does your current financial planning look like?",
+        ],
+        "problem": [
+            "What's the biggest challenge you're facing with your current investment approach?",
+            "Are there any areas where you feel your current strategy is falling short?",
+            "What's keeping you up at night when you think about your financial future?",
+            "Have you noticed any gaps in how your portfolio is performing vs your expectations?",
+            "What frustrates you most about the investment advice you've received so far?",
+        ],
+        "implication": [
+            "What happens if that risk isn't addressed in the next 6-12 months?",
+            "How does that uncertainty affect your long-term financial goals?",
+            "What's the cost of staying with the status quo for another year?",
+            "If your portfolio underperforms by even 2-3% annually, how does that compound over 10 years?",
+            "How would that impact your retirement timeline or other financial milestones?",
+        ],
+        "need_payoff": [
+            "If you had a strategy that addressed [their specific concern], how would that change things?",
+            "What would it mean for your financial goals if you could reduce that risk while maintaining returns?",
+            "How valuable would it be to have a team that proactively adjusts your portfolio before market shifts?",
+            "If you could get institutional-quality research at your fingertips, how would that impact your decisions?",
+            "What would change if you had a clear, personalized roadmap for the next 5 years?",
+        ],
+    }
+    
+    # === 金融投资6大异议类型 + 应对策略 ===
+    OBJECTION_LIBRARY = {
+        "trust": {
+            "triggers": ["scam", "scamming", "fraud", "骗", "不信任", "不靠谱", "可疑", "suspicious", 
+                         "legit", "legitimate", "regulated", "licensed", "trust", "believe",
+                         "how do I know", "prove", "證明", "如何確定"],
+            "response_template": (
+                "I totally get the skepticism — honestly, you *should* be cautious. "
+                "Here's what I can tell you: BroadFSC is a fully licensed investment advisory firm "
+                "regulated by major financial authorities. We're not some offshore shop — we operate "
+                "under real regulatory oversight.\n\n"
+                "But hey, don't just take my word for it. Check us out at {website} "
+                "or let me connect you with a real advisor who can walk you through everything. "
+                "Zero pressure, just transparency. 👍"
+            ),
+            "methodology": "sandler",  # Sandler: 让客户说服你他们值得信任
+            "next_action": "advisor_connection",
+        },
+        "price": {
+            "triggers": ["expensive", "cost", "fee", "charge", "太贵", "费用", "手续费", 
+                         "多少钱", "how much", "price", "pricing", "minimum", "minimum investment",
+                         "can't afford", "预算", "门槛"],
+            "response_template": (
+                "Fair question! Let me flip it around — what's the cost of *not* having "
+                "professional guidance? A 2% annual underperformance on a $100K portfolio "
+                "is $2K per year, $20K+ over a decade.\n\n"
+                "Our fees are structured to align with your success. "
+                "And honestly? We'd rather show you the value first before talking numbers. "
+                "Want me to connect you with an advisor for a no-obligation chat?"
+            ),
+            "methodology": "value",  # Value Selling: 量化不行动的代价
+            "next_action": "value_conversation",
+        },
+        "need": {
+            "triggers": ["don't need", "我自己能", "不需要", "DIY", "self-manage", "自己做",
+                         "I can do it myself", "不需要顾问", "自己研究", "自己投",
+                         "not necessary", "没必要", "manage my own"],
+            "response_template": (
+                "Love the DIY spirit! Honestly, some investors do great on their own — "
+                "especially in bull markets. But here's something to think about: "
+                "even the best self-directed investors often miss blind spots.\n\n"
+                "The question isn't whether you *can* do it alone — it's whether your "
+                "current approach is *optimal*. What if a 15-minute conversation could "
+                "reveal a gap you hadn't considered? Zero obligation. Just insights."
+            ),
+            "methodology": "challenger",  # Challenger: 教导新洞察，挑战假设
+            "next_action": "insight_conversation",
+        },
+        "timing": {
+            "triggers": ["not now", "later", "wait", "以后再说", "再看看", "等一下",
+                         "not ready", "考虑考虑", "想想", "再想想", "not the right time",
+                         "market timing", "now is not good"],
+            "response_template": (
+                "I hear you — timing matters. But here's an interesting data point: "
+                "the best time to start planning was yesterday. The second best time is today.\n\n"
+                "Not saying you need to invest right now — but setting up the *framework* "
+                "costs nothing and takes minutes. Then when you're ready, you move fast.\n\n"
+                "Meanwhile, what's happening in the markets right now that you should be aware of? "
+                "I can keep you in the loop."
+            ),
+            "methodology": "gap",  # Gap Selling: 现状vs期望的差距创造紧迫感
+            "next_action": "education_first",
+        },
+        "competition": {
+            "triggers": ["other", "compare", "competitor", "别人", "其他公司", "对比",
+                         "better option", "why you", "为什么选你", "有什么不同",
+                         "Robinhood", "Vanguard", "Schwab", "Fidelity", "中信", "华泰"],
+            "response_template": (
+                "Great — you should absolutely compare. That's what smart investors do.\n\n"
+                "Here's what makes BroadFSC different: we're not a discount brokerage where "
+                "you're on your own, and we're not a traditional firm that only serves the ultra-wealthy. "
+                "We sit in that sweet spot — institutional-quality guidance, accessible to serious investors.\n\n"
+                "But don't just take my word for it. Let's have a 15-min conversation about YOUR situation, "
+                "and you can decide if the fit is right. Fair?"
+            ),
+            "methodology": "challenger",  # Challenger: 差异化洞察
+            "next_action": "differentiation_call",
+        },
+        "risk": {
+            "triggers": ["risky", "risk", "lose money", "亏损", "风险", "怕亏", "害怕",
+                         "担心", "safe", "安全", "guarantee", "guaranteed", "保障",
+                         "what if I lose", "暴跌", "崩盘"],
+            "response_template": (
+                "That concern tells me you're a thoughtful investor — and that's exactly "
+                "who we work best with.\n\n"
+                "Here's the reality: ALL investing carries risk. The question is whether "
+                "you're taking *smart* risks or *blind* risks. Professional risk management "
+                "doesn't eliminate risk — it *understands* and *controls* it.\n\n"
+                "We can't guarantee returns (nobody can, and anyone who says otherwise is lying). "
+                "But we CAN help you build a strategy where you know exactly what you're risking "
+                "and why. Want to learn more about how that works?"
+            ),
+            "methodology": "consultative",  # Consultative: 建立信任再谈方案
+            "next_action": "risk_education",
+        },
+    }
+    
+    # === 购买信号关键词 ===
+    BUYING_SIGNALS = {
+        "strong": [
+            "how to start", "how to sign up", "open account", "注册", "开户", "怎么开始",
+            "I want to invest", "ready to start", "let's do it", "开始投资", "想投资",
+            "下一步", "next step", "how much to start", "最低多少", "minimum deposit",
+        ],
+        "medium": [
+            "tell me more", "sounds interesting", "can you explain", "详细说说", "还有呢",
+            "what's the process", "how does it work", "流程是什么", "怎么操作",
+            "compared to", "what if", "if I", "假设我", "如果我",
+        ],
+        "weak": [
+            "maybe", "perhaps", "considering", "考虑", "可能", "也许",
+            "thinking about", "interested in", "好奇", "想了解",
+            "what do you think", "你觉得呢", "怎么看",
+        ],
+    }
+    
+    # === 销售漏斗推进触发词 ===
+    FUNNEL_ADVANCE_TRIGGERS = {
+        "awareness_to_interest": [
+            "invest", "investing", "market", "stock", "portfolio", "return", "收益",
+            "投资", "股票", "市场", "回报", "fund", "ETF", "交易", "trading",
+        ],
+        "interest_to_evaluation": [
+            "how much", "fee", "cost", "minimum", "compare", "vs", "费用",
+            "difference", "advantage", "why should", "为什么选", "有什么好处",
+            "比别的", "手续费", "多少钱",
+        ],
+        "evaluation_to_decision": [
+            "sign up", "register", "open account", "start", "begin", "注册",
+            "开户", "开始", "下一步", "want to join", "how to proceed",
+        ],
+        "decision_to_action": [
+            "let's do it", "I'm ready", "yes", "confirm", "好的", "确定",
+            "成交", "没问题", "可以", "签", "agree",
+        ],
+    }
+    
+    def __init__(self):
+        # 用户漏斗状态持久化 {user_id: {"stage": "awareness", "stage_since": timestamp, "interactions": 0}}
+        self.funnel_file = os.path.join(
+            os.path.join(os.path.dirname(__file__), ".bot_memory"), 
+            "sales_funnel.json"
+        )
+        self.funnel_data = {}
+        self._load_funnel()
+        logger.info(f"💰 Sales Intelligence Engine initialized — {len(self.funnel_data)} users in funnel")
+    
+    def _load_funnel(self):
+        """加载销售漏斗数据"""
+        try:
+            if os.path.exists(self.funnel_file):
+                with open(self.funnel_file, 'r', encoding='utf-8') as f:
+                    self.funnel_data = json.load(f)
+        except Exception as e:
+            logger.warning(f"Failed to load sales funnel: {e}")
+            self.funnel_data = {}
+    
+    def _save_funnel(self):
+        """保存销售漏斗数据"""
+        try:
+            os.makedirs(os.path.dirname(self.funnel_file), exist_ok=True)
+            with open(self.funnel_file, 'w', encoding='utf-8') as f:
+                json.dump(self.funnel_data, f, ensure_ascii=False, indent=2)
+        except Exception as e:
+            logger.error(f"Failed to save sales funnel: {e}")
+    
+    def get_funnel_stage(self, user_id):
+        """获取用户当前漏斗阶段"""
+        uid = str(user_id)
+        if uid in self.funnel_data:
+            return self.funnel_data[uid].get("stage", "awareness")
+        return "awareness"
+    
+    def update_funnel_stage(self, user_id, new_stage):
+        """更新用户漏斗阶段"""
+        uid = str(user_id)
+        if uid not in self.funnel_data:
+            self.funnel_data[uid] = {"stage": "awareness", "stage_since": time.time(), "interactions": 0, "spin_phase": "situation"}
+        
+        old_stage = self.funnel_data[uid]["stage"]
+        if old_stage != new_stage:
+            self.funnel_data[uid]["stage"] = new_stage
+            self.funnel_data[uid]["stage_since"] = time.time()
+            logger.info(f"💰 Funnel: User {uid} moved {old_stage} → {new_stage}")
+        self.funnel_data[uid]["interactions"] = self.funnel_data[uid].get("interactions", 0) + 1
+        self._save_funnel()
+    
+    def detect_funnel_advance(self, user_id, message):
+        """检测用户消息是否触发漏斗推进"""
+        msg_lower = message.lower()
+        current_stage = self.get_funnel_stage(user_id)
+        
+        for transition, triggers in self.FUNNEL_ADVANCE_TRIGGERS.items():
+            from_stage, to_stage = transition.split("_to_")
+            if current_stage == from_stage or (from_stage == "awareness" and current_stage == "awareness"):
+                if any(t in msg_lower for t in triggers):
+                    # 检查当前阶段是否匹配
+                    if current_stage == from_stage or (from_stage == "awareness" and current_stage == "awareness"):
+                        next_stage = self.FUNNEL_STAGES.get(current_stage, {}).get("next", current_stage)
+                        if any(t in msg_lower for t in triggers):
+                            return to_stage
+        
+        return None
+    
+    def get_spin_phase(self, user_id):
+        """获取当前SPIN提问阶段"""
+        uid = str(user_id)
+        if uid in self.funnel_data:
+            return self.funnel_data[uid].get("spin_phase", "situation")
+        return "situation"
+    
+    def set_spin_phase(self, user_id, phase):
+        """设置SPIN阶段"""
+        uid = str(user_id)
+        if uid not in self.funnel_data:
+            self.funnel_data[uid] = {"stage": "interest", "stage_since": time.time(), "interactions": 0, "spin_phase": "situation"}
+        self.funnel_data[uid]["spin_phase"] = phase
+        self._save_funnel()
+    
+    def get_next_spin_question(self, user_id):
+        """获取下一个SPIN提问"""
+        phase = self.get_spin_phase(user_id)
+        questions = self.SPIN_QUESTIONS.get(phase, self.SPIN_QUESTIONS["situation"])
+        return random.choice(questions), phase
+    
+    def advance_spin_phase(self, user_id):
+        """推进SPIN阶段"""
+        phases = ["situation", "problem", "implication", "need_payoff"]
+        current = self.get_spin_phase(user_id)
+        try:
+            idx = phases.index(current)
+            if idx < len(phases) - 1:
+                next_phase = phases[idx + 1]
+                self.set_spin_phase(user_id, next_phase)
+                return next_phase
+        except ValueError:
+            pass
+        return current
+    
+    def detect_objection(self, message):
+        """检测异议类型，返回 (objection_type, confidence)"""
+        msg_lower = message.lower()
+        best_match = None
+        best_count = 0
+        
+        for obj_type, obj_data in self.OBJECTION_LIBRARY.items():
+            trigger_count = sum(1 for t in obj_data["triggers"] if t in msg_lower)
+            if trigger_count > best_count:
+                best_count = trigger_count
+                best_match = obj_type
+        
+        return (best_match, best_count / max(len(self.OBJECTION_LIBRARY.get(best_match, {}).get("triggers", [])), 1)) if best_match else (None, 0)
+    
+    def detect_buying_signal(self, message):
+        """检测购买信号强度"""
+        msg_lower = message.lower()
+        for strength in ["strong", "medium", "weak"]:
+            if any(s in msg_lower for s in self.BUYING_SIGNALS[strength]):
+                return strength
+        return None
+    
+    def get_objection_response(self, objection_type, user_name="there", website=None):
+        """获取异议应对话术"""
+        if website is None:
+            website = WEBSITE_URL
+        obj = self.OBJECTION_LIBRARY.get(objection_type)
+        if obj:
+            return obj["response_template"].format(name=user_name, website=website)
+        return None
+    
+    def get_cta_for_stage(self, user_id, user_name="there"):
+        """根据漏斗阶段获取合适的CTA"""
+        stage = self.get_funnel_stage(user_id)
+        stage_info = self.FUNNEL_STAGES.get(stage, self.FUNNEL_STAGES["awareness"])
+        cta_style = stage_info["cta_style"]
+        
+        ctas = {
+            "educational": [
+                f"\n\n💡 Curious about how the pros think? Our team at {WEBSITE_URL} shares insights that most investors never see.",
+                f"\n\n📚 If you want to level up your investment knowledge, we've got free resources at {WEBSITE_URL}",
+                "",
+            ],
+            "value_hint": [
+                f"\n\n🔍 The difference between average and exceptional returns? Often it's having the right framework. Worth exploring at {WEBSITE_URL}",
+                f"\n\n💡 A lot of our clients started exactly where you are now. Sometimes a fresh perspective makes all the difference — {WEBSITE_URL}",
+                "",
+            ],
+            "proof": [
+                f"\n\n📊 Want to see what institutional-quality guidance actually looks like? Let's talk — {WEBSITE_URL}",
+                f"\n\n💬 Questions about how it all works? I can connect you with an advisor for a no-pressure conversation.",
+                f"\n\n📱 Or just WhatsApp us — usually respond in minutes: {WHATSAPP_LINK}",
+                "",
+            ],
+            "commitment": [
+                f"\n\n🤝 Ready to see if we're a fit? A 15-minute conversation could change your financial trajectory — {WEBSITE_URL}",
+                f"\n\n📱 Let's make it easy — WhatsApp us for a quick chat: {WHATSAPP_LINK}",
+                f"\n\n💬 Tap **Talk to Advisor** below — no commitment, just a conversation.",
+                "",
+            ],
+            "direct": [
+                f"\n\n🚀 Let's get you started — visit {WEBSITE_URL} to open your account, or WhatsApp us: {WHATSAPP_LINK}",
+                f"\n\n✅ Ready when you are! {WEBSITE_URL} — takes 3 minutes to get started.",
+                f"\n\n📱 Quick way to start: WhatsApp us at {WHATSAPP_LINK} — we'll walk you through everything.",
+            ],
+        }
+        
+        options = ctas.get(cta_style, ctas["educational"])
+        return random.choice(options)
+    
+    def get_sales_prompt_enhancement(self, user_id, user_message=""):
+        """
+        为 System Prompt 注入销售策略指令
+        根据漏斗阶段 + SPIN阶段 + 异议检测 动态生成
+        """
+        stage = self.get_funnel_stage(user_id)
+        stage_info = self.FUNNEL_STAGES.get(stage, self.FUNNEL_STAGES["awareness"])
+        methodology = stage_info["sales_approach"]
+        spin_phase = self.get_spin_phase(user_id)
+        
+        # 基础销售指令
+        enhancement = f"""
+## 💰 Sales Intelligence (Active — Methodology: {methodology.upper()})
+Current funnel stage: {stage.upper()} — {stage_info['description']}
+SPIN questioning phase: {spin_phase.upper()}
+
+### Your Sales Mandate
+You are NOT a passive FAQ bot. You are a skilled investment advisor who naturally guides conversations toward value. You sell by educating, not pushing.
+
+### Stage-Specific Strategy ({stage.upper()})
+"""
+        
+        # 根据漏斗阶段注入不同策略
+        if stage == "awareness":
+            enhancement += """
+- **Goal**: Spark curiosity and establish credibility
+- **Method**: CHALLENGER — Share surprising market insights that make the user think differently
+- **Do**: Offer unexpected perspectives ("Did you know most retail investors underperform by 3-4% annually?")
+- **Don't**: Pitch services or ask about their portfolio yet
+- **SPIN Focus**: Ask SITUATION questions naturally ("How are you currently approaching your investments?")
+- **Subtle CTA**: Mention our educational resources or website casually
+"""
+        elif stage == "interest":
+            enhancement += """
+- **Goal**: Deepen engagement, uncover real pain points
+- **Method**: SPIN — Move from Situation → Problem → Implication questioning
+- **Do**: Ask probing questions about their challenges ("What's your biggest frustration with your current approach?")
+- **Don't**: Jump to solutions too quickly — let them articulate the problem
+- **SPIN Focus**: PROBLEM and IMPLICATION questions — make them feel the cost of inaction
+- **Subtle CTA**: Hint at how professional guidance addresses similar challenges
+"""
+        elif stage == "evaluation":
+            enhancement += """
+- **Goal**: Demonstrate value and differentiate
+- **Method**: VALUE SELLING — Quantify the ROI of professional guidance
+- **Do**: Use specific numbers and comparisons ("A 2% annual improvement on $100K = $20K+ over 10 years")
+- **Don't**: Badmouth competitors or make unrealistic promises
+- **SPIN Focus**: NEED-PAYOFF questions — let them envision the better outcome
+- **CTA**: Offer a specific next step (15-min call, portfolio review, etc.)
+"""
+        elif stage == "decision":
+            enhancement += """
+- **Goal**: Overcome hesitation, facilitate commitment
+- **Method**: SANDLER — Role reversal, let them convince YOU they're serious
+- **Do**: Use reverse psychology ("I want to make sure this is actually right for you — not everyone is a fit")
+- **Don't**: Be pushy or desperate — confidence sells
+- **SPIN Focus**: NEED-PAYOFF confirmation — reinforce their own words about why they want this
+- **CTA**: Clear, low-friction next step (WhatsApp, Talk to Advisor, website signup)
+"""
+        elif stage == "action":
+            enhancement += """
+- **Goal**: Close and onboard
+- **Method**: CONSULTATIVE — Position as a long-term partner
+- **Do**: Make the next step crystal clear and easy
+- **Don't**: Add complexity or new information at this stage
+- **CTA**: Direct action — visit website, WhatsApp, or Talk to Advisor
+"""
+        
+        # 异议检测增强
+        objection_type, confidence = self.detect_objection(user_message)
+        if objection_type and confidence > 0.1:
+            obj = self.OBJECTION_LIBRARY[objection_type]
+            enhancement += f"""
+### 🚨 Objection Detected: {objection_type.upper()} (confidence: {confidence:.0%})
+- **Best methodology**: {obj['methodology'].upper()}
+- **Key principle**: Acknowledge their concern FIRST (empathy before logic)
+- **Response strategy**: {self._get_objection_strategy(objection_type)}
+- **Do NOT**: Dismiss their concern or get defensive
+- **Next action after handling**: {obj['next_action']}
+"""
+        
+        # 购买信号增强
+        buying_signal = self.detect_buying_signal(user_message)
+        if buying_signal:
+            enhancement += f"""
+### 🟢 Buying Signal Detected: {buying_signal.upper()}
+- **Action**: Match their energy! Don't slow down the momentum.
+- **Strong signal**: Guide directly to Talk to Advisor or WhatsApp
+- **Medium signal**: Offer a specific value proposition then suggest next step
+- **Weak signal**: Nurture with more education, plant the seed for next conversation
+"""
+        
+        return enhancement
+    
+    def _get_objection_strategy(self, objection_type):
+        """获取异议应对策略描述"""
+        strategies = {
+            "trust": "Provide evidence (regulation, licensing), offer human connection, never be defensive",
+            "price": "Flip to Value Selling — calculate the cost of NOT having professional guidance",
+            "need": "Use Challenger approach — share insight about blind spots even experienced investors miss",
+            "timing": "Use Gap Selling — help them see the compounding cost of delay",
+            "competition": "Differentiate through unique positioning, not feature comparison",
+            "risk": "Acknowledge risk exists, reframe as managed vs unmanaged risk, educate on risk frameworks",
+        }
+        return strategies.get(objection_type, "Listen, empathize, educate, guide")
+    
+    def should_auto_advance(self, user_id):
+        """判断是否应该自动推进漏斗（基于交互次数和时间）"""
+        uid = str(user_id)
+        if uid not in self.funnel_data:
+            return False
+        
+        data = self.funnel_data[uid]
+        interactions = data.get("interactions", 0)
+        stage_since = data.get("stage_since", time.time())
+        time_in_stage = time.time() - stage_since
+        
+        # 在某个阶段超过5次交互或超过24小时，且用户持续互动，可推进
+        if interactions >= 5 and time_in_stage > 3600:  # 1小时+5次交互
+            return True
+        if interactions >= 8:  # 8次交互，推进
+            return True
+        return False
+    
+    def get_sales_analytics(self):
+        """获取销售漏斗分析数据"""
+        stage_counts = defaultdict(int)
+        for data in self.funnel_data.values():
+            stage_counts[data.get("stage", "awareness")] += 1
+        
+        return {
+            "total_prospects": len(self.funnel_data),
+            "by_stage": dict(stage_counts),
+            "conversion_rate": (
+                stage_counts.get("action", 0) / max(len(self.funnel_data), 1)
+            ),
+        }
+
+
+# 全局销售引擎实例
+sales_engine = None
+
+
+def _load_sales_knowledge(query, max_chars=800):
+    """从本地 knowledge/sales/ 加载相关销售知识"""
+    try:
+        sales_dir = os.path.join(os.path.dirname(__file__), "knowledge", "sales")
+        if not os.path.exists(sales_dir):
+            return ""
+        
+        query_lower = query.lower()
+        relevant_parts = []
+        
+        for fname in os.listdir(sales_dir):
+            if not fname.endswith(".md") or fname == "README.md":
+                continue
+            fpath = os.path.join(sales_dir, fname)
+            try:
+                with open(fpath, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                # 简单关键词匹配
+                content_lower = content.lower()
+                score = sum(1 for kw in query_lower.split() if len(kw) > 3 and kw in content_lower)
+                if score > 0:
+                    relevant_parts.append((score, content[:500]))
+            except Exception:
+                continue
+        
+        if not relevant_parts:
+            return ""
+        
+        relevant_parts.sort(key=lambda x: x[0], reverse=True)
+        result = relevant_parts[0][1]
+        return result[:max_chars]
+    except Exception as e:
+        logger.debug(f"Sales knowledge loading failed (non-critical): {e}")
+        return ""
+
+
+# ============================================================
+# 📝 多语言欢迎消息（SOUL 风格升级版 + 销售元素注入）
 # ============================================================
 
 WELCOME_MESSAGES = {
@@ -943,15 +1546,19 @@ I'm **Alex** — not your typical investment robot 🙅‍♂️. I'm a real adv
 Here's what I *actually* do well:
 
 📊 Break down complex stuff into plain English
-💼 Help you figure out what *you* actually need
+💼 Help you figure out what *you* actually need — not what someone wants to sell you
 🌍 Share what's happening across global markets
+🎯 Show you opportunities most investors miss
 🤝 Connect you with the right people when needed
 
 Fair warning: I won't give you hot stock tips (that's not how real investing works), 
 and I'll tell you when I don't know something. But I'll always shoot straight with you.
 
+**Fun fact**: The average self-directed investor underperforms the market by 3-4% annually. 
+That's $30K-40K on a $100K portfolio over 10 years. 🤔
+
 💬 **Want to chat with a human?** Tap **Talk to Advisor** below!
-🔗 **Or check us out:** https://www.broundfsc.com/different
+🔗 **Or check us out:** https://www.broadfsc.com/different
 
 ⚠️ _Investment involves risk. But smart risks? That's where the magic happens._""",
 
@@ -963,12 +1570,16 @@ and I'll tell you when I don't know something. But I'll always shoot straight wi
 我能帮你的：
 
 📊 把复杂的金融概念用人话讲清楚
-💼 帮你搞清楚你真正需要什么
+💼 帮你搞清楚你真正需要什么——不是别人想卖你什么
 🌍 分享全球市场的最新动态
+🎯 发现大多数投资者错过的机会
 🤝 在你需要的时候对接真人团队
 
 说句实在话：我不会给你荐股（正经投资不是这么玩的），
 遇到不懂的我也会直说。但我保证——每句话都是真心话。
+
+**一个数据**：自主投资的散户平均每年跑输大盘3-4%，
+10万本金10年累计差距30-40万。值得想想 🤔
 
 💬 **想跟真人聊聊？** 点下面的 **Talk to Advisor**！
 🔗 **或者先看看我们：** https://www.broadfsc.com/different
@@ -982,12 +1593,16 @@ Soy **Alex** — no tu típico robot de inversiones 🙅‍♂️. Soy un asesor
 Lo que hago bien de verdad:
 
 📊 Explicar cosas complejas en español claro
-💼 Ayudarte a descubrir qué necesitas TÚ
+💼 Ayudarte a descubrir qué necesitas TÚ — no lo que alguien quiere venderte
 📊 Compartir lo que pasa en los mercados globales
+🎯 Mostrarte oportunidades que la mayoría de inversores pasan por alto
 🤝 Conectarte con el equipo adecuado cuando lo necesitas
 
 Te advierto: no te voy a dar "tips de acciones" (así no funciona la inversión seria),
 y te diré cuando no sepa algo. Pero siempre seré sincero contigo.
+
+**Dato interesante**: El inversor promedio sin asesor pierde 3-4% anual frente al mercado.
+En $100K, eso son $30K-40K en 10 años. 🤔
 
 💬 ¿Quieres hablar con un humano? ¡Toca **Talk to Advisor**!
 🔗 O visítanos: https://www.broadfsc.com/different
@@ -1001,12 +1616,16 @@ y te diré cuando no sepa algo. Pero siempre seré sincero contigo.
 ما الذي أجيده حقاً:
 
 📊 تبسيط المفاهيم المعقدة بلغة بسيطة
-💼 مساعدتك في فهم ما تحتاجه حقاً
+💼 مساعدتك في فهم ما تحتاجه حقاً — لا ما يريد أحد بيعه لك
 🌍 مشاركة آخر التطورات في الأسواق العالمية
+🎯 اكتشاف الفرص التي يفوتها معظم المستثمرين
 🤝 توصيلك بالفريق المناسب عند الحاجة
 
 تحذير صريح: لن أعطيك توصيات شراء أسهم (هذه ليست طريقة الاستثمار الجادة)،
 وسأقول لك عندما لا أعرف شيئاً. لكنني سأكون دائماً صريحاً معك.
+
+**حقيقة مثيرة**: المستثمر العادي يخسر 3-4% سنوياً مقارنة بالسوق.
+على محفظة بقيمة $100K، هذا يعني خسارة $30K-40K خلال 10 سنوات. 🤔
 
 💬 تريد التحدث مع مستشار حقيقي؟ اضغط **Talk to Advisor**!
 🔗 أو زرنا: https://www.broadfsc.com/different
@@ -1024,9 +1643,10 @@ def get_main_keyboard():
         [InlineKeyboardButton("📊 Our Services", callback_data="services"),
          InlineKeyboardButton("🌍 About Us", callback_data="about")],
         [InlineKeyboardButton("📋 How to Register", callback_data="register"),
-         InlineKeyboardButton("💬 Talk to Advisor", callback_data="advisor")],
-        [InlineKeyboardButton("📱 WhatsApp Us", url=WHATSAPP_LINK),
-         InlineKeyboardButton("🔗 Visit Website", url=WEBSITE_URL)]
+         InlineKeyboardButton("🎯 Free Portfolio Review", callback_data="portfolio_review")],
+        [InlineKeyboardButton("💬 Talk to Advisor", callback_data="advisor"),
+         InlineKeyboardButton("📱 WhatsApp Us", url=WHATSAPP_LINK)],
+        [InlineKeyboardButton("🔗 Visit Website", url=WEBSITE_URL)]
     ]
     return InlineKeyboardMarkup(keyboard)
 
@@ -1116,6 +1736,8 @@ QUICK_ANSWERS = {
         "**Wealth Planning** — Long-term thinking for long-term wealth.\n"
         "**Market Intelligence** — Real insights, not just noise.\n\n"
         "The truth? Most firms push products. We push understanding first.\n\n"
+        "💰 **The math speaks**: A 2% annual improvement on a $100K portfolio = $20K+ over 10 years. "
+        "That's the difference professional guidance can make.\n\n"
         "🔗 Deep dive: https://www.broadfsc.com/different\n"
         "💬 Questions? I'm here. Or tap **Talk to Advisor** for a real human.\n\n"
         "⚠️ _Investment involves risk._"
@@ -1129,6 +1751,8 @@ QUICK_ANSWERS = {
         "✅ No minimum for serious investors — we meet you where you are\n"
         "✅ Technology-driven but human-centered\n\n"
         "Founded on one belief: *everyone deserves access to institutional-quality investment management.*\n\n"
+        "**Here's a thought**: The average retail investor underperforms the market by 3-4% annually (Dalbar study). "
+        "That's not because they're not smart — it's because they don't have the right framework. That's where we come in.\n\n"
         "🔗 Learn more: https://www.broadfsc.com/different"
     ),
     "register": (
@@ -1137,6 +1761,8 @@ QUICK_ANSWERS = {
         "2️⃣ **Sign up** → Quick registration, we keep it painless\n"
         "3️⃣ **Connect with an advisor** → We'll match you with someone who gets your situation\n\n"
         "No pressure. No hard sell. Just a conversation about what you're trying to achieve.\n\n"
+        "💡 **Pro tip**: Even if you're not ready to invest today, setting up an account takes 3 minutes. "
+        "Then when opportunity knocks, you're ready to move.\n\n"
         "Stuck somewhere? Hit me up or WhatsApp us!\n\n"
         "⚠️ _Investing involves risk. Make sure you understand before you commit._"
     ),
@@ -1151,8 +1777,26 @@ QUICK_ANSWERS = {
         "**Two ways to connect:**\n\n"
         "💬 **Live Chat** — Right here, right now\n"
         "📱 **WhatsApp** — Anytime, usually minutes response\n\n"
+        "🆓 **It's free to talk.** No commitment, no pressure. Just a conversation about where you are and where you want to be.\n\n"
         "⏰ Business hours response, but we try to be faster.\n\n"
         "⚠️ _Investment involves risk._"
+    ),
+    "portfolio_review": (
+        "🎯 **Free Portfolio Review**\n\n"
+        "Here's a question worth asking: *Is your current portfolio actually aligned with your goals?*\n\n"
+        "Most investors don't know — because no one ever helped them figure it out.\n\n"
+        "**What you get (free, no strings attached):**\n"
+        "📊 Risk assessment of your current approach\n"
+        "🔍 Gap analysis — where you might be missing opportunities\n"
+        "💡 Personalized suggestions based on YOUR situation\n"
+        "📋 A clear action plan — whether you work with us or not\n\n"
+        "**How it works:**\n"
+        "1. Connect with an advisor (Live Chat or WhatsApp)\n"
+        "2. Share your goals and concerns (15 minutes)\n"
+        "3. Get actionable insights\n\n"
+        "💬 Ready? Tap **Talk to Advisor** below!\n"
+        "📱 Or WhatsApp us for a quick chat: https://wa.me/118032150144\n\n"
+        "⚠️ _Investment involves risk. Past performance ≠ future results._"
     ),
     "back_menu": "back_menu",
     "live_chat": "live_chat",
@@ -1340,6 +1984,19 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     answer = QUICK_ANSWERS.get(data)
     if answer:
         await query.message.reply_text(answer, parse_mode="Markdown")
+        # 🆕 销售漏斗追踪 — 按钮点击推进漏斗
+        if sales_engine and data in ["services", "about"]:
+            current = sales_engine.get_funnel_stage(user_id)
+            if current == "awareness":
+                sales_engine.update_funnel_stage(user_id, "interest")
+        elif sales_engine and data in ["register", "portfolio_review"]:
+            current = sales_engine.get_funnel_stage(user_id)
+            if current in ["awareness", "interest"]:
+                sales_engine.update_funnel_stage(user_id, "evaluation")
+        elif sales_engine and data == "advisor":
+            current = sales_engine.get_funnel_stage(user_id)
+            if current in ["evaluation", "decision"]:
+                sales_engine.update_funnel_stage(user_id, "decision")
     else:
         await query.message.reply_text(
             "Check our website for more details, or just ask me directly!",
@@ -1477,7 +2134,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await human_like_delay(user_id, lang_code)
 
     try:
-        # ===== 构建 SOUL 风格 Prompt =====
+        # ===== 构建 SOUL + Sales Intelligence Prompt =====
         intimacy = memory_system.get_intimacy(user_id) if memory_system else 0
         mem_context = memory_system.get_memory_context_for_prompt(user_id) if memory_system else ""
         
@@ -1485,7 +2142,9 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             user_lang=lang_code,
             user_name=user_name,
             memory_context=mem_context,
-            intimacy_score=intimacy
+            intimacy_score=intimacy,
+            user_id=user_id,
+            user_message=user_message
         )
 
         # 获取会话历史作为上下文
@@ -1505,6 +2164,14 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     "role": "system", 
                     "content": f"[Context from company knowledge base — use this to enrich your answer if relevant]{kb_context}"
                 })
+
+        # 🆕 ===== 本地销售知识库检索 =====
+        sales_kb_context = _load_sales_knowledge(user_message)
+        if sales_kb_context:
+            messages.insert(-1, {
+                "role": "system",
+                "content": f"[Sales techniques from our knowledge base — apply naturally if relevant]{sales_kb_context}"
+            })
 
         # ===== 调用 Groq API =====
         response = groq_client.chat.completions.create(
@@ -1533,18 +2200,74 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         # ===== 反感度衰减（正常对话降低）======
         EmotionalIntelligence.decay_annoyance(user_id)
 
-        # ===== 定期 CTA 插入（更自然的方式）======
+        # 🆕 ===== 销售智能引擎处理 =====
+        if sales_engine:
+            # 1. 检测异议 — 追加异议应对
+            objection_type, obj_confidence = sales_engine.detect_objection(user_message)
+            if objection_type and obj_confidence > 0.1:
+                objection_reply = sales_engine.get_objection_response(objection_type, user_name)
+                if objection_reply and len(reply) < 200:
+                    reply += "\n\n" + objection_reply
+                current_stage = sales_engine.get_funnel_stage(user_id)
+                if current_stage in ["awareness", "interest"]:
+                    sales_engine.update_funnel_stage(user_id, "evaluation")
+            
+            # 2. 检测购买信号 — 推进漏斗
+            buying_signal = sales_engine.detect_buying_signal(user_message)
+            if buying_signal == "strong":
+                sales_engine.update_funnel_stage(user_id, "action")
+            elif buying_signal == "medium":
+                current_stage = sales_engine.get_funnel_stage(user_id)
+                if current_stage in ["awareness", "interest"]:
+                    sales_engine.update_funnel_stage(user_id, "evaluation")
+            elif buying_signal == "weak":
+                current_stage = sales_engine.get_funnel_stage(user_id)
+                if current_stage == "awareness":
+                    sales_engine.update_funnel_stage(user_id, "interest")
+            
+            # 3. 检测漏斗推进触发词
+            new_stage = sales_engine.detect_funnel_advance(user_id, user_message)
+            if new_stage:
+                sales_engine.update_funnel_stage(user_id, new_stage)
+            
+            # 4. 自动漏斗推进（基于交互次数）
+            if sales_engine.should_auto_advance(user_id):
+                current_stage = sales_engine.get_funnel_stage(user_id)
+                next_stage = SalesIntelligenceEngine.FUNNEL_STAGES.get(current_stage, {}).get("next", current_stage)
+                if next_stage != current_stage:
+                    sales_engine.update_funnel_stage(user_id, next_stage)
+            
+            # 5. SPIN阶段自动推进
+            current_spin = sales_engine.get_spin_phase(user_id)
+            if current_spin != "need_payoff" and len(user_message.split()) > 8:
+                if random.random() > 0.5:
+                    sales_engine.advance_spin_phase(user_id)
+
+        # ===== 智能CTA插入（🆕 基于销售漏斗阶段）======
         msg_count = context.user_data.get("msg_count", 0) + 1
         context.user_data["msg_count"] = msg_count
         
-        # 每 7 条消息左右，自然地插入一次引导（不是每次都加）
-        if msg_count % 7 == 0 and random.random() > 0.3:
-            cta_options = [
-                f"\n\nBy the way — if you ever want a deeper dive, our team at {WEBSITE_URL} would love to chat.",
-                f"\n\nSpeaking of which, whenever you're ready to take the next step, we're at {WEBSITE_URL} ✨",
-                ""  # 有时候不加，保持自然
-            ]
-            reply += random.choice(cta_options)
+        cta_interval = random.randint(4, 6)
+        if msg_count % cta_interval == 0:
+            if sales_engine:
+                smart_cta = sales_engine.get_cta_for_stage(user_id, user_name)
+                if smart_cta:
+                    reply += smart_cta
+            else:
+                if random.random() > 0.3:
+                    cta_options = [
+                        f"\n\nBy the way — our team at {WEBSITE_URL} would love to help you dive deeper.",
+                        f"\n\nWhenever you're ready to take the next step, we're at {WEBSITE_URL} ✨",
+                        ""
+                    ]
+                    reply += random.choice(cta_options)
+        
+        # 🆕 ===== 在兴趣/评估阶段，偶尔插入SPIN提问 =====
+        if sales_engine and msg_count % 5 == 0 and random.random() > 0.5:
+            stage = sales_engine.get_funnel_stage(user_id)
+            if stage in ["interest", "evaluation"]:
+                spin_q, spin_phase = sales_engine.get_next_spin_question(user_id)
+                reply += f"\n\n🤔 {spin_q}"
 
         # ===== 清理 Markdown =====
         reply = re.sub(r'(?<!\*)\*(?!\*)', '', reply)
@@ -1719,6 +2442,85 @@ async def admin_chats(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(msg, parse_mode="Markdown")
 
 
+async def admin_sales(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """查看销售漏斗分析：/sales [user_id|stats|funnel]"""
+    if not ADMIN_CHAT_ID:
+        return
+    if str(update.effective_user.id) != ADMIN_CHAT_ID:
+        return
+
+    if not sales_engine:
+        await update.message.reply_text("❌ Sales engine not initialized.")
+        return
+
+    parts = update.message.text.split(maxsplit=1)
+    sub_cmd = parts[1].lower() if len(parts) > 1 else "stats"
+
+    if sub_cmd == "stats":
+        analytics = sales_engine.get_sales_analytics()
+        stage_names = {"awareness": "🔍 认知", "interest": "💡 兴趣", "evaluation": "📊 评估", "decision": "🤔 决策", "action": "✅ 成交"}
+        by_stage = analytics["by_stage"]
+        stage_lines = []
+        for stage, name in stage_names.items():
+            count = by_stage.get(stage, 0)
+            bar = "█" * count + "░" * max(10 - count, 0)
+            stage_lines.append(f"  {name} │ {bar} {count}")
+
+        msg = (
+            f"💰 **Sales Funnel Analytics**\n\n"
+            f"📋 Total prospects: {analytics['total_prospects']}\n"
+            f"🎯 Conversion rate: {analytics['conversion_rate']:.0%}\n\n"
+            f"**Funnel Breakdown:**\n"
+            + "\n".join(stage_lines)
+            + f"\n\n_Methodologies: SPIN / Challenger / Sandler / Gap / Value / Consultative_"
+        )
+        await update.message.reply_text(msg, parse_mode="Markdown")
+
+    elif sub_cmd == "funnel":
+        if not sales_engine.funnel_data:
+            await update.message.reply_text("📭 No users in funnel yet.")
+            return
+        lines = []
+        for uid, data in sales_engine.funnel_data.items():
+            stage = data.get("stage", "awareness")
+            interactions = data.get("interactions", 0)
+            spin = data.get("spin_phase", "situation")
+            lines.append(f"  • `{uid}` → {stage} | {interactions} msgs | SPIN: {spin}")
+        msg = "💰 **All Users in Funnel:**\n\n" + "\n".join(lines[:20])
+        await update.message.reply_text(msg, parse_mode="Markdown")
+
+    else:
+        # 查看特定用户的销售漏斗
+        try:
+            target_uid = int(sub_cmd)
+        except ValueError:
+            await update.message.reply_text("Usage: /sales [user_id|stats|funnel]")
+            return
+
+        stage = sales_engine.get_funnel_stage(target_uid)
+        spin = sales_engine.get_spin_phase(target_uid)
+        uid_data = sales_engine.funnel_data.get(str(target_uid), {})
+        interactions = uid_data.get("interactions", 0)
+        stage_since = uid_data.get("stage_since", 0)
+
+        stage_info = SalesIntelligenceEngine.FUNNEL_STAGES.get(stage, {})
+        from datetime import timezone as tz
+        since_str = datetime.fromtimestamp(stage_since, tz=tz).strftime('%Y-%m-%d %H:%M') if stage_since else "N/A"
+
+        msg = (
+            f"💰 **Sales Profile**\n\n"
+            f"🆔 User: `{target_uid}`\n"
+            f"📊 Funnel Stage: {stage.upper()} ({stage_info.get('name_zh', '?')})\n"
+            f"🎯 Sales Method: {stage_info.get('sales_approach', '?').upper()}\n"
+            f"📝 CTA Style: {stage_info.get('cta_style', '?')}\n"
+            f"🔄 SPIN Phase: {spin.upper()}\n"
+            f"💬 Interactions: {interactions}\n"
+            f"🕐 In stage since: {since_str}\n\n"
+            f"💡 _Next stage: {stage_info.get('next', 'N/A')}_"
+        )
+        await update.message.reply_text(msg, parse_mode="Markdown")
+
+
 async def admin_memory(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """查看用户记忆档案：/memory <user_id>"""
     if not ADMIN_CHAT_ID:
@@ -1796,6 +2598,10 @@ def main():
     annoyance_file = os.path.join(memory_dir, "annoyance_scores.json")
     EmotionalIntelligence.load_annoyance(annoyance_file)
 
+    # 🆕 初始化销售智能引擎
+    global sales_engine
+    sales_engine = SalesIntelligenceEngine()
+
     # 代理配置（V2rayN / Clash 等本地代理）
     _proxy = os.environ.get("TELEGRAM_PROXY", "http://127.0.0.1:10808")
     # 验证代理是否可用（不强制，连不上也尝试直连）
@@ -1829,14 +2635,16 @@ def main():
         app.add_handler(CommandHandler("accept", admin_accept))
         app.add_handler(CommandHandler("chats", admin_chats))
         app.add_handler(CommandHandler("memory", admin_memory))
+        app.add_handler(CommandHandler("sales", admin_sales))
 
     app.add_handler(CallbackQueryHandler(button_callback))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
-    logger.info("🤖 BroadFSC Telegram Bot v2 (SOUL-style) started successfully!")
+    logger.info("🤖 BroadFSC Telegram Bot v3 (SOUL + Sales Intelligence) started successfully!")
     logger.info(f"   🧠 Memory system: {memory_dir}")
     logger.info(f"   📚 IMA Knowledge Base: {'Connected ✅' if memory_system.ima_available else 'Not available ❌'}")
     logger.info(f"   🌍 Cultural profiles loaded: {len(CULTURAL_PROFILES)} languages")
+    logger.info(f"   💰 Sales Engine: {'Active ✅' if sales_engine else 'Disabled ❌'} | Methodologies: SPIN/Challenger/Sandler/Gap/Value/Consultative")
     if ADMIN_CHAT_ID:
         logger.info(f"   👤 Admin: {ADMIN_CHAT_ID} — Live chat enabled")
     else:
