@@ -31,7 +31,9 @@ jobs:
   finance-scholar:
     runs-on: ubuntu-latest
     name: "📈 金融学者"
-    if: github.event_name == 'workflow_dispatch' && (github.event.inputs.agent == 'all' || github.event.inputs.agent == 'finance') || github.event_name == 'schedule'
+    if: >
+      (github.event_name == 'workflow_dispatch' && (github.event.inputs.agent == 'all' || github.event.inputs.agent == 'finance')) ||
+      (github.event_name == 'schedule' && github.event.schedule == '0 2 * * *')
     steps:
       - uses: actions/checkout@v4
         with:
@@ -65,7 +67,9 @@ jobs:
   sales-scout:
     runs-on: ubuntu-latest
     name: "💼 销售侦察兵"
-    if: github.event_name == 'workflow_dispatch' && (github.event.inputs.agent == 'all' || github.event.inputs.agent == 'sales') || github.event_name == 'schedule'
+    if: >
+      (github.event_name == 'workflow_dispatch' && (github.event.inputs.agent == 'all' || github.event.inputs.agent == 'sales')) ||
+      (github.event_name == 'schedule' && github.event.schedule == '0 4 * * 1,4')
     steps:
       - uses: actions/checkout@v4
         with:
@@ -99,7 +103,9 @@ jobs:
   marketing-researcher:
     runs-on: ubuntu-latest
     name: "📱 推广研究员"
-    if: github.event_name == 'workflow_dispatch' && (github.event.inputs.agent == 'all' || github.event.inputs.agent == 'marketing') || github.event_name == 'schedule'
+    if: >
+      (github.event_name == 'workflow_dispatch' && (github.event.inputs.agent == 'all' || github.event.inputs.agent == 'marketing')) ||
+      (github.event_name == 'schedule' && github.event.schedule == '0 4 * * 0,2,4')
     steps:
       - uses: actions/checkout@v4
         with:
@@ -133,7 +139,9 @@ jobs:
   competitor-analyst:
     runs-on: ubuntu-latest
     name: "🔍 竞品分析师"
-    if: github.event_name == 'workflow_dispatch' && (github.event.inputs.agent == 'all' || github.event.inputs.agent == 'competitor') || github.event_name == 'schedule'
+    if: >
+      (github.event_name == 'workflow_dispatch' && (github.event.inputs.agent == 'all' || github.event.inputs.agent == 'competitor')) ||
+      (github.event_name == 'schedule' && github.event.schedule == '0 6 * * 1')
     steps:
       - uses: actions/checkout@v4
         with:

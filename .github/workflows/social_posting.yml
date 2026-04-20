@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install requests groq
+          pip install requests groq Pillow imageio imageio-ffmpeg edge-tts numpy
 
       - name: Post to X, LinkedIn, Mastodon, Bluesky (and notify Telegram)
         env:
