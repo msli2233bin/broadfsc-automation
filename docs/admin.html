@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BroadFSC Admin Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #e0e0e0; min-height: 100vh; }
+        .header { background: linear-gradient(135deg, #0f1640 0%, #1a237e 50%, #0d47a1 100%); padding: 24px 32px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; }
+        .header h1 { font-size: 24px; font-weight: 700; color: #fff; }
+        .header .subtitle { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 4px; }
+        .header .live { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #4caf50; margin-left: 16px; }
+        .header .live::before { content: ''; width: 8px; height: 8px; background: #4caf50; border-radius: 50%; animation: pulse 2s infinite; }
+        .header .back-link { color: #42a5f5; text-decoration: none; font-size: 14px; }
+        .header .back-link:hover { text-decoration: underline; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        .tabs { display: flex; gap: 4px; padding: 16px 32px; background: #0c1230; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .tab { padding: 10px 24px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.5); transition: all .2s; border: 1px solid transparent; }
+        .tab:hover { color: #fff; background: rgba(255,255,255,0.05); }
+        .tab.active { color: #42a5f5; background: rgba(66,165,245,0.1); border-color: rgba(66,165,245,0.3); }
+        .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+        .panel { display: none; }
+        .panel.active { display: block; }
+        .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { background: linear-gradient(145deg, #141938, #1a2050); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 20px; }
+        .kpi-card .label { font-size: 12px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; }
+        .kpi-card .value { font-size: 32px; font-weight: 700; margin: 8px 0 4px; }
+        .kpi-card.blue .value { color: #42a5f5; }
+        .kpi-card.green .value { color: #66bb6a; }
+        .kpi-card.orange .value { color: #ffa726; }
+        .kpi-card.purple .value { color: #ab47bc; }
+        .kpi-card.red .value { color: #ef5350; }
+        .kpi-card.cyan .value { color: #26c6da; }
+        .charts-row { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 24px; }
+        .chart-card { background: linear-gradient(145deg, #141938, #1a2050); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 20px; }
+        .chart-card h3 { font-size: 14px; color: rgba(255,255,255,0.7); margin-bottom: 16px; }
+        .platform-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .platform-card { background: linear-gradient(145deg, #141938, #1a2050); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 20px; }
+        .platform-card .platform-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+        .platform-card .platform-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .platform-card .platform-name { font-size: 16px; font-weight: 600; color: #fff; }
+        .platform-card .stat-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .platform-card .stat-row:last-child { border: none; }
+        .platform-card .stat-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+        .platform-card .stat-value { font-size: 13px; font-weight: 600; color: #fff; }
+        .recent-table { width: 100%; border-collapse: collapse; }
+        .recent-table th { font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; padding: 8px 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .recent-table td { font-size: 13px; padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+        .badge-success { background: rgba(76,175,80,0.2); color: #4caf50; }
+        .badge-failed { background: rgba(244,67,54,0.2); color: #f44336; }
+        .badge-telegram { background: rgba(0,136,204,0.2); color: #0088cc; }
+        .badge-twitter { background: rgba(29,161,242,0.2); color: #1da1f2; }
+        .badge-tiktok { background: rgba(255,0,80,0.2); color: #ff0050; }
+        .badge-mastodon { background: rgba(99,100,255,0.2); color: #6364ff; }
+        .badge-discord { background: rgba(88,101,242,0.2); color: #5865f2; }
+        .badge-bluesky { background: rgba(0,133,255,0.2); color: #0085ff; }
+        .badge-reddit { background: rgba(255,69,0,0.2); color: #ff4500; }
+        .badge-bot { background: rgba(76,175,80,0.2); color: #4caf50; }
+        .badge-stocks { background: rgba(59,130,246,0.2); color: #3b82f6; }
+        .badge-forex { background: rgba(245,158,11,0.2); color: #f59e0b; }
+        .badge-crypto { background: rgba(139,92,246,0.2); color: #8b5cf6; }
+        .badge-commodities { background: rgba(16,185,129,0.2); color: #10b981; }
+        .badge-options { background: rgba(239,68,68,0.2); color: #ef4444; }
+        .footer { text-align: center; padding: 32px; color: rgba(255,255,255,0.3); font-size: 12px; }
+
+        /* Registration table enhancements */
+        .reg-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+        .reg-table th { font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; padding: 10px 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.2); }
+        .reg-table td { font-size: 13px; padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .reg-table tr:hover { background: rgba(66,165,245,0.05); }
+        .reg-empty { text-align: center; padding: 60px; color: rgba(255,255,255,0.3); }
+        .export-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); color: #e0e0e0; transition: all .2s; }
+        .export-btn:hover { background: rgba(66,165,245,0.15); border-color: rgba(66,165,245,0.3); color: #42a5f5; }
+        .search-input { background: #0c1225; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 8px 14px; color: #e0e0e0; font-size: 13px; outline: none; width: 240px; }
+        .search-input:focus { border-color: rgba(66,165,245,0.5); }
+        .toolbar { display: flex; gap: 12px; align-items: center; margin-bottom: 16px; flex-wrap: wrap; }
+
+        @media (max-width: 768px) {
+            .charts-row { grid-template-columns: 1fr; }
+            .kpi-row { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div>
+            <h1>📊 BroadFSC Admin Dashboard <span class="live">LIVE</span></h1>
+            <div class="subtitle" id="lastUpdate">Loading...</div>
+        </div>
+        <a href="https://msli2233bin.github.io/broadfsc-automation/" class="back-link">← Back to Website</a>
+    </div>
+
+    <div class="tabs">
+        <div class="tab active" onclick="switchTab('promotion')">📈 Promotion Analytics</div>
+        <div class="tab" onclick="switchTab('registrations')">👥 Customer Registrations</div>
+        <div class="tab" onclick="switchTab('engagement')">💬 Engagement</div>
+    </div>
+
+    <div class="container">
+        <!-- Promotion Analytics Panel -->
+        <div class="panel active" id="panelPromotion">
+            <div class="kpi-row" id="kpiRow"></div>
+            <div class="charts-row">
+                <div class="chart-card">
+                    <h3>📈 Daily Posts & Interactions (Last 30 Days)</h3>
+                    <canvas id="trendChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>🥧 Posts by Platform</h3>
+                    <canvas id="platformChart"></canvas>
+                </div>
+            </div>
+            <div class="platform-grid" id="platformGrid"></div>
+            <div class="charts-row" style="grid-template-columns: 1fr 1fr;">
+                <div class="chart-card">
+                    <h3>🕐 Recent Posts</h3>
+                    <table class="recent-table">
+                        <thead><tr><th>Time</th><th>Platform</th><th>Type</th><th>Status</th></tr></thead>
+                        <tbody id="recentPosts"></tbody>
+                    </table>
+                </div>
+                <div class="chart-card">
+                    <h3>💬 Recent Interactions</h3>
+                    <table class="recent-table">
+                        <thead><tr><th>Time</th><th>Platform</th><th>Action</th><th>User</th></tr></thead>
+                        <tbody id="recentInteractions"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Customer Registrations Panel -->
+        <div class="panel" id="panelRegistrations">
+            <div class="kpi-row" id="regKpiRow"></div>
+            <div class="charts-row">
+                <div class="chart-card">
+                    <h3>📊 Registration Trend</h3>
+                    <canvas id="regTrendChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>🎯 By Interest</h3>
+                    <canvas id="regInterestChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <div class="toolbar">
+                    <h3 style="flex:1">📋 All Registrations</h3>
+                    <input type="text" class="search-input" id="regSearch" placeholder="Search name or email..." oninput="filterRegistrations()">
+                    <button class="export-btn" onclick="exportCSV()">📥 Export CSV</button>
+                </div>
+                <table class="reg-table">
+                    <thead><tr><th>#</th><th>Date</th><th>Name</th><th>Email</th><th>Interest</th><th>Source</th></tr></thead>
+                    <tbody id="regTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Engagement Panel -->
+        <div class="panel" id="panelEngagement">
+            <div class="kpi-row" id="engKpiRow"></div>
+            <div class="charts-row" style="grid-template-columns: 1fr 1fr;">
+                <div class="chart-card">
+                    <h3>🤖 Bot Conversation Stats</h3>
+                    <canvas id="convChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>📈 Click Tracking</h3>
+                    <canvas id="clickChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">BroadFSC Admin Dashboard • Auto-updated by GitHub Actions • Data stored in analytics/</div>
+
+    <script>
+    const PLATFORM_META = {
+        telegram_en: { icon: '📨', name: 'Telegram (EN)', color: '#0088cc', bg: 'rgba(0,136,204,0.15)' },
+        telegram_es: { icon: '📩', name: 'Telegram (ES)', color: '#006699', bg: 'rgba(0,102,153,0.15)' },
+        telegram_ar: { icon: '📬', name: 'Telegram (AR)', color: '#0099cc', bg: 'rgba(0,153,204,0.15)' },
+        twitter: { icon: '🐦', name: 'X / Twitter', color: '#1da1f2', bg: 'rgba(29,161,242,0.15)' },
+        tiktok: { icon: '🎵', name: 'TikTok', color: '#ff0050', bg: 'rgba(255,0,80,0.15)' },
+        mastodon: { icon: '🐘', name: 'Mastodon', color: '#6364ff', bg: 'rgba(99,100,255,0.15)' },
+        discord: { icon: '💬', name: 'Discord', color: '#5865f2', bg: 'rgba(88,101,242,0.15)' },
+        reddit: { icon: '🔴', name: 'Reddit', color: '#ff4500', bg: 'rgba(255,69,0,0.15)' },
+        telegram_bot: { icon: '🤖', name: 'Bot Chat', color: '#4caf50', bg: 'rgba(76,175,80,0.15)' },
+        bluesky: { icon: '🦋', name: 'Bluesky', color: '#0085ff', bg: 'rgba(0,133,255,0.15)' },
+    };
+
+    const INTEREST_COLORS = {
+        stocks: '#3b82f6', forex: '#f59e0b', crypto: '#8b5cf6',
+        commodities: '#10b981', options: '#ef4444', all: '#06b6d4'
+    };
+
+    function getPlatformMeta(platform) {
+        return PLATFORM_META[platform] || { icon: '📱', name: platform, color: '#999', bg: 'rgba(153,153,153,0.15)' };
+    }
+    function formatTime(ts) {
+        if (!ts) return '-';
+        const d = new Date(ts);
+        return d.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+    }
+    function formatNumber(n) {
+        if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
+        if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
+        return n.toString();
+    }
+
+    // Tab switching
+    function switchTab(tab) {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+        event.target.classList.add('active');
+        const panelMap = { promotion: 'panelPromotion', registrations: 'panelRegistrations', engagement: 'panelEngagement' };
+        document.getElementById(panelMap[tab]).classList.add('active');
+    }
+
+    // Load promotion data from summary.json
+    let promotionData = null;
+    async function loadPromotionData() {
+        try {
+            const resp = await fetch('https://raw.githubusercontent.com/msli2233bin/broadfsc-automation/main/analytics/summary.json');
+            if (resp.ok) {
+                promotionData = await resp.json();
+                renderPromotionDashboard(promotionData);
+            } else {
+                throw new Error('No data');
+            }
+        } catch (e) {
+            renderPromotionDashboard(generateDemoData());
+        }
+    }
+
+    function generateDemoData() {
+        const now = new Date();
+        const platforms = ['telegram_en', 'telegram_es', 'telegram_ar', 'twitter', 'tiktok', 'mastodon', 'discord', 'bluesky'];
+        const daily_trend = {};
+        for (let i = 30; i >= 0; i--) {
+            const d = new Date(now - i * 86400000).toISOString().slice(0, 10);
+            daily_trend[d] = { posts: Math.floor(Math.random() * 10) + 2, interactions: Math.floor(Math.random() * 5) };
+        }
+        const platformsData = {};
+        platforms.forEach(p => {
+            platformsData[p] = { today: Math.floor(Math.random() * 5), week: Math.floor(Math.random() * 30) + 5, month: Math.floor(Math.random() * 120) + 20, success: Math.floor(Math.random() * 100) + 20, failed: Math.floor(Math.random() * 5) };
+        });
+        return {
+            generated_at: now.toISOString(), totals: { posts_today: 8, posts_week: 56, posts_month: 240, interactions_today: 3, interactions_week: 15, interactions_month: 65, success_rate: 96.5 },
+            platforms: platformsData, interactions_by_platform: { telegram_bot: { today: 2, week: 12, month: 45 } },
+            action_breakdown: { start: 15, message: 20, button_services: 5, button_advisor: 3, button_whatsapp: 2 },
+            daily_trend, hourly_distribution: { 0: 4, 5: 8, 6: 6, 7: 3, 13: 5, 14: 2, 22: 1 },
+            recent_posts: [], recent_interactions: [], _demo: true
+        };
+    }
+
+    function renderPromotionDashboard(data) {
+        const t = data.totals;
+        const isDemo = data._demo;
+        document.getElementById('lastUpdate').textContent = `Last updated: ${formatTime(data.generated_at)} UTC${isDemo ? ' (Demo Data)' : ''}`;
+        document.getElementById('kpiRow').innerHTML = `
+            <div class="kpi-card blue"><div class="label">Posts Today</div><div class="value">${t.posts_today}</div></div>
+            <div class="kpi-card green"><div class="label">Posts This Week</div><div class="value">${t.posts_week}</div></div>
+            <div class="kpi-card purple"><div class="label">Posts This Month</div><div class="value">${formatNumber(t.posts_month)}</div></div>
+            <div class="kpi-card orange"><div class="label">Interactions Today</div><div class="value">${t.interactions_today}</div></div>
+            <div class="kpi-card cyan"><div class="label">Interactions This Month</div><div class="value">${formatNumber(t.interactions_month)}</div></div>
+            <div class="kpi-card ${t.success_rate >= 90 ? 'green' : 'red'}"><div class="label">Success Rate</div><div class="value">${t.success_rate}%</div></div>
+        `;
+        // Charts
+        const trendLabels = Object.keys(data.daily_trend).sort();
+        new Chart(document.getElementById('trendChart'), {
+            type: 'line',
+            data: { labels: trendLabels.map(d => d.slice(5)), datasets: [
+                { label: 'Posts', data: trendLabels.map(d => data.daily_trend[d].posts), borderColor: '#42a5f5', backgroundColor: 'rgba(66,165,245,0.1)', fill: true, tension: 0.3 },
+                { label: 'Interactions', data: trendLabels.map(d => data.daily_trend[d].interactions), borderColor: '#66bb6a', backgroundColor: 'rgba(102,187,106,0.1)', fill: true, tension: 0.3 }
+            ]},
+            options: { responsive: true, plugins: { legend: { labels: { color: '#999' } } }, scales: { x: { ticks: { color: '#666' }, grid: { color: 'rgba(255,255,255,0.05)' } }, y: { ticks: { color: '#666' }, grid: { color: 'rgba(255,255,255,0.05)' } } } }
+        });
+        const platLabels = Object.keys(data.platforms);
+        new Chart(document.getElementById('platformChart'), {
+            type: 'doughnut',
+            data: { labels: platLabels.map(p => getPlatformMeta(p).name), datasets: [{ data: platLabels.map(p => data.platforms[p].month), backgroundColor: platLabels.map(p => getPlatformMeta(p).color) }] },
+            options: { responsive: true, plugins: { legend: { position: 'bottom', labels: { color: '#999', padding: 12 } } } }
+        });
+        // Platform cards
+        let platformHTML = '';
+        for (const [plat, stats] of Object.entries(data.platforms)) {
+            const meta = getPlatformMeta(plat);
+            const rate = stats.success + stats.failed > 0 ? Math.round(stats.success / (stats.success + stats.failed) * 100) : 100;
+            platformHTML += `<div class="platform-card"><div class="platform-header"><div class="platform-icon" style="background:${meta.bg}">${meta.icon}</div><div><div class="platform-name">${meta.name}</div></div></div><div class="stat-row"><span class="stat-label">Today</span><span class="stat-value">${stats.today}</span></div><div class="stat-row"><span class="stat-label">This Week</span><span class="stat-value">${stats.week}</span></div><div class="stat-row"><span class="stat-label">This Month</span><span class="stat-value">${stats.month}</span></div><div class="stat-row"><span class="stat-label">Success / Failed</span><span class="stat-value" style="color:#4caf50">${stats.success} <span style="color:#f44336">/ ${stats.failed}</span></span></div></div>`;
+        }
+        document.getElementById('platformGrid').innerHTML = platformHTML;
+        // Recent
+        const rp = data.recent_posts || [];
+        document.getElementById('recentPosts').innerHTML = rp.length === 0 ? '<tr><td colspan="4" style="color:#666;text-align:center;padding:24px">No posts yet</td></tr>' : rp.reverse().map(p => { const meta = getPlatformMeta(p.platform); return `<tr><td>${formatTime(p.timestamp)}</td><td><span class="badge badge-${p.platform.replace('_','')}">${meta.icon} ${meta.name}</span></td><td>${p.type || '-'}</td><td><span class="badge badge-${p.status === 'success' ? 'success' : 'failed'}">${p.status}</span></td></tr>`; }).join('');
+    }
+
+    // Registration data from localStorage (shared with main site)
+    let allRegistrations = [];
+    function loadRegistrationData() {
+        // Try loading from the same origin localStorage
+        try {
+            const regs = JSON.parse(localStorage.getItem('bfs_registrations') || '[]');
+            allRegistrations = regs;
+        } catch (e) { allRegistrations = []; }
+
+        // Also try fetching from the GitHub raw data file if available
+        fetch('https://raw.githubusercontent.com/msli2233bin/broadfsc-automation/main/data/registrations.json')
+            .then(r => r.ok ? r.json() : [])
+            .then(data => {
+                if (Array.isArray(data) && data.length > 0) {
+                    // Merge with local data
+                    const emailSet = new Set(allRegistrations.map(r => r.email));
+                    data.forEach(r => { if (!emailSet.has(r.email)) { allRegistrations.push(r); emailSet.add(r.email); } });
+                }
+                renderRegistrations();
+            })
+            .catch(() => renderRegistrations());
+    }
+
+    function renderRegistrations() {
+        const regs = allRegistrations;
+        const today = new Date().toISOString().slice(0, 10);
+        const weekAgo = new Date(Date.now() - 7 * 86400000).toISOString().slice(0, 10);
+        const monthAgo = new Date(Date.now() - 30 * 86400000).toISOString().slice(0, 10);
+
+        const todayRegs = regs.filter(r => r.date && r.date.startsWith(today));
+        const weekRegs = regs.filter(r => r.date >= weekAgo);
+        const monthRegs = regs.filter(r => r.date >= monthAgo);
+
+        // KPI
+        document.getElementById('regKpiRow').innerHTML = `
+            <div class="kpi-card green"><div class="label">Total Registrations</div><div class="value">${regs.length}</div></div>
+            <div class="kpi-card blue"><div class="label">Today</div><div class="value">${todayRegs.length}</div></div>
+            <div class="kpi-card purple"><div class="label">This Week</div><div class="value">${weekRegs.length}</div></div>
+            <div class="kpi-card orange"><div class="label">This Month</div><div class="value">${monthRegs.length}</div></div>
+        `;
+
+        // Interest chart
+        const interestCounts = {};
+        regs.forEach(r => { interestCounts[r.interests || 'unknown'] = (interestCounts[r.interests || 'unknown'] || 0) + 1; });
+        new Chart(document.getElementById('regInterestChart'), {
+            type: 'doughnut',
+            data: { labels: Object.keys(interestCounts), datasets: [{ data: Object.values(interestCounts), backgroundColor: Object.keys(interestCounts).map(k => INTEREST_COLORS[k] || '#999') }] },
+            options: { responsive: true, plugins: { legend: { position: 'bottom', labels: { color: '#999' } } } }
+        });
+
+        // Trend chart
+        const dayCounts = {};
+        regs.forEach(r => { if (r.date) { const day = r.date.slice(0, 10); dayCounts[day] = (dayCounts[day] || 0) + 1; } });
+        const sortedDays = Object.keys(dayCounts).sort();
+        new Chart(document.getElementById('regTrendChart'), {
+            type: 'bar',
+            data: { labels: sortedDays.map(d => d.slice(5)), datasets: [{ label: 'Registrations', data: sortedDays.map(d => dayCounts[d]), backgroundColor: 'rgba(66,165,245,0.6)', borderColor: '#42a5f5', borderWidth: 1 }] },
+            options: { responsive: true, plugins: { legend: { labels: { color: '#999' } } }, scales: { x: { ticks: { color: '#666' }, grid: { color: 'rgba(255,255,255,0.05)' } }, y: { ticks: { color: '#666', stepSize: 1 }, grid: { color: 'rgba(255,255,255,0.05)' } } } }
+        });
+
+        // Table
+        renderRegTable(regs);
+    }
+
+    function renderRegTable(regs) {
+        const tbody = document.getElementById('regTableBody');
+        if (regs.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6" class="reg-empty">No registrations yet — data will appear when customers sign up on the website</td></tr>';
+            return;
+        }
+        tbody.innerHTML = regs.slice().reverse().map((r, i) => {
+            const interestBadge = `<span class="badge badge-${r.interests || 'unknown'}">${r.interests || '-'}</span>`;
+            return `<tr><td>${regs.length - i}</td><td>${formatTime(r.date)}</td><td>${r.name}</td><td>${r.email}</td><td>${interestBadge}</td><td>${r.source || '-'}</td></tr>`;
+        }).join('');
+    }
+
+    function filterRegistrations() {
+        const query = document.getElementById('regSearch').value.toLowerCase();
+        const filtered = allRegistrations.filter(r =>
+            (r.name || '').toLowerCase().includes(query) || (r.email || '').toLowerCase().includes(query)
+        );
+        renderRegTable(filtered);
+    }
+
+    function exportCSV() {
+        const headers = ['Date', 'Name', 'Email', 'Interest', 'Source'];
+        const rows = allRegistrations.map(r => [r.date, r.name, r.email, r.interests, r.source]);
+        const csv = [headers.join(','), ...rows.map(r => r.map(c => `"${(c || '').replace(/"/g, '""')}"`).join(','))].join('\n');
+        const blob = new Blob([csv], { type: 'text/csv' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `broadfsc_registrations_${new Date().toISOString().slice(0, 10)}.csv`;
+        a.click();
+    }
+
+    // Initialize
+    loadPromotionData();
+    loadRegistrationData();
+    setInterval(loadPromotionData, 300000);
+    setInterval(loadRegistrationData, 60000);
+    </script>
+</body>
+</html>
