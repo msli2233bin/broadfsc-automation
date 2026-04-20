@@ -38,8 +38,8 @@ const KNOWLEDGE = {
     'etf': "ETFs are the simplest path to building wealth. A 3-fund portfolio (VTI + VXUS + BND) beats 90% of active managers over 10 years. Stock allocation ≈ 110 minus your age. The key is consistency: set it, contribute monthly, rebalance annually. Don't chase thematic ETFs (ARKK, etc.) — they're for your satellite allocation, max 20% of portfolio."
   },
   crypto: {
-    'bitcoin': "Bitcoin is digital gold with a 21M supply cap. The 4-year halving cycle has historically driven bull markets. Key levels: 200-week MA (never broken in a bear market), realized price (average cost basis), and previous ATH. Institutional adoption via ETFs changed the game in 2024. Treat BTC as a long-term holding — 5% portfolio allocation, cold storage, don't trade it with leverage.",
-    'crypto': "Crypto is 24/7 with 10-20% daily volatility — not for the faint of heart. BTC dominance drives the cycle: when it falls, alt season begins. Never put more than 5% in a single altcoin, 15% total crypto allocation. Most altcoins go to zero. Stick to top 20 for safety. And never use leverage in crypto — the volatility is already leveraged."
+    'bitcoin': "Bitcoin is digital gold with a 21M supply cap. The 4-year halving cycle has historically driven bull markets, but the 2024 cycle has shown diminishing returns — BTC peaked near $108K in Nov 2024 and has since pulled back to ~$75K. Key levels: 200-week MA at ~$52K (never broken in a bear market), realized price at ~$42K, and the $108K ATH. Institutional adoption via ETFs changed the game in 2024. Treat BTC as a long-term holding — 5% portfolio allocation, cold storage, don't trade it with leverage.",
+    'crypto': "Crypto is 24/7 with 10-20% daily volatility — not for the faint of heart. BTC dominance drives the cycle: when it falls, alt season begins. Never put more than 5% in a single altcoin, 15% total crypto allocation. Most altcoins go to zero. Stick to top 20 for safety. And never use leverage in crypto — the volatility is already leveraged. Note: in 2026, gold's parabolic rally to $4,800+ has drawn some safe-haven flows away from BTC."
   },
   platform: {
     'broadfsc': "BroadFSC is a regulated investment advisory platform. We're licensed by major financial authorities and serve global investors (except mainland China). What makes us different: AI-powered education, transparent fees, and actual human support when you need it. Think of us as the platform that actually wants you to learn, not just trade.",
@@ -327,159 +327,163 @@ function removeTyping() {
 // ── Research Reports with Full Content ──
 const RESEARCH = [
   {
-    id: 1, title: "S&P 500 Weekly Outlook: Key Levels to Watch",
+    id: 1, title: "S&P 500 Weekly Outlook: Record Highs & Fed Crossroads",
     type: "weekly", typeLabel: "Weekly Analysis",
     date: "Apr 20, 2026", readTime: "8 min",
-    summary: "S&P 500 sits at a critical junction with 200 SMA tested and Fed meeting ahead.",
+    summary: "S&P 500 notches 12th record close of 2026 as Middle East ceasefire hopes lift sentiment — but Fed policy remains the wildcard.",
     content: `<h3>Market Context</h3>
-<p>The S&P 500 is trading at a pivotal level this week, testing the 200-day simple moving average — a line that has historically determined the macro trend. A decisive close above this level would confirm the bullish case, while a rejection could trigger a 5-8% pullback.</p>
+<p>The S&P 500 continues its relentless march higher in 2026, logging its 12th all-time high close of the year. The benchmark index has returned approximately 5% in April alone, driven by easing geopolitical tensions (Middle East ceasefire progress) and resilient corporate earnings. However, the Fed's next move remains the key variable that could either extend the rally or trigger a sharp pullback.</p>
 
 <h3>Key Levels</h3>
 <ul>
-<li><strong>Resistance:</strong> 5,450 (prior swing high), 5,520 (all-time high)</li>
-<li><strong>Support:</strong> 5,280 (200 SMA), 5,180 (50 SMA), 5,050 (prior lows)</li>
-<li><strong>Neutral Zone:</strong> 5,180 - 5,380 (range-bound if stuck here)</li>
+<li><strong>Resistance:</strong> 6,100 (current ATH zone), 6,200 (psychological round number)</li>
+<li><strong>Support:</strong> 5,850 (20 EMA), 5,700 (50 SMA), 5,520 (prior breakout level)</li>
+<li><strong>Neutral Zone:</strong> 5,700 - 5,900 (range-bound if momentum fades)</li>
 </ul>
 
 <h3>What to Watch This Week</h3>
-<p><strong>1. Fed Meeting Minutes (Wednesday):</strong> Markets will parse every word for rate cut timing. Dovish tone = bullish for equities. Any hawkish surprise could send the index below 200 SMA.</p>
-<p><strong>2. Earnings Season Continues:</strong> Tech mega-caps report this week. Focus on capex guidance — AI spending is the narrative driver. Any slowdown in data center investment could hit the sector hard.</p>
-<p><strong>3. Economic Data:</strong> Jobless claims and PMI data. A weakening labor market supports the rate cut narrative but raises recession concerns.</p>
+<p><strong>1. FOMC Meeting (April 29-30):</strong> The market is pricing in a hold, but forward guidance is critical. Any shift toward a June cut timeline would be strongly bullish. Conversely, "higher for longer" language could trigger a 3-5% pullback.</p>
+<p><strong>2. Earnings Season Peak:</strong> Mega-cap tech reports this week. AI capex guidance remains the dominant narrative. Any deceleration in data center spending could hit the sector hard.</p>
+<p><strong>3. Geopolitical Developments:</strong> Middle East ceasefire negotiations continue. Any breakdown would reverse risk-on sentiment quickly.</p>
 
 <h3>Strategy</h3>
-<p><strong>Bullish scenario:</strong> If price holds above 5,280 (200 SMA) with volume, look for a retest of 5,450. Buy the pullback to 200 SMA with a stop below 5,220.</p>
-<p><strong>Bearish scenario:</strong> If 200 SMA fails, expect a move to 5,050. Reduce long exposure and wait for a base to form before re-entering.</p>
+<p><strong>Bullish scenario:</strong> If price holds above 5,850 (20 EMA) with volume, look for a push toward 6,200. Buy the pullback to 20 EMA with a stop below 5,700.</p>
+<p><strong>Bearish scenario:</strong> If 5,700 (50 SMA) fails, expect a move to 5,520. Reduce long exposure and wait for a base to form before re-entering.</p>
 
 <h3>Risk Management</h3>
-<p>Given the Fed event risk, reduce position sizes by 30-50% this week. Ensure all stops are in place before Wednesday. No new positions after 2 PM ET on Wednesday (Fed minutes release).</p>`
+<p>Given FOMC event risk next week, reduce position sizes by 30%. Ensure all stops are in place. Consider QQQ put spreads (2-3% OTM, 30 DTE) as portfolio insurance heading into the meeting.</p>`
   },
   {
-    id: 2, title: "EUR/USD: ECB vs Fed Divergence Trade",
+    id: 2, title: "EUR/USD: ECB vs Fed Divergence at a Turning Point",
     type: "daily", typeLabel: "Daily Brief",
     date: "Apr 20, 2026", readTime: "5 min",
-    summary: "ECB cutting while Fed holds — the divergence trade is setting up nicely.",
+    summary: "ECB cutting while Fed holds firm — the divergence trade is approaching a critical juncture.",
     content: `<h3>Setup Overview</h3>
-<p>EUR/USD has been ranging between 1.0800-1.0950 for three weeks. The setup: ECB is clearly in easing mode (two cuts this year already), while the Fed is holding rates higher for longer. This divergence should eventually push EUR/USD lower.</p>
+<p>EUR/USD has been ranging between 1.0750-1.0900 for the past three weeks. The ECB has already delivered two rate cuts in 2026 and signals more are coming, while the Fed remains firmly on hold with inflation still above target. This policy divergence should eventually push EUR/USD lower — but timing is everything.</p>
 
 <h3>Key Levels</h3>
 <ul>
-<li><strong>Resistance:</strong> 1.0950 (triple top), 1.1000 (psychological), 1.1080 (200-day MA)</li>
-<li><strong>Support:</strong> 1.0800 (range floor), 1.0720 (prior lows), 1.0650 (measured move)</li>
+<li><strong>Resistance:</strong> 1.0900 (triple top zone), 1.0950 (psychological), 1.1020 (200-day MA)</li>
+<li><strong>Support:</strong> 1.0750 (range floor), 1.0680 (prior lows), 1.0600 (measured move)</li>
 </ul>
 
 <h3>The Trade</h3>
-<p><strong>Entry:</strong> Sell on a rejection at 1.0950 (if we get another test) or on a break below 1.0800.</p>
-<p><strong>Stop:</strong> Above 1.1000 (50 pips risk from 1.0950 entry)</p>
-<p><strong>Target:</strong> 1.0720 initially (180 pips), then 1.0650 (300 pips)</p>
-<p><strong>R:R:</strong> 1:3.6 to first target — excellent setup</p>
+<p><strong>Entry:</strong> Sell on a rejection at 1.0900 (if we get another test) or on a break below 1.0750.</p>
+<p><strong>Stop:</strong> Above 1.0960 (60 pips risk from 1.0900 entry)</p>
+<p><strong>Target:</strong> 1.0680 initially (220 pips), then 1.0600 (300 pips)</p>
+<p><strong>R:R:</strong> 1:3.7 to first target — excellent risk/reward</p>
 
 <h3>Catalysts</h3>
-<p>Next ECB meeting in 2 weeks. If they signal another cut, that's our trigger. Also watch US NFP this Friday — a strong number supports the Fed-holds narrative and weakens EUR.</p>
+<p>ECB meeting in 10 days. If they signal a third cut, that's our trigger. Also watch US NFP this Friday — a strong number supports the "Fed holds higher" narrative and weakens EUR. Geopolitical easing (Middle East ceasefire) could strengthen USD as risk appetite improves.</p>
 
 <h3>Risk</h3>
-<p>If the Fed signals earlier-than-expected cuts, EUR/USD could break above 1.1000 and invalidate this setup. Keep stops tight above that level.</p>`
+<p>If the Fed surprises with a dovish pivot at the April 29-30 FOMC, EUR/USD could break above 1.0960 and invalidate this setup. Keep stops tight above that level. Also watch for any escalation in geopolitical tensions that could trigger safe-haven EUR flows.</p>`
   },
   {
-    id: 3, title: "Gold: $2,400 and Beyond — What's Driving the Rally",
+    id: 3, title: "Gold: $4,800+ and Counting — The Great De-Dollarization Trade",
     type: "special", typeLabel: "Special Report",
-    date: "Apr 18, 2026", readTime: "12 min",
-    summary: "Central bank buying, geopolitical risk, and rate cut expectations fuel gold's historic run.",
+    date: "Apr 20, 2026", readTime: "12 min",
+    summary: "Gold doubles in 18 months as central bank buying, de-dollarization, and geopolitical risk fuel an unprecedented rally.",
     content: `<h3>The Big Picture</h3>
-<p>Gold has surged past $2,400, hitting all-time highs. This isn't just a blip — it's a structural shift driven by three powerful forces: central bank accumulation, geopolitical risk premium, and the market pricing in Fed rate cuts.</p>
+<p>Gold has shattered every forecast, surging past $4,800/oz — more than doubling from its 2024 lows near $2,000. This isn't a speculative bubble. It's a structural re-pricing driven by the most powerful force in global finance: the gradual shift away from US dollar hegemony.</p>
 
-<h3>Driver #1: Central Bank Buying</h3>
-<p>Central banks bought over 1,000 tonnes of gold in 2025, the second-highest annual total on record. China's PBOC has been a consistent buyer for 18 consecutive months. This isn't speculative — it's a structural shift away from USD reserves. This demand provides a floor under gold prices that didn't exist a decade ago.</p>
+<h3>Driver #1: Central Bank De-Dollarization</h3>
+<p>Central banks bought over 1,200 tonnes of gold in 2025, a new all-time record. China's PBOC has been buying for 24+ consecutive months. But it's not just China — India, Turkey, Poland, and dozens of emerging market central banks are all adding gold at record pace. This isn't speculative — it's a deliberate strategic shift away from USD reserves. The message is clear: trust in the US dollar as the sole reserve asset is eroding.</p>
 
 <h3>Driver #2: Geopolitical Risk Premium</h3>
-<p>Multiple ongoing conflicts, trade tensions, and election uncertainty across major economies have added a persistent risk premium. Gold historically performs well during periods of elevated geopolitical uncertainty, and current conditions are among the most uncertain in decades.</p>
+<p>Middle East ceasefire negotiations, ongoing Russia-Ukraine tensions, and trade fragmentation between US-China blocs have added a persistent risk premium. Every time a new geopolitical shock hits, gold rallies $50-100 in days. The "new normal" of geopolitical instability has permanently raised gold's floor.</p>
 
-<h3>Driver #3: Rate Cut Expectations</h3>
-<p>The market is pricing in 2-3 Fed cuts this year. Lower real rates reduce the opportunity cost of holding non-yielding gold. If cuts materialize, gold goes higher. Even if they don't, the uncertainty itself supports gold.</p>
+<h3>Driver #3: Fiscal Deficits & Inflation Fears</h3>
+<p>US fiscal deficits exceeding $2 trillion annually are raising questions about long-term debt sustainability. When the market starts pricing in "fiscal dominance" — where the Fed can't raise rates because the government can't afford the debt service — gold becomes the ultimate hedge. Real rates remain negative when you adjust for true inflation, making gold's lack of yield irrelevant.</p>
 
 <h3>Technical Outlook</h3>
 <ul>
-<li><strong>Trend:</strong> Strongly bullish. 20, 50, 200 MAs all rising and aligned.</li>
-<li><strong>Support:</strong> $2,350 (prior resistance → support), $2,280 (50 SMA), $2,180 (200 SMA)</li>
-<li><strong>Targets:</strong> $2,500 (psychological), $2,600 (measured move from breakout)</li>
+<li><strong>Trend:</strong> Parabolic. 20, 50, 200 MAs all rising with widening spread — classic strong trend.</li>
+<li><strong>Support:</strong> $4,650 (April low), $4,400 (prior resistance → support), $4,100 (50 SMA)</li>
+<li><strong>Targets:</strong> $5,000 (psychological round number), $5,500 (measured move from consolidation)</li>
 </ul>
 
 <h3>How to Play It</h3>
-<p><strong>Conservative:</strong> Buy the dip to $2,350 with a stop at $2,280. Target $2,500.</p>
-<p><strong>Moderate:</strong> Buy current levels with a stop at $2,350. Target $2,600.</p>
-<p><strong>Alternative:</strong> Gold miners (GDX, GDXJ) offer leverage to the gold price. More volatile but potentially higher returns.</p>
+<p><strong>Conservative:</strong> Buy the dip to $4,650 with a stop at $4,400. Target $5,000.</p>
+<p><strong>Moderate:</strong> Buy current levels with a stop at $4,400. Target $5,500.</p>
+<p><strong>Alternative:</strong> Gold miners (GDX, GDXJ) offer 2-3x leverage to gold. Streaming companies (WPM, FNV) offer lower-risk exposure with dividend yields.</p>
 
 <h3>Risks</h3>
-<p>A hot CPI print that kills rate cut expectations could trigger a 5-8% pullback. Also, if geopolitical tensions ease meaningfully, the risk premium could evaporate quickly. Always use stops.</p>`
+<p>A breakthrough Middle East peace deal could trigger a 5-8% pullback by removing the geopolitical premium. A hawkish Fed surprise (no cuts in 2026) could also pressure gold. However, the structural de-dollarization driver is unlikely to reverse anytime soon. Use stops, but don't underestimate the structural floor under this market.</p>`
   },
   {
-    id: 4, title: "Tech Earnings Season: AI Capex Under the Microscope",
+    id: 4, title: "The $700B AI Siege: Big Tech's Capex Supercycle",
     type: "weekly", typeLabel: "Weekly Analysis",
-    date: "Apr 17, 2026", readTime: "10 min",
-    summary: "Big Tech's AI spending is the key variable. Any slowdown = sector-wide selloff.",
+    date: "Apr 19, 2026", readTime: "10 min",
+    summary: "Big Tech's AI capex has tripled to $650-700B in 2026 — is this the greatest investment cycle in history, or the biggest bubble?",
     content: `<h3>Why This Matters</h3>
-<p>The Magnificent 7 have driven 60%+ of S&P 500 returns over the past year, largely on AI narrative. But capex spending on AI infrastructure has reached staggering levels — over $200B annually. The question: is this spending generating real returns, or are we in an AI investment bubble?</p>
+<p>The Magnificent 7 have driven 60%+ of S&P 500 returns over the past two years, largely on AI narrative. But capex spending on AI infrastructure has reached staggering levels — Big Tech's combined AI capex is projected at $650-700 billion in 2026 alone, up from ~$200B just two years ago. This is the largest corporate investment cycle in history. The question: is this spending generating real returns, or are we witnessing the greatest capital misallocation since the 2000 telecom boom?</p>
 
-<h3>Key Companies to Watch</h3>
+<h3>The Capex Numbers</h3>
 <ul>
-<li><strong>NVIDIA:</strong> The AI kingpin. Data center revenue is the number to watch. Any slowdown from the torrid 200%+ growth pace could trigger a 10-15% selloff.</li>
-<li><strong>Microsoft:</strong> Azure cloud growth + Copilot adoption rates. Capex guidance is critical — if they pull back, it signals demand concerns.</li>
-<li><strong>Google:</strong> Cloud growth + AI integration across products. Watch ad revenue too — if AI is cannibalizing search, that's a problem.</li>
-<li><strong>Meta:</strong> AI-driven ad targeting improvements + Reality Labs losses. Their open-source AI strategy (Llama) is fascinating but unmonetized.</li>
-<li><strong>Amazon:</strong> AWS growth + e-commerce margin expansion. Their AI chip investment (Trainium) is a direct challenge to NVIDIA.</li>
+<li><strong>Microsoft:</strong> FY2026 capex expected above $88B (up from $68B in FY2025). Azure AI infrastructure is the primary driver.</li>
+<li><strong>Amazon:</strong> Capex surging past $100B, driven by AWS AI chip investment (Trainium/Ultra) and data center expansion.</li>
+<li><strong>Google/Alphabet:</strong> AI capex approaching $75B. Custom TPU chips + cloud infrastructure buildout.</li>
+<li><strong>Meta:</strong> Guided "significantly higher" than $70B (2025 budget). AI-powered ad targeting + open-source Llama strategy.</li>
+<li><strong>NVIDIA:</strong> The picks-and-shovels play. Data center revenue still growing 100%+ YoY — but any deceleration could trigger a 15%+ selloff.</li>
 </ul>
 
 <h3>The Bull Case</h3>
-<p>AI is real and transformative. Enterprise adoption is accelerating. Capex is an investment that will pay off over 3-5 years. Current spending levels are sustainable given the revenue growth. We're in inning 3 of the AI revolution.</p>
+<p>AI is proving transformative. Enterprise adoption is accelerating faster than cloud adoption did. Revenue from AI products (Copilot, AWS AI, Google Cloud AI) is growing 50-80% YoY. Current spending levels are sustainable given the revenue trajectory. We're still in innings 3-4 of the AI revolution, and the market opportunity could reach $4-5 trillion by 2030.</p>
 
 <h3>The Bear Case</h3>
-<p>$200B+ annual capex with limited proven ROI. Some AI features are being given away for free. When does the investment need to show returns? If enterprise AI revenue doesn't accelerate meaningfully this year, the narrative cracks. Parallels to 2000 telecom capex boom are uncomfortable.</p>
+<p>$700B annual capex with limited proven ROI. Most AI features are being given away for free or at minimal cost. Enterprise AI revenue, while growing, is nowhere near justifying the investment. When does the math need to work? If revenue doesn't meaningfully accelerate in H2 2026, the narrative cracks. The parallels to 1999-2000 telecom capex (where companies spent $1T+ on fiber that went unused) are uncomfortable.</p>
+
+<h3>What to Watch</h3>
+<p><strong>Key earnings this quarter:</strong> NVIDIA data center revenue growth rate, Microsoft Azure AI revenue disclosure, AWS AI services growth, Meta's AI ad revenue lift. If ANY major player signals capex slowdown → sector-wide selloff of 10-15%.</p>
 
 <h3>How to Position</h3>
-<p><strong>Pre-earnings:</strong> Reduce tech exposure by 20-30%. Earnings volatility will be extreme. Don't try to guess the direction.</p>
-<p><strong>Post-earnings:</strong> If capex guidance is maintained or increased AND revenue growth accelerates → buy the dip. If capex slows or revenue disappoints → consider puts or sector rotation to defensive names.</p>
-
-<h3>Hedging</h3>
-<p>Buy QQQ puts (2-3% OTM, 30-45 DTE) as portfolio insurance. Cost: ~1-2% of portfolio value. Or use XLK put spreads for cheaper protection.</p>`
+<p><strong>Core holding:</strong> NVIDIA remains the safest AI play — everyone buys from them regardless. Use 50 SMA as your guide.</p>
+<p><strong>Pairs trade:</strong> Long NVIDIA / Short unprofitable AI infrastructure plays. This captures the capex boom while hedging the bubble risk.</p>
+<p><strong>Hedging:</strong> QQQ put spreads (3% OTM, 45 DTE) as portfolio insurance. Cost: ~1.5% of portfolio value.</p>`
   },
   {
-    id: 5, title: "Bitcoin Halving Cycle: Where Are We Now?",
+    id: 5, title: "Bitcoin at $75K: Post-Halving Reality Check",
     type: "special", typeLabel: "Special Report",
-    date: "Apr 15, 2026", readTime: "10 min",
-    summary: "Post-halving analysis — historical patterns suggest the real move is still ahead.",
-    content: `<h3>Halving Recap</h3>
-<p>Bitcoin's most recent halving reduced the block reward from 6.25 to 3.125 BTC. Historically, halvings have been followed by significant bull runs, but the timing matters — the real move typically starts 6-12 months AFTER the halving, not before.</p>
+    date: "Apr 18, 2026", readTime: "10 min",
+    summary: "BTC trades at ~$75K — below its 2024 peak. Is the halving cycle broken, or is this the accumulation zone?",
+    content: `<h3>Current State</h3>
+<p>Bitcoin trades around $74,800 — roughly 12% below its November 2024 all-time high near $108K. For the first time in Bitcoin's history, the post-halving cycle has not delivered new highs within 12 months. This has sparked a fierce debate: is the halving cycle broken, or are we simply in an extended consolidation before the next leg up?</p>
 
 <h3>Historical Comparison</h3>
 <table style="width:100%;border-collapse:collapse;margin:12px 0">
-<tr style="border-bottom:1px solid var(--border)"><th style="text-align:left;padding:8px;color:var(--text2)">Halving</th><th style="text-align:left;padding:8px;color:var(--text2)">Pre-Halving Peak</th><th style="text-align:left;padding:8px;color:var(--text2)">Post-Halving Peak</th><th style="text-align:left;padding:8px;color:var(--text2)">Time to Peak</th></tr>
-<tr style="border-bottom:1px solid var(--border)"><td style="padding:8px">2016</td><td style="padding:8px">$770</td><td style="padding:8px">$19,900</td><td style="padding:8px">~18 months</td></tr>
-<tr style="border-bottom:1px solid var(--border)"><td style="padding:8px">2020</td><td style="padding:8px">$10,000</td><td style="padding:8px">$69,000</td><td style="padding:8px">~18 months</td></tr>
-<tr style="border-bottom:1px solid var(--border)"><td style="padding:8px">2024</td><td style="padding:8px">$73,000</td><td style="padding:8px">?</td><td style="padding:8px">In progress</td></tr>
+<tr style="border-bottom:1px solid var(--border)"><th style="text-align:left;padding:8px;color:var(--text2)">Halving</th><th style="text-align:left;padding:8px;color:var(--text2)">Pre-Halving Peak</th><th style="text-align:left;padding:8px;color:var(--text2)">Post-Halving Peak</th><th style="text-align:left;padding:8px;color:var(--text2)">Time to Peak</th><th style="text-align:left;padding:8px;color:var(--text2)">Multiple</th></tr>
+<tr style="border-bottom:1px solid var(--border)"><td style="padding:8px">2016</td><td style="padding:8px">$770</td><td style="padding:8px">$19,900</td><td style="padding:8px">~18 months</td><td style="padding:8px">25x</td></tr>
+<tr style="border-bottom:1px solid var(--border)"><td style="padding:8px">2020</td><td style="padding:8px">$10,000</td><td style="padding:8px">$69,000</td><td style="padding:8px">~18 months</td><td style="padding:8px">7x</td></tr>
+<tr style="border-bottom:1px solid var(--border)"><td style="padding:8px">2024</td><td style="padding:8px">$73,000</td><td style="padding:8px">$108,000*</td><td style="padding:8px">~7 months</td><td style="padding:8px">1.5x</td></tr>
 </table>
+<p style="font-size:0.85em;color:var(--text3)">*ATH reached Nov 2024. Current price below ATH.</p>
 
-<h3>What's Different This Time</h3>
-<p><strong>ETFs:</strong> Spot Bitcoin ETFs have fundamentally changed demand dynamics. Daily ETF inflows can match or exceed new mining supply. This is the first halving with institutional demand via regulated products.</p>
-<p><strong>Macro environment:</strong> Rate cuts could provide additional tailwind. Bitcoin has historically performed well in easing cycles.</p>
-<p><strong>Diminishing returns:</strong> Each cycle's multiple has decreased (25x → 7x → ?). Even a 3-4x from pre-halving levels would put BTC at $200-300K.</p>
+<h3>What's Different This Cycle</h3>
+<p><strong>ETF saturation:</strong> Spot Bitcoin ETFs were approved before the halving, front-running the typical demand shock. The "ETF buy" may have already been priced in, explaining the lackluster post-halving performance.</p>
+<p><strong>Macro headwinds:</strong> The Fed's "higher for longer" stance has been a headwind for risk assets. Bitcoin hasn't enjoyed the rate-cut tailwind that previous cycles had.</p>
+<p><strong>Diminishing returns confirmed:</strong> The multiple from pre-halving peak to post-halving peak has declined from 25x to 7x to 1.5x. The market is maturing — 10x returns are likely gone forever.</p>
+<p><strong>Gold competition:</strong> Gold's parabolic rally to $4,800+ has drawn safe-haven flows that might have previously gone to Bitcoin. BTC is no longer the only "anti-fiat" trade.</p>
 
 <h3>On-Chain Metrics</h3>
 <ul>
-<li><strong>Realized Price:</strong> ~$38K. Current price well above = profitable market</li>
-<li><strong>200-Week MA:</strong> Never broken in a bear market. Current: ~$45K</li>
-<li><strong>Exchange Reserves:</strong> Declining = less selling pressure (holders moving to cold storage)</li>
-<li><strong>NUPL:</strong> At 0.55 — in 'optimism' zone. Historically goes to 0.75 ('euphoria') before major tops</li>
+<li><strong>Realized Price:</strong> ~$42K. Current price at 1.8x realized — historically mid-range, not overheated</li>
+<li><strong>200-Week MA:</strong> ~$52K. Price above = macro bull intact</li>
+<li><strong>Exchange Reserves:</strong> Still declining = long-term holders not selling</li>
+<li><strong>NUPL:</strong> At 0.45 — in 'optimism' zone, well below euphoria (0.75)</li>
 </ul>
 
 <h3>Strategy</h3>
-<p><strong>Long-term holders:</strong> Continue holding. The cycle peak likely isn't until late 2025 or 2026 based on historical timing. Take partial profits at 3x from entry (sell 50%).</p>
-<p><strong>New positions:</strong> Buy on pullbacks to $55-60K zone (200-week MA area). Stop below $45K. Target: $150-200K over 12-18 months.</p>
-<p><strong>Risk:</strong> Regulatory crackdowns, exchange failures, or a severe recession could break the cycle pattern. Never invest more than 5% of portfolio in BTC.</p>`
+<p><strong>Long-term holders:</strong> Continue holding. On-chain metrics suggest we're mid-cycle, not at a top. The 2026-2027 cycle peak could still reach $120-150K if macro conditions improve.</p>
+<p><strong>New positions:</strong> Dollar-cost average into the $65-75K zone. Stop below $52K (200-week MA). This is a reasonable risk/reward entry for a 12-18 month horizon.</p>
+<p><strong>Short-term traders:</strong> Range-bound between $68-82K. Buy support, sell resistance. Keep positions small — BTC is in a no-man's-land where both bullish and bearish cases have merit.</p>
+<p><strong>Risk:</strong> A global recession could push BTC below $50K. Regulatory crackdowns remain an ever-present risk. Never invest more than 5% of portfolio in BTC.</p>`
   },
   {
     id: 6, title: "Risk Management Checklist: 20 Rules That Save Accounts",
     type: "special", typeLabel: "Special Report",
-    date: "Apr 14, 2026", readTime: "15 min",
-    summary: "The complete risk management framework — print this, follow it, survive.",
+    date: "Apr 16, 2026", readTime: "15 min",
+    summary: "In a world of $4,800 gold and $700B AI capex, disciplined risk management matters more than ever.",
     content: `<h3>The 20 Non-Negotiable Rules</h3>
 
 <h4>Position Sizing</h4>
@@ -527,7 +531,10 @@ const RESEARCH = [
 </ol>
 
 <h3>The Bottom Line</h3>
-<p>90% of traders lose money. The 10% who survive all have one thing in common: disciplined risk management. Not better analysis. Not better signals. Just better risk control. Print this list, put it next to your screen, and follow it every single day.</p>`
+<p>90% of traders lose money. The 10% who survive all have one thing in common: disciplined risk management. Not better analysis. Not better signals. Just better risk control. Print this list, put it next to your screen, and follow it every single day.</p>
+
+<h3>2026 Context</h3>
+<p>Markets in 2026 are more extreme than ever: gold has doubled to $4,800+, AI capex has tripled to $700B, and Bitcoin is still finding its post-halving direction. In this environment, the temptation to "go all in" on a thesis is overwhelming. That's exactly when risk management matters most. The traders who survive this cycle won't be the ones who made the biggest calls — they'll be the ones who kept their losses small enough to stay in the game.</p>`
   }
 ];
 
