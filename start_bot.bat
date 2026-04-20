@@ -7,7 +7,7 @@ REM BroadFSC Telegram 客服机器人 - 本地启动脚本
 REM 使用前请填入你的 GROQ_API_KEY
 REM ============================================================
 
-set TELEGRAM_BOT_TOKEN=8292422033:AAFir8sg7io6reQY5eYSmdiI8lftwyr3dFg
+set TELEGRAM_BOT_TOKEN=8292422033:AAHrPUfSaUAcmpvQXcV4nsd-NakZH3SIwPU
 set GROQ_API_KEY=%USER_GROQ_API_KEY%
 set ADMIN_CHAT_ID=8639358750
 
