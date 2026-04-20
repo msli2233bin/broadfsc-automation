@@ -558,10 +558,135 @@ def run_agent(agent: str):
     return results
 
 
+# =================== 知识→内容自动生成 ===================
+def generate_social_content(knowledge_file: str, agent: str, topic: str):
+    """从学到的知识自动生成社交帖子，存入内容队列供发帖脚本读取"""
+    if not GROQ_API_KEY:
+        print("    ⚠️ 无 GROQ_API_KEY，跳过内容生成")
+        return []
+
+    try:
+        content = Path(knowledge_file).read_text(encoding='utf-8')
+        if len(content) < 200:
+            print("    ⚠️ 知识内容太短，跳过内容生成")
+            return []
+
+        # 读取知识摘要（取前3000字符，避免超token）
+        summary = content[:3000]
+
+        # 为7个平台生成不同风格的帖子
+        platform_prompts = {
+            'twitter': {
+                'name': 'X/Twitter',
+                'instruction': 'Write ONE tweet (max 250 chars). Punchy, specific data point, no fluff. End with 2-3 hashtags.',
+            },
+            'mastodon': {
+                'name': 'Mastodon',
+                'instruction': 'Write ONE post (max 450 chars). Thoughtful analysis, slightly longer form. Include 1 specific insight from the knowledge. End with hashtags.',
+            },
+            'discord': {
+                'name': 'Discord',
+                'instruction': 'Write ONE community post (max 800 chars). Conversational but insightful. Use bullet points. Like sharing a trading tip with fellow traders.',
+            },
+            'bluesky': {
+                'name': 'Bluesky',
+                'instruction': 'Write ONE post (max 280 chars). Sharp observation, conversational tone. One key takeaway. End with 1-2 hashtags.',
+            },
+            'telegram': {
+                'name': 'Telegram',
+                'instruction': 'Write ONE briefing-style post (max 500 chars). Professional, structured, with clear key points. Include 📊 or 📈 emojis for visual structure.',
+            },
+            'tiktok': {
+                'name': 'TikTok',
+                'instruction': 'Write ONE short caption (max 200 chars). Hook in first line, engaging tone, feel like insider knowledge. 2-3 hashtags. No links.',
+            },
+            'linkedin': {
+                'name': 'LinkedIn',
+                'instruction': 'Write ONE professional post (200-350 words). Thought leadership style, reference macro trends, professional but not boring. End with a question to drive engagement.',
+            },
+        }
+
+        queue_dir = KNOWLEDGE_DIR / 'content_queue'
+        queue_dir.mkdir(parents=True, exist_ok=True)
+
+        generated = []
+        for platform, cfg in platform_prompts.items():
+            try:
+                response = requests.post(
+                    'https://api.groq.com/openai/v1/chat/completions',
+                    headers={
+                        'Authorization': f'Bearer {GROQ_API_KEY}',
+                        'Content-Type': 'application/json'
+                    },
+                    json={
+                        'model': 'llama-3.1-8b-instant',
+                        'messages': [
+                            {
+                                'role': 'system',
+                                'content': (
+                                    f"You are a social media content creator for BroadFSC, a licensed investment securities firm. "
+                                    f"You create content from research knowledge. "
+                                    f"NEVER promise returns. NEVER give specific buy/sell advice. "
+                                    f"Be insightful, not generic. Sound like a real analyst, not a bot. "
+                                    f"No phrases like 'Certainly!', 'Of course!', 'I'd be happy to', or 'It depends'."
+                                )
+                            },
+                            {
+                                'role': 'user',
+                                'content': (
+                                    f"Based on this knowledge about {topic}:\n\n{summary}\n\n"
+                                    f"Platform: {cfg['name']}\n"
+                                    f"{cfg['instruction']}\n\n"
+                                    f"Add this link naturally if it fits (don't force it): "
+                                    f"https://msli2233bin.github.io/broadfsc-automation/"
+                                )
+                            }
+                        ],
+                        'max_tokens': 500 if platform == 'linkedin' else 200,
+                        'temperature': 0.7
+                    },
+                    timeout=30
+                )
+                result = response.json()
+                post_text = result['choices'][0]['message']['content'].strip()
+
+                # 写入内容队列
+                queue_file = queue_dir / f"{TODAY}_{platform}_{topic}.json"
+                queue_data = {
+                    'platform': platform,
+                    'topic': topic,
+                    'agent': agent,
+                    'content': post_text,
+                    'created': datetime.datetime.now().isoformat(),
+                    'used': False
+                }
+                queue_file.write_text(json.dumps(queue_data, ensure_ascii=False, indent=2), encoding='utf-8')
+
+                generated.append({
+                    'platform': platform,
+                    'topic': topic,
+                    'length': len(post_text),
+                    'preview': post_text[:80]
+                })
+                print(f"    ✅ {cfg['name']}: {post_text[:60]}...")
+
+                time.sleep(1)  # 限速
+
+            except Exception as e:
+                print(f"    ⚠️ {cfg['name']} 内容生成失败: {e}")
+
+        return generated
+
+    except Exception as e:
+        print(f"    ⚠️ 内容生成异常: {e}")
+        return []
+
+
 def main():
     parser = argparse.ArgumentParser(description='BroadFSC AI 自主学习团队')
     parser.add_argument('--agent', choices=['finance', 'sales', 'marketing', 'competitor', 'all'],
                         default='all', help='运行指定Agent')
+    parser.add_argument('--no-content', action='store_true', help='只学习不生成内容')
     args = parser.parse_args()
     
     agents_to_run = ['finance', 'sales', 'marketing', 'competitor'] if args.agent == 'all' else [args.agent]
@@ -571,11 +696,22 @@ def main():
         results = run_agent(agent)
         if results:
             total_results.extend(results)
+
+            # 🆕 学完自动生成社交内容
+            if not args.no_content:
+                for r in results:
+                    knowledge_file = KNOWLEDGE_DIR / agent / f"{TODAY}-{r['topic']}.md"
+                    if knowledge_file.exists():
+                        print(f"\n  🎨 从知识生成社交内容: {r['topic']}")
+                        generate_social_content(str(knowledge_file), agent, r['topic'])
+                        time.sleep(2)
+
         time.sleep(5)  # Agent 之间间隔
     
     print(f"\n{'='*60}")
     print(f"🎉 AI 学习团队全部完成！共学习 {len(total_results)} 条知识")
     print(f"📁 存储路径: broadfsc-automation/knowledge/")
+    print(f"🎨 社交内容队列: knowledge/content_queue/")
     print(f"🌐 IMA 知识库: 已同步")
     print(f"{'='*60}")
 

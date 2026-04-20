@@ -15,7 +15,7 @@ if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
 from flask import Flask, jsonify, request, send_from_directory, redirect
-from analytics_db import init_db, get_db, close_db, log_click, log_website_visit, log_conversation
+from analytics_db import init_db, get_db, close_db, log_click, log_website_visit, log_conversation, log_registration
 
 app = Flask(__name__, static_folder=os.path.dirname(os.path.abspath(__file__)))
 
@@ -142,6 +142,51 @@ def track_conversation():
         chat_mode=data.get('chat_mode', 'auto')
     )
     return jsonify({'status': 'ok'})
+
+
+@app.route('/track/registration', methods=['POST'])
+def track_registration():
+    """Track a new user registration from the website."""
+    data = request.get_json() or {}
+    name = data.get('name', '')
+    email = data.get('email', '')
+    if not name or not email:
+        return jsonify({'status': 'error', 'message': 'Name and email required'}), 400
+
+    # Get visitor info
+    ip = request.headers.get('X-Forwarded-For', request.remote_addr or '')
+    import hashlib
+    ip_hash = hashlib.sha256(ip.encode()).hexdigest()[:16] if ip else ''
+
+    log_registration(
+        name=name,
+        email=email,
+        interests=data.get('interests', ''),
+        source=data.get('source', ''),
+        ip_hash=ip_hash,
+        user_agent=request.headers.get('User-Agent', '')
+    )
+    return jsonify({'status': 'ok'})
+
+
+# ============================================================
+# Registration Endpoints (Admin View)
+# ============================================================
+
+@app.route('/api/registrations')
+def api_registrations():
+    """Get registration list."""
+    days = request.args.get('days', 30, type=int)
+    from analytics_db import get_registrations
+    return jsonify(get_registrations(days=days))
+
+
+@app.route('/api/registration-stats')
+def api_registration_stats():
+    """Get registration statistics."""
+    days = request.args.get('days', 30, type=int)
+    from analytics_db import get_registration_stats
+    return jsonify(get_registration_stats(days=days))
 
 
 # ============================================================

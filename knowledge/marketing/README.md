@@ -49,5 +49,21 @@
 | 周六 | 基础知识 | "Beginner's Guide to [CONCEPT]" |
 | 周日 | 励志/心态 | "Trading Mindset: Think Long Term" |
 
+## 网站 AI 客服改进经验（2026-04-21）
+
+### v6 核心升级要点
+1. **股票识别**：ticker 必须大小写不敏感（`/^[A-Z]+$/` 在 toLowerCase 后永远匹配不到）
+2. **Pollinations API**：用 `openai-large` 模型，比 `openai` 质量高很多
+3. **AI 回复品味**：system prompt 禁止弱化语言（"it depends"/"Certainly!"/免责声明），要有 conviction
+4. **市场数据回复**：必须引用精确价格 + 给出洞察（不只是报数据）
+5. **未知 ticker fallback**：不要说 "I can't help"，而是引导用户深入交流
+6. **AI-ism 清理**：去掉 "Certainly!", "Of course!", "I'd be happy to help" 等机器人套话
+7. **JS 花括号平衡**：一个缺少的 `}` 会让整个脚本解析失败，所有功能全挂
+
+### 关键教训
+- 每次修改 JS 后必须验证花括号平衡
+- 本地 git 修改必须及时 push
+- API key/token 过期是常见故障，每日检查必须包含
+
 ---
 *AI学习内容将自动追加到此文件*

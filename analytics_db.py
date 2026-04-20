@@ -89,6 +89,18 @@ def init_db():
             referrer TEXT DEFAULT ''
         );
 
+        CREATE TABLE IF NOT EXISTS registrations (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            timestamp TEXT NOT NULL DEFAULT (datetime('now')),
+            name TEXT NOT NULL,
+            email TEXT NOT NULL,
+            interests TEXT DEFAULT '',
+            source TEXT DEFAULT '',
+            ip_hash TEXT DEFAULT '',
+            country TEXT DEFAULT '',
+            user_agent TEXT DEFAULT ''
+        );
+
         CREATE TABLE IF NOT EXISTS daily_summary (
             date TEXT PRIMARY KEY,
             telegram_posts INTEGER DEFAULT 0,
@@ -111,6 +123,8 @@ def init_db():
         CREATE INDEX IF NOT EXISTS idx_clicks_timestamp ON clicks(timestamp);
         CREATE INDEX IF NOT EXISTS idx_conversations_timestamp ON conversations(timestamp);
         CREATE INDEX IF NOT EXISTS idx_visits_timestamp ON website_visits(timestamp);
+        CREATE INDEX IF NOT EXISTS idx_registrations_timestamp ON registrations(timestamp);
+        CREATE INDEX IF NOT EXISTS idx_registrations_email ON registrations(email);
     """)
     db.commit()
 
@@ -169,6 +183,19 @@ def log_website_visit(source="direct", campaign="", ip_hash="", country="", user
         db.commit()
     except Exception as e:
         print(f"[analytics] log_visit error: {e}")
+
+
+def log_registration(name, email, interests="", source="", ip_hash="", country="", user_agent=""):
+    """Log a new registration."""
+    try:
+        db = get_db()
+        db.execute(
+            "INSERT INTO registrations (name, email, interests, source, ip_hash, country, user_agent) VALUES (?,?,?,?,?,?,?)",
+            (name, email, interests, source, ip_hash, country, user_agent[:200])
+        )
+        db.commit()
+    except Exception as e:
+        print(f"[analytics] log_registration error: {e}")
 
 
 # ============================================================
@@ -331,6 +358,45 @@ def get_hourly_distribution(days=7):
     clicks_by_hour = {r['hour']: r['cnt'] for r in rows}
 
     return {'posts': posts_by_hour, 'clicks': clicks_by_hour}
+
+
+def get_registrations(days=30):
+    """Get registration list."""
+    db = get_db()
+    since = (datetime.datetime.utcnow() - datetime.timedelta(days=days)).isoformat()
+    rows = db.execute(
+        "SELECT * FROM registrations WHERE timestamp >= ? ORDER BY timestamp DESC LIMIT 200",
+        (since,)
+    ).fetchall()
+    return [dict(r) for r in rows]
+
+
+def get_registration_stats(days=30):
+    """Get registration statistics."""
+    db = get_db()
+    since = (datetime.datetime.utcnow() - datetime.timedelta(days=days)).isoformat()
+
+    total = db.execute("SELECT COUNT(*) as cnt FROM registrations WHERE timestamp >= ?", (since,)).fetchone()
+    by_source = db.execute(
+        "SELECT source, COUNT(*) as cnt FROM registrations WHERE timestamp >= ? GROUP BY source",
+        (since,)
+    ).fetchall()
+    by_interest = db.execute(
+        "SELECT interests, COUNT(*) as cnt FROM registrations WHERE timestamp >= ? GROUP BY interests",
+        (since,)
+    ).fetchall()
+    by_day = db.execute("""
+        SELECT DATE(timestamp) as day, COUNT(*) as cnt
+        FROM registrations WHERE timestamp >= ?
+        GROUP BY day ORDER BY day
+    """, (since,)).fetchall()
+
+    return {
+        'total': total['cnt'],
+        'by_source': {r['source']: r['cnt'] for r in by_source},
+        'by_interest': {r['interests']: r['cnt'] for r in by_interest},
+        'by_day': {r['day']: r['cnt'] for r in by_day}
+    }
 
 
 # ============================================================

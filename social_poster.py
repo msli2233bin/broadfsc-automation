@@ -29,6 +29,7 @@ import datetime
 import requests
 import json
 import hashlib
+from pathlib import Path
 
 # Analytics tracking
 try:
@@ -181,6 +182,66 @@ def get_platform_link(platform, post_count=0):
 
 # Tags
 HASHTAGS = ["#Investing", "#Trading", "#MarketAnalysis", "#StockMarket", "#Finance"]
+
+
+# ============================================================
+# Knowledge-Driven Content (知识库→帖子)
+# ============================================================
+CONTENT_QUEUE_DIR = Path(__file__).parent / 'knowledge' / 'content_queue'
+
+def get_queued_content(platform: str) -> str | None:
+    """从知识库内容队列中读取未使用的帖子内容"""
+    if not CONTENT_QUEUE_DIR.exists():
+        return None
+
+    # 扫描该平台的未使用内容，按日期倒序
+    candidates = []
+    for f in sorted(CONTENT_QUEUE_DIR.glob(f"*_{platform}_*.json"), reverse=True):
+        try:
+            data = json.loads(f.read_text(encoding='utf-8'))
+            if not data.get('used', False):
+                candidates.append((f, data))
+        except:
+            continue
+
+    if not candidates:
+        return None
+
+    # 随机选一个（避免每次都用最新的）
+    import random
+    chosen_file, chosen_data = random.choice(candidates)
+
+    # 标记为已使用
+    chosen_data['used'] = True
+    chosen_data['used_at'] = datetime.datetime.now().isoformat()
+    chosen_file.write_text(json.dumps(chosen_data, ensure_ascii=False, indent=2), encoding='utf-8')
+
+    return chosen_data.get('content')
+
+
+def generate_platform_content(platform: str) -> str:
+    """智能内容生成：优先用知识库内容，其次AI生成，最后fallback"""
+    # 1. 优先从知识库内容队列读取
+    queued = get_queued_content(platform)
+    if queued:
+        print(f"  [{platform}] Using knowledge-queue content")
+        return queued
+
+    # 2. 回退到原平台专属生成函数
+    generators = {
+        'twitter': generate_tweet_content,
+        'mastodon': generate_mastodon_content,
+        'discord': generate_discord_content,
+        'bluesky': generate_bluesky_content,
+        'tiktok': generate_tiktok_content,
+        'linkedin': generate_linkedin_content,
+    }
+
+    gen_func = generators.get(platform)
+    if gen_func:
+        return gen_func()
+
+    return "Market update from BroadFSC. #Investing #Trading"
 
 
 # ============================================================
@@ -915,16 +976,12 @@ def main():
     has_oauth = all([TWITTER_API_KEY, TWITTER_API_SECRET, TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_TOKEN_SECRET])
     if has_oauth:
         print("OAuth 1.0a: Configured (can post)")
-        tweet = generate_tweet_content()
+        tweet = generate_platform_content('twitter')
         print("  Content: " + tweet[:100] + "...")
         post_tweet(tweet)
     elif TWITTER_BEARER_TOKEN:
         print("Bearer Token: Configured (READ ONLY - cannot post)")
         print("  To enable posting, you need OAuth 1.0a credentials.")
-        print("  Go to your X Developer Portal -> App -> Keys and Tokens")
-        print("  Generate: Access Token + Access Token Secret")
-        print("  Then set these 4 GitHub Secrets:")
-        print("    TWITTER_API_KEY, TWITTER_API_SECRET, TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_TOKEN_SECRET")
     else:
         print("No X/Twitter credentials configured.")
     print()
@@ -933,65 +990,57 @@ def main():
     print("--- LinkedIn ---")
     if LINKEDIN_ACCESS_TOKEN:
         print("LinkedIn: Configured")
-        linkedin_post = generate_linkedin_content()
+        linkedin_post = generate_platform_content('linkedin')
         print("  Content length: " + str(len(linkedin_post)) + " chars")
         post_linkedin(linkedin_post)
     else:
         print("LinkedIn: Not configured")
-        print("  To enable, set LINKEDIN_ACCESS_TOKEN in GitHub Secrets")
     print()
     
     # --- Mastodon ---
     print("--- Mastodon ---")
     if MASTODON_ACCESS_TOKEN and MASTODON_INSTANCE:
         print("Mastodon: Configured (" + MASTODON_INSTANCE + ")")
-        mastodon_post = generate_mastodon_content()
+        mastodon_post = generate_platform_content('mastodon')
         print("  Content: " + mastodon_post[:100] + "...")
         post_mastodon(mastodon_post)
     else:
         print("Mastodon: Not configured")
-        print("  To enable, set MASTODON_ACCESS_TOKEN and MASTODON_INSTANCE in GitHub Secrets")
     print()
     
     # --- Discord ---
     print("--- Discord ---")
     if DISCORD_BOT_TOKEN and DISCORD_CHANNEL_ID:
         print("Discord: Configured")
-        discord_post = generate_discord_content()
+        discord_post = generate_platform_content('discord')
         print("  Content: " + discord_post[:100] + "...")
         post_discord(discord_post)
     else:
         print("Discord: Not configured")
-        print("  To enable, set DISCORD_BOT_TOKEN and DISCORD_CHANNEL_ID in GitHub Secrets")
     print()
     
     # --- Bluesky ---
     print("--- Bluesky ---")
     if BLUESKY_HANDLE and BLUESKY_APP_PASSWORD:
         print("Bluesky: Configured (" + BLUESKY_HANDLE + ")")
-        bluesky_post = generate_bluesky_content()
+        bluesky_post = generate_platform_content('bluesky')
         print("  Content: " + bluesky_post[:100] + "...")
         post_bluesky(bluesky_post)
     else:
         print("Bluesky: Not configured")
-        print("  To enable, set BLUESKY_HANDLE and BLUESKY_APP_PASSWORD in GitHub Secrets")
-        print("  1. Register at bsky.app")
-        print("  2. Go to Settings > App Passwords > Generate")
-        print("  3. Set BLUESKY_HANDLE=yourname.bsky.social and BLUESKY_APP_PASSWORD=xxxx-xxxx-xxxx-xxxx")
     print()
     
     # --- TikTok ---
     print("--- TikTok ---")
     if POSTPROXY_API_KEY:
         print("TikTok: Configured (via Postproxy)")
-        tiktok_caption = generate_tiktok_content()
+        tiktok_caption = generate_platform_content('tiktok')
         print("  Caption: " + tiktok_caption[:100] + "...")
         if TIKTOK_VIDEO_URL:
             print("  Mode: Direct Video")
             post_tiktok(tiktok_caption, video_url=TIKTOK_VIDEO_URL)
         else:
             print("  Mode: Slideshow (running tiktok_poster.py)")
-            # Run the dedicated TikTok poster which handles image→video→post
             try:
                 import subprocess
                 result = subprocess.run(
@@ -1006,8 +1055,6 @@ def main():
                 print("  TikTok poster failed: " + str(e))
     else:
         print("TikTok: Not configured")
-        print("  To enable, set POSTPROXY_API_KEY in GitHub Secrets")
-        print("  Get your API key at postproxy.dev")
     print()
     
     print("=" * 50)

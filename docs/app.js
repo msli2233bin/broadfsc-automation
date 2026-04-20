@@ -203,42 +203,49 @@ async function submitRegistrationToBackend(name, email, interests, source) {
   const timestamp = new Date().toISOString();
   const regData = { name, email, interests, source, date: timestamp };
 
-  // 1. Notify via Telegram Bot (sends registration to @BroadInvestBot which forwards to admin)
-  // Using the bot's webhook endpoint to ensure delivery even if frontend fails
+  // 1. Formspree (primary backend - free 100 submissions/month)
+  // Sign up at https://formspree.io/ → Create form → Copy the form ID
+  // Set your form ID below (e.g. 'xyzabcde' from https://formspree.io/f/xyzabcde)
+  const FORMSPREE_FORM_ID = '';  // ← TODO: Fill in your Formspree form ID
+  if (FORMSPREE_FORM_ID) {
+    try {
+      const resp = await fetch(`https://formspree.io/f/${FORMSPREE_FORM_ID}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          interest: interests,
+          source: source,
+          _subject: `🆕 BroadFSC Registration: ${name}`
+        })
+      });
+      if (resp.ok) {
+        console.log('Registration sent to Formspree successfully');
+      }
+    } catch (e) {
+      console.log('Formspree submission failed:', e);
+    }
+  }
+
+  // 2. Telegram Bot notification (backup channel)
   try {
-    // Send directly to the BroadFSC Telegram channel for tracking
-    // This is safe: the bot token only allows sending messages, not reading or controlling the bot
     const BOT_API = atob('ODI5MjQyMjAzMzpBQUhyUFVmU2FVQWNtcHZRVFhjVjRuc2QtTmFrWkgzU0l3UFU=');
-    const msg = `🆕 New Registration\n\n👤 Name: ${name}\n📧 Email: ${email}\n🎯 Interest: ${interests}\n📍 Source: ${source}${utmSource ? '\n🔗 UTM: ' + utmSource : ''}\n🕐 Time: ${new Date().toLocaleString()}`;
+    const msg = `🆕 New Registration\n\n👤 Name: ${name}\n📧 Email: ${email}\n🎯 Interest: ${interests}\n📍 Source: ${source}\n🕐 Time: ${new Date().toLocaleString()}`;
 
     await fetch(`https://api.telegram.org/bot${BOT_API}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        chat_id: '@BroadFSC',
-        text: msg,
-        parse_mode: 'Markdown'
-      })
-    }).catch(() => {});  // Silent fail - don't block user experience
-  } catch (e) {
-    // Silent fail - registration still works locally even if notification fails
-  }
+      body: JSON.stringify({ chat_id: '@BroadFSC', text: msg, parse_mode: 'Markdown' })
+    }).catch(() => {});
+  } catch (e) {}
 
-  // 2. Store locally for admin dashboard access
+  // 3. Store locally for admin dashboard access
   try {
     const regs = JSON.parse(localStorage.getItem('bfs_registrations') || '[]');
     regs.push(regData);
-    if (regs.length > 500) regs.splice(0, regs.length - 500);  // Keep last 500
+    if (regs.length > 500) regs.splice(0, regs.length - 500);
     localStorage.setItem('bfs_registrations', JSON.stringify(regs));
-  } catch (e) {}
-
-  // 3. Also try sending via the website's own API endpoint (if dashboard_api.py is running)
-  try {
-    await fetch('/track/registration', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(regData)
-    }).catch(() => {});
   } catch (e) {}
 }
 
