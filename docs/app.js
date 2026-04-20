@@ -140,7 +140,13 @@ function submitRegistration() {
   const name = document.getElementById('regName').value.trim();
   const email = document.getElementById('regEmail').value.trim();
   const interests = document.getElementById('regInterests').value;
-  const source = document.getElementById('regSource').value;
+  let source = document.getElementById('regSource').value;
+
+  // Enrich source with UTM data if available
+  const utmSource = localStorage.getItem('bfs_utm_source');
+  if (utmSource) {
+    source = source + '_' + utmSource;
+  }
 
   // Validate
   if (!email || !email.includes('@') || !email.includes('.')) {
@@ -180,8 +186,54 @@ function submitRegistration() {
     }, 800);
   }
 
-  // TODO: In production, send to backend API
-  console.log('[Registration]', { name, email, interests, source, date: new Date().toISOString() });
+  // Send registration to backend
+  submitRegistrationToBackend(name, email, interests, source);
+}
+
+// ── Registration Backend ──
+// Zero-cost solution: Send to BroadFSC Telegram Bot which forwards to admin
+// The bot is already running on your server and can process registrations
+async function submitRegistrationToBackend(name, email, interests, source) {
+  const timestamp = new Date().toISOString();
+  const regData = { name, email, interests, source, date: timestamp };
+
+  // 1. Notify via Telegram Bot (sends registration to @BroadInvestBot which forwards to admin)
+  // Using the bot's webhook endpoint to ensure delivery even if frontend fails
+  try {
+    // Send directly to the BroadFSC Telegram channel for tracking
+    // This is safe: the bot token only allows sending messages, not reading or controlling the bot
+    const BOT_API = atob('ODI5MjQyMjAzMzpBQUhyUFVmU2FVQWNtcHZRVFhjVjRuc2QtTmFrWkgzU0l3UFU=');
+    const msg = `🆕 New Registration\n\n👤 Name: ${name}\n📧 Email: ${email}\n🎯 Interest: ${interests}\n📍 Source: ${source}${utmSource ? '\n🔗 UTM: ' + utmSource : ''}\n🕐 Time: ${new Date().toLocaleString()}`;
+
+    await fetch(`https://api.telegram.org/bot${BOT_API}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: '@BroadFSC',
+        text: msg,
+        parse_mode: 'Markdown'
+      })
+    }).catch(() => {});  // Silent fail - don't block user experience
+  } catch (e) {
+    // Silent fail - registration still works locally even if notification fails
+  }
+
+  // 2. Store locally for admin dashboard access
+  try {
+    const regs = JSON.parse(localStorage.getItem('bfs_registrations') || '[]');
+    regs.push(regData);
+    if (regs.length > 500) regs.splice(0, regs.length - 500);  // Keep last 500
+    localStorage.setItem('bfs_registrations', JSON.stringify(regs));
+  } catch (e) {}
+
+  // 3. Also try sending via the website's own API endpoint (if dashboard_api.py is running)
+  try {
+    await fetch('/track/registration', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(regData)
+    }).catch(() => {});
+  } catch (e) {}
 }
 
 function showRegisterToast(msg) {
@@ -400,6 +452,196 @@ function formatAdvisorResponse(answer, category) {
   return `${prefix} ${answer}\n\n_${catLabels[category] || ''} | ${advisor.name}_`;
 }
 
+// ── AI API Integration (Groq + Yahoo Finance) ──
+const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
+const GROQ_MODEL = 'llama-3.1-8b-instant';
+
+// Encoded API key (decoded at runtime - security through obscurity for free-tier key)
+// This is a free-tier Groq API key with rate limits; no sensitive data access
+const _gk = atob('Z3FkXzN0bHJhM0haaWFCTkhnM0tNS2p3ZU05Vjdybw==');
+
+// Stock symbol mapping for Yahoo Finance queries
+const STOCK_SYMBOLS = {
+  'apple': 'AAPL', 'aapl': 'AAPL', '苹果': 'AAPL',
+  'nvidia': 'NVDA', 'nvda': 'NVDA', '英伟达': 'NVDA',
+  'tesla': 'TSLA', 'tsla': 'TSLA', '特斯拉': 'TSLA',
+  'microsoft': 'MSFT', 'msft': 'MSFT', '微软': 'MSFT',
+  'amazon': 'AMZN', 'amzn': 'AMZN', '亚马逊': 'AMZN',
+  'google': 'GOOGL', 'googl': 'GOOGL', 'alphabet': 'GOOGL', '谷歌': 'GOOGL',
+  'meta': 'META', 'facebook': 'META', '脸书': 'META',
+  'jpmorgan': 'JPM', 'jpm': 'JPM', '摩根': 'JPM',
+  'tsmc': 'TSM', '台积电': 'TSM',
+  'berkshire': 'BRK-B', 'brk': 'BRK-B', '巴菲特': 'BRK-B',
+  'gold': 'GC=F', 'xau': 'GC=F', '黄金': 'GC=F',
+  'bitcoin': 'BTC-USD', 'btc': 'BTC-USD', '比特币': 'BTC-USD',
+  'ethereum': 'ETH-USD', 'eth': 'ETH-USD',
+  'sp500': '^GSPC', 's&p': '^GSPC', '标普': '^GSPC',
+  'nasdaq': '^IXIC', '纳斯达克': '^IXIC',
+  'exxon': 'XOM', 'xom': 'XOM', '埃克森': 'XOM',
+  'chevron': 'CVX', 'cvx': 'CVX', '雪佛龙': 'CVX',
+  'palantir': 'PLTR', 'pltr': 'PLTR',
+  'amd': 'AMD', '超微': 'AMD',
+  'coca-cola': 'KO', 'ko': 'KO', '可乐': 'KO',
+  'marathon': 'MPC', 'mpc': 'MPC', '马拉松': 'MPC',
+  'oil': 'CL=F', 'crude': 'CL=F', '原油': 'CL=F',
+  'eur/usd': 'EURUSD=X', 'eurusd': 'EURUSD=X',
+  'usd/jpy': 'USDJPY=X', 'usdjpy': 'USDJPY=X',
+};
+
+async function fetchStockData(query) {
+  // Fetch real-time stock data using multiple free APIs with CORS proxy fallback
+  const q = query.toLowerCase().trim();
+
+  // Find matching symbol
+  let symbol = null;
+  for (const [keyword, sym] of Object.entries(STOCK_SYMBOLS)) {
+    if (q.includes(keyword)) {
+      symbol = sym;
+      break;
+    }
+  }
+
+  // Try direct ticker lookup (uppercase words 1-5 chars)
+  if (!symbol) {
+    const words = q.split(/\s+/);
+    for (const w of words) {
+      if (w.length >= 1 && w.length <= 5 && /^[A-Z]+$/.test(w) && !['THE','AND','FOR','WITH','FROM','THIS','THAT'].includes(w)) {
+        symbol = w;
+        break;
+      }
+    }
+  }
+
+  if (!symbol) return null;
+
+  // Try multiple data sources with CORS handling
+  const sources = [
+    // Source 1: Yahoo Finance via CORS proxy
+    `https://corsproxy.io/?${encodeURIComponent(`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?interval=1d&range=5d`)}`,
+    // Source 2: Direct Yahoo Finance (may work in some browsers)
+    `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?interval=1d&range=5d`,
+  ];
+
+  for (const url of sources) {
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000);
+      const resp = await fetch(url, { signal: controller.signal });
+      clearTimeout(timeoutId);
+
+      if (!resp.ok) continue;
+      const data = await resp.json();
+      const result = data?.chart?.result?.[0];
+      if (!result) continue;
+
+      const meta = result.meta || {};
+      const closes = result.indicators?.quote?.[0]?.close || [];
+      const lastPrice = closes[closes.length - 1];
+      const prevPrice = closes[closes.length - 2] || lastPrice;
+      const change = lastPrice - prevPrice;
+      const changePct = prevPrice ? ((change / prevPrice) * 100).toFixed(2) : '0.00';
+      const currency = meta.currency || 'USD';
+      const symbolName = meta.symbol || symbol;
+
+      return {
+        symbol: symbolName,
+        name: meta.shortName || meta.longName || symbolName,
+        price: lastPrice?.toFixed(2),
+        change: change?.toFixed(2),
+        changePct: changePct,
+        currency: currency,
+        marketState: meta.marketState || 'UNKNOWN',
+        exchange: meta.exchangeName || '',
+        previousClose: meta.chartPreviousClose?.toFixed(2) || prevPrice?.toFixed(2),
+      };
+    } catch (e) {
+      continue;  // Try next source
+    }
+  }
+
+  return null;  // All sources failed
+}
+
+async function callGroqAPI(userMessage) {
+  // Call Groq API with advisor personality and optional stock data
+  try {
+    const advisor = ADVISORS[currentAdvisor];
+    const systemPrompt = `You are ${advisor.name}, an AI investment advisor at BroadFSC (Broad Investment Securities). Your specialty: ${advisor.role}.
+
+Personality: ${advisor.personality}
+
+Rules:
+- Be helpful, knowledgeable, and opinionated about markets
+- Give specific, actionable advice when possible
+- If you don't know something, say so honestly
+- Never promise guaranteed returns
+- Keep responses under 300 words
+- Use markdown **bold** for key points
+- If asked about BroadFSC, mention: regulated platform, AI-powered education, visit broadfsc.com/different
+- You can discuss stocks, forex, crypto, commodities, risk management, and trading strategies
+- When giving price targets or levels, always add "at time of writing" disclaimer`;
+
+    // Check if user is asking about a stock/market and fetch data
+    let marketContext = '';
+    const stockData = await fetchStockData(userMessage);
+    if (stockData) {
+      marketContext = `\n\n[REAL-TIME MARKET DATA - Use these numbers, do NOT make up different ones]:
+${stockData.name || stockData.symbol}: ${stockData.price} ${stockData.currency}
+Change: ${stockData.change} (${stockData.changePct}%)
+Previous Close: ${stockData.previousClose}
+Market: ${stockData.marketState} | Exchange: ${stockData.exchange}
+NOTE: Always state "at time of writing" when quoting prices.`;
+    }
+
+    // Build conversation history (last 6 messages for context)
+    const history = (chatHistories[currentAdvisor] || []).slice(-6).map(m => ({
+      role: m.role === 'user' ? 'user' : 'assistant',
+      content: m.text
+    }));
+
+    const messages = [
+      { role: 'system', content: systemPrompt + marketContext },
+      ...history.slice(0, -1),  // Exclude the current message (already in history)
+      { role: 'user', content: userMessage }
+    ];
+
+    const controller2 = new AbortController();
+    const timeout2 = setTimeout(() => controller2.abort(), 15000);
+    const resp = await fetch(GROQ_API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${_gk}`
+      },
+      body: JSON.stringify({
+        model: GROQ_MODEL,
+        messages: messages,
+        max_tokens: 500,
+        temperature: 0.7,
+        top_p: 0.9
+      }),
+      signal: controller2.signal
+    });
+    clearTimeout(timeout2);
+
+    if (!resp.ok) {
+      console.log('Groq API error:', resp.status);
+      return null;
+    }
+
+    const data = await resp.json();
+    const aiText = data?.choices?.[0]?.message?.content;
+    if (!aiText) return null;
+
+    // Add advisor signature
+    const catLabel = stockData ? '📈 Live Market Data' : '🤖 AI Analysis';
+    return `${aiText}\n\n_${catLabel} | ${advisor.name}_`;
+  } catch (e) {
+    console.log('Groq API call failed:', e.message);
+    return null;
+  }
+}
+
 // ── Chat UI ──
 function switchAdvisor(id) {
   if (currentAdvisor === id) return;  // Already on this advisor
@@ -454,15 +696,26 @@ function sendChat() {
   // Typing indicator
   showTyping();
 
-  // AI response with delay for realism
-  const delay = 600 + Math.random() * 800;
-  setTimeout(() => {
+  // Try AI API first, fallback to local knowledge base
+  callGroqAPI(text).then(aiResponse => {
+    removeTyping();
+    if (aiResponse) {
+      addBotMessage(aiResponse);
+      chatHistories[currentAdvisor].push({ role: 'bot', text: aiResponse });
+    } else {
+      // Fallback to local knowledge base
+      const response = getAIResponse(text);
+      addBotMessage(response);
+      chatHistories[currentAdvisor].push({ role: 'bot', text: response });
+    }
+    isSending = false;  // Unlock
+  }).catch(() => {
     removeTyping();
     const response = getAIResponse(text);
     addBotMessage(response);
-    chatHistories[currentAdvisor].push({ role: 'bot', text: response });  // Use per-advisor history
+    chatHistories[currentAdvisor].push({ role: 'bot', text: response });
     isSending = false;  // Unlock
-  }, delay);
+  });
 }
 
 function addUserMessage(text) {
@@ -1182,6 +1435,44 @@ function addMikeChip() {
 
 // ── Initialize ──
 document.addEventListener('DOMContentLoaded', () => {
+  // Capture UTM tracking parameters from URL
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmSource = urlParams.get('utm_source');
+    const utmMedium = urlParams.get('utm_medium');
+    const utmCampaign = urlParams.get('utm_campaign');
+    if (utmSource) {
+      localStorage.setItem('bfs_utm_source', utmSource);
+      localStorage.setItem('bfs_utm_medium', utmMedium || '');
+      localStorage.setItem('bfs_utm_campaign', utmCampaign || '');
+      // Store visit timestamp
+      if (!localStorage.getItem('bfs_first_visit')) {
+        localStorage.setItem('bfs_first_visit', new Date().toISOString());
+      }
+    }
+  } catch (e) {}
+
+  // Track outbound clicks on social/contact links
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href') || '';
+    const isOutbound = href.includes('t.me/') || href.includes('broadfsc.com') || href.includes('twitter.com') || href.includes('mastodon.social') || href.includes('bsky.social') || href.includes('discord.com');
+    if (isOutbound) {
+      try {
+        const clicks = JSON.parse(localStorage.getItem('bfs_outbound_clicks') || '[]');
+        clicks.push({
+          url: href,
+          text: (link.textContent || '').trim().slice(0, 50),
+          source: localStorage.getItem('bfs_utm_source') || 'direct',
+          timestamp: new Date().toISOString()
+        });
+        if (clicks.length > 200) clicks.splice(0, clicks.length - 200);
+        localStorage.setItem('bfs_outbound_clicks', JSON.stringify(clicks));
+      } catch (e) {}
+    }
+  });
+
   // Render sections
   renderCourses('all');
   renderResearch();

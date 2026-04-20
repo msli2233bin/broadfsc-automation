@@ -32,7 +32,7 @@ import hashlib
 
 # Analytics tracking
 try:
-    from analytics_logger import log_post
+    from analytics_logger import log_post, get_tracking_url
     HAS_ANALYTICS = True
 except ImportError:
     HAS_ANALYTICS = False
@@ -82,6 +82,102 @@ CHANNEL_ID = os.environ.get("TELEGRAM_CHANNEL_ID", "")
 TELEGRAM_LINK = "https://t.me/BroadFSC"
 WEBSITE_LINK = "https://www.broadfsc.com/different"
 HUB_LINK = "https://msli2233bin.github.io/broadfsc-automation/"
+
+
+def get_tracked_links(platform):
+    """Generate UTM-tracked links for a specific platform.
+
+    Returns dict with: telegram, website, hub — all with UTM params.
+    Each platform has a different引流 strategy to reduce ban risk.
+    """
+    if HAS_ANALYTICS:
+        return {
+            "telegram": get_tracking_url(TELEGRAM_LINK, platform, "telegram"),
+            "website": get_tracking_url(WEBSITE_LINK, platform, "website"),
+            "hub": get_tracking_url(HUB_LINK, platform, "website"),
+        }
+    return {
+        "telegram": TELEGRAM_LINK,
+        "website": WEBSITE_LINK,
+        "hub": HUB_LINK,
+    }
+
+
+# ============================================================
+# Platform-Specific Link Strategies
+# ============================================================
+# Different platforms have different rules and risk levels.
+# This config controls how links appear in posts per platform.
+
+LINK_STRATEGY = {
+    "twitter": {
+        "style": "short",          # Twitter: Short, no full URL in every post
+        "link_every_n": 3,         # Only include link every N posts
+        "prefer": "hub",           # Prefer hub link (more visual, educational)
+        "text_fallback": "Learn more → link in bio",  # When no link included
+    },
+    "mastodon": {
+        "style": "full",           # Mastodon: Full links OK, lenient platform
+        "link_every_n": 1,         # Every post can have a link
+        "prefer": "hub",
+    },
+    "discord": {
+        "style": "full",           # Discord: Full links, community-friendly
+        "link_every_n": 1,
+        "prefer": "hub",
+    },
+    "bluesky": {
+        "style": "minimal",        # Bluesky: Minimal links, focus on content
+        "link_every_n": 2,
+        "prefer": "hub",
+        "text_fallback": "Follow for daily insights",
+    },
+    "tiktok": {
+        "style": "caption_only",   # TikTok: Link only in caption, not in video
+        "link_every_n": 1,
+        "prefer": "hub",
+    },
+    "linkedin": {
+        "style": "professional",   # LinkedIn: Professional tone, website preferred
+        "link_every_n": 1,
+        "prefer": "website",
+    },
+}
+
+
+def should_include_link(platform, post_count=0):
+    """Determine if this post should include a引流 link.
+
+    Args:
+        platform: Social platform name
+        post_count: How many posts have been made today (for frequency control)
+
+    Returns:
+        bool: Whether to include a link
+    """
+    strategy = LINK_STRATEGY.get(platform, LINK_STRATEGY["twitter"])
+    every_n = strategy.get("link_every_n", 1)
+    return post_count % every_n == 0
+
+
+def get_platform_link(platform, post_count=0):
+    """Get the appropriate link for a platform post.
+
+    Args:
+        platform: Social platform name
+        post_count: Post count for frequency control
+
+    Returns:
+        str or None: The link to include, or None if skipping this time
+    """
+    if not should_include_link(platform, post_count):
+        strategy = LINK_STRATEGY.get(platform, LINK_STRATEGY["twitter"])
+        return strategy.get("text_fallback", "")
+
+    links = get_tracked_links(platform)
+    strategy = LINK_STRATEGY.get(platform, LINK_STRATEGY["twitter"])
+    prefer = strategy.get("prefer", "hub")
+    return links.get(prefer, links["hub"])
 
 # Tags
 HASHTAGS = ["#Investing", "#Trading", "#MarketAnalysis", "#StockMarket", "#Finance"]
@@ -231,16 +327,17 @@ def generate_mastodon_content():
     """Generate a Mastodon post (longer than tweet, up to 500 chars)."""
     if not GROQ_API_KEY:
         return get_fallback_mastodon()
-    
+
     try:
         from groq import Groq
         client = Groq(api_key=GROQ_API_KEY)
-        
+
         now = datetime.datetime.utcnow()
         day = now.strftime("%A")
-        
+
         tags = " ".join(HASHTAGS[:4])
-        
+        links = get_tracked_links("mastodon")
+
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=[{
@@ -253,6 +350,7 @@ def generate_mastodon_content():
                     "- Maximum 450 characters\n"
                     "- Include 1-2 specific market observations\n"
                     "- End with: " + tags + "\n"
+                    "- Add link: " + links["hub"] + "\n"
                     "- Do NOT promise returns"
                 )
             }],
@@ -267,13 +365,14 @@ def generate_mastodon_content():
 
 def get_fallback_mastodon():
     """Fallback Mastodon content."""
+    links = get_tracked_links("mastodon")
     toots = [
         "Global markets update: Central bank policy divergence continues to drive cross-currency flows. "
         "Stay informed with daily pre-market briefings covering Asia, Europe, Middle East & Americas. "
-        "Subscribe free: https://t.me/BroadFSC | Learn investing: https://msli2233bin.github.io/broadfsc-automation/ #Investing #Trading #MarketAnalysis #Finance",
+        f"Subscribe free: {links['telegram']} | Learn investing: {links['hub']} #Investing #Trading #MarketAnalysis #Finance",
         "Key themes this week: Fed signals, earnings season dynamics, and geopolitical risk premiums "
         "shaping commodity markets. Get daily AI-powered market insights in English, Spanish & Arabic. "
-        "https://t.me/BroadFSC | Free education: https://msli2233bin.github.io/broadfsc-automation/ #StockMarket #Investing #Trading #MarketAnalysis",
+        f"{links['telegram']} | Free education: {links['hub']} #StockMarket #Investing #Trading #MarketAnalysis",
     ]
     idx = datetime.datetime.utcnow().timetuple().tm_yday % len(toots)
     return toots[idx]
@@ -322,16 +421,17 @@ def generate_discord_content():
     """Generate a Discord post (can be longer, use embed format)."""
     if not GROQ_API_KEY:
         return get_fallback_discord()
-    
+
     try:
         from groq import Groq
         client = Groq(api_key=GROQ_API_KEY)
-        
+
         now = datetime.datetime.utcnow()
         day = now.strftime("%A")
-        
+
         tags = " ".join(HASHTAGS)
-        
+        links = get_tracked_links("discord")
+
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=[{
@@ -345,7 +445,8 @@ def generate_discord_content():
                     "- Include 2-3 specific market observations\n"
                     "- Professional but conversational tone\n"
                     "- End with: " + tags + "\n"
-                    "- Add: 'Subscribe for daily briefings: https://t.me/BroadFSC'\n"
+                    "- Add: 'Subscribe for daily briefings: " + links["telegram"] + "'\n"
+                    "- Add: 'Free education: " + links["hub"] + "'\n"
                     "- Do NOT promise returns"
                 )
             }],
@@ -360,6 +461,7 @@ def generate_discord_content():
 
 def get_fallback_discord():
     """Fallback Discord content."""
+    links = get_tracked_links("discord")
     return (
         "**Daily Market Outlook** :chart_with_upwards_trend:\n\n"
         "Key themes for today:\n"
@@ -368,9 +470,9 @@ def get_fallback_discord():
         "• Geopolitical risk premiums influencing commodity markets\n\n"
         "Stay informed with daily pre-market briefings covering "
         "Asia, Europe, Middle East & Americas.\n\n"
-        "Subscribe free: https://t.me/BroadFSC\n"
-        "Learn investing free: https://msli2233bin.github.io/broadfsc-automation/\n"
-        "Website: https://www.broadfsc.com/different\n\n"
+        f"Subscribe free: {links['telegram']}\n"
+        f"Learn investing free: {links['hub']}\n"
+        f"Website: {links['website']}\n\n"
         "#Investing #Trading #MarketAnalysis #StockMarket #Finance"
     )
 
@@ -509,6 +611,8 @@ def generate_bluesky_content():
         day = now.strftime("%A")
 
         tags = " ".join(HASHTAGS[:3])
+        link = get_platform_link("bluesky")
+        link_note = f"\n- Add this link at the end: {link}" if link and not link.startswith("Follow") else "\n- Do NOT include any links"
 
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
@@ -522,7 +626,7 @@ def generate_bluesky_content():
                     "- Maximum 280 characters\n"
                     "- Include 1 specific market observation\n"
                     "- End with: " + tags + "\n"
-                    "- Do NOT include any links\n"
+                    + link_note + "\n"
                     "- Do NOT promise returns"
                 )
             }],
@@ -553,16 +657,18 @@ def generate_tweet_content():
     """Generate a tweet-sized market insight using AI."""
     if not GROQ_API_KEY:
         return get_fallback_tweet()
-    
+
     try:
         from groq import Groq
         client = Groq(api_key=GROQ_API_KEY)
-        
+
         now = datetime.datetime.utcnow()
         day = now.strftime("%A")
-        
+
         tags = " ".join(HASHTAGS[:3])
-        
+        link = get_platform_link("twitter")
+        link_instruction = f"\n- Include this link: {link}" if link and not link.startswith("Learn") else "\n- Do NOT include any links (link in bio instead)"
+
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=[{
@@ -575,7 +681,7 @@ def generate_tweet_content():
                     "- Maximum 250 characters (Twitter limit is 280)\n"
                     "- Be specific with a market observation or data point\n"
                     "- End with: " + tags + "\n"
-                    "- Do NOT include any links\n"
+                    + link_instruction + "\n"
                     "- Do NOT promise returns"
                 )
             }],
@@ -592,14 +698,16 @@ def generate_linkedin_content():
     """Generate a LinkedIn article-style post."""
     if not GROQ_API_KEY:
         return get_fallback_linkedin()
-    
+
     try:
         from groq import Groq
         client = Groq(api_key=GROQ_API_KEY)
-        
+
         now = datetime.datetime.utcnow()
         day = now.strftime("%A")
-        
+
+        links = get_tracked_links("linkedin")
+
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=[{
@@ -612,7 +720,7 @@ def generate_linkedin_content():
                     "- Professional tone, 200-400 words\n"
                     "- Include 2-3 specific market observations\n"
                     "- Reference macro trends (Fed, ECB, geopolitics)\n"
-                    "- End with: 'For daily market briefings, visit broadfsc.com/different'\n"
+                    "- End with: 'For daily market briefings, visit " + links["website"] + "'\n"
                     "- Do NOT promise returns or give specific buy/sell advice"
                 )
             }],
@@ -627,10 +735,11 @@ def generate_linkedin_content():
 
 def get_fallback_tweet():
     """Fallback tweet content."""
+    links = get_tracked_links("twitter")
     tweets = [
-        "Markets are navigating a complex macro landscape. Stay informed with daily pre-market briefings from BroadFSC covering Asia, Europe, Middle East & Americas. #Investing #Trading #MarketAnalysis",
-        "Key week ahead: Central bank decisions, earnings season updates, and geopolitical developments shaping global markets. Get daily insights: t.me/BroadFSC #StockMarket #Finance",
-        "From Tokyo to New York, global markets move fast. BroadFSC delivers AI-powered pre-market briefings in English, Spanish & Arabic. Subscribe free: t.me/BroadFSC #Investing #Trading",
+        f"Markets are navigating a complex macro landscape. Stay informed with daily pre-market briefings from BroadFSC covering Asia, Europe, Middle East & Americas. {links['hub']} #Investing #Trading #MarketAnalysis",
+        f"Key week ahead: Central bank decisions, earnings season updates, and geopolitical developments shaping global markets. Get daily insights: {links['telegram']} #StockMarket #Finance",
+        f"From Tokyo to New York, global markets move fast. BroadFSC delivers AI-powered pre-market briefings. Subscribe free: {links['telegram']} #Investing #Trading",
     ]
     idx = datetime.datetime.utcnow().timetuple().tm_yday % len(tweets)
     return tweets[idx]
@@ -638,6 +747,7 @@ def get_fallback_tweet():
 
 def get_fallback_linkedin():
     """Fallback LinkedIn content."""
+    links = get_tracked_links("linkedin")
     return (
         "Global Market Outlook\n\n"
         "As markets navigate through a period of heightened macro uncertainty, "
@@ -651,7 +761,7 @@ def get_fallback_linkedin():
         "about the health of the global economy and sector-specific trends.\n\n"
         "At Broad Investment Securities, we provide daily pre-market briefings "
         "covering all major global markets. Stay ahead of market moves.\n\n"
-        "For daily market briefings, visit broadfsc.com/different\n\n"
+        f"For daily market briefings, visit {links['website']}\n\n"
         "#Investing #MarketAnalysis #GlobalMarkets"
     )
 
@@ -742,6 +852,8 @@ def generate_tiktok_content():
         now = datetime.datetime.utcnow()
         day = now.strftime("%A")
 
+        links = get_tracked_links("tiktok")
+
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=[{
@@ -754,7 +866,7 @@ def generate_tiktok_content():
                     "- Maximum 300 characters\n"
                     "- Hook in the first line\n"
                     "- 2-3 relevant hashtags\n"
-                    "- Call to action: visit broadfsc.com/different\n"
+                    "- Add link: " + links["hub"] + "\n"
                     "- Do NOT promise guaranteed returns"
                 )
             }],
@@ -769,17 +881,18 @@ def generate_tiktok_content():
 
 def get_fallback_tiktok():
     """Fallback TikTok content."""
+    links = get_tracked_links("tiktok")
     captions = [
         "Want to invest smarter in 2026? Here's what the pros watch every morning \U0001f4c8 "
-        "Daily global market briefings - FREE! https://msli2233bin.github.io/broadfsc-automation/ #Investing #StockMarket #FinanceTips",
+        f"Daily global market briefings - FREE! {links['hub']} #Investing #StockMarket #FinanceTips",
 
         "Markets move FAST. Don't get caught off guard \u26a1 "
         "Pre-market briefings for Asia, Europe, Middle East & Americas. "
-        "Subscribe free: https://msli2233bin.github.io/broadfsc-automation/ #Trading #Investing #MarketAnalysis",
+        f"Subscribe free: {links['hub']} #Trading #Investing #MarketAnalysis",
 
         "3 things smart investors check before markets open \U0001f4ca "
         "1. Overnight futures 2. Central bank signals 3. Key economic data. "
-        "Get all this daily at BroadFSC #Investing #StockMarket #WealthBuilding",
+        f"Get all this daily at BroadFSC {links['hub']} #Investing #StockMarket #WealthBuilding",
     ]
     idx = datetime.datetime.utcnow().timetuple().tm_yday % len(captions)
     return captions[idx]
