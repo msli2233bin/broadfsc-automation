@@ -1,7 +1,7 @@
 ﻿// ═══════════════════════════════════════════════════
-// BroadFSC Pro — App Logic v6 (LOCAL-FIRST + Anti-Dodge)
+// BroadFSC Pro — App Logic v8 (ZERO HARDCODED PRICES)
 // Chat like a real person, not a chatbot
-// BUILD: 2026-04-21T21:50 — force cache bust
+// BUILD: 2026-04-21T22:15 — all price/index levels removed from KNOWLEDGE
 // ═══════════════════════════════════════════════════
 
 // ── SOUL AI Knowledge Base ──
@@ -39,8 +39,8 @@ const KNOWLEDGE = {
     'etf': "ETFs are the simplest path to building wealth. A 3-fund portfolio (VTI + VXUS + BND) beats 90% of active managers over 10 years. Stock allocation ≈ 110 minus your age. The key is consistency: set it, contribute monthly, rebalance annually. Don't chase thematic ETFs (ARKK, etc.) — they're for your satellite allocation, max 20% of portfolio."
   },
   crypto: {
-    'bitcoin': "Bitcoin is digital gold with a 21M supply cap. The 4-year halving cycle has historically driven bull markets, but the 2024 cycle has shown diminishing returns — BTC peaked near $108K in Nov 2024 and has since pulled back to ~$75K. Key levels: 200-week MA at ~$52K (never broken in a bear market), realized price at ~$42K, and the $108K ATH. Institutional adoption via ETFs changed the game in 2024. Treat BTC as a long-term holding — 5% portfolio allocation, cold storage, don't trade it with leverage.",
-    'crypto': "Crypto is 24/7 with 10-20% daily volatility — not for the faint of heart. BTC dominance drives the cycle: when it falls, alt season begins. Never put more than 5% in a single altcoin, 15% total crypto allocation. Most altcoins go to zero. Stick to top 20 for safety. And never use leverage in crypto — the volatility is already leveraged. Note: in 2026, gold's parabolic rally to $4,800+ has drawn some safe-haven flows away from BTC."
+    'bitcoin': "Bitcoin is digital gold with a 21M supply cap. The 4-year halving cycle has historically driven bull markets. Institutional adoption via ETFs changed the game. Treat BTC as a long-term holding — 5% portfolio allocation, cold storage, don't trade it with leverage. Current price and key levels — check live data.",
+    'crypto': "Crypto is 24/7 with 10-20% daily volatility — not for the faint of heart. BTC dominance drives the cycle: when it falls, alt season begins. Never put more than 5% in a single altcoin, 15% total crypto allocation. Most altcoins go to zero. Stick to top 20 for safety. And never use leverage in crypto — the volatility is already leveraged."
   },
   beginner: {
     '新手入门 getting started': "新手入门三件事：第一，先用模拟盘交易3个月，不要碰真钱。第二，学最基础的技术分析——均线判断趋势方向，支撑压力位找入场点，RSI看超买超卖。第三，养成纪律——每笔交易必设止损，单笔亏损不超过2%。模拟盘能稳定赚钱了再开真仓，初始资金不超过你能承受亏光的数目。",
@@ -70,11 +70,11 @@ const KNOWLEDGE = {
     'fees': "We keep fees transparent — no hidden charges. Our structure is competitive with major platforms, and we don't nickel-and-dime on small transactions. The specific fee schedule depends on your account type and services. What I can tell you: we're not the cheapest, but we're far from the most expensive, and the value you get in education and support more than covers it."
   },
   china: {
-    'A股 a-share': "A股市场是中国内地股票市场的统称，分为上海证券交易所和深圳证券交易所。A股的核心特征是政策驱动——央行降准降息、产业政策、监管变化都能在一天内改变市场方向。2026年A股突破4000点，核心驱动力是AI产业政策+房地产市场企稳+外资持续流入。关键指数：上证综指(大盘蓝筹)、深证成指(成长股)、沪深300(核心资产)、创业板(科技创新)。对于国际投资者，可通过QFII、沪深港通(北向资金)参与。A股的波动性远高于美股——涨跌停板10%/20%，T+1交易，散户占比超过60%，这意味着趋势一旦形成往往跑得更远。",
+    'A股 a-share': "A股市场是中国内地股票市场的统称，分为上海证券交易所和深圳证券交易所。A股的核心特征是政策驱动——央行降准降息、产业政策、监管变化都能在一天内改变市场方向。核心驱动力是AI产业政策+房地产市场企稳+外资持续流入。关键指数：上证综指(大盘蓝筹)、深证成指(成长股)、沪深300(核心资产)、创业板(科技创新)。对于国际投资者，可通过QFII、沪深港通(北向资金)参与。A股的波动性远高于美股——涨跌停板10%/20%，T+1交易，散户占比超过60%，这意味着趋势一旦形成往往跑得更远。当前具体点位请参考实时行情数据。",
     '港股 hong kong': "港股(恒生指数)是全球最被低估的市场之一。2026年恒指从低点大幅反弹，驱动力是南向资金持续涌入+中概股回流二次上市+AI概念股估值重塑。港股独特优势：(1) 同时有中国内地企业和国际资金参与，是东西方资本的交汇点 (2) 没有涨跌停限制，价格发现效率极高 (3) 港股通让内地资金可以直接买卖。核心风险：地缘政治(中美关系)、人民币汇率波动、中国监管政策变化。关键板块：科技(腾讯/阿里/美团)、新能源车(比亚迪/理想)、医药创新、消费。对于全球投资者，港股是配置中国敞口的最佳窗口。",
     '中国经济 china economy': "中国经济正在经历结构转型。2026年的关键趋势：(1) 房地产从拖累转为企稳——政策底已过，市场底在确认中 (2) AI和数字经济成为新增长引擎，中国AI投资占全球30%+ (3) 消费复苏是慢变量，但方向确定 (4) 出口保持韧性，电动车/光伏/锂电池'新三样'是核心驱动力。风险点：地方政府债务、人口结构变化、中美科技竞争。对于投资者，中国的宏观周期与美国并不同步——这意味着中国资产有独特的分散化价值。当美联储收紧时，中国可能在宽松，这种政策分化创造了配置机会。",
     '中国科技 china tech': "中国科技股2026年强势回归。监管风暴已经过去，政策从'反垄断'转向'促发展'——这是根本性的方向变化。AI是最大的故事：百度(文心一言)、阿里(通义千问)、腾讯(混元)都在大模型领域投入巨资。半导体国产替代加速，中芯国际、华为产业链持续突破。电动车智能化——比亚迪、蔚来、理想、小鹏在智能驾驶领域竞争白热化。投资框架：看政策方向>看财报，因为政策可以一夜之间改变行业格局。当前政策方向是明确的——支持科技创新。",
-    '上证指数 shanghai': "上证综指是A股最重要的风向标，涵盖上交所所有上市股票。2026年突破4000点，标志着从2021年高点回落后完成了完整的牛熊周期转换。核心驱动：(1) 央行持续宽松——降准+降息组合拳 (2) 资本市场改革——注册制全面落地、引入更多长线资金 (3) 外资通过北向资金持续净流入 (4) 估值修复——A股相对美股的估值折价从历史高位回归。技术面：4000点是关键心理关口，突破后上方看4200-4500；支撑在3700-3800。对于国际投资者，上证指数ETF(如ASHR)是参与A股最直接的方式。",
+    '上证指数 shanghai': "上证综指是A股最重要的风向标，涵盖上交所所有上市股票。核心驱动：(1) 央行持续宽松——降准+降息组合拳 (2) 资本市场改革——注册制全面落地、引入更多长线资金 (3) 外资通过北向资金持续净流入 (4) 估值修复——A股相对美股的估值折价从历史高位回归。当前具体点位和支撑压力位请参考实时行情数据。对于国际投资者，上证指数ETF(如ASHR)是参与A股最直接的方式。",
     '创业板 chinext': "创业板是中国的'纳斯达克'，聚焦高成长科技创新企业。涨跌停板20%(是主板的两倍)，波动性极大——这意味着创业板的牛市更猛，熊市也更惨。2026年创业板核心主题：AI应用落地、半导体国产化、生物医药创新。创业板的选股逻辑和主板不同——不看PE看PS(市销率)，不看分红看增长，不看过去看未来。适合风险偏好较高的投资者。关键指数：创业板指(399006.SZ)。投资方式：通过ETF(如CNXT)或港股通参与。",
     '北向资金 northbound': "北向资金是外资通过沪深港通买入A股的资金，被称为'聪明钱'。当北向资金连续净买入，往往预示A股上涨；连续净卖出则可能是调整信号。2026年北向资金持续流入，原因：(1) A股估值相对美股有吸引力 (2) 人民币汇率企稳 (3) 中国经济数据超预期 (4) 全球资金配置再平衡。南向资金则是内地资金买入港股——2026年南向资金创历史新高，内地投资者在抄底港股核心资产。跟踪北向/南向资金流向是判断市场方向的重要指标。",
     '人民币汇率 cny': "人民币汇率是影响中国资产定价的核心变量。2026年美元/人民币在7.0-7.3区间波动。人民币走强利好：A股(外资流入增加)、港股(降低汇率对冲成本)、中国消费股(进口成本下降)。人民币走弱利好：中国出口商、海外收入占比高的企业。央行的汇率管理工具丰富——中间价引导、逆周期因子、外汇存款准备金率调整。对于投资者，人民币汇率趋势直接影响A股和港股的配置价值——汇率稳定或升值期是配置中国资产的最佳窗口。"
@@ -88,7 +88,7 @@ const KNOWLEDGE = {
     'google alphabet': "Alphabet/Google (GOOGL) is the most undervalued of the Magnificent 7 on a PEG basis. Search still generates $250B+ annually with 30%+ margins. YouTube is a $40B business growing 15%. Cloud (GCP) is finally profitable and growing 30%+. AI integration via Gemini and Search Generative Experience is a double-edged sword: it could enhance search OR disrupt it. The antitrust overhang is real — potential forced divestiture of Chrome/Android could fundamentally change the company. But at 20-22x earnings, the market is pricing in significant risk. I see value here with a 12-month horizon.",
     'meta facebook': "Meta (META) has executed one of the greatest pivots in corporate history — from metaverse money-burner to AI-powered profit machine. Reality Labs still burns $15B+ annually, but the core ads business is firing on all cylinders. AI-powered ad targeting (Advantage+) is driving 20%+ ad revenue growth. Threads hit 300M+ users. Reels monetization is now on par with Feed. The stock is surprisingly cheap at 22-25x earnings given 25%+ revenue growth. Key risk: regulatory (EU AI Act, US ad targeting restrictions). Buy the 50 SMA, target new highs.",
     's&p 500 spx': "The S&P 500 is the benchmark for US equities, comprising the 500 largest companies. Key drivers: AI capex from Big Tech, Fed policy (rate cuts vs 'higher for longer'), earnings growth, and geopolitical risk. The Magnificent 7 still account for 30%+ of index weight — concentration risk is real. IMPORTANT: Always reference LIVE market data for current index levels — never quote specific price targets from training data. For most investors, a simple VTI (total market) or SPY allocation of 60-70% of their equity portfolio is the smartest move.",
-    'gold xau': "Gold has been the trade of the decade — surging from $2,000 to $4,800+ in 18 months. This isn't speculative; it's structural. Central banks bought 1,200+ tonnes in 2025 (record pace), driven by de-dollarization. China's PBOC has bought for 24+ consecutive months. Add geopolitical risk premium and $2T+ US fiscal deficits, and gold's floor keeps rising. Key levels: support $4,650, $4,400; targets $5,000, $5,500. The play: buy dips to $4,650, stop at $4,400, or use gold miners (GDX/GDXJ) for 2-3x leverage. Not too late, but use stops — a Middle East peace breakthrough could trigger 5-8% pullback.",
+    'gold xau': "Gold has been the trade of the decade. This isn't speculative; it's structural. Central banks have been buying at record pace, driven by de-dollarization. Add geopolitical risk premium and massive US fiscal deficits, and gold's floor keeps rising. The play: buy on dips, use stops, or use gold miners (GDX/GDXJ) for leveraged exposure. Not too late, but use stops — a geopolitical de-escalation could trigger a pullback. Current price levels and key support/resistance — check live data.",
     'tsmc semiconductor': "TSMC (TSM) is the world's most important company nobody talks about. They manufacture 90%+ of the world's most advanced chips — NVIDIA, Apple, AMD all depend on them. Revenue growing 30%+ YoY on AI demand. The moat is extraordinary: it takes 10+ years and $20B+ to build leading-edge fab capacity. Risks: geopolitical (Taiwan Strait) and customer concentration. If you want AI exposure without the Magnificent 7 premium, TSMC is the backdoor play. Buy on geopolitical fear dips.",
     'berkshire hathaway': "Berkshire Hathaway (BRK.A/BRK.B) is the ultimate defensive play. Warren Buffett's cash pile hit $300B+ in 2026 — he's selling stocks and waiting for opportunity. When Buffett builds this much cash, it historically signals market froth. Berkshire's portfolio: heavy on Apple, Bank of America, American Express, Chevron. Insurance float is the real secret weapon — essentially free leverage. The stock tends to outperform in bear markets and underperform in bull markets. If you're worried about a correction, add BRK.B as a hedge. It's the 'sleep well at night' stock.",
     'jpmorgan chase': "JPMorgan (JPM) is the king of banks — the only major bank that got STRONGER after the 2023 regional banking crisis. Jamie Dimon is the most respected CEO in finance. Net interest income hitting records as rates stay 'higher for longer.' Key advantage: fortress balance sheet allows them to lend when others can't. The stock is never cheap (12-15x earnings), but you're paying for the best-in-class franchise. If the yield curve steepens (long rates rise), JPM is the biggest beneficiary. Buy on recession fears — that's when Dimon deploys the war chest.",
@@ -612,7 +612,14 @@ function getLocalResponse(input) {
     return pick([`Hey! Good ${timeWord} 👋 Markets are interesting today — what's on your radar?`, `Hi there! Good ${timeWord}. Just looking at NVDA and gold — both making moves. You?`]);
   }
 
-  // 0b. Casual chat — 吃饭/睡觉/无聊/算了/一样/垃圾 → local reply
+  // 0b. SECTOR KEYWORDS — let these pass through to buildSectorAnalysis() (Step 2 in sendChat)
+  // If user input contains sector keywords, return null immediately so it goes to the data template
+  const sectorKeywordsRe = /石油|石油股|原油|油气|能源股|科技股|金融股|军工股|医药股|新能源股|零售股|oil stock|oil sector|energy stock|tech stock|tech sector|defense stock|healthcare stock|green stock|retail stock/i;
+  if (sectorKeywordsRe.test(q)) {
+    return null;  // Pass through to sendChat Step 2: sector analysis
+  }
+
+  // 0c. Casual chat — 吃饭/睡觉/无聊/算了/一样/垃圾 → local reply
   const casualRe = /吃饭|吃了吗|吃没|吃了没|饿|午饭|晚饭|早餐|吃啥|吃什么|吃了什么|在干嘛|在做什么|在忙|干嘛呢|做什么呢|忙不|忙吗|闲吗|无聊|没事干|好闲|好无聊|闷|睡了吗|还没睡|睡不着|失眠|好困|困了|想睡|不睡了|熬夜|夜猫子|天气|好热|好冷|下雨|算了|一样|垃圾|谢谢|感谢|多谢|thanks|thank you/i;
   if (casualRe.test(q)) {
     const hour = new Date().getHours();
@@ -721,7 +728,7 @@ function getLocalResponse(input) {
     // ── 更强的情绪/吐槽识别 ──
     { test: /你太AI|太假了|不像真人|机器人|chatgpt|死板|太官方|官方话|套话|废话|答非所问|听不懂|说人话|像机器人|不会说话|太机械|没灵魂|像自动回复|冷冰冰|还是一样|一样浪费|废物|垃圾|没用|没用处|改不了|一点没变|没进步|还是老样|永远这样|什么时候.*整好|什么时候.*修好|什么时候.*好|好多天了/i, resp: () => {
       if (currentAdvisor === 'alex') return pick([
-        `你说得对，我承认之前的表现确实不行。这次我直接说——我现在最关注的是NVDA和黄金的走势，A股4000点上方趋势还在。你想聊哪个？`,
+        `你说得对，我承认之前的表现确实不行。这次我直接说——我现在最关注的是NVDA和黄金的走势。你想聊哪个？`,
         `我检讨，之前回答太死板了。这次不绕弯子——技术上我现在看RSI背离信号，最近好几个大票上出现了。你想听哪只？`,
         `好吧，被你批评得对。我不说废话了——A股看政策方向+NVDA看AI资本开支+黄金看央行购金，这是我现在的核心判断。`,
       ]);
@@ -737,7 +744,7 @@ function getLocalResponse(input) {
     // ── 情绪识别：用户不满/吐槽 ──
     { test: /你太AI|太假了|不像真人|机器人|chatgpt|死板|太官方|官方话|套话|废话|答非所问|听不懂|说人话|像机器人|不会说话|太机械|没灵魂|像自动回复|冷冰冰/i, resp: () => {
       if (currentAdvisor === 'alex') return pick([
-        `好吧好吧，你说得对，我刚才太正经了。这次我直接说——我对今天的市场看法是：NVDA和黄金都有意思，A股4000点上方趋势还在。`,
+        `好吧好吧，你说得对，我刚才太正经了。这次我直接说——我对今天的市场看法是：NVDA和黄金都有意思。`,
         `我检讨。这次不背书了——技术上我现在最关注的是RSI背离信号，最近在好几个大票上出现了。`,
       ]);
       if (currentAdvisor === 'sarah') return pick([
@@ -815,7 +822,8 @@ function getLocalResponse(input) {
     { test: /palantir|pltr|帕兰提尔/i, resp: () => humanize(KNOWLEDGE.stocks['palantir pltr'], 'stocks') },
     { test: /amd|advanced micro|苏妈|超微/i, resp: () => humanize(KNOWLEDGE.stocks['amd'], 'stocks') },
     { test: /coca.col|ko\b|可口可乐|可乐/i, resp: () => humanize(KNOWLEDGE.stocks['coca cola ko'], 'stocks') },
-    { test: /stock|share|equity|market|invest in|portfolio|股票|原油|石油|oil|energy/i, resp: () => pick([
+    // NOTE: 原油/石油/oil/energy/板块关键词 已从 pattern 移除 — 这些走 SECTOR_MAP 板块分析引擎（纯数据模板，比本地回复专业得多）
+    { test: /stock|share|equity|market|invest in|portfolio|股票/i, resp: () => pick([
       `I cover AAPL, NVDA, TSLA, MSFT, AMZN, GOOGL, META, JPM, TSM, BRK, Gold, MPC, XOM, CVX, PLTR, AMD, KO, and the S&P 500 in depth. Or ask about a general topic like risk management or trading strategy.`,
       `I've got detailed takes on the big names — Apple, NVIDIA, Tesla, etc. We can also talk broader market strategy, risk management, or specific sectors.`,
     ])},
@@ -941,11 +949,11 @@ function getLocalResponse(input) {
     ])},
     { test: /现在.*行情|最近.*市场|市场.*怎样|大盘.*怎样|今天.*盘|盘面.*怎样|行情.*好吗/i, resp: () => {
       if (currentAdvisor === 'alex') return pick([
-        `行情要分市场看：A股看政策面，上证4000点上方趋势偏多；美股看Fed，利率不动则成长股继续强势；黄金突破4800后看央行购金持续性。你关注哪个市场？我给你具体分析。`,
+        `行情要分市场看：A股看政策面，趋势偏多；美股看Fed，利率不动则成长股继续强势；黄金看央行购金持续性。你关注哪个市场？我给你具体分析。`,
         `当前全球市场三大主线：AI资本开支（NVDA/MSFT）、黄金避险（央行购金）、A股政策驱动。主线清晰的时候跟着主线走就行，别东张西望。`,
       ]);
       return pick([
-        `当前市场环境：美股高位震荡等Fed方向，A股4000点上方偏乐观但需政策配合，黄金是这十年最佳交易。每个市场逻辑不同，你主要关注哪个？我展开分析。`,
+        `当前市场环境：美股高位震荡等Fed方向，A股偏乐观但需政策配合，黄金是这十年最佳交易。每个市场逻辑不同，你主要关注哪个？我展开分析。`,
       ]);
     }},
     { test: /主力|庄家|机构|资金.*动向|聪明钱|大资金|主力.*吸筹|主力.*出货/i, resp: () => pick([
@@ -1008,9 +1016,9 @@ function getLocalResponse(input) {
     '苹果': 'stocks', '英伟达': 'stocks', '特斯拉': 'stocks', '微软': 'stocks',
     '亚马逊': 'stocks', '谷歌': 'stocks', '脸书': 'stocks', '巴菲特': 'stocks',
     '黄金': 'stocks', '台积电': 'stocks', '摩根': 'stocks',
-    '原油': 'stocks', '石油': 'stocks', '股票': 'stocks', '石油股': 'stocks', '油气': 'stocks',
-    '科技股': 'stocks', '金融股': 'stocks', '军工股': 'stocks', '医药股': 'stocks',
-    '新能源股': 'stocks', '零售股': 'stocks', '能源股': 'stocks',
+    '股票': 'stocks',
+    // NOTE: 原油/石油/石油股/油气/科技股/金融股/军工股/医药股/新能源股/零售股/能源股 已移除
+    // 这些关键词走 SECTOR_MAP 板块分析引擎（纯数据模板），不走知识库
     // ── 美股市场关键词 → stocks 类别 ──
     'us market': 'stocks', 'us stock': 'stocks', 'us stocks': 'stocks',
     'american market': 'stocks', 'wall street': 'stocks',
@@ -1107,8 +1115,8 @@ function getLocalResponse(input) {
         strategy: "选策略先看你的时间和性格：白天盯盘→日内交易，上班党→波段交易，不想操心→定投ETF。最适合大多数人的是波段交易——不用盯盘，利润也够。",
         crypto: "加密市场24/7，波动极大。配置别超过15%，只碰BTC和ETH。别用杠杆——加密本身的波动已经是杠杆了。",
         platform: "BroadFSC是合规的投资咨询平台，持牌经营，AI驱动的教育+专业人工支持。我们有实时行情数据、技术分析工具、风险管理框架，从入门到进阶都覆盖。",
-        stocks: "美股当前核心看点：NVDA领涨AI行情但估值已高，黄金是这十年最佳交易突破$4800，TSLA在电动车价格战中利润承压。大盘看Fed降息节奏——利率下行利好成长股，通胀反弹则利好能源和黄金。",
-        china: "A股和港股当前核心逻辑：A股看政策方向（央行降准降息+产业扶持），港股看估值修复+南向资金。上证4000点是关键心理关口，突破后看4200-4500；恒指受益于中概股回归+AI估值重塑。",
+        stocks: "美股当前核心看点：NVDA领涨AI行情但估值已高，黄金是这十年最佳交易，TSLA在电动车价格战中利润承压。大盘看Fed降息节奏——利率下行利好成长股，通胀反弹则利好能源和黄金。",
+        china: "A股和港股当前核心逻辑：A股看政策方向（央行降准降息+产业扶持），港股看估值修复+南向资金。恒指受益于中概股回归+AI估值重塑。",
         beginner: "新手投资第一步：用模拟盘练3个月，学均线+支撑压力+RSI三个基础工具，每笔必设止损。起步资金别超过你能承受亏光的数目，指数基金定投是最稳妥的入门方式。",
         advanced: "高级工具（期权/期货/做空/量化）都是双刃剑——用好了放大收益，用不好加速亏损。核心原则：小仓位试水，严格止损，先模拟盘验证再上实盘。新手不建议碰。",
         fundamental_analysis: "基本面分析5步法：读财报→查盈利质量→估值(DCF+相对)→看资本配置(ROIC vs WACC)→决策(安全边际)。最关键一步是盈利质量——经营现金流/净利润 < 1.0的利润是纸面上的。",
@@ -1381,7 +1389,9 @@ const SECTOR_MAP = {
     region: 'us',
     keywords: ['石油', '石油股', '原油', 'oil stock', 'oil sector', 'energy stock', '能源股', '油气', '石油投资',
                'oil industry', 'crude oil stock', 'drilling', 'refining', 'upstream', 'downstream',
-               '页岩油', '页岩气', 'oil companies', 'oil investment', '美国石油', 'us oil'],
+               '页岩油', '页岩气', 'oil companies', 'oil investment', '美国石油', 'us oil',
+               '原油投资', '原油是否', '原油值得', '石油是否', '石油值得', '能源投资', '能源是否', '能源值得',
+               'crude oil invest', 'is oil worth', 'should i invest oil', 'oil opportunity'],
     stocks: [
       { symbol: 'XOM', label: 'ExxonMobil' },
       { symbol: 'CVX', label: 'Chevron' },
@@ -1399,7 +1409,8 @@ const SECTOR_MAP = {
     region: 'us',
     keywords: ['科技股', 'tech stock', 'tech sector', 'technology stock', '科技板块', '科技投资',
                'AI股', 'AI stock', 'AI sector', '人工智能股', '芯片股', 'chip stock', 'semiconductor',
-               '科技行业', 'technology industry', '互联网股', '互联网板块'],
+               '科技行业', 'technology industry', '互联网股', '互联网板块',
+               '科技是否', '科技值得', '科技投资机会', 'tech invest', 'is tech worth', 'tech opportunity'],
     stocks: [
       { symbol: 'AAPL', label: 'Apple' },
       { symbol: 'NVDA', label: 'NVIDIA' },
@@ -2423,12 +2434,12 @@ const RESEARCH = [
 <p>If the Fed surprises with a dovish pivot at the April 29-30 FOMC, EUR/USD could break above 1.0960 and invalidate this setup. Keep stops tight above that level. Also watch for any escalation in geopolitical tensions that could trigger safe-haven EUR flows.</p>`
   },
   {
-    id: 3, title: "Gold: $4,800+ and Counting — The Great De-Dollarization Trade",
+    id: 3, title: "Gold: The Great De-Dollarization Trade",
     type: "special", typeLabel: "Special Report",
     date: "Apr 20, 2026", readTime: "12 min",
-    summary: "Gold doubles in 18 months as central bank buying, de-dollarization, and geopolitical risk fuel an unprecedented rally.",
+    summary: "Gold surges as central bank buying, de-dollarization, and geopolitical risk fuel an unprecedented structural rally.",
     content: `<h3>The Big Picture</h3>
-<p>Gold has shattered every forecast, surging past $4,800/oz — more than doubling from its 2024 lows near $2,000. This isn't a speculative bubble. It's a structural re-pricing driven by the most powerful force in global finance: the gradual shift away from US dollar hegemony.</p>
+<p>Gold has shattered every forecast, surging dramatically from its 2024 lows. This isn't a speculative bubble. It's a structural re-pricing driven by the most powerful force in global finance: the gradual shift away from US dollar hegemony.</p>
 
 <h3>Driver #1: Central Bank De-Dollarization</h3>
 <p>Central banks bought over 1,200 tonnes of gold in 2025, a new all-time record. China's PBOC has been buying for 24+ consecutive months. But it's not just China — India, Turkey, Poland, and dozens of emerging market central banks are all adding gold at record pace. This isn't speculative — it's a deliberate strategic shift away from USD reserves. The message is clear: trust in the US dollar as the sole reserve asset is eroding.</p>
@@ -2441,14 +2452,14 @@ const RESEARCH = [
 
 <h3>Technical Outlook</h3>
 <ul>
-<li><strong>Trend:</strong> Parabolic. 20, 50, 200 MAs all rising with widening spread — classic strong trend.</li>
-<li><strong>Support:</strong> $4,650 (April low), $4,400 (prior resistance → support), $4,100 (50 SMA)</li>
-<li><strong>Targets:</strong> $5,000 (psychological round number), $5,500 (measured move from consolidation)</li>
+<li><strong>Trend:</strong> Strong uptrend. 20, 50, 200 MAs all rising — classic strong trend.</li>
+<li><strong>Support:</strong> Key supports at prior lows and moving averages — check live charts for current levels.</li>
+<li><strong>Targets:</strong> Psychological round numbers and measured moves — check live data for current targets.</li>
 </ul>
 
 <h3>How to Play It</h3>
-<p><strong>Conservative:</strong> Buy the dip to $4,650 with a stop at $4,400. Target $5,000.</p>
-<p><strong>Moderate:</strong> Buy current levels with a stop at $4,400. Target $5,500.</p>
+<p><strong>Conservative:</strong> Buy the dip to key support with a stop below. Target next resistance.</p>
+<p><strong>Moderate:</strong> Buy current levels with a stop at support. Target higher resistance.</p>
 <p><strong>Alternative:</strong> Gold miners (GDX, GDXJ) offer 2-3x leverage to gold. Streaming companies (WPM, FNV) offer lower-risk exposure with dividend yields.</p>
 
 <h3>Risks</h3>
@@ -2489,9 +2500,9 @@ const RESEARCH = [
     id: 5, title: "Bitcoin at $75K: Post-Halving Reality Check",
     type: "special", typeLabel: "Special Report",
     date: "Apr 18, 2026", readTime: "10 min",
-    summary: "BTC trades at ~$75K — below its 2024 peak. Is the halving cycle broken, or is this the accumulation zone?",
+    summary: "BTC trades below its 2024 peak. Is the halving cycle broken, or is this the accumulation zone?",
     content: `<h3>Current State</h3>
-<p>Bitcoin trades around $74,800 — roughly 12% below its November 2024 all-time high near $108K. For the first time in Bitcoin's history, the post-halving cycle has not delivered new highs within 12 months. This has sparked a fierce debate: is the halving cycle broken, or are we simply in an extended consolidation before the next leg up?</p>
+<p>Bitcoin trades well below its November 2024 all-time high. For the first time in Bitcoin's history, the post-halving cycle has not delivered new highs within 12 months. This has sparked a fierce debate: is the halving cycle broken, or are we simply in an extended consolidation before the next leg up?</p>
 
 <h3>Historical Comparison</h3>
 <table style="width:100%;border-collapse:collapse;margin:12px 0">
@@ -2506,7 +2517,7 @@ const RESEARCH = [
 <p><strong>ETF saturation:</strong> Spot Bitcoin ETFs were approved before the halving, front-running the typical demand shock. The "ETF buy" may have already been priced in, explaining the lackluster post-halving performance.</p>
 <p><strong>Macro headwinds:</strong> The Fed's "higher for longer" stance has been a headwind for risk assets. Bitcoin hasn't enjoyed the rate-cut tailwind that previous cycles had.</p>
 <p><strong>Diminishing returns confirmed:</strong> The multiple from pre-halving peak to post-halving peak has declined from 25x to 7x to 1.5x. The market is maturing — 10x returns are likely gone forever.</p>
-<p><strong>Gold competition:</strong> Gold's parabolic rally to $4,800+ has drawn safe-haven flows that might have previously gone to Bitcoin. BTC is no longer the only "anti-fiat" trade.</p>
+<p><strong>Gold competition:</strong> Gold's parabolic rally has drawn safe-haven flows that might have previously gone to Bitcoin. BTC is no longer the only "anti-fiat" trade.</p>
 
 <h3>On-Chain Metrics</h3>
 <ul>
@@ -2526,7 +2537,7 @@ const RESEARCH = [
     id: 6, title: "Risk Management Checklist: 20 Rules That Save Accounts",
     type: "special", typeLabel: "Special Report",
     date: "Apr 16, 2026", readTime: "15 min",
-    summary: "In a world of $4,800 gold and $700B AI capex, disciplined risk management matters more than ever.",
+    summary: "In a world of surging gold and massive AI capex, disciplined risk management matters more than ever.",
     content: `<h3>The 20 Non-Negotiable Rules</h3>
 
 <h4>Position Sizing</h4>
@@ -2577,7 +2588,7 @@ const RESEARCH = [
 <p>90% of traders lose money. The 10% who survive all have one thing in common: disciplined risk management. Not better analysis. Not better signals. Just better risk control. Print this list, put it next to your screen, and follow it every single day.</p>
 
 <h3>2026 Context</h3>
-<p>Markets in 2026 are more extreme than ever: gold has doubled to $4,800+, AI capex has tripled to $700B, and Bitcoin is still finding its post-halving direction. In this environment, the temptation to "go all in" on a thesis is overwhelming. That's exactly when risk management matters most. The traders who survive this cycle won't be the ones who made the biggest calls — they'll be the ones who kept their losses small enough to stay in the game.</p>`
+<p>Markets in 2026 are more extreme than ever: gold has surged dramatically, AI capex has tripled, and Bitcoin is still finding its post-halving direction. In this environment, the temptation to "go all in" on a thesis is overwhelming. That's exactly when risk management matters most. The traders who survive this cycle won't be the ones who made the biggest calls — they'll be the ones who kept their losses small enough to stay in the game.</p>`
   }
 ];
 
