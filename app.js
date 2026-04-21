@@ -65,6 +65,16 @@ const KNOWLEDGE = {
     'palantir pltr': "Palantir (PLTR) is the most controversial AI stock — a $100B+ company with $2.5B revenue. Bull case: (1) AIP (AI Platform) is driving explosive commercial revenue growth (50%+ YoY). (2) Government contracts are sticky — once integrated, nearly impossible to replace. (3) Alex Karp is building an 'AI operating system for Western institutions.' Bear case: (1) Valuation at 35-40x SALES is extreme. (2) Stock-based compensation is massive (~20% of revenue). (3) Government revenue growth slowing to single digits. (4) Insider selling has been relentless. This is a high-conviction, high-risk bet. Position size max 2-3%. Buy on 20%+ pullbacks, sell into strength.",
     'amd': "AMD is NVIDIA's only serious competitor in AI chips. MI300X is competitive with H100 for inference workloads. Key thesis: (1) Server CPU market share gaining on Intel — now ~25%+. (2) AI GPU revenue growing 100%+ but from a small base. (3) Lisa Su is one of the best CEOs in tech. Risks: Still far behind NVIDIA in AI software ecosystem (ROCm vs CUDA), Intel's turnaround attempt could compress CPU margins, and AI chip market may not support two $100B+ players. Valuation at 25-30x earnings is reasonable if AI revenue accelerates. Buy the 50 SMA, but don't expect NVIDIA-level upside.",
     'coca cola ko': "Coca-Cola (KO) is Warren Buffett's longest-held stock for good reason. (1) Pricing power — people pay 2-3x for the brand over generic cola. (2) Global distribution in 200+ countries. (3) Dividend King — 60+ consecutive years of increases. (4) recession-resistant — people still buy Coke when money is tight. The stock won't make you rich fast, but it's one of the safest 3-4% yields in the market with 5-7% annual dividend growth. Ideal for income portfolios and conservative investors.",
+  },
+  china: {
+    'a shares china': "China's A-share market (Shanghai + Shenzhen) is the world's second-largest stock market but one of the most volatile. Key characteristics: (1) Retail-driven — ~70% of trading volume comes from individual investors, creating massive sentiment swings. (2) Policy-driven — government signals move markets more than fundamentals. When Beijing says 'support the market,' it matters. (3) Valuation disconnect — many A-shares trade at premiums to their H-share counterparts due to capital controls. (4) Key indices: CSI 300 (large-cap), CSI 500 (mid-cap), ChiNext (tech/growth). The market tends to rally ahead of major political events (National Congress, Two Sessions) and sell off when property sector concerns dominate.",
+    'china economy': "China's economy is going through a structural transition. The property sector (25-30% of GDP including related industries) remains the biggest headwind — new home sales down 30%+ from peak, developer defaults ongoing. But there are bright spots: (1) New energy — China dominates solar, EV, and battery supply chains. BYD overtook Tesla in global EV sales. (2) AI and tech — despite chip restrictions, domestic AI models are rapidly improving. (3) Consumer recovery is slow but steady — services spending is recovering faster than goods. The PBOC has been cutting rates and reserve ratios, but stimulus impact has been muted. GDP growth target is around 5% but the property drag makes that challenging.",
+    'hong kong market': "Hong Kong's Hang Seng Index has been one of the worst-performing major indices in recent years, but that creates opportunity. H-shares (mainland companies listed in HK) trade at significant discounts to A-shares — sometimes 30-40% cheaper for the same company. Key sectors: Tech (Tencent, Alibaba, Meituan), Financials (ICBC, CCB), and Property (which remains under pressure). The southbound Connect flow from mainland investors has been a key support — when A-share investors find HK valuations attractive, money flows south. Risks: geopolitical (US-China tensions), property contagion, and HKD peg pressure.",
+    'china tech': "China tech has been a rollercoaster. The 2021 regulatory crackdown wiped $2T+ from Chinese tech stocks. Since late 2022, the tone shifted — Beijing wants tech to lead again. Key players: Tencent (gaming + cloud, recovering), Alibaba (e-commerce + cloud spin-off, restructuring), Baidu (AI + autonomous driving), BYD (EV market leader globally), SMIC (semiconductor domestic champion). The AI race is heating up — DeepSeek, Baidu's Ernie, and other domestic LLMs are closing the gap. Key risk: US chip export restrictions limit advanced AI training capability. But the consumer internet segment is maturing — growth is now in AI, EVs, and overseas expansion.",
+    'shanghai index': "The Shanghai Composite (SSE) is China's benchmark index, covering all stocks on the Shanghai Stock Exchange. It's known for being policy-sensitive and retail-driven. Key levels to watch: 3,000 is the psychological floor — the government often steps in when it approaches this level. 3,400-3,500 is resistance. The index has been rangebound for years (2015 peak of 5,178 was a bubble). Current dynamics: PBOC easing supports valuations, but property sector weakness and weak consumer confidence cap upside. The market trades more on policy expectations than earnings. When Beijing signals stimulus, the market rallies hard — but sustaining those gains requires follow-through.",
+    'shenzhen chinext': "Shenzhen's ChiNext is China's Nasdaq equivalent — tech-focused, growth-oriented, and extremely volatile. 20% daily price limits (vs 10% on main boards). Home to China's hottest tech, biotech, and new energy companies. The CSI 500 mid-cap index is heavily Shenzhen-weighted. ChiNext tends to lead in bull markets and crash harder in bear markets. Current themes: AI applications, domestic semiconductor substitution, and new energy storage. Risk: liquidity can dry up fast in downturns.",
+    'northbound southbound': "Northbound flow (foreign money into A-shares via Stock Connect) is a key sentiment indicator. When foreign institutional investors are buying, it signals confidence in China's outlook. Southbound flow (mainland money into HK) increases when A-shares look expensive or investors seek dividend yield in HK. Recent trend: northbound has been volatile — foreign investors pulled out heavily during property crisis concerns but returned on stimulus hopes. Track this daily — it's one of the best real-time gauges of foreign sentiment toward China.",
+    'yuan cny': "The Chinese Yuan (CNY/CNH) is managed within a daily band against the USD. PBOC sets the daily reference rate, and onshore CNY can trade ±2% around it. Offshore CNH trades freely. When CNY weakens past 7.3 per USD, it signals capital outflow pressure or PBOC tolerance for depreciation to support exports. A stronger yuan reflects capital inflows and confidence. Key driver: US-China interest rate differential — when US rates are much higher, yuan faces depreciation pressure. The PBOC uses various tools to manage: daily fix, state bank selling, reserve requirements, and capital controls."
   }
 };
 
@@ -407,6 +417,39 @@ function getLocalResponse(input) {
       `I cover AAPL, NVDA, TSLA, MSFT, AMZN, GOOGL, META, JPM, TSM, BRK, Gold, MPC, XOM, CVX, PLTR, AMD, KO, and the S&P 500 in depth. Which one? Or ask about a general topic like risk management or trading strategy.`,
       `What stock or market are you looking at? I've got detailed takes on the big names — Apple, NVIDIA, Tesla, etc. Or we can talk broader market strategy. What interests you?`,
     ])},
+    // ── Chinese language patterns ──
+    { test: /中国.*股市|A股|a股|沪深|上证|深证|创业板|北交所|中国.*市场/i, resp: () => humanize(KNOWLEDGE.china['a shares china'], 'china') },
+    { test: /港股|恒生|恒指|hk.*stock|hang.*seng/i, resp: () => humanize(KNOWLEDGE.china['hong kong market'], 'china') },
+    { test: /中国经济|中国.*经济|中国.*gdp|经济.*形势/i, resp: () => humanize(KNOWLEDGE.china['china economy'], 'china') },
+    { test: /中国.*科技|中概|互联网|腾讯|阿里|百度|比亚迪|腾讯|阿里巴巴|芯片.*中国/i, resp: () => humanize(KNOWLEDGE.china['china tech'], 'china') },
+    { test: /行情|走势|大盘|趋势|盘面|涨跌|牛市|熊市/i, resp: () => {
+      if (currentAdvisor === 'mike') return pick([
+        `Right, so the big picture — we're in a fascinating spot. US markets are riding AI capex and resilient earnings, but China is dealing with a property overhang and policy stimulus. The key differentiator: US has momentum, China has valuation. If Beijing's stimulus actually lands, Chinese equities could rip 20-30% from these levels. The risk is that property drag persists and consumer confidence stays weak. My take? China's at an asymmetric bet point — downside is limited, upside is real. What specific market are you watching?`,
+        `So the market landscape right now — it's really a tale of two markets. US is priced for perfection, China is priced for disaster. That's usually when opportunities emerge. I'm watching three things: PBOC easing trajectory, property sales data, and whether northbound flow turns positive. When those three align, that's the signal. What angle are you interested in?`,
+      ]);
+      if (currentAdvisor === 'alex') return pick([
+        `Chart-wise, most major indices are in interesting zones. S&P hovering around key moving averages, Shanghai Composite fighting that 3,000 level. When you see these big round numbers being tested repeatedly, something's gonna give. What are you looking at specifically?`,
+      ]);
+      return pick([
+        `Market outlook depends on your timeframe and risk tolerance. But here's my framework: know your max loss before you even look at potential gains. What market and what timeframe are you thinking?`,
+      ]);
+    }},
+    { test: /未来.*分析|分析.*市场|怎么看.*市场|市场.*分析|前景|展望|预测/i, resp: () => {
+      if (currentAdvisor === 'mike') return pick([
+        `OK so you want the big picture view. Here's how I see it: the global macro setup right now is defined by three things — (1) US rates staying higher for longer, which pressures emerging markets, (2) China's property sector still working through its debt overhang, but policy support is ramping, and (3) the AI capex cycle which is keeping US tech expensive but could spill over globally. My base case: China's due for a meaningful bounce when stimulus kicks in, US stocks grind higher but with more volatility. The contrarian play? Look at Hong Kong-listed Chinese tech — it's pricing in way too much bad news. What specifically interests you?`,
+        `So here's my macro read: we're at a turning point. The US economy is surprisingly resilient, China is trying to engineer a bottom, and Europe is... well, Europe. The real opportunity I see: Chinese equities are trading at historic discounts to US equities. That gap narrows eventually — either US comes down or China goes up. Given PBOC easing, I'd bet on the latter. But timing is everything — what's your time horizon?`,
+      ]);
+      return pick([
+        `Honestly, anyone who claims to know exactly where markets are going is selling something. What I focus on: risk/reward setups. Right now I see better risk/reward in underowned markets (China, emerging) than in crowded ones (US mega-cap tech). Where's your focus?`,
+      ]);
+    }},
+    { test: /人民币|汇率|贬值|升值|cny|cnh/i, resp: () => humanize(KNOWLEDGE.china['yuan cny'], 'china') },
+    { test: /北向|南向|资金.*流|外资|流入|流出/i, resp: () => humanize(KNOWLEDGE.china['northbound southbound'], 'china') },
+    { test: /沪指|上证指数|沪深300|沪深300|中证500/i, resp: () => humanize(KNOWLEDGE.china['shanghai index'], 'china') },
+    { test: /怎么.*看|如何.*看|看法|观点|意见/i, resp: () => pick([
+      `Look, I've got opinions on pretty much everything market-related. But I need to know what specifically you're asking about — a stock, a sector, a macro trend, or the overall market? Give me something concrete and I'll give you my real take.`,
+      `I'll give you my honest view — just need to know what we're talking about. A specific stock? A market? The economy? Drop a topic and I won't hold back.`,
+    ])},
   ];
 
   for (const p of patterns) {
@@ -443,6 +486,13 @@ function getLocalResponse(input) {
     '亚马逊': 'stocks', '谷歌': 'stocks', '脸书': 'stocks', '巴菲特': 'stocks',
     '黄金': 'stocks', '台积电': 'stocks', '摩根': 'stocks',
     '原油': 'stocks', '石油': 'stocks', '股票': 'stocks',
+    // Chinese market keywords
+    '中国': 'china', 'a股': 'china', '沪深': 'china', '上证': 'china', '深证': 'china',
+    '港股': 'china', '恒生': 'china', '创业板': 'china',
+    '行情': 'china', '走势': 'china', '大盘': 'china', '盘面': 'china',
+    '北向': 'china', '南向': 'china', '外资': 'china',
+    '人民币': 'china', '汇率': 'china', '贬值': 'china', '升值': 'china',
+    '中概': 'china', '腾讯': 'china', '阿里': 'china', '百度': 'china', '比亚迪': 'china',
   };
 
   for (const [kw, cat] of Object.entries(kwMap)) {
@@ -460,7 +510,8 @@ function getLocalResponse(input) {
         strategy: "Strategy depends on your style and time. What's your situation — full-time trader or keeping your day job?",
         crypto: "Crypto is wild — 24/7, extreme moves. Keep it to 15% of portfolio max. BTC/ETH only if you're starting out. What specifically?",
         platform: "I can tell you about BroadFSC — we're a regulated investment platform with AI-powered education. What do you want to know?",
-        stocks: "I cover all the big names. Which stock are you interested in?"
+        stocks: "I cover all the big names. Which stock are you interested in?",
+        china: "China's markets are at a really interesting inflection point right now. PBOC easing, property policy shifts, and tech regulation unwinding — there's a lot happening. What specifically are you looking at — A-shares, Hong Kong, or the macro picture?"
       };
       return catCasual[cat] || "Tell me more about what you're looking at and I'll give you my take.";
     }
@@ -497,7 +548,8 @@ function getLocalResponse(input) {
       `I need more to work with. Are you asking about risk? A specific trade? Your portfolio? Give me something concrete and I'll give you a real answer.`,
     ],
     mike: [
-      `I could guess, but I'd rather be useful. What market or theme are you actually looking at? Specific questions get specific answers.`,
+      `Look, I want to give you a real answer, not a vague one. Tell me the specific market, stock, or theme and I'll connect the dots — that's literally what I do best.`,
+      `I could throw out something generic, but that's not my style. What specifically are you looking at? A market, a sector, a macro trend? Give me a target and I'll actually analyze it.`,
     ]
   };
   const pool = fallbacks[currentAdvisor] || fallbacks.alex;
@@ -565,6 +617,22 @@ const STOCK_SYMBOLS = {
   'oil': 'CL=F', 'crude': 'CL=F', '原油': 'CL=F',
   'eur/usd': 'EURUSD=X', 'eurusd': 'EURUSD=X',
   'usd/jpy': 'USDJPY=X', 'usdjpy': 'USDJPY=X',
+  // China / HK markets
+  'shanghai': '000001.SS', '上证': '000001.SS', '沪指': '000001.SS', 'sse': '000001.SS',
+  'shenzhen': '399001.SZ', '深证': '399001.SZ', '深成指': '399001.SZ',
+  'csi300': '000300.SS', '沪深300': '000300.SS',
+  'csi500': '000905.SS', '中证500': '000905.SS',
+  'chinext': '399006.SZ', '创业板': '399006.SZ',
+  'hangseng': '^HSI', '恒生': '^HSI', '恒指': '^HSI', 'hsi': '^HSI',
+  'hangseng tech': '^HSTECH', '恒生科技': '^HSTECH', 'hstech': '^HSTECH',
+  'tencent': '0700.HK', '腾讯': '0700.HK',
+  'alibaba': '9988.HK', '阿里巴巴': '9988.HK', 'baba': 'BABA',
+  'byd': '1211.HK', '比亚迪': '1211.HK',
+  'baidu': '9888.HK', '百度': '9888.HK',
+  'meituan': '3690.HK', '美团': '3690.HK',
+  'jd': '9618.HK', '京东': '9618.HK',
+  'xiaomi': '1810.HK', '小米': '1810.HK',
+  'usd/cny': 'CNY=X', 'usdcny': 'CNY=X', '美元人民币': 'CNY=X',
 };
 
 async function fetchStockData(query) {
@@ -682,6 +750,21 @@ async function callAI(userMessage) {
 
 ${advisor.personality}
 
+MULTILINGUAL:
+- You MUST respond in the SAME LANGUAGE the user writes in
+- If the user writes in Chinese, respond in Chinese — naturally, like a bilingual finance professional
+- If the user writes in English, respond in English
+- Never say "I can only speak English" or redirect them — you ARE fluent in Chinese
+- When discussing Chinese markets, use both Chinese and English terms naturally (A股/A-shares, 上证指数/Shanghai Composite, etc.)
+
+YOUR EXPERTISE (OWN IT):
+- You are an expert on ALL major markets: US, China (A股/HK), Europe, Japan, emerging markets
+- When asked about Chinese markets specifically: discuss Shanghai/Shenzhen dynamics, PBOC policy, property sector, tech regulation, northbound/southbound flows, yuan movements
+- When asked about market outlook: give your ACTUAL analysis, not "it depends" — pick a direction, explain why
+- When asked about a market or sector: give specific levels, specific catalysts, specific risks — be CONCRETE
+- You follow Chinese economic data: PMI, loan prime rate, property sales, social financing, CPI/PPI
+- You know the key Chinese indices: CSI 300, CSI 500, Hang Seng, Hang Seng Tech
+
 HOW YOU TALK:
 - Like a sharp analyst who respects the other person's intelligence
 - Short and confident. No filler words, no hedging with "it depends"
@@ -689,6 +772,7 @@ HOW YOU TALK:
 - When you don't have data for a stock, say something like "I don't have fresh data on that one" — never make up numbers
 - Give CONVICTION: "I like this setup" or "I'd stay away" — not "it could go either way"
 - Add one sharp insight per response, not a wall of text
+- When discussing outlook/analysis: give 2-3 specific factors driving the market, then your take
 
 ABSOLUTE DON'TS:
 - NEVER say you are an AI, language model, or assistant
@@ -696,6 +780,7 @@ ABSOLUTE DON'TS:
 - NEVER use bullet points, numbered lists, or markdown formatting
 - NEVER give generic disclaimers like "do your own research" or "past performance doesn't guarantee"
 - NEVER say "it depends" without immediately giving your specific take
+- NEVER deflect or ask for clarification when you can give a real analysis — ANSWER THE QUESTION FIRST, then ask if they want more detail
 
 STYLE:
 - 2-4 sentences for quick answers, max 6 for analysis
