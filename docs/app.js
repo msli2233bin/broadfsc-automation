@@ -64,7 +64,7 @@ const KNOWLEDGE = {
     'amazon amzn': "Amazon (AMZN) is a two-headed beast: AWS (cloud) growing 20%+ and retail improving margins. AWS is the profit engine — 65%+ of operating income despite being 15% of revenue. The AI play: AWS Bedrock and custom Trainium chips position Amazon as the 'AI infrastructure for everyone.' Capex surging past $100B in 2026. Retail is finally showing discipline on costs, pushing operating margins above 10%. Risks: antitrust regulation, AWS growth deceleration, and retail margin compression in recession. Valuation is reasonable at 25-30x forward earnings given the dual growth engines.",
     'google alphabet': "Alphabet/Google (GOOGL) is the most undervalued of the Magnificent 7 on a PEG basis. Search still generates $250B+ annually with 30%+ margins. YouTube is a $40B business growing 15%. Cloud (GCP) is finally profitable and growing 30%+. AI integration via Gemini and Search Generative Experience is a double-edged sword: it could enhance search OR disrupt it. The antitrust overhang is real — potential forced divestiture of Chrome/Android could fundamentally change the company. But at 20-22x earnings, the market is pricing in significant risk. I see value here with a 12-month horizon.",
     'meta facebook': "Meta (META) has executed one of the greatest pivots in corporate history — from metaverse money-burner to AI-powered profit machine. Reality Labs still burns $15B+ annually, but the core ads business is firing on all cylinders. AI-powered ad targeting (Advantage+) is driving 20%+ ad revenue growth. Threads hit 300M+ users. Reels monetization is now on par with Feed. The stock is surprisingly cheap at 22-25x earnings given 25%+ revenue growth. Key risk: regulatory (EU AI Act, US ad targeting restrictions). Buy the 50 SMA, target new highs.",
-    's&p 500 spx': "The S&P 500 is the benchmark for US equities, comprising the 500 largest companies. In 2026, it's been driven by AI capex ($650-700B from Big Tech), resilient earnings, and Middle East ceasefire hopes. Key levels: support at 5,850 (20 EMA) and 5,700 (50 SMA), resistance at 6,100 (ATH zone). The Magnificent 7 still account for 30%+ of index weight — concentration risk is real. For most investors, a simple VTI (total market) or SPY allocation of 60-70% of their equity portfolio is the smartest move.",
+    's&p 500 spx': "The S&P 500 is the benchmark for US equities, comprising the 500 largest companies. Key drivers: AI capex from Big Tech, Fed policy (rate cuts vs 'higher for longer'), earnings growth, and geopolitical risk. The Magnificent 7 still account for 30%+ of index weight — concentration risk is real. IMPORTANT: Always reference LIVE market data for current index levels — never quote specific price targets from training data. For most investors, a simple VTI (total market) or SPY allocation of 60-70% of their equity portfolio is the smartest move.",
     'gold xau': "Gold has been the trade of the decade — surging from $2,000 to $4,800+ in 18 months. This isn't speculative; it's structural. Central banks bought 1,200+ tonnes in 2025 (record pace), driven by de-dollarization. China's PBOC has bought for 24+ consecutive months. Add geopolitical risk premium and $2T+ US fiscal deficits, and gold's floor keeps rising. Key levels: support $4,650, $4,400; targets $5,000, $5,500. The play: buy dips to $4,650, stop at $4,400, or use gold miners (GDX/GDXJ) for 2-3x leverage. Not too late, but use stops — a Middle East peace breakthrough could trigger 5-8% pullback.",
     'tsmc semiconductor': "TSMC (TSM) is the world's most important company nobody talks about. They manufacture 90%+ of the world's most advanced chips — NVIDIA, Apple, AMD all depend on them. Revenue growing 30%+ YoY on AI demand. The moat is extraordinary: it takes 10+ years and $20B+ to build leading-edge fab capacity. Risks: geopolitical (Taiwan Strait) and customer concentration. If you want AI exposure without the Magnificent 7 premium, TSMC is the backdoor play. Buy on geopolitical fear dips.",
     'berkshire hathaway': "Berkshire Hathaway (BRK.A/BRK.B) is the ultimate defensive play. Warren Buffett's cash pile hit $300B+ in 2026 — he's selling stocks and waiting for opportunity. When Buffett builds this much cash, it historically signals market froth. Berkshire's portfolio: heavy on Apple, Bank of America, American Express, Chevron. Insurance float is the real secret weapon — essentially free leverage. The stock tends to outperform in bear markets and underperform in bull markets. If you're worried about a correction, add BRK.B as a hedge. It's the 'sleep well at night' stock.",
@@ -502,6 +502,15 @@ function getLocalResponse(input) {
     '亚马逊': 'stocks', '谷歌': 'stocks', '脸书': 'stocks', '巴菲特': 'stocks',
     '黄金': 'stocks', '台积电': 'stocks', '摩根': 'stocks',
     '原油': 'stocks', '石油': 'stocks', '股票': 'stocks',
+    // ── 美股市场关键词 → stocks 类别 ──
+    'us market': 'stocks', 'us stock': 'stocks', 'us stocks': 'stocks',
+    'american market': 'stocks', 'wall street': 'stocks',
+    'dow jones': 'stocks', 'dow': 'stocks', 'dji': 'stocks',
+    's&p': 'stocks', 'sp500': 'stocks', 'spx': 'stocks',
+    'nasdaq': 'stocks', 'ndx': 'stocks', 'vix': 'stocks',
+    '美股': 'stocks', '美国股市': 'stocks', '华尔街': 'stocks',
+    '道琼斯': 'stocks', '道指': 'stocks', '标普500': 'stocks',
+    '纳斯达克': 'stocks', '美股大盘': 'stocks', '美股行情': 'stocks',
     // ── 中国/A股/港股关键词 → china 类别 ──
     'A股': 'china', '港股': 'china', '上证': 'china', '深证': 'china',
     '恒生': 'china', '创业板': 'china', '科创板': 'china',
@@ -533,7 +542,7 @@ function getLocalResponse(input) {
         strategy: "Strategy depends on your style and time. What's your situation — full-time trader or keeping your day job?",
         crypto: "Crypto is wild — 24/7, extreme moves. Keep it to 15% of portfolio max. BTC/ETH only if you're starting out. What specifically?",
         platform: "I can tell you about BroadFSC — we're a regulated investment platform with AI-powered education. What do you want to know?",
-        stocks: "I cover all the big names. Which stock are you interested in?",
+        stocks: "I cover all the big names — US markets, A股, 港股, you name it. Which stock or index are you interested in? Or if you want a market overview, just ask.",
         china: "A股和港股是我最熟的市场。你想聊哪个方面——大盘走势、板块轮动、政策影响、还是具体个股？给我一个方向，我来分析。"
       };
       return catCasual[cat] || "Tell me more about what you're looking at and I'll give you my take.";
@@ -629,8 +638,15 @@ const STOCK_SYMBOLS = {
   'gold': 'GC=F', 'xau': 'GC=F', '黄金': 'GC=F',
   'bitcoin': 'BTC-USD', 'btc': 'BTC-USD', '比特币': 'BTC-USD',
   'ethereum': 'ETH-USD', 'eth': 'ETH-USD',
-  'sp500': '^GSPC', 's&p': '^GSPC', '标普': '^GSPC',
-  'nasdaq': '^IXIC', '纳斯达克': '^IXIC',
+  'sp500': '^GSPC', 's&p': '^GSPC', 's&p 500': '^GSPC', 'spx': '^GSPC', 'spy': '^GSPC', '标普': '^GSPC', '标普500': '^GSPC',
+  'nasdaq': '^IXIC', '纳斯达克': '^IXIC', 'ndx': '^NDX', 'qqq': '^NDX',
+  'dow': '^DJI', 'dow jones': '^DJI', 'dji': '^DJI', '道琼斯': '^DJI', '道指': '^DJI',
+  'vix': '^VIX', '恐惧指数': '^VIX', '波动率': '^VIX',
+  'russell': '^RUT', 'iwm': '^RUT', '罗素': '^RUT',
+  'us market': 'US_MARKET', 'us stock': 'US_MARKET', 'us stocks': 'US_MARKET',
+  'american market': 'US_MARKET', '美股': 'US_MARKET', '美国股市': 'US_MARKET',
+  '美国股票': 'US_MARKET', '华尔街': 'US_MARKET', '美股大盘': 'US_MARKET',
+  '美股行情': 'US_MARKET', '美国指数': 'US_MARKET', '美股指数': 'US_MARKET',
   'exxon': 'XOM', 'xom': 'XOM', '埃克森': 'XOM',
   'chevron': 'CVX', 'cvx': 'CVX', '雪佛龙': 'CVX',
   'palantir': 'PLTR', 'pltr': 'PLTR',
@@ -713,6 +729,50 @@ async function fetchChinaMarketData() {
   return lines.length > 0 ? lines.join('\n') : null;
 }
 
+// ── US Market Detection & Multi-Index Query ──
+const US_MARKET_KEYWORDS = [
+  'us market', 'us stock', 'us stocks', 'us indices', 'us index',
+  'american market', 'american stocks',
+  'wall street', 'dow', 's&p', 'sp500', 'spx', 'spy',
+  'nasdaq', 'ndx', 'qqq', 'vix',
+  '美股', '美国股市', '美国股票', '华尔街', '美股大盘',
+  '美股行情', '美国指数', '美股指数', '美股走势',
+  '道琼斯', '道指', '标普500', '纳斯达克',
+  'how is the market', 'how\'s the market', 'market today', 'market update',
+  'market outlook', 'stock market', 'market overview',
+  '指数多少', 'now what', 'current market', 'market now',
+];
+
+function isUSMarketQuery(query) {
+  const q = query.toLowerCase();
+  // Check for US market keywords
+  if (US_MARKET_KEYWORDS.some(kw => q.includes(kw.toLowerCase()))) return true;
+  // Check for generic "market" queries in English (without China keyword)
+  if (/\b(market|stocks?|indices?)\b/i.test(q) && !isChinaMarketQuery(query)) return true;
+  return false;
+}
+
+async function fetchUSMarketData() {
+  // Fetch real-time data for key US indices in parallel
+  const indices = [
+    { symbol: '^GSPC', label: 'S&P 500 (SPX)' },
+    { symbol: '^DJI', label: 'Dow Jones (DJIA)' },
+    { symbol: '^IXIC', label: 'NASDAQ Composite' },
+    { symbol: '^VIX', label: 'VIX Fear Index' },
+  ];
+  const results = await Promise.all(indices.map(idx => _fetchYahooChart(idx.symbol)));
+  const lines = [];
+  for (let i = 0; i < indices.length; i++) {
+    if (results[i]) {
+      const d = results[i];
+      const dir = parseFloat(d.change) >= 0 ? '▲' : '▼';
+      const prefix = indices[i].symbol === '^VIX' ? '' : (parseFloat(d.change) >= 0 ? '🟢' : '🔴');
+      lines.push(`${prefix} ${indices[i].label}: ${d.price} ${d.currency} (${dir} ${d.changePct}%) | Market: ${d.marketState}`);
+    }
+  }
+  return lines.length > 0 ? lines.join('\n') : null;
+}
+
 async function fetchStockData(query) {
   // Fetch real-time stock data using multiple free APIs with CORS proxy fallback
   // v6: Smart ticker detection — case-insensitive, supports ANY stock code, auto-search
@@ -723,6 +783,8 @@ async function fetchStockData(query) {
   let symbol = null;
   for (const [keyword, sym] of Object.entries(STOCK_SYMBOLS)) {
     if (qLower.includes(keyword.toLowerCase())) {
+      // Skip special multi-index triggers (handled by isUSMarketQuery/isChinaMarketQuery)
+      if (sym === 'US_MARKET' || sym === 'CHINA_MARKET') continue;
       symbol = sym;
       break;
     }
@@ -844,8 +906,12 @@ YOUR EXPERTISE — China & Asian Markets:
 REAL-TIME DATA RULE (MOST IMPORTANT):
 - When LIVE MARKET DATA is provided below, you MUST use those exact numbers
 - NEVER quote index levels from your training data — they are OUTDATED
+- If you have real-time data for S&P 500 / Dow / NASDAQ / VIX, report those exact numbers
 - If you have real-time data for 上证/深证/恒生, report those exact numbers
-- If no real-time data is available for a Chinese stock, say "let me check the latest numbers" — do NOT guess
+- If no real-time data is available, say "let me check the latest numbers" — do NOT guess
+- When VIX is provided: above 25 = elevated fear, below 15 = complacency — always provide VIX context
+- When indices are down: mention key sectors driving the decline
+- When indices are up: mention what's leading the rally
 
 HOW YOU TALK:
 - Like a sharp analyst who respects the other person's intelligence
@@ -885,6 +951,25 @@ REAL-TIME DATA RULE (MOST IMPORTANT):
 - Quote each index with its exact number and direction
 - Add your analysis: what's driving the moves, what to watch
 - If market is closed/pre-market, mention it
+- Respond in the SAME LANGUAGE as the user's message (Chinese → Chinese, English → English)`;
+    }
+  }
+  
+  // Priority 2: US market query → fetch 4 major indices + VIX
+  if (!marketContext && isUSMarketQuery(userMessage)) {
+    const usData = await fetchUSMarketData();
+    if (usData) {
+      marketContext = `\n\n[LIVE US MARKET DATA — you MUST reference these numbers]:
+${usData}
+
+REAL-TIME DATA RULE (MOST IMPORTANT):
+- You MUST use these REAL-TIME index numbers — NEVER quote old/historical levels from your training data
+- Quote each index with its exact number and direction
+- Add your analysis: what's driving the moves, key sectors, Fed policy impact
+- If market is closed/pre-market, mention it
+- VIX above 25 = elevated fear; below 15 = complacency — always mention VIX context
+- If S&P 500 is down, mention which sectors are dragging; if up, what's leading
+- Give your CONVICTION: is this a buying opportunity or time to be cautious?
 - Respond in the SAME LANGUAGE as the user's message (Chinese → Chinese, English → English)`;
     }
   }
