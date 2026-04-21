@@ -1,6 +1,7 @@
 ﻿// ═══════════════════════════════════════════════════
-// BroadFSC Pro — App Logic v5 (HUMAN AI + Registration)
+// BroadFSC Pro — App Logic v6 (LOCAL-FIRST + Anti-Dodge)
 // Chat like a real person, not a chatbot
+// BUILD: 2026-04-21T21:50 — force cache bust
 // ═══════════════════════════════════════════════════
 
 // ── SOUL AI Knowledge Base ──
@@ -262,10 +263,10 @@ function isLowQualityResponse(question, response) {
     /how|分析|怎么看|行情|预测|走势|涨|跌|技术|fundamental|outlook|forecast|analysis|analyze|will.*go|should.*buy|should.*sell|what.*think|market.*do/i.test(q)
   );
 
-  if (isSubstantiveQuestion) {
-    for (const phrase of dodgePhrases) {
-      if (r.includes(phrase)) return true;
-    }
+  // Dodge detection: ALWAYS check for dodge phrases (not just substantive questions)
+  // because even "你好" getting "你能说得更具体些吗" is garbage
+  for (const phrase of dodgePhrases) {
+    if (r.includes(phrase)) return true;
   }
 
   // Too many questions in response = not answering
@@ -595,6 +596,35 @@ function getLocalResponse(input) {
   const q = input.toLowerCase().trim();
   const advisor = ADVISORS[currentAdvisor];
   const name = userName || '';
+  const isChineseInput = /[\u4e00-\u9fff]/.test(input);
+
+  // 0. GREETINGS FIRST — never send "你好" to AI
+  const greetRe = /hello|hi|hey|greetings|good morning|good evening|morning|afternoon|晚上好|早上好|下午好|你好|嗨|嗨嗨|早|早呀|在吗|在不在/i;
+  if (greetRe.test(q)) {
+    const hour = new Date().getHours();
+    if (isChineseInput) {
+      const timeGreet = hour < 6 ? '这么晚还没睡' : hour < 12 ? '早上好' : hour < 18 ? '下午好' : '晚上好';
+      if (name) return pick([`${timeGreet}，${name}！今天市场挺有意思的，看到什么了？`, `${name}，${timeGreet} 👋 刚看了下盘面，有啥想聊的？`]);
+      return pick([`${timeGreet} 👋 刚看了下盘面，今天A股和美股都有动作。`, `${timeGreet}！随便聊，啥都行。`, `嘿，${timeGreet}！NVDA和黄金今天都有意思。`]);
+    }
+    const timeWord = hour < 12 ? 'morning' : hour < 18 ? 'afternoon' : 'evening';
+    if (name) return pick([`Hey ${name}! Good ${timeWord}. Markets are moving today — what are you watching?`, `${name}! Good ${timeWord} 👋 Just checked the charts — anything catching your eye?`]);
+    return pick([`Hey! Good ${timeWord} 👋 Markets are interesting today — what's on your radar?`, `Hi there! Good ${timeWord}. Just looking at NVDA and gold — both making moves. You?`]);
+  }
+
+  // 0b. Casual chat — 吃饭/睡觉/无聊/算了/一样/垃圾 → local reply
+  const casualRe = /吃饭|吃了吗|吃没|吃了没|饿|午饭|晚饭|早餐|吃啥|吃什么|吃了什么|在干嘛|在做什么|在忙|干嘛呢|做什么呢|忙不|忙吗|闲吗|无聊|没事干|好闲|好无聊|闷|睡了吗|还没睡|睡不着|失眠|好困|困了|想睡|不睡了|熬夜|夜猫子|天气|好热|好冷|下雨|算了|一样|垃圾|谢谢|感谢|多谢|thanks|thank you/i;
+  if (casualRe.test(q)) {
+    const hour = new Date().getHours();
+    if (/吃|饿/.test(q)) {
+      const meal = hour < 10 ? '早饭' : hour < 14 ? '午饭' : hour < 20 ? '晚饭' : '夜宵';
+      return pick([`还没呢，盯盘的时候老忘吃饭 😂 你${meal}吃了没？`, `刚吃完！你呢，${meal}吃了没？`, `哈哈交易员最不缺的就是忘吃饭 😄 你${meal}吃了没？`]);
+    }
+    if (/睡|困|熬|失眠/.test(q)) return pick([`还没睡？我也经常熬夜看美股 😂 不过身体最重要。有什么想聊的？`, `交易员的通病——美股开盘不想睡 😄`]);
+    if (/无聊|闷|闲|干嘛/.test(q)) return pick([`无聊的话来看看盘呗，最近黄金和AI板块都挺活跃的。`, `在研究几个票的走势，刚好有点时间，你想聊什么？`]);
+    if (/谢|thank/i.test(q)) return pick([`不客气！有啥投资问题随时来聊。`, `没事，投资路上互相帮忙。`]);
+    return pick([`哈哈 😄 说到市场，最近NVDA和黄金都有点意思。`, `嗯嗯，有什么想聊的投资话题？`]);
+  }
 
   // 1. Check knowledge base (deep match first)
   let bestMatch = null;
@@ -665,56 +695,8 @@ function getLocalResponse(input) {
         `I've been exactly where you are. The key: never size up during a losing streak. Cut your size in half. Review whether you're following your plan or deviating. And take a day off if you need it — the market will still be there. You'll recover.`,
       ]);
     }},
-    { test: /hello|hi|hey|greetings|good morning|good evening|morning|afternoon|晚上好|早上好|下午好|你好|嗨|嗨嗨|早|早呀|在吗|在不在/i, resp: () => {
-      const hour = new Date().getHours();
-      const isChinese = /[\u4e00-\u9fff]/.test(input);
-      if (isChinese) {
-        const timeGreet = hour < 6 ? '这么晚还没睡' : hour < 12 ? '早上好' : hour < 18 ? '下午好' : '晚上好';
-        if (name) return pick([`${timeGreet}，${name}！今天市场挺有意思的，看到什么了？`, `${name}，${timeGreet} 👋 刚看了下盘面，有啥想聊的？`]);
-        return pick([`${timeGreet} 👋 刚看了下盘面，今天A股和美股都有动作。`, `${timeGreet}！随便聊，啥都行。`, `嘿，${timeGreet}！NVDA和黄金今天都有意思。`]);
-      }
-      const timeWord = hour < 12 ? 'morning' : hour < 18 ? 'afternoon' : 'evening';
-      if (name) return pick([`Hey ${name}! Good ${timeWord}. Markets are moving today — what are you watching?`, `${name}! Good ${timeWord} 👋 Just checked the charts — anything catching your eye?`]);
-      return pick([`Hey! Good ${timeWord} 👋 Markets are interesting today — what's on your radar?`, `Hi there! Good ${timeWord}. Just looking at NVDA and gold — both making moves. You?`]);
-    }},
-    // ── 日常闲聊/寒暄：像真人一样自然接话 ──
-    { test: /吃饭|吃了吗|吃没|吃了没|饿|午饭|晚饭|早餐|吃啥|吃什么|吃了什么/i, resp: () => {
-      const hour = new Date().getHours();
-      const meal = hour < 10 ? '早饭' : hour < 14 ? '午饭' : hour < 20 ? '晚饭' : '夜宵';
-      return pick([
-        `还没呢，盯盘的时候老忘吃饭 😂 你${meal}吃了没？对了，今天盘面有看吗？`,
-        `刚吃完！你呢，${meal}吃了没？说起来今天A股有点意思。`,
-        `哈哈交易员最不缺的就是忘吃饭 😄 你${meal}吃了没？`,
-        `吃过了！你呢？对了，今天NVDA和黄金都动了，你关注了没？`,
-      ]);
-    }},
-    { test: /在干嘛|在做什么|在忙|干嘛呢|做什么呢|忙不|忙吗|闲吗|无聊|没事干|好闲|好无聊|闷/i, resp: () => {
-      return pick([
-        `刚看完盘，今天A股和美股都有点动作。你呢，在看什么？`,
-        `在看K线呢，NVDA今天有点意思。你无聊的话，不如聊两句市场？`,
-        `无聊的话来看看盘呗，最近黄金和AI板块都挺活跃的。`,
-        `在研究几个票的走势，刚好有点时间，你想聊什么？`,
-      ]);
-    }},
-    { test: /睡了吗|还没睡|睡不着|失眠|好困|困了|想睡|不睡了|熬夜|夜猫子/i, resp: () => {
-      const hour = new Date().getHours();
-      if (hour < 6 || hour > 23) return pick([
-        `还没睡？我也经常熬夜看美股 😂 不过身体最重要。有什么想聊的？`,
-        `交易员的通病——美股开盘不想睡 😄 今晚美股有什么动作你知道吗？`,
-        `睡不着？来聊聊市场吧，刚好美股还在交易。`,
-      ]);
-      return pick([
-        `现在还没到睡觉时间吧 😄 有什么想聊的？`,
-        `不困的话来聊聊市场？最近行情挺有意思的。`,
-      ]);
-    }},
-    { test: /天气|好热|好冷|下雨|晴天|阴天|刮风|台风|暴雨/i, resp: () => {
-      return pick([
-        `哈哈天气确实影响心情，但市场不管这些 😄 今天盘面看了吗？`,
-        `这天气让人只想待家里——正好看看盘 😂 有什么想聊的？`,
-        `天气不好就更应该研究研究投资了，反正出不了门 😄`,
-      ]);
-    }},
+    // ── Greetings and casual chat moved to Step 0 (before knowledge base) ──
+    // (吃饭/睡觉/无聊/天气/算了/谢谢/一样/垃圾 etc. — all handled in Step 0b above)
     { test: /还行|还可以|一般|马马虎虎|凑合|差不多|就这样|不好不坏|还过得去/i, resp: () => {
       return pick([
         `嗯，有时候平平淡淡也挺好。市场方面有什么想聊的吗？`,
