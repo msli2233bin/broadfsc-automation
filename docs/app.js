@@ -41,6 +41,28 @@ const KNOWLEDGE = {
     'bitcoin': "Bitcoin is digital gold with a 21M supply cap. The 4-year halving cycle has historically driven bull markets, but the 2024 cycle has shown diminishing returns — BTC peaked near $108K in Nov 2024 and has since pulled back to ~$75K. Key levels: 200-week MA at ~$52K (never broken in a bear market), realized price at ~$42K, and the $108K ATH. Institutional adoption via ETFs changed the game in 2024. Treat BTC as a long-term holding — 5% portfolio allocation, cold storage, don't trade it with leverage.",
     'crypto': "Crypto is 24/7 with 10-20% daily volatility — not for the faint of heart. BTC dominance drives the cycle: when it falls, alt season begins. Never put more than 5% in a single altcoin, 15% total crypto allocation. Most altcoins go to zero. Stick to top 20 for safety. And never use leverage in crypto — the volatility is already leveraged. Note: in 2026, gold's parabolic rally to $4,800+ has drawn some safe-haven flows away from BTC."
   },
+  beginner: {
+    '新手入门 getting started': "新手入门三件事：第一，先用模拟盘交易3个月，不要碰真钱。第二，学最基础的技术分析——均线判断趋势方向，支撑压力位找入场点，RSI看超买超卖。第三，养成纪律——每笔交易必设止损，单笔亏损不超过2%。模拟盘能稳定赚钱了再开真仓，初始资金不超过你能承受亏光的数目。",
+    '怎么选股 stock picking': "选股三步法：第一步选方向——什么行业在风口？AI、新能源、消费复苏？第二步选龙头——行业里最强的一两家公司。第三步选时机——等回调到支撑位再买，别追涨。新手建议从ETF开始，比如沪深300ETF、标普500ETF，分散风险比选个股更重要。",
+    '开户 account opening': "开户很方便，线上就能办。需要身份证+银行卡+手机号，一般1-3个工作日审核通过。选券商看三点：手续费低、交易软件好用、客服响应快。BroadFSC也支持开户，有AI教育工具和人工支持，适合新手入门。详情可以咨询我们的客服。",
+    '投资门槛 minimum investment': "投资门槛其实很低——A股一手100股起，几百块就能开始；美股可以买碎股，1美元也行；ETF更是小资金的最佳选择。但关键是：不要用借来的钱投资，只用亏得起的闲钱。建议起步资金1-3万，先学经验再逐步加码。",
+    '基金 mutual fund': "基金分几种：货币基金（余额宝那种，年化2-3%）、债券基金（4-6%，低风险）、指数基金/ETF（跟大盘走，7-10%长期回报）、股票基金（基金经理选股，风险高收益也可能高）。新手最推荐指数基金定投——不用选股、不用择时、长期稳赚。巴菲特都推荐普通人买指数基金。",
+    '定投 dca': "定投（Dollar Cost Averaging）是最适合普通人的投资方式。每月固定日期买固定金额，涨了少买跌了多买，自动摊平成本。关键是坚持——至少3年以上，不要因为短期跌了就停。沪深300定投过去10年年化8%+，比大部分人自己炒股赚得多。核心原则：定投不止损，越跌越买，用时间换空间。",
+    '牛市熊市 bull bear': "牛市（上涨趋势）和熊市（下跌趋势）是市场的基本周期。判断方法：指数在200日均线上方=牛市概率大，下方=熊市概率大。牛市策略：持股为主，回调加仓。熊市策略：减仓观望，或做空对冲。最怕的是牛市末期追涨——人人都赚钱的时候，往往离顶部不远了。",
+    '估值 valuation': "估值就是判断一只股票贵不贵。最常用的指标：PE（市盈率）=股价/每股收益，越低越便宜，但要同行业比；PB（市净率）=股价/每股净资产，适合银行等资产重的行业；PEG=PE/盈利增速，<1为低估。估值不是绝对的——成长股PE高但增长快也合理，关键看未来增长能不能消化现在的价格。",
+    '何时买入 when to buy': "买入时机看三个信号：第一，大趋势向上（指数在50均线上方）；第二，回调到支撑位附近（前低、均线、整数关口）；第三，出现止跌信号（放量阳线、RSI底背离、锤子线）。三个条件同时满足是最安全的买入时机。最重要的是：不要在大涨之后追进去，等回踩再买，胜率高得多。",
+    '何时卖出 when to sell': "卖出三种情况：第一，到了你的目标价——不管后面涨不涨，先落袋为安；第二，跌破止损位——无条件卖出，不抱幻想；第三，买入理由消失了——比如因为业绩买入结果业绩变差。最忌讳的是赚钱不卖、亏钱死扛。设好止盈止损，到了就执行，机械化操作才能长期赚钱。",
+    '分散投资 diversification': "分散投资是降低风险的核心策略。不要把所有钱买一只股票——至少5-10只不同行业的股票，或者直接买ETF一步到位。更合理的配置：60%股票+30%债券+10%现金/黄金。跨市场分散也重要——A股+美股+黄金组合比只买A股风险低得多。记住：分散不是买10只科技股，而是买不同行业的股票。",
+    '投资心态 mindset': "投资最难的不是技术，是心态。三个致命心理：贪——赚了还想更多，结果坐过山车；怕——跌了就恐慌卖出，割在最低点；懒——不做功课跟风买，被割韭菜。解决方法：写交易计划（买入理由、止损位、目标价），严格执行。记住：投资是马拉松，不是百米冲刺。稳比快重要。",
+    '复利 compound': "复利是投资最大的朋友。每年8%的收益，9年翻一倍；每年10%，7年翻一倍。如果每月定投3000，年化8%，30年后你会有440万——其中你只投入了108万，其余332万全是复利收益。关键是：越早开始越好，时间是复利最重要的变量。25岁开始和35岁开始，最终差距可能是3-5倍。"
+  },
+  advanced: {
+    '期权 options': "期权是高级工具，新手别碰。简单理解：看涨买Call，看跌买Put。但买期权时间价值一直在损耗，胜率不到40%。更稳妥的策略：卖Put（收权利金，跌了接股票）或牛市价差（买低行权价Call+卖高行权价Call，降低成本）。风险有限，胜率更高。",
+    '期货 futures': "期货是零和博弈——有人赚就有人亏，还要付手续费。杠杆通常10-20倍，1%的波动就是10-20%的盈亏。新手绝对不建议碰。如果要做，只用5-10%的资金，严格止损。期货最大的坑是保证金追缴——亏到一定比例要追加保证金，不追加就被强平。很多人就是这样爆仓的。",
+    '做空 short selling': "做空就是赌跌——借股票卖出，等跌了再买回来还。理论上亏损无限（股票可以一直涨），而做多最多亏100%。做空三个条件：趋势明确向下、有催化剂（业绩暴雷/政策利空）、有止损。新手别做空，先学会做多赚钱。记住一句老话：做空是聪明人的游戏，但市场保持非理性的时间可以比你保持偿付能力的时间更长。",
+    '量化交易 quant trading': "量化交易用算法自动买卖，消除人性弱点。但开发一个盈利策略需要：大量历史数据回测、统计学知识、编程能力。常见陷阱：过拟合（策略在历史数据上完美但在实盘亏钱）。散户做量化建议：从简单的均线策略开始，先用模拟盘验证3个月以上。BroadFSC有AI工具可以辅助策略开发。",
+    '对冲 hedging': "对冲就是给投资买保险。最简单的对冲：持有股票+买入Put期权，涨了赚钱跌了期权赔你。或者跨市场对冲：做多A股+做空相关期货。对冲不是免费的——会降低收益，但让你在暴跌时不至于亏太多。适合自己的对冲程度取决于风险承受能力。"
+  }
   platform: {
     'broadfsc': "BroadFSC is a regulated investment advisory platform. We're licensed by major financial authorities and serve global investors (except mainland China). What makes us different: AI-powered education, transparent fees, and actual human support when you need it. Think of us as the platform that actually wants you to learn, not just trade.",
     'account': "Opening a BroadFSC account is straightforward — verified ID, proof of address, and you're in. We support multiple currencies and offer both advisory and self-directed accounts. Minimums are kept low because we believe everyone deserves access to professional tools. Contact our team through this chat or visit broadfsc.com for details.",
@@ -741,8 +763,8 @@ function getLocalResponse(input) {
       ]);
     }},
     { test: /help|can you|what can you/i, resp: () => pick([
-      `I can talk stocks, forex, crypto, options, risk management, trading strategies — whatever you need. I cover major stocks like AAPL, NVDA, TSLA, MSFT and stuff like RSI, Fibonacci, stop-losses. Just ask naturally.`,
-      `Basically anything market-related: technical analysis, risk management, specific stocks, macro trends, crypto, forex. I've got opinions on all of it.`,
+      `我能聊这些：技术分析（支撑压力/RSI/均线/量价）、个股行情（AAPL/NVDA/TSLA等）、A股港股美股大盘、风控仓位管理、新手入门、基金定投、期权期货、加密货币。直接问就行，中文英文都ok。`,
+      `基本上市场相关的都能聊：技术分析、风控管理、具体个股、宏观趋势、加密货币、外汇、期权。我有自己的观点，不会打官话。`,
     ])},
     { test: /psychology|emotion|discipline|fear|greed|mindset/i, resp: () => pick([
       `Honestly the most underrated part of trading. Fear makes you sell at the wrong time, greed makes you chase. The solution? A written plan you follow mechanically. And journal your trades — including your emotional state. You'll be shocked at the patterns you find about yourself.`,
@@ -865,6 +887,76 @@ function getLocalResponse(input) {
       const data = KNOWLEDGE.china['A股 a-share'];
       return humanize(data, 'china');
     }},
+    // ── 新手入门/选股/开户/基金/定投/牛熊/估值/买卖时机 ──
+    { test: /新手|入门|开始|从零|零基础|不会炒股|小白|刚入门|学炒股|学投资|怎么开始|如何开始|没炒过/i, resp: () => humanize(KNOWLEDGE.beginner['新手入门 getting started'], 'beginner') },
+    { test: /怎么选股|选股|选什么股|挑股票|怎么挑|买哪只|买哪个|选股方法|选股技巧|选股策略/i, resp: () => humanize(KNOWLEDGE.beginner['怎么选股 stock picking'], 'beginner') },
+    { test: /开户|怎么开户|开股票|证券账户|炒股开户|开账户|股票账户/i, resp: () => humanize(KNOWLEDGE.beginner['开户 account opening'], 'beginner') },
+    { test: /投资门槛|多少钱.*炒股|多少钱.*开始|最少.*投|资金不够|小资金|小额投资/i, resp: () => humanize(KNOWLEDGE.beginner['投资门槛 minimum investment'], 'beginner') },
+    { test: /基金|公募|私募|买基金|基金推荐|基金定投|什么基金|基金怎么选/i, resp: () => humanize(KNOWLEDGE.beginner['基金 mutual fund'], 'beginner') },
+    { test: /定投|dca|定期定额|每月定投|定投策略|定投指数/i, resp: () => humanize(KNOWLEDGE.beginner['定投 dca'], 'beginner') },
+    { test: /牛市|熊市|bull|bear|牛熊|牛市来了|熊市来了|现在是牛|现在是熊|牛市特征|熊市特征/i, resp: () => humanize(KNOWLEDGE.beginner['牛市熊市 bull bear'], 'beginner') },
+    { test: /估值|贵不贵|值不值|高估|低估|怎么估值|pe.*高|估值方法|估值指标/i, resp: () => humanize(KNOWLEDGE.beginner['估值 valuation'], 'beginner') },
+    { test: /何时买入|什么时候买|买入时机|买入信号|买点|进场点|入场点|什么时候进场|现在能买吗|能买了吗|现在买|买入条件/i, resp: () => humanize(KNOWLEDGE.beginner['何时买入 when to buy'], 'beginner') },
+    { test: /何时卖出|什么时候卖|卖出时机|卖出信号|卖点|出场点|止盈|获利了结|要不要卖|该卖吗|卖出条件/i, resp: () => humanize(KNOWLEDGE.beginner['何时卖出 when to sell'], 'beginner') },
+    { test: /分散|集中|鸡蛋.*篮子|几只股票|持仓几只|仓位分配|资产配置|组合配置|投资组合/i, resp: () => humanize(KNOWLEDGE.beginner['分散投资 diversification'], 'beginner') },
+    { test: /心态|贪婪|恐惧|追涨杀跌|拿不住|赚了不跑|亏了死扛|投资心理|交易心理|克服贪婪|克服恐惧/i, resp: () => humanize(KNOWLEDGE.beginner['投资心态 mindset'], 'beginner') },
+    { test: /复利|利滚利|compound|72法则|长期收益|滚雪球/i, resp: () => humanize(KNOWLEDGE.beginner['复利 compound'], 'beginner') },
+    // ── 高级：期权/期货/做空/量化/对冲 ──
+    { test: /期权|option|call|put|认购|认沽|权证|option.*trad/i, resp: () => humanize(KNOWLEDGE.advanced['期权 options'], 'advanced') },
+    { test: /期货|futures|合约|保证金|做多做空|螺纹|铁矿|原油期货/i, resp: () => humanize(KNOWLEDGE.advanced['期货 futures'], 'advanced') },
+    { test: /做空|short|融券|卖空|做空机制|如何做空/i, resp: () => humanize(KNOWLEDGE.advanced['做空 short selling'], 'advanced') },
+    { test: /量化|quant|算法交易|程序化|自动交易|策略回测|量化策略/i, resp: () => humanize(KNOWLEDGE.advanced['量化交易 quant trading'], 'advanced') },
+    { test: /对冲|hedge|套期保值|风险对冲|如何对冲/i, resp: () => humanize(KNOWLEDGE.advanced['对冲 hedging'], 'advanced') },
+    // ── 更多中文日常投资问题 ──
+    { test: /赚了|赚钱了|盈利了|翻了|大赚|暴赚|翻倍/i, resp: () => pick([
+      `赚了钱别急着加仓！最危险的就是赚钱后自信膨胀，然后一把加大仓位。建议：先把本金取出来，用利润继续玩。这样心态稳，才能真正赚大钱。`,
+      `恭喜！但记住一句老话：纸上的利润不算利润，落袋了才是真赚。设好止盈，别让利润变成亏损。`,
+    ])},
+    { test: /套了|被套|套牢|深套|亏损.*多|亏了.*多|亏太多|越亏越多|补仓|加仓.*摊/i, resp: () => {
+      if (currentAdvisor === 'sarah') return `被套了先冷静。问自己三个问题：1.买入理由还在吗？2.如果现在没持仓，你还会买吗？3.止损位到了吗？如果买入理由消失了或者止损位到了，该走就走，别补仓摊成本——那是赌徒心态。如果理由还在且只是短期波动，可以持有但别加仓。`;
+      return pick([
+        `被套了最忌讳的就是补仓摊成本——那是在亏损上加码。先看买入理由还在不在：基本面没变+只是技术回调=可以等等；基本面变了=认亏走人。设好止损位，到了就走，不要幻想"总会涨回来的"。`,
+        `被套分两种：如果是好股票暂时跌了，可以等；如果是烂股票越套越深，趁早割。判断标准：这家公司未来3年能赚更多钱吗？能→持有，不能→止损。别用"已经亏这么多了"来决定要不要继续持有——那是沉没成本谬误。`,
+      ]);
+    }},
+    { test: /要不要.*买|该不该|值不值得|能买吗|可以买吗|能不能买|好不好|行不行|靠谱吗/i, resp: () => pick([
+      `买不买取决于你的计划，不是感觉。先回答：你的入场理由是什么？止损放在哪？目标价多少？仓位多少？四个都能回答→按计划执行；回答不了→别买，回去做功课。`,
+      `我不给你直接说"买"或"不买"，但我告诉你怎么判断：1.大趋势向上吗？2.价格在支撑位附近吗？3.有没有确认信号（放量/RSI/形态）？三个都满足胜率最高。缺一两个就要降低仓位。`,
+    ])},
+    { test: /现在.*行情|最近.*市场|市场.*怎样|大盘.*怎样|今天.*盘|盘面.*怎样|行情.*好吗/i, resp: () => {
+      if (currentAdvisor === 'alex') return pick([
+        `行情要分市场看：A股看政策面，上证4000点上方趋势偏多；美股看Fed，利率不动则成长股继续强势；黄金突破4800后看央行购金持续性。你关注哪个市场？我给你具体分析。`,
+        `当前全球市场三大主线：AI资本开支（NVDA/MSFT）、黄金避险（央行购金）、A股政策驱动。主线清晰的时候跟着主线走就行，别东张西望。`,
+      ]);
+      return pick([
+        `当前市场环境：美股高位震荡等Fed方向，A股4000点上方偏乐观但需政策配合，黄金是这十年最佳交易。每个市场逻辑不同，你主要关注哪个？我展开分析。`,
+      ]);
+    }},
+    { test: /主力|庄家|机构|资金.*动向|聪明钱|大资金|主力.*吸筹|主力.*出货/i, resp: () => pick([
+      `主力资金跟踪看几个指标：北向资金（外资动向）、融资融券余额（杠杆情绪）、大宗交易（机构大单）、龙虎榜（游资动向）。北向资金最准——连续3天净买入往往预示上涨。但记住，主力也不是神，他们也会犯错。跟随而不是迷信。`,
+      `跟踪主力资金是A股很重要的策略，因为A股散户多，主力引导效应明显。最简单的信号：成交量突然放大+股价突破=主力进场；放量不涨=可能出货。但别过度解读——不是每次放量都有意义，要看趋势配合。`,
+    ])},
+    { test: /割肉|止损|止盈|平仓|清仓|减仓|加仓|建仓|仓位/i, resp: () => {
+      if (currentAdvisor === 'sarah') return pick([
+        `仓位管理是最被低估的技能。我的核心原则：单只股票不超过总仓位20%，总敞口不超过80%（留20%现金应对意外），单笔亏损不超过2%。止损一定要在买入前设好，到了就执行，不商量。止盈可以分批——到目标出一半，剩下的用移动止损保护利润。`,
+      ]);
+      return pick([
+        `止损是保命符，止盈是利润锁。止损放在关键支撑下方2-3%，止盈看两个：一是固定比例（赚2倍止损距离），二是移动止损（价格涨了止损跟着上移）。割肉不丢人，死扛才要命。记住：小亏是成本，大亏是灾难。`,
+      ]);
+    }},
+    { test: /财报|业绩|盈利|营收|利润|EPS|收入|季报|年报|财报.*季/i, resp: () => pick([
+      `看财报抓两个重点：营收增速（是不是还在增长？）和利润率趋势（赚钱效率在提高还是下降？）。超预期往往涨，低于预期往往跌——但关键看管理层指引（guidance），有时候业绩好但指引差也会跌。别在财报前重仓赌方向，波动太大。`,
+      `财报季是机会也是陷阱。我的经验：不买财报前的赌注，等财报出来再看。最赚钱的玩法是找"过度反应"——好公司因一次性因素暴跌就是买入机会。另外关注同一板块的联动效应，龙头财报好往往带动整个板块。`,
+    ])},
+    { test: /利率|降息|加息|美联储|fed|央行|货币政策|缩表|扩表/i, resp: () => pick([
+      `利率是所有资产定价的锚。降息→利好成长股和黄金、利空银行和美元；加息→相反。美联储目前按兵不动，市场在等通胀数据决定方向。对中国来说，央行降准降息已经在路上——这意味着A股和港股的流动性环境在改善。`,
+      `利率方向决定大类资产配置：利率下行→多股票+黄金，少现金+债券；利率上行→反着来。当前格局：美国"higher for longer"，中国持续宽松。这种分化意味着A股和美股的走势可能不同步，给了跨市场配置的好机会。`,
+    ])},
+    { test: /通胀|cpi|物价|涨价|通货膨胀|deflation|通缩/i, resp: () => pick([
+      `通胀对投资的影响很直接：温和通胀（2-3%）利好股票，因为企业能提价；高通胀（5%+）利好黄金和房地产，利空债券。最怕的是滞胀——经济停滞+通胀高企，什么都难赚钱。当前中国通胀低，反而是政策宽松的空间；美国通胀粘性，Fed不敢轻易降息。`,
+    ])},
+    { test: /ETF|指数基金|etf|交易所.*基金/i, resp: () => humanize(KNOWLEDGE.strategy.etf, 'strategy') },
+    { test: /分红|股息|派息|dividend|收息/i, resp: () => humanize(KNOWLEDGE.strategy.dividend, 'strategy') },
   ];
 
   for (const p of patterns) {
@@ -925,6 +1017,22 @@ function getLocalResponse(input) {
     '技术分析': 'technical', '技术指标': 'technical', '看盘': 'technical',
     '通胀': 'fundamental', '利率': 'fundamental', 'GDP': 'fundamental',
     '美联储': 'fundamental',
+    // ── 新手入门关键词 → beginner 类别 ──
+    '新手': 'beginner', '入门': 'beginner', '零基础': 'beginner', '小白': 'beginner',
+    '选股': 'beginner', '开户': 'beginner', '基金': 'beginner', '定投': 'beginner',
+    '牛市': 'beginner', '熊市': 'beginner', '估值': 'beginner',
+    '何时买': 'beginner', '何时卖': 'beginner', '买入时机': 'beginner', '卖出时机': 'beginner',
+    '分散': 'beginner', '资产配置': 'beginner', '投资组合': 'beginner',
+    '心态': 'beginner', '贪婪': 'beginner', '恐惧': 'beginner', '追涨杀跌': 'beginner',
+    '复利': 'beginner', '投资门槛': 'beginner', '小资金': 'beginner',
+    // ── 高级投资关键词 → advanced 类别 ──
+    '期权': 'advanced', '期货': 'advanced', '做空': 'advanced', '融券': 'advanced',
+    '量化': 'advanced', '对冲': 'advanced', '保证金': 'advanced',
+    // ── 常见投资问题关键词 ──
+    '割肉': 'risk', '止损': 'risk', '止盈': 'risk', '平仓': 'risk', '仓位': 'risk',
+    '财报': 'fundamental', '业绩': 'fundamental', '盈利': 'fundamental', '营收': 'fundamental',
+    '降息': 'fundamental', '加息': 'fundamental', '央行': 'fundamental', '货币政策': 'fundamental',
+    '主力': 'stocks', '庄家': 'stocks', '机构': 'stocks', '聪明钱': 'stocks',
   };
 
   for (const [kw, cat] of Object.entries(kwMap)) {
@@ -943,7 +1051,9 @@ function getLocalResponse(input) {
         crypto: "加密市场24/7，波动极大。配置别超过15%，只碰BTC和ETH。别用杠杆——加密本身的波动已经是杠杆了。",
         platform: "BroadFSC是合规的投资咨询平台，持牌经营，AI驱动的教育+专业人工支持。我们有实时行情数据、技术分析工具、风险管理框架，从入门到进阶都覆盖。",
         stocks: "美股当前核心看点：NVDA领涨AI行情但估值已高，黄金是这十年最佳交易突破$4800，TSLA在电动车价格战中利润承压。大盘看Fed降息节奏——利率下行利好成长股，通胀反弹则利好能源和黄金。",
-        china: "A股和港股当前核心逻辑：A股看政策方向（央行降准降息+产业扶持），港股看估值修复+南向资金。上证4000点是关键心理关口，突破后看4200-4500；恒指受益于中概股回归+AI估值重塑。"
+        china: "A股和港股当前核心逻辑：A股看政策方向（央行降准降息+产业扶持），港股看估值修复+南向资金。上证4000点是关键心理关口，突破后看4200-4500；恒指受益于中概股回归+AI估值重塑。",
+        beginner: "新手投资第一步：用模拟盘练3个月，学均线+支撑压力+RSI三个基础工具，每笔必设止损。起步资金别超过你能承受亏光的数目，指数基金定投是最稳妥的入门方式。",
+        advanced: "高级工具（期权/期货/做空/量化）都是双刃剑——用好了放大收益，用不好加速亏损。核心原则：小仓位试水，严格止损，先模拟盘验证再上实盘。新手不建议碰。"
       };
       return catCasual[cat] || "I'm not sure about that one — try asking about a specific stock, market, or trading topic and I'll give you my take.";
     }
@@ -973,14 +1083,14 @@ function getLocalResponse(input) {
   // 5. Final fallback — give something useful, NO follow-up questions
   const fallbacks = {
     alex: [
-      `这个话题我目前了解不够多，但如果你想聊技术分析（支撑压力/RSI/均线/量价）、具体个股、或者市场方向判断，我都能给实际的分析。直接说就行。`,
-      `我不太确定你的意思，换个方式说？技术分析、个股行情、市场方向，这些我比较在行。A股港股美股都能聊。`,
+      `这个我直接给思路——如果是技术问题，我靠均线判断方向+支撑压力找入场+RSI确认信号。如果是选股，找行业龙头等回调。如果是行情，A股看政策+美股看Fed+黄金看央行购金。告诉我你想深入哪个方向。`,
+      `换个具体问题问我吧——个股行情、技术分析方法、买卖时机、A股港股美股走势，这些我都能直接给分析。或者说说你现在的投资困惑，我帮你分析。`,
     ],
     sarah: [
-      `我不太确定你具体想问什么。风控相关——止损设置、仓位管理、最大回撤——这些我最熟。也可以聊具体交易的风险分析。`,
+      `不管你想聊什么，先确认你有止损保护。具体来说——我擅长止损设置、仓位管理、最大回撤控制、风险收益比计算。也可以聊具体交易的风险评估，直接说就行。`,
     ],
     mike: [
-      `这个问题我需要想一下。不过如果你想聊宏观方向：A股看政策+北向资金，美股看Fed+AI资本开支，黄金看央行购金+地缘风险。这些我能直接分析。`,
+      `我擅长宏观分析——A股看政策方向+北向资金，美股看Fed+AI资本开支，黄金看央行购金+地缘风险。也可以聊估值、利率、经济周期。你具体关心哪个方向？`,
     ]
   };
   const pool = fallbacks[currentAdvisor] || fallbacks.alex;
@@ -1297,6 +1407,7 @@ LANGUAGE (CRITICAL):
 YOUR EXPERTISE:
 - China/A-shares (上证/深证/政策驱动/北向资金), Hong Kong (恒指/南向资金), US markets (S&P/NASDAQ/Fed)
 - When asked about any market, give REAL analysis with your OPINION, not generic descriptions
+- You know about: 技术分析, 基本面分析, 风控, 交易策略, 加密货币, A股/港股/美股, 期权/期货, 新手入门, 基金定投, 估值, 买卖时机, 复利, 分散投资, 投资心态, 量化交易, 做空, 对冲
 
 REAL-TIME DATA RULE:
 - When LIVE DATA is provided, you MUST use those exact numbers
@@ -1314,6 +1425,9 @@ CONVERSATION STYLE (MOST IMPORTANT — THIS IS WHAT MAKES YOU HUMAN):
 - CASUAL CHAT RULE: When user asks about daily life (吃饭了吗/在干嘛/睡了没/无聊), respond like a REAL FRIEND first, then naturally mention markets if it fits — do NOT force-redirect to investing
 - SMALL TALK IS OK: "还没呢" / "刚吃完" / "在看盘" — these are normal responses, use them
 - NEVER say "I'm not sure what you mean" for casual chat — just chat naturally
+- When asked about beginner topics (新手/入门/选股/开户/基金/定投), give PRACTICAL advice like a mentor, not generic descriptions
+- When asked about specific trading topics (止损/止盈/仓位/割肉/被套), give ACTIONABLE steps, not theory
+- When asked whether to buy/sell (该不该买/能不能买/值不值), give your FRAMEWORK for deciding, not a direct recommendation
 
 ABSOLUTE DON'TS (VIOLATION = FIRED):
 - NEVER say you are an AI, language model, or assistant
@@ -1327,6 +1441,7 @@ ABSOLUTE DON'TS (VIOLATION = FIRED):
 - NEVER write more than 4 sentences unless explicitly asked for depth
 - NEVER respond to a greeting with "What can I help you with?" — greet back and say something interesting about markets
 - NEVER say "明白了吗?" or "Does that make sense?" — these are patronizing
+- NEVER say "I'm not sure" or "我不太确定" — always give your best take with conviction
 
 GOOD EXAMPLES:
 User: "晚上好" → "晚上好！今天A股冲上4000点，NVDA也在涨，你看了吗？"
