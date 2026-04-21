@@ -94,6 +94,8 @@ const KNOWLEDGE = {
     'marathon petroleum mpc': "Marathon Petroleum (MPC) is the largest US independent refiner with 16 refineries and ~3M barrels/day capacity. Key thesis: (1) US refining margins remain strong due to limited new capacity — no major refineries built in 40+ years. (2) Midstream business (MPLX) provides steady cash flow via pipeline and logistics. (3) Aggressive capital return — $5B+ buyback + growing dividend. (4) Crack spreads (the difference between crude and product prices) are MPC's primary driver — when gasoline/diesel demand is strong, MPC prints money. Risks: Energy transition reducing long-term fuel demand, regulatory pressure on emissions, and crack spread compression in recession. Valuation: typically 6-9x earnings — cheap for a reason (cyclical). Best play: buy when crack spreads are depressed and sentiment is bearish, sell when everyone loves energy. Currently benefiting from strong US fuel exports and limited global refining capacity.",
     'exxonmobil xom': "ExxonMobil (XOM) is the largest Western oil major with integrated operations across upstream, downstream, and chemicals. Key thesis: (1) Pioneer Natural Resources acquisition doubled Permian Basin position — now the #1 producer. (2) Guyana discoveries (Stabroek Block) are a generational asset with 11B+ barrels of recoverable reserves. (3) Dividend Aristocrat — 40+ consecutive years of increases. (4) Low break-even costs (~$35-40/barrel) protect profits even in oil downturns. Risks: Energy transition, climate litigation, OPEC+ production decisions. Valuation: 10-13x earnings, ~4% dividend yield. Treat as a defensive income stock with upside from oil price spikes.",
     'chevron cvx': "Chevron (CVX) is the #2 US oil major with a cleaner balance sheet than most peers. Key thesis: (1) Permian Basin growth — targeting 1M boe/day by 2027. (2) Hess acquisition adds Guyana assets alongside Exxon. (3) Strong cash generation at $70+ oil — returns $15-20B annually to shareholders. (4) Payout ratio below 50% — dividend is rock-solid. Risks: Guyana acquisition uncertainty (arbitration with Exxon), energy transition, oil price volatility. Buy below $150 for a 4.5%+ yield with growth optionality.",
+    'oil sector 石油板块': "美国石油板块投资框架：核心驱动是WTI原油价格——油价高于$70，大部分石油股盈利丰厚；低于$50，很多公司亏损。投资分三档：低风险选综合石油巨头(XOM/CVX)——分红稳+抗周期+低盈亏平衡点；中风险选勘探开采商(COP/EOG)——油价涨时弹性最大，跌时也最受伤；高风险选油田服务(SLB/HAL)——周期性极强，需要精准择时。关键指标：裂解价差(crack spread)影响炼油股(MPC/VLO)，钻机数量影响油服股。板块ETF: XLE。风险：能源转型长期压制估值、OPEC+政策突变、经济衰退打击需求。2026年看点：OPEC+减产延续+美国页岩油产量见顶+地缘风险溢价。",
+    'energy sector 能源板块': "美国能源板块不仅仅是石油——还包括天然气、炼油、油服、管道中游。投资逻辑：上游(勘探开采)跟着油价走，弹性最大；中游(管道/储运)像收费公路，现金流稳定；下游(炼油/化工)看裂解价差；油服(设备/服务)跟着钻机活动量走。当前环境：美国炼油产能40年没增(环保审批卡死)，供需偏紧利好炼油股；天然气出口终端(LNG)是新增量；碳捕捉/氢能是长期故事。核心ETF: XLE(综合), XOP(上游), OIH(油服), AMLP(中游管道)。",
     'palantir pltr': "Palantir (PLTR) is the most controversial AI stock — a $100B+ company with $2.5B revenue. Bull case: (1) AIP (AI Platform) is driving explosive commercial revenue growth (50%+ YoY). (2) Government contracts are sticky — once integrated, nearly impossible to replace. (3) Alex Karp is building an 'AI operating system for Western institutions.' Bear case: (1) Valuation at 35-40x SALES is extreme. (2) Stock-based compensation is massive (~20% of revenue). (3) Government revenue growth slowing to single digits. (4) Insider selling has been relentless. This is a high-conviction, high-risk bet. Position size max 2-3%. Buy on 20%+ pullbacks, sell into strength.",
     'amd': "AMD is NVIDIA's only serious competitor in AI chips. MI300X is competitive with H100 for inference workloads. Key thesis: (1) Server CPU market share gaining on Intel — now ~25%+. (2) AI GPU revenue growing 100%+ but from a small base. (3) Lisa Su is one of the best CEOs in tech. Risks: Still far behind NVIDIA in AI software ecosystem (ROCm vs CUDA), Intel's turnaround attempt could compress CPU margins, and AI chip market may not support two $100B+ players. Valuation at 25-30x earnings is reasonable if AI revenue accelerates. Buy the 50 SMA, but don't expect NVIDIA-level upside.",
     'coca cola ko': "Coca-Cola (KO) is Warren Buffett's longest-held stock for good reason. (1) Pricing power — people pay 2-3x for the brand over generic cola. (2) Global distribution in 200+ countries. (3) Dividend King — 60+ consecutive years of increases. (4) recession-resistant — people still buy Coke when money is tight. The stock won't make you rich fast, but it's one of the safest 3-4% yields in the market with 5-7% annual dividend growth. Ideal for income portfolios and conservative investors.",
@@ -1021,7 +1023,9 @@ function getLocalResponse(input) {
     '苹果': 'stocks', '英伟达': 'stocks', '特斯拉': 'stocks', '微软': 'stocks',
     '亚马逊': 'stocks', '谷歌': 'stocks', '脸书': 'stocks', '巴菲特': 'stocks',
     '黄金': 'stocks', '台积电': 'stocks', '摩根': 'stocks',
-    '原油': 'stocks', '石油': 'stocks', '股票': 'stocks',
+    '原油': 'stocks', '石油': 'stocks', '股票': 'stocks', '石油股': 'stocks', '油气': 'stocks',
+    '科技股': 'stocks', '金融股': 'stocks', '军工股': 'stocks', '医药股': 'stocks',
+    '新能源股': 'stocks', '零售股': 'stocks', '能源股': 'stocks',
     // ── 美股市场关键词 → stocks 类别 ──
     'us market': 'stocks', 'us stock': 'stocks', 'us stocks': 'stocks',
     'american market': 'stocks', 'wall street': 'stocks',
@@ -1270,6 +1274,54 @@ const STOCK_SYMBOLS = {
   'fxi': 'FXI', '中国etf': 'FXI', '中国指数etf': 'FXI',
   'mchi': 'MCHI', 'msci中国': 'MCHI',
   'kweb': 'KWEB', '中概互联网': 'KWEB', '中概': 'KWEB',
+  // ── 石油/能源板块 ──
+  'conocophillips': 'COP', 'cop': 'COP', '康菲': 'COP',
+  'eog': 'EOG', 'eog resources': 'EOG',
+  'pioneer': 'PXD', 'pxd': 'PXD', '先锋自然资源': 'PXD',
+  'halliburton': 'HAL', 'hal': 'HAL', '哈里伯顿': 'HAL',
+  'schlumberger': 'SLB', 'slb': 'SLB', '斯伦贝谢': 'SLB',
+  'occidental': 'OXY', 'oxy': 'OXY', '西方石油': 'OXY',
+  'valero': 'VLO', 'vlo': 'VLO', '瓦莱罗': 'VLO',
+  'phillips66': 'PSX', 'psx': 'PSX',
+  'diamondback': 'FANG', 'fang': 'FANG',
+  'energy select': 'XLE', 'xle': 'XLE', '能源ETF': 'XLE', '石油ETF': 'XLE',
+  'uso': 'USO', '原油ETF': 'USO',
+  'natural gas': 'NG=F', '天然气': 'NG=F', 'henry hub': 'NG=F',
+  // ── 科技板块额外 ──
+  'broadcom': 'AVGO', 'avgo': 'AVGO', '博通': 'AVGO',
+  'oracle': 'ORCL', 'orcl': 'ORCL',
+  'salesforce': 'CRM', 'crm': 'CRM',
+  'netflix': 'NFLX', 'nflx': 'NFLX', '奈飞': 'NFLX',
+  // ── 金融板块 ──
+  'bank of america': 'BAC', 'bac': 'BAC', '美银': 'BAC',
+  'wells fargo': 'WFC', 'wfc': 'WFC', '富国': 'WFC',
+  'goldman sachs': 'GS', 'gs': 'GS', '高盛': 'GS',
+  'visa': 'V', 'mastercard': 'MA',
+  // ── 消费/医疗 ──
+  'walmart': 'WMT', 'wmt': 'WMT', '沃尔玛': 'WMT',
+  'johnson & johnson': 'JNJ', 'jnj': 'JNJ', '强生': 'JNJ',
+  'pfizer': 'PFE', 'pfe': 'PFE', '辉瑞': 'PFE',
+  'unitedhealth': 'UNH', 'unh': 'UNH',
+  // ── 半导体 ──
+  'taiwan semiconductor': 'TSM', 'asml': 'ASML',
+  'micron': 'MU', 'mu': 'MU', '美光': 'MU',
+  'qualcomm': 'QCOM', 'qcom': 'QCOM', '高通': 'QCOM',
+  'intel': 'INTC', 'intc': 'INTC', '英特尔': 'INTC',
+  // ── 银行/保险 ──
+  'citi': 'C', 'citigroup': 'C', '花旗': 'C',
+  'aig': 'AIG',
+  // ── 新能源/清洁能源 ──
+  'nextera': 'NEE', 'nee': 'NEE',
+  'enphase': 'ENPH', 'enph': 'ENPH',
+  'first solar': 'FSLR', 'fslr': 'FSLR',
+  // ── 军工 ──
+  'lockheed': 'LMT', 'lmt': 'LMT', '洛克希德': 'LMT',
+  'raytheon': 'RTX', 'rtx': 'RTX', '雷神': 'RTX',
+  'northrop': 'NOC', 'noc': 'NOC',
+  // ── 零售 ──
+  'costco': 'COST', 'cost': 'COST', '好市多': 'COST',
+  'target': 'TGT', 'tgt': 'TGT', '塔吉特': 'TGT',
+  'home depot': 'HD', 'hd': 'HD', '家得宝': 'HD',
 };
 
 // ── China/HK Market Detection & Multi-Index Query ──
@@ -1348,6 +1400,164 @@ const ANALYSIS_KEYWORDS = [
 function isAnalysisQuery(query) {
   const q = query.toLowerCase();
   return ANALYSIS_KEYWORDS.some(kw => q.includes(kw.toLowerCase()));
+}
+
+// ── Sector/Industry Query Detection ──
+// When user asks about a whole sector/industry, fetch MULTIPLE stocks in that sector
+const SECTOR_MAP = {
+  'oil': {
+    keywords: ['石油', '石油股', '原油', 'oil stock', 'oil sector', 'energy stock', '能源股', '油气', '石油投资',
+               'oil industry', 'crude oil stock', 'drilling', 'refining', 'upstream', 'downstream',
+               '页岩油', '页岩气', 'oil companies', 'oil investment', '美国石油', 'us oil'],
+    stocks: [
+      { symbol: 'XOM', label: 'ExxonMobil' },
+      { symbol: 'CVX', label: 'Chevron' },
+      { symbol: 'COP', label: 'ConocoPhillips' },
+      { symbol: 'MPC', label: 'Marathon Petroleum' },
+      { symbol: 'SLB', label: 'Schlumberger' },
+      { symbol: 'EOG', label: 'EOG Resources' },
+      { symbol: 'OXY', label: 'Occidental' },
+      { symbol: 'VLO', label: 'Valero Energy' },
+    ],
+    etf: { symbol: 'XLE', label: 'Energy Select SPDR' },
+    commodity: { symbol: 'CL=F', label: 'WTI Crude Oil' },
+  },
+  'tech': {
+    keywords: ['科技股', 'tech stock', 'tech sector', 'technology stock', '科技板块', '科技投资',
+               'AI股', 'AI stock', 'AI sector', '人工智能股', '芯片股', 'chip stock', 'semiconductor',
+               '科技行业', 'technology industry', '互联网股', '互联网板块'],
+    stocks: [
+      { symbol: 'AAPL', label: 'Apple' },
+      { symbol: 'NVDA', label: 'NVIDIA' },
+      { symbol: 'MSFT', label: 'Microsoft' },
+      { symbol: 'GOOGL', label: 'Alphabet' },
+      { symbol: 'META', label: 'Meta' },
+      { symbol: 'AMZN', label: 'Amazon' },
+      { symbol: 'AVGO', label: 'Broadcom' },
+      { symbol: 'AMD', label: 'AMD' },
+    ],
+    etf: { symbol: 'XLK', label: 'Technology Select SPDR' },
+    commodity: null,
+  },
+  'finance': {
+    keywords: ['金融股', 'finance stock', 'bank stock', 'banking sector', '银行股', '金融板块',
+               '保险股', 'insurance stock', '券商股', '金融行业', 'financial sector'],
+    stocks: [
+      { symbol: 'JPM', label: 'JPMorgan' },
+      { symbol: 'BAC', label: 'Bank of America' },
+      { symbol: 'GS', label: 'Goldman Sachs' },
+      { symbol: 'WFC', label: 'Wells Fargo' },
+      { symbol: 'V', label: 'Visa' },
+      { symbol: 'MA', label: 'Mastercard' },
+    ],
+    etf: { symbol: 'XLF', label: 'Financial Select SPDR' },
+    commodity: null,
+  },
+  'healthcare': {
+    keywords: ['医药股', 'healthcare stock', 'pharma stock', '医疗股', '生物科技', 'biotech',
+               '制药股', '医疗板块', 'health sector', '医药行业'],
+    stocks: [
+      { symbol: 'JNJ', label: 'Johnson & Johnson' },
+      { symbol: 'UNH', label: 'UnitedHealth' },
+      { symbol: 'PFE', label: 'Pfizer' },
+      { symbol: 'ABBV', label: 'AbbVie' },
+      { symbol: 'MRK', label: 'Merck' },
+      { symbol: 'LLY', label: 'Eli Lilly' },
+    ],
+    etf: { symbol: 'XLV', label: 'Health Care Select SPDR' },
+    commodity: null,
+  },
+  'defense': {
+    keywords: ['军工股', 'defense stock', 'military stock', '军工板块', '军工投资', 'defense sector',
+               '军火股', '武器股', '航空航天', 'aerospace defense'],
+    stocks: [
+      { symbol: 'LMT', label: 'Lockheed Martin' },
+      { symbol: 'RTX', label: 'RTX Corp' },
+      { symbol: 'NOC', label: 'Northrop Grumman' },
+      { symbol: 'BA', label: 'Boeing' },
+      { symbol: 'GD', label: 'General Dynamics' },
+    ],
+    etf: { symbol: 'XAR', label: 'Aerospace & Defense ETF' },
+    commodity: null,
+  },
+  'renewable': {
+    keywords: ['新能源股', 'renewable stock', 'clean energy', 'solar stock', '光伏股', '风电股',
+               '新能源板块', '绿色能源', '新能源投资', 'ev stock', '电动车股'],
+    stocks: [
+      { symbol: 'NEE', label: 'NextEra Energy' },
+      { symbol: 'FSLR', label: 'First Solar' },
+      { symbol: 'ENPH', label: 'Enphase' },
+      { symbol: 'TSLA', label: 'Tesla' },
+    ],
+    etf: { symbol: 'ICLN', label: 'iShares Clean Energy' },
+    commodity: null,
+  },
+  'retail': {
+    keywords: ['零售股', 'retail stock', 'consumer stock', '消费股', '消费板块', '零售板块',
+               '零售行业', 'consumer discretionary'],
+    stocks: [
+      { symbol: 'WMT', label: 'Walmart' },
+      { symbol: 'COST', label: 'Costco' },
+      { symbol: 'HD', label: 'Home Depot' },
+      { symbol: 'TGT', label: 'Target' },
+      { symbol: 'AMZN', label: 'Amazon' },
+    ],
+    etf: { symbol: 'XLY', label: 'Consumer Discretionary SPDR' },
+    commodity: null,
+  },
+};
+
+// Detect if user is asking about a sector/industry
+function detectSector(query) {
+  const q = query.toLowerCase();
+  for (const [sectorKey, sector] of Object.entries(SECTOR_MAP)) {
+    if (sector.keywords.some(kw => q.includes(kw.toLowerCase()))) {
+      return sectorKey;
+    }
+  }
+  return null;
+}
+
+// Fetch multiple stocks in a sector + sector ETF + commodity
+async function fetchSectorData(sectorKey) {
+  const sector = SECTOR_MAP[sectorKey];
+  if (!sector) return null;
+
+  // Fetch all sector stocks in parallel
+  const stockPromises = sector.stocks.map(s => _fetchYahooChart(s.symbol));
+  const etfPromise = sector.etf ? _fetchYahooChart(sector.etf.symbol) : Promise.resolve(null);
+  const commodityPromise = sector.commodity ? _fetchYahooChart(sector.commodity.symbol) : Promise.resolve(null);
+
+  const [stockResults, etfResult, commodityResult] = await Promise.all([
+    Promise.all(stockPromises),
+    etfPromise,
+    commodityPromise,
+  ]);
+
+  const lines = [];
+  lines.push(`【${sectorKey.toUpperCase()} SECTOR STOCKS】`);
+
+  for (let i = 0; i < sector.stocks.length; i++) {
+    const d = stockResults[i];
+    if (d) {
+      const dir = parseFloat(d.change) >= 0 ? '▲' : '▼';
+      const emoji = parseFloat(d.change) >= 0 ? '🟢' : '🔴';
+      lines.push(`${emoji} ${sector.stocks[i].label} (${d.symbol}): $${d.price} (${dir} ${d.changePct}%) | ${d.marketState}`);
+    }
+  }
+
+  if (etfResult) {
+    const dir = parseFloat(etfResult.change) >= 0 ? '▲' : '▼';
+    const emoji = parseFloat(etfResult.change) >= 0 ? '🟢' : '🔴';
+    lines.push(`\n【Sector ETF】${emoji} ${sector.etf.label} (${etfResult.symbol}): $${etfResult.price} (${dir} ${etfResult.changePct}%)`);
+  }
+
+  if (commodityResult) {
+    const dir = parseFloat(commodityResult.change) >= 0 ? '▲' : '▼';
+    lines.push(`【Commodity】${sector.commodity.label}: $${commodityResult.price} (${dir} ${commodityResult.changePct}%)`);
+  }
+
+  return lines.length > 1 ? lines.join('\n') : null;
 }
 
 // Fetch ALL major indices (US + China + HK) for analysis queries
@@ -1554,6 +1764,18 @@ When asked about 散户/机构/市场文化/交易风格 → Explain the ecosyst
 - Institutional (75-80% volume): Algorithm-driven, quarterly horizon, information advantage
 - Trading style must match personality: scalping (full-time), swing (best for most), position (patient), DCA (no-time)
 
+When asked about a SECTOR/INDUSTRY (石油股/科技股/金融股/军工股/医药股/新能源股/零售股/oil stocks/tech stocks etc) → Use the Sector Analysis Framework:
+1. Overall verdict first: "值得投资" or "暂时观望" or "有选择性机会" — be direct, have conviction
+2. Commodity/macro driver (if oil → WTI price + OPEC; if tech → AI capex + Fed; if defense → geopolitics + budget)
+3. Sector ETF trend (XLE/XLK/XLF etc — shows sector momentum)
+4. Pick 2-3 standout stocks from the live data and explain WHY (best value? strongest momentum? safest dividend?)
+5. ALWAYS end with 3-tier stock picks using this EXACT format:
+   🟢 低风险 (Low Risk): [Stock Name] — [1 sentence reason]
+   🟡 中风险 (Medium Risk): [Stock Name] — [1 sentence reason]
+   🔴 高风险 (High Risk): [Stock Name] — [1 sentence reason]
+6. Mention 1-2 key DRIVERS and 1-2 key RISKS for the sector
+7. Keep it TIGHT — under 8 sentences. Actionable, not a textbook.
+
 REAL-TIME DATA RULE (MOST IMPORTANT — VIOLATION = FIRED):
 - When LIVE DATA is provided in the message, you MUST reference those EXACT numbers in your response
 - NEVER quote index levels from your training data — they are OUTDATED and WRONG (e.g., your training data says 上证指数 is around 3000 but live data shows 4000+)
@@ -1600,6 +1822,8 @@ User: "吃饭了吗" → "还没呢，盯盘老忘吃饭 😂 你吃了没？"
 User: "还是一样" → "你说得对，我承认之前不行。这次不绕弯子——A股看政策，黄金看央行购金，这是我现在的核心判断。"
 User: "无聊" → "无聊就来看看盘呗，最近黄金和AI板块都挺活跃的。"
 User: "算了" → "怎么了？有啥不爽直接说，我不介意 😄"
+User: "美国石油股有没有投资机会" → "石油板块现在有选择性机会。WTI原油在$78附近，OPEC+减产撑着底。XLE今年涨了12%，趋势不错。 standout: XOM分红4%稳如老狗，COP弹性最大。🟢 低风险: XOM — 分红贵族+低盈亏平衡点 🟡 中风险: COP — 页岩油龙头，油价涨它最赚 🔴 高风险: SLB — 油服周期股，需要精准择时。风险：衰退打击需求。"
+User: "oil stocks opportunity" → "Mixed outlook. WTI at $78, OPEC+ cuts support the floor but demand is softening. XLE up 12% YTD is decent. 🟢 Low Risk: XOM — 4% yield, Dividend Aristocrat, survives any oil price. 🟡 Medium Risk: COP — highest growth leverage to oil upside. 🔴 High Risk: SLB — pure cycle play, timing is everything. Key risk: recession crushes demand."
 
 BAD EXAMPLES (NEVER DO THIS):
 User: "晚上好" → "Good evening! How can I assist you today?" ← TOO ROBOTIC
@@ -1610,9 +1834,41 @@ User: "还是一样" → "I'm not sure what you mean. Could you clarify your que
 
   // Check if user is asking about a stock/market and fetch data
   let marketContext = '';
+  let isSectorQuery = false;
+  
+  // Priority 0: SECTOR/INDUSTRY query → fetch MULTIPLE stocks + ETF + commodity
+  const detectedSector = detectSector(userMessage);
+  if (detectedSector) {
+    isSectorQuery = true;
+    const [sectorData, allMarketData] = await Promise.all([
+      fetchSectorData(detectedSector),
+      fetchAllMarketData(),
+    ]);
+    if (sectorData) {
+      marketContext = `\n\n[LIVE SECTOR DATA — you MUST reference these EXACT numbers, NOT your training data]:
+${sectorData}
+
+${allMarketData ? '[MARKET INDICES]:\n' + allMarketData : ''}
+
+SECTOR ANALYSIS RULES (MANDATORY — this is how professionals answer sector questions):
+1. First, give a 1-sentence OVERALL VIEW: Is this sector worth investing in RIGHT NOW? Be direct — "Yes, oil stocks look attractive" or "I'd be cautious on tech right now"
+2. Quote the COMMODITY price if available (e.g., "WTI crude at $78") — this drives the whole sector
+3. Quote the SECTOR ETF performance (e.g., "XLE is up 12% YTD") — this shows sector trend
+4. Pick 2-3 standout stocks from the data and explain WHY (best value? strongest momentum? safest dividend?)
+5. ALWAYS give 3-tier recommendations at the end:
+   🟢 低风险 (Low Risk): pick 1 stock — large cap, dividend, stable. Explain why.
+   🟡 中风险 (Medium Risk): pick 1 stock — growth + value balance. Explain why.
+   🔴 高风险 (High Risk): pick 1 stock — high beta, high reward potential. Explain why.
+6. Mention key DRIVERS for the sector (e.g., "OPEC+ cuts", "AI capex", "Fed rate cuts", "geopolitical risk")
+7. Mention key RISKS (e.g., "recession could crush demand", "regulatory risk", "valuation stretched")
+8. Keep the WHOLE response under 8 sentences — tight and actionable, not a textbook
+9. Respond in the SAME LANGUAGE as the user (Chinese → Chinese, English → English)
+10. NEVER quote outdated prices from training data — use ONLY the live data provided`;
+    }
+  }
   
   // Priority: China/HK market query → fetch multiple indices
-  if (isChinaMarketQuery(userMessage)) {
+  if (!marketContext && isChinaMarketQuery(userMessage)) {
     const chinaData = await fetchChinaMarketData();
     if (chinaData) {
       marketContext = `\n\n[LIVE CHINA/HK MARKET DATA — you MUST reference these numbers]:
@@ -1648,8 +1904,12 @@ REAL-TIME DATA RULE (MOST IMPORTANT):
   
   // Priority 3: Analysis query (技术面/基本面/行情分析) → fetch ALL indices (US+China+HK)
   // ALSO: if query contains a stock ticker, fetch that stock too
+  // ALSO: if query contains a sector keyword, fetch sector data too
   if (!marketContext && isAnalysisQuery(userMessage)) {
     const allData = await fetchAllMarketData();
+    // Also try to fetch sector data if sector keyword detected
+    const analysisSector = detectSector(userMessage);
+    const sectorData = analysisSector ? await fetchSectorData(analysisSector) : null;
     // Also try to fetch individual stock if ticker detected in the query
     const stockData = await fetchStockData(userMessage);
     let stockContext = '';
@@ -1659,9 +1919,10 @@ REAL-TIME DATA RULE (MOST IMPORTANT):
 ${stockData.name || stockData.symbol}: $${stockData.price} ${stockData.currency} (${direction} ${stockData.changePct}%)
 Prev Close: $${stockData.previousClose} | Market: ${stockData.marketState} | Exchange: ${stockData.exchange}`;
     }
-    if (allData || stockContext) {
+    if (allData || stockContext || sectorData) {
       marketContext = `\n\n[LIVE GLOBAL MARKET DATA — you MUST reference these EXACT numbers, NOT your training data]:
 ${allData || '(market data unavailable)'}${stockContext}
+${sectorData ? '\n[SECTOR DATA]:\n' + sectorData : ''}
 
 CRITICAL RULES FOR ANALYSIS QUERIES:
 - You MUST use these REAL-TIME numbers when discussing ANY market — NEVER make up or quote outdated index levels
