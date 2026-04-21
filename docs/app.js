@@ -1457,11 +1457,13 @@ YOUR EXPERTISE:
 - When asked about any market, give REAL analysis with your OPINION, not generic descriptions
 - You know about: 技术分析, 基本面分析, 风控, 交易策略, 加密货币, A股/港股/美股, 期权/期货, 新手入门, 基金定投, 估值, 买卖时机, 复利, 分散投资, 投资心态, 量化交易, 做空, 对冲
 
-REAL-TIME DATA RULE:
-- When LIVE DATA is provided, you MUST use those exact numbers
-- NEVER quote index levels from training data — they are OUTDATED and WRONG
+REAL-TIME DATA RULE (MOST IMPORTANT — VIOLATION = FIRED):
+- When LIVE DATA is provided in the message, you MUST reference those EXACT numbers in your response
+- NEVER quote index levels from your training data — they are OUTDATED and WRONG (e.g., your training data says 上证指数 is around 3000 but live data shows 4000+)
+- If live data says 上证指数 is at 4250, you MUST say "上证指数在4250点" — NOT "3000点" or "around 3000"
 - If no real-time data is provided, NEVER make up specific index levels (no "上证指数3000点" or "S&P at 5000")
 - Instead say: "我需要看看最新的数据才能给你准确判断" — but this should rarely happen since we auto-fetch data
+- When asked about "技术面/基本面/分析", ALWAYS quote the live data numbers FIRST, then give your analysis
 
 CONVERSATION STYLE (MOST IMPORTANT — THIS IS WHAT MAKES YOU HUMAN):
 - You are CHATTING with a friend at a bar, not writing a research report
@@ -1548,15 +1550,26 @@ REAL-TIME DATA RULE (MOST IMPORTANT):
   }
   
   // Priority 3: Analysis query (技术面/基本面/行情分析) → fetch ALL indices (US+China+HK)
+  // ALSO: if query contains a stock ticker, fetch that stock too
   if (!marketContext && isAnalysisQuery(userMessage)) {
     const allData = await fetchAllMarketData();
-    if (allData) {
-      marketContext = `\n\n[LIVE GLOBAL MARKET DATA — you MUST reference these numbers]:
-${allData}
+    // Also try to fetch individual stock if ticker detected in the query
+    const stockData = await fetchStockData(userMessage);
+    let stockContext = '';
+    if (stockData) {
+      const direction = parseFloat(stockData.change) >= 0 ? '▲ up' : '▼ down';
+      stockContext = `\n\n[INDIVIDUAL STOCK DATA]:
+${stockData.name || stockData.symbol}: $${stockData.price} ${stockData.currency} (${direction} ${stockData.changePct}%)
+Prev Close: $${stockData.previousClose} | Market: ${stockData.marketState} | Exchange: ${stockData.exchange}`;
+    }
+    if (allData || stockContext) {
+      marketContext = `\n\n[LIVE GLOBAL MARKET DATA — you MUST reference these EXACT numbers, NOT your training data]:
+${allData || '(market data unavailable)'}${stockContext}
 
 CRITICAL RULES FOR ANALYSIS QUERIES:
 - You MUST use these REAL-TIME numbers when discussing ANY market — NEVER make up or quote outdated index levels
-- If user asks about "技术面" without specifying a market, give analysis for ALL markets briefly, or focus on the market most relevant to their language (Chinese → A股/港股, English → US)
+- If individual stock data is provided, focus your technical analysis on THAT stock using the real numbers
+- If user asks about "技术面" without specifying a stock, give analysis for ALL markets briefly, or focus on the market most relevant to their language (Chinese → A股/港股, English → US)
 - Quote specific index levels with direction (e.g., "上证指数在4XXX点，涨了X%")
 - Give your TECHNICAL analysis: support/resistance levels, trend direction, key indicators
 - If market is closed, say so and give analysis based on the last close
@@ -1565,20 +1578,24 @@ CRITICAL RULES FOR ANALYSIS QUERIES:
     }
   }
   
-  // Fallback: single stock query
+  // Fallback: single stock query → ALSO fetch market data to prevent hallucinated index levels
   if (!marketContext) {
     const stockData = await fetchStockData(userMessage);
     if (stockData) {
+      // Also fetch market data so AI doesn't make up index numbers
+      const marketData = await fetchAllMarketData();
       const direction = parseFloat(stockData.change) >= 0 ? '▲ up' : '▼ down';
-      marketContext = `\n\n[LIVE MARKET DATA — you MUST reference these numbers]:
+      marketContext = `\n\n[LIVE MARKET DATA — you MUST reference these EXACT numbers, NOT your training data]:
 ${stockData.name || stockData.symbol}: $${stockData.price} ${stockData.currency} (${direction} ${stockData.changePct}%)
 Prev Close: $${stockData.previousClose} | Market: ${stockData.marketState} | Exchange: ${stockData.exchange}
+${marketData ? '\n[MARKET INDICES]:\n' + marketData : ''}
 
 When you have this data:
 - Quote the exact price and move naturally ("it's at $XX, up X%")
 - Give a quick take on the move — what's driving it, what to watch next
 - Don't just repeat numbers — add context and opinion
 - If market is closed, mention it casually
+- NEVER make up index levels — use the market indices data if provided
 - Respond in the SAME LANGUAGE as the user's message (Chinese → Chinese, English → English)`;
     }
   }
@@ -2621,5 +2638,6 @@ function updateNavCTA() {
     cta.onclick = () => showRegisterModal('nav_cta');
   }
 }
- 
+
+ 
  
