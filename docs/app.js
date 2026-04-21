@@ -1486,6 +1486,260 @@ const SECTOR_MAP = {
   },
 };
 
+// ── Pure Data Sector Analysis (NO AI needed) ──
+// Generates professional sector analysis from real-time data alone
+const SECTOR_PROFILES = {
+  'oil': {
+    name: '石油/能源',
+    nameEn: 'Oil & Energy',
+    drivers: 'OPEC+产量政策、WTI原油价格、地缘政治风险、全球需求预期',
+    risks: '经济衰退打击需求、新能源替代加速、OPEC+减产执行不力、库存意外增加',
+    profiles: {
+      'XOM': { risk: 'low', label: '埃克森美孚', thesis: '分红贵族(连续40+年)，低盈亏平衡点，现金流充裕，油价跌也能扛' },
+      'CVX': { risk: 'low', label: '雪佛龙', thesis: '二叠纪盆地低成本优势，资产负债表持续改善，分红稳定' },
+      'COP': { risk: 'mid', label: '康菲石油', thesis: '页岩油弹性最大——油价涨它最赚，但油价跌也最疼' },
+      'EOG': { risk: 'mid', label: 'EOG资源', thesis: '顶级页岩油商，资本纪律好，ROE行业领先' },
+      'SLB': { risk: 'high', label: '斯伦贝谢', thesis: '油服龙头，纯周期股——需精准择时，油价高位时弹性最大' },
+      'OXY': { risk: 'high', label: '西方石油', thesis: '巴菲特持仓，但杠杆高，偿债压力大，赌油价持续高位' },
+      'VLO': { risk: 'mid', label: '瓦莱罗', thesis: '炼油龙头，裂解差价扩大利好，油价波动反而受益' },
+    },
+    etfProfile: { risk: 'low', thesis: '一篮子石油股分散风险，适合不想选个股的投资者' },
+  },
+  'tech': {
+    name: '科技',
+    nameEn: 'Technology',
+    drivers: 'AI资本开支、企业数字化转型、云计算增长、半导体周期',
+    risks: 'AI泡沫风险、监管反垄断、利率走高压估值、中国竞争',
+    profiles: {
+      'AAPL': { risk: 'low', label: '苹果', thesis: '现金流怪兽+回购机器，估值合理，AI整合是催化剂' },
+      'NVDA': { risk: 'mid', label: '英伟达', thesis: 'AI算力垄断，但估值已price in很多增长，波动大' },
+      'MSFT': { risk: 'low', label: '微软', thesis: 'Azure+Copilot双引擎，企业AI落地最受益' },
+      'GOOGL': { risk: 'low', label: 'Alphabet', thesis: '广告护城河+Gemini AI，估值在科技巨头中最低' },
+      'META': { risk: 'mid', label: 'Meta', thesis: '广告复苏+Llama开源AI，但 Reality Labs 持续烧钱' },
+      'AVGO': { risk: 'mid', label: '博通', thesis: 'AI网络芯片龙头+VMware整合，但高负债' },
+      'AMD': { risk: 'high', label: 'AMD', thesis: 'MI300挑战英伟达，但市占率差距大，估值偏高' },
+    },
+    etfProfile: { risk: 'low', thesis: 'XLK覆盖全科技板块，AAPL/MSFT占比大，偏防御' },
+  },
+  'finance': {
+    name: '金融',
+    nameEn: 'Financials',
+    drivers: '利率走势、贷款增长、净息差、交易业务、消费信贷',
+    risks: '利率快速下降压息差、坏账率上升、金融监管收紧、商业地产风险',
+    profiles: {
+      'JPM': { risk: 'low', label: '摩根大通', thesis: '银行之王，每个周期都能抄底扩张，净息差行业领先' },
+      'BAC': { risk: 'low', label: '美国银行', thesis: '存款基础最大，利率敏感度高，降息周期不利' },
+      'GS': { risk: 'mid', label: '高盛', thesis: '投行+交易为主，市场波动大时反而赚更多' },
+      'WFC': { risk: 'mid', label: '富国银行', thesis: '仍在修复监管问题，但估值折价大，催化剂明确' },
+      'V': { risk: 'low', label: 'Visa', thesis: '支付垄断，消费增长直接受益，几乎不受利率影响' },
+      'MA': { risk: 'low', label: 'Mastercard', thesis: '与Visa双寡头，跨境支付增长更快' },
+    },
+    etfProfile: { risk: 'low', thesis: 'XLF覆盖全金融板块，银行+保险+支付分散' },
+  },
+  'healthcare': {
+    name: '医疗/医药',
+    nameEn: 'Healthcare',
+    drivers: '人口老龄化、创新药审批、GLP-1减肥药、FDA政策',
+    risks: '药品定价管制、专利悬崖、临床失败、医保谈判',
+    profiles: {
+      'JNJ': { risk: 'low', label: '强生', thesis: '最防御的医疗股，多元化+分红贵族，增长慢但稳' },
+      'UNH': { risk: 'low', label: '联合健康', thesis: '医保管理垄断，人口老龄化直接受益' },
+      'PFE': { risk: 'mid', label: '辉瑞', thesis: '后疫情收入下滑但管线丰富，估值极低，赌新药' },
+      'ABBV': { risk: 'mid', label: '艾伯维', thesis: 'Humira专利过期但新药接力中，分红惊人' },
+      'MRK': { risk: 'mid', label: '默克', thesis: 'Keytruda是印钞机但专利2030到期，需看管线' },
+      'LLY': { risk: 'high', label: '礼来', thesis: 'GLP-1双雄之一，估值已经很高，增长必须持续超预期' },
+    },
+    etfProfile: { risk: 'low', thesis: 'XLV医疗ETF，防御属性强，适合衰退期持有' },
+  },
+  'defense': {
+    name: '军工/航空航天',
+    nameEn: 'Aerospace & Defense',
+    drivers: '全球军费增长、地缘冲突、NATO军费目标2%GDP、F-35量产',
+    risks: '政府预算削减、项目延迟/超支、和平谈判、供应链瓶颈',
+    profiles: {
+      'LMT': { risk: 'low', label: '洛克希德马丁', thesis: 'F-35+导弹垄断，订单积压1600亿+，最纯的军工标的' },
+      'RTX': { risk: 'low', label: 'RTX Corp', thesis: '导弹+航空电子+Pratt Whitney，三引擎驱动' },
+      'NOC': { risk: 'low', label: '诺斯洛普格鲁曼', thesis: 'B-21轰炸机+太空业务，国防预算最稳定受益者' },
+      'BA': { risk: 'high', label: '波音', thesis: '737 MAX复产是催化剂，但质量问题和债务是巨大风险' },
+      'GD': { risk: 'mid', label: '通用动力', thesis: '舰船+IT服务，增长稳但不性感' },
+    },
+    etfProfile: { risk: 'low', thesis: 'XAR军工ETF，分散个股风险，享受板块增长' },
+  },
+  'renewable': {
+    name: '新能源',
+    nameEn: 'Clean Energy',
+    drivers: 'IRA法案补贴、全球碳中和、光伏装机增长、储能突破',
+    risks: '利率走高压项目融资、中国光伏倾销、政策补贴退坡、电网接入瓶颈',
+    profiles: {
+      'NEE': { risk: 'low', label: 'NextEra', thesis: '全球最大风太阳能运营商，公用事业+增长双属性' },
+      'FSLR': { risk: 'mid', label: 'First Solar', thesis: '美国唯一本土光伏龙头，IRA直接受益' },
+      'ENPH': { risk: 'high', label: 'Enphase', thesis: '微型逆变器龙头，但高利率打击住宅太阳能需求' },
+      'TSLA': { risk: 'high', label: '特斯拉', thesis: '不止是车——储能业务增速惊人，但估值和马斯克风险大' },
+    },
+    etfProfile: { risk: 'mid', thesis: 'ICLN新能源ETF，分散个股风险但板块整体波动大' },
+  },
+  'retail': {
+    name: '零售/消费',
+    nameEn: 'Retail & Consumer',
+    drivers: '消费者信心、就业数据、通胀走势、假日消费季',
+    risks: '消费降级、通胀侵蚀购买力、线上竞争、库存管理',
+    profiles: {
+      'WMT': { risk: 'low', label: '沃尔玛', thesis: '衰退防御之王——经济差时反而吸引更多消费者' },
+      'COST': { risk: 'low', label: 'Costco', thesis: '会员制护城河，续费率93%+，通胀中提价能力最强' },
+      'HD': { risk: 'mid', label: '家得宝', thesis: '住房市场关联度高，降息是催化剂但装修周期长' },
+      'TGT': { risk: 'mid', label: 'Target', thesis: '品牌差异化+自有品牌，但库存和安全问题困扰' },
+      'AMZN': { risk: 'mid', label: '亚马逊', thesis: '电商+AWS双引擎，但零售利润率一直很低' },
+    },
+    etfProfile: { risk: 'low', thesis: 'XLY消费ETF，覆盖零售+电商+餐饮' },
+  },
+};
+
+// Build pure-data sector analysis — NO AI, just real numbers + expert templates
+async function buildSectorAnalysis(sectorKey, isChinese) {
+  const sector = SECTOR_MAP[sectorKey];
+  const profile = SECTOR_PROFILES[sectorKey];
+  if (!sector || !profile) return null;
+
+  // Fetch all data in parallel
+  const [stockResults, etfResult, commodityResult, marketData] = await Promise.all([
+    Promise.all(sector.stocks.map(s => _fetchYahooChart(s.symbol))),
+    sector.etf ? _fetchYahooChart(sector.etf.symbol) : Promise.resolve(null),
+    sector.commodity ? _fetchYahooChart(sector.commodity.symbol) : Promise.resolve(null),
+    fetchAllMarketData(sector.region || 'us'),
+  ]);
+
+  const lines = [];
+
+  if (isChinese) {
+    // ── 中文版板块分析 ──
+    // 1. 总判断
+    const upCount = stockResults.filter(d => d && parseFloat(d.change) >= 0).length;
+    const downCount = stockResults.filter(d => d && parseFloat(d.change) < 0).length;
+    const avgChange = stockResults.filter(d => d).length > 0
+      ? (stockResults.filter(d => d).reduce((sum, d) => sum + parseFloat(d.changePct || 0), 0) / stockResults.filter(d => d).length).toFixed(2)
+      : '0';
+
+    let verdict;
+    if (parseFloat(avgChange) > 1) verdict = '🔥 值得关注';
+    else if (parseFloat(avgChange) > 0) verdict = '👀 有选择性机会';
+    else if (parseFloat(avgChange) > -1) verdict = '⏸️ 暂时观望';
+    else verdict = '⚠️ 回避为主';
+
+    lines.push(`📊 **${profile.name}板块分析** — ${verdict}`);
+    lines.push('');
+
+    // 2. 市场环境
+    if (marketData) {
+      lines.push(`🌍 **市场环境**：${marketData.split('\n').filter(l => l.trim()).join(' | ')}`);
+      lines.push('');
+    }
+
+    // 3. 大宗商品（石油板块特有）
+    if (commodityResult) {
+      const cDir = parseFloat(commodityResult.change) >= 0 ? '↑' : '↓';
+      lines.push(`🛢️ **${sector.commodity.label}**：$${commodityResult.price} ${cDir}${commodityResult.changePct}%`);
+      lines.push('');
+    }
+
+    // 4. 板块ETF
+    if (etfResult) {
+      const eDir = parseFloat(etfResult.change) >= 0 ? '↑' : '↓';
+      lines.push(`📈 **板块ETF ${sector.etf.label}**：$${etfResult.price} ${eDir}${etfResult.changePct}%`);
+      lines.push('');
+    }
+
+    // 5. 个股数据
+    lines.push(`📋 **核心个股**：`);
+    for (let i = 0; i < sector.stocks.length; i++) {
+      const d = stockResults[i];
+      if (d) {
+        const dir = parseFloat(d.change) >= 0 ? '↑' : '↓';
+        const emoji = parseFloat(d.change) >= 0 ? '🟢' : '🔴';
+        lines.push(`  ${emoji} ${sector.stocks[i].label}(${d.symbol}) $${d.price} ${dir}${d.changePct}%`);
+      }
+    }
+    lines.push('');
+
+    // 6. 三档建议（核心！用户最想要的）
+    lines.push(`💡 **投资建议**：`);
+    const lowRisk = [], midRisk = [], highRisk = [];
+    for (const [sym, p] of Object.entries(profile.profiles)) {
+      if (p.risk === 'low') lowRisk.push(p);
+      else if (p.risk === 'mid') midRisk.push(p);
+      else highRisk.push(p);
+    }
+    if (lowRisk.length > 0) lines.push(`  🟢 **低风险**：${lowRisk.map(p => `${p.label} — ${p.thesis}`).join('；')}`);
+    if (midRisk.length > 0) lines.push(`  🟡 **中风险**：${midRisk.map(p => `${p.label} — ${p.thesis}`).join('；')}`);
+    if (highRisk.length > 0) lines.push(`  🔴 **高风险**：${highRisk.map(p => `${p.label} — ${p.thesis}`).join('；')}`);
+    lines.push('');
+
+    // 7. 驱动+风险
+    lines.push(`🔑 **关键驱动**：${profile.drivers}`);
+    lines.push(`⚠️ **主要风险**：${profile.risks}`);
+
+  } else {
+    // ── English version ──
+    const upCount = stockResults.filter(d => d && parseFloat(d.change) >= 0).length;
+    const avgChange = stockResults.filter(d => d).length > 0
+      ? (stockResults.filter(d => d).reduce((sum, d) => sum + parseFloat(d.changePct || 0), 0) / stockResults.filter(d => d).length).toFixed(2)
+      : '0';
+
+    let verdict;
+    if (parseFloat(avgChange) > 1) verdict = '🔥 Worth watching';
+    else if (parseFloat(avgChange) > 0) verdict = '👀 Selective opportunities';
+    else if (parseFloat(avgChange) > -1) verdict = '⏸️ Wait and see';
+    else verdict = '⚠️ Avoid for now';
+
+    lines.push(`📊 **${profile.nameEn} Sector Analysis** — ${verdict}`);
+    lines.push('');
+
+    if (marketData) {
+      lines.push(`🌍 **Market Context**: ${marketData.split('\n').filter(l => l.trim()).join(' | ')}`);
+      lines.push('');
+    }
+
+    if (commodityResult) {
+      const cDir = parseFloat(commodityResult.change) >= 0 ? '↑' : '↓';
+      lines.push(`🛢️ **${sector.commodity.label}**: $${commodityResult.price} ${cDir}${commodityResult.changePct}%`);
+      lines.push('');
+    }
+
+    if (etfResult) {
+      const eDir = parseFloat(etfResult.change) >= 0 ? '↑' : '↓';
+      lines.push(`📈 **Sector ETF ${sector.etf.label}**: $${etfResult.price} ${eDir}${etfResult.changePct}%`);
+      lines.push('');
+    }
+
+    lines.push(`📋 **Key Stocks**:`);
+    for (let i = 0; i < sector.stocks.length; i++) {
+      const d = stockResults[i];
+      if (d) {
+        const dir = parseFloat(d.change) >= 0 ? '↑' : '↓';
+        const emoji = parseFloat(d.change) >= 0 ? '🟢' : '🔴';
+        lines.push(`  ${emoji} ${sector.stocks[i].label}(${d.symbol}) $${d.price} ${dir}${d.changePct}%`);
+      }
+    }
+    lines.push('');
+
+    lines.push(`💡 **Recommendations**:`);
+    const lowRisk = [], midRisk = [], highRisk = [];
+    for (const [sym, p] of Object.entries(profile.profiles)) {
+      if (p.risk === 'low') lowRisk.push(p);
+      else if (p.risk === 'mid') midRisk.push(p);
+      else highRisk.push(p);
+    }
+    if (lowRisk.length > 0) lines.push(`  🟢 **Low Risk**: ${lowRisk.map(p => `${p.label} — ${p.thesis}`).join('; ')}`);
+    if (midRisk.length > 0) lines.push(`  🟡 **Mid Risk**: ${midRisk.map(p => `${p.label} — ${p.thesis}`).join('; ')}`);
+    if (highRisk.length > 0) lines.push(`  🔴 **High Risk**: ${highRisk.map(p => `${p.label} — ${p.thesis}`).join('; ')}`);
+    lines.push('');
+
+    lines.push(`🔑 **Key Drivers**: ${profile.drivers}`);
+    lines.push(`⚠️ **Key Risks**: ${profile.risks}`);
+  }
+
+  return lines.join('\n');
+}
+
 // Detect if user is asking about a sector/industry
 function detectSector(query) {
   const q = query.toLowerCase();
@@ -1740,36 +1994,9 @@ ANALYSIS: When asked about 技术/technical → trend(200MA) + entry(RSI+support
   let marketContext = '';
   let isSectorQuery = false;
   
-  // Priority 0: SECTOR/INDUSTRY query → fetch MULTIPLE stocks + ETF + commodity
-  const detectedSector = detectSector(userMessage);
-  if (detectedSector) {
-    isSectorQuery = true;
-    // Determine market region: US sectors → US only, China sectors → CN only
-    const sectorRegion = SECTOR_MAP[detectedSector].region || 'us';
-    const [sectorData, marketData] = await Promise.all([
-      fetchSectorData(detectedSector),
-      fetchAllMarketData(sectorRegion),
-    ]);
-    if (sectorData) {
-      const regionLabel = sectorRegion === 'cn' ? 'China/HK' : 'US';
-      marketContext = `\n\n[LIVE SECTOR DATA — use these EXACT numbers]:
-${sectorData}
-
-${marketData ? `[${regionLabel} MARKET INDICES]:\n` + marketData : ''}
-
-ANSWER FORMAT (mandatory):
-1. One sentence verdict: 值得投资/暂时观望/有选择性机会
-2. Quote commodity price (e.g. "WTI在$XX") + sector ETF trend
-3. Pick 2-3 standout stocks from the data, explain why
-4. MUST end with:
-🟢 低风险: [stock] — [reason]
-🟡 中风险: [stock] — [reason]
-🔴 高风险: [stock] — [reason]
-5. One key driver + one key risk
-6. ONLY discuss ${regionLabel} market. Do NOT mention other markets.
-7. Respond in ${lang}.`;
-    }
-  }
+  // NOTE: Sector queries are now handled by buildSectorAnalysis() in sendChat()
+  // — pure data template, no AI needed. callAI should NOT re-process sector queries.
+  // detectSector() in callAI is kept as fallback only if buildSectorAnalysis fails.
   
   // Priority: China/HK market query → fetch multiple indices
   if (!marketContext && isChinaMarketQuery(userMessage)) {
@@ -2007,9 +2234,36 @@ function sendChat() {
     return;
   }
 
-  // Step 2: Local didn't match → try AI for complex queries (stock data, analysis, sector)
-  showTyping();
+  // Step 2: Sector query → pure data template (NO AI, instant, always professional)
+  const isChineseInput = /[\u4e00-\u9fff]/.test(text);
+  const sectorKey = detectSector(text);
+  if (sectorKey) {
+    showTyping();
+    buildSectorAnalysis(sectorKey, isChineseInput).then(analysis => {
+      removeTyping();
+      if (analysis) {
+        addBotMessage(analysis);
+        chatMessages[currentAdvisor].push({ role: 'bot', text: analysis });
+        const bodyAfter = document.getElementById('chatBody');
+        if (bodyAfter) chatHistories[currentAdvisor] = bodyAfter.innerHTML;
+        isSending = false;
+        updateUserProfile(text, analysis);
+      } else {
+        // Sector data fetch failed → fall through to AI
+        _tryAIResponse(text, learnedAnswer);
+      }
+    });
+    return;
+  }
+
+  // Step 3: Not a sector query → try AI for stock data, analysis, etc.
   const learnedAnswer = getLearnedAnswer(text);
+  _tryAIResponse(text, learnedAnswer);
+}
+
+// Shared AI response handler
+function _tryAIResponse(text, learnedAnswer) {
+  showTyping();
 
   callAI(text).then(aiResponse => {
     removeTyping();
@@ -2058,15 +2312,19 @@ function getDirectFallback(input) {
   const q = input.toLowerCase();
   const isChinese = /[\u4e00-\u9fff]/.test(input);
   if (isChinese) {
+    // Try to be helpful based on what they asked
+    if (/石油|能源|oil/i.test(q)) return '石油板块我可以帮你分析——直接问"美国石油股投资机会"我就能给出完整分析。';
+    if (/科技|tech|芯片|ai/i.test(q)) return '科技板块我门儿清——问"科技股分析"我给你详细拆解。';
+    if (/金融|银行|finance/i.test(q)) return '金融板块随时聊——问"金融股分析"我给你三档建议。';
+    if (/军工|defense/i.test(q)) return '军工板块是长线逻辑——问"军工股分析"我给你详细看。';
     return pick([
-      '这个我直接说——告诉我你想聊什么股票、什么市场、什么分析方法，我直接给分析。',
-      '换个具体问题吧——个股行情、板块分析、技术面基本面，我都能直接聊。',
-      '你想聊投资哪个方向？美股、A股、港股、黄金、加密——随便挑，我直接给观点。',
+      '我直接说——问我具体的东西：个股行情（如"苹果股票"）、板块分析（如"石油股投资机会"）、技术面基本面，我都能直接聊。',
+      '换个具体问题吧——板块分析（石油/科技/金融/军工/医药/新能源/零售）、个股行情、技术面基本面，随便挑。',
     ]);
   }
   return pick([
-    "Give me something specific — a stock, a sector, a market, a trading question — and I'll give you my honest take.",
-    "What are you looking at? Drop a ticker, a sector, or a question about strategy and I'll break it down.",
+    "Give me something specific — a sector (oil, tech, finance, defense, healthcare, renewable, retail), a stock ticker, or a strategy question — and I'll give you my honest take.",
+    "What are you looking at? Try asking about a sector like 'oil stock opportunities' or 'tech sector analysis' — I've got data-driven answers ready.",
   ]);
 }
 
