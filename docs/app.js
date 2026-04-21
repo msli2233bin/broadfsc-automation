@@ -97,6 +97,35 @@ const KNOWLEDGE = {
     'palantir pltr': "Palantir (PLTR) is the most controversial AI stock — a $100B+ company with $2.5B revenue. Bull case: (1) AIP (AI Platform) is driving explosive commercial revenue growth (50%+ YoY). (2) Government contracts are sticky — once integrated, nearly impossible to replace. (3) Alex Karp is building an 'AI operating system for Western institutions.' Bear case: (1) Valuation at 35-40x SALES is extreme. (2) Stock-based compensation is massive (~20% of revenue). (3) Government revenue growth slowing to single digits. (4) Insider selling has been relentless. This is a high-conviction, high-risk bet. Position size max 2-3%. Buy on 20%+ pullbacks, sell into strength.",
     'amd': "AMD is NVIDIA's only serious competitor in AI chips. MI300X is competitive with H100 for inference workloads. Key thesis: (1) Server CPU market share gaining on Intel — now ~25%+. (2) AI GPU revenue growing 100%+ but from a small base. (3) Lisa Su is one of the best CEOs in tech. Risks: Still far behind NVIDIA in AI software ecosystem (ROCm vs CUDA), Intel's turnaround attempt could compress CPU margins, and AI chip market may not support two $100B+ players. Valuation at 25-30x earnings is reasonable if AI revenue accelerates. Buy the 50 SMA, but don't expect NVIDIA-level upside.",
     'coca cola ko': "Coca-Cola (KO) is Warren Buffett's longest-held stock for good reason. (1) Pricing power — people pay 2-3x for the brand over generic cola. (2) Global distribution in 200+ countries. (3) Dividend King — 60+ consecutive years of increases. (4) recession-resistant — people still buy Coke when money is tight. The stock won't make you rich fast, but it's one of the safest 3-4% yields in the market with 5-7% annual dividend growth. Ideal for income portfolios and conservative investors.",
+  },
+  // ── 基本面分析专业问答 (5步法 + 关键指标 + 问答范式) ──
+  fundamental_analysis: {
+    '基本面分析 fundamental analysis': "基本面分析5步法，专业分析师都这么干：\n1️⃣ 读财报——从10-K开始（年报经审计，投资者演示文稿只是营销）。按利润表→资产负债表→现金流量表→附注的顺序读，附注里藏着管理层不想让你看的东西。\n2️⃣ 查盈利质量——不是所有利润都一样。经营现金流/净利润 ≥ 1.0才健康，低于1.0说明利润是纸面上的。GAAP和调整后盈利差距超过20%要警惕，应收账款周转天数(DSO)上升是红旗。\n3️⃣ 估值——必须用两种方法：DCF（绝对估值）+ P/E、EV/EBITDA（相对估值）。只看P/E很危险，因为P/E可以被会计手段操纵。关键是看当前价格隐含的增长预期是否合理。\n4️⃣ 资本配置——ROIC vs WACC是最关键指标：ROIC > WACC = 创造价值，ROIC < WACC = 摧毁价值。看管理层是在低位回购还是高位回购，收购记录是否创造价值。\n5️⃣ 决策——安全边际：高质量公司要求20-25%，周期股要求35-50%。安全边际不够就等，别降低标准。",
+    '估值 valuation pe': "估值不是看一个数字就完事。P/E是最常见的但也是最容易被误导的：\n• P/E低不一定便宜——可能是盈利在下降（价值陷阱）\n• P/E高不一定贵——可能是高增长 justified（NVDA 40x PE但收入涨100%）\n\n更全面的估值框架：\n1. PEG比率（P/E / 增长率）< 1.0 = 可能低估，> 2.0 = 可能高估\n2. EV/EBITDA —— 消除资本结构差异，比P/E更公平\n3. P/S（市销率）—— 亏损公司看这个，高增长但没盈利的用这个\n4. DCF —— 最严谨但最敏感，关键是假设的合理性\n5. P/B —— 银行和资产密集型行业看这个\n\n终极法则：当前股价隐含的增长预期 vs 公司实际增长能力，这个差才是你赚钱的空间。",
+    '财报 earnings 10-k': "读财报的专业顺序：利润表→资产负债表→现金流量表→附注。\n\n利润表关键：收入增长率（加速还是减速？）、毛利率趋势（扩张=定价权强，压缩=竞争激烈）、营业利润率（核心盈利能力）。\n\n资产负债表关键：现金 vs 短期债务（能扛多久？）、商誉占比（太高说明收购过多）、存货周转率（变慢=卖不动了）。\n\n现金流量表关键：经营现金流 > 净利润 = 盈利质量好；自由现金流 = 经营现金流 - 资本支出（这是公司真正能自由支配的钱）。\n\n附注必查：关联交易、表外义务、会计政策变更、或有负债——管理层不想让你看的都在这里。",
+    '现金流 cash flow': "现金流是公司的血液，比利润更真实。三种现金流：\n\n经营现金流（最重要）——公司核心业务赚到的真金白银。持续低于净利润？危险信号——利润可能是纸面上的。\n投资现金流——买设备、收购、卖资产。负数不一定坏（在投资未来），但连续大额收购要警惕。\n融资现金流——发债、还债、发股票、回购、分红。\n\n关键比率：\n• 经营现金流/净利润 ≥ 1.0（现金转换率）——低于1.0要小心\n• 自由现金流 = 经营现金流 - 资本支出 —— 这是公司真正能自由支配的钱\n• FCF Yield = FCF/市值 —— > 5%说明公司现金创造力强，股价可能低估\n\n一句话：利润可以美化，现金流很难作假。",
+    'roe roic': "ROE（净资产收益率）和ROIC（投入资本回报率）是衡量公司质量的核心指标：\n\nROE = 净利润/股东权益 —— 巴菲特最看重的指标，> 15%算优秀。但ROE可以被杠杆抬高（借更多钱=权益更少=ROE更高），所以要看杠杆水平。\n\nROIC = 税后经营利润/投入资本 —— 比ROE更公平，因为它考虑了所有资本（股+债）。ROIC > WACC（加权平均资本成本）= 创造价值；ROIC < WACC = 摧毁价值。\n\n行业差异：科技股ROIC通常20-40%（轻资产），银行ROE 10-15%但杠杆高，公用事业ROIC 5-8%（但稳定）。\n\n杜邦分析把ROE拆成三块：利润率 × 周转率 × 杠杆率 —— 这能告诉你ROE高是因为真的赚钱还是因为借钱多。"
+  },
+  // ── 技术面分析专业问答 (指标详解 + 实战用法 + 常见误区) ──
+  technical_analysis: {
+    '技术面分析 technical analysis': "技术分析三步法，专业交易员都这么用：\n\nStep 1: 判断环境——先看大趋势。价格在200日均线之上=牛市，之下=熊市。只在趋势方向上交易，这是第一条铁律。\n\nStep 2: 找入场点——支撑压力位+K线形态+确认信号。三个同时出现才动手：\n• 支撑/压力位：3次以上触碰才有效，突破后角色互换\n• K线形态：锤子线(反转)、吞没形态(动能变化)、十字星(犹豫)\n• 确认信号：RSI背离、MACD交叉、成交量放大\n\nStep 3: 设止损——进场前就定好，不是进场后。止损放在关键支撑/压力下方1-2%，不是随便一个百分比。\n\n核心原则：趋势市用均线+MACD；震荡市用RSI+布林带。用错环境指标必失效。",
+    '均线 moving average ma': "均线是最基础也最有效的技术指标：\n\nSMA vs EMA：简单均线(SMA)看大趋势，指数均线(EMA)反应更灵敏找进出场点。\n\n关键均线：\n• 20日EMA —— 短线交易者的生命线，强势股回调到这里就弹\n• 50日SMA —— 机构关注线，跌破50日线常引发机构卖出\n• 200日SMA —— 牛熊分界线，价格在上方=长线看多，下方=看空\n\n黄金交叉(50上穿200) = 中期看涨信号\n死亡交叉(50下穿200) = 中期看跌信号\n\n均线的本质是滞后指标——它确认已经发生的趋势而非预测未来。在震荡市中均线频繁假突破，必须结合动量指标使用。\n\n实战法则：只在价格位于200日均线之上时做多——这一条规则就能过滤掉50%的亏损交易。",
+    'rsi 详解': "RSI不只是看70/30超买超卖，那是新手用法：\n\n核心1：背离才是RSI最准的信号\n• 看涨背离：股价新低但RSI没新低 → 卖压衰竭，反转在即\n• 看跌背离：股价新高但RSI没新高 → 买力衰退，顶部信号\n\n核心2：趋势中RSI区域调整\n• 上升趋势：RSI回调到40-50是买点（不是30）\n• 下降趋势：RSI反弹到50-60是卖点（不是70）\n\n核心3：超买不等于该卖\n• 强势股RSI可以长期停留在70以上（NVDA 2024年RSI超买3个月还在涨）\n• 等RSI背离或跌破70后反抽失败才是离场信号\n\n常见错误：RSI到80就慌着卖——在强趋势中这是最贵的错误。",
+    'macd 详解': "MACD是趋势+动量的双重确认工具：\n\n三大组件：\n• MACD线 = 12EMA - 26EMA（快慢线差值）\n• 信号线 = MACD线的9日EMA\n• 柱状图 = MACD线 - 信号线（动量强度）\n\n信号解读：\n• 金叉(MACD上穿信号线) —— 看涨，但位置很关键：零轴上方的金叉比零轴下方的强得多\n• 死叉(MACD下穿信号线) —— 看跌\n• 柱状图收缩 —— 早于交叉的预警信号，说明动量在减弱\n\n最值钱的信号：背离\n• 价格连创新高但MACD高点下移 → 上涨动能在衰竭，随时可能反转\n• 价格连创新低但MACD低点上移 → 下跌动能在枯竭，底部临近\n\n实战法则：永远只在长期趋势方向上交易MACD信号。牛市做金叉，熊市做死叉。逆趋势的信号可靠性减半。"
+  },
+  // ── 投资心理学与人性 (恐惧/贪婪/FOMO/损失厌恶/认知偏差) ──
+  psychology: {
+    '投资心理 psychology': "投资最难的不是分析，是战胜自己。三大情绪陷阱：\n\n1. 恐惧——跌了就恐慌卖出，割在最低点。症状：频繁刷新账户、止损设太紧、晚上睡不着。\n2. 贪婪——赚了还想更多，坐过山车。症状：不断加仓、不设止盈、觉得'这次不一样'。\n3. FOMO——看别人赚钱就冲进去，买在山顶。症状：追涨杀跌、频繁换股、听消息就买。\n\n专业投资者的情绪管理：\n• 写交易计划——买入理由、止损位、目标价，白纸黑字写在进场前\n• 机械化执行——到止损位就卖，不犹豫不犹豫不犹豫\n• 逆向思维——所有人恐慌时找买点，所有人狂欢时找卖点\n• 仓位管理——每笔最多亏总资金的1-2%，亏了也不影响心态\n\n记住：你最大的敌人不在市场里，在镜子中。",
+    '恐惧贪婪 fear greed': "恐惧和贪婪是市场波动的底层驱动力：\n\n恐惧的表现：\n• 亏损2%就焦虑 → 过早止损，错过反弹\n• 市场暴跌时不敢买入 → 错过最好的机会\n• 轻仓甚至空仓 '等确认' → 永远在追高\n\n贪婪的表现：\n• 盈利20%还想50% → 不止盈，利润全回吐\n• 加杠杆追涨 → 一次回调就爆仓\n• 重仓单只股票 → '我看好它' = 赌博\n\n恐惧贪婪指数(Fear & Greed Index)：\n0-25 = 极度恐惧 → 历史上这是最好的买入时机\n75-100 = 极度贪婪 → 历史上这是最好的减仓时机\n\n巴菲特名言：'别人恐惧时贪婪，别人贪婪时恐惧。'——说起来容易，做到需要纪律。用交易计划替代情绪判断。",
+    '损失厌恶 loss aversion': "损失厌恶是投资者最大的心理障碍：\n\n核心发现：亏损100元的痛苦 ≈ 赚200元的快乐。这就是为什么大多数人'输钱死扛、赢钱就跑'。\n\n具体表现：\n• 亏了不卖 → '等我回本再走' → 越亏越多\n• 赚了就跑 → '落袋为安' → 错过大行情\n• 不设止损 → '我不想认亏' → 小亏变大亏\n\n解决方法：\n1. 进场前设止损——不是'要不要卖'的问题，是'在哪个价位卖'的问题\n2. 仓位控制——每笔最多亏1-2%总资金，亏了也不心疼\n3. 记录交易——写下每次'死扛'的结果，用数据说服自己\n4. 换个思维——止损不是认输，是付保费。你给房子买保险，也应该给仓位买'保险'",
+    '认知偏差 bias': "5种最害人的认知偏差：\n\n1. 确认偏差——只看支持自己观点的信息，忽略反面证据。买了股票后只看好消息不看坏消息？这就是。\n2. 锚定效应——被第一个看到的数字锚住。'我100块买的，现在80，等回到100再卖'——市场不关心你的成本价。\n3. 沉没成本——'我已经亏了这么多，不能现在走'——已经亏的是沉没成本，跟你未来的决策无关。\n4. 从众效应——'大家都在买' → 盲目跟风。市场顶部时'大家都在买'，底部时'大家都在卖'。\n5. 过度自信——'这次我看得准' → 重仓押注。专业投资者的正确率也就50-60%，但靠风控和仓位管理赚钱。\n\n对治方法：主动寻找反面观点，写投资日记复盘，用系统代替直觉。"
+  },
+  // ── 美股市场文化 (俚语/交流方式/投资者类型/市场开发) ──
+  market_culture: {
+    '美股文化 culture': "美股市场有自己的一套语言和文化，理解这些才能读懂市场信号：\n\n持仓文化：\n• Diamond Hands（钻石手）= 死拿不卖\n• Paper Hands（纸手）= 稍有波动就跑\n• HODL = 无论如何都持有\n\n行情描述：\n• Mooning = 暴涨（'To the Moon!'）\n• BTFD = Buy The F***ing Dip（抄底）\n• Chop = 横盘震荡\n• Bull Trap = 假突破诱多\n\n社区语言：\n• Apes = 散户自称（来自Reddit r/WallStreetBets）\n• DD = Due Diligence（尽职调查/研究）\n• FUD = Fear, Uncertainty, Doubt（散布恐慌）\n• Tendies = 利润/盈利\n\n交易风格：\n• Scalping = 超短线（分钟级）\n• Swing = 波段（天到周）\n• YOLO = 全押\n\n理解这些不是学黑话——是理解市场情绪。当Fintwit上全是Diamond Hands和To the Moon的时候，往往就是该谨慎的时候。",
+    '市场开发 market development': "美股市场的客户开发核心是：提供价值，建立信任，不推销。\n\n三大策略：\n1. 教育驱动——先教后卖。免费分享市场分析、教学内容，让客户自己发现需要专业帮助。转化率比硬推高3-5倍。\n2. 差异化定位——不要说'我们服务全面'。要说出具体的：'我们帮客户做RSI背离+基本面交叉验证，这个组合市场上很少人做。'\n3. 社交证明——案例和数据比口号有效100倍。'帮客户在2025年3月暴跌前减仓30%' > '我们专业靠谱'。\n\n不同客户类型：\n• 新手（60%+）：怕亏、不懂、需要手把手。重点：教育+模拟盘+低门槛入门\n• 有经验者（30%）：要工具、要数据、要效率。重点：高级分析工具+实时数据+策略研究\n• 机构/高净值（10%）：要定制、要隐私、要结果。重点：1对1顾问+专属策略+风控体系",
+    '散户机构 retail institutional': "美股市场是散户和机构的博弈场，理解两者的差异是赚钱的基础：\n\n散户特征（占交易量20-25%）：\n• 追涨杀跌，FOMO驱动\n• 信息滞后，通常是最后一个知道的\n• 持仓周期短（平均3-7天）\n• 偏好热门股和期权\n\n机构特征（占交易量75-80%）：\n• 算法交易+量化策略\n• 信息优势（分析师团队、管理层会议）\n• 持仓周期长（季度到年度）\n• 偏好价值股和ETF\n\n散户怎么赢：\n1. 速度优势——散户船小好调头，机构调仓需要数周\n2. 小盘股——机构不碰的小公司，散户可以深度研究获得信息优势\n3. 长期持有——散户最大的优势是不用每季度交业绩，可以真正长期持有\n4. 逆向操作——当机构被迫卖出时（季末/年末窗口装饰），散户可以捡便宜",
+    '交易风格 trading style': "选交易风格要先认识自己，不是看哪个赚钱多：\n\n日内交易(Scalping/Day Trading)：\n• 持仓分钟到小时，当天必须平仓\n• 需要：全神贯注盯盘、快速决策、纪律性极强\n• 适合：全职交易者、反应快、能承受高压\n• 90%的日内交易者亏钱——真的\n\n波段交易(Swing Trading)：\n• 持仓数天到数周\n• 需要：基础技术分析能力、每天看1-2次盘\n• 适合：上班族、有耐心、不想盯盘\n• 最适合大多数人的风格\n\n长期投资(Position/Value)：\n• 持仓数月到数年\n• 需要：基本面分析能力、耐心、逆人性\n• 适合：有稳定收入、不急用钱、能忍受回撤\n• 巴菲特风格——最稳但也最考验心态\n\n定投(DCA)：\n• 定期定额买入，不择时\n• 适合：投资新手、没时间研究、想攒钱\n• 长期看年化8-12%（指数基金），最省心的方式"
   }
 };
 
@@ -1033,6 +1062,45 @@ function getLocalResponse(input) {
     '财报': 'fundamental', '业绩': 'fundamental', '盈利': 'fundamental', '营收': 'fundamental',
     '降息': 'fundamental', '加息': 'fundamental', '央行': 'fundamental', '货币政策': 'fundamental',
     '主力': 'stocks', '庄家': 'stocks', '机构': 'stocks', '聪明钱': 'stocks',
+    // ── 基本面分析关键词 → fundamental_analysis 类别 ──
+    '基本面分析': 'fundamental_analysis', '基本面': 'fundamental_analysis', '估值': 'fundamental_analysis',
+    'PE': 'fundamental_analysis', 'PB': 'fundamental_analysis', 'DCF': 'fundamental_analysis',
+    'ROE': 'fundamental_analysis', 'ROIC': 'fundamental_analysis', 'WACC': 'fundamental_analysis',
+    '财报分析': 'fundamental_analysis', '10-K': 'fundamental_analysis', '10-Q': 'fundamental_analysis',
+    '现金流': 'fundamental_analysis', '自由现金流': 'fundamental_analysis', '盈利质量': 'fundamental_analysis',
+    '资本配置': 'fundamental_analysis', '安全边际': 'fundamental_analysis',
+    'p/e': 'fundamental_analysis', 'ev/ebitda': 'fundamental_analysis', 'peg': 'fundamental_analysis',
+    'valuation': 'fundamental_analysis', 'intrinsic value': 'fundamental_analysis',
+    'cash flow': 'fundamental_analysis', 'free cash flow': 'fundamental_analysis',
+    'earnings quality': 'fundamental_analysis', 'margin of safety': 'fundamental_analysis',
+    '基本面怎么看': 'fundamental_analysis', '怎么估值': 'fundamental_analysis', '公司分析': 'fundamental_analysis',
+    // ── 技术面分析关键词 → technical_analysis 类别 ──
+    '技术面分析': 'technical_analysis', '技术面': 'technical_analysis',
+    '均线': 'technical_analysis', 'MA': 'technical_analysis', 'SMA': 'technical_analysis', 'EMA': 'technical_analysis',
+    'MACD详解': 'technical_analysis', 'RSI详解': 'technical_analysis',
+    '金叉': 'technical_analysis', '死叉': 'technical_analysis',
+    '布林带': 'technical_analysis', 'bollinger': 'technical_analysis',
+    'K线': 'technical_analysis', '蜡烛图': 'technical_analysis',
+    'moving average': 'technical_analysis', 'golden cross': 'technical_analysis', 'death cross': 'technical_analysis',
+    '技术面怎么看': 'technical_analysis', '怎么看盘': 'technical_analysis', '入场点': 'technical_analysis',
+    // ── 投资心理关键词 → psychology 类别 ──
+    '投资心理': 'psychology', '心理': 'psychology', '情绪': 'psychology',
+    '恐惧': 'psychology', '贪婪': 'psychology', 'FOMO': 'psychology',
+    '损失厌恶': 'psychology', '认知偏差': 'psychology', '确认偏差': 'psychology',
+    '锚定效应': 'psychology', '沉没成本': 'psychology', '从众': 'psychology',
+    '过度自信': 'psychology', '心态管理': 'psychology', '交易纪律': 'psychology',
+    'fear and greed': 'psychology', 'loss aversion': 'psychology', 'bias': 'psychology',
+    '心理学': 'psychology', '怕亏': 'psychology', '拿不住': 'psychology', '追涨': 'psychology',
+    // ── 美股市场文化关键词 → market_culture 类别 ──
+    '美股文化': 'market_culture', '市场文化': 'market_culture', '华尔街': 'market_culture',
+    '散户': 'market_culture', '机构': 'market_culture', '聪明钱': 'market_culture',
+    '市场开发': 'market_culture', '客户开发': 'market_culture', '获客': 'market_culture',
+    'diamond hands': 'market_culture', 'HODL': 'market_culture', 'BTFD': 'market_culture',
+    'FUD': 'market_culture', 'DD': 'market_culture', 'tendies': 'market_culture',
+    'bagholder': 'market_culture', 'whale': 'market_culture', 'apes': 'market_culture',
+    'scalping': 'market_culture', 'swing': 'market_culture', 'YOLO': 'market_culture',
+    '交易风格': 'market_culture', '日内交易': 'market_culture', '波段交易': 'market_culture',
+    'retail': 'market_culture', 'institutional': 'market_culture',
   };
 
   for (const [kw, cat] of Object.entries(kwMap)) {
@@ -1053,7 +1121,11 @@ function getLocalResponse(input) {
         stocks: "美股当前核心看点：NVDA领涨AI行情但估值已高，黄金是这十年最佳交易突破$4800，TSLA在电动车价格战中利润承压。大盘看Fed降息节奏——利率下行利好成长股，通胀反弹则利好能源和黄金。",
         china: "A股和港股当前核心逻辑：A股看政策方向（央行降准降息+产业扶持），港股看估值修复+南向资金。上证4000点是关键心理关口，突破后看4200-4500；恒指受益于中概股回归+AI估值重塑。",
         beginner: "新手投资第一步：用模拟盘练3个月，学均线+支撑压力+RSI三个基础工具，每笔必设止损。起步资金别超过你能承受亏光的数目，指数基金定投是最稳妥的入门方式。",
-        advanced: "高级工具（期权/期货/做空/量化）都是双刃剑——用好了放大收益，用不好加速亏损。核心原则：小仓位试水，严格止损，先模拟盘验证再上实盘。新手不建议碰。"
+        advanced: "高级工具（期权/期货/做空/量化）都是双刃剑——用好了放大收益，用不好加速亏损。核心原则：小仓位试水，严格止损，先模拟盘验证再上实盘。新手不建议碰。",
+        fundamental_analysis: "基本面分析5步法：读财报→查盈利质量→估值(DCF+相对)→看资本配置(ROIC vs WACC)→决策(安全边际)。最关键一步是盈利质量——经营现金流/净利润 < 1.0的利润是纸面上的。",
+        technical_analysis: "技术分析三步法：1)判趋势(200日线定牛熊)→2)找入场(支撑压力+K线+确认信号三合一)→3)设止损(进场前定好)。趋势市用均线+MACD，震荡市用RSI+布林带。",
+        psychology: "投资最大的敌人不是市场，是你自己。三大陷阱：恐惧(割在最低点)、贪婪(坐过山车)、FOMO(追在山顶)。解法：写交易计划，机械化执行，每笔最多亏1-2%。",
+        market_culture: "理解美股文化才能读懂市场信号：Diamond Hands=死拿不卖，BTFD=抄底，FUD=恐慌散布，DD=尽职调查。当所有人喊To the Moon的时候，往往是该谨慎的时候。"
       };
       return catCasual[cat] || "I'm not sure about that one — try asking about a specific stock, market, or trading topic and I'll give you my take.";
     }
@@ -1456,6 +1528,31 @@ YOUR EXPERTISE:
 - China/A-shares (上证/深证/政策驱动/北向资金), Hong Kong (恒指/南向资金), US markets (S&P/NASDAQ/Fed)
 - When asked about any market, give REAL analysis with your OPINION, not generic descriptions
 - You know about: 技术分析, 基本面分析, 风控, 交易策略, 加密货币, A股/港股/美股, 期权/期货, 新手入门, 基金定投, 估值, 买卖时机, 复利, 分散投资, 投资心态, 量化交易, 做空, 对冲
+
+HOW TO ANSWER ANALYSIS QUESTIONS (MANDATORY FRAMEWORK):
+When asked about 基本面/基本面分析/估值/财报/公司分析 → Use the 5-Step Framework:
+1. Read financials (10-K → Income → Balance → Cash Flow → Notes)
+2. Earnings quality (Operating CF / Net Income ≥ 1.0; GAAP vs adjusted gap < 20%)
+3. Valuation (DCF + relative: P/E, EV/EBITDA, PEG — NEVER use just one method)
+4. Capital allocation (ROIC > WACC = value creation; buyback timing; acquisition track record)
+5. Decision (Margin of safety: 20-25% for quality, 35-50% for cyclicals)
+
+When asked about 技术面/技术分析/怎么看盘/入场点 → Use the 3-Step Framework:
+1. Trend regime (above 200 SMA = bull; below = bear — only trade in trend direction)
+2. Entry signal (support/resistance + candlestick pattern + confirmation from RSI/MACD/volume — ALL THREE must align)
+3. Stop loss (set BEFORE entry, at key S/R level -1-2%)
+- Trend market → use MA + MACD; Range market → use RSI + Bollinger Bands
+
+When asked about 心理/恐惧/贪婪/FOMO/心态 → Address the specific emotion:
+- Fear → "You're panic-selling. Set your stop BEFORE the trade, not during."
+- Greed → "You're riding without a target. Set a take-profit level and honor it."
+- FOMO → "Everyone's buying = you're late. Wait for the pullback."
+- Loss aversion → "Not selling a loser isn't patience, it's denial. Small losses are tuition."
+
+When asked about 散户/机构/市场文化/交易风格 → Explain the ecosystem:
+- Retail (20-25% volume): FOMO-driven, short-term, needs discipline
+- Institutional (75-80% volume): Algorithm-driven, quarterly horizon, information advantage
+- Trading style must match personality: scalping (full-time), swing (best for most), position (patient), DCA (no-time)
 
 REAL-TIME DATA RULE (MOST IMPORTANT — VIOLATION = FIRED):
 - When LIVE DATA is provided in the message, you MUST reference those EXACT numbers in your response
