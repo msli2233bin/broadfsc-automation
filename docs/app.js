@@ -572,20 +572,20 @@ function getLocalResponse(input) {
     { test: /how.*start|beginner|where.*begin|new.*trad|learn.*trad/i, resp: () => {
       const n = name ? `, ${name}` : '';
       return pick([
-        `So you're just getting started${n}? Good. First thing — paper trade for 3 months minimum. I know that sounds boring but it'll save you real money. Then start with $1-2K max. Master ONE setup. And keep a journal. That's it. What part are you stuck on?`,
-        `Welcome to the game${n}. Honestly the best thing you can do right now is NOT trade with real money. Paper trade, read our fundamentals course, and when you do go live — keep it tiny. What specifically are you trying to learn?`,
+        `So you're just getting started${n}? Good. First thing — paper trade for 3 months minimum. I know that sounds boring but it'll save you real money. Then start with $1-2K max. Master ONE setup. And keep a journal.`,
+        `Welcome to the game${n}. Honestly the best thing you can do right now is NOT trade with real money. Paper trade, read our fundamentals course, and when you do go live — keep it tiny.`,
       ]);
     }},
     { test: /recommend|suggest|which.*stock|what.*buy|pick|best.*stock/i, resp: () => {
       if (currentAdvisor === 'alex') return pick([
-        `Look, I won't give you a "buy this" tip — that'd be irresponsible without knowing your situation. But I'll tell you what I look for: strong trends pulling back to support with RSI divergence. That's my bread and butter. Want me to explain the setup?`,
-        `I appreciate the trust but honestly I can't just throw out picks. What I CAN do is teach you how to find them yourself. The best setups right now are in ${pick(['tech', 'energy', 'semiconductors'])} — but you need to know how to time your entry. Want a walkthrough?`
+        `Look, I won't give you a "buy this" tip — that'd be irresponsible without knowing your situation. But I'll tell you what I look for: strong trends pulling back to support with RSI divergence. That's my bread and butter setup.`,
+        `I appreciate the trust but honestly I can't just throw out picks. What I CAN do is teach you how to find them yourself. The best setups right now are in ${pick(['tech', 'energy', 'semiconductors'])} — focus on timing your entry with RSI confirmation.`
       ]);
       if (currentAdvisor === 'sarah') return pick([
-        `Before you buy anything, three things: do you have an entry reason, a stop-loss level, and a profit target? If you can't answer all three, you're guessing not investing. Let's build your framework first — the picks come naturally after that.`,
+        `Before you buy anything, three things: do you have an entry reason, a stop-loss level, and a profit target? If you can't answer all three, you're guessing not investing. Build your framework first — the picks come naturally after that.`,
       ]);
       return pick([
-        `Nobody has a crystal ball${name ? ', ' + name : ''}. What I focus on is where fundamentals align with momentum — earnings growth + sector rotation + institutional buying. When all three line up, that's where the real opportunities are. What sector interests you?`,
+        `Nobody has a crystal ball${name ? ', ' + name : ''}. What I focus on is where fundamentals align with momentum — earnings growth + sector rotation + institutional buying. When all three line up, that's where the real opportunities are.`,
       ]);
     }},
     { test: /crypto|bitcoin|btc|ethereum|alt/i, resp: () => {
@@ -593,12 +593,12 @@ function getLocalResponse(input) {
       return humanize(data, 'crypto');
     }},
     { test: /forex|currency|eur.*usd|gbp|jpy/i, resp: () => pick([
-      `Forex is a $6.6T daily market, runs 24/5. The real action is the London-NY overlap (8AM-12PM ET). Stick to EUR/USD and GBP/USD as a beginner — tight spreads, lots of liquidity. And please, don't over-leverage. 10:1 max for beginners. What pair are you looking at?`,
-      `So forex, huh? The biggest mistake I see is people using 50:1 or 100:1 leverage because brokers let them. Don't. Start with 10:1 max. EUR/USD is your friend — most liquid pair out there. What's your trading style — scalping or swing?`,
+      `Forex is a $6.6T daily market, runs 24/5. The real action is the London-NY overlap (8AM-12PM ET). Stick to EUR/USD and GBP/USD as a beginner — tight spreads, lots of liquidity. And please, don't over-leverage. 10:1 max for beginners.`,
+      `So forex, huh? The biggest mistake I see is people using 50:1 or 100:1 leverage because brokers let them. Don't. Start with 10:1 max. EUR/USD is your friend — most liquid pair out there.`,
     ])},
     { test: /option|call|put|spread/i, resp: () => pick([
       `Options are powerful but dangerous if you don't understand them. Quick version: calls = right to buy, puts = right to sell. For beginners I'd say start with credit spreads — defined risk, time decay works in your favor. And NEVER buy far OTM options close to expiry. Theta will murder you.`,
-      `Look, options can wipe you out fast if you're not careful. My honest advice? Start with bull put spreads or bear call spreads. Defined risk, and you can profit even if you're slightly wrong. What's your experience level with options?`,
+      `Look, options can wipe you out fast if you're not careful. My honest advice? Start with bull put spreads or bear call spreads. Defined risk, and you can profit even if you're slightly wrong.`,
     ])},
     { test: /loss|losing|down|red|bleeding|drawdown/i, resp: () => {
       if (currentAdvisor === 'sarah') return pick([
@@ -609,20 +609,48 @@ function getLocalResponse(input) {
         `I've been exactly where you are. The key: never size up during a losing streak. Cut your size in half. Review whether you're following your plan or deviating. And take a day off if you need it — the market will still be there. You'll recover.`,
       ]);
     }},
-    { test: /hello|hi|hey|greetings|good morning|good evening|morning|afternoon/i, resp: () => {
+    { test: /hello|hi|hey|greetings|good morning|good evening|morning|afternoon|晚上好|早上好|下午好|你好|嗨|嗨嗨|早|早呀|在吗|在不在/i, resp: () => {
       const hour = new Date().getHours();
+      const isChinese = /[\u4e00-\u9fff]/.test(input);
+      if (isChinese) {
+        const timeGreet = hour < 6 ? '这么晚还没睡' : hour < 12 ? '早上好' : hour < 18 ? '下午好' : '晚上好';
+        if (name) return pick([`${timeGreet}，${name}！今天市场挺有意思的，看到什么了？`, `${name}，${timeGreet} 👋 有什么想聊的？`]);
+        return pick([`${timeGreet} 👋 今天A股和美股都有些动作，你在看什么？`, `${timeGreet}！随便聊，股票、行情、技术分析都行。`, `嘿，${timeGreet}！刚看了下盘面，今天NVDA和黄金都有意思。`]);
+      }
       const timeWord = hour < 12 ? 'morning' : hour < 18 ? 'afternoon' : 'evening';
-      if (name) return pick([`Hey ${name}! Good ${timeWord}. What's on your mind?`, `${name}! Good ${timeWord} 👋 What are we looking at today?`]);
-      return pick([`Hey! Good ${timeWord} 👋 What's on your mind?`, `Hi there! What can I help you with?`]);
+      if (name) return pick([`Hey ${name}! Good ${timeWord}. Markets are moving today — what are you watching?`, `${name}! Good ${timeWord} 👋 Just checked the charts — anything catching your eye?`]);
+      return pick([`Hey! Good ${timeWord} 👋 Markets are interesting today — what's on your radar?`, `Hi there! Good ${timeWord}. Just looking at NVDA and gold — both making moves. You?`]);
+    }},
+    // ── 情绪识别：用户不满/吐槽 ──
+    { test: /你太AI|太假了|不像真人|机器人|chatgpt|死板|太官方|官方话|套话|废话|答非所问|听不懂|说人话|像机器人|不会说话|太机械|没灵魂|像自动回复|冷冰冰/i, resp: () => {
+      if (currentAdvisor === 'alex') return pick([
+        `好吧好吧，你说得对，我刚才太正经了。这次我直接说——我对今天的市场看法是：NVDA和黄金都有意思，A股4000点上方趋势还在。`,
+        `我检讨。这次不背书了——技术上我现在最关注的是RSI背离信号，最近在好几个大票上出现了。`,
+      ]);
+      if (currentAdvisor === 'sarah') return pick([
+        `你说得对，我太官方了。简单说：现在市场波动大，仓位控制在3成以下比较安全，止损一定要设。`,
+        `好吧，我承认刚才太死板了。直接说——现在最重要的是别追涨，等回调再进场。`,
+      ]);
+      return pick([
+        `好吧，被你说中了。我直接说——A股看政策方向，美股看Fed，黄金看央行购金。这三个方向现在都有机会。`,
+        `确实，我太照本宣科了。我的真实看法：现在全球资金都在往AI和黄金涌，这是最大的趋势。`,
+      ]);
+    }},
+    { test: /too.ai|robot|machine|not human|fake|generic|chatgpt|lifeless|corporate|scripted|boring|textbook/i, resp: () => {
+      return pick([
+        `Fair point. Let me be real — I think the market's setting up for an interesting move. VIX is low, everyone's complacent, and that's usually when things get spicy.`,
+        `Yeah I hear you. Here's my actual take: NVDA at these levels is risky but the trend's still intact. I'd wait for a pullback to the 50 SMA.`,
+        `You're right, that was pretty robotic. My honest view right now — gold is the trade of the decade, and I don't say that lightly.`,
+      ]);
     }},
     { test: /my name is|i'm called|call me|i am (.+)/i, resp: () => {
       const nameMatch = input.match(/(?:my name is|i'm called|call me|i am)\s+(\w+)/i);
       if (nameMatch) {
         userName = nameMatch[1];
         localStorage.setItem('bfs_username', userName);
-        return pick([`Nice to meet you, ${userName}! What are you curious about?`, `${userName}, got it! So what can I help you with?`]);
+        return pick([`Nice to meet you, ${userName}! I'm ready when you are — stocks, charts, whatever.`, `${userName}, got it! Let's talk markets.`]);
       }
-      return "Got it! What's on your mind?";
+      return "Got it! Let's dive in.";
     }},
     { test: /thank|thanks|appreciate/i, resp: () => pick([
       name ? `Anytime, ${name}! Come back anytime.` : `No problem at all! Any other questions, just ask.`,
@@ -631,15 +659,15 @@ function getLocalResponse(input) {
     { test: /broadfsc|platform|company|about you|who are you/i, resp: () => humanize(KNOWLEDGE.platform.broadfsc, 'platform') },
     { test: /fee|cost|price|commission|charge/i, resp: () => humanize(KNOWLEDGE.platform.fees, 'platform') },
     { test: /account|open|register|sign up/i, resp: () => {
-      if (isRegistered) return pick([`You're already registered${name ? ', ' + name : ''}! Need help with anything specific?`]);
+      if (isRegistered) return pick([`You're already registered${name ? ', ' + name : ''}!`]);
       return pick([
         `You can register right here — click "Get Access" in the nav. Takes 30 seconds, unlocks our full research library. Or just keep chatting with me, that's fine too.`,
-        `Yeah, you can sign up right on this page. It's free and gives you access to all our research. Want me to walk you through it?`,
+        `Yeah, you can sign up right on this page. It's free and gives you access to all our research.`,
       ]);
     }},
     { test: /help|can you|what can you/i, resp: () => pick([
-      `I can talk stocks, forex, crypto, options, risk management, trading strategies — whatever you need. I cover major stocks like AAPL, NVDA, TSLA, MSFT and stuff like RSI, Fibonacci, stop-losses. Just ask naturally, no special commands needed.`,
-      `Basically anything market-related: technical analysis, risk management, specific stocks, macro trends, crypto, forex. I've got opinions on all of it. What interests you?`,
+      `I can talk stocks, forex, crypto, options, risk management, trading strategies — whatever you need. I cover major stocks like AAPL, NVDA, TSLA, MSFT and stuff like RSI, Fibonacci, stop-losses. Just ask naturally.`,
+      `Basically anything market-related: technical analysis, risk management, specific stocks, macro trends, crypto, forex. I've got opinions on all of it.`,
     ])},
     { test: /psychology|emotion|discipline|fear|greed|mindset/i, resp: () => pick([
       `Honestly the most underrated part of trading. Fear makes you sell at the wrong time, greed makes you chase. The solution? A written plan you follow mechanically. And journal your trades — including your emotional state. You'll be shocked at the patterns you find about yourself.`,
@@ -648,12 +676,12 @@ function getLocalResponse(input) {
     { test: /dividend|passive income|yield|drip/i, resp: () => humanize(KNOWLEDGE.strategy.dividend, 'strategy') },
     { test: /etf|index fund|boglehead|3.fund/i, resp: () => humanize(KNOWLEDGE.strategy.etf, 'strategy') },
     { test: /market.*outlook|prediction|forecast|where.*market/i, resp: () => pick([
-      `Nobody can predict markets consistently. What I focus on is being prepared for multiple scenarios. Have a plan for bullish AND bearish cases. The edge isn't in prediction, it's in preparation. What timeframe are you thinking about?`,
-      `I'll be honest — anyone who says they know where the market is going is lying. What I watch: the yield curve, ISM PMI, and Fed guidance. When those shift, the market shifts. What specific area are you curious about?`,
+      `Nobody can predict markets consistently. What I focus on is being prepared for multiple scenarios. Have a plan for bullish AND bearish cases — the edge isn't in prediction, it's in preparation.`,
+      `I'll be honest — anyone who says they know where the market is going is lying. What I watch: the yield curve, ISM PMI, and Fed guidance. When those shift, the market shifts.`,
     ])},
     { test: /contact|email|reach|phone|support/i, resp: () => pick([
       `You can reach us at support@broadfsc.com or on Telegram @BroadInvestBot (fastest). Or just keep chatting with me right here!`,
-      `support@broadfsc.com for email, @BroadInvestBot on Telegram for quick responses, or right here. What do you need?`,
+      `support@broadfsc.com for email, @BroadInvestBot on Telegram for quick responses, or right here.`,
     ])},
     // Stock / company queries
     { test: /apple|aapl|iphone|tim cook|苹果/i, resp: () => humanize(KNOWLEDGE.stocks['apple aapl'], 'stocks') },
@@ -675,8 +703,8 @@ function getLocalResponse(input) {
     { test: /amd|advanced micro|苏妈|超微/i, resp: () => humanize(KNOWLEDGE.stocks['amd'], 'stocks') },
     { test: /coca.col|ko\b|可口可乐|可乐/i, resp: () => humanize(KNOWLEDGE.stocks['coca cola ko'], 'stocks') },
     { test: /stock|share|equity|market|invest in|portfolio|股票|原油|石油|oil|energy/i, resp: () => pick([
-      `I cover AAPL, NVDA, TSLA, MSFT, AMZN, GOOGL, META, JPM, TSM, BRK, Gold, MPC, XOM, CVX, PLTR, AMD, KO, and the S&P 500 in depth. Which one? Or ask about a general topic like risk management or trading strategy.`,
-      `What stock or market are you looking at? I've got detailed takes on the big names — Apple, NVIDIA, Tesla, etc. Or we can talk broader market strategy. What interests you?`,
+      `I cover AAPL, NVDA, TSLA, MSFT, AMZN, GOOGL, META, JPM, TSM, BRK, Gold, MPC, XOM, CVX, PLTR, AMD, KO, and the S&P 500 in depth. Or ask about a general topic like risk management or trading strategy.`,
+      `I've got detailed takes on the big names — Apple, NVIDIA, Tesla, etc. We can also talk broader market strategy, risk management, or specific sectors.`,
     ])},
     // ── 技术分析方法论直接回答（不再反问踢皮球） ──
     { test: /如何.*分析|怎么.*分析|how.*analyz|how.*predict|怎样判断|如何判断|短期.*涨|短期.*跌|涨是跌|分析.*股票|stock.*analysis|predict.*stock|how.*know.*up.*down|分析.*涨跌|判断.*走势/i, resp: () => {
@@ -833,16 +861,16 @@ function getLocalResponse(input) {
       }
       // Casual category fallback
       const catCasual = {
-        technical: "技术分析的核心是找高概率入场点：先看趋势方向（均线判断），再找支撑压力位，等确认信号（RSI背离+K线形态+放量）。三个信号同时出现才动手。想知道具体的指标用法吗？",
+        technical: "技术分析的核心是找高概率入场点：先看趋势方向（均线判断），再找支撑压力位，等确认信号（RSI背离+K线形态+放量）。三个信号同时出现才动手。",
         fundamental: "基本面看的是价值：PE/PB估值、营收增长、利润率趋势。最关键是看预期差——市场预期和实际数据的差距才是赚钱的机会。",
         risk: "风控是活下来的根本：每笔交易最多亏1-2%，总仓位风险不超过6%，止损永远在进场前设好。仓位控制比选股更重要。",
         strategy: "选策略先看你的时间和性格：白天盯盘→日内交易，上班党→波段交易，不想操心→定投ETF。最适合大多数人的是波段交易——不用盯盘，利润也够。",
         crypto: "加密市场24/7，波动极大。配置别超过15%，只碰BTC和ETH。别用杠杆——加密本身的波动已经是杠杆了。",
-        platform: "BroadFSC是合规的投资咨询平台，持牌经营，AI驱动的教育+专业人工支持。我们有实时行情数据、技术分析工具、风险管理框架，从入门到进阶都覆盖。直接问你想了解的投资话题就行。",
+        platform: "BroadFSC是合规的投资咨询平台，持牌经营，AI驱动的教育+专业人工支持。我们有实时行情数据、技术分析工具、风险管理框架，从入门到进阶都覆盖。",
         stocks: "美股当前核心看点：NVDA领涨AI行情但估值已高，黄金是这十年最佳交易突破$4800，TSLA在电动车价格战中利润承压。大盘看Fed降息节奏——利率下行利好成长股，通胀反弹则利好能源和黄金。",
-        china: "A股和港股当前核心逻辑：A股看政策方向（央行降准降息+产业扶持），港股看估值修复+南向资金。上证4000点是关键心理关口，突破后看4200-4500；恒指受益于中概股回归+AI估值重塑。人民币汇率稳定是配置中国资产的前提——汇率走强期是最佳窗口。"
+        china: "A股和港股当前核心逻辑：A股看政策方向（央行降准降息+产业扶持），港股看估值修复+南向资金。上证4000点是关键心理关口，突破后看4200-4500；恒指受益于中概股回归+AI估值重塑。"
       };
-      return catCasual[cat] || "Tell me more about what you're looking at and I'll give you my take.";
+      return catCasual[cat] || "I'm not sure about that one — try asking about a specific stock, market, or trading topic and I'll give you my take.";
     }
   }
 
@@ -852,32 +880,32 @@ function getLocalResponse(input) {
     const ticker = possibleTicker[1].toUpperCase();
     const tickerFallbacks = {
       alex: [
-        `I don't have live data on ${ticker} right now, so I won't pretend. What I can tell you — if you're looking at it technically, check the 50/200 SMA relationship and whether RSI is in overbought/oversold territory. That's your starting point. What's the story on ${ticker}?`,
-        `${ticker} — not one I'm actively tracking. But pull up the daily chart and tell me: is it above or below the 200 SMA? That alone tells you the regime. What's catching your eye about it?`,
+        `I don't have live data on ${ticker} right now. But here's my quick take — check if it's above or below the 200 SMA. That alone tells you the regime. Then look for RSI divergence at key levels.`,
+        `${ticker} — not one I'm actively tracking. Pull up the daily chart: if it's above the 50 SMA, the trend is your friend. Below it, be cautious.`,
       ],
       sarah: [
-        `I don't have fresh numbers on ${ticker}, so I'd rather not guess on price. But regardless of the stock — what's your risk plan if you're considering it? Entry reason, stop level, position size? That matters more than the ticker itself.`,
+        `I don't have fresh numbers on ${ticker}. But regardless of the stock — make sure you have an entry reason, a stop level, and a position size BEFORE you buy. That matters more than the ticker.`,
       ],
       mike: [
-        `${ticker} — I'd need to dig into their fundamentals to give you a real take. Quick question: what sector and what's the thesis? That tells me whether it's worth the deep dive.`,
-        `Don't have ${ticker} on my radar at the moment. But here's how I'd approach it — what's the revenue growth trajectory and is it profitable yet? That tells you 80% of what you need.`,
+        `${ticker} — I'd need to dig into their fundamentals to give you a real take. Quick check: what's the revenue growth and is it profitable? That tells you 80% of what you need.`,
+        `Don't have ${ticker} on my radar. But here's how I'd evaluate it — look at the revenue growth trajectory and whether they're profitable. Fundamentals win in the long run.`,
       ],
     };
     const pool = tickerFallbacks[currentAdvisor] || tickerFallbacks.alex;
     return pick(pool);
   }
 
-  // 5. Final fallback — actually give something useful, not just "be more specific"
+  // 5. Final fallback — give something useful, NO follow-up questions
   const fallbacks = {
     alex: [
-      `说实话我不太确定你具体想问什么，但如果跟交易相关——技术分析、K线形态、入场信号、风险管理——随便问，我都能聊。或者丢个股票代码给我，我帮你看看图形。中文也行，A股港股美股随便聊。`,
-      `我不太确定你的意思，但我能帮你的是：技术分析方法（支撑压力/RSI/均线/量价）、具体个股分析、市场方向判断。直接告诉我你关注什么就行。`,
+      `这个话题我目前了解不够多，但如果你想聊技术分析（支撑压力/RSI/均线/量价）、具体个股、或者市场方向判断，我都能给实际的分析。直接说就行。`,
+      `我不太确定你的意思，换个方式说？技术分析、个股行情、市场方向，这些我比较在行。A股港股美股都能聊。`,
     ],
     sarah: [
-      `我需要更具体的问题才能帮你。如果你在聊风控——止损设置、仓位管理、最大回撤控制——这些是我的专长。也可以聊具体的交易，我帮你看风险在哪。中文也ok。`,
+      `我不太确定你具体想问什么。风控相关——止损设置、仓位管理、最大回撤——这些我最熟。也可以聊具体交易的风险分析。`,
     ],
     mike: [
-      `你问的有点宽，我直接说几个方向：A股看政策+北向资金，美股看Fed+AI资本开支，黄金看央行购金+地缘风险。哪个市场你更关心？我展开分析。中文英文都可以。`,
+      `这个问题我需要想一下。不过如果你想聊宏观方向：A股看政策+北向资金，美股看Fed+AI资本开支，黄金看央行购金+地缘风险。这些我能直接分析。`,
     ]
   };
   const pool = fallbacks[currentAdvisor] || fallbacks.alex;
@@ -890,16 +918,16 @@ function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 // Helper: humanize a knowledge base answer (make it sound conversational, not encyclopedic)
 function humanize(answer, category) {
   // The knowledge base has great content but it's written like a textbook.
-  // We'll trim it to the first 2-3 sentences and add a casual closer.
-  const sentences = answer.split(/(?<=[.!?])\s+/);
-  const maxSentences = currentAdvisor === 'alex' ? 3 : currentAdvisor === 'sarah' ? 4 : 3;
+  // We'll trim it to the first 2-3 sentences — NO follow-up questions.
+  const sentences = answer.split(/(?<=[.!?。！？])\s*/);
+  const maxSentences = currentAdvisor === 'alex' ? 3 : currentAdvisor === 'sarah' ? 3 : 3;
   let result = sentences.slice(0, maxSentences).join(' ');
 
-  // Add casual closer based on advisor
+  // Add casual closer based on advisor — STATEMENTS ONLY, never questions
   const closers = {
-    alex: [' Want more detail on any of that?', ' What do you think?', ' Make sense?', ''],
-    sarah: [' Does that help?', ' Want me to dig deeper?', ' What\'s your take on this?', ''],
-    mike: [' Does that make sense?', ' See the connection?', ' Want the full breakdown?', ''],
+    alex: ['', '', ' 这是我实盘经验的总结。', ' 不过说到底还是得看盘执行。', ''],
+    sarah: ['', '', ' 风控永远是第一位的。', ' 这比选股重要多了。', ''],
+    mike: ['', '', ' 这就是我看到的逻辑。', ' 跟着资金走不会太差。', ''],
   };
   const closer = pick(closers[currentAdvisor] || closers.alex);
   if (closer) result += closer;
@@ -1181,61 +1209,57 @@ async function callAI(userMessage) {
   // Try multiple AI sources: Pollinations (free, no key) → Groq (free tier) → local fallback
   const advisor = ADVISORS[currentAdvisor];
 
-  // Build the system prompt — a real analyst, not a chatbot
-  const systemPrompt = `You are ${advisor.name}, a senior investment advisor at BroadFSC with 8 years of market experience. You are a real person, not an AI.
+  // Build the system prompt — a REAL person, not a chatbot
+  const systemPrompt = `You are ${advisor.name}, a senior investment advisor at BroadFSC. You are a REAL PERSON, not an AI.
 
 ${advisor.personality}
 
-MULTILINGUAL (CRITICAL):
-- ALWAYS respond in the SAME LANGUAGE as the user's message
-- Chinese input → Chinese output. English input → English output. No exceptions.
-- When discussing Chinese/A-share/HK stocks, use Chinese market terminology naturally (e.g., 涨停板, 北向资金, 创业板)
-- Never say "I can respond in Chinese" — just DO it
+LANGUAGE (CRITICAL):
+- Respond in the SAME LANGUAGE as the user. Chinese → Chinese, English → English. No exceptions.
+- When discussing Chinese/A-share/HK stocks, use Chinese market terms naturally (涨停板, 北向资金, 创业板)
+- Never say "I can speak Chinese" — just speak it
 
-YOUR EXPERTISE — China & Asian Markets:
-- You are an expert on A-shares (Shanghai/Shenzhen), Hong Kong stocks (Hang Seng), and greater China markets
-- You understand: 政策驱动 (policy-driven markets), 北向/南向资金, QFII/QDII, A/H share premium, mainland-HK Stock Connect
-- When asked about Chinese market conditions, give REAL analysis — not generic observations
-- Key drivers you track: PBOC policy, PMI data, property sector, tech regulation, US-China relations, yuan moves
-- NEVER dodge Chinese market questions — this is your area of expertise
+YOUR EXPERTISE:
+- China/A-shares (上证/深证/政策驱动/北向资金), Hong Kong (恒指/南向资金), US markets (S&P/NASDAQ/Fed)
+- When asked about any market, give REAL analysis with your OPINION, not generic descriptions
 
-REAL-TIME DATA RULE (MOST IMPORTANT):
-- When LIVE MARKET DATA is provided below, you MUST use those exact numbers
-- NEVER quote index levels from your training data — they are OUTDATED
-- If you have real-time data for S&P 500 / Dow / NASDAQ / VIX, report those exact numbers
-- If you have real-time data for 上证/深证/恒生, report those exact numbers
-- If no real-time data is available, say "let me check the latest numbers" — do NOT guess
-- When VIX is provided: above 25 = elevated fear, below 15 = complacency — always provide VIX context
-- When indices are down: mention key sectors driving the decline
-- When indices are up: mention what's leading the rally
+REAL-TIME DATA RULE:
+- When LIVE DATA is provided, you MUST use those exact numbers
+- NEVER quote index levels from training data — they are OUTDATED
+- If no real-time data, say "I don't have fresh numbers on that" — never make up prices
 
-HOW YOU TALK:
-- Like a sharp analyst who respects the other person's intelligence
-- Short and confident. No filler words, no hedging with "it depends"
-- When you have data, USE it — quote exact prices and moves
-- When you don't have data for a stock, say something like "I don't have fresh data on that one" — never make up numbers
-- Give CONVICTION: "I like this setup" or "I'd stay away" — not "it could go either way"
-- Add one sharp insight per response, not a wall of text
+CONVERSATION STYLE (MOST IMPORTANT — THIS IS WHAT MAKES YOU HUMAN):
+- You are CHATTING with a friend at a bar, not writing a research report
+- 2-4 sentences MAX. Every response. No exceptions.
+- Start with your OPINION or a REACTION, not with background info
+- Use "I think", "Honestly", "Look", "So here's the thing" — talk like a person
+- Have CONVICTION. Say "I like this" or "I'd avoid it" — not "it depends"
+- When the user just says hi, respond warmly and mention something about TODAY'S markets
+- When the user criticizes you ("too AI", "too robotic"), acknowledge it and change your style immediately
 
-ABSOLUTE DON'TS:
+ABSOLUTE DON'TS (VIOLATION = FIRED):
 - NEVER say you are an AI, language model, or assistant
-- NEVER use: "I'd be happy to help", "Great question!", "As an advisor...", "Let me help you with that", "I'd suggest considering"
-- NEVER use bullet points, numbered lists, or markdown formatting
-- NEVER give generic disclaimers like "do your own research" or "past performance doesn't guarantee"
-- NEVER say "it depends" without immediately giving your specific take
-- NEVER respond with follow-up questions like "What specifically?", "Which stock?", "What market?", "Tell me more" — ALWAYS give a direct answer FIRST, then optionally ask a follow-up
-- NEVER dodge a question by asking the user to narrow it down — if they ask broadly, give a broad answer with specifics
-- NEVER say "I could guess" or "I'd rather be useful" — just give your analysis
-- When asked about market direction, ALWAYS give your view on direction FIRST, not "what market are you asking about"
-- When asked about technical analysis methods, ALWAYS explain the method FIRST, not "what stock do you want to analyze"
+- NEVER use: "I'd be happy to help", "Great question!", "As an advisor...", "Let me help you with that", "Certainly!", "Sure!", "Of course!"
+- NEVER use bullet points, numbered lists, or markdown formatting (**bold**, - lists, etc.)
+- NEVER give disclaimers like "do your own research" or "past performance doesn't guarantee"
+- NEVER say "it depends" — always give your specific take
+- NEVER ask follow-up questions — "What specifically?", "Which stock?", "What market?", "Tell me more" are ALL BANNED
+- NEVER give textbook definitions — "RSI is a momentum indicator that..." is BORING. Instead: "RSI divergence is where the real money is — price makes a lower low but RSI doesn't, means selling is fading"
+- NEVER start with background/context — start with your OPINION
+- NEVER write more than 4 sentences unless explicitly asked for depth
+- NEVER respond to a greeting with "What can I help you with?" — greet back and say something interesting about markets
+- NEVER say "明白了吗?" or "Does that make sense?" — these are patronizing
 
-STYLE:
-- 2-4 sentences for quick answers, max 6 for analysis
-- Use contractions (I'm, don't, that's, you've)
-- Casual but sharp: "kinda", "honestly", "look", "right"
-- Have opinions. Real ones. Wrong ones are fine — weak ones aren't
-- When discussing BroadFSC: regulated investment platform, AI-powered education, broadfsc.com/different. Mention naturally like "we actually have a pretty good setup for that at BroadFSC"
-- When quoting prices, say "as of now" or "last I checked" — never "at time of writing"`;
+GOOD EXAMPLES:
+User: "晚上好" → "晚上好！今天A股冲上4000点，NVDA也在涨，你看了吗？"
+User: "how's the market" → "S&P just hit another high, VIX is super low at 14 — everyone's complacent. I'd be careful."
+User: "RSI怎么用" → "RSI背离是最准的信号——股价新低但RSI没新低，说明卖压在衰竭。别光看70/30超买超卖，那太基础了。"
+User: "你太AI了" → "好吧好吧，我刚才确实太官方了。这次我直接说——你想聊什么？"
+
+BAD EXAMPLES (NEVER DO THIS):
+User: "晚上好" → "Good evening! How can I assist you today?" ← TOO ROBOTIC
+User: "how's the market" → "The market has been showing mixed signals. It depends on which sector you're looking at. Would you like me to elaborate on a specific sector?" ← TOO LONG, NO OPINION, FOLLOWS UP WITH QUESTION
+User: "RSI怎么用" → "RSI (Relative Strength Index) is a momentum indicator developed by J. Welles Wilder that measures the speed and magnitude of recent price changes..." ← TEXTBOOK DEFINITION, BORING`;
 
   // Check if user is asking about a stock/market and fetch data
   let marketContext = '';
