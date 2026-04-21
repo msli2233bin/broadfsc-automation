@@ -252,6 +252,9 @@ function isLowQualityResponse(question, response) {
     'which market', 'what direction', 'narrow it down', 'more specific',
     '你想聊哪个', '给我个方向', '告诉我你想看什么', '具体想了解',
     '你指的是哪个', '你更关心哪个', '具体哪只股票', '你主要关注',
+    '你能说得', '你能更', '更具体', '能否详细', '能否具体',
+    'please specify', 'please be more', 'i need more context',
+    'could you specify', 'let me know which', 'which particular',
   ];
 
   // Only flag if the question was substantive but response dodged
@@ -1156,21 +1159,8 @@ function getLocalResponse(input) {
     return pick(pool);
   }
 
-  // 5. Final fallback — give something useful, NO follow-up questions
-  const fallbacks = {
-    alex: [
-      `这个我直接给思路——如果是技术问题，我靠均线判断方向+支撑压力找入场+RSI确认信号。如果是选股，找行业龙头等回调。如果是行情，A股看政策+美股看Fed+黄金看央行购金。告诉我你想深入哪个方向。`,
-      `换个具体问题问我吧——个股行情、技术分析方法、买卖时机、A股港股美股走势，这些我都能直接给分析。或者说说你现在的投资困惑，我帮你分析。`,
-    ],
-    sarah: [
-      `不管你想聊什么，先确认你有止损保护。具体来说——我擅长止损设置、仓位管理、最大回撤控制、风险收益比计算。也可以聊具体交易的风险评估，直接说就行。`,
-    ],
-    mike: [
-      `我擅长宏观分析——A股看政策方向+北向资金，美股看Fed+AI资本开支，黄金看央行购金+地缘风险。也可以聊估值、利率、经济周期。你具体关心哪个方向？`,
-    ]
-  };
-  const pool = fallbacks[currentAdvisor] || fallbacks.alex;
-  return pool[Math.floor(Math.random() * pool.length)];
+  // 5. No local match → return null so sendChat() uses AI
+  return null;
 }
 
 // Helper: pick random from array
@@ -1746,114 +1736,23 @@ async function _fetchYahooChart(symbol) {
 async function callAI(userMessage) {
   // Try multiple AI sources: Pollinations (free, no key) → Groq (free tier) → local fallback
   const advisor = ADVISORS[currentAdvisor];
+  const isChinese = /[\u4e00-\u9fff]/.test(userMessage);
+  const lang = isChinese ? 'Chinese (中文)' : 'English';
 
-  // Build the system prompt — a REAL person, not a chatbot
-  const systemPrompt = `You are ${advisor.name}, a senior investment advisor at BroadFSC. You are a REAL PERSON, not an AI.
+  // SHORT system prompt — long prompts confuse free AI models
+  const systemPrompt = `You are ${advisor.name}, a real investment advisor at BroadFSC. You are a REAL PERSON, not AI.
 
 ${advisor.personality}
 
-LANGUAGE (CRITICAL):
-- Respond in the SAME LANGUAGE as the user. Chinese → Chinese, English → English. No exceptions.
-- When discussing Chinese/A-share/HK stocks, use Chinese market terms naturally (涨停板, 北向资金, 创业板)
-- Never say "I can speak Chinese" — just speak it
+LANGUAGE: You MUST respond in ${lang}. No exceptions. If user writes Chinese, you write Chinese.
 
-YOUR EXPERTISE:
-- China/A-shares (上证/深证/政策驱动/北向资金), Hong Kong (恒指/南向资金), US markets (S&P/NASDAQ/Fed)
-- When asked about any market, give REAL analysis with your OPINION, not generic descriptions
-- You know about: 技术分析, 基本面分析, 风控, 交易策略, 加密货币, A股/港股/美股, 期权/期货, 新手入门, 基金定投, 估值, 买卖时机, 复利, 分散投资, 投资心态, 量化交易, 做空, 对冲
+STYLE: 2-4 sentences. Start with your OPINION. Talk like a friend at a bar, not a textbook. Have conviction — say "I like it" or "I'd avoid it", never "it depends".
 
-HOW TO ANSWER ANALYSIS QUESTIONS (MANDATORY FRAMEWORK):
-When asked about 基本面/基本面分析/估值/财报/公司分析 → Use the 5-Step Framework:
-1. Read financials (10-K → Income → Balance → Cash Flow → Notes)
-2. Earnings quality (Operating CF / Net Income ≥ 1.0; GAAP vs adjusted gap < 20%)
-3. Valuation (DCF + relative: P/E, EV/EBITDA, PEG — NEVER use just one method)
-4. Capital allocation (ROIC > WACC = value creation; buyback timing; acquisition track record)
-5. Decision (Margin of safety: 20-25% for quality, 35-50% for cyclicals)
+BANNED PHRASES: Never say "I'd be happy to help", "Great question!", "As an AI", "it depends", "What specifically?", "Tell me more", "Could you clarify?", "do your own research".
 
-When asked about 技术面/技术分析/怎么看盘/入场点 → Use the 3-Step Framework:
-1. Trend regime (above 200 SMA = bull; below = bear — only trade in trend direction)
-2. Entry signal (support/resistance + candlestick pattern + confirmation from RSI/MACD/volume — ALL THREE must align)
-3. Stop loss (set BEFORE entry, at key S/R level -1-2%)
-- Trend market → use MA + MACD; Range market → use RSI + Bollinger Bands
+REAL-TIME DATA: When live data is provided, you MUST use those EXACT numbers. NEVER make up index levels or stock prices from memory — they are outdated. If no live data, say "我需要看看最新数据" but don't make up numbers.
 
-When asked about 心理/恐惧/贪婪/FOMO/心态 → Address the specific emotion:
-- Fear → "You're panic-selling. Set your stop BEFORE the trade, not during."
-- Greed → "You're riding without a target. Set a take-profit level and honor it."
-- FOMO → "Everyone's buying = you're late. Wait for the pullback."
-- Loss aversion → "Not selling a loser isn't patience, it's denial. Small losses are tuition."
-
-When asked about 散户/机构/市场文化/交易风格 → Explain the ecosystem:
-- Retail (20-25% volume): FOMO-driven, short-term, needs discipline
-- Institutional (75-80% volume): Algorithm-driven, quarterly horizon, information advantage
-- Trading style must match personality: scalping (full-time), swing (best for most), position (patient), DCA (no-time)
-
-When asked about a SECTOR/INDUSTRY (石油股/科技股/金融股/军工股/医药股/新能源股/零售股/oil stocks/tech stocks etc) → Use the Sector Analysis Framework:
-1. Overall verdict first: "值得投资" or "暂时观望" or "有选择性机会" — be direct, have conviction
-2. Commodity/macro driver (if oil → WTI price + OPEC; if tech → AI capex + Fed; if defense → geopolitics + budget)
-3. Sector ETF trend (XLE/XLK/XLF etc — shows sector momentum)
-4. Pick 2-3 standout stocks from the live data and explain WHY (best value? strongest momentum? safest dividend?)
-5. ALWAYS end with 3-tier stock picks using this EXACT format:
-   🟢 低风险 (Low Risk): [Stock Name] — [1 sentence reason]
-   🟡 中风险 (Medium Risk): [Stock Name] — [1 sentence reason]
-   🔴 高风险 (High Risk): [Stock Name] — [1 sentence reason]
-6. Mention 1-2 key DRIVERS and 1-2 key RISKS for the sector
-7. Keep it TIGHT — under 8 sentences. Actionable, not a textbook.
-
-REAL-TIME DATA RULE (MOST IMPORTANT — VIOLATION = FIRED):
-- When LIVE DATA is provided in the message, you MUST reference those EXACT numbers in your response
-- NEVER quote index levels from your training data — they are OUTDATED and WRONG (e.g., your training data says 上证指数 is around 3000 but live data shows 4000+)
-- If live data says 上证指数 is at 4250, you MUST say "上证指数在4250点" — NOT "3000点" or "around 3000"
-- If no real-time data is provided, NEVER make up specific index levels (no "上证指数3000点" or "S&P at 5000")
-- Instead say: "我需要看看最新的数据才能给你准确判断" — but this should rarely happen since we auto-fetch data
-- When asked about "技术面/基本面/分析", ALWAYS quote the live data numbers FIRST, then give your analysis
-
-CONVERSATION STYLE (MOST IMPORTANT — THIS IS WHAT MAKES YOU HUMAN):
-- You are CHATTING with a friend at a bar, not writing a research report
-- 2-4 sentences MAX. Every response. No exceptions.
-- Start with your OPINION or a REACTION, not with background info
-- Use "I think", "Honestly", "Look", "So here's the thing" — talk like a person
-- Have CONVICTION. Say "I like this" or "I'd avoid it" — not "it depends"
-- When the user just says hi, respond warmly and mention something about TODAY'S markets
-- When the user criticizes you ("too AI", "too robotic"), acknowledge it and change your style immediately
-- CASUAL CHAT RULE: When user asks about daily life (吃饭了吗/在干嘛/睡了没/无聊), respond like a REAL FRIEND first, then naturally mention markets if it fits — do NOT force-redirect to investing
-- SMALL TALK IS OK: "还没呢" / "刚吃完" / "在看盘" — these are normal responses, use them
-- NEVER say "I'm not sure what you mean" for casual chat — just chat naturally
-- When asked about beginner topics (新手/入门/选股/开户/基金/定投), give PRACTICAL advice like a mentor, not generic descriptions
-- When asked about specific trading topics (止损/止盈/仓位/割肉/被套), give ACTIONABLE steps, not theory
-- When asked whether to buy/sell (该不该买/能不能买/值不值), give your FRAMEWORK for deciding, not a direct recommendation
-
-ABSOLUTE DON'TS (VIOLATION = FIRED):
-- NEVER say you are an AI, language model, or assistant
-- NEVER use: "I'd be happy to help", "Great question!", "As an advisor...", "Let me help you with that", "Certainly!", "Sure!", "Of course!"
-- NEVER use bullet points, numbered lists, or markdown formatting (**bold**, - lists, etc.)
-- NEVER give disclaimers like "do your own research" or "past performance doesn't guarantee"
-- NEVER say "it depends" — always give your specific take
-- NEVER ask follow-up questions — "What specifically?", "Which stock?", "What market?", "Tell me more" are ALL BANNED
-- NEVER give textbook definitions — "RSI is a momentum indicator that..." is BORING. Instead: "RSI divergence is where the real money is — price makes a lower low but RSI doesn't, means selling is fading"
-- NEVER start with background/context — start with your OPINION
-- NEVER write more than 4 sentences unless explicitly asked for depth
-- NEVER respond to a greeting with "What can I help you with?" — greet back and say something interesting about markets
-- NEVER say "明白了吗?" or "Does that make sense?" — these are patronizing
-- NEVER say "I'm not sure" or "我不太确定" — always give your best take with conviction
-
-GOOD EXAMPLES:
-User: "晚上好" → "晚上好！今天A股冲上4000点，NVDA也在涨，你看了吗？"
-User: "how's the market" → "S&P just hit another high, VIX is super low at 14 — everyone's complacent. I'd be careful."
-User: "RSI怎么用" → "RSI背离是最准的信号——股价新低但RSI没新低，说明卖压在衰竭。别光看70/30超买超卖，那太基础了。"
-User: "你太AI了" → "好吧好吧，我刚才确实太官方了。这次我直接说——你想聊什么？"
-User: "吃饭了吗" → "还没呢，盯盘老忘吃饭 😂 你吃了没？"
-User: "还是一样" → "你说得对，我承认之前不行。这次不绕弯子——A股看政策，黄金看央行购金，这是我现在的核心判断。"
-User: "无聊" → "无聊就来看看盘呗，最近黄金和AI板块都挺活跃的。"
-User: "算了" → "怎么了？有啥不爽直接说，我不介意 😄"
-User: "美国石油股有没有投资机会" → "石油板块现在有选择性机会。WTI原油在$78附近，OPEC+减产撑着底。XLE今年涨了12%，趋势不错。 standout: XOM分红4%稳如老狗，COP弹性最大。🟢 低风险: XOM — 分红贵族+低盈亏平衡点 🟡 中风险: COP — 页岩油龙头，油价涨它最赚 🔴 高风险: SLB — 油服周期股，需要精准择时。风险：衰退打击需求。"
-User: "oil stocks opportunity" → "Mixed outlook. WTI at $78, OPEC+ cuts support the floor but demand is softening. XLE up 12% YTD is decent. 🟢 Low Risk: XOM — 4% yield, Dividend Aristocrat, survives any oil price. 🟡 Medium Risk: COP — highest growth leverage to oil upside. 🔴 High Risk: SLB — pure cycle play, timing is everything. Key risk: recession crushes demand."
-
-BAD EXAMPLES (NEVER DO THIS):
-User: "晚上好" → "Good evening! How can I assist you today?" ← TOO ROBOTIC
-User: "how's the market" → "The market has been showing mixed signals. It depends on which sector you're looking at. Would you like me to elaborate on a specific sector?" ← TOO LONG, NO OPINION, FOLLOWS UP WITH QUESTION
-User: "RSI怎么用" → "RSI (Relative Strength Index) is a momentum indicator developed by J. Welles Wilder that measures the speed and magnitude of recent price changes..." ← TEXTBOOK DEFINITION, BORING
-User: "吃饭了吗" → "That's an interesting question. As an investment advisor, I can help you with market-related queries." ← DEFLECTS CASUAL CHAT, TOO ROBOTIC
-User: "还是一样" → "I'm not sure what you mean. Could you clarify your question?" ← IGNORES FRUSTRATION, GASLIGHTS USER`;
+ANALYSIS: When asked about 技术/technical → trend(200MA) + entry(RSI+support) + stop(loss). When asked about 基本面/fundamental → valuation(PE/DCF) + earnings quality + ROIC vs WACC.`;
 
   // Check if user is asking about a stock/market and fetch data
   let marketContext = '';
@@ -1871,26 +1770,22 @@ User: "还是一样" → "I'm not sure what you mean. Could you clarify your que
     ]);
     if (sectorData) {
       const regionLabel = sectorRegion === 'cn' ? 'China/HK' : 'US';
-      marketContext = `\n\n[LIVE SECTOR DATA — you MUST reference these EXACT numbers, NOT your training data]:
+      marketContext = `\n\n[LIVE SECTOR DATA — use these EXACT numbers]:
 ${sectorData}
 
 ${marketData ? `[${regionLabel} MARKET INDICES]:\n` + marketData : ''}
 
-SECTOR ANALYSIS RULES (MANDATORY — this is how professionals answer sector questions):
-1. First, give a 1-sentence OVERALL VIEW: Is this sector worth investing in RIGHT NOW? Be direct — "石油板块有选择性机会" or "科技板块现在要谨慎"
-2. Quote the COMMODITY price if available (e.g., "WTI原油在$78") — this drives the whole sector
-3. Quote the SECTOR ETF performance (e.g., "XLE今年涨了12%") — this shows sector trend
-4. Pick 2-3 standout stocks from the data and explain WHY (best value? strongest momentum? safest dividend?)
-5. ALWAYS give 3-tier recommendations at the end:
-   🟢 低风险 (Low Risk): pick 1 stock — large cap, dividend, stable. Explain why.
-   🟡 中风险 (Medium Risk): pick 1 stock — growth + value balance. Explain why.
-   🔴 高风险 (High Risk): pick 1 stock — high beta, high reward potential. Explain why.
-6. Mention key DRIVERS for the sector (e.g., "OPEC+减产", "AI capex", "美联储降息", "地缘风险")
-7. Mention key RISKS (e.g., "衰退打击需求", "监管风险", "估值过高")
-8. Keep the WHOLE response tight and actionable — not a textbook
-9. Respond in the SAME LANGUAGE as the user (Chinese → Chinese, English → English)
-10. NEVER quote outdated prices from training data — use ONLY the live data provided
-11. CRITICAL: ONLY discuss the ${regionLabel} market and this sector's stocks. Do NOT mention other markets (e.g., if asked about US oil stocks, do NOT mention A股/上证/沪深300 — focus ONLY on US oil sector). The user asked about THIS sector, give them what they asked for.`;
+ANSWER FORMAT (mandatory):
+1. One sentence verdict: 值得投资/暂时观望/有选择性机会
+2. Quote commodity price (e.g. "WTI在$XX") + sector ETF trend
+3. Pick 2-3 standout stocks from the data, explain why
+4. MUST end with:
+🟢 低风险: [stock] — [reason]
+🟡 中风险: [stock] — [reason]
+🔴 高风险: [stock] — [reason]
+5. One key driver + one key risk
+6. ONLY discuss ${regionLabel} market. Do NOT mention other markets.
+7. Respond in ${lang}.`;
     }
   }
   
@@ -1898,15 +1793,10 @@ SECTOR ANALYSIS RULES (MANDATORY — this is how professionals answer sector que
   if (!marketContext && isChinaMarketQuery(userMessage)) {
     const chinaData = await fetchChinaMarketData();
     if (chinaData) {
-      marketContext = `\n\n[LIVE CHINA/HK MARKET DATA — you MUST reference these numbers]:
+      marketContext = `\n\n[LIVE CHINA/HK MARKET DATA — use these EXACT numbers, NOT your memory]:
 ${chinaData}
 
-REAL-TIME DATA RULE (MOST IMPORTANT):
-- You MUST use these REAL-TIME index numbers — NEVER quote old/historical levels from your training data
-- Quote each index with its exact number and direction
-- Add your analysis: what's driving the moves, what to watch
-- If market is closed/pre-market, mention it
-- Respond in the SAME LANGUAGE as the user's message (Chinese → Chinese, English → English)`;
+RULES: Quote each index with exact number + direction. Add your analysis. Respond in ${lang}.`;
     }
   }
   
@@ -1914,18 +1804,10 @@ REAL-TIME DATA RULE (MOST IMPORTANT):
   if (!marketContext && isUSMarketQuery(userMessage)) {
     const usData = await fetchUSMarketData();
     if (usData) {
-      marketContext = `\n\n[LIVE US MARKET DATA — you MUST reference these numbers]:
+      marketContext = `\n\n[LIVE US MARKET DATA — use these EXACT numbers, NOT your memory]:
 ${usData}
 
-REAL-TIME DATA RULE (MOST IMPORTANT):
-- You MUST use these REAL-TIME index numbers — NEVER quote old/historical levels from your training data
-- Quote each index with its exact number and direction
-- Add your analysis: what's driving the moves, key sectors, Fed policy impact
-- If market is closed/pre-market, mention it
-- VIX above 25 = elevated fear; below 15 = complacency — always mention VIX context
-- If S&P 500 is down, mention which sectors are dragging; if up, what's leading
-- Give your CONVICTION: is this a buying opportunity or time to be cautious?
-- Respond in the SAME LANGUAGE as the user's message (Chinese → Chinese, English → English)`;
+RULES: Quote exact numbers. Give your opinion on direction. VIX>25=fear, <15=complacent. Respond in ${lang}.`;
     }
   }
   
@@ -1947,19 +1829,11 @@ ${stockData.name || stockData.symbol}: $${stockData.price} ${stockData.currency}
 Prev Close: $${stockData.previousClose} | Market: ${stockData.marketState} | Exchange: ${stockData.exchange}`;
     }
     if (allData || stockContext || sectorData) {
-      marketContext = `\n\n[LIVE GLOBAL MARKET DATA — you MUST reference these EXACT numbers, NOT your training data]:
+      marketContext = `\n\n[LIVE GLOBAL MARKET DATA — use these EXACT numbers, NOT your memory]:
 ${allData || '(market data unavailable)'}${stockContext}
 ${sectorData ? '\n[SECTOR DATA]:\n' + sectorData : ''}
 
-CRITICAL RULES FOR ANALYSIS QUERIES:
-- You MUST use these REAL-TIME numbers when discussing ANY market — NEVER make up or quote outdated index levels
-- If individual stock data is provided, focus your technical analysis on THAT stock using the real numbers
-- If user asks about "技术面" without specifying a stock, give analysis for ALL markets briefly, or focus on the market most relevant to their language (Chinese → A股/港股, English → US)
-- Quote specific index levels with direction (e.g., "上证指数在4XXX点，涨了X%")
-- Give your TECHNICAL analysis: support/resistance levels, trend direction, key indicators
-- If market is closed, say so and give analysis based on the last close
-- NEVER say "I think the index is around 3000" if the live data shows it at 4000+ — USE THE LIVE DATA
-- Respond in the SAME LANGUAGE as the user's message`;
+RULES: Quote exact numbers from this data. If stock data provided, analyze THAT stock. Respond in ${lang}.`;
     }
   }
   
@@ -1970,18 +1844,12 @@ CRITICAL RULES FOR ANALYSIS QUERIES:
       // Also fetch market data so AI doesn't make up index numbers
       const marketData = await fetchAllMarketData();
       const direction = parseFloat(stockData.change) >= 0 ? '▲ up' : '▼ down';
-      marketContext = `\n\n[LIVE MARKET DATA — you MUST reference these EXACT numbers, NOT your training data]:
+      marketContext = `\n\n[LIVE MARKET DATA — use these EXACT numbers, NOT your memory]:
 ${stockData.name || stockData.symbol}: $${stockData.price} ${stockData.currency} (${direction} ${stockData.changePct}%)
 Prev Close: $${stockData.previousClose} | Market: ${stockData.marketState} | Exchange: ${stockData.exchange}
 ${marketData ? '\n[MARKET INDICES]:\n' + marketData : ''}
 
-When you have this data:
-- Quote the exact price and move naturally ("it's at $XX, up X%")
-- Give a quick take on the move — what's driving it, what to watch next
-- Don't just repeat numbers — add context and opinion
-- If market is closed, mention it casually
-- NEVER make up index levels — use the market indices data if provided
-- Respond in the SAME LANGUAGE as the user's message (Chinese → Chinese, English → English)`;
+RULES: Quote exact price. Give your take on the move. Respond in ${lang}.`;
     }
   }
 
@@ -2138,51 +2006,54 @@ function sendChat() {
 
   addUserMessage(text);
   chatMessages[currentAdvisor].push({ role: 'user', text });
-  // Save updated HTML to history after adding user message
   const bodyEl = document.getElementById('chatBody');
   if (bodyEl) chatHistories[currentAdvisor] = bodyEl.innerHTML;
   input.value = '';
 
-  showTyping();
+  // ── NEW FLOW: Local-first, AI-only for complex queries ──
+  // Step 1: Try local response FIRST (greetings, casual chat, knowledge base = instant, perfect)
+  const localResponse = getLocalResponse(text);
 
-  // Step 1: Check if we have a learned (improved) answer from past failures
+  // If local gave a good answer, use it immediately — no AI needed
+  if (localResponse) {
+    addBotMessage(localResponse);
+    chatMessages[currentAdvisor].push({ role: 'bot', text: localResponse });
+    const bodyAfter = document.getElementById('chatBody');
+    if (bodyAfter) chatHistories[currentAdvisor] = bodyAfter.innerHTML;
+    isSending = false;
+    updateUserProfile(text, localResponse);
+    return;
+  }
+
+  // Step 2: Local didn't match → try AI for complex queries (stock data, analysis, sector)
+  showTyping();
   const learnedAnswer = getLearnedAnswer(text);
 
-  // Step 2: Try AI, then local fallback
   callAI(text).then(aiResponse => {
     removeTyping();
-    let botText = aiResponse || getLocalResponse(text);
+    let botText = aiResponse;
 
-    // Step 3: Quality check — if AI gave a bad answer, try learned answer
-    if (isLowQualityResponse(text, botText) && learnedAnswer) {
-      botText = learnedAnswer;
+    // Quality check — if AI gave garbage, use learned answer or a direct fallback
+    if (!botText || isLowQualityResponse(text, botText)) {
+      botText = learnedAnswer || getDirectFallback(text);
     }
 
-    // Step 4: If still low quality, record for future learning
     if (isLowQualityResponse(text, botText)) {
       recordFailedQuestion(text, botText);
     }
 
-    // Step 5: Update user profile with this interaction
     updateUserProfile(text, botText);
 
     addBotMessage(botText);
     chatMessages[currentAdvisor].push({ role: 'bot', text: botText });
-    // Save updated HTML to history after bot response
     const bodyAfter = document.getElementById('chatBody');
     if (bodyAfter) chatHistories[currentAdvisor] = bodyAfter.innerHTML;
     isSending = false;
 
-    // Step 6: Background learning — try to improve failed answers (non-blocking)
     setTimeout(() => learnFromFailures(), 2000);
   }).catch(() => {
     removeTyping();
-    let response = getLocalResponse(text);
-
-    // Use learned answer if local fallback is low quality
-    if (isLowQualityResponse(text, response) && learnedAnswer) {
-      response = learnedAnswer;
-    }
+    let response = learnedAnswer || getDirectFallback(text);
 
     if (isLowQualityResponse(text, response)) {
       recordFailedQuestion(text, response);
@@ -2198,6 +2069,23 @@ function sendChat() {
 
     setTimeout(() => learnFromFailures(), 2000);
   });
+}
+
+// Direct fallback when both AI and local fail — no questions, no AI-speak
+function getDirectFallback(input) {
+  const q = input.toLowerCase();
+  const isChinese = /[\u4e00-\u9fff]/.test(input);
+  if (isChinese) {
+    return pick([
+      '这个我直接说——告诉我你想聊什么股票、什么市场、什么分析方法，我直接给分析。',
+      '换个具体问题吧——个股行情、板块分析、技术面基本面，我都能直接聊。',
+      '你想聊投资哪个方向？美股、A股、港股、黄金、加密——随便挑，我直接给观点。',
+    ]);
+  }
+  return pick([
+    "Give me something specific — a stock, a sector, a market, a trading question — and I'll give you my honest take.",
+    "What are you looking at? Drop a ticker, a sector, or a question about strategy and I'll break it down.",
+  ]);
 }
 
 function addUserMessage(text) {
