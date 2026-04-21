@@ -20,6 +20,9 @@
 - [2026-04-20-global_sales_methodologies](sales/2026-04-20-global_sales_methodologies.md) - sales
 - [2026-04-20-crm_sales](sales/2026-04-20-crm_sales.md) - sales
 - [README](marketing/README.md) - marketing
+- [2026-04-21-social_management](marketing/2026-04-21-social_management.md) - marketing
+- [2026-04-21-platform_tips](marketing/2026-04-21-platform_tips.md) - marketing
+- [2026-04-21-content_strategy](marketing/2026-04-21-content_strategy.md) - marketing
 - [README](competitor/README.md) - competitor
 
 ## 使用说明
