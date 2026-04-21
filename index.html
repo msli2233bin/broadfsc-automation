@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BroadFSC Pro — AI Investment Education Platform</title>
+<meta name="description" content="The world's largest AI-powered investment education platform. Free research, 30+ courses, AI advisory in 16 languages.">
+<link rel="canonical" href="https://msli2233bin.github.io/broadfsc-automation/">
+<style>
+:root{--bg:#060b18;--bg2:#0c1225;--bg3:#111a33;--bg4:#162040;--blue:#3b82f6;--blue2:#2563eb;--cyan:#06b6d4;--green:#10b981;--green2:#059669;--purple:#8b5cf6;--orange:#f59e0b;--red:#ef4444;--text:#e2e8f0;--text2:#94a3b8;--text3:#64748b;--border:rgba(255,255,255,0.06)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}a{color:inherit;text-decoration:none}::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:3px}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(6,11,24,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 24px}.nav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.1em}.nav-logo .ico{width:32px;height:32px;background:linear-gradient(135deg,var(--blue),var(--green));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}.nav-links{display:flex;gap:2px;align-items:center}.nav-links a{color:var(--text2);padding:7px 12px;border-radius:8px;font-size:.85em;font-weight:500;transition:all .2s}.nav-links a:hover{color:#fff;background:rgba(255,255,255,.06)}.nav-links a.active{color:#fff;background:rgba(59,130,246,.15)}.nav-cta{background:linear-gradient(135deg,var(--blue),var(--blue2))!important;color:#fff!important;font-weight:600;padding:7px 18px!important}.nav-mobile-btn{display:none;background:none;border:none;color:#fff;font-size:1.5em;cursor:pointer}
+.hero{padding:80px 24px 40px;position:relative;overflow:hidden;background:linear-gradient(180deg,#0a1628,var(--bg));min-height:calc(100vh - 60px);display:flex;align-items:center}.hero canvas{position:absolute;top:0;left:0;width:100%;height:100%;opacity:.2;pointer-events:none}.hero-layout{position:relative;max-width:1280px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.hero-left{padding-top:20px}.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.2);border-radius:24px;padding:5px 16px;font-size:.82em;color:var(--blue);margin-bottom:16px}.hero-badge .dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}.hero h1{font-size:2.5em;font-weight:800;line-height:1.1;margin-bottom:14px;background:linear-gradient(135deg,#fff,#93c5fd 40%,#6ee7b7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-1px}.hero-left>p{font-size:1em;color:var(--text2);max-width:500px;margin-bottom:18px}.hero-btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}.hero-stats{display:flex;gap:28px;flex-wrap:wrap}.hero-stat .num{font-size:1.7em;font-weight:800;background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}.hero-stat .label{font-size:.75em;color:var(--text3);margin-top:2px}
+.advisors-row{display:flex;gap:10px;margin-top:18px}.advisor-chip{display:flex;align-items:center;gap:8px;background:rgba(12,18,37,.8);border:1px solid rgba(59,130,246,.15);border-radius:12px;padding:8px 14px;cursor:pointer;transition:all .25s;font-size:.88em}.advisor-chip:hover,.advisor-chip.active{border-color:rgba(59,130,246,.5);background:rgba(59,130,246,.08)}.advisor-chip .av{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}.advisor-chip .name{font-weight:700;font-size:.88em;color:#fff}.advisor-chip .role{font-size:.7em;color:var(--text3)}.advisor-chip .online{color:var(--green);font-size:.68em;display:flex;align-items:center;gap:3px}.advisor-chip .online::before{content:'';width:5px;height:5px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+.hero-chat{background:rgba(12,18,37,.95);backdrop-filter:blur(20px);border:1px solid rgba(59,130,246,.15);border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5);max-width:540px;margin-left:auto}.chat-header{padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;background:rgba(59,130,246,.04)}.chat-avatar{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--green));display:flex;align-items:center;justify-content:center;font-size:16px}.chat-header-info h4{font-size:.92em;font-weight:700}.chat-header-info span{font-size:.75em;color:var(--green)}.chat-body{height:340px;overflow-y:auto;padding:16px 18px;display:flex;flex-direction:column;gap:12px}.chat-msg{max-width:85%;padding:12px 15px;border-radius:14px;font-size:.86em;line-height:1.6;animation:msgIn .3s ease}@keyframes msgIn{0%{opacity:0;transform:translateY(6px)}100%{opacity:1;transform:translateY(0)}}.chat-msg.bot{background:var(--bg4);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:3px}.chat-msg.user{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;align-self:flex-end;border-bottom-right-radius:3px}.chat-msg.bot .typing{display:inline-flex;gap:4px}.chat-msg.bot .typing span{width:5px;height:5px;background:var(--text3);border-radius:50%;animation:td 1.4s infinite}.chat-msg.bot .typing span:nth-child(2){animation-delay:.2s}.chat-msg.bot .typing span:nth-child(3){animation-delay:.4s}@keyframes td{0%,100%{opacity:.3}50%{opacity:1}}.chat-input-area{padding:12px 16px;border-top:1px solid var(--border);display:flex;gap:8px}.chat-input{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:10px 14px;color:var(--text);font-size:.86em;outline:none}.chat-input:focus{border-color:rgba(59,130,246,.4)}.chat-input::placeholder{color:var(--text3)}.chat-send{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--blue2));border:none;color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center}.chat-send:hover{transform:scale(1.05)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;font-size:.95em;font-weight:600;transition:all .25s;border:none;cursor:pointer}.btn-p{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;box-shadow:0 4px 24px rgba(59,130,246,.3)}.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(59,130,246,.4)}.btn-s{background:rgba(255,255,255,.05);color:#fff;border:1px solid rgba(255,255,255,.1)}.btn-s:hover{background:rgba(255,255,255,.08)}
+.section{padding:70px 24px}.section-inner{max-width:1280px;margin:0 auto}.section-header{text-align:center;margin-bottom:40px}.section-header h2{font-size:2em;font-weight:800;letter-spacing:-.5px;margin-bottom:10px}.section-header p{color:var(--text2);max-width:600px;margin:0 auto;font-size:1em}.section-header .accent{color:var(--blue)}
+.features-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.feature-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:24px;transition:all .3s;position:relative;overflow:hidden;cursor:pointer}.feature-card:hover{border-color:rgba(59,130,246,.2);transform:translateY(-3px);box-shadow:0 10px 32px rgba(0,0,0,.3)}.feature-card .icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px}.feature-card h3{font-size:1em;font-weight:700;margin-bottom:6px}.feature-card p{font-size:.85em;color:var(--text2);line-height:1.5}.feature-card .arrow{position:absolute;bottom:14px;right:14px;color:var(--text3);font-size:1.1em;transition:all .2s}.feature-card:hover .arrow{color:var(--blue);transform:translateX(3px)}
+.courses-tabs{display:flex;gap:8px;justify-content:center;margin-bottom:28px;flex-wrap:wrap}.courses-tab{padding:9px 22px;border-radius:24px;font-size:.88em;font-weight:600;cursor:pointer;transition:all .2s;background:rgba(255,255,255,.04);color:var(--text2);border:1px solid transparent}.courses-tab.active{background:rgba(59,130,246,.12);color:var(--blue);border-color:rgba(59,130,246,.2)}.courses-tab:hover:not(.active){background:rgba(255,255,255,.06)}.courses-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}.course-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:22px;transition:all .3s;cursor:pointer}.course-card:hover{border-color:rgba(59,130,246,.2);transform:translateY(-3px)}.course-card .tag{display:inline-block;padding:3px 10px;border-radius:6px;font-size:.72em;font-weight:600;margin-bottom:10px}.course-card .tag.beg{background:rgba(16,185,129,.12);color:var(--green)}.course-card .tag.int{background:rgba(245,158,11,.12);color:var(--orange)}.course-card .tag.adv{background:rgba(239,68,68,.12);color:var(--red)}.course-card h3{font-size:1em;font-weight:700;margin-bottom:6px}.course-card p{font-size:.85em;color:var(--text2);margin-bottom:12px;line-height:1.5}.course-meta{display:flex;gap:14px;font-size:.78em;color:var(--text3)}.course-meta span{display:flex;align-items:center;gap:4px}
+.research-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}.research-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:22px;transition:all .3s;cursor:pointer}.research-card:hover{border-color:rgba(139,92,246,.2);transform:translateY(-3px)}.research-card .type{display:inline-block;padding:3px 10px;border-radius:6px;font-size:.72em;font-weight:600;margin-bottom:8px}.research-card .type.daily{background:rgba(6,182,212,.12);color:var(--cyan)}.research-card .type.weekly{background:rgba(139,92,246,.12);color:var(--purple)}.research-card .type.special{background:rgba(245,158,11,.12);color:var(--orange)}.research-card h3{font-size:1em;font-weight:700;margin-bottom:6px}.research-card p{font-size:.85em;color:var(--text2);margin-bottom:10px}.research-card .meta{display:flex;justify-content:space-between;font-size:.78em;color:var(--text3)}
+.sources-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}.source-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:18px;text-align:center;transition:all .3s}.source-card:hover{border-color:rgba(16,185,129,.2);transform:translateY(-3px)}.source-card .logo{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 10px}.source-card h4{font-size:.9em;font-weight:700;margin-bottom:3px}.source-card p{font-size:.8em;color:var(--text2);margin-bottom:8px}.source-card .free-badge{display:inline-block;padding:3px 10px;border-radius:10px;font-size:.72em;font-weight:600;background:rgba(16,185,129,.12);color:var(--green)}
+.glossary-search{max-width:500px;margin:0 auto 20px;position:relative}.glossary-search input{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:12px 18px 12px 40px;color:var(--text);font-size:.95em;outline:none}.glossary-search input:focus{border-color:rgba(59,130,246,.4)}.glossary-search .s-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text3)}.glossary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;max-height:600px;overflow-y:auto}.glossary-item{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:14px;transition:all .2s;cursor:pointer}.glossary-item:hover{border-color:rgba(59,130,246,.2)}.glossary-item .term{font-weight:700;color:var(--blue);margin-bottom:3px;font-size:.9em}.glossary-item .def{font-size:.82em;color:var(--text2);line-height:1.5}.glossary-item .cat{display:inline-block;margin-top:6px;padding:2px 8px;border-radius:4px;font-size:.7em;background:rgba(139,92,246,.1);color:var(--purple)}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}.tool-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:24px;text-align:center;transition:all .3s}.tool-card:hover{border-color:rgba(6,182,212,.2);transform:translateY(-3px)}.tool-card .icon{font-size:36px;margin-bottom:10px}.tool-card h3{font-size:1em;font-weight:700;margin-bottom:6px}.tool-card p{font-size:.82em;color:var(--text2);margin-bottom:14px}.tool-card .btn{font-size:.82em;padding:9px 18px}
+.calc-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:2000;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:24px}.calc-modal.open{display:flex}.calc-box{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:28px;max-width:460px;width:100%;max-height:90vh;overflow-y:auto;position:relative}.calc-box h3{font-size:1.2em;font-weight:700;margin-bottom:18px}.calc-close{position:absolute;top:14px;right:14px;background:none;border:none;color:var(--text3);font-size:1.4em;cursor:pointer}.calc-close:hover{color:#fff}.calc-field{margin-bottom:14px}.calc-field label{display:block;font-size:.82em;font-weight:600;color:var(--text2);margin-bottom:5px}.calc-field input,.calc-field select{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text);font-size:.92em;outline:none}.calc-field input:focus,.calc-field select:focus{border-color:rgba(59,130,246,.4)}.calc-result{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.15);border-radius:12px;padding:14px;text-align:center;margin-top:14px}.calc-result .value{font-size:1.8em;font-weight:800;background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}.calc-result .label{font-size:.78em;color:var(--text3)}
+
+/* Register Modal */
+.reg-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:3000;background:rgba(0,0,0,.8);backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:24px}.reg-modal.open{display:flex}.reg-box{background:var(--bg2);border:1px solid rgba(59,130,246,.2);border-radius:24px;padding:36px;max-width:480px;width:100%;position:relative;box-shadow:0 24px 80px rgba(59,130,246,.15)}.reg-box .reg-header{text-align:center;margin-bottom:24px}.reg-box .reg-header .reg-icon{font-size:48px;margin-bottom:12px}.reg-box .reg-header h2{font-size:1.4em;font-weight:800;margin-bottom:6px}.reg-box .reg-header p{font-size:.88em;color:var(--text2)}.reg-field{margin-bottom:16px}.reg-field label{display:block;font-size:.82em;font-weight:600;color:var(--text2);margin-bottom:5px}.reg-field input,.reg-field select{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:11px 14px;color:var(--text);font-size:.92em;outline:none;transition:border-color .2s}.reg-field input:focus,.reg-field select:focus{border-color:rgba(59,130,246,.5);box-shadow:0 0 0 3px rgba(59,130,246,.1)}.reg-error{color:var(--red);font-size:.82em;display:none;margin-bottom:10px;padding:8px 12px;background:rgba(239,68,68,.08);border-radius:8px}.reg-benefits{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px}.reg-benefit{display:flex;align-items:center;gap:6px;font-size:.82em;color:var(--text2);padding:6px 8px;background:rgba(16,185,129,.06);border-radius:8px}.reg-benefit .check{color:var(--green);font-size:1em}.reg-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--text3);font-size:1.4em;cursor:pointer}.reg-close:hover{color:#fff}.reg-privacy{font-size:.75em;color:var(--text3);text-align:center;margin-top:12px;line-height:1.5}
+
+/* Registration Toast */
+.reg-toast{position:fixed;top:80px;right:24px;z-index:4000;background:var(--bg2);border:1px solid rgba(16,185,129,.3);border-radius:16px;padding:16px 24px;font-size:.9em;color:var(--green);box-shadow:0 12px 40px rgba(0,0,0,.4);transform:translateX(120%);transition:transform .4s cubic-bezier(.2,.8,.2,1);max-width:400px}.reg-toast.show{transform:translateX(0)}
+
+/* Research CTA Card */
+.research-cta{border-color:rgba(59,130,246,.3)!important;background:linear-gradient(135deg,rgba(59,130,246,.06),rgba(139,92,246,.06))!important;cursor:pointer}.research-cta:hover{border-color:rgba(59,130,246,.5)!important;transform:translateY(-4px)!important;box-shadow:0 12px 40px rgba(59,130,246,.15)!important}
+
+/* Contact Section */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:30px}.contact-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:24px;text-align:center;transition:all .3s}.contact-card:hover{border-color:rgba(59,130,246,.2);transform:translateY(-3px)}.contact-card .c-icon{font-size:36px;margin-bottom:10px}.contact-card h4{font-size:1em;font-weight:700;margin-bottom:4px}.contact-card p{font-size:.85em;color:var(--text2);margin-bottom:12px;line-height:1.5}.contact-card .c-link{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:10px;font-size:.85em;font-weight:600;transition:all .2s}.contact-card .c-link.primary{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff}.contact-card .c-link.secondary{background:rgba(255,255,255,.05);color:var(--text);border:1px solid rgba(255,255,255,.1)}.contact-card .c-link:hover{transform:scale(1.05)}
+
+/* Social Row */
+.social-row{display:flex;gap:14px;justify-content:center;margin-top:28px;flex-wrap:wrap}.social-btn{display:flex;align-items:center;gap:8px;padding:10px 20px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--border);font-size:.88em;font-weight:500;transition:all .2s;cursor:pointer;color:var(--text2)}.social-btn:hover{border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.08);color:#fff}
+.trust-bar{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;padding:36px 24px;background:var(--bg2);border-top:1px solid var(--border)}.trust-item{display:flex;align-items:center;gap:8px;font-size:.85em;color:var(--text2)}.trust-item .ico{font-size:1.3em}
+.footer{padding:48px 24px 24px;background:var(--bg2);border-top:1px solid var(--border)}.footer-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px}.footer-brand p{font-size:.85em;color:var(--text3);margin-top:10px;max-width:280px;line-height:1.6}.footer h4{font-size:.82em;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text3);margin-bottom:14px}.footer a{display:block;color:var(--text2);font-size:.85em;padding:3px 0;transition:color .2s}.footer a:hover{color:#fff}.footer-bottom{max-width:1280px;margin:28px auto 0;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:.78em;color:var(--text3)}
+.course-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:2000;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);overflow-y:auto;padding:40px 24px}.course-modal.open{display:block}.course-detail{max-width:800px;margin:0 auto;background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:36px;position:relative}.course-detail .close-btn{position:absolute;top:14px;right:14px;background:none;border:none;color:var(--text3);font-size:1.4em;cursor:pointer}.course-detail .close-btn:hover{color:#fff}.course-detail h2{font-size:1.6em;font-weight:800;margin-bottom:6px}.course-detail .tag{display:inline-block;padding:4px 12px;border-radius:6px;font-size:.78em;font-weight:600;margin-bottom:18px}.module-list{list-style:none;padding:0}.module-item{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:8px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:12px}.module-item:hover{border-color:rgba(59,130,246,.2)}.module-item .num{width:28px;height:28px;border-radius:7px;background:rgba(59,130,246,.12);color:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.82em;flex-shrink:0}.module-item .info{flex:1}.module-item .info h4{font-size:.9em;font-weight:600}.module-item .info p{font-size:.78em;color:var(--text3)}.module-item .dur{font-size:.78em;color:var(--text3)}.module-item .expand-icon{color:var(--text3);font-size:.85em;transition:transform .2s}.module-item.expanded .expand-icon{transform:rotate(180deg)}.module-content{display:none;background:var(--bg3);border:1px solid var(--border);border-radius:0 0 10px 10px;padding:18px 20px;margin-top:-8px;margin-bottom:8px;font-size:.88em;line-height:1.8;color:var(--text2)}.module-content.show{display:block}.module-content strong{color:var(--text)}.module-content ul{padding-left:18px;margin:6px 0}.module-content li{margin:3px 0}.quiz-section{margin-top:28px;padding-top:20px;border-top:1px solid var(--border)}.quiz-section h3{font-size:1.1em;font-weight:700;margin-bottom:14px}.quiz-q{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:10px}.quiz-q h4{font-size:.9em;font-weight:600;margin-bottom:8px}.quiz-opts{display:flex;flex-direction:column;gap:5px}.quiz-opt{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:9px 12px;font-size:.88em;cursor:pointer;transition:all .2s}.quiz-opt:hover{border-color:rgba(59,130,246,.3)}.quiz-opt.correct{border-color:var(--green);background:rgba(16,185,129,.08);color:var(--green)}.quiz-opt.wrong{border-color:var(--red);background:rgba(239,68,44,.08);color:var(--red)}
+@media(max-width:1024px){.hero-layout{grid-template-columns:1fr}.hero-chat{max-width:100%}.features-grid{grid-template-columns:repeat(2,1fr)}.footer-inner{grid-template-columns:1fr 1fr}}@media(max-width:768px){.nav-links{display:none}.nav-mobile-btn{display:block}.hero h1{font-size:1.9em}.features-grid{grid-template-columns:1fr}.courses-grid{grid-template-columns:1fr}.research-grid{grid-template-columns:1fr}.footer-inner{grid-template-columns:1fr}.hero-stats{gap:20px}}@media(max-width:480px){.hero h1{font-size:1.6em}.section{padding:40px 16px}.advisors-row{flex-direction:column}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+<a href="#" class="nav-logo"><span class="ico">📊</span> BroadFSC <span style="color:var(--blue);font-size:.65em;font-weight:500">PRO</span></a>
+<div class="nav-links" id="navLinks">
+<a href="#home" class="active">Home</a><a href="#courses">Academy</a><a href="#research">Research</a><a href="#glossary">Glossary</a><a href="#tools">Tools</a><a href="#contact">Contact</a><a href="admin.html" style="color:var(--orange)">🔒 Admin</a><a href="javascript:void(0)" class="nav-cta" onclick="showRegisterModal('nav_cta')">🤖 Get Access</a>
+</div><button class="nav-mobile-btn" onclick="document.getElementById('navLinks').classList.toggle('show')">☰</button>
+</div></nav>
+
+<section class="hero" id="home">
+<canvas id="heroCanvas"></canvas>
+<div class="hero-layout">
+<div class="hero-left">
+<div class="hero-badge"><span class="dot"></span> AI-Powered Investment Education</div>
+<h1>The World's Most Accessible<br>Investment Education Platform</h1>
+<p>Free professional research, 30+ structured courses, real-time insights, and AI advisors in 16 languages. No hidden fees.</p>
+<div class="hero-btns"><a href="#courses" class="btn btn-p">📚 Start Learning</a><a href="#research" class="btn btn-s">📄 Free Research</a></div>
+<div class="hero-stats"><div class="hero-stat"><div class="num">30+</div><div class="label">Courses</div></div><div class="hero-stat"><div class="num">16</div><div class="label">Languages</div></div><div class="hero-stat"><div class="num">300+</div><div class="label">Terms</div></div><div class="hero-stat"><div class="num">$0</div><div class="label">Always Free</div></div></div>
+<div class="advisors-row">
+<div class="advisor-chip active" onclick="switchAdvisor('alex')" id="chipAlex"><div class="av" style="background:linear-gradient(135deg,#3b82f6,#10b981)">👨‍💼</div><div><div class="name">Alex Chen</div><div class="role">Technical Analysis</div><div class="online">Online</div></div></div>
+<div class="advisor-chip" onclick="switchAdvisor('sarah')" id="chipSarah"><div class="av" style="background:linear-gradient(135deg,#8b5cf6,#f59e0b)">👩‍💼</div><div><div class="name">Sarah Kim</div><div class="role">Risk Management</div><div class="online">Online</div></div></div>
+<div class="advisor-chip" onclick="switchAdvisor('mike')" id="chipMike"><div class="av" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">🧑‍💻</div><div><div class="name">Mike Torres</div><div class="role">Fundamentals & Macro</div><div class="online">Online</div></div></div>
+</div>
+</div>
+<div class="hero-chat">
+<div class="chat-header"><div class="chat-avatar" id="chatAvatar">👨‍💼</div><div class="chat-header-info"><h4 id="chatName">Alex Chen</h4><span id="chatStatus">● Online • 8 yrs experience</span></div></div>
+<div class="chat-body" id="chatBody"></div>
+<div class="chat-input-area"><input type="text" class="chat-input" id="chatInput" placeholder="Ask about stocks, forex, crypto, risk..." onkeydown="if(event.key==='Enter'){event.preventDefault();sendChat()}"><button class="chat-send" onclick="sendChat()">➤</button></div>
+</div>
+</div>
+</section>
+
+<section class="section" id="features"><div class="section-inner">
+<div class="section-header"><h2>Why <span class="accent">BroadFSC Pro</span>?</h2><p>We combined the best of Investopedia, IG Academy, and TradingView — then added AI.</p></div>
+<div class="features-grid">
+<div class="feature-card" onclick="location.href='#courses'"><div class="icon" style="background:rgba(59,130,246,.12)">🎓</div><h3>Structured Learning</h3><p>Beginner → Advanced. 30 courses with real lessons and quizzes.</p><span class="arrow">→</span></div>
+<div class="feature-card" onclick="location.href='#research'"><div class="icon" style="background:rgba(139,92,246,.12)">📊</div><h3>Free Research</h3><p>Daily briefs, weekly analysis, and special sector reports — all free.</p><span class="arrow">→</span></div>
+<div class="feature-card" onclick="location.href='#home'"><div class="icon" style="background:rgba(16,185,129,.12)">🤖</div><h3>AI Advisor</h3><p>Multi-turn conversations with memory. Speaks 16 languages.</p><span class="arrow">→</span></div>
+<div class="feature-card" onclick="location.href='#glossary'"><div class="icon" style="background:rgba(245,158,11,.12)">📖</div><h3>Financial Glossary</h3><p>300+ terms. Search, browse, click through related concepts.</p><span class="arrow">→</span></div>
+<div class="feature-card" onclick="location.href='#tools'"><div class="icon" style="background:rgba(6,182,212,.12)">🧮</div><h3>Trading Tools</h3><p>Position size, P/L, margin calculators, and currency converter.</p><span class="arrow">→</span></div>
+<div class="feature-card"><div class="icon" style="background:rgba(239,68,68,.12)">🌐</div><h3>16 Languages</h3><p>English, 中文, 日本語, 한국어, Español, and more.</p><span class="arrow">→</span></div>
+<div class="feature-card"><div class="icon" style="background:rgba(16,185,129,.12)">🔒</div><h3>Regulated & Trusted</h3><p>Licensed by major authorities. 256-bit SSL encryption.</p><span class="arrow">→</span></div>
+<div class="feature-card"><div class="icon" style="background:rgba(139,92,246,.12)">📚</div><h3>Knowledge That Stays</h3><p>AI learns continuously. Everything saved to our knowledge base.</p><span class="arrow">→</span></div>
+</div></div></section>
+
+<section class="section" id="courses" style="background:var(--bg2)"><div class="section-inner">
+<div class="section-header"><h2>Investment <span class="accent">Academy</span></h2><p>From zero to confident investor. All courses are free with real content.</p></div>
+<div class="courses-tabs">
+  <div class="courses-tab active" data-cat="all" onclick="renderCourses('all')">All</div>
+  <div class="courses-tab" data-cat="beginner" onclick="renderCourses('beginner')">🌱 Beginner</div>
+  <div class="courses-tab" data-cat="intermediate" onclick="renderCourses('intermediate')">📈 Intermediate</div>
+  <div class="courses-tab" data-cat="advanced" onclick="renderCourses('advanced')">🏆 Advanced</div>
+</div>
+<div class="courses-grid" id="coursesGrid"></div>
+</div></section>
+
+<section class="section" id="research"><div class="section-inner">
+<div class="section-header"><h2>Free <span class="accent">Research Reports</span></h2><p>Professional-grade analysis, updated daily. No paywall.</p></div>
+<div class="research-grid" id="researchGrid"></div>
+<h3 style="margin:40px 0 20px;font-size:1.2em;text-align:center">📡 Free Professional Research Sources</h3>
+<div class="sources-grid" id="sourcesGrid"></div>
+</div></section>
+
+<section class="section" id="glossary" style="background:var(--bg2)"><div class="section-inner">
+<div class="section-header"><h2>Financial <span class="accent">Glossary</span></h2><p>300+ terms explained simply.</p></div>
+<div class="glossary-search"><span class="s-icon">🔍</span><input type="text" id="glossarySearch" placeholder="Search terms..."></div>
+<div class="glossary-grid" id="glossaryGrid"></div>
+</div></section>
+
+<section class="section" id="tools"><div class="section-inner">
+<div class="section-header"><h2>Trading <span class="accent">Tools</span></h2><p>Free professional calculators.</p></div>
+<div class="tools-grid">
+<div class="tool-card"><div class="icon">📐</div><h3>Position Size Calculator</h3><p>Calculate optimal position size based on risk and stop-loss.</p><button class="btn btn-p" style="font-size:.82em" onclick="openCalc('position')">Calculate</button></div>
+<div class="tool-card"><div class="icon">💰</div><h3>Profit/Loss Calculator</h3><p>Know your potential P&L before entering a trade.</p><button class="btn btn-p" style="font-size:.82em" onclick="openCalc('pnl')">Calculate</button></div>
+<div class="tool-card"><div class="icon">🏦</div><h3>Margin Calculator</h3><p>Find out how much margin you need for your trades.</p><button class="btn btn-p" style="font-size:.82em" onclick="openCalc('margin')">Calculate</button></div>
+<div class="tool-card"><div class="icon">💱</div><h3>Currency Converter</h3><p>Real-time exchange rates for 50+ currencies.</p><button class="btn btn-p" style="font-size:.82em" onclick="openCalc('currency')">Convert</button></div>
+</div></div></section>
+
+<section class="section" id="contact" style="background:var(--bg2)"><div class="section-inner">
+<div class="section-header"><h2>Get in <span class="accent">Touch</span></h2><p>We're here to help. Reach us through any channel — we typically respond within 2 hours.</p></div>
+<div class="contact-grid">
+<div class="contact-card"><div class="c-icon">📧</div><h4>Email Support</h4><p>For detailed inquiries, research requests, and account support.</p><a href="mailto:support@broadfsc.com" class="c-link primary">support@broadfsc.com</a></div>
+<div class="contact-card"><div class="c-icon">💬</div><h4>Telegram</h4><p>24/7 AI assistant + human support. Fastest response time.</p><a href="https://t.me/BroadInvestBot" target="_blank" class="c-link primary">@BroadInvestBot</a></div>
+<div class="contact-card"><div class="c-icon">🌐</div><h4>Website</h4><p>Full services, account management, and regulatory info.</p><a href="https://www.broadfsc.com/different" target="_blank" class="c-link secondary">broadfsc.com →</a></div>
+<div class="contact-card"><div class="c-icon">🤖</div><h4>Live AI Advisor</h4><p>Chat with Alex, Sarah, or Mike right now — free, instant, no login needed.</p><a href="#home" class="c-link primary" onclick="document.getElementById('chatInput').focus()">Start Chat →</a></div>
+</div>
+<div class="social-row">
+<a href="https://t.me/BroadFSC" target="_blank" class="social-btn">📱 Telegram Channel</a>
+<a href="https://x.com/BroadFSC" target="_blank" class="social-btn">🐦 X / Twitter</a>
+<a href="https://broadfsc.bsky.social" target="_blank" class="social-btn">🦋 Bluesky</a>
+<a href="https://mastodon.social/@msli2233bin" target="_blank" class="social-btn">🐘 Mastodon</a>
+</div>
+</div></section>
+
+<div class="trust-bar"><div class="trust-item"><span class="ico">🏛️</span> Regulated</div><div class="trust-item"><span class="ico">🔒</span> 256-bit SSL</div><div class="trust-item"><span class="ico">🌍</span> 120+ Countries</div><div class="trust-item"><span class="ico">📧</span> support@broadfsc.com</div><div class="trust-item"><span class="ico">💬</span> 24/7 Support</div></div>
+
+<footer class="footer"><div class="footer-inner">
+<div class="footer-brand"><div style="font-size:1.2em;font-weight:800">📊 BroadFSC <span style="color:var(--blue)">PRO</span></div><p>The world's most accessible AI-powered investment education platform.</p><div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap"><a href="mailto:support@broadfsc.com" style="display:inline-flex;align-items:center;gap:4px;color:var(--text2);font-size:.82em">📧 support@broadfsc.com</a><a href="https://t.me/BroadInvestBot" target="_blank" style="display:inline-flex;align-items:center;gap:4px;color:var(--text2);font-size:.82em">💬 @BroadInvestBot</a></div></div>
+<div><h4>Academy</h4><a href="#courses">Beginner</a><a href="#courses">Intermediate</a><a href="#courses">Advanced</a><a href="#glossary">Glossary</a><a href="#tools">Tools</a></div>
+<div><h4>Research</h4><a href="#research">Daily Briefs</a><a href="#research">Weekly</a><a href="#research">Special</a><a href="#research">Sources</a><a href="#home">AI Advisor</a></div>
+<div><h4>Company</h4><a href="https://www.broadfsc.com/different" target="_blank">About BroadFSC</a><a href="#contact">Contact Us</a><a href="mailto:support@broadfsc.com">Email Support</a><a href="https://t.me/BroadInvestBot" target="_blank">Telegram Bot</a><a href="#">Regulatory</a><a href="#">Privacy</a><a href="#">Terms</a></div>
+</div><div class="footer-bottom"><span>© 2026 Broad Investment Securities — Licensed & Regulated</span><span>Made with 🤖 AI | <a href="#contact" style="color:var(--blue)">Contact</a></span></div></footer>
+
+<div class="calc-modal" id="calcModal"><div class="calc-box" id="calcBox"></div></div>
+<div class="course-modal" id="courseModal"><div class="course-detail" id="courseDetail"></div></div>
+
+<div class="reg-modal" id="registerModal">
+  <div class="reg-box">
+    <button class="reg-close" onclick="closeRegisterModal()">✕</button>
+    <div class="reg-header">
+      <div class="reg-icon">🚀</div>
+      <h2>Unlock Full Access</h2>
+      <p>Free forever. Get personalized research, AI advisory, and market alerts.</p>
+    </div>
+    <div class="reg-benefits">
+      <div class="reg-benefit"><span class="check">✓</span> Custom stock analysis</div>
+      <div class="reg-benefit"><span class="check">✓</span> Real-time alerts</div>
+      <div class="reg-benefit"><span class="check">✓</span> 1-on-1 AI advisory</div>
+      <div class="reg-benefit"><span class="check">✓</span> All research reports</div>
+    </div>
+    <div class="reg-field"><label>Your Name</label><input type="text" id="regName" placeholder="e.g. John Smith"></div>
+    <div class="reg-field"><label>Email Address</label><input type="email" id="regEmail" placeholder="you@example.com"></div>
+    <div class="reg-field"><label>Primary Interest</label>
+      <select id="regInterests">
+        <option value="stocks">Stocks & ETFs</option>
+        <option value="forex">Forex & Currencies</option>
+        <option value="crypto">Crypto & Digital Assets</option>
+        <option value="commodities">Commodities & Gold</option>
+        <option value="options">Options & Derivatives</option>
+        <option value="all">All of the above</option>
+      </select>
+    </div>
+    <input type="hidden" id="regSource" value="general">
+    <div id="regError" class="reg-error"></div>
+    <button class="btn btn-p" style="width:100%;padding:14px;font-size:1em" onclick="submitRegistration()">Get Free Access →</button>
+    <div class="reg-privacy">🔒 Your data is protected by 256-bit SSL encryption. We never sell your information. <a href="#" style="color:var(--blue)">Privacy Policy</a></div>
+  </div>
+</div>
+
+<div class="reg-toast" id="regToast"></div>
+
+<script src="courses-data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
