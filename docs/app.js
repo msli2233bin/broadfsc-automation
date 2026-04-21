@@ -1261,6 +1261,54 @@ function isUSMarketQuery(query) {
   return false;
 }
 
+// ── Analysis Query Detection ──
+// When user asks for "技术面分析/基本面分析/行情分析" etc, they want REAL DATA
+const ANALYSIS_KEYWORDS = [
+  '技术面', '基本面', '行情分析', '市场分析', '走势分析', '大盘分析',
+  '分析一下', '帮我分析', '看看分析', '技术分析', '基本面分析',
+  '盘面分析', '趋势分析', '宏观分析', '板块分析', '资金分析',
+  'technical analysis', 'fundamental analysis', 'market analysis',
+  'analyze', 'analysis', 'outlook', 'forecast',
+  '怎么看', '怎么分析', '分析下', '分析一下',
+  '后市', '前景', '展望', '趋势判断',
+];
+
+function isAnalysisQuery(query) {
+  const q = query.toLowerCase();
+  return ANALYSIS_KEYWORDS.some(kw => q.includes(kw.toLowerCase()));
+}
+
+// Fetch ALL major indices (US + China + HK) for analysis queries
+async function fetchAllMarketData() {
+  const allIndices = [
+    { symbol: '^GSPC', label: 'S&P 500 (SPX)' },
+    { symbol: '^DJI', label: 'Dow Jones (DJIA)' },
+    { symbol: '^IXIC', label: 'NASDAQ Composite' },
+    { symbol: '^VIX', label: 'VIX Fear Index' },
+    { symbol: '000001.SS', label: '上证指数 (SSE)' },
+    { symbol: '399001.SZ', label: '深证成指 (SZSE)' },
+    { symbol: '000300.SS', label: '沪深300 (CSI300)' },
+    { symbol: '^HSI', label: '恒生指数 (HSI)' },
+  ];
+  const results = await Promise.all(allIndices.map(idx => _fetchYahooChart(idx.symbol)));
+  const usLines = [];
+  const cnLines = [];
+  for (let i = 0; i < allIndices.length; i++) {
+    if (results[i]) {
+      const d = results[i];
+      const dir = parseFloat(d.change) >= 0 ? '▲' : '▼';
+      const prefix = allIndices[i].symbol === '^VIX' ? '' : (parseFloat(d.change) >= 0 ? '🟢' : '🔴');
+      const line = `${prefix} ${allIndices[i].label}: ${d.price} ${d.currency} (${dir} ${d.changePct}%) | ${d.marketState}`;
+      if (i < 4) usLines.push(line);
+      else cnLines.push(line);
+    }
+  }
+  const parts = [];
+  if (usLines.length) parts.push('【US Markets】\n' + usLines.join('\n'));
+  if (cnLines.length) parts.push('【China/HK Markets】\n' + cnLines.join('\n'));
+  return parts.length > 0 ? parts.join('\n\n') : null;
+}
+
 async function fetchUSMarketData() {
   // Fetch real-time data for key US indices in parallel
   const indices = [
@@ -1411,8 +1459,9 @@ YOUR EXPERTISE:
 
 REAL-TIME DATA RULE:
 - When LIVE DATA is provided, you MUST use those exact numbers
-- NEVER quote index levels from training data — they are OUTDATED
-- If no real-time data, say "I don't have fresh numbers on that" — never make up prices
+- NEVER quote index levels from training data — they are OUTDATED and WRONG
+- If no real-time data is provided, NEVER make up specific index levels (no "上证指数3000点" or "S&P at 5000")
+- Instead say: "我需要看看最新的数据才能给你准确判断" — but this should rarely happen since we auto-fetch data
 
 CONVERSATION STYLE (MOST IMPORTANT — THIS IS WHAT MAKES YOU HUMAN):
 - You are CHATTING with a friend at a bar, not writing a research report
@@ -1495,6 +1544,24 @@ REAL-TIME DATA RULE (MOST IMPORTANT):
 - If S&P 500 is down, mention which sectors are dragging; if up, what's leading
 - Give your CONVICTION: is this a buying opportunity or time to be cautious?
 - Respond in the SAME LANGUAGE as the user's message (Chinese → Chinese, English → English)`;
+    }
+  }
+  
+  // Priority 3: Analysis query (技术面/基本面/行情分析) → fetch ALL indices (US+China+HK)
+  if (!marketContext && isAnalysisQuery(userMessage)) {
+    const allData = await fetchAllMarketData();
+    if (allData) {
+      marketContext = `\n\n[LIVE GLOBAL MARKET DATA — you MUST reference these numbers]:
+${allData}
+
+CRITICAL RULES FOR ANALYSIS QUERIES:
+- You MUST use these REAL-TIME numbers when discussing ANY market — NEVER make up or quote outdated index levels
+- If user asks about "技术面" without specifying a market, give analysis for ALL markets briefly, or focus on the market most relevant to their language (Chinese → A股/港股, English → US)
+- Quote specific index levels with direction (e.g., "上证指数在4XXX点，涨了X%")
+- Give your TECHNICAL analysis: support/resistance levels, trend direction, key indicators
+- If market is closed, say so and give analysis based on the last close
+- NEVER say "I think the index is around 3000" if the live data shows it at 4000+ — USE THE LIVE DATA
+- Respond in the SAME LANGUAGE as the user's message`;
     }
   }
   
