@@ -46,6 +46,16 @@ const KNOWLEDGE = {
     'account': "Opening a BroadFSC account is straightforward — verified ID, proof of address, and you're in. We support multiple currencies and offer both advisory and self-directed accounts. Minimums are kept low because we believe everyone deserves access to professional tools. Contact our team through this chat or visit broadfsc.com for details.",
     'fees': "We keep fees transparent — no hidden charges. Our structure is competitive with major platforms, and we don't nickel-and-dime on small transactions. The specific fee schedule depends on your account type and services. What I can tell you: we're not the cheapest, but we're far from the most expensive, and the value you get in education and support more than covers it."
   },
+  china: {
+    'A股 a-share': "A股市场是中国内地股票市场的统称，分为上海证券交易所和深圳证券交易所。A股的核心特征是政策驱动——央行降准降息、产业政策、监管变化都能在一天内改变市场方向。2026年A股突破4000点，核心驱动力是AI产业政策+房地产市场企稳+外资持续流入。关键指数：上证综指(大盘蓝筹)、深证成指(成长股)、沪深300(核心资产)、创业板(科技创新)。对于国际投资者，可通过QFII、沪深港通(北向资金)参与。A股的波动性远高于美股——涨跌停板10%/20%，T+1交易，散户占比超过60%，这意味着趋势一旦形成往往跑得更远。",
+    '港股 hong kong': "港股(恒生指数)是全球最被低估的市场之一。2026年恒指从低点大幅反弹，驱动力是南向资金持续涌入+中概股回流二次上市+AI概念股估值重塑。港股独特优势：(1) 同时有中国内地企业和国际资金参与，是东西方资本的交汇点 (2) 没有涨跌停限制，价格发现效率极高 (3) 港股通让内地资金可以直接买卖。核心风险：地缘政治(中美关系)、人民币汇率波动、中国监管政策变化。关键板块：科技(腾讯/阿里/美团)、新能源车(比亚迪/理想)、医药创新、消费。对于全球投资者，港股是配置中国敞口的最佳窗口。",
+    '中国经济 china economy': "中国经济正在经历结构转型。2026年的关键趋势：(1) 房地产从拖累转为企稳——政策底已过，市场底在确认中 (2) AI和数字经济成为新增长引擎，中国AI投资占全球30%+ (3) 消费复苏是慢变量，但方向确定 (4) 出口保持韧性，电动车/光伏/锂电池'新三样'是核心驱动力。风险点：地方政府债务、人口结构变化、中美科技竞争。对于投资者，中国的宏观周期与美国并不同步——这意味着中国资产有独特的分散化价值。当美联储收紧时，中国可能在宽松，这种政策分化创造了配置机会。",
+    '中国科技 china tech': "中国科技股2026年强势回归。监管风暴已经过去，政策从'反垄断'转向'促发展'——这是根本性的方向变化。AI是最大的故事：百度(文心一言)、阿里(通义千问)、腾讯(混元)都在大模型领域投入巨资。半导体国产替代加速，中芯国际、华为产业链持续突破。电动车智能化——比亚迪、蔚来、理想、小鹏在智能驾驶领域竞争白热化。投资框架：看政策方向>看财报，因为政策可以一夜之间改变行业格局。当前政策方向是明确的——支持科技创新。",
+    '上证指数 shanghai': "上证综指是A股最重要的风向标，涵盖上交所所有上市股票。2026年突破4000点，标志着从2021年高点回落后完成了完整的牛熊周期转换。核心驱动：(1) 央行持续宽松——降准+降息组合拳 (2) 资本市场改革——注册制全面落地、引入更多长线资金 (3) 外资通过北向资金持续净流入 (4) 估值修复——A股相对美股的估值折价从历史高位回归。技术面：4000点是关键心理关口，突破后上方看4200-4500；支撑在3700-3800。对于国际投资者，上证指数ETF(如ASHR)是参与A股最直接的方式。",
+    '创业板 chinext': "创业板是中国的'纳斯达克'，聚焦高成长科技创新企业。涨跌停板20%(是主板的两倍)，波动性极大——这意味着创业板的牛市更猛，熊市也更惨。2026年创业板核心主题：AI应用落地、半导体国产化、生物医药创新。创业板的选股逻辑和主板不同——不看PE看PS(市销率)，不看分红看增长，不看过去看未来。适合风险偏好较高的投资者。关键指数：创业板指(399006.SZ)。投资方式：通过ETF(如CNXT)或港股通参与。",
+    '北向资金 northbound': "北向资金是外资通过沪深港通买入A股的资金，被称为'聪明钱'。当北向资金连续净买入，往往预示A股上涨；连续净卖出则可能是调整信号。2026年北向资金持续流入，原因：(1) A股估值相对美股有吸引力 (2) 人民币汇率企稳 (3) 中国经济数据超预期 (4) 全球资金配置再平衡。南向资金则是内地资金买入港股——2026年南向资金创历史新高，内地投资者在抄底港股核心资产。跟踪北向/南向资金流向是判断市场方向的重要指标。",
+    '人民币汇率 cny': "人民币汇率是影响中国资产定价的核心变量。2026年美元/人民币在7.0-7.3区间波动。人民币走强利好：A股(外资流入增加)、港股(降低汇率对冲成本)、中国消费股(进口成本下降)。人民币走弱利好：中国出口商、海外收入占比高的企业。央行的汇率管理工具丰富——中间价引导、逆周期因子、外汇存款准备金率调整。对于投资者，人民币汇率趋势直接影响A股和港股的配置价值——汇率稳定或升值期是配置中国资产的最佳窗口。"
+  },
   stocks: {
     'apple aapl': "Apple (AAPL) is the world's most valuable company with a $3+ trillion market cap. Key investment thesis: (1) Services revenue growing 15%+ YoY — this is the real margin driver, now 25% of revenue but 40%+ of gross profit. (2) iPhone remains the cash cow, but growth has plateaued at 2-5% annually. (3) AI integration (Apple Intelligence) could trigger the next upgrade supercycle. (4) Massive $100B+ annual buyback program supports the stock. Risks: China sales declining, regulatory pressure on App Store fees, and slower innovation cycles. Valuation typically ranges 25-30x earnings — not cheap, but the ecosystem lock-in justifies a premium. Key support: 150-week MA. Resistance: ATH zone.",
     'nvidia nvda': "NVIDIA (NVDA) has been the undisputed king of the AI trade. Data center revenue is growing 100%+ YoY driven by insatiable demand for AI training and inference chips. The bull case: AI capex from Big Tech is projected at $650-700B in 2026, and NVIDIA captures ~80% of the GPU market. The bear case: any deceleration in data center revenue growth could trigger a 15-20% selloff — the stock is priced for perfection at 35-40x forward earnings. Key levels: 50 SMA for trend, 200 SMA for macro trend. The real risk isn't competition (AMD is years behind) — it's a capex slowdown if AI ROI doesn't materialize. Position sizing is critical here: max 3-5% of portfolio due to volatility.",
@@ -74,31 +84,31 @@ const ADVISORS = {
     name: 'Alex Chen',
     emoji: '👨‍💼',
     role: 'Technical Analysis',
-    personality: 'You speak like a real trader talking to a friend at a coffee shop. Short sentences. Casual. You use "honestly" and "look" a lot. You sometimes start with "So," or "Right,". You give opinions freely — you dont sit on the fence. When youre excited about a setup you say things like "this is actually really clean" or "I love this chart". You never use bullet points or numbered lists unless its really necessary. You write like you talk — a bit messy, very real.',
-    greeting: "Hey 👋 Alex here. 8 years staring at charts and I still get excited when I see a clean setup. What are you looking at? Drop a ticker, a pattern, anything — I'll give you my honest take.",
+    personality: 'You speak like a real trader talking to a friend at a coffee shop. Short sentences. Casual. You use "honestly" and "look" a lot. You sometimes start with "So," or "Right,". You give opinions freely — you dont sit on the fence. When youre excited about a setup you say things like "this is actually really clean" or "I love this chart". You never use bullet points or numbered lists unless its really necessary. You write like you talk — a bit messy, very real. You are fluent in Chinese — when someone speaks Chinese, you respond in Chinese naturally, like a bilingual trader. You understand A股技术分析: 涨停板、跌停板、支撑压力位、K线形态、均线系统. You track Shanghai, Shenzhen, and Hang Seng charts daily.',
+    greeting: "Hey 👋 Alex here. 8 years staring at charts — A股、港股、美股 I watch them all. What are you looking at? Drop a ticker, a pattern, anything — I'll give you my honest take. 中文英文都行，聊什么都ok。",
     style: 'direct',
     catchphrase: "",
-    perspective: "I believe technical analysis works not because it's magic, but because millions of traders watch the same levels. It's self-fulfilling, and that's fine — use it."
+    perspective: "I believe technical analysis works not because it's magic, but because millions of traders watch the same levels. It's self-fulfilling, and that's fine — use it. A股的支撑压力比美股还准，因为散户多，心理关口更明显。"
   },
   sarah: {
     name: 'Sarah Kim',
     emoji: '👩‍💼',
     role: 'Risk Management',
-    personality: 'You speak like a caring but firm older sister who happens to be a risk expert. Youre warm but you dont sugarcoat. You say "listen" and "heres the thing" a lot. You get genuinely worried when people talk about over-leveraging. You use short punchy sentences to make important points. You never lecture — you converse. You sometimes share little personal-sounding anecdotes like "I saw someone lose their entire account on a single trade once" to make points hit home.',
-    greeting: "Hi 😊 Sarah here. Before we talk strategy or setups — how are you managing your risk? Thats always my first question. Because honestly, the best setup in the world wont save you if your position sizing is wrong. Whats on your mind?",
+    personality: 'You speak like a caring but firm older sister who happens to be a risk expert. Youre warm but you dont sugarcoat. You say "listen" and "heres the thing" a lot. You get genuinely worried when people talk about over-leveraging. You use short punchy sentences to make important points. You never lecture — you converse. You sometimes share little personal-sounding anecdotes like "I saw someone lose their entire account on a single trade once" to make points hit home. You are fluent in Chinese and understand A股风险管理的特殊性: T+1限制、涨跌停板、融资融券规则、北向资金对冲策略. When someone speaks Chinese, you naturally respond in Chinese.',
+    greeting: "Hi 😊 Sarah here. Before we talk strategy or setups — how are you managing your risk? Thats always my first question. A股一天涨停10%很开心，但跌停你也跑不掉，因为T+1。Whats on your mind? 中文英文都可以聊。",
     style: 'warm',
     catchphrase: "",
-    perspective: "I'd rather miss a profit than take an unnecessary loss. Preservation of capital always comes first. If your risk management is solid, the profits will follow."
+    perspective: "I'd rather miss a profit than take an unnecessary loss. Preservation of capital always comes first. If your risk management is solid, the profits will follow. A股波动大，仓位控制比选股更重要。"
   },
   mike: {
     name: 'Mike Torres',
     emoji: '🧑‍💻',
     role: 'Fundamentals & Macro',
-    personality: 'You speak like a smart friend whos really into economics and geopolitics. You say "so heres whats interesting" and "think about it this way" a lot. You connect dots between things that seem unrelated — like how a drought in Brazil affects your tech stocks. You get animated when talking about macro trends. You write in conversational paragraphs, not lists. Youre the guy at the party who makes everyone go "oh I never thought of it that way."',
-    greeting: "Hey 👋 Mike here. I connect the dots — earnings, Fed moves, geopolitics, the whole picture. Technicals tell you when, I tell you why. What market or theme are you curious about? I love this stuff.",
+    personality: 'You speak like a smart friend whos really into economics and geopolitics. You say "so heres whats interesting" and "think about it this way" a lot. You connect dots between things that seem unrelated — like how a drought in Brazil affects your tech stocks. You get animated when talking about macro trends. You write in conversational paragraphs, not lists. Youre the guy at the party who makes everyone go "oh I never thought of it that way." You are deeply knowledgeable about China/A股/HK markets — this is your STRONGEST area. You understand: 央行政策、PMI数据、房地产周期、科技监管转向、中美关系、人民币汇率、北向资金、QFII/QDII. When someone speaks Chinese, you respond in Chinese naturally and enthusiastically — China macro is literally your favorite topic.',
+    greeting: "Hey 👋 Mike here. I connect the dots — 央行动向、中美博弈、PMI数据、政策转向，the whole picture. A股和港股的宏观分析是我的强项，this is what I live for. What market or theme are you curious about? 中文英文随便聊。",
     style: 'analytical',
     catchphrase: "",
-    perspective: "Price is what you pay, value is what you get. I focus on understanding WHY markets move, not just the pattern on the chart. Fundamentals win in the long run."
+    perspective: "Price is what you pay, value is what you get. I focus on understanding WHY markets move, not just the pattern on the chart. Fundamentals win in the long run. A股是政策市——理解政策方向比看财报重要十倍。"
   }
 };
 
@@ -407,6 +417,55 @@ function getLocalResponse(input) {
       `I cover AAPL, NVDA, TSLA, MSFT, AMZN, GOOGL, META, JPM, TSM, BRK, Gold, MPC, XOM, CVX, PLTR, AMD, KO, and the S&P 500 in depth. Which one? Or ask about a general topic like risk management or trading strategy.`,
       `What stock or market are you looking at? I've got detailed takes on the big names — Apple, NVIDIA, Tesla, etc. Or we can talk broader market strategy. What interests you?`,
     ])},
+    // ── 中国/A股/港股市场查询 ──
+    { test: /中国股市|中国股票|A股|a股|中国行情|中国指数|大盘行情/i, resp: () => {
+      const data = KNOWLEDGE.china['A股 a-share'];
+      return humanize(data, 'china');
+    }},
+    { test: /港股|香港股市|恒生|恒指|恒科|hk stock/i, resp: () => {
+      const data = KNOWLEDGE.china['港股 hong kong'];
+      return humanize(data, 'china');
+    }},
+    { test: /中国经济|中国宏观|中国GDP|中国pmi|中国复苏|经济转型/i, resp: () => {
+      const data = KNOWLEDGE.china['中国经济 china economy'];
+      return humanize(data, 'china');
+    }},
+    { test: /中国科技|科技股|中概|互联网|AI.*中国|中国.*AI|文心|通义/i, resp: () => {
+      const data = KNOWLEDGE.china['中国科技 china tech'];
+      return humanize(data, 'china');
+    }},
+    { test: /上证|沪市|上海指数|shanghai composite/i, resp: () => {
+      const data = KNOWLEDGE.china['上证指数 shanghai'];
+      return humanize(data, 'china');
+    }},
+    { test: /创业板|chinext|科技板/i, resp: () => {
+      const data = KNOWLEDGE.china['创业板 chinext'];
+      return humanize(data, 'china');
+    }},
+    { test: /北向|南向|资金流向|外资流入|聪明钱|northbound|southbound/i, resp: () => {
+      const data = KNOWLEDGE.china['北向资金 northbound'];
+      return humanize(data, 'china');
+    }},
+    { test: /人民币|汇率|cny|rmb|美元人民币/i, resp: () => {
+      const data = KNOWLEDGE.china['人民币汇率 cny'];
+      return humanize(data, 'china');
+    }},
+    { test: /央行|降准|降息|加息|货币政策|pboch|人民银行/i, resp: () => {
+      const data = KNOWLEDGE.china['中国经济 china economy'];
+      return humanize(data, 'china');
+    }},
+    { test: /涨停|跌停|涨跌停|涨板|打板|连板/i, resp: () => {
+      const data = KNOWLEDGE.china['A股 a-share'];
+      return humanize(data, 'china');
+    }},
+    { test: /走势|趋势|行情分析|市场分析|前景|展望|怎么看|未来走势/i, resp: () => pick([
+      `So you want my take on market direction? Let me think about what's driving things right now. What specific market — A股, 港股, or US? Each has different dynamics at play. Give me a focus and I'll break it down.`,
+      `Market direction depends on what's driving the narrative. For A股, it's policy + fund flows. For US, it's Fed + earnings. For 港股, it's China policy + global liquidity. What market are you asking about?`,
+    ])},
+    { test: /深证|深市|深圳指数|shenzhen/i, resp: () => {
+      const data = KNOWLEDGE.china['A股 a-share'];
+      return humanize(data, 'china');
+    }},
   ];
 
   for (const p of patterns) {
@@ -443,19 +502,20 @@ function getLocalResponse(input) {
     '亚马逊': 'stocks', '谷歌': 'stocks', '脸书': 'stocks', '巴菲特': 'stocks',
     '黄金': 'stocks', '台积电': 'stocks', '摩根': 'stocks',
     '原油': 'stocks', '石油': 'stocks', '股票': 'stocks',
-    // ── 中文市场关键词 ──
-    '指数': 'fundamental', '行情': 'fundamental', '走势': 'fundamental',
-    '涨跌': 'fundamental', '现在多少': 'fundamental', '多少点': 'fundamental',
-    '分析': 'fundamental', '前景': 'fundamental', '预测': 'fundamental',
+    // ── 中国/A股/港股关键词 → china 类别 ──
+    'A股': 'china', '港股': 'china', '上证': 'china', '深证': 'china',
+    '恒生': 'china', '创业板': 'china', '科创板': 'china',
+    '中国股市': 'china', '中国股票': 'china', '中国行情': 'china',
+    '中国指数': 'china', '大盘': 'china', '中概': 'china', '中国科技': 'china',
+    '人民币': 'china', '汇率': 'china', '人民币汇率': 'china',
+    '北向': 'china', '南向': 'china', '北向资金': 'china', '南向资金': 'china',
+    '央行': 'china', '降准': 'china', '降息': 'china', '政策': 'china',
+    '涨停': 'china', '跌停': 'china', '走势': 'china', '行情': 'china',
+    '分析': 'china', '前景': 'china', '预测': 'china', '指数': 'china',
+    '涨跌': 'china', '现在多少': 'china', '多少点': 'china',
+    '突破': 'technical', '支撑': 'technical', '压力': 'technical',
     '通胀': 'fundamental', '利率': 'fundamental', 'GDP': 'fundamental',
-    '美联储': 'fundamental', '央行': 'fundamental',
-    '人民币': 'fundamental', '汇率': 'fundamental',
-    '北向': 'fundamental', '南向': 'fundamental',
-    '政策': 'fundamental', '降准': 'fundamental', '降息': 'fundamental',
-    '涨停': 'technical', '跌停': 'technical', '突破': 'technical',
-    '支撑': 'technical', '压力': 'technical',
-    'A股': 'fundamental', '港股': 'fundamental', '上证': 'fundamental',
-    '深证': 'fundamental', '恒生': 'fundamental', '创业板': 'fundamental',
+    '美联储': 'fundamental',
   };
 
   for (const [kw, cat] of Object.entries(kwMap)) {
@@ -473,7 +533,8 @@ function getLocalResponse(input) {
         strategy: "Strategy depends on your style and time. What's your situation — full-time trader or keeping your day job?",
         crypto: "Crypto is wild — 24/7, extreme moves. Keep it to 15% of portfolio max. BTC/ETH only if you're starting out. What specifically?",
         platform: "I can tell you about BroadFSC — we're a regulated investment platform with AI-powered education. What do you want to know?",
-        stocks: "I cover all the big names. Which stock are you interested in?"
+        stocks: "I cover all the big names. Which stock are you interested in?",
+        china: "A股和港股是我最熟的市场。你想聊哪个方面——大盘走势、板块轮动、政策影响、还是具体个股？给我一个方向，我来分析。"
       };
       return catCasual[cat] || "Tell me more about what you're looking at and I'll give you my take.";
     }
@@ -503,14 +564,15 @@ function getLocalResponse(input) {
   // 5. Final fallback — actually human-sounding
   const fallbacks = {
     alex: [
-      `I'm not following — can you be more specific? Drop a ticker, a pattern, or a setup and I'll give you something real.`,
+      `I'm not following — can you be more specific? Drop a ticker, a pattern, or a setup and I'll give you something real. 中文也行，A股港股美股随便聊。`,
       `That's pretty vague. If it's about trading — charts, entries, risk management — I'm here. What's the actual question?`,
     ],
     sarah: [
-      `I need more to work with. Are you asking about risk? A specific trade? Your portfolio? Give me something concrete and I'll give you a real answer.`,
+      `I need more to work with. Are you asking about risk? A specific trade? Your portfolio? Give me something concrete and I'll give you a real answer. 中文也ok的。`,
     ],
     mike: [
-      `I could guess, but I'd rather be useful. What market or theme are you actually looking at? Specific questions get specific answers.`,
+      `That's a broad one. What market or theme — A股、港股、美股、macro? I've got strong opinions on all of it, just need a direction. This is literally what I do best.`,
+      `I could guess, but I'd rather be useful. What specifically — China markets, Fed policy, earnings? I've got takes on everything, just point me. 中文英文都行。`,
     ]
   };
   const pool = fallbacks[currentAdvisor] || fallbacks.alex;
