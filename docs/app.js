@@ -2621,3 +2621,5 @@ function updateNavCTA() {
     cta.onclick = () => showRegisterModal('nav_cta');
   }
 }
+ 
+ 
