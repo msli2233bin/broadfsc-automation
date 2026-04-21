@@ -112,6 +112,263 @@ const ADVISORS = {
   }
 };
 
+// ═══════════════════════════════════════════════════
+// ── SMART MEMORY + LEARNING SYSTEM ──
+// ═══════════════════════════════════════════════════
+const MEMORY_KEY = 'bfs_memory';
+const LEARN_KEY = 'bfs_learned';
+
+// Load persistent memory (survives page reload)
+function loadMemory() {
+  try { return JSON.parse(localStorage.getItem(MEMORY_KEY) || '{}'); } catch(e) { return {}; }
+}
+function saveMemory(mem) {
+  try { localStorage.setItem(MEMORY_KEY, JSON.stringify(mem)); } catch(e) {}
+}
+
+// Load learned answers (auto-generated better responses)
+function loadLearned() {
+  try { return JSON.parse(localStorage.getItem(LEARN_KEY) || '{}'); } catch(e) { return {}; }
+}
+function saveLearned(learned) {
+  try { localStorage.setItem(LEARN_KEY, JSON.stringify(learned)); } catch(e) {}
+}
+
+// Track user profile — interests, topics, language preference
+function updateUserProfile(question, response) {
+  const mem = loadMemory();
+  if (!mem.profile) mem.profile = { interests: {}, lang: 'en', visitCount: 0, firstVisit: null, lastVisit: null, topics: [] };
+  const p = mem.profile;
+  p.visitCount = (p.visitCount || 0) + 1;
+  p.lastVisit = new Date().toISOString();
+  if (!p.firstVisit) p.firstVisit = p.lastVisit;
+
+  // Detect language
+  const isChinese = /[\u4e00-\u9fff]/.test(question);
+  if (isChinese) p.lang = 'zh';
+  else if (p.lang !== 'zh') p.lang = 'en';
+
+  // Track interest topics
+  const topicMap = {
+    'technical': ['rsi', 'macd', 'support', 'resistance', 'moving average', 'fibonacci', 'bollinger', 'candlestick', 'chart pattern', 'breakout', '支撑', '压力', '均线', 'K线', '技术分析', '趋势线', '指标'],
+    'us_market': ['s&p', 'dow', 'nasdaq', 'vix', 'fed', '美股', '标普', '纳斯达克', '道琼斯', '美国股市'],
+    'china_market': ['A股', '港股', '上证', '深证', '恒生', '中国股市', '北向', '人民币', '创业板', '涨停'],
+    'crypto': ['bitcoin', 'crypto', 'btc', 'ethereum', '比特币', '加密'],
+    'stocks': ['apple', 'nvidia', 'tesla', 'microsoft', 'amazon', '英伟达', '特斯拉', '苹果'],
+    'risk': ['stop loss', 'risk', 'position', 'leverage', '止损', '仓位', '风控'],
+    'fundamental': ['pe ratio', 'earnings', 'cpi', 'inflation', 'gdp', '财报', '通胀', '利率'],
+  };
+
+  const qLower = question.toLowerCase();
+  for (const [topic, keywords] of Object.entries(topicMap)) {
+    for (const kw of keywords) {
+      if (qLower.includes(kw.toLowerCase())) {
+        p.interests[topic] = (p.interests[topic] || 0) + 1;
+        break;
+      }
+    }
+  }
+
+  // Track recent topics (last 10)
+  const shortQ = question.slice(0, 80);
+  if (!p.topics.some(t => t.q === shortQ)) {
+    p.topics.unshift({ q: shortQ, time: new Date().toISOString() });
+    if (p.topics.length > 10) p.topics.pop();
+  }
+
+  saveMemory(mem);
+  return p;
+}
+
+// Detect low-quality responses (the "stupid answer" detector)
+function isLowQualityResponse(question, response) {
+  if (!response || response.length < 20) return true;
+
+  const r = response.toLowerCase();
+  const q = question.toLowerCase();
+
+  // Red flags: dodging the question
+  const dodgePhrases = [
+    'i could guess', "i'd rather be useful", 'what specifically',
+    'what stock', 'which one', 'what market', 'give me a direction',
+    'point me', 'need more to work with', "can you be more specific",
+    'what are you looking at', "i'll need more", 'what specifically',
+    'tell me more', 'what part', 'which stock', 'what sector',
+    'generic observations', 'it depends', 'could you clarify',
+  ];
+
+  // Only flag if the question was substantive but response dodged
+  const isSubstantiveQuestion = q.length > 5 && (
+    /how|分析|怎么看|行情|预测|走势|涨|跌|技术|fundamental|outlook|forecast|analysis|analyze|will.*go|should.*buy|should.*sell|what.*think|market.*do/i.test(q)
+  );
+
+  if (isSubstantiveQuestion) {
+    for (const phrase of dodgePhrases) {
+      if (r.includes(phrase)) return true;
+    }
+  }
+
+  // Too many questions in response = not answering
+  const questionMarks = (response.match(/\?|？/g) || []).length;
+  if (isSubstantiveQuestion && questionMarks >= 2 && response.length < 200) return true;
+
+  return false;
+}
+
+// Record a failed question for learning
+function recordFailedQuestion(question, badResponse) {
+  const mem = loadMemory();
+  if (!mem.failedQuestions) mem.failedQuestions = [];
+
+  // Don't duplicate
+  const existing = mem.failedQuestions.find(f => f.q === question.slice(0, 100));
+  if (existing) {
+    existing.count = (existing.count || 1) + 1;
+    existing.lastAttempt = new Date().toISOString();
+  } else {
+    mem.failedQuestions.push({
+      q: question.slice(0, 100),
+      badResponse: badResponse.slice(0, 200),
+      advisor: currentAdvisor,
+      count: 1,
+      firstAttempt: new Date().toISOString(),
+      lastAttempt: new Date().toISOString()
+    });
+  }
+
+  // Keep only last 50 failed questions
+  if (mem.failedQuestions.length > 50) mem.failedQuestions = mem.failedQuestions.slice(-50);
+  saveMemory(mem);
+}
+
+// Auto-generate a better answer for a failed question using AI
+async function learnFromFailures() {
+  const mem = loadMemory();
+  const learned = loadLearned();
+  if (!mem.failedQuestions || mem.failedQuestions.length === 0) return;
+
+  // Process only questions that failed 2+ times (real problems, not one-offs)
+  const repeatedFailures = mem.failedQuestions.filter(f => (f.count || 1) >= 2);
+  if (repeatedFailures.length === 0) return;
+
+  // Process up to 3 at a time
+  const toProcess = repeatedFailures.slice(0, 3);
+
+  for (const failure of toProcess) {
+    // Skip if already learned
+    if (learned[failure.q]) continue;
+
+    // Build a better prompt that forces a real answer
+    const learnPrompt = `A user asked: "${failure.q}"
+The previous response was too vague and dodged the question: "${failure.badResponse}"
+
+You MUST give a DIRECT, SPECIFIC answer. No follow-up questions. No "it depends". Give your actual analysis and opinion right now. If it's about market direction, give your take. If about a stock, give your view. Be concrete, specific, and opinionated. 3-5 sentences max.`;
+
+    try {
+      const resp = await fetch(POLLINATIONS_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: [
+            { role: 'system', content: 'You are a senior investment advisor. Give DIRECT answers with conviction. No hedging, no follow-up questions.' },
+            { role: 'user', content: learnPrompt }
+          ],
+          model: 'openai-large',
+          seed: Math.floor(Math.random() * 100000),
+          jsonMode: false
+        })
+      });
+
+      if (resp.ok) {
+        const text = await resp.text();
+        if (text && text.trim().length > 30) {
+          let clean = text.trim()
+            .replace(/^(As an AI|I'd be happy to|Great question!|As a|Let me help|Of course!|Certainly!|Sure!)\s*.*/i, '')
+            .replace(/\n{3,}/g, '\n\n');
+          if (clean.length > 20) {
+            learned[failure.q] = {
+              answer: clean,
+              learnedAt: new Date().toISOString(),
+              source: 'auto_learn'
+            };
+          }
+        }
+      }
+    } catch(e) { /* skip this one, try next time */ }
+  }
+
+  saveLearned(learned);
+
+  // Remove processed failures from the queue
+  mem.failedQuestions = mem.failedQuestions.filter(f => !learned[f.q]);
+  saveMemory(mem);
+}
+
+// Check if we have a learned (improved) answer for this question
+function getLearnedAnswer(question) {
+  const learned = loadLearned();
+  const qShort = question.slice(0, 100);
+
+  // Exact match
+  if (learned[qShort]) return learned[qShort].answer;
+
+  // Fuzzy match — check if any learned question is similar
+  const qLower = question.toLowerCase();
+  for (const [learnedQ, data] of Object.entries(learned)) {
+    const lqLower = learnedQ.toLowerCase();
+    // Check if key words overlap
+    const qWords = qLower.split(/\s+/).filter(w => w.length > 2);
+    const lqWords = lqLower.split(/\s+/).filter(w => w.length > 2);
+    const overlap = qWords.filter(w => lqWords.includes(w)).length;
+    if (overlap >= 2 && overlap >= Math.min(qWords.length, lqWords.length) * 0.5) {
+      return data.answer;
+    }
+  }
+
+  return null;
+}
+
+// Get user profile context for AI prompt
+function getMemoryContext() {
+  const mem = loadMemory();
+  const p = mem.profile;
+  if (!p) return '';
+
+  const parts = [];
+
+  // Visit info
+  if (p.visitCount > 1) {
+    parts.push(`This is a returning visitor (visit #${p.visitCount}).`);
+  }
+
+  // Language
+  if (p.lang === 'zh') {
+    parts.push('The user prefers Chinese — respond in Chinese.');
+  }
+
+  // Top interests
+  const sortedInterests = Object.entries(p.interests || {}).sort((a,b) => b[1] - a[1]).slice(0, 3);
+  if (sortedInterests.length > 0) {
+    const interestNames = sortedInterests.map(([topic, count]) => {
+      const names = {
+        technical: 'technical analysis', us_market: 'US markets', china_market: 'China/A-share markets',
+        crypto: 'crypto', stocks: 'individual stocks', risk: 'risk management', fundamental: 'fundamentals'
+      };
+      return `${names[topic] || topic} (${count}x)`;
+    });
+    parts.push(`User's main interests: ${interestNames.join(', ')}.`);
+  }
+
+  // Recent topics
+  if (p.topics && p.topics.length > 0) {
+    const recentTopics = p.topics.slice(0, 3).map(t => t.q).join('; ');
+    parts.push(`Recently asked about: ${recentTopics}`);
+  }
+
+  return parts.length > 0 ? '\n\n[USER MEMORY — use this to personalize]:\n' + parts.join('\n') : '';
+}
+
+
 // ── AI State ──
 let currentAdvisor = 'alex';
 let chatHistories = { alex: '', sarah: '', mike: '' };  // HTML string per advisor
@@ -417,6 +674,23 @@ function getLocalResponse(input) {
       `I cover AAPL, NVDA, TSLA, MSFT, AMZN, GOOGL, META, JPM, TSM, BRK, Gold, MPC, XOM, CVX, PLTR, AMD, KO, and the S&P 500 in depth. Which one? Or ask about a general topic like risk management or trading strategy.`,
       `What stock or market are you looking at? I've got detailed takes on the big names — Apple, NVIDIA, Tesla, etc. Or we can talk broader market strategy. What interests you?`,
     ])},
+    // ── 技术分析方法论直接回答（不再反问踢皮球） ──
+    { test: /如何.*分析|怎么.*分析|how.*analyz|how.*predict|怎样判断|如何判断|短期.*涨|短期.*跌|涨是跌|分析.*股票|stock.*analysis|predict.*stock|how.*know.*up.*down|分析.*涨跌|判断.*走势/i, resp: () => {
+      if (currentAdvisor === 'alex') return pick([
+        `判断短期涨跌，我靠三步：第一步看趋势——价格在50均线上方还是下方？在均线上方只找做多机会，下方只找做空。第二步找关键位——最近的支撑和压力在哪？等价格到那个位置再看反应。第三步确认信号——到了关键位，RSI有没有背离？有没有反转K线（锤子线/晨星）？成交量有没有放大？三步都确认了才动手。最关键的不是预测对错，而是你在什么位置进场、止损放在哪。`,
+        `短期分析的核心不是预测，是找高概率的入场点。我的方法：先看大周期（日线趋势方向），再看小周期（4小时/1小时找入场）。趋势用50/200均线判断，入场用RSI背离+关键支撑压力位。举个例子：如果股票在上升趋势中回调到50均线，同时RSI出现底背离（价格新低但RSI没新低），这就是高概率做多机会。止损放支撑位下方，目标看前高。简单但有效。`
+      ]);
+      if (currentAdvisor === 'sarah') return pick([
+        `先别管涨跌，先问自己三个问题：这笔交易你愿意亏多少？止损在哪？仓位多大？回答不了就别做。至于技术分析，我的建议是：用趋势线+50均线判断方向，在支撑位附近找入场信号，止损一定要放在支撑下方。别追涨杀跌——等到关键位置再动手，胜率会高很多。记住，分析对不对只占30%，仓位和止损占70%。`
+      ]);
+      return pick([
+        `短期涨跌看三个维度：技术面（趋势+支撑压力+指标信号）、资金面（成交量变化+主力资金流向）、情绪面（市场恐慌还是贪婪？VIX指数多少？）。技术面告诉你什么时候进场，资金面告诉你有没有人跟你站一边，情绪面告诉你有没有极端机会。三合一的时候胜率最高。但不管分析多好，永远设止损——分析是概率，不是确定性。`
+      ]);
+    }},
+    { test: /技术分析|technical analysis|ta\b|怎么.*看图|如何.*看盘|看盘技巧|技术指标/i, resp: () => pick([
+      `技术分析三大核心：趋势、支撑压力、确认信号。趋势看均线（50线上方=多头，下方=空头），支撑压力看历史成交密集区，确认信号看K线形态+RSI+成交量。新手最容易犯的错是只用一个指标——任何单一指标都可以骗你，但多个信号同时出现的时候，概率就在你这边。我建议从均线+RSI+成交量开始，这三个够用了。`,
+      `技术分析说白了就是找规律：价格在什么位置容易涨，在什么位置容易跌。最实用的方法：1）先看趋势方向（200均线以上=牛市）2）找关键价位（前高前低、整数关口、均线位置）3）等信号确认（RSI背离、K线反转形态、放量突破）。技术分析不是预测未来，是找高概率的入场点。`
+    ])},
     // ── 中国/A股/港股市场查询 ──
     { test: /中国股市|中国股票|A股|a股|中国行情|中国指数|大盘行情/i, resp: () => {
       const data = KNOWLEDGE.china['A股 a-share'];
@@ -523,6 +797,7 @@ function getLocalResponse(input) {
     '分析': 'china', '前景': 'china', '预测': 'china', '指数': 'china',
     '涨跌': 'china', '现在多少': 'china', '多少点': 'china',
     '突破': 'technical', '支撑': 'technical', '压力': 'technical',
+    '技术分析': 'technical', '技术指标': 'technical', '看盘': 'technical',
     '通胀': 'fundamental', '利率': 'fundamental', 'GDP': 'fundamental',
     '美联储': 'fundamental',
   };
@@ -536,13 +811,13 @@ function getLocalResponse(input) {
       }
       // Casual category fallback
       const catCasual = {
-        technical: "That's a technical analysis thing. The key is always confluence — don't trade on just one signal. What specifically are you looking at?",
-        fundamental: "Fundamentals drive the long game. What's the specific data point or event you're tracking?",
-        risk: "Risk management is where most people mess up. 1-2% max per trade, always have a stop. What's your current approach?",
-        strategy: "Strategy depends on your style and time. What's your situation — full-time trader or keeping your day job?",
-        crypto: "Crypto is wild — 24/7, extreme moves. Keep it to 15% of portfolio max. BTC/ETH only if you're starting out. What specifically?",
-        platform: "I can tell you about BroadFSC — we're a regulated investment platform with AI-powered education. What do you want to know?",
-        stocks: "I cover all the big names — US markets, A股, 港股, you name it. Which stock or index are you interested in? Or if you want a market overview, just ask.",
+        technical: "技术分析的核心是找高概率入场点：先看趋势方向（均线判断），再找支撑压力位，等确认信号（RSI背离+K线形态+放量）。三个信号同时出现才动手。想知道具体的指标用法吗？",
+        fundamental: "基本面看的是价值：PE/PB估值、营收增长、利润率趋势。最关键是看预期差——市场预期和实际数据的差距才是赚钱的机会。",
+        risk: "风控是活下来的根本：每笔交易最多亏1-2%，总仓位风险不超过6%，止损永远在进场前设好。仓位控制比选股更重要。",
+        strategy: "选策略先看你的时间和性格：白天盯盘→日内交易，上班党→波段交易，不想操心→定投ETF。最适合大多数人的是波段交易——不用盯盘，利润也够。",
+        crypto: "加密市场24/7，波动极大。配置别超过15%，只碰BTC和ETH。别用杠杆——加密本身的波动已经是杠杆了。",
+        platform: "BroadFSC是合规的投资咨询平台，AI驱动的教育+专业人工支持。想知道什么具体的服务？",
+        stocks: "美股、A股、港股我都在看。最火的几只：NVDA(AI龙头)、TSLA(最分裂的股票)、黄金(涨疯了)。想聊哪只？或者问市场大盘也行。",
         china: "A股和港股是我最熟的市场。你想聊哪个方面——大盘走势、板块轮动、政策影响、还是具体个股？给我一个方向，我来分析。"
       };
       return catCasual[cat] || "Tell me more about what you're looking at and I'll give you my take.";
@@ -570,18 +845,17 @@ function getLocalResponse(input) {
     return pick(pool);
   }
 
-  // 5. Final fallback — actually human-sounding
+  // 5. Final fallback — actually give something useful, not just "be more specific"
   const fallbacks = {
     alex: [
-      `I'm not following — can you be more specific? Drop a ticker, a pattern, or a setup and I'll give you something real. 中文也行，A股港股美股随便聊。`,
-      `That's pretty vague. If it's about trading — charts, entries, risk management — I'm here. What's the actual question?`,
+      `说实话我不太确定你具体想问什么，但如果跟交易相关——技术分析、K线形态、入场信号、风险管理——随便问，我都能聊。或者丢个股票代码给我，我帮你看看图形。中文也行，A股港股美股随便聊。`,
+      `如果这是关于市场的，直接告诉我你想看什么：大盘方向、具体个股、还是某种交易策略？我擅长技术分析——支撑压力、RSI背离、均线系统这些。问什么都行，别客气。`,
     ],
     sarah: [
-      `I need more to work with. Are you asking about risk? A specific trade? Your portfolio? Give me something concrete and I'll give you a real answer. 中文也ok的。`,
+      `我需要更具体的问题才能帮你。如果你在聊风控——止损设置、仓位管理、最大回撤控制——这些是我的专长。也可以聊具体的交易，我帮你看风险在哪。中文也ok。`,
     ],
     mike: [
-      `That's a broad one. What market or theme — A股、港股、美股、macro? I've got strong opinions on all of it, just need a direction. This is literally what I do best.`,
-      `I could guess, but I'd rather be useful. What specifically — China markets, Fed policy, earnings? I've got takes on everything, just point me. 中文英文都行。`,
+      `你问的有点宽，给我个方向就好——A股、港股、美股、宏观趋势、美联储政策？我有自己的判断，不坐墙头。聊什么都行，中文英文都可以。`,
     ]
   };
   const pool = fallbacks[currentAdvisor] || fallbacks.alex;
@@ -1001,8 +1275,11 @@ When you have this data:
   // Add user name context if available
   const nameContext = userName ? `\n\nThe user's name is ${userName}. Use their name naturally sometimes, not every message.` : '';
 
+  // Add memory context (user interests, language, visit history)
+  const memoryContext = getMemoryContext();
+
   const messages = [
-    { role: 'system', content: systemPrompt + marketContext + nameContext },
+    { role: 'system', content: systemPrompt + marketContext + nameContext + memoryContext },
     ...history.slice(0, -1),
     { role: 'user', content: userMessage }
   ];
@@ -1149,25 +1426,58 @@ function sendChat() {
 
   showTyping();
 
-  // Try AI first, then local fallback
+  // Step 1: Check if we have a learned (improved) answer from past failures
+  const learnedAnswer = getLearnedAnswer(text);
+
+  // Step 2: Try AI, then local fallback
   callAI(text).then(aiResponse => {
     removeTyping();
-    const botText = aiResponse || getLocalResponse(text);
+    let botText = aiResponse || getLocalResponse(text);
+
+    // Step 3: Quality check — if AI gave a bad answer, try learned answer
+    if (isLowQualityResponse(text, botText) && learnedAnswer) {
+      botText = learnedAnswer;
+    }
+
+    // Step 4: If still low quality, record for future learning
+    if (isLowQualityResponse(text, botText)) {
+      recordFailedQuestion(text, botText);
+    }
+
+    // Step 5: Update user profile with this interaction
+    updateUserProfile(text, botText);
+
     addBotMessage(botText);
     chatMessages[currentAdvisor].push({ role: 'bot', text: botText });
     // Save updated HTML to history after bot response
     const bodyAfter = document.getElementById('chatBody');
     if (bodyAfter) chatHistories[currentAdvisor] = bodyAfter.innerHTML;
     isSending = false;
+
+    // Step 6: Background learning — try to improve failed answers (non-blocking)
+    setTimeout(() => learnFromFailures(), 2000);
   }).catch(() => {
     removeTyping();
-    const response = getLocalResponse(text);
+    let response = getLocalResponse(text);
+
+    // Use learned answer if local fallback is low quality
+    if (isLowQualityResponse(text, response) && learnedAnswer) {
+      response = learnedAnswer;
+    }
+
+    if (isLowQualityResponse(text, response)) {
+      recordFailedQuestion(text, response);
+    }
+
+    updateUserProfile(text, response);
+
     addBotMessage(response);
     chatMessages[currentAdvisor].push({ role: 'bot', text: response });
-    // Save updated HTML to history after fallback response
     const bodyAfter = document.getElementById('chatBody');
     if (bodyAfter) chatHistories[currentAdvisor] = bodyAfter.innerHTML;
     isSending = false;
+
+    setTimeout(() => learnFromFailures(), 2000);
   });
 }
 
