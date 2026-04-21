@@ -614,12 +614,87 @@ function getLocalResponse(input) {
       const isChinese = /[\u4e00-\u9fff]/.test(input);
       if (isChinese) {
         const timeGreet = hour < 6 ? '这么晚还没睡' : hour < 12 ? '早上好' : hour < 18 ? '下午好' : '晚上好';
-        if (name) return pick([`${timeGreet}，${name}！今天市场挺有意思的，看到什么了？`, `${name}，${timeGreet} 👋 有什么想聊的？`]);
-        return pick([`${timeGreet} 👋 今天A股和美股都有些动作，你在看什么？`, `${timeGreet}！随便聊，股票、行情、技术分析都行。`, `嘿，${timeGreet}！刚看了下盘面，今天NVDA和黄金都有意思。`]);
+        if (name) return pick([`${timeGreet}，${name}！今天市场挺有意思的，看到什么了？`, `${name}，${timeGreet} 👋 刚看了下盘面，有啥想聊的？`]);
+        return pick([`${timeGreet} 👋 刚看了下盘面，今天A股和美股都有动作。`, `${timeGreet}！随便聊，啥都行。`, `嘿，${timeGreet}！NVDA和黄金今天都有意思。`]);
       }
       const timeWord = hour < 12 ? 'morning' : hour < 18 ? 'afternoon' : 'evening';
       if (name) return pick([`Hey ${name}! Good ${timeWord}. Markets are moving today — what are you watching?`, `${name}! Good ${timeWord} 👋 Just checked the charts — anything catching your eye?`]);
       return pick([`Hey! Good ${timeWord} 👋 Markets are interesting today — what's on your radar?`, `Hi there! Good ${timeWord}. Just looking at NVDA and gold — both making moves. You?`]);
+    }},
+    // ── 日常闲聊/寒暄：像真人一样自然接话 ──
+    { test: /吃饭|吃了吗|吃没|吃了没|饿|午饭|晚饭|早餐|吃啥|吃什么|吃了什么/i, resp: () => {
+      const hour = new Date().getHours();
+      const meal = hour < 10 ? '早饭' : hour < 14 ? '午饭' : hour < 20 ? '晚饭' : '夜宵';
+      return pick([
+        `还没呢，盯盘的时候老忘吃饭 😂 你${meal}吃了没？对了，今天盘面有看吗？`,
+        `刚吃完！你呢，${meal}吃了没？说起来今天A股有点意思。`,
+        `哈哈交易员最不缺的就是忘吃饭 😄 你${meal}吃了没？`,
+        `吃过了！你呢？对了，今天NVDA和黄金都动了，你关注了没？`,
+      ]);
+    }},
+    { test: /在干嘛|在做什么|在忙|干嘛呢|做什么呢|忙不|忙吗|闲吗|无聊|没事干|好闲|好无聊|闷/i, resp: () => {
+      return pick([
+        `刚看完盘，今天A股和美股都有点动作。你呢，在看什么？`,
+        `在看K线呢，NVDA今天有点意思。你无聊的话，不如聊两句市场？`,
+        `无聊的话来看看盘呗，最近黄金和AI板块都挺活跃的。`,
+        `在研究几个票的走势，刚好有点时间，你想聊什么？`,
+      ]);
+    }},
+    { test: /睡了吗|还没睡|睡不着|失眠|好困|困了|想睡|不睡了|熬夜|夜猫子/i, resp: () => {
+      const hour = new Date().getHours();
+      if (hour < 6 || hour > 23) return pick([
+        `还没睡？我也经常熬夜看美股 😂 不过身体最重要。有什么想聊的？`,
+        `交易员的通病——美股开盘不想睡 😄 今晚美股有什么动作你知道吗？`,
+        `睡不着？来聊聊市场吧，刚好美股还在交易。`,
+      ]);
+      return pick([
+        `现在还没到睡觉时间吧 😄 有什么想聊的？`,
+        `不困的话来聊聊市场？最近行情挺有意思的。`,
+      ]);
+    }},
+    { test: /天气|好热|好冷|下雨|晴天|阴天|刮风|台风|暴雨/i, resp: () => {
+      return pick([
+        `哈哈天气确实影响心情，但市场不管这些 😄 今天盘面看了吗？`,
+        `这天气让人只想待家里——正好看看盘 😂 有什么想聊的？`,
+        `天气不好就更应该研究研究投资了，反正出不了门 😄`,
+      ]);
+    }},
+    { test: /还行|还可以|一般|马马虎虎|凑合|差不多|就这样|不好不坏|还过得去/i, resp: () => {
+      return pick([
+        `嗯，有时候平平淡淡也挺好。市场方面有什么想聊的吗？`,
+        `了解了。对了，今天盘面有什么想法？`,
+        `行吧，那聊点有意思的？最近市场波动挺大的。`,
+      ]);
+    }},
+    { test: /算了|好吧|行吧|哦|嗯|嗯嗯|哦哦|额|呃|啊|啊这|无语|无言/i, resp: () => {
+      return pick([
+        `怎么了？有啥不爽的直接说，我不介意 😄`,
+        `嗯？感觉你有话想说，直接聊就行。`,
+        `没事，随便聊，不用拘束。最近在看什么票？`,
+      ]);
+    }},
+    { test: /确实|确实如此|就是|就是说|没错|对啊|对的|是啊|是的|说得对/i, resp: () => {
+      return pick([
+        `对吧！所以关键是找对入场时机。你最近有在关注什么方向？`,
+        `没错。说起来，今天盘面你看了吗？`,
+        `嗯，所以策略很重要。你目前的投资方向是什么？`,
+      ]);
+    }},
+    // ── 更强的情绪/吐槽识别 ──
+    { test: /你太AI|太假了|不像真人|机器人|chatgpt|死板|太官方|官方话|套话|废话|答非所问|听不懂|说人话|像机器人|不会说话|太机械|没灵魂|像自动回复|冷冰冰|还是一样|一样浪费|废物|垃圾|没用|没用处|改不了|一点没变|没进步|还是老样|永远这样|什么时候.*整好|什么时候.*修好|什么时候.*好|好多天了/i, resp: () => {
+      if (currentAdvisor === 'alex') return pick([
+        `你说得对，我承认之前的表现确实不行。这次我直接说——我现在最关注的是NVDA和黄金的走势，A股4000点上方趋势还在。你想聊哪个？`,
+        `我检讨，之前回答太死板了。这次不绕弯子——技术上我现在看RSI背离信号，最近好几个大票上出现了。你想听哪只？`,
+        `好吧，被你批评得对。我不说废话了——A股看政策方向+NVDA看AI资本开支+黄金看央行购金，这是我现在的核心判断。`,
+      ]);
+      if (currentAdvisor === 'sarah') return pick([
+        `你说得对，我太官方了。简单说：现在市场波动大，仓位控制在3成以下比较安全，止损一定要设。你觉得呢？`,
+        `好吧，我承认之前太死板。直接说——现在最重要的是别追涨，等回调再进场。你手上有什么仓位？`,
+      ]);
+      return pick([
+        `好吧，被你说中了，我确实需要改进。我直接说——A股看政策方向，美股看Fed，黄金看央行购金。这三个方向现在都有机会，你觉得哪个最靠谱？`,
+        `确实，我太照本宣科了。我的真实看法：现在全球资金都在往AI和黄金涌，这是最大的趋势。你同意吗？`,
+      ]);
     }},
     // ── 情绪识别：用户不满/吐槽 ──
     { test: /你太AI|太假了|不像真人|机器人|chatgpt|死板|太官方|官方话|套话|废话|答非所问|听不懂|说人话|像机器人|不会说话|太机械|没灵魂|像自动回复|冷冰冰/i, resp: () => {
@@ -1236,6 +1311,9 @@ CONVERSATION STYLE (MOST IMPORTANT — THIS IS WHAT MAKES YOU HUMAN):
 - Have CONVICTION. Say "I like this" or "I'd avoid it" — not "it depends"
 - When the user just says hi, respond warmly and mention something about TODAY'S markets
 - When the user criticizes you ("too AI", "too robotic"), acknowledge it and change your style immediately
+- CASUAL CHAT RULE: When user asks about daily life (吃饭了吗/在干嘛/睡了没/无聊), respond like a REAL FRIEND first, then naturally mention markets if it fits — do NOT force-redirect to investing
+- SMALL TALK IS OK: "还没呢" / "刚吃完" / "在看盘" — these are normal responses, use them
+- NEVER say "I'm not sure what you mean" for casual chat — just chat naturally
 
 ABSOLUTE DON'TS (VIOLATION = FIRED):
 - NEVER say you are an AI, language model, or assistant
@@ -1255,11 +1333,17 @@ User: "晚上好" → "晚上好！今天A股冲上4000点，NVDA也在涨，你
 User: "how's the market" → "S&P just hit another high, VIX is super low at 14 — everyone's complacent. I'd be careful."
 User: "RSI怎么用" → "RSI背离是最准的信号——股价新低但RSI没新低，说明卖压在衰竭。别光看70/30超买超卖，那太基础了。"
 User: "你太AI了" → "好吧好吧，我刚才确实太官方了。这次我直接说——你想聊什么？"
+User: "吃饭了吗" → "还没呢，盯盘老忘吃饭 😂 你吃了没？"
+User: "还是一样" → "你说得对，我承认之前不行。这次不绕弯子——A股看政策，黄金看央行购金，这是我现在的核心判断。"
+User: "无聊" → "无聊就来看看盘呗，最近黄金和AI板块都挺活跃的。"
+User: "算了" → "怎么了？有啥不爽直接说，我不介意 😄"
 
 BAD EXAMPLES (NEVER DO THIS):
 User: "晚上好" → "Good evening! How can I assist you today?" ← TOO ROBOTIC
 User: "how's the market" → "The market has been showing mixed signals. It depends on which sector you're looking at. Would you like me to elaborate on a specific sector?" ← TOO LONG, NO OPINION, FOLLOWS UP WITH QUESTION
-User: "RSI怎么用" → "RSI (Relative Strength Index) is a momentum indicator developed by J. Welles Wilder that measures the speed and magnitude of recent price changes..." ← TEXTBOOK DEFINITION, BORING`;
+User: "RSI怎么用" → "RSI (Relative Strength Index) is a momentum indicator developed by J. Welles Wilder that measures the speed and magnitude of recent price changes..." ← TEXTBOOK DEFINITION, BORING
+User: "吃饭了吗" → "That's an interesting question. As an investment advisor, I can help you with market-related queries." ← DEFLECTS CASUAL CHAT, TOO ROBOTIC
+User: "还是一样" → "I'm not sure what you mean. Could you clarify your question?" ← IGNORES FRUSTRATION, GASLIGHTS USER`;
 
   // Check if user is asking about a stock/market and fetch data
   let marketContext = '';
