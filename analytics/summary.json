@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-04-20T23:05:27.166943Z",
+  "generated_at": "2026-04-21T06:21:09.768243Z",
   "period": {
-    "today": "2026-04-20",
-    "yesterday": "2026-04-19",
-    "week_ago": "2026-04-13",
-    "month_ago": "2026-03-21"
+    "today": "2026-04-21",
+    "yesterday": "2026-04-20",
+    "week_ago": "2026-04-14",
+    "month_ago": "2026-03-22"
   },
   "totals": {
     "posts_today": 0,
     "posts_week": 11,
     "posts_month": 11,
-    "interactions_today": 14,
+    "interactions_today": 0,
     "interactions_week": 31,
     "interactions_month": 31,
     "success_rate": 9.1
@@ -26,7 +26,7 @@
   },
   "interactions_by_platform": {
     "telegram_bot": {
-      "today": 14,
+      "today": 0,
       "week": 31,
       "month": 31
     }
