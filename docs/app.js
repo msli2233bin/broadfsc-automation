@@ -1406,6 +1406,7 @@ function isAnalysisQuery(query) {
 // When user asks about a whole sector/industry, fetch MULTIPLE stocks in that sector
 const SECTOR_MAP = {
   'oil': {
+    region: 'us',
     keywords: ['石油', '石油股', '原油', 'oil stock', 'oil sector', 'energy stock', '能源股', '油气', '石油投资',
                'oil industry', 'crude oil stock', 'drilling', 'refining', 'upstream', 'downstream',
                '页岩油', '页岩气', 'oil companies', 'oil investment', '美国石油', 'us oil'],
@@ -1423,6 +1424,7 @@ const SECTOR_MAP = {
     commodity: { symbol: 'CL=F', label: 'WTI Crude Oil' },
   },
   'tech': {
+    region: 'us',
     keywords: ['科技股', 'tech stock', 'tech sector', 'technology stock', '科技板块', '科技投资',
                'AI股', 'AI stock', 'AI sector', '人工智能股', '芯片股', 'chip stock', 'semiconductor',
                '科技行业', 'technology industry', '互联网股', '互联网板块'],
@@ -1440,6 +1442,7 @@ const SECTOR_MAP = {
     commodity: null,
   },
   'finance': {
+    region: 'us',
     keywords: ['金融股', 'finance stock', 'bank stock', 'banking sector', '银行股', '金融板块',
                '保险股', 'insurance stock', '券商股', '金融行业', 'financial sector'],
     stocks: [
@@ -1454,6 +1457,7 @@ const SECTOR_MAP = {
     commodity: null,
   },
   'healthcare': {
+    region: 'us',
     keywords: ['医药股', 'healthcare stock', 'pharma stock', '医疗股', '生物科技', 'biotech',
                '制药股', '医疗板块', 'health sector', '医药行业'],
     stocks: [
@@ -1468,6 +1472,7 @@ const SECTOR_MAP = {
     commodity: null,
   },
   'defense': {
+    region: 'us',
     keywords: ['军工股', 'defense stock', 'military stock', '军工板块', '军工投资', 'defense sector',
                '军火股', '武器股', '航空航天', 'aerospace defense'],
     stocks: [
@@ -1481,6 +1486,7 @@ const SECTOR_MAP = {
     commodity: null,
   },
   'renewable': {
+    region: 'us',
     keywords: ['新能源股', 'renewable stock', 'clean energy', 'solar stock', '光伏股', '风电股',
                '新能源板块', '绿色能源', '新能源投资', 'ev stock', '电动车股'],
     stocks: [
@@ -1493,6 +1499,7 @@ const SECTOR_MAP = {
     commodity: null,
   },
   'retail': {
+    region: 'us',
     keywords: ['零售股', 'retail stock', 'consumer stock', '消费股', '消费板块', '零售板块',
                '零售行业', 'consumer discretionary'],
     stocks: [
@@ -1560,34 +1567,50 @@ async function fetchSectorData(sectorKey) {
   return lines.length > 1 ? lines.join('\n') : null;
 }
 
-// Fetch ALL major indices (US + China + HK) for analysis queries
-async function fetchAllMarketData() {
-  const allIndices = [
+// Fetch major indices — region: 'us' (US only) | 'cn' (China+HK only) | 'all' (default, US+China+HK)
+async function fetchAllMarketData(region = 'all') {
+  const usIndices = [
     { symbol: '^GSPC', label: 'S&P 500 (SPX)' },
     { symbol: '^DJI', label: 'Dow Jones (DJIA)' },
     { symbol: '^IXIC', label: 'NASDAQ Composite' },
     { symbol: '^VIX', label: 'VIX Fear Index' },
+  ];
+  const cnIndices = [
     { symbol: '000001.SS', label: '上证指数 (SSE)' },
     { symbol: '399001.SZ', label: '深证成指 (SZSE)' },
     { symbol: '000300.SS', label: '沪深300 (CSI300)' },
     { symbol: '^HSI', label: '恒生指数 (HSI)' },
   ];
-  const results = await Promise.all(allIndices.map(idx => _fetchYahooChart(idx.symbol)));
+  const indices = region === 'us' ? usIndices
+    : region === 'cn' ? cnIndices
+    : [...usIndices, ...cnIndices];
+  const results = await Promise.all(indices.map(idx => _fetchYahooChart(idx.symbol)));
   const usLines = [];
   const cnLines = [];
-  for (let i = 0; i < allIndices.length; i++) {
+  for (let i = 0; i < indices.length; i++) {
     if (results[i]) {
       const d = results[i];
       const dir = parseFloat(d.change) >= 0 ? '▲' : '▼';
-      const prefix = allIndices[i].symbol === '^VIX' ? '' : (parseFloat(d.change) >= 0 ? '🟢' : '🔴');
-      const line = `${prefix} ${allIndices[i].label}: ${d.price} ${d.currency} (${dir} ${d.changePct}%) | ${d.marketState}`;
-      if (i < 4) usLines.push(line);
+      const prefix = indices[i].symbol === '^VIX' ? '' : (parseFloat(d.change) >= 0 ? '🟢' : '🔴');
+      const line = `${prefix} ${indices[i].label}: ${d.price} ${d.currency} (${dir} ${d.changePct}%) | ${d.marketState}`;
+      if (indices[i].symbol.startsWith('^') || indices[i].symbol === '^VIX') usLines.push(line);
       else cnLines.push(line);
     }
   }
+  // Re-classify: US indices start with ^, CN indices are 6-digit codes
+  const usFinal = []; const cnFinal = [];
+  for (let i = 0; i < indices.length; i++) {
+    if (!results[i]) continue;
+    const d = results[i];
+    const dir = parseFloat(d.change) >= 0 ? '▲' : '▼';
+    const prefix = indices[i].symbol === '^VIX' ? '' : (parseFloat(d.change) >= 0 ? '🟢' : '🔴');
+    const line = `${prefix} ${indices[i].label}: ${d.price} ${d.currency} (${dir} ${d.changePct}%) | ${d.marketState}`;
+    if (indices[i].symbol.startsWith('^')) usFinal.push(line);
+    else cnFinal.push(line);
+  }
   const parts = [];
-  if (usLines.length) parts.push('【US Markets】\n' + usLines.join('\n'));
-  if (cnLines.length) parts.push('【China/HK Markets】\n' + cnLines.join('\n'));
+  if (usFinal.length) parts.push('【US Markets】\n' + usFinal.join('\n'));
+  if (cnFinal.length) parts.push('【China/HK Markets】\n' + cnFinal.join('\n'));
   return parts.length > 0 ? parts.join('\n\n') : null;
 }
 
@@ -1840,30 +1863,34 @@ User: "还是一样" → "I'm not sure what you mean. Could you clarify your que
   const detectedSector = detectSector(userMessage);
   if (detectedSector) {
     isSectorQuery = true;
-    const [sectorData, allMarketData] = await Promise.all([
+    // Determine market region: US sectors → US only, China sectors → CN only
+    const sectorRegion = SECTOR_MAP[detectedSector].region || 'us';
+    const [sectorData, marketData] = await Promise.all([
       fetchSectorData(detectedSector),
-      fetchAllMarketData(),
+      fetchAllMarketData(sectorRegion),
     ]);
     if (sectorData) {
+      const regionLabel = sectorRegion === 'cn' ? 'China/HK' : 'US';
       marketContext = `\n\n[LIVE SECTOR DATA — you MUST reference these EXACT numbers, NOT your training data]:
 ${sectorData}
 
-${allMarketData ? '[MARKET INDICES]:\n' + allMarketData : ''}
+${marketData ? `[${regionLabel} MARKET INDICES]:\n` + marketData : ''}
 
 SECTOR ANALYSIS RULES (MANDATORY — this is how professionals answer sector questions):
-1. First, give a 1-sentence OVERALL VIEW: Is this sector worth investing in RIGHT NOW? Be direct — "Yes, oil stocks look attractive" or "I'd be cautious on tech right now"
-2. Quote the COMMODITY price if available (e.g., "WTI crude at $78") — this drives the whole sector
-3. Quote the SECTOR ETF performance (e.g., "XLE is up 12% YTD") — this shows sector trend
+1. First, give a 1-sentence OVERALL VIEW: Is this sector worth investing in RIGHT NOW? Be direct — "石油板块有选择性机会" or "科技板块现在要谨慎"
+2. Quote the COMMODITY price if available (e.g., "WTI原油在$78") — this drives the whole sector
+3. Quote the SECTOR ETF performance (e.g., "XLE今年涨了12%") — this shows sector trend
 4. Pick 2-3 standout stocks from the data and explain WHY (best value? strongest momentum? safest dividend?)
 5. ALWAYS give 3-tier recommendations at the end:
    🟢 低风险 (Low Risk): pick 1 stock — large cap, dividend, stable. Explain why.
    🟡 中风险 (Medium Risk): pick 1 stock — growth + value balance. Explain why.
    🔴 高风险 (High Risk): pick 1 stock — high beta, high reward potential. Explain why.
-6. Mention key DRIVERS for the sector (e.g., "OPEC+ cuts", "AI capex", "Fed rate cuts", "geopolitical risk")
-7. Mention key RISKS (e.g., "recession could crush demand", "regulatory risk", "valuation stretched")
-8. Keep the WHOLE response under 8 sentences — tight and actionable, not a textbook
+6. Mention key DRIVERS for the sector (e.g., "OPEC+减产", "AI capex", "美联储降息", "地缘风险")
+7. Mention key RISKS (e.g., "衰退打击需求", "监管风险", "估值过高")
+8. Keep the WHOLE response tight and actionable — not a textbook
 9. Respond in the SAME LANGUAGE as the user (Chinese → Chinese, English → English)
-10. NEVER quote outdated prices from training data — use ONLY the live data provided`;
+10. NEVER quote outdated prices from training data — use ONLY the live data provided
+11. CRITICAL: ONLY discuss the ${regionLabel} market and this sector's stocks. Do NOT mention other markets (e.g., if asked about US oil stocks, do NOT mention A股/上证/沪深300 — focus ONLY on US oil sector). The user asked about THIS sector, give them what they asked for.`;
     }
   }
   
