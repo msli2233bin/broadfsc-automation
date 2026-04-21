@@ -434,6 +434,61 @@ function getMemoryContext() {
 let currentAdvisor = 'alex';
 let chatHistories = { alex: '', sarah: '', mike: '' };  // HTML string per advisor
 let chatMessages = { alex: [], sarah: [], mike: [] };   // Message objects for AI context
+
+// ── Conversation Memory (localStorage) ──
+// Tracks: last stock/sector discussed, last question type, for multi-turn context
+const CONVO_KEY = 'bfs_convo';
+
+function saveConvoContext(context) {
+  try { localStorage.setItem(CONVO_KEY, JSON.stringify(context)); } catch(e) {}
+}
+function loadConvoContext() {
+  try { return JSON.parse(localStorage.getItem(CONVO_KEY) || '{}'); } catch(e) { return {}; }
+}
+function clearConvoContext() {
+  try { localStorage.removeItem(CONVO_KEY); } catch(e) {}
+}
+
+// Extract stock/sector from a message or bot response
+function extractStockOrSector(text) {
+  const t = text.toLowerCase();
+  // Check sector first
+  const sectorKey = detectSector(t);
+  if (sectorKey) return { type: 'sector', key: sectorKey };
+  // Check known stock tickers
+  for (const [kw, sym] of Object.entries(STOCK_SYMBOLS)) {
+    if (sym !== 'US_MARKET' && sym !== 'CHINA_MARKET' && t.includes(kw.toLowerCase()) && kw.length > 1) {
+      return { type: 'stock', symbol: sym, keyword: kw };
+    }
+  }
+  // Check 2-5 letter ticker
+  const words = t.split(/\s+/);
+  for (const w of words) {
+    if (/^[a-z]{2,5}$/.test(w) && !STOP_WORDS.has(w)) {
+      return { type: 'stock', symbol: w.toUpperCase(), keyword: w };
+    }
+  }
+  return null;
+}
+
+// Detect follow-up short questions (可否买入/值不值得/怎么看/分析一下)
+function isFollowUpQuestion(text) {
+  const t = text.toLowerCase().trim();
+  const followUpPatterns = [
+    /可否买入|值不值得|能不能买|该不该买|可以买吗|值得买吗|要不要买|能否买入|可以入手吗|能买吗|好不好/i,
+    /怎么.*看|如何.*看|分析.*下|看法|意见|建议|怎么看|如何评价|是否看好/i,
+    /卖.*吗|止盈|止损|加仓|减仓|持有|卖出|平仓|割肉/i,
+    /技术面|基本面|支撑|压力|阻力|趋势|量能|动能/i,
+    /目标价|止盈位|止损位|仓位|多少钱|空间|还有.*涨|还.*跌/i,
+    /风险.*大|风控|安全|稳不稳|靠谱吗|保险吗/i,
+    /should i (buy|sell|hold)|is it worth|what do you think|your take|your opinion/i,
+    /buy\?|sell\?|hold\?|entry|stop|target/i,
+  ];
+  // Short questions (< 20 chars) are very likely follow-ups
+  if (t.length <= 20) return followUpPatterns.some(p => p.test(t));
+  // Longer questions with follow-up patterns
+  return followUpPatterns.some(p => p.test(t)) && t.length <= 40;
+}
 let userName = localStorage.getItem('bfs_username') || '';
 let userEmail = localStorage.getItem('bfs_email') || '';
 let isRegistered = !!userEmail;
@@ -725,8 +780,8 @@ function getLocalResponse(input) {
         `嗯，所以策略很重要。你目前的投资方向是什么？`,
       ]);
     }},
-    // ── 更强的情绪/吐槽识别 ──
-    { test: /你太AI|太假了|不像真人|机器人|chatgpt|死板|太官方|官方话|套话|废话|答非所问|听不懂|说人话|像机器人|不会说话|太机械|没灵魂|像自动回复|冷冰冰|还是一样|一样浪费|废物|垃圾|没用|没用处|改不了|一点没变|没进步|还是老样|永远这样|什么时候.*整好|什么时候.*修好|什么时候.*好|好多天了/i, resp: () => {
+    // ── 情绪识别：用户不满/吐槽（统一版本） ──
+    { test: /你太AI|太假了|不像真人|机器人|chatgpt|死板|太官方|官方话|套话|废话|答非所问|听不懂|说人话|像机器人|不会说话|太机械|没灵魂|像自动回复|冷冰冰|还是一样|一样浪费|废物|垃圾|没用|没用处|改不了|一点没变|没进步|还是老样|永远这样|什么时候.*整好|什么时候.*修好|什么时候.*好|好多天了|too.ai|robot|machine|not human|fake|generic|lifeless|corporate|scripted|boring|textbook/i, resp: () => {
       if (currentAdvisor === 'alex') return pick([
         `你说得对，我承认之前的表现确实不行。这次我直接说——我现在最关注的是NVDA和黄金的走势。你想聊哪个？`,
         `我检讨，之前回答太死板了。这次不绕弯子——技术上我现在看RSI背离信号，最近好几个大票上出现了。你想听哪只？`,
@@ -739,29 +794,10 @@ function getLocalResponse(input) {
       return pick([
         `好吧，被你说中了，我确实需要改进。我直接说——A股看政策方向，美股看Fed，黄金看央行购金。这三个方向现在都有机会，你觉得哪个最靠谱？`,
         `确实，我太照本宣科了。我的真实看法：现在全球资金都在往AI和黄金涌，这是最大的趋势。你同意吗？`,
-      ]);
-    }},
-    // ── 情绪识别：用户不满/吐槽 ──
-    { test: /你太AI|太假了|不像真人|机器人|chatgpt|死板|太官方|官方话|套话|废话|答非所问|听不懂|说人话|像机器人|不会说话|太机械|没灵魂|像自动回复|冷冰冰/i, resp: () => {
-      if (currentAdvisor === 'alex') return pick([
-        `好吧好吧，你说得对，我刚才太正经了。这次我直接说——我对今天的市场看法是：NVDA和黄金都有意思。`,
-        `我检讨。这次不背书了——技术上我现在最关注的是RSI背离信号，最近在好几个大票上出现了。`,
-      ]);
-      if (currentAdvisor === 'sarah') return pick([
-        `你说得对，我太官方了。简单说：现在市场波动大，仓位控制在3成以下比较安全，止损一定要设。`,
-        `好吧，我承认刚才太死板了。直接说——现在最重要的是别追涨，等回调再进场。`,
-      ]);
-      return pick([
-        `好吧，被你说中了。我直接说——A股看政策方向，美股看Fed，黄金看央行购金。这三个方向现在都有机会。`,
-        `确实，我太照本宣科了。我的真实看法：现在全球资金都在往AI和黄金涌，这是最大的趋势。`,
-      ]);
-    }},
-    { test: /too.ai|robot|machine|not human|fake|generic|chatgpt|lifeless|corporate|scripted|boring|textbook/i, resp: () => {
-      return pick([
         `Fair point. Let me be real — I think the market's setting up for an interesting move. VIX is low, everyone's complacent, and that's usually when things get spicy.`,
-        `Yeah I hear you. Here's my actual take: NVDA at these levels is risky but the trend's still intact. I'd wait for a pullback to the 50 SMA.`,
         `You're right, that was pretty robotic. My honest view right now — gold is the trade of the decade, and I don't say that lightly.`,
       ]);
+    }},
     }},
     { test: /my name is|i'm called|call me|i am (.+)/i, resp: () => {
       const nameMatch = input.match(/(?:my name is|i'm called|call me|i am)\s+(\w+)/i);
@@ -1980,7 +2016,7 @@ async function _fetchYahooChart(symbol) {
   return null;
 }
 
-async function callAI(userMessage) {
+async function callAI(userMessage, convoPrefix) {
   // Try multiple AI sources: Pollinations (free, no key) → Groq (free tier) → local fallback
   const advisor = ADVISORS[currentAdvisor];
   const isChinese = /[\u4e00-\u9fff]/.test(userMessage);
@@ -2088,7 +2124,7 @@ RULES: Quote exact price. Give your take on the move. Respond in ${lang}.`;
   const messages = [
     { role: 'system', content: systemPrompt + marketContext + nameContext + memoryContext },
     ...history.slice(0, -1),
-    { role: 'user', content: userMessage }
+    { role: 'user', content: (convoPrefix || '') + userMessage }
   ];
 
   // Try Pollinations first (free, no key, browser-friendly)
@@ -2230,9 +2266,34 @@ function sendChat() {
   if (bodyEl) chatHistories[currentAdvisor] = bodyEl.innerHTML;
   input.value = '';
 
+  // ── CONVERSATION MEMORY: Track what we're talking about ──
+  const convo = loadConvoContext();
+  const isChineseInput = /[\u4e00-\u9fff]/.test(text);
+
+  // Extract stock/sector from this message
+  const extracted = extractStockOrSector(text);
+
+  // Update conversation context
+  if (extracted) {
+    saveConvoContext({ ...extracted, lastQuestion: text, timestamp: Date.now() });
+  }
+
+  // ── MULTI-TURN: Follow-up questions inherit previous stock/sector ──
+  // e.g. User asks "MPC技术面分析" → then "可否买入" → inherits MPC
+  let effectiveText = text;
+  if (!extracted && isFollowUpQuestion(text) && convo.type && (Date.now() - (convo.timestamp || 0)) < 300000) {
+    // This is a follow-up question about a previous stock/sector
+    if (convo.type === 'stock') {
+      effectiveText = `${convo.keyword || convo.symbol} ${text}`;
+    } else if (convo.type === 'sector') {
+      const sectorName = SECTOR_PROFILES[convo.key]?.name || convo.key;
+      effectiveText = `${sectorName} ${text}`;
+    }
+  }
+
   // ── NEW FLOW: Local-first, AI-only for complex queries ──
   // Step 1: Try local response FIRST (greetings, casual chat, knowledge base = instant, perfect)
-  const localResponse = getLocalResponse(text);
+  const localResponse = getLocalResponse(effectiveText);
 
   // If local gave a good answer, use it immediately — no AI needed
   if (localResponse) {
@@ -2242,12 +2303,14 @@ function sendChat() {
     if (bodyAfter) chatHistories[currentAdvisor] = bodyAfter.innerHTML;
     isSending = false;
     updateUserProfile(text, localResponse);
+    // Save stock/sector from bot response for future follow-ups
+    const botExtracted = extractStockOrSector(localResponse);
+    if (botExtracted) saveConvoContext({ ...botExtracted, lastQuestion: text, timestamp: Date.now() });
     return;
   }
 
   // Step 2: Sector query → pure data template (NO AI, instant, always professional)
-  const isChineseInput = /[\u4e00-\u9fff]/.test(text);
-  const sectorKey = detectSector(text);
+  const sectorKey = detectSector(effectiveText);
   if (sectorKey) {
     showTyping();
     buildSectorAnalysis(sectorKey, isChineseInput).then(analysis => {
@@ -2259,37 +2322,56 @@ function sendChat() {
         if (bodyAfter) chatHistories[currentAdvisor] = bodyAfter.innerHTML;
         isSending = false;
         updateUserProfile(text, analysis);
+        saveConvoContext({ type: 'sector', key: sectorKey, lastQuestion: text, timestamp: Date.now() });
       } else {
         // Sector data fetch failed → fall through to AI
-        _tryAIResponse(text, learnedAnswer);
+        _tryAIResponse(effectiveText, text, getLearnedAnswer(effectiveText));
       }
     });
     return;
   }
 
   // Step 3: Not a sector query → try AI for stock data, analysis, etc.
-  const learnedAnswer = getLearnedAnswer(text);
-  _tryAIResponse(text, learnedAnswer);
+  const learnedAnswer = getLearnedAnswer(effectiveText);
+  _tryAIResponse(effectiveText, text, learnedAnswer);
 }
 
 // Shared AI response handler
-function _tryAIResponse(text, learnedAnswer) {
+// effectiveText = text with context (e.g. "MPC 可否买入"), displayText = original user input
+function _tryAIResponse(effectiveText, displayText, learnedAnswer) {
+  if (!displayText) displayText = effectiveText;
+  if (!learnedAnswer) learnedAnswer = getLearnedAnswer(effectiveText);
   showTyping();
 
-  callAI(text).then(aiResponse => {
+  // Inject conversation memory into AI context
+  const convo = loadConvoContext();
+  let convoPrefix = '';
+  if (convo.type && (Date.now() - (convo.timestamp || 0)) < 300000) {
+    if (convo.type === 'stock') {
+      convoPrefix = `[CONTEXT: User was previously asking about ${convo.keyword || convo.symbol}. If their current question is a follow-up (like "可否买入", "怎么看", "值不值得"), answer about THAT stock.]\n\n`;
+    } else if (convo.type === 'sector') {
+      convoPrefix = `[CONTEXT: User was previously asking about the ${SECTOR_PROFILES[convo.key]?.name || convo.key} sector. If their current question is a follow-up, answer about THAT sector.]\n\n`;
+    }
+  }
+
+  callAI(effectiveText, convoPrefix).then(aiResponse => {
     removeTyping();
     let botText = aiResponse;
 
     // Quality check — if AI gave garbage, use learned answer or a direct fallback
-    if (!botText || isLowQualityResponse(text, botText)) {
-      botText = learnedAnswer || getDirectFallback(text);
+    if (!botText || isLowQualityResponse(effectiveText, botText)) {
+      botText = learnedAnswer || getDirectFallback(effectiveText);
     }
 
-    if (isLowQualityResponse(text, botText)) {
-      recordFailedQuestion(text, botText);
+    if (isLowQualityResponse(effectiveText, botText)) {
+      recordFailedQuestion(effectiveText, botText);
     }
 
-    updateUserProfile(text, botText);
+    updateUserProfile(displayText, botText);
+
+    // Save conversation context from bot response
+    const botExtracted = extractStockOrSector(botText);
+    if (botExtracted) saveConvoContext({ ...botExtracted, lastQuestion: displayText, timestamp: Date.now() });
 
     addBotMessage(botText);
     chatMessages[currentAdvisor].push({ role: 'bot', text: botText });
@@ -2300,13 +2382,17 @@ function _tryAIResponse(text, learnedAnswer) {
     setTimeout(() => learnFromFailures(), 2000);
   }).catch(() => {
     removeTyping();
-    let response = learnedAnswer || getDirectFallback(text);
+    let response = learnedAnswer || getDirectFallback(effectiveText);
 
-    if (isLowQualityResponse(text, response)) {
-      recordFailedQuestion(text, response);
+    if (isLowQualityResponse(effectiveText, response)) {
+      recordFailedQuestion(effectiveText, response);
     }
 
-    updateUserProfile(text, response);
+    updateUserProfile(displayText, response);
+
+    // Save conversation context from response
+    const botExtracted = extractStockOrSector(response);
+    if (botExtracted) saveConvoContext({ ...botExtracted, lastQuestion: displayText, timestamp: Date.now() });
 
     addBotMessage(response);
     chatMessages[currentAdvisor].push({ role: 'bot', text: response });
@@ -2390,9 +2476,9 @@ const RESEARCH = [
 
 <h3>Key Levels</h3>
 <ul>
-<li><strong>Resistance:</strong> 6,100 (current ATH zone), 6,200 (psychological round number)</li>
-<li><strong>Support:</strong> 5,850 (20 EMA), 5,700 (50 SMA), 5,520 (prior breakout level)</li>
-<li><strong>Neutral Zone:</strong> 5,700 - 5,900 (range-bound if momentum fades)</li>
+<li><strong>Resistance:</strong> Current ATH zone (check live data), next psychological round number</li>
+<li><strong>Support:</strong> 20 EMA, 50 SMA, prior breakout level (check live charts for exact levels)</li>
+<li><strong>Neutral Zone:</strong> Between 50 SMA and 20 EMA (range-bound if momentum fades)</li>
 </ul>
 
 <h3>What to Watch This Week</h3>
@@ -2401,8 +2487,8 @@ const RESEARCH = [
 <p><strong>3. Geopolitical Developments:</strong> Middle East ceasefire negotiations continue. Any breakdown would reverse risk-on sentiment quickly.</p>
 
 <h3>Strategy</h3>
-<p><strong>Bullish scenario:</strong> If price holds above 5,850 (20 EMA) with volume, look for a push toward 6,200. Buy the pullback to 20 EMA with a stop below 5,700.</p>
-<p><strong>Bearish scenario:</strong> If 5,700 (50 SMA) fails, expect a move to 5,520. Reduce long exposure and wait for a base to form before re-entering.</p>
+<p><strong>Bullish scenario:</strong> If price holds above the 20 EMA with volume, look for a push to new highs. Buy the pullback to 20 EMA with a stop below 50 SMA.</p>
+<p><strong>Bearish scenario:</strong> If 50 SMA fails, expect a move to prior breakout level. Reduce long exposure and wait for a base to form before re-entering.</p>
 
 <h3>Risk Management</h3>
 <p>Given FOMC event risk next week, reduce position sizes by 30%. Ensure all stops are in place. Consider QQQ put spreads (2-3% OTM, 30 DTE) as portfolio insurance heading into the meeting.</p>`
