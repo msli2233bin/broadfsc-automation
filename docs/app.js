@@ -443,6 +443,19 @@ function getLocalResponse(input) {
     '亚马逊': 'stocks', '谷歌': 'stocks', '脸书': 'stocks', '巴菲特': 'stocks',
     '黄金': 'stocks', '台积电': 'stocks', '摩根': 'stocks',
     '原油': 'stocks', '石油': 'stocks', '股票': 'stocks',
+    // ── 中文市场关键词 ──
+    '指数': 'fundamental', '行情': 'fundamental', '走势': 'fundamental',
+    '涨跌': 'fundamental', '现在多少': 'fundamental', '多少点': 'fundamental',
+    '分析': 'fundamental', '前景': 'fundamental', '预测': 'fundamental',
+    '通胀': 'fundamental', '利率': 'fundamental', 'GDP': 'fundamental',
+    '美联储': 'fundamental', '央行': 'fundamental',
+    '人民币': 'fundamental', '汇率': 'fundamental',
+    '北向': 'fundamental', '南向': 'fundamental',
+    '政策': 'fundamental', '降准': 'fundamental', '降息': 'fundamental',
+    '涨停': 'technical', '跌停': 'technical', '突破': 'technical',
+    '支撑': 'technical', '压力': 'technical',
+    'A股': 'fundamental', '港股': 'fundamental', '上证': 'fundamental',
+    '深证': 'fundamental', '恒生': 'fundamental', '创业板': 'fundamental',
   };
 
   for (const [kw, cat] of Object.entries(kwMap)) {
@@ -565,7 +578,78 @@ const STOCK_SYMBOLS = {
   'oil': 'CL=F', 'crude': 'CL=F', '原油': 'CL=F',
   'eur/usd': 'EURUSD=X', 'eurusd': 'EURUSD=X',
   'usd/jpy': 'USDJPY=X', 'usdjpy': 'USDJPY=X',
+  // ── A股 & 港股指数 ──
+  '上证': '000001.SS', '上证指数': '000001.SS', '沪市': '000001.SS',
+  'shanghai': '000001.SS', 'sse': '000001.SS',
+  '深证': '399001.SZ', '深证成指': '399001.SZ', '深市': '399001.SZ',
+  'shenzhen': '399001.SZ', 'szse': '399001.SZ',
+  '沪深300': '000300.SS', 'csi300': '000300.SS',
+  '创业板': '399006.SZ', 'chinext': '399006.SZ',
+  '科创': '000688.SS', '科创板': '000688.SS', 'star50': '000688.SS',
+  // ── 港股 ──
+  '恒生': '^HSI', '恒指': '^HSI', '恒生指数': '^HSI', '港股指数': '^HSI',
+  'hang seng': '^HSI', 'hsi': '^HSI',
+  '恒生科技': '^HSTECH', '恒科': '^HSTECH', 'hstech': '^HSTECH',
+  // ── 中概股 / 港股个股 ──
+  '腾讯': '0700.HK', 'tencent': '0700.HK',
+  '阿里巴巴': '9988.HK', '阿里': '9988.HK', 'alibaba': '9988.HK',
+  '比亚迪': '1211.HK', 'byd': '1211.HK',
+  '百度': '9888.HK', 'baidu': '9888.HK',
+  '美团': '3690.HK', 'meituan': '3690.HK',
+  '京东': '9618.HK', 'jd': '9618.HK',
+  '小米': '1810.HK', 'xiaomi': '1810.HK',
+  '网易': '9999.HK', 'netease': '9999.HK',
+  '拼多多': 'PDD', 'pdd': 'PDD',
+  '蔚来': 'NIO', 'nio': 'NIO',
+  '理想汽车': 'LI', '理想': 'LI',
+  '小鹏': 'XPEV', 'xpev': 'XPEV',
+  // ── 人民币汇率 ──
+  'usd/cny': 'CNY=X', 'usdcny': 'CNY=X', '美元人民币': 'CNY=X',
+  '人民币汇率': 'CNY=X', '人民币': 'CNY=X',
+  'usd/hkd': 'HKDUSD=X', '港币': 'HKDUSD=X',
+  // ── 中国ETF ──
+  'fxi': 'FXI', '中国etf': 'FXI', '中国指数etf': 'FXI',
+  'mchi': 'MCHI', 'msci中国': 'MCHI',
+  'kweb': 'KWEB', '中概互联网': 'KWEB', '中概': 'KWEB',
 };
+
+// ── China/HK Market Detection & Multi-Index Query ──
+const CHINA_MARKET_KEYWORDS = [
+  '中国股市', '中国股票', 'A股', 'a股', '大盘', '中国指数', '中国行情',
+  '港股', '香港股市', '恒指', '恒生', '恒科',
+  '上证', '深证', '沪深', '创业板', '科创板',
+  '中国行情', '中国现在', '中国指数多少', 'A股多少', 'A股指数',
+  '中国大盘', '中国走势', '中国分析', '中国前景',
+  '沪深300', '中国基金', '中国ETF', '人民币汇率',
+  'china market', 'china stock', 'china index', 'a-share', 'a share',
+  'shanghai composite', 'shenzhen', 'hang seng',
+  '中国市况', '内地股市', '北向资金', '南向资金',
+];
+
+function isChinaMarketQuery(query) {
+  const q = query.toLowerCase();
+  return CHINA_MARKET_KEYWORDS.some(kw => q.includes(kw.toLowerCase()));
+}
+
+async function fetchChinaMarketData() {
+  // Fetch real-time data for key China/HK indices in parallel
+  const indices = [
+    { symbol: '000001.SS', label: '上证指数 (SSE)' },
+    { symbol: '399001.SZ', label: '深证成指 (SZSE)' },
+    { symbol: '000300.SS', label: '沪深300 (CSI300)' },
+    { symbol: '^HSI', label: '恒生指数 (HSI)' },
+  ];
+  const results = await Promise.all(indices.map(idx => _fetchYahooChart(idx.symbol)));
+  const lines = [];
+  for (let i = 0; i < indices.length; i++) {
+    if (results[i]) {
+      const d = results[i];
+      const dir = parseFloat(d.change) >= 0 ? '▲' : '▼';
+      lines.push(`${indices[i].label}: ${d.price} ${d.currency} (${dir} ${d.changePct}%) | 市场: ${d.marketState}`);
+    }
+  }
+  return lines.length > 0 ? lines.join('\n') : null;
+}
 
 async function fetchStockData(query) {
   // Fetch real-time stock data using multiple free APIs with CORS proxy fallback
@@ -682,6 +766,25 @@ async function callAI(userMessage) {
 
 ${advisor.personality}
 
+MULTILINGUAL (CRITICAL):
+- ALWAYS respond in the SAME LANGUAGE as the user's message
+- Chinese input → Chinese output. English input → English output. No exceptions.
+- When discussing Chinese/A-share/HK stocks, use Chinese market terminology naturally (e.g., 涨停板, 北向资金, 创业板)
+- Never say "I can respond in Chinese" — just DO it
+
+YOUR EXPERTISE — China & Asian Markets:
+- You are an expert on A-shares (Shanghai/Shenzhen), Hong Kong stocks (Hang Seng), and greater China markets
+- You understand: 政策驱动 (policy-driven markets), 北向/南向资金, QFII/QDII, A/H share premium, mainland-HK Stock Connect
+- When asked about Chinese market conditions, give REAL analysis — not generic observations
+- Key drivers you track: PBOC policy, PMI data, property sector, tech regulation, US-China relations, yuan moves
+- NEVER dodge Chinese market questions — this is your area of expertise
+
+REAL-TIME DATA RULE (MOST IMPORTANT):
+- When LIVE MARKET DATA is provided below, you MUST use those exact numbers
+- NEVER quote index levels from your training data — they are OUTDATED
+- If you have real-time data for 上证/深证/恒生, report those exact numbers
+- If no real-time data is available for a Chinese stock, say "let me check the latest numbers" — do NOT guess
+
 HOW YOU TALK:
 - Like a sharp analyst who respects the other person's intelligence
 - Short and confident. No filler words, no hedging with "it depends"
@@ -707,10 +810,29 @@ STYLE:
 
   // Check if user is asking about a stock/market and fetch data
   let marketContext = '';
-  const stockData = await fetchStockData(userMessage);
-  if (stockData) {
-    const direction = parseFloat(stockData.change) >= 0 ? '▲ up' : '▼ down';
-    marketContext = `\n\n[LIVE MARKET DATA — you MUST reference these numbers]:
+  
+  // Priority: China/HK market query → fetch multiple indices
+  if (isChinaMarketQuery(userMessage)) {
+    const chinaData = await fetchChinaMarketData();
+    if (chinaData) {
+      marketContext = `\n\n[LIVE CHINA/HK MARKET DATA — you MUST reference these numbers]:
+${chinaData}
+
+REAL-TIME DATA RULE (MOST IMPORTANT):
+- You MUST use these REAL-TIME index numbers — NEVER quote old/historical levels from your training data
+- Quote each index with its exact number and direction
+- Add your analysis: what's driving the moves, what to watch
+- If market is closed/pre-market, mention it
+- Respond in the SAME LANGUAGE as the user's message (Chinese → Chinese, English → English)`;
+    }
+  }
+  
+  // Fallback: single stock query
+  if (!marketContext) {
+    const stockData = await fetchStockData(userMessage);
+    if (stockData) {
+      const direction = parseFloat(stockData.change) >= 0 ? '▲ up' : '▼ down';
+      marketContext = `\n\n[LIVE MARKET DATA — you MUST reference these numbers]:
 ${stockData.name || stockData.symbol}: $${stockData.price} ${stockData.currency} (${direction} ${stockData.changePct}%)
 Prev Close: $${stockData.previousClose} | Market: ${stockData.marketState} | Exchange: ${stockData.exchange}
 
@@ -718,7 +840,9 @@ When you have this data:
 - Quote the exact price and move naturally ("it's at $XX, up X%")
 - Give a quick take on the move — what's driving it, what to watch next
 - Don't just repeat numbers — add context and opinion
-- If market is closed, mention it casually`;
+- If market is closed, mention it casually
+- Respond in the SAME LANGUAGE as the user's message (Chinese → Chinese, English → English)`;
+    }
   }
 
   // Build conversation history (last 6 messages for context)
