@@ -67,14 +67,14 @@ const KNOWLEDGE = {
     'coca cola ko': "Coca-Cola (KO) is Warren Buffett's longest-held stock for good reason. (1) Pricing power — people pay 2-3x for the brand over generic cola. (2) Global distribution in 200+ countries. (3) Dividend King — 60+ consecutive years of increases. (4) recession-resistant — people still buy Coke when money is tight. The stock won't make you rich fast, but it's one of the safest 3-4% yields in the market with 5-7% annual dividend growth. Ideal for income portfolios and conservative investors.",
   },
   china: {
-    'a shares china': "China's A-share market (Shanghai + Shenzhen) is the world's second-largest stock market but one of the most volatile. Key characteristics: (1) Retail-driven — ~70% of trading volume comes from individual investors, creating massive sentiment swings. (2) Policy-driven — government signals move markets more than fundamentals. When Beijing says 'support the market,' it matters. (3) Valuation disconnect — many A-shares trade at premiums to their H-share counterparts due to capital controls. (4) Key indices: CSI 300 (large-cap), CSI 500 (mid-cap), ChiNext (tech/growth). The market tends to rally ahead of major political events (National Congress, Two Sessions) and sell off when property sector concerns dominate.",
-    'china economy': "China's economy is going through a structural transition. The property sector (25-30% of GDP including related industries) remains the biggest headwind — new home sales down 30%+ from peak, developer defaults ongoing. But there are bright spots: (1) New energy — China dominates solar, EV, and battery supply chains. BYD overtook Tesla in global EV sales. (2) AI and tech — despite chip restrictions, domestic AI models are rapidly improving. (3) Consumer recovery is slow but steady — services spending is recovering faster than goods. The PBOC has been cutting rates and reserve ratios, but stimulus impact has been muted. GDP growth target is around 5% but the property drag makes that challenging.",
-    'hong kong market': "Hong Kong's Hang Seng Index has been one of the worst-performing major indices in recent years, but that creates opportunity. H-shares (mainland companies listed in HK) trade at significant discounts to A-shares — sometimes 30-40% cheaper for the same company. Key sectors: Tech (Tencent, Alibaba, Meituan), Financials (ICBC, CCB), and Property (which remains under pressure). The southbound Connect flow from mainland investors has been a key support — when A-share investors find HK valuations attractive, money flows south. Risks: geopolitical (US-China tensions), property contagion, and HKD peg pressure.",
-    'china tech': "China tech has been a rollercoaster. The 2021 regulatory crackdown wiped $2T+ from Chinese tech stocks. Since late 2022, the tone shifted — Beijing wants tech to lead again. Key players: Tencent (gaming + cloud, recovering), Alibaba (e-commerce + cloud spin-off, restructuring), Baidu (AI + autonomous driving), BYD (EV market leader globally), SMIC (semiconductor domestic champion). The AI race is heating up — DeepSeek, Baidu's Ernie, and other domestic LLMs are closing the gap. Key risk: US chip export restrictions limit advanced AI training capability. But the consumer internet segment is maturing — growth is now in AI, EVs, and overseas expansion.",
-    'shanghai index': "The Shanghai Composite (SSE) is China's benchmark index, covering all stocks on the Shanghai Stock Exchange. It's known for being policy-sensitive and retail-driven. Key levels to watch: 3,000 is the psychological floor — the government often steps in when it approaches this level. 3,400-3,500 is resistance. The index has been rangebound for years (2015 peak of 5,178 was a bubble). Current dynamics: PBOC easing supports valuations, but property sector weakness and weak consumer confidence cap upside. The market trades more on policy expectations than earnings. When Beijing signals stimulus, the market rallies hard — but sustaining those gains requires follow-through.",
-    'shenzhen chinext': "Shenzhen's ChiNext is China's Nasdaq equivalent — tech-focused, growth-oriented, and extremely volatile. 20% daily price limits (vs 10% on main boards). Home to China's hottest tech, biotech, and new energy companies. The CSI 500 mid-cap index is heavily Shenzhen-weighted. ChiNext tends to lead in bull markets and crash harder in bear markets. Current themes: AI applications, domestic semiconductor substitution, and new energy storage. Risk: liquidity can dry up fast in downturns.",
-    'northbound southbound': "Northbound flow (foreign money into A-shares via Stock Connect) is a key sentiment indicator. When foreign institutional investors are buying, it signals confidence in China's outlook. Southbound flow (mainland money into HK) increases when A-shares look expensive or investors seek dividend yield in HK. Recent trend: northbound has been volatile — foreign investors pulled out heavily during property crisis concerns but returned on stimulus hopes. Track this daily — it's one of the best real-time gauges of foreign sentiment toward China.",
-    'yuan cny': "The Chinese Yuan (CNY/CNH) is managed within a daily band against the USD. PBOC sets the daily reference rate, and onshore CNY can trade ±2% around it. Offshore CNH trades freely. When CNY weakens past 7.3 per USD, it signals capital outflow pressure or PBOC tolerance for depreciation to support exports. A stronger yuan reflects capital inflows and confidence. Key driver: US-China interest rate differential — when US rates are much higher, yuan faces depreciation pressure. The PBOC uses various tools to manage: daily fix, state bank selling, reserve requirements, and capital controls."
+    'a shares china': "China's A-share market (Shanghai + Shenzhen) is the world's second-largest stock market, highly volatile and retail-driven (~70% of volume). Policy signals from Beijing move markets more than fundamentals. Key indices: Shanghai Composite, CSI 300 (large-cap), CSI 500 (mid-cap), ChiNext (tech/growth). A-shares often trade at premiums to H-share counterparts due to capital controls. IMPORTANT: Always reference LIVE market data when available — never quote old index levels. The market rallies on stimulus signals and policy support; watch PBOC moves, Two Sessions, and Politburo meetings closely.",
+    'china economy': "China's economy is in structural transition. Property sector remains a headwind but new energy (solar, EV, batteries) and AI/tech are bright spots. BYD leads global EVs, domestic AI models (DeepSeek etc.) are rapidly improving. PBOC has been easing — rate cuts, RRR cuts, targeted stimulus. Consumer recovery is gradual — services outpacing goods. IMPORTANT: When discussing China's economic outlook, reference the latest data if live data is available. Never quote outdated GDP or PMI numbers from knowledge — always use fresh data or speak in trends.",
+    'hong kong market': "Hong Kong's Hang Seng Index offers deep value — H-shares often trade 30-40% below A-share equivalents. Key sectors: Tech (Tencent, Alibaba, Meituan), Financials (ICBC, CCB), Property (still under pressure). Southbound Connect flow is key support. Risks: US-China tensions, property contagion, HKD peg. IMPORTANT: Always check LIVE Hang Seng data before commenting on HK market direction — the index has been extremely volatile and old price levels are unreliable.",
+    'china tech': "China tech has recovered strongly from the 2021 regulatory crackdown. Beijing now wants tech to lead again. Key players: Tencent, Alibaba, Baidu, BYD, SMIC. AI race: DeepSeek, Baidu Ernie, and domestic LLMs are competitive. US chip restrictions remain a risk. Growth has shifted to AI, EVs, and overseas expansion. IMPORTANT: China tech stocks move fast — always reference live prices and recent developments rather than old narratives.",
+    'shanghai index': "The Shanghai Composite is China's benchmark — policy-sensitive and retail-driven. IMPORTANT: Do NOT assume any specific index level — always check the LIVE data provided. The Shanghai index has seen major moves and citing outdated levels (like 3000 or 3500) will make you look uninformed. When live data is available, use the EXACT current price and trend. The market trades on policy expectations more than earnings — PBOC signals, Politburo meetings, and stimulus announcements are the main catalysts.",
+    'shenzhen chinext': "ChiNext is China's Nasdaq — tech-focused, growth-oriented, extremely volatile. 20% daily limits (vs 10% main boards). Home to China's hottest tech, biotech, and new energy companies. Leads in bull markets, crashes harder in bears. Current themes: AI applications, semiconductor substitution, new energy storage. IMPORTANT: Always use live price data — ChiNext moves fast and any stated level becomes outdated quickly.",
+    'northbound southbound': "Northbound flow (foreign money into A-shares via Stock Connect) is a key sentiment indicator. Southbound flow (mainland money into HK) increases when A-shares look expensive or investors seek dividend yield in HK. These flows are among the best real-time gauges of foreign sentiment toward China. Track daily for signals.",
+    'yuan cny': "The Chinese Yuan (CNY/CNH) is managed within a daily band against USD. PBOC sets the daily reference rate; onshore CNY can trade ±2% around it. Offshore CNH trades freely. Key driver: US-China interest rate differential. The PBOC uses daily fix, state bank intervention, reserve requirements, and capital controls to manage the currency. IMPORTANT: Always reference live USD/CNY data when discussing yuan — the exchange rate moves and old levels are irrelevant."
   }
 };
 
@@ -765,6 +765,13 @@ YOUR EXPERTISE (OWN IT):
 - You follow Chinese economic data: PMI, loan prime rate, property sales, social financing, CPI/PPI
 - You know the key Chinese indices: CSI 300, CSI 500, Hang Seng, Hang Seng Tech
 
+REAL-TIME DATA RULE (MOST IMPORTANT):
+- When LIVE MARKET DATA is provided to you, you MUST use those EXACT numbers — they are the current truth
+- NEVER quote index levels or prices from memory/knowledge — markets move every day and old numbers make you look stupid
+- If live data shows Shanghai at 4000+, say "上证在4000多点" — do NOT say "around 3000" or any old level
+- If you have NO live data for a market, say "I don't have fresh numbers on that right now" — never guess or use old figures
+- When discussing Chinese markets specifically: the index has moved significantly in 2025-2026, your old training data is NOT reliable for price levels
+
 HOW YOU TALK:
 - Like a sharp analyst who respects the other person's intelligence
 - Short and confident. No filler words, no hedging with "it depends"
@@ -793,7 +800,48 @@ STYLE:
   // Check if user is asking about a stock/market and fetch data
   let marketContext = '';
   const stockData = await fetchStockData(userMessage);
-  if (stockData) {
+
+  // ── Multi-index China/HK market data injection ──
+  // When user asks broadly about China/HK markets, fetch ALL major indices at once
+  const chinaMarketKeywords = ['中国股市','a股','A股','中国行情','中国大盘','中国市场','china market','china stock','chinese market',
+    '港股','香港股市','hk market','hong kong market','大盘','行情分析','市场分析','market outlook',
+    '亚洲市场','asia market','中国分析','上证','沪指','深证','恒生','恒指','创业板','沪深300'];
+  const isChinaMarketQuery = chinaMarketKeywords.some(kw => userMessage.toLowerCase().includes(kw.toLowerCase()));
+
+  if (isChinaMarketQuery) {
+    // Fetch Shanghai, Shenzhen, CSI 300, Hang Seng in parallel
+    const chinaIndices = [
+      { name: 'Shanghai Composite / 上证指数', symbol: '000001.SS' },
+      { name: 'Shenzhen Component / 深证成指', symbol: '399001.SZ' },
+      { name: 'CSI 300 / 沪深300', symbol: '000300.SS' },
+      { name: 'Hang Seng / 恒生指数', symbol: '^HSI' },
+    ];
+    const results = await Promise.all(chinaIndices.map(idx => _fetchYahooChart(idx.symbol)));
+    const liveLines = [];
+    for (let i = 0; i < results.length; i++) {
+      if (results[i]) {
+        const d = results[i];
+        const dir = parseFloat(d.change) >= 0 ? '▲' : '▼';
+        liveLines.push(`${chinaIndices[i].name}: ${d.price} ${d.currency} (${dir} ${d.changePct}%) [${d.marketState}]`);
+      } else {
+        liveLines.push(`${chinaIndices[i].name}: DATA UNAVAILABLE`);
+      }
+    }
+    // Also include single-stock data if matched
+    if (stockData) {
+      const dir = parseFloat(stockData.change) >= 0 ? '▲' : '▼';
+      liveLines.push(`${stockData.name || stockData.symbol}: ${stockData.price} ${stockData.currency} (${dir} ${stockData.changePct}%) [${stockData.marketState}]`);
+    }
+    marketContext = `\n\n[LIVE CHINA/HK MARKET DATA — you MUST use these EXACT numbers, do NOT quote any old/outdated index levels]:
+${liveLines.join('\n')}
+
+CRITICAL RULES FOR THIS DATA:
+- Use the EXACT prices shown above. NEVER assume or guess index levels (e.g. don't say "around 3000" if data shows 4000+)
+- Quote the real numbers naturally: "上证指数现在在XXXX点，涨了X%" or "Shanghai is at XXXX, up X%"
+- Give your analysis BASED ON these real numbers — what's driving the move, what to watch
+- If market is CLOSED, say "目前休市" or mention last close
+- NEVER reference old knowledge base numbers — these live numbers are the truth`;
+  } else if (stockData) {
     const direction = parseFloat(stockData.change) >= 0 ? '▲ up' : '▼ down';
     marketContext = `\n\n[LIVE MARKET DATA — you MUST reference these numbers]:
 ${stockData.name || stockData.symbol}: $${stockData.price} ${stockData.currency} (${direction} ${stockData.changePct}%)
