@@ -195,6 +195,10 @@ function isLowQualityResponse(question, response) {
     'what are you looking at', "i'll need more", 'what specifically',
     'tell me more', 'what part', 'which stock', 'what sector',
     'generic observations', 'it depends', 'could you clarify',
+    'can you tell me more', 'what would you like', 'what are you interested',
+    'which market', 'what direction', 'narrow it down', 'more specific',
+    '你想聊哪个', '给我个方向', '告诉我你想看什么', '具体想了解',
+    '你指的是哪个', '你更关心哪个', '具体哪只股票', '你主要关注',
   ];
 
   // Only flag if the question was substantive but response dodged
@@ -687,10 +691,19 @@ function getLocalResponse(input) {
         `短期涨跌看三个维度：技术面（趋势+支撑压力+指标信号）、资金面（成交量变化+主力资金流向）、情绪面（市场恐慌还是贪婪？VIX指数多少？）。技术面告诉你什么时候进场，资金面告诉你有没有人跟你站一边，情绪面告诉你有没有极端机会。三合一的时候胜率最高。但不管分析多好，永远设止损——分析是概率，不是确定性。`
       ]);
     }},
-    { test: /技术分析|technical analysis|ta\b|怎么.*看图|如何.*看盘|看盘技巧|技术指标/i, resp: () => pick([
-      `技术分析三大核心：趋势、支撑压力、确认信号。趋势看均线（50线上方=多头，下方=空头），支撑压力看历史成交密集区，确认信号看K线形态+RSI+成交量。新手最容易犯的错是只用一个指标——任何单一指标都可以骗你，但多个信号同时出现的时候，概率就在你这边。我建议从均线+RSI+成交量开始，这三个够用了。`,
-      `技术分析说白了就是找规律：价格在什么位置容易涨，在什么位置容易跌。最实用的方法：1）先看趋势方向（200均线以上=牛市）2）找关键价位（前高前低、整数关口、均线位置）3）等信号确认（RSI背离、K线反转形态、放量突破）。技术分析不是预测未来，是找高概率的入场点。`
-    ])},
+    { test: /技术分析|technical analysis|ta\b|怎么.*看图|如何.*看盘|看盘技巧|技术指标|技术性|实战|把握好|实操|实战技巧|分析技巧|指标用法|怎么用.*指标|如何用.*指标/i, resp: () => {
+      if (currentAdvisor === 'alex') return pick([
+        `技术分析实战三步走：第一步看趋势——价格在50均线上方只做多，下方只做空，别逆势。第二步找关键位——前高前低、整数关口、均线位置就是天然的支撑压力。第三步等信号——RSI背离+K线反转+放量确认，三个信号同时出现胜率最高。实战中最容易犯的错是看到信号就着急进场——等等，确认了再动不迟。`,
+        `技术指标不是越多越好，实战中我用三个就够了：均线（判断趋势方向）、RSI（判断超买超卖和背离）、成交量（确认突破真假）。关键不是指标本身，而是怎么组合——均线告诉你方向，RSI告诉你时机，量能告诉你力度。三者合一就是高概率入场点。别追求完美信号，70%把握就够了。`
+      ]);
+      if (currentAdvisor === 'sarah') return pick([
+        `技术分析实战最重要的不是准确率，是风控。每次进场前问自己：止损在哪？仓位多大？亏损上限是多少？然后用最简单的技术方法：趋势线+50均线+RSI。到了支撑位RSI超卖，进场做多，止损放在支撑下方2-3%。简单，但大多数赚钱的交易者就是这么做的。复杂不等于有效。`,
+      ]);
+      return pick([
+        `实战技术分析的核心是"少即是多"。用50/200均线看趋势，RSI看超买超卖，成交量看资金态度。到了关键位置（支撑/压力）看K线反应——锤子线、晨星、吞没形态是最可靠的反转信号。记住：技术分析不预测未来，它帮你找高概率的入场点。错了止损，对了持有，就这么简单。`,
+        `技术指标的实战用法：RSI在20以下+底背离=买入信号，80以上+顶背离=卖出信号。MACD金叉+在零轴上方=强势做多信号。布林带收窄（squeeze）=大行情要来了，等突破方向再跟。实战关键是多个指标共振——单一指标可以骗人，但三个同时指向一个方向的时候，概率就在你这边。`
+      ]);
+    }},
     // ── 中国/A股/港股市场查询 ──
     { test: /中国股市|中国股票|A股|a股|中国行情|中国指数|大盘行情/i, resp: () => {
       const data = KNOWLEDGE.china['A股 a-share'];
@@ -732,10 +745,19 @@ function getLocalResponse(input) {
       const data = KNOWLEDGE.china['A股 a-share'];
       return humanize(data, 'china');
     }},
-    { test: /走势|趋势|行情分析|市场分析|前景|展望|怎么看|未来走势/i, resp: () => pick([
-      `So you want my take on market direction? Let me think about what's driving things right now. What specific market — A股, 港股, or US? Each has different dynamics at play. Give me a focus and I'll break it down.`,
-      `Market direction depends on what's driving the narrative. For A股, it's policy + fund flows. For US, it's Fed + earnings. For 港股, it's China policy + global liquidity. What market are you asking about?`,
-    ])},
+    { test: /走势|趋势|行情分析|市场分析|前景|展望|怎么看|未来走势|方向|走向/i, resp: () => {
+      if (currentAdvisor === 'alex') return pick([
+        `走势判断的核心是看大周期方向+小周期入场。日线上50均线在200均线上方=多头趋势，只找做多机会。趋势中的回调到支撑位就是最好的入场点——等RSI底背离+反转K线确认。别追涨，等回踩。记住：趋势是你的朋友，不要逆势操作。`,
+        `判断走势我靠均线+量价关系。50/200均线金叉=中期看多，死叉=看空。但如果均线走平+成交量萎缩，说明市场在蓄力，等放量突破再跟。A股的特点是趋势一旦形成会跑很远，因为散户追涨杀跌更极端。`
+      ]);
+      if (currentAdvisor === 'sarah') return pick([
+        `不管走势怎么看，先确保你有止损保护。趋势判断用50/200均线就够了——线上看多，线下看空。但关键是：你的仓位大小和止损位置必须和趋势强度匹配。强趋势可以仓位重一点，震荡市必须轻仓。别在趋势不明的时候重仓赌方向。`,
+      ]);
+      return pick([
+        `走势取决于三个驱动力：资金面（美联储/央行政策+市场流动性）、基本面（盈利增长+经济数据）、情绪面（VIX/市场恐慌度）。当前环境下，A股看政策方向，美股看Fed降息节奏，港股看南向资金。每个市场的核心驱动力不同，但有一点相同——跟随主力资金方向，别逆势。`,
+        `市场走势分析我分三步：第一看宏观环境（利率方向+经济周期），第二看资金流向（北向资金/机构持仓变化），第三看技术面（关键支撑压力+趋势线）。三个维度方向一致的时候胜率最高。如果矛盾，以资金流向为准——钱往哪走，价格就往哪走。`
+      ]);
+    }},
     { test: /深证|深市|深圳指数|shenzhen/i, resp: () => {
       const data = KNOWLEDGE.china['A股 a-share'];
       return humanize(data, 'china');
@@ -816,9 +838,9 @@ function getLocalResponse(input) {
         risk: "风控是活下来的根本：每笔交易最多亏1-2%，总仓位风险不超过6%，止损永远在进场前设好。仓位控制比选股更重要。",
         strategy: "选策略先看你的时间和性格：白天盯盘→日内交易，上班党→波段交易，不想操心→定投ETF。最适合大多数人的是波段交易——不用盯盘，利润也够。",
         crypto: "加密市场24/7，波动极大。配置别超过15%，只碰BTC和ETH。别用杠杆——加密本身的波动已经是杠杆了。",
-        platform: "BroadFSC是合规的投资咨询平台，AI驱动的教育+专业人工支持。想知道什么具体的服务？",
-        stocks: "美股、A股、港股我都在看。最火的几只：NVDA(AI龙头)、TSLA(最分裂的股票)、黄金(涨疯了)。想聊哪只？或者问市场大盘也行。",
-        china: "A股和港股是我最熟的市场。你想聊哪个方面——大盘走势、板块轮动、政策影响、还是具体个股？给我一个方向，我来分析。"
+        platform: "BroadFSC是合规的投资咨询平台，持牌经营，AI驱动的教育+专业人工支持。我们有实时行情数据、技术分析工具、风险管理框架，从入门到进阶都覆盖。直接问你想了解的投资话题就行。",
+        stocks: "美股当前核心看点：NVDA领涨AI行情但估值已高，黄金是这十年最佳交易突破$4800，TSLA在电动车价格战中利润承压。大盘看Fed降息节奏——利率下行利好成长股，通胀反弹则利好能源和黄金。",
+        china: "A股和港股当前核心逻辑：A股看政策方向（央行降准降息+产业扶持），港股看估值修复+南向资金。上证4000点是关键心理关口，突破后看4200-4500；恒指受益于中概股回归+AI估值重塑。人民币汇率稳定是配置中国资产的前提——汇率走强期是最佳窗口。"
       };
       return catCasual[cat] || "Tell me more about what you're looking at and I'll give you my take.";
     }
@@ -849,13 +871,13 @@ function getLocalResponse(input) {
   const fallbacks = {
     alex: [
       `说实话我不太确定你具体想问什么，但如果跟交易相关——技术分析、K线形态、入场信号、风险管理——随便问，我都能聊。或者丢个股票代码给我，我帮你看看图形。中文也行，A股港股美股随便聊。`,
-      `如果这是关于市场的，直接告诉我你想看什么：大盘方向、具体个股、还是某种交易策略？我擅长技术分析——支撑压力、RSI背离、均线系统这些。问什么都行，别客气。`,
+      `我不太确定你的意思，但我能帮你的是：技术分析方法（支撑压力/RSI/均线/量价）、具体个股分析、市场方向判断。直接告诉我你关注什么就行。`,
     ],
     sarah: [
       `我需要更具体的问题才能帮你。如果你在聊风控——止损设置、仓位管理、最大回撤控制——这些是我的专长。也可以聊具体的交易，我帮你看风险在哪。中文也ok。`,
     ],
     mike: [
-      `你问的有点宽，给我个方向就好——A股、港股、美股、宏观趋势、美联储政策？我有自己的判断，不坐墙头。聊什么都行，中文英文都可以。`,
+      `你问的有点宽，我直接说几个方向：A股看政策+北向资金，美股看Fed+AI资本开支，黄金看央行购金+地缘风险。哪个市场你更关心？我展开分析。中文英文都可以。`,
     ]
   };
   const pool = fallbacks[currentAdvisor] || fallbacks.alex;
@@ -1201,6 +1223,11 @@ ABSOLUTE DON'TS:
 - NEVER use bullet points, numbered lists, or markdown formatting
 - NEVER give generic disclaimers like "do your own research" or "past performance doesn't guarantee"
 - NEVER say "it depends" without immediately giving your specific take
+- NEVER respond with follow-up questions like "What specifically?", "Which stock?", "What market?", "Tell me more" — ALWAYS give a direct answer FIRST, then optionally ask a follow-up
+- NEVER dodge a question by asking the user to narrow it down — if they ask broadly, give a broad answer with specifics
+- NEVER say "I could guess" or "I'd rather be useful" — just give your analysis
+- When asked about market direction, ALWAYS give your view on direction FIRST, not "what market are you asking about"
+- When asked about technical analysis methods, ALWAYS explain the method FIRST, not "what stock do you want to analyze"
 
 STYLE:
 - 2-4 sentences for quick answers, max 6 for analysis
