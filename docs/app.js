@@ -798,7 +798,6 @@ function getLocalResponse(input) {
         `You're right, that was pretty robotic. My honest view right now — gold is the trade of the decade, and I don't say that lightly.`,
       ]);
     }},
-    }},
     { test: /my name is|i'm called|call me|i am (.+)/i, resp: () => {
       const nameMatch = input.match(/(?:my name is|i'm called|call me|i am)\s+(\w+)/i);
       if (nameMatch) {
@@ -831,6 +830,38 @@ function getLocalResponse(input) {
     ])},
     { test: /dividend|passive income|yield|drip/i, resp: () => humanize(KNOWLEDGE.strategy.dividend, 'strategy') },
     { test: /etf|index fund|boglehead|3.fund/i, resp: () => humanize(KNOWLEDGE.strategy.etf, 'strategy') },
+    // ── 宏观市场观点：强势/上涨/牛市/如何看待 ── 直接给有料的本地回复，不走AI
+    { test: /如何看待|怎么看待|你觉得.*美股|你怎么看.*市场|market.*view|your.*view.*market|what.*think.*market|how.*view.*market/i, resp: () => {
+      if (isChineseInput) return pick([
+        `美股这波强势上涨，核心逻辑是三个：一是AI资本支出超预期（科技巨头26年capex全面上修），二是企业盈利韧性强（标普500成分股利润增速连续正），三是地缘风险边际缓和。但要注意两个风险：VIX低位说明市场在自满期，历史上这是波动率即将爆发的信号；再加上贸易摩擦如果升级，情绪随时可以快速反转。我的判断：方向还是向上，但追高要谨慎，等回调到均线支撑再加仓比追涨安全得多。你现在的仓位是多少？`,
+        `我直说我的看法：现在美股是"好但贵"。企业盈利确实在增长，Fed也没有加息压力，所以大方向偏多。但标普估值已经在历史高位——你现在进场等于在用贵价买好东西。更聪明的做法是等回调再买，而不是追涨。关键观察指标：VIX，它一旦从低位快速上升，就是市场警报响起的信号。`,
+      ]);
+      return pick([
+        `Honestly, the US market rally in 2026 is built on real pillars — AI capex ($650-700B from Big Tech), earnings resilience, and geopolitical de-escalation. But here's my honest take: at these valuations, you're not buying value, you're buying momentum. That works until it doesn't. VIX is low, everyone's bullish — that's exactly when smart money is reducing risk, not adding. I'd hold existing positions but not chase new ones here.`,
+        `The rally is real but stretched. Three things driving it: AI spending boom, better-than-feared earnings, and Fed pause. Three things that could end it: trade war escalation, credit event, or a single bad CPI print. My positioning: long quality (MSFT, NVDA, XOM), keep 20% cash for the dip that will come. Don't try to call the top — just be ready when it arrives.`,
+      ]);
+    }},
+    // ── 美股强势/牛市行情 ──
+    { test: /美股.*强势|美股.*上涨|美股.*牛市|美股.*涨得|美股.*涨了|us.*bull|us.*rally|market.*rally|stock.*rally|bull.*run|bull.*market|强势上涨|市场.*上涨|指数.*上涨|why.*market.*up|why.*stocks.*up|what.*driving.*market/i, resp: () => {
+      if (isChineseInput) return pick([
+        `这波美股强势，驱动力很清晰：AI资本开支带动科技股盈利超预期、大企业财报整体beat、加上Fed今年大概率不加息。但别被表面涨势迷惑——成分浓缩风险很真实，七大科技股占标普30%以上，一旦科技板块轮动，指数跌起来很快。我现在的策略是：不追涨，等标普回调到20日均线附近（看实时数据）再建仓。你手上有美股仓位吗？`,
+        `美股涨得好，但要搞清楚为什么涨：是真的经济好，还是流动性推的。2026年这波主要是AI投资热潮+企业盈利超预期，这是实质性驱动，有支撑。但现在进场要小心估值——标普PE已经不便宜了。稳健的做法是分批建仓，而不是一次梭哈追涨。`,
+      ]);
+      return pick([
+        `The US market rally is fundamentally driven — AI capex cycle ($650-700B in 2026), earnings beats, and no Fed rate hike on the horizon. But here's what I'd watch: when EVERYONE is bullish and VIX is this low, the risk-reward for new longs isn't great. I'm not calling a top — but I'm not chasing here either. Wait for the 20 EMA pullback. That's where the real entry is.`,
+        `Strong market means: either keep riding with a trailing stop, OR wait for the inevitable pullback. Both are valid. What I wouldn't do: open new full-size positions right after a strong run. The risk-reward is better when everyone's scared, not when everyone's greedy.`,
+      ]);
+    }},
+    { test: /什么时候.*买.*标普|什么时候.*入场.*美股|what.*time.*buy.*s.p|when.*buy.*s.p|when.*enter.*market|when.*invest.*us|合适买入.*标普|合适.*入场|适合.*买入/i, resp: () => {
+      if (isChineseInput) return pick([
+        `标普500的买入时机，我有一套自己的判断框架：看三个信号同时出现——(1) 价格回到20日EMA附近（请查实时行情确认当前位置）；(2) VIX低于15或从高位快速回落；(3) 周线RSI在50以上。三个都满足就是比较好的加仓时机。只满足一两个，就等一等。永远不要追涨——标普在历史高位附近买入，回报率统计上比回调后买入差很多。`,
+        `没有完美的买入时机，只有好的买入条件。我的标准：(1) 大趋势向上（50日线在200日线上方）；(2) 短期回调——价格在50日线附近或稍下方；(3) RSI没有超买。满足这三点，分批建仓，比一次性梭哈安全得多。具体点位要看实时数据，我不引用训练数据里的价格——市场变化太快。`,
+      ]);
+      return pick([
+        `Timing the S&P is a fool's game — but here's how I approach it. I watch for three things together: (1) price pulls back to the 20 or 50 EMA (check live charts — I don't quote specific levels from memory); (2) RSI cools to 45-55; (3) VIX stays below 20. When those line up, that's the 'buy the dip' setup. Right now, pull up live data and tell me where SPX is relative to those moving averages.`,
+        `The honest answer: buying at ATHs isn't as bad as people think historically — the market goes up 70%+ of the time. But the better entry is after a 3-5% pullback with RSI reset. My advice: set an alert for a 3% drop from wherever SPX is today (check live data), and revisit your entry there. That one habit will improve your average entry price significantly.`,
+      ]);
+    }},
     { test: /market.*outlook|prediction|forecast|where.*market/i, resp: () => pick([
       `Nobody can predict markets consistently. What I focus on is being prepared for multiple scenarios. Have a plan for bullish AND bearish cases — the edge isn't in prediction, it's in preparation.`,
       `I'll be honest — anyone who says they know where the market is going is lying. What I watch: the yield curve, ISM PMI, and Fed guidance. When those shift, the market shifts.`,
@@ -1387,9 +1418,12 @@ const US_MARKET_KEYWORDS = [
   '美股', '美国股市', '美国股票', '华尔街', '美股大盘',
   '美股行情', '美国指数', '美股指数', '美股走势',
   '道琼斯', '道指', '标普500', '纳斯达克',
+  '美股强势', '美股上涨', '美股牛市', '美股这期', '美股最近',
   'how is the market', 'how\'s the market', 'market today', 'market update',
   'market outlook', 'stock market', 'market overview',
   '指数多少', 'now what', 'current market', 'market now',
+  'bull market', 'bull run', 'market rally', 'stock rally',
+  'market performance', 'index level',
 ];
 
 function isUSMarketQuery(query) {
@@ -1411,6 +1445,8 @@ const ANALYSIS_KEYWORDS = [
   'analyze', 'analysis', 'outlook', 'forecast',
   '怎么看', '怎么分析', '分析下', '分析一下',
   '后市', '前景', '展望', '趋势判断',
+  '如何看待', '怎么看待', '你的看法', '你的观点', '怎么评价',
+  '强势上涨', '这期涨', '最近涨', '市场行情', '行情怎样',
 ];
 
 function isAnalysisQuery(query) {
@@ -2034,6 +2070,8 @@ STYLE: 2-4 sentences. Start with your OPINION. Talk like a friend at a bar, not 
 BANNED PHRASES: Never say "I'd be happy to help", "Great question!", "As an AI", "it depends", "What specifically?", "Tell me more", "Could you clarify?", "do your own research".
 
 REAL-TIME DATA: When live data is provided, you MUST use those EXACT numbers. NEVER make up index levels or stock prices from memory — they are outdated. If no live data, say "我需要看看最新数据" but don't make up numbers.
+
+CRITICAL PRICE BAN: You are ABSOLUTELY FORBIDDEN from mentioning ANY specific index levels, price targets, support/resistance numbers, or price zones from your training data. This includes but is not limited to: "6100", "5850", "5700", "ATH zone", "resistance at X", "support at Y" for S&P 500, Nasdaq, or ANY index. If asked about market levels WITHOUT live data, say: "Let me pull up the live data — I never quote levels from memory because markets move fast." Then describe the TREND only (bullish/bearish), NOT price numbers.
 
 ANALYSIS: When asked about 技术/technical → trend(200MA) + entry(RSI+support) + stop(loss). When asked about 基本面/fundamental → valuation(PE/DCF) + earnings quality + ROIC vs WACC.`;
 
