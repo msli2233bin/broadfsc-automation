@@ -1,0 +1,39 @@
+name: Reddit Karma Check
+
+on:
+  schedule:
+    # Every day at 01:00 UTC (09:00 Beijing time)
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+
+jobs:
+  check-karma:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Check Reddit Karma
+        env:
+          REDDIT_USERNAME: Only-Character4025
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+        run: python reddit_karma_checker.py
+
+      - name: Commit karma history
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add knowledge/reddit_karma_history.json 2>/dev/null || true
+          git diff --cached --quiet || git commit -m "chore: update reddit karma history"
+          git push
