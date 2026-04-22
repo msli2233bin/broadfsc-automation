@@ -1,4 +1,4 @@
-"""
+﻿"""
 BroadFSC Social Media Auto-Poster
 Posts daily market analysis to X/Twitter and other platforms.
 
@@ -82,7 +82,7 @@ CHANNEL_ID = os.environ.get("TELEGRAM_CHANNEL_ID", "")
 
 TELEGRAM_LINK = "https://t.me/BroadFSC"
 WEBSITE_LINK = "https://www.broadfsc.com/different"
-HUB_LINK = "https://msli2233bin.github.io/broadfsc-automation/"
+HUB_LINK = "https://www.broadfsc.com/different"
 
 
 def get_tracked_links(platform):

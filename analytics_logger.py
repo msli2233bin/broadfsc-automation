@@ -1,4 +1,4 @@
-"""
+﻿"""
 BroadFSC Analytics Logger
 统一数据采集模块 - 所有推广脚本共用
 
@@ -154,7 +154,7 @@ def get_tracking_url(target_url, source_platform, link_type="website"):
     """生成带追踪参数的引流链接
 
     Args:
-        target_url: 目标 URL（如 https://msli2233bin.github.io/broadfsc-automation/）
+        target_url: 目标 URL（如 https://www.broadfsc.com/different）
         source_platform: 来源平台（如 twitter, telegram, mastodon 等）
         link_type: 链接类型（website, telegram, contact）
 

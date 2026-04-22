@@ -1,4 +1,4 @@
-"""
+﻿"""
 BroadFSC AI 自主学习团队
 4个AI Agent自动从全球网站学习，写入本地知识库，同步到IMA
 
@@ -638,7 +638,7 @@ def generate_social_content(knowledge_file: str, agent: str, topic: str):
                                     f"Platform: {cfg['name']}\n"
                                     f"{cfg['instruction']}\n\n"
                                     f"Add this link naturally if it fits (don't force it): "
-                                    f"https://msli2233bin.github.io/broadfsc-automation/"
+                                    f"https://www.broadfsc.com/different"
                                 )
                             }
                         ],

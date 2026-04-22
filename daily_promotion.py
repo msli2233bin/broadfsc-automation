@@ -33,6 +33,8 @@ CHANNEL_ID = os.environ.get("TELEGRAM_CHANNEL_ID", "")
 # Optional language channels (leave empty to skip)
 CHANNEL_ES = os.environ.get("TELEGRAM_CHANNEL_ES", "")
 CHANNEL_AR = os.environ.get("TELEGRAM_CHANNEL_AR", "")
+CHANNEL_JP = os.environ.get("TELEGRAM_CHANNEL_JP", "")
+CHANNEL_ZH_TW = os.environ.get("TELEGRAM_CHANNEL_ZH_TW", "")
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 
 ALL_CHANNELS = [CHANNEL_ID]
@@ -40,6 +42,10 @@ if CHANNEL_ES:
     ALL_CHANNELS.append(CHANNEL_ES)
 if CHANNEL_AR:
     ALL_CHANNELS.append(CHANNEL_AR)
+if CHANNEL_JP:
+    ALL_CHANNELS.append(CHANNEL_JP)
+if CHANNEL_ZH_TW:
+    ALL_CHANNELS.append(CHANNEL_ZH_TW)
 
 DISCLAIMER = (
     "\n\n<i>Risk Disclaimer: Investment involves risk. "
@@ -102,7 +108,7 @@ LANG_CONFIG = {
             "Europe": "EUROPE PRE-MARKET BRIEFING",
             "Americas": "AMERICAS PRE-MARKET BRIEFING",
         },
-        "cta": "Free education: https://msli2233bin.github.io/broadfsc-automation/ | broadfsc.com/different",
+        "cta": "Free education: https://www.broadfsc.com/different | broadfsc.com/different",
         "disclaimer": DISCLAIMER,
     },
     "es": {
@@ -113,7 +119,7 @@ LANG_CONFIG = {
             "Europe": "INFORME PRE-MERCADO EUROPA",
             "Americas": "INFORME PRE-MERCADO AMERICAS",
         },
-        "cta": "Aprende gratis: https://msli2233bin.github.io/broadfsc-automation/ | broadfsc.com/different",
+        "cta": "Aprende gratis: https://www.broadfsc.com/different | broadfsc.com/different",
         "disclaimer": (
             "\n\n<i>Aviso de riesgo: La inversion implica riesgo. "
             "El rendimiento pasado no es indicativo de resultados futuros. "
@@ -128,9 +134,36 @@ LANG_CONFIG = {
             "Europe": "EUROPE - ",
             "Americas": "AMERICAS - ",
         },
-        "cta": "https://msli2233bin.github.io/broadfsc-automation/ | broadfsc.com/different",
+        "cta": "https://www.broadfsc.com/different | broadfsc.com/different",
         "disclaimer": (
             "\n\n<i> .    .</i>"
+        ),
+    },
+    "jp": {
+        "name": "Japanese",
+        "region_names": {
+            "APAC": "アジアプレマーケットレポート",
+            "Middle East": "中東プレマーケットレポート",
+            "Europe": "欧州プレマーケットレポート",
+            "Americas": "米州プレマーケットレポート",
+        },
+        "cta": "投資教育は無料で: https://www.broadfsc.com/different",
+        "disclaimer": (
+            "\n\n<i>リスク開示: 投資にはリスクが伴います。過去の実績は将来の結果を示すものではありません。"
+            "投資の前にライセンス保有のアドバイザーにご相談ください。</i>"
+        ),
+    },
+    "zh-tw": {
+        "name": "Traditional Chinese",
+        "region_names": {
+            "APAC": "亞太盤前速報",
+            "Middle East": "中東盤前速報",
+            "Europe": "歐洲盤前速報",
+            "Americas": "美洲盤前速報",
+        },
+        "cta": "免費投資教育: https://www.broadfsc.com/different",
+        "disclaimer": (
+            "\n\n<i>風險聲明: 投資涉及風險。過往表現不代表未來收益。投資前請諮詢持牌顧問。</i>"
         ),
     },
 }
@@ -150,6 +183,10 @@ def build_channel_lang_map():
         CHANNEL_LANG_MAP[CHANNEL_ES] = "es"
     if CHANNEL_AR:
         CHANNEL_LANG_MAP[CHANNEL_AR] = "ar"
+    if CHANNEL_JP:
+        CHANNEL_LANG_MAP[CHANNEL_JP] = "jp"
+    if CHANNEL_ZH_TW:
+        CHANNEL_LANG_MAP[CHANNEL_ZH_TW] = "zh-tw"
 
 
 # Fallback content templates per language
@@ -165,7 +202,7 @@ FALLBACK_TEMPLATES = {
             "- Semiconductor sector momentum (TSMC, Samsung)\n"
             "- Asia FX movements (JPY, CNY, AUD)\n\n"
             "Stay ahead of Asian session volatility.\n\n"
-            "Free education: https://msli2233bin.github.io/broadfsc-automation/ | broadfsc.com/different"
+            "Free education: https://www.broadfsc.com/different | broadfsc.com/different"
         ),
         "es": (
             "{emoji} INFORME PRE-MERCADO ASIA | {date}\n\n"
@@ -177,7 +214,7 @@ FALLBACK_TEMPLATES = {
             "- Momento del sector de semiconductores (TSMC, Samsung)\n"
             "- Movimientos FX en Asia (JPY, CNY, AUD)\n\n"
             "Mantengase adelante de la volatilidad de la sesion asiatica.\n\n"
-            "Aprende gratis: https://msli2233bin.github.io/broadfsc-automation/ | broadfsc.com/different"
+            "Aprende gratis: https://www.broadfsc.com/different | broadfsc.com/different"
         ),
         "ar": (
             "{emoji}  | {date}\n\n"
@@ -191,6 +228,30 @@ FALLBACK_TEMPLATES = {
             ".\n\n"
             "broadfsc.com/different"
         ),
+        "jp": (
+            "{emoji} アジアプレマーケットレポート | {date}\n\n"
+            "{markets}\n\n"
+            "本日の注目ポイント:\n"
+            "- 米国市場の前日終値と先物の方向感\n"
+            "- 日銀・豪準備銀行・人民銀の政策シグナル\n"
+            "- 中国PMI・貿易統計発表\n"
+            "- 半導体セクター動向（TSMC、サムスン）\n"
+            "- アジア為替（ドル円、人民元、豪ドル）\n\n"
+            "アジアセッションの変動に備えましょう。\n\n"
+            "投資教育は無料で: https://www.broadfsc.com/different"
+        ),
+        "zh-tw": (
+            "{emoji} 亞太盤前速報 | {date}\n\n"
+            "{markets}\n\n"
+            "今日關注重點:\n"
+            "- 美股昨夜收盤與期貨方向\n"
+            "- 央行政策信號（日銀/Fed/PBOC）\n"
+            "- 中國PMI及貿易數據\n"
+            "- 半導體板塊動態（台積電、三星）\n"
+            "- 亞太匯率（美元/日圓、人民幣、澳幣）\n\n"
+            "掌握亞太盤前關鍵資訊。\n\n"
+            "免費投資教育: https://www.broadfsc.com/different"
+        ),
     },
     "Middle East": {
         "en": (
@@ -203,7 +264,7 @@ FALLBACK_TEMPLATES = {
             "- Saudi Aramco and regional blue chips\n"
             "- UAE real estate and tourism sector trends\n\n"
             "Position for Gulf market opportunities.\n\n"
-            "Free education: https://msli2233bin.github.io/broadfsc-automation/ | broadfsc.com/different"
+            "Free education: https://www.broadfsc.com/different | broadfsc.com/different"
         ),
         "es": (
             "{emoji} INFORME PRE-MERCADO MEDIO ORIENTE | {date}\n\n"
@@ -215,7 +276,7 @@ FALLBACK_TEMPLATES = {
             "- Saudi Aramco y blue chips regionales\n"
             "- Tendencias del sector inmobiliario y turistico de EAU\n\n"
             "Posicionese para las oportunidades del mercado del Golfo.\n\n"
-            "Aprende gratis: https://msli2233bin.github.io/broadfsc-automation/ | broadfsc.com/different"
+            "Aprende gratis: https://www.broadfsc.com/different | broadfsc.com/different"
         ),
         "ar": (
             "{emoji}  | {date}\n\n"
@@ -229,6 +290,30 @@ FALLBACK_TEMPLATES = {
             ".\n\n"
             "broadfsc.com/different"
         ),
+        "jp": (
+            "{emoji} 中東プレマーケットレポート | {date}\n\n"
+            "{markets}\n\n"
+            "本日の注目ポイント:\n"
+            "- 原油価格（ブレント/WTI）とOPEC+動向\n"
+            "- 中東地政学リスク更新\n"
+            "- GCC株式ファンドフロー\n"
+            "- サウジアラムコと地域ブルーチップ\n"
+            "- UAE不動産・観光セクター動向\n\n"
+            "中東市場のチャンスを見極めましょう。\n\n"
+            "投資教育は無料で: https://www.broadfsc.com/different"
+        ),
+        "zh-tw": (
+            "{emoji} 中東盤前速報 | {date}\n\n"
+            "{markets}\n\n"
+            "今日關注重點:\n"
+            "- 油價（布蘭特/WTI）與OPEC+動態\n"
+            "- 中東地緣政治更新\n"
+            "- 海灣合作委員會資金流向\n"
+            "- 沙烏地阿美與區域藍籌股\n"
+            "- 阿聯酋房地產及旅遊趨勢\n\n"
+            "掌握中東市場機會。\n\n"
+            "免費投資教育: https://www.broadfsc.com/different"
+        ),
     },
     "Europe": {
         "en": (
@@ -241,7 +326,7 @@ FALLBACK_TEMPLATES = {
             "- European energy prices (TTF gas)\n"
             "- DAX 40, CAC 40, FTSE 100 key technicals\n\n"
             "Prepare for European session moves.\n\n"
-            "Free education: https://msli2233bin.github.io/broadfsc-automation/ | broadfsc.com/different"
+            "Free education: https://www.broadfsc.com/different | broadfsc.com/different"
         ),
         "es": (
             "{emoji} INFORME PRE-MERCADO EUROPA | {date}\n\n"
@@ -253,7 +338,7 @@ FALLBACK_TEMPLATES = {
             "- Precios de energia europea (gas TTF)\n"
             "- Tecnicos clave de DAX 40, CAC 40, FTSE 100\n\n"
             "Preparese para los movimientos de la sesion europea.\n\n"
-            "Aprende gratis: https://msli2233bin.github.io/broadfsc-automation/ | broadfsc.com/different"
+            "Aprende gratis: https://www.broadfsc.com/different | broadfsc.com/different"
         ),
         "ar": (
             "{emoji}  | {date}\n\n"
@@ -266,6 +351,30 @@ FALLBACK_TEMPLATES = {
             "- DAX 40  CAC 40  FTSE 100\n\n"
             ".\n\n"
             "broadfsc.com/different"
+        ),
+        "jp": (
+            "{emoji} 欧州プレマーケットレポート | {date}\n\n"
+            "{markets}\n\n"
+            "本日の注目ポイント:\n"
+            "- ECB政策金利決定予想\n"
+            "- ユーロ圏PMI速報値・インフレデータ\n"
+            "- イングランド銀行の政策シグナル\n"
+            "- 欧州エネルギー価格（TTFガス）\n"
+            "- DAX 40・CAC 40・FTSE 100 テクニカル\n\n"
+            "欧州セッションに備えましょう。\n\n"
+            "投資教育は無料で: https://www.broadfsc.com/different"
+        ),
+        "zh-tw": (
+            "{emoji} 歐洲盤前速報 | {date}\n\n"
+            "{markets}\n\n"
+            "今日關注重點:\n"
+            "- ECB利率決議預期\n"
+            "- 歐元區PMI速報及通膨數據\n"
+            "- 英格蘭銀行政策信號\n"
+            "- 歐洲能源價格（TTF天然氣）\n"
+            "- DAX 40、CAC 40、FTSE 100關鍵技術面\n\n"
+            "備戰歐洲盤。\n\n"
+            "免費投資教育: https://www.broadfsc.com/different"
         ),
     },
     "Americas": {
@@ -280,7 +389,7 @@ FALLBACK_TEMPLATES = {
             "- US 10Y Treasury yield and USD index\n"
             "- Latin America: BRL/MXN FX, Bovespa trends\n\n"
             "Get ready for the main session.\n\n"
-            "Free education: https://msli2233bin.github.io/broadfsc-automation/ | broadfsc.com/different"
+            "Free education: https://www.broadfsc.com/different | broadfsc.com/different"
         ),
         "es": (
             "{emoji} INFORME PRE-MERCADO AMERICAS | {date}\n\n"
@@ -293,7 +402,7 @@ FALLBACK_TEMPLATES = {
             "- Rendimiento del Treasury estadounidense a 10Y e indice USD\n"
             "- America Latina: FX BRL/MXN, tendencias de Bovespa\n\n"
             "Prepareses para la sesion principal.\n\n"
-            "Aprende gratis: https://msli2233bin.github.io/broadfsc-automation/ | broadfsc.com/different"
+            "Aprende gratis: https://www.broadfsc.com/different | broadfsc.com/different"
         ),
         "ar": (
             "{emoji}  | {date}\n\n"
@@ -307,6 +416,32 @@ FALLBACK_TEMPLATES = {
             "-   BRL/MXN  Bovespa\n\n"
             ".\n\n"
             "broadfsc.com/different"
+        ),
+        "jp": (
+            "{emoji} 米州プレマーケットレポート | {date}\n\n"
+            "{markets}\n\n"
+            "本日の注目ポイント:\n"
+            "- 米国株先物（S&P 500、NASDAQ、ダウ）\n"
+            "- FRB政策予想とFOMC議事録\n"
+            "- 経済指標発表（CPI、非農業部門雇用、GDP）\n"
+            "- 決算シーズンハイライト\n"
+            "- 米10年債利回りとドル指数\n"
+            "- ラテンアメリカ: BRL/MXN為替、ボベスパ動向\n\n"
+            "メインセッションに備えましょう。\n\n"
+            "投資教育は無料で: https://www.broadfsc.com/different"
+        ),
+        "zh-tw": (
+            "{emoji} 美洲盤前速報 | {date}\n\n"
+            "{markets}\n\n"
+            "今日關注重點:\n"
+            "- 美股期貨（S&P 500、納斯達克、道瓊）\n"
+            "- Fed政策預期與FOMC會議紀要\n"
+            "- 重要經濟數據（CPI、非農、GDP）\n"
+            "- 財報季亮點\n"
+            "- 美國10年期國債收益率與美元指數\n"
+            "- 拉丁美洲: BRL/MXN匯率、Bovespa趨勢\n\n"
+            "備戰主交易時段。\n\n"
+            "免費投資教育: https://www.broadfsc.com/different"
         ),
     },
 }
@@ -339,6 +474,8 @@ def generate_ai_content(region, focus_text, lang="en"):
             "en": "Write in English.",
             "es": "Write in Spanish (Espanol).",
             "ar": "Write in Arabic.",
+            "jp": "Write in Japanese (日本語). Use professional financial terminology common in Japanese markets (e.g., 日経平均, ドル円, 新NISA).",
+            "zh-tw": "Write in Traditional Chinese (繁體中文). Use terminology common in Taiwan markets (e.g., 台股, 美股, 台積電, 法說會).",
         }.get(lang, "Write in English.")
 
         region_title = LANG_CONFIG[lang]["region_names"].get(region, region + " BRIEFING")

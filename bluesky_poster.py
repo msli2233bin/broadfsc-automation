@@ -1,4 +1,4 @@
-"""
+﻿"""
 BroadFSC Bluesky Auto-Poster
 Posts market insights to Bluesky using AT Protocol API.
 
@@ -26,7 +26,7 @@ GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 
 PDS_URL = "https://bsky.social/xrpc"
 TELEGRAM_LINK = "https://t.me/BroadFSC"
-HUB_LINK = "https://msli2233bin.github.io/broadfsc-automation/"
+HUB_LINK = "https://www.broadfsc.com/different"
 HASHTAGS = ["#Investing", "#Trading", "#MarketAnalysis"]
 
 
