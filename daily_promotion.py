@@ -471,6 +471,9 @@ def generate_ai_content(region, focus_text, lang="en"):
         from groq import Groq
         client = Groq(api_key=GROQ_API_KEY)
 
+        now = datetime.datetime.utcnow()
+        date_str = now.strftime("%b %d")
+
         lang_instruction = {
             "en": "Write in English.",
             "es": "Write in Spanish (Espanol).",
@@ -482,33 +485,42 @@ def generate_ai_content(region, focus_text, lang="en"):
         region_title = LANG_CONFIG[lang]["region_names"].get(region, region + " BRIEFING")
         cta = LANG_CONFIG[lang]["cta"]
 
+        # Rotate briefing styles for variety
+        briefing_styles = ["actionable", "contrarian", "flow_focused", "risk_alert", "opportunity_scan"]
+        style = briefing_styles[now.timetuple().tm_yday % len(briefing_styles)]
+
+        style_instructions = {
+            "actionable": "Focus on WHAT traders should watch today. Lead with the most actionable signal. Use 'Today's #1 watch:' format.",
+            "contrarian": "Challenge the consensus. Start with 'Most investors think X, but...' Then present the contrarian case with specific reasoning.",
+            "flow_focused": "Focus on where money is moving. ETF flows, fund positioning, institutional moves. 'Smart money is rotating into...' style.",
+            "risk_alert": "Lead with the biggest risk today. 'One thing that could derail today's session:' Then explain the risk and how to hedge it.",
+            "opportunity_scan": "Highlight 2-3 specific opportunities. 'Today's set-ups:' format. Be specific about sectors, assets, or regions showing unusual activity.",
+        }
+
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=[{
                 "role": "user",
                 "content": (
-                    "You are a professional market analyst at BroadFSC. "
-                    "Write a concise pre-market briefing for {region} markets.\n\n"
-                    "Title: {title}\n\n"
-                    "{focus}\n\n"
-                    "Requirements:\n"
-                    "- {lang_instr}\n"
-                    "- Format as a Telegram message with clear bullet points\n"
+                    "You are a sharp market analyst who writes Telegram briefings that traders actually READ. "
+                    "You cut through noise and give SIGNALS, not just observations.\n\n"
+                    "Write a pre-market briefing for " + region + " markets.\n\n"
+                    "Title: " + region_title + "\n\n"
+                    "Market context: " + focus_text + "\n\n"
+                    "Briefing style: " + style_instructions[style] + "\n\n"
+                    "Rules:\n"
+                    "- " + lang_instruction + "\n"
+                    "- Format for Telegram: use bold (**text**) for key points, bullet points, line breaks\n"
                     "- Keep it under 500 characters\n"
-                    "- Be specific with current market themes\n"
-                    "- Use a professional but engaging tone\n"
-                    "- End with: {cta}\n"
+                    "- Start with a HOOK — never 'Key themes to watch'\n"
+                    "- Include 1 specific, real-sounding number (index level, yield, percentage)\n"
+                    "- Professional but punchy — like a trader sharing alpha, not a press release\n"
+                    "- End with: " + cta + "\n"
                     "- NEVER promise guaranteed returns"
-                ).format(
-                    region=region,
-                    title=region_title,
-                    focus=focus_text,
-                    lang_instr=lang_instruction,
-                    cta=cta,
                 )
             }],
             max_tokens=400,
-            temperature=0.7
+            temperature=0.8
         )
         return response.choices[0].message.content
     except Exception as e:

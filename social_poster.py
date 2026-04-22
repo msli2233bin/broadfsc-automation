@@ -394,7 +394,7 @@ def post_mastodon(text):
 
 
 def generate_mastodon_content():
-    """Generate a Mastodon post (longer than tweet, up to 500 chars)."""
+    """Generate a thoughtful Mastodon post with deeper analysis."""
     if not GROQ_API_KEY:
         return get_fallback_mastodon()
 
@@ -404,28 +404,44 @@ def generate_mastodon_content():
 
         now = datetime.datetime.utcnow()
         day = now.strftime("%A")
+        date_str = now.strftime("%b %d")
 
         tags = " ".join(HASHTAGS[:4])
         links = get_tracked_links("mastodon")
+
+        # Rotate analysis angles
+        angles = ["macro_deep_dive", "cross_asset", "contrarian_thesis", "historical_parallel", "flow_analysis"]
+        angle = angles[now.timetuple().tm_yday % len(angles)]
+
+        angle_instructions = {
+            "macro_deep_dive": "Do a deep macro analysis. Connect 2-3 macro signals (yields, FX, commodities) into one coherent narrative. Show causal chains, not just observations.",
+            "cross_asset": "Analyze cross-asset correlations. What does the bond market know that equities don't? Or what is gold signaling vs crypto?",
+            "contrarian_thesis": "Build a contrarian thesis. What is the consensus, and why might it be wrong? Show your reasoning step by step.",
+            "historical_parallel": "Draw a specific historical parallel. 'The last time we saw X was in [year], and what happened next was...' Make it educational.",
+            "flow_analysis": "Analyze where the money is flowing. ETF flows, fund positioning, smart money vs retail. Where is capital rotating?",
+        }
 
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=[{
                 "role": "user",
                 "content": (
-                    "You are a professional market analyst at BroadFSC. "
-                    "Write a market insight post for Mastodon.\n"
-                    "Today is " + day + ".\n\n"
-                    "Requirements:\n"
+                    "You are a veteran macro strategist who writes for sophisticated investors on Mastodon. "
+                    "You think in systems, not soundbites. You connect dots others miss.\n\n"
+                    "Write ONE market analysis post for " + day + ", " + date_str + ".\n\n"
+                    "Analysis angle: " + angle_instructions[angle] + "\n\n"
+                    "Rules:\n"
                     "- Maximum 450 characters\n"
-                    "- Include 1-2 specific market observations\n"
+                    "- Start with a sharp observation, NOT 'Key themes' or 'Markets update'\n"
+                    "- Use proper financial terminology (basis points, yield curve, contango, etc.)\n"
+                    "- Show your reasoning — don't just state conclusions\n"
                     "- End with: " + tags + "\n"
                     "- Add link: " + links["hub"] + "\n"
-                    "- Do NOT promise returns"
+                    "- Do NOT promise returns or give buy/sell advice"
                 )
             }],
-            max_tokens=150,
-            temperature=0.8
+            max_tokens=200,
+            temperature=0.85
         )
         return response.choices[0].message.content.strip()
     except Exception as e:
@@ -434,18 +450,17 @@ def generate_mastodon_content():
 
 
 def get_fallback_mastodon():
-    """Fallback Mastodon content."""
+    """Fallback Mastodon content with deeper analysis."""
     links = get_tracked_links("mastodon")
+    day_idx = datetime.datetime.utcnow().timetuple().tm_yday
     toots = [
-        "Global markets update: Central bank policy divergence continues to drive cross-currency flows. "
-        "Stay informed with daily pre-market briefings covering Asia, Europe, Middle East & Americas. "
-        f"Subscribe free: {links['telegram']} | Learn investing: {links['hub']} #Investing #Trading #MarketAnalysis #Finance",
-        "Key themes this week: Fed signals, earnings season dynamics, and geopolitical risk premiums "
-        "shaping commodity markets. Get daily AI-powered market insights in English, Spanish & Arabic. "
-        f"{links['telegram']} | Free education: {links['hub']} #StockMarket #Investing #Trading #MarketAnalysis",
+        f"The bond market is pricing in something equities refuse to acknowledge. 10Y yields inverted for 18 months — historically that's not resolved with a soft landing. The question isn't if, but which asset class blinks first. {links['hub']} #Investing #Trading #MarketAnalysis #Finance",
+        f"Cross-asset signal check: Gold breaking out while real yields stay elevated. That's not supposed to happen. Either gold is wrong or bonds are wrong. I'm betting on the latter — central banks will cut faster than markets expect. {links['hub']} #Investing #Trading #MarketAnalysis #Finance",
+        f"Contrarian thought: everyone's bullish on AI stocks. But the 2000 dot-com parallel is striking — transformative technology, insane valuations, and a 50%+ correction before the real winners emerged. Will history rhyme? {links['hub']} #Investing #Trading #StockMarket #Finance",
+        f"Capital rotation watch: Money flowing OUT of growth ETFs and INTO value/dividend funds for 6 straight weeks. Last time this happened was Q4 2022 — right before a massive value rally. Positioning matters more than predictions. {links['hub']} #Investing #Trading #MarketAnalysis #Finance",
+        f"Historical parallel: The current rate hike cycle mirrors 2006-2007. Fed paused, markets rallied, everyone declared soft landing. Then 18 months later... the lag effect of monetary policy is real and it's coming. {links['hub']} #Investing #Trading #StockMarket #Finance",
     ]
-    idx = datetime.datetime.utcnow().timetuple().tm_yday % len(toots)
-    return toots[idx]
+    return toots[day_idx % len(toots)]
 
 
 # ============================================================
@@ -488,7 +503,7 @@ def post_discord(text):
 
 
 def generate_discord_content():
-    """Generate a Discord post (can be longer, use embed format)."""
+    """Generate an engaging Discord post that sparks community discussion."""
     if not GROQ_API_KEY:
         return get_fallback_discord()
 
@@ -498,30 +513,46 @@ def generate_discord_content():
 
         now = datetime.datetime.utcnow()
         day = now.strftime("%A")
+        date_str = now.strftime("%b %d")
 
         tags = " ".join(HASHTAGS)
         links = get_tracked_links("discord")
+
+        # Rotate content types for Discord engagement
+        discord_types = ["discussion_starter", "trade_idea_setup", "market_quiz", "weekly_review", "educational"]
+        dtype = discord_types[now.timetuple().tm_yday % len(discord_types)]
+
+        type_instructions = {
+            "discussion_starter": "Start a community discussion. Present a market debate with two valid sides. Ask members to vote or share their view. Use formatting like **bold** for key points.",
+            "trade_idea_setup": "Present a potential trade setup with entry/thesis/risk. Use clear structure. End with 'What's your take?' to spark discussion. Add ⚠️ disclaimer.",
+            "market_quiz": "Create a market trivia quiz. Ask an interesting question about market history, economics, or a current event. Give 4 options (A/B/C/D). Reveal answer at the end in spoiler tags.",
+            "weekly_review": "Summarize the week's biggest market moves. What worked, what didn't, and what surprised everyone. Be honest about misses.",
+            "educational": "Teach ONE specific investing concept in simple terms. Use an analogy. Examples: contango, beta, carry trade, yield curve. Make it accessible to beginners but accurate.",
+        }
 
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=[{
                 "role": "user",
                 "content": (
-                    "You are a professional market analyst at BroadFSC. "
-                    "Write a daily market outlook post for a Discord community.\n"
-                    "Today is " + day + ".\n\n"
-                    "Requirements:\n"
+                    "You are a community market analyst running an active Discord server for traders and investors. "
+                    "You're approachable, knowledgeable, and love sparking debates.\n\n"
+                    "Write ONE post for " + day + ", " + date_str + ".\n\n"
+                    "Post type: " + type_instructions[dtype] + "\n\n"
+                    "Rules:\n"
                     "- Maximum 1500 characters\n"
-                    "- Include 2-3 specific market observations\n"
-                    "- Professional but conversational tone\n"
+                    "- Use Discord markdown: **bold** for emphasis, bullet points, line breaks\n"
+                    "- End with a question or call-to-action that gets people talking\n"
+                    "- Include emoji sparingly (1-3 max)\n"
                     "- End with: " + tags + "\n"
-                    "- Add: 'Subscribe for daily briefings: " + links["telegram"] + "'\n"
-                    "- Add: 'Free education: " + links["hub"] + "'\n"
+                    "- Subscribe: " + links["telegram"] + "\n"
+                    "- Learn free: " + links["hub"] + "\n"
+                    "- Add ⚠️ 'Not financial advice' if discussing trade ideas\n"
                     "- Do NOT promise returns"
                 )
             }],
             max_tokens=400,
-            temperature=0.7
+            temperature=0.85
         )
         return response.choices[0].message.content.strip()
     except Exception as e:
@@ -530,21 +561,44 @@ def generate_discord_content():
 
 
 def get_fallback_discord():
-    """Fallback Discord content."""
+    """Fallback Discord content with engagement hooks."""
     links = get_tracked_links("discord")
-    return (
-        "**Daily Market Outlook** :chart_with_upwards_trend:\n\n"
-        "Key themes for today:\n"
-        "• Central bank policy divergence driving cross-currency flows\n"
-        "• Earnings season providing real-time economic signals\n"
-        "• Geopolitical risk premiums influencing commodity markets\n\n"
-        "Stay informed with daily pre-market briefings covering "
-        "Asia, Europe, Middle East & Americas.\n\n"
-        f"Subscribe free: {links['telegram']}\n"
-        f"Learn investing free: {links['hub']}\n"
-        f"Website: {links['website']}\n\n"
-        "#Investing #Trading #MarketAnalysis #StockMarket #Finance"
-    )
+    day_idx = datetime.datetime.utcnow().timetuple().tm_yday
+    posts = [
+        (
+            "**🔥 Market Debate Time**\n\n"
+            "Here's a question splitting Wall Street right now:\n\n"
+            "**Is the soft landing already priced in, or are we setting up for a hard landing surprise?**\n\n"
+            "Case FOR soft landing: Inflation cooling, employment stable, GDP positive\n"
+            "Case AGAINST: Yield curve still inverted, credit tightening, lag effect not kicked in yet\n\n"
+            "What's your take? Drop your vote below 👇\n\n"
+            f"Subscribe for daily briefings: {links['telegram']}\n"
+            f"Learn free: {links['hub']}\n\n"
+            "#Investing #Trading #MarketAnalysis #StockMarket #Finance"
+        ),
+        (
+            "**📊 Quiz: Market History**\n\n"
+            "The S&P 500's average annual return over the last 50 years is approximately:\n\n"
+            "A) 7%\nB) 10%\nC) 13%\nD) 15%\n\n"
+            "Think you know? Answer: ||**B) ~10%** (including dividends, before inflation)||\n\n"
+            "The key insight? Most investors earn far less because they try to time the market. Time IN the market beats TIMING the market.\n\n"
+            f"Subscribe for daily briefings: {links['telegram']}\n"
+            f"Learn free: {links['hub']}\n\n"
+            "#Investing #Trading #MarketAnalysis #StockMarket #Finance"
+        ),
+        (
+            "**📚 Today's Concept: The Carry Trade**\n\n"
+            "Imagine borrowing money at 0.5% interest and investing it at 5%.\n"
+            "That 4.5% difference? That's the 'carry.'\n\n"
+            "Hedge funds do this at scale — borrow in JPY (low rates), buy USD assets (high rates).\n\n"
+            "**Why it matters now:** When BOJ hikes rates, the carry trade unwinds. JPY surges, risky assets dump. That's exactly what happened in Aug 2024.\n\n"
+            "The carry trade is one of the biggest hidden forces in markets. Now you know. 🧠\n\n"
+            f"Subscribe for daily briefings: {links['telegram']}\n"
+            f"Learn free: {links['hub']}\n\n"
+            "#Investing #Trading #MarketAnalysis #StockMarket #Finance"
+        ),
+    ]
+    return posts[day_idx % len(posts)]
 
 
 # ============================================================
@@ -669,7 +723,7 @@ def post_bluesky(text):
 
 
 def generate_bluesky_content():
-    """Generate a Bluesky post (max 300 chars)."""
+    """Generate a punchy Bluesky post with strong opinions."""
     if not GROQ_API_KEY:
         return get_fallback_bluesky()
 
@@ -679,29 +733,45 @@ def generate_bluesky_content():
 
         now = datetime.datetime.utcnow()
         day = now.strftime("%A")
+        date_str = now.strftime("%b %d")
 
-        tags = " ".join(HASHTAGS[:3])
         link = get_platform_link("bluesky")
         link_note = f"\n- Add this link at the end: {link}" if link and not link.startswith("Follow") else "\n- Do NOT include any links"
+
+        # Rotate styles
+        styles = ["one_liner", "hot_take", "chart_read", "timeline_call", "myth_bust"]
+        style = styles[now.timetuple().tm_yday % len(styles)]
+
+        style_instructions = {
+            "one_liner": "One devastating observation in a single sentence. Short, sharp, memorable. Then add context in 1-2 more sentences.",
+            "hot_take": "A bold opinion that most people would disagree with. Back it up with ONE specific data point or logical argument.",
+            "chart_read": "Describe what a chart would show. 'If you look at the [X] chart right now, you'd see...' Make the reader visualize it.",
+            "timeline_call": "Make a specific prediction with a timeframe. 'Within the next [X] months, [Y] will happen because [Z].' Be specific.",
+            "myth_bust": "State a common investing myth, then demolish it. 'Everyone thinks [X]. Here's why they're wrong.'",
+        }
 
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=[{
                 "role": "user",
                 "content": (
-                    "You are a professional market analyst at BroadFSC. "
-                    "Write ONE short market insight post for Bluesky.\n"
-                    "Today is " + day + ".\n\n"
-                    "Requirements:\n"
+                    "You are a market commentator with strong convictions and zero tolerance for BS. "
+                    "You write like someone who trades their own book and actually reads the data.\n\n"
+                    "Write ONE post for " + day + ", " + date_str + ".\n\n"
+                    "Style: " + style_instructions[style] + "\n\n"
+                    "Rules:\n"
                     "- Maximum 280 characters\n"
-                    "- Include 1 specific market observation\n"
-                    "- End with: " + tags + "\n"
+                    "- NEVER start with 'Market update' or 'Key themes'\n"
+                    "- First sentence must hit hard — no warm-up, no preamble\n"
+                    "- Use 1 specific market reference (yield, index, currency, commodity)\n"
+                    "- Sound like a trader, not a press release\n"
+                    "- End with: #Investing #Trading\n"
                     + link_note + "\n"
                     "- Do NOT promise returns"
                 )
             }],
             max_tokens=100,
-            temperature=0.8
+            temperature=0.9
         )
         return response.choices[0].message.content.strip()
     except Exception as e:
@@ -710,14 +780,17 @@ def generate_bluesky_content():
 
 
 def get_fallback_bluesky():
-    """Fallback Bluesky content."""
+    """Fallback Bluesky content with punchy hooks."""
+    day_idx = datetime.datetime.utcnow().timetuple().tm_yday
+    links = get_tracked_links("bluesky")
     posts = [
-        "Global markets update: Central bank policy divergence continues to drive cross-currency flows. Stay informed with daily briefings. #Investing #Trading #MarketAnalysis",
-        "Key themes this week: Fed signals, earnings season, and geopolitical risk premiums shaping commodity markets. #StockMarket #Investing #Finance",
-        "From Tokyo to New York, markets move fast. BroadFSC delivers AI-powered daily market briefings. #Investing #Trading #MarketAnalysis",
+        f"The smart money isn't buying the dip anymore. They're buying puts. When hedging outpaces speculation, a regime change is coming. {links['hub']} #Investing #Trading",
+        f"Everyone thinks inflation is dead. Core services CPI says otherwise. The last mile of disinflation is always the hardest — and markets aren't pricing it. {links['hub']} #Investing #Trading",
+        f"If you drew a line from the 2020 lows through the 2022 lows on the S&P, we're sitting right on it. Break = new bull. Fail = 2022 all over again. {links['hub']} #Investing #Trading",
+        f"Within 12 months, a major central bank will cut to negative rates. Not the Fed. Think Europe. The bond market is already whispering it. {links['hub']} #Investing #Trading",
+        f"Myth: 'Stocks always go up long-term.' Reality: The Nikkei took 34 years to reclaim its 1989 high. Time horizon matters. Market selection matters more. {links['hub']} #Investing #Trading",
     ]
-    idx = datetime.datetime.utcnow().timetuple().tm_yday % len(posts)
-    return posts[idx]
+    return posts[day_idx % len(posts)]
 
 
 # ============================================================
@@ -847,7 +920,7 @@ def get_fallback_line(lang="en"):
 # Content Generation
 # ============================================================
 def generate_tweet_content():
-    """Generate a tweet-sized market insight using AI."""
+    """Generate a high-engagement tweet with scroll-stopping hooks."""
     if not GROQ_API_KEY:
         return get_fallback_tweet()
 
@@ -857,29 +930,45 @@ def generate_tweet_content():
 
         now = datetime.datetime.utcnow()
         day = now.strftime("%A")
+        date_str = now.strftime("%b %d")
 
-        tags = " ".join(HASHTAGS[:3])
         link = get_platform_link("twitter")
         link_instruction = f"\n- Include this link: {link}" if link and not link.startswith("Learn") else "\n- Do NOT include any links (link in bio instead)"
+
+        # Rotate content types for variety
+        content_types = ["hot_take", "contrarian", "data_point", "question", "prediction"]
+        content_type = content_types[now.timetuple().tm_yday % len(content_types)]
+
+        type_instructions = {
+            "hot_take": "Start with a bold, slightly controversial opinion that makes people stop scrolling. Example: 'Nobody's talking about this:' or 'Unpopular opinion:'",
+            "contrarian": "Take the opposite view of what most investors believe right now. Challenge conventional wisdom with confidence.",
+            "data_point": "Lead with ONE surprising number or statistic. Make the reader go 'Wait, really?' Use a realistic-sounding figure.",
+            "question": "Ask a thought-provoking question traders/investors would argue about. End with 'What do you think?' or 'Agree?'",
+            "prediction": "Make a specific, time-bound market prediction with reasoning. Be confident but add 'not financial advice'.",
+        }
 
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=[{
                 "role": "user",
                 "content": (
-                    "You are a professional market analyst at BroadFSC. "
-                    "Write ONE short tweet about today's market outlook.\n"
-                    "Today is " + day + ".\n\n"
-                    "Requirements:\n"
-                    "- Maximum 250 characters (Twitter limit is 280)\n"
-                    "- Be specific with a market observation or data point\n"
-                    "- End with: " + tags + "\n"
+                    "You are a sharp, opinionated market analyst. You have STRONG views and express them. "
+                    "You sound like a trader with skin in the game — NOT a boring corporate bot.\n\n"
+                    "Write ONE tweet about today's markets (" + day + ", " + date_str + ").\n\n"
+                    "Content style: " + type_instructions[content_type] + "\n\n"
+                    "Rules:\n"
+                    "- Maximum 250 characters\n"
+                    "- First line MUST be a scroll-stopper (NEVER start with 'Market update' or 'Key themes')\n"
+                    "- Include 1 specific, real-sounding market reference (index level, yield, currency move)\n"
+                    "- Use casual trader language, NOT corporate jargon\n"
+                    "- End with: #Investing #Trading\n"
                     + link_instruction + "\n"
-                    "- Do NOT promise returns"
+                    "- Do NOT promise returns or give financial advice\n"
+                    "- Do NOT start with 'Market update', 'Key themes', or 'Markets are'"
                 )
             }],
             max_tokens=100,
-            temperature=0.8
+            temperature=0.9
         )
         return response.choices[0].message.content.strip()
     except Exception as e:
@@ -927,15 +1016,17 @@ def generate_linkedin_content():
 
 
 def get_fallback_tweet():
-    """Fallback tweet content."""
+    """Fallback tweet content with engaging hooks."""
     links = get_tracked_links("twitter")
+    day_idx = datetime.datetime.utcnow().timetuple().tm_yday
     tweets = [
-        f"Markets are navigating a complex macro landscape. Stay informed with daily pre-market briefings from BroadFSC covering Asia, Europe, Middle East & Americas. {links['hub']} #Investing #Trading #MarketAnalysis",
-        f"Key week ahead: Central bank decisions, earnings season updates, and geopolitical developments shaping global markets. Get daily insights: {links['telegram']} #StockMarket #Finance",
-        f"From Tokyo to New York, global markets move fast. BroadFSC delivers AI-powered pre-market briefings. Subscribe free: {links['telegram']} #Investing #Trading",
+        f"Nobody's talking about this: the 10Y-2Y spread just inverted again. Last 3 times? Recession within 14 months. Are you positioned? {links['hub']} #Investing #Trading",
+        f"Unpopular opinion: most 'diversified' portfolios aren't diversified at all. If everything dropped together in 2022, you're just holding different names for the same bet. {links['hub']} #Investing #Trading",
+        f"S&P 500 is up but fewer than 30% of stocks above 200-day MA. This isn't a bull market. It's a narrow float. Thoughts? {links['hub']} #Investing #Trading",
+        f"$5.2T in money market funds earning 5%+. When rate cuts hit, that flood into equities will be historic. The question is WHEN, not IF. {links['hub']} #Investing #Trading",
+        f"Gold at ATH, Bitcoin surging, dollar weakening — simultaneously. Usually they don't all move together. Something big is shifting. {links['hub']} #Investing #Trading",
     ]
-    idx = datetime.datetime.utcnow().timetuple().tm_yday % len(tweets)
-    return tweets[idx]
+    return tweets[day_idx % len(tweets)]
 
 
 def get_fallback_linkedin():
