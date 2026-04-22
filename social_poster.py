@@ -73,6 +73,9 @@ TIKTOK_MODE = os.environ.get("TIKTOK_MODE", "slideshow").lower()
 BLUESKY_HANDLE = os.environ.get("BLUESKY_HANDLE", "")
 BLUESKY_APP_PASSWORD = os.environ.get("BLUESKY_APP_PASSWORD", "")
 
+# LINE Official Account
+LINE_CHANNEL_ACCESS_TOKEN = os.environ.get("LINE_CHANNEL_ACCESS_TOKEN", "")
+
 # AI
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 
@@ -142,6 +145,11 @@ LINK_STRATEGY = {
         "style": "professional",   # LinkedIn: Professional tone, website preferred
         "link_every_n": 1,
         "prefer": "website",
+    },
+    "line": {
+        "style": "flex",           # LINE: Flex Message with CTA button, link in button
+        "link_every_n": 1,
+        "prefer": "website",       # Website link goes into Flex Message CTA button
     },
 }
 
@@ -235,6 +243,7 @@ def generate_platform_content(platform: str) -> str:
         'bluesky': generate_bluesky_content,
         'tiktok': generate_tiktok_content,
         'linkedin': generate_linkedin_content,
+        'line': generate_line_content,
     }
 
     gen_func = generators.get(platform)
@@ -712,6 +721,129 @@ def get_fallback_bluesky():
 
 
 # ============================================================
+# LINE Official Account Poster
+# ============================================================
+def post_line(text, lang="en"):
+    """Post to LINE Official Account via Messaging API.
+    
+    Uses Flex Message with CTA button for best engagement.
+    Falls back to plain text if Flex fails.
+    """
+    if not LINE_CHANNEL_ACCESS_TOKEN:
+        print("  LINE: Missing LINE_CHANNEL_ACCESS_TOKEN")
+        return False
+
+    try:
+        from line_poster import build_market_briefing_flex, broadcast_flex, broadcast_text
+    except ImportError:
+        print("  LINE: line_poster.py not found, using direct API")
+        from line_poster import broadcast_text as _bt
+        return _bt(text)
+
+    # Try Flex Message first (richer UI)
+    titles = {
+        "en": "\U0001f4c8 Daily Market Briefing",
+        "jp": "\U0001f4c8 毎日マーケットレポート",
+        "zh-tw": "\U0001f4c8 每日市場速報",
+    }
+    title = titles.get(lang, titles["en"])
+    flex = build_market_briefing_flex(title, text, lang)
+    success = broadcast_flex(title, flex)
+
+    # Fallback to plain text if Flex fails
+    if not success:
+        print("  LINE: Flex failed, trying plain text...")
+        success = broadcast_text(text)
+
+    return success
+
+
+def generate_line_content(lang="en"):
+    """Generate a LINE market briefing post."""
+    if not GROQ_API_KEY:
+        return get_fallback_line(lang)
+
+    try:
+        from groq import Groq
+        client = Groq(api_key=GROQ_API_KEY)
+
+        now = datetime.datetime.utcnow()
+        day = now.strftime("%A")
+
+        lang_instruction = {
+            "en": "Write in English.",
+            "jp": "Write in Japanese (日本語). Use professional financial terminology (日経平均, ドル円, 新NISA).",
+            "zh-tw": "Write in Traditional Chinese (繁體中文). Use Taiwan market terminology (台股, 美股, 台積電, 法說會).",
+        }.get(lang, "Write in English.")
+
+        links = get_tracked_links("line")
+
+        response = client.chat.completions.create(
+            model="llama-3.1-8b-instant",
+            messages=[{
+                "role": "user",
+                "content": (
+                    "You are a professional market analyst at BroadFSC. "
+                    "Write a concise daily market briefing for LINE Official Account.\n"
+                    "Today is " + day + ".\n\n"
+                    "Requirements:\n"
+                    "- " + lang_instruction + "\n"
+                    "- Maximum 400 characters\n"
+                    "- Include 2-3 specific market observations\n"
+                    "- Use bullet points for readability\n"
+                    "- Professional but engaging tone\n"
+                    "- Do NOT include any links (they go in the CTA button)\n"
+                    "- Do NOT promise guaranteed returns\n"
+                    "- Do NOT add hashtags"
+                )
+            }],
+            max_tokens=200,
+            temperature=0.7
+        )
+        return response.choices[0].message.content.strip()
+    except Exception as e:
+        print("  AI LINE generation failed: " + str(e))
+        return get_fallback_line(lang)
+
+
+def get_fallback_line(lang="en"):
+    """Fallback LINE content."""
+    now = datetime.datetime.utcnow()
+    date_str = now.strftime("%Y-%m-%d")
+
+    fallbacks = {
+        "en": (
+            "Daily Market Briefing | " + date_str + "\n\n"
+            "Key factors to watch today:\n"
+            "\u2022 Central bank policy signals (Fed, ECB, BOJ)\n"
+            "\u2022 Global equity futures direction\n"
+            "\u2022 Key economic data releases\n"
+            "\u2022 Geopolitical risk premiums in commodities\n\n"
+            "Stay ahead with daily briefings from BroadFSC."
+        ),
+        "jp": (
+            "毎日マーケットレポート | " + date_str + "\n\n"
+            "本日の注目ポイント:\n"
+            "\u2022 日銀・FRB・ECBの政策シグナル\n"
+            "\u2022 グローバル株価先物の方向感\n"
+            "\u2022 主要経済指標の発表予定\n"
+            "\u2022 コモディティの地政学リスク\n\n"
+            "BroadFSCの毎日レポートで情報優位を。"
+        ),
+        "zh-tw": (
+            "每日市場速報 | " + date_str + "\n\n"
+            "今日關注重點:\n"
+            "\u2022 央行政策信號（Fed、ECB、日銀）\n"
+            "\u2022 全球股指期貨方向\n"
+            "\u2022 重要經濟數據公布\n"
+            "\u2022 大宗商品地緣風險溢價\n\n"
+            "BroadFSC每日盤前速報，掌握市場先機。"
+        ),
+    }
+    return fallbacks.get(lang, fallbacks["en"])
+
+
+# ============================================================
 # Content Generation
 # ============================================================
 def generate_tweet_content():
@@ -1055,6 +1187,21 @@ def main():
                 print("  TikTok poster failed: " + str(e))
     else:
         print("TikTok: Not configured")
+    print()
+    
+    # --- LINE Official Account ---
+    print("--- LINE Official Account ---")
+    if LINE_CHANNEL_ACCESS_TOKEN:
+        print("LINE: Configured")
+        # Post in Japanese and Traditional Chinese (Japan/Taiwan markets)
+        for lang in ["jp", "zh-tw"]:
+            lang_name = {"jp": "Japanese", "zh-tw": "Traditional Chinese"}.get(lang, lang)
+            print("  [" + lang_name + "]")
+            line_content = generate_line_content(lang)
+            print("  Content: " + line_content[:100] + "...")
+            post_line(line_content, lang=lang)
+    else:
+        print("LINE: Not configured")
     print()
     
     print("=" * 50)

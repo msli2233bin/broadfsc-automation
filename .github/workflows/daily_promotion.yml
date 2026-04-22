@@ -39,4 +39,7 @@ jobs:
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
           TELEGRAM_CHANNEL_ES: ${{ secrets.TELEGRAM_CHANNEL_ES }}
           TELEGRAM_CHANNEL_AR: ${{ secrets.TELEGRAM_CHANNEL_AR }}
+          TELEGRAM_CHANNEL_JP: ${{ secrets.TELEGRAM_CHANNEL_JP }}
+          TELEGRAM_CHANNEL_ZH_TW: ${{ secrets.TELEGRAM_CHANNEL_ZH_TW }}
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
         run: python daily_promotion.py

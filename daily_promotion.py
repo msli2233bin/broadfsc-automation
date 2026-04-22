@@ -36,6 +36,7 @@ CHANNEL_AR = os.environ.get("TELEGRAM_CHANNEL_AR", "")
 CHANNEL_JP = os.environ.get("TELEGRAM_CHANNEL_JP", "")
 CHANNEL_ZH_TW = os.environ.get("TELEGRAM_CHANNEL_ZH_TW", "")
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
+LINE_CHANNEL_ACCESS_TOKEN = os.environ.get("LINE_CHANNEL_ACCESS_TOKEN", "")
 
 ALL_CHANNELS = [CHANNEL_ID]
 if CHANNEL_ES:
@@ -568,6 +569,34 @@ def send_telegram(text, channel_id):
         return False
 
 
+def send_line(text, lang="en"):
+    """Send market briefing to LINE Official Account via Flex Message."""
+    if not LINE_CHANNEL_ACCESS_TOKEN:
+        print("  LINE: Not configured (missing LINE_CHANNEL_ACCESS_TOKEN)")
+        return False
+
+    try:
+        from line_poster import build_market_briefing_flex, broadcast_flex, broadcast_text
+    except ImportError:
+        print("  LINE: line_poster.py not found, skipping")
+        return False
+
+    titles = {
+        "en": "\U0001f4c8 Pre-Market Briefing",
+        "es": "\U0001f4c8 Informe Pre-Mercado",
+        "ar": "\U0001f4c8 Pre-Market Briefing",
+        "jp": "\U0001f4c8 プレマーケットレポート",
+        "zh-tw": "\U0001f4c8 盤前速報",
+    }
+    title = titles.get(lang, titles["en"])
+    flex = build_market_briefing_flex(title, text, lang)
+    success = broadcast_flex(title, flex)
+    if not success:
+        print("  LINE: Flex failed, trying plain text...")
+        success = broadcast_text(text)
+    return success
+
+
 # ============================================================
 # Main
 # ============================================================
@@ -585,6 +614,7 @@ def main():
     for ch, lang in CHANNEL_LANG_MAP.items():
         print("  " + ch + " -> " + LANG_CONFIG[lang]["name"])
     print("GROQ_API_KEY: " + ("SET" if GROQ_API_KEY else "NOT SET (using fallback)"))
+    print("LINE: " + ("Configured" if LINE_CHANNEL_ACCESS_TOKEN else "Not configured"))
     print()
 
     # Check which sessions should fire
@@ -620,6 +650,18 @@ def main():
 
             success = send_telegram(content, channel_id)
             print("    Result: " + ("SUCCESS" if success else "FAILED"))
+
+        # Also send to LINE Official Account (JP + ZH-TW)
+        if LINE_CHANNEL_ACCESS_TOKEN:
+            print("  [LINE Official Account]")
+            for line_lang in ["jp", "zh-tw"]:
+                lang_name = LANG_CONFIG.get(line_lang, {}).get("name", line_lang)
+                # Generate LINE-specific content
+                line_content = generate_ai_content(region, focus, line_lang)
+                if not line_content:
+                    line_content = get_fallback_content(region, line_lang)
+                line_success = send_line(line_content, lang=line_lang)
+                print("    LINE [" + lang_name + "]: " + ("SUCCESS" if line_success else "FAILED"))
 
         print()
 

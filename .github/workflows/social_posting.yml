@@ -26,7 +26,7 @@ jobs:
           pip install --upgrade pip
           pip install requests groq Pillow imageio imageio-ffmpeg edge-tts numpy
 
-      - name: Post to X, LinkedIn, Mastodon, Bluesky (and notify Telegram)
+      - name: Post to X, LinkedIn, Mastodon, Bluesky, LINE (and notify Telegram)
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
@@ -40,6 +40,7 @@ jobs:
           DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
           BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
           BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           POSTPROXY_API_KEY: ${{ secrets.POSTPROXY_API_KEY }}
           TIKTOK_MODE: image
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
