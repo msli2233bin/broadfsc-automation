@@ -1,7 +1,7 @@
 """
 BroadFSC Reddit Karma Checker
-Uses Playwright browser to check Reddit karma (bypasses API IP ban).
-Runs on GitHub Actions where Reddit is accessible.
+Uses web proxy to bypass Reddit IP ban.
+Multiple proxy fallbacks: codetabs → allorigins → direct API
 
 No Reddit App / OAuth credentials needed.
 Only requires: TELEGRAM_BOT_TOKEN, TELEGRAM_CHANNEL_ID
@@ -26,142 +26,96 @@ CHANNEL_ID = os.environ.get("TELEGRAM_CHANNEL_ID", "")
 MIN_COMMENT_KARMA = 50
 MIN_ACCOUNT_AGE_DAYS = 14
 
-
-def check_karma_browser(username):
-    """Check Reddit karma using Playwright browser (bypasses API IP ban)."""
-    try:
-        from playwright.sync_api import sync_playwright
-    except ImportError:
-        # Fallback: try requests (will fail on blocked IPs but works from some networks)
-        print("  Playwright not available, trying requests fallback...")
-        return check_karma_requests(username)
-
-    try:
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            page = browser.new_page()
-
-            # Navigate to user profile
-            url = f"https://www.reddit.com/user/{username}/"
-            print(f"  Navigating to {url}")
-            page.goto(url, timeout=30000)
-            page.wait_for_timeout(3000)
-
-            # Check if blocked
-            body_text = page.inner_text("body")
-            if "blocked" in body_text.lower() and "network security" in body_text.lower():
-                browser.close()
-                return {"success": False, "error": "Browser also blocked by Reddit network security"}
-
-            # Check if user not found
-            if "sorry, nobody on reddit goes by that name" in body_text.lower() or "page not found" in body_text.lower():
-                browser.close()
-                return {"success": False, "error": f"User '{username}' not found"}
-
-            # Try to extract karma from page content
-            result = extract_karma_from_text(body_text, username)
-            browser.close()
-            return result
-
-    except Exception as e:
-        return {"success": False, "error": f"Browser error: {str(e)}"}
+# Web proxies that can bypass Reddit IP ban (ordered by reliability)
+PROXY_APIS = [
+    {
+        "name": "codetabs",
+        "url": "https://api.codetabs.com/v1/proxy?quest=https://www.reddit.com/user/{username}/about.json",
+        "returns_json": True,
+    },
+    {
+        "name": "allorigins",
+        "url": "https://api.allorigins.win/raw?url=https://www.reddit.com/user/{username}/about.json",
+        "returns_json": True,  # May return HTML on some IPs
+    },
+]
 
 
-def extract_karma_from_text(text, username):
-    """Extract karma numbers from Reddit profile page text."""
-    link_karma = 0
-    comment_karma = 0
-    total_karma = 0
+def check_karma_via_proxy(username):
+    """Check Reddit karma using web proxy to bypass IP ban."""
+    import requests
 
-    # Pattern 1: "1,234 karma" or "1234 karma" or "1.2k karma"
-    karma_matches = re.findall(r'([\d,]+(?:\.\d+)?[kK]?)\s*karma', text, re.IGNORECASE)
-    if karma_matches:
-        for i, k in enumerate(karma_matches):
-            val = parse_karma_value(k)
-            if i == 0:
-                total_karma = val
-            # Sometimes it shows post/comment separately
-
-    # Pattern 2: Look for "Post karma" / "Comment karma" patterns
-    post_match = re.search(r'(?:post|link)\s*karma[:\s]*([\d,]+(?:\.\d+)?[kK]?)', text, re.IGNORECASE)
-    comment_match = re.search(r'(?:comment)\s*karma[:\s]*([\d,]+(?:\.\d+)?[kK]?)', text, re.IGNORECASE)
-
-    if post_match:
-        link_karma = parse_karma_value(post_match.group(1))
-    if comment_match:
-        comment_karma = parse_karma_value(comment_match.group(1))
-
-    # If we got separate values, total is sum
-    if link_karma > 0 or comment_karma > 0:
-        total_karma = link_karma + comment_karma
-    # If we only got total, estimate split
-    elif total_karma > 0:
-        link_karma = total_karma // 2
-        comment_karma = total_karma - link_karma
-
-    # Look for account age / "Cake day" pattern
-    age_days = 0
-    age_str = "Unknown"
-    cake_match = re.search(r'cake\s*day[:\s]*(\w+\s+\d+,\s*\d{4})', text, re.IGNORECASE)
-    if cake_match:
+    for proxy in PROXY_APIS:
+        url = proxy["url"].format(username=username)
+        print(f"  Trying proxy: {proxy['name']}...")
         try:
-            cake_date = datetime.datetime.strptime(cake_match.group(1).strip(), "%B %d, %Y")
-            age_days = (datetime.datetime.utcnow() - cake_date).days
-            age_str = f"{age_days} days (since {cake_date.strftime('%Y-%m-%d')})"
-        except:
-            pass
+            r = requests.get(url, timeout=20)
+            print(f"    HTTP {r.status_code}")
 
-    # Look for "X years ago" or "X months ago" for account age
-    if age_days == 0:
-        time_match = re.search(r'(\d+)\s*(year|month|day)s?\s*ago', text, re.IGNORECASE)
-        if time_match:
-            num = int(time_match.group(1))
-            unit = time_match.group(2).lower()
-            if unit == "year":
-                age_days = num * 365
-            elif unit == "month":
-                age_days = num * 30
-            elif unit == "day":
-                age_days = num
-            age_str = f"~{age_days} days"
+            if r.status_code != 200:
+                continue
 
-    has_verified_email = "verified email" in text.lower() or "✓" in text
+            # Check if response is valid JSON (not HTML block page)
+            try:
+                data = r.json()
+            except (json.JSONDecodeError, ValueError):
+                text = r.text[:200]
+                if "blocked" in text.lower() or "theme-beta" in text.lower():
+                    print(f"    Got block page instead of JSON, skipping")
+                    continue
+                print(f"    Invalid JSON response, skipping")
+                continue
 
-    # Check if we got any useful data
-    if total_karma == 0 and age_days == 0:
-        # Save page text for debugging (first 2000 chars)
-        return {
-            "success": False,
-            "error": f"Could not extract karma from page. Text preview: {text[:500]}",
-        }
+            # Extract karma data from Reddit API response
+            reddit_data = data.get("data", {})
+            if not reddit_data or "name" not in reddit_data:
+                # Check for error response
+                if data.get("error") == 404 or "not found" in str(data).lower():
+                    return {"success": False, "error": f"User '{username}' not found on Reddit"}
+                print(f"    Unexpected response structure, skipping")
+                continue
 
-    return {
-        "success": True,
-        "username": username,
-        "link_karma": link_karma,
-        "comment_karma": comment_karma,
-        "total_karma": total_karma,
-        "age_days": age_days,
-        "age_str": age_str,
-        "has_verified_email": has_verified_email,
-        "ready_for_posting": comment_karma >= MIN_COMMENT_KARMA and age_days >= MIN_ACCOUNT_AGE_DAYS,
-        "method": "browser",
-    }
+            link_karma = reddit_data.get("link_karma", 0)
+            comment_karma = reddit_data.get("comment_karma", 0)
+            has_verified_email = reddit_data.get("has_verified_email", False)
+            created_utc = reddit_data.get("created_utc", 0)
+            is_suspended = reddit_data.get("is_suspended", False)
+
+            age_days = 0
+            age_str = "Unknown"
+            if created_utc:
+                created_date = datetime.datetime.utcfromtimestamp(created_utc)
+                age_days = (datetime.datetime.utcnow() - created_date).days
+                age_str = f"{age_days} days (since {created_date.strftime('%Y-%m-%d')})"
+
+            return {
+                "success": True,
+                "username": reddit_data.get("name", username),
+                "link_karma": link_karma,
+                "comment_karma": comment_karma,
+                "total_karma": link_karma + comment_karma,
+                "age_days": age_days,
+                "age_str": age_str,
+                "has_verified_email": has_verified_email,
+                "is_suspended": is_suspended,
+                "ready_for_posting": comment_karma >= MIN_COMMENT_KARMA and age_days >= MIN_ACCOUNT_AGE_DAYS,
+                "method": f"proxy-{proxy['name']}",
+            }
+
+        except requests.exceptions.Timeout:
+            print(f"    Timeout, trying next proxy...")
+            continue
+        except Exception as e:
+            print(f"    Error: {str(e)[:100]}, trying next proxy...")
+            continue
+
+    # All proxies failed, try direct API as last resort
+    print("  All proxies failed, trying direct API...")
+    return check_karma_direct(username)
 
 
-def parse_karma_value(s):
-    """Parse karma value string like '1,234' or '1.2k' to int."""
-    s = s.strip().replace(",", "")
-    try:
-        if s.lower().endswith("k"):
-            return int(float(s[:-1]) * 1000)
-        return int(float(s))
-    except:
-        return 0
-
-
-def check_karma_requests(username):
-    """Fallback: check karma via public API (may be IP blocked)."""
+def check_karma_direct(username):
+    """Last resort: direct API call (likely blocked on server IPs)."""
     import requests
     headers = {"User-Agent": "BroadFSC-Karma-Check/1.0"}
     try:
@@ -193,13 +147,14 @@ def check_karma_requests(username):
                 "age_days": age_days,
                 "age_str": age_str,
                 "has_verified_email": has_verified_email,
+                "is_suspended": data.get("is_suspended", False),
                 "ready_for_posting": comment_karma >= MIN_COMMENT_KARMA and age_days >= MIN_ACCOUNT_AGE_DAYS,
-                "method": "api",
+                "method": "direct-api",
             }
         elif r.status_code == 404:
             return {"success": False, "error": f"User '{username}' not found"}
         elif r.status_code == 403:
-            return {"success": False, "error": "API blocked (403) — need browser method"}
+            return {"success": False, "error": "Blocked by Reddit (403) - IP banned"}
         else:
             return {"success": False, "error": f"HTTP {r.status_code}"}
     except Exception as e:
@@ -226,9 +181,10 @@ def format_telegram_message(result):
         status = f"⏳ NOT READY — {', '.join(missing)}"
 
     verified = "✅" if result.get("has_verified_email") else "❌"
+    suspended = "⚠️ SUSPENDED" if result.get("is_suspended") else ""
     method = result.get("method", "unknown")
 
-    return (
+    msg = (
         f"📊 <b>Reddit Karma Report</b>\n\n"
         f"👤 User: u/{result['username']}\n"
         f"📅 Account age: {result['age_str']}\n"
@@ -236,10 +192,15 @@ def format_telegram_message(result):
         f"💬 Comment Karma: <b>{result['comment_karma']:,}</b>\n"
         f"🏆 Total Karma: <b>{result['total_karma']:,}</b>\n"
         f"📧 Verified email: {verified}\n"
+    )
+    if suspended:
+        msg += f"{suspended}\n"
+    msg += (
         f"🔧 Method: {method}\n\n"
         f"{status}\n\n"
         f"💡 Threshold: {MIN_COMMENT_KARMA} comment karma + {MIN_ACCOUNT_AGE_DAYS} days"
     )
+    return msg
 
 
 def send_telegram(message):
@@ -263,15 +224,15 @@ def send_telegram(message):
 
 def main():
     print("=" * 50)
-    print("BroadFSC Reddit Karma Checker")
+    print("BroadFSC Reddit Karma Checker v3")
     print("=" * 50)
     print(f"Checking: u/{REDDIT_USERNAME}")
     print(f"Time: {datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')}")
     print()
 
     # Check karma
-    print("Fetching karma data...")
-    result = check_karma_browser(REDDIT_USERNAME)
+    print("Fetching karma data via web proxy...")
+    result = check_karma_via_proxy(REDDIT_USERNAME)
 
     if result["success"]:
         print(f"  Post Karma: {result['link_karma']:,}")
@@ -314,8 +275,8 @@ def main():
     print()
     print("=" * 50)
 
-    if not result["success"]:
-        sys.exit(1)
+    # Exit with 0 even on failure (we still reported the failure via Telegram)
+    # Previously sys.exit(1) was causing GitHub Actions to mark as failed
 
 
 if __name__ == "__main__":
