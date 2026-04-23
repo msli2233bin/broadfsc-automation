@@ -1,0 +1,44 @@
+name: Reddit Karma Builder
+
+on:
+  schedule:
+    # Every day at 00:00 UTC (08:00 Beijing time)
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-karma:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install requests groq
+
+      - name: Generate karma building targets
+        env:
+          REDDIT_USERNAME: Only-Character4025
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+        run: python reddit_karma_builder.py
+
+      - name: Commit karma targets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add knowledge/reddit_karma_targets.json 2>/dev/null || true
+          git diff --cached --quiet || git commit -m "chore: update reddit karma building targets"
+          git push

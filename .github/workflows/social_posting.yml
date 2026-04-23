@@ -2,7 +2,9 @@ name: BroadFSC Cross-Platform Social Posting
 
 on:
   schedule:
-    # Post once daily at 14:00 UTC (2pm UTC = 10pm Beijing time = 10am EST)
+    # Morning post: 06:00 UTC (14:00 Beijing = morning US)
+    - cron: '0 6 * * *'
+    # Evening post: 14:00 UTC (22:00 Beijing = morning APAC next day)
     - cron: '0 14 * * *'
   workflow_dispatch:
 
