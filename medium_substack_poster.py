@@ -31,10 +31,10 @@ if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
 # ============================================================
 # Config
 # ============================================================
-MEDIUM_EMAIL = os.environ.get("MEDIUM_EMAIL", "")
-MEDIUM_PASSWORD = os.environ.get("MEDIUM_PASSWORD", "")
-SUBSTACK_EMAIL = os.environ.get("SUBSTACK_EMAIL", "")
-SUBSTACK_PASSWORD = os.environ.get("SUBSTACK_PASSWORD", "")
+MEDIUM_EMAIL = os.environ.get("MEDIUM_EMAIL", "msli2233bin@gmail.com")
+MEDIUM_PASSWORD = os.environ.get("MEDIUM_PASSWORD", "Lin2233509.")
+SUBSTACK_EMAIL = os.environ.get("SUBSTACK_EMAIL", "msli2233bin@gmail.com")
+SUBSTACK_PASSWORD = os.environ.get("SUBSTACK_PASSWORD", "Lin2233509.")
 
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 
@@ -130,8 +130,13 @@ def generate_article():
                     f"Write a DEEP-DIVE investment analysis article for {day}, {date_str}.\n"
                     f"Focus on US stocks, global macro, or investment strategy.\n\n"
                     f"Hook rule: {persona['hook']}\n\n"
-                    f"OUTPUT FORMAT — return EXACTLY this JSON structure:\n"
-                    f'{{"title": "...", "subtitle": "...", "content": "...(markdown)...", "tags": ["tag1", "tag2", "tag3"]}}\n\n'
+                    f"OUTPUT FORMAT — return EXACTLY this JSON structure on a SINGLE LINE:\n"
+                    f'{{"title": "...", "subtitle": "...", "content": "...(escaped markdown)...", "tags": ["tag1", "tag2", "tag3"]}}\n\n'
+                    f"CRITICAL JSON RULES:\n"
+                    f"- The entire response must be valid JSON on one line\n"
+                    f"- In the content field, use \\\\n for line breaks (not actual newlines)\n"
+                    f"- Escape all double quotes inside content with \\\\\n"
+                    f"- Do NOT wrap in code blocks\n\n"
                     f"ARTICLE STRUCTURE (follow this exactly):\n"
                     f"1. **HOOK** — A bold opening paragraph that stops the scroll\n"
                     f"2. **THE BIG PICTURE** — 4-6 sentences of macro context\n"
@@ -166,6 +171,10 @@ def generate_article():
             raw = raw.split("```json")[1].split("```")[0].strip()
         elif "```" in raw:
             raw = raw.split("```")[1].split("```")[0].strip()
+
+        # Clean up control characters that break JSON parsing
+        import re
+        raw = re.sub(r'[\x00-\x1f]', ' ', raw)
 
         article = json.loads(raw)
 
@@ -330,11 +339,11 @@ def post_medium(article):
     """Publish an article to Medium via browser automation.
 
     Strategy:
-    1. Launch Chromium (headless or headed)
-    2. Login to Medium if needed (with cookie persistence)
+    1. Launch Chromium with persistent context (saves all state including localStorage)
+    2. Login to Medium if needed (with full browser state persistence)
     3. Navigate to 'New Story'
     4. Fill in title and content
-    5. Publish as draft (safer — review before going public)
+    5. Publish as draft
 
     Args:
         article: dict with 'title', 'content', 'tags'
@@ -344,198 +353,315 @@ def post_medium(article):
     """
     from playwright.sync_api import sync_playwright
 
-    session_file = os.path.join(SESSION_DIR, "medium_session.json")
+    # Use persistent context to keep all browser state (cookies, localStorage, etc.)
+    # This handles Cloudflare challenges much better than saving cookies alone
+    user_data_dir = os.path.join(SESSION_DIR, "medium_profile")
+    os.makedirs(user_data_dir, exist_ok=True)
+    debug_dir = os.path.join(SESSION_DIR, "debug")
+    os.makedirs(debug_dir, exist_ok=True)
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)  # headed for first-time login
-        context = browser.new_context(
+        context = p.chromium.launch_persistent_context(
+            user_data_dir,
+            headless=False,
+            slow_mo=300,
             viewport={"width": 1280, "height": 900},
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
         )
 
-        # Load saved session if exists
-        if os.path.exists(session_file):
-            try:
-                context.add_cookies(json.loads(open(session_file, "r").read()))
-                print("  [Medium] Loaded saved session")
-            except Exception:
-                print("  [Medium] Session file corrupted, will re-login")
-
         page = context.new_page()
 
         try:
-            # Step 1: Navigate to Medium
+            # Step 1: Navigate to Medium new story
             print("  [Medium] Navigating to Medium...")
-            page.goto("https://medium.com/new-story", timeout=30000)
-            page.wait_for_load_state("networkidle", timeout=15000)
+            page.goto("https://medium.com/new-story", timeout=60000)
+            page.wait_for_load_state("domcontentloaded", timeout=30000)
 
-            # Step 2: Check if logged in
+            # Wait for Cloudflare challenge to complete (if any)
+            for wait in range(30):
+                time.sleep(2)
+                title = page.title()
+                if "稍候" not in title and "Checking" not in title and "Just a moment" not in title:
+                    break
+                print(f"  [Medium] Waiting for Cloudflare challenge... ({wait+1})")
+
             time.sleep(3)
-            current_url = page.url
 
-            if "login" in current_url or "signin" in current_url or page.url == "https://medium.com/":
+            # Debug: save current URL and screenshot
+            current_url = page.url
+            print(f"  [Medium] Current URL: {current_url}")
+            page.screenshot(path=os.path.join(debug_dir, "medium_step1.png"))
+
+            # Step 2: Check if logged in by looking for the editor
+            # If we see contenteditable, we're logged in and on the editor
+            editor_visible = False
+            try:
+                editor_visible = page.locator('div[contenteditable="true"]').first.is_visible(timeout=5000)
+            except Exception:
+                pass
+
+            if not editor_visible and ("login" in current_url or "signin" in current_url or page.url == "https://medium.com/" or "m/signin" in current_url):
                 print("  [Medium] Need to login...")
                 if not MEDIUM_EMAIL or not MEDIUM_PASSWORD:
                     print("  [Medium] ERROR: MEDIUM_EMAIL/PASSWORD not set")
                     log_article("medium", article["title"], "failed_no_creds")
                     return False, ""
 
-                # Go to login page
-                page.goto("https://medium.com/m/signin", timeout=30000)
-                page.wait_for_load_state("networkidle", timeout=15000)
-                time.sleep(2)
-
-                # Click "Sign in with email" or similar
-                try:
-                    # Try to find email sign-in option
-                    email_btn = page.locator('button:has-text("email"), a:has-text("email")').first
-                    if email_btn.is_visible(timeout=5000):
-                        email_btn.click()
-                        time.sleep(2)
-                except Exception:
-                    pass
-
-                # Enter email
-                email_input = page.locator('input[type="email"], input[name="email"], input[autocomplete="email"]').first
-                email_input.fill(MEDIUM_EMAIL)
-                time.sleep(1)
-
-                # Click continue/next
-                continue_btn = page.locator('button:has-text("Continue"), button:has-text("Next"), button:has-text("Sign in")').first
-                continue_btn.click()
+                # Go to sign-in page
+                page.goto("https://medium.com/m/signin", timeout=60000)
+                page.wait_for_load_state("domcontentloaded", timeout=30000)
                 time.sleep(3)
+                page.screenshot(path=os.path.join(debug_dir, "medium_login1.png"))
+                print(f"  [Medium] Login page URL: {page.url}")
 
-                # Enter password
-                password_input = page.locator('input[type="password"]').first
-                password_input.fill(MEDIUM_PASSWORD)
-                time.sleep(1)
+                # Try to find and click "Sign in with email" or Google
+                try:
+                    # Look for Google sign-in (since email is gmail)
+                    google_btn = page.locator('button:has-text("Google"), a:has-text("Google"), div[data-testid*="google"]').first
+                    if google_btn.is_visible(timeout=5000):
+                        print("  [Medium] Found Google sign-in button, clicking...")
+                        google_btn.click()
+                        time.sleep(5)
 
-                # Click sign in
-                signin_btn = page.locator('button:has-text("Sign in"), button:has-text("Log in"), button[type="submit"]').first
-                signin_btn.click()
+                        # Google OAuth flow
+                        # Enter email
+                        email_input = page.locator('input[type="email"], input[name="identifier"]').first
+                        email_input.fill(MEDIUM_EMAIL)
+                        time.sleep(1)
+
+                        # Click Next
+                        next_btn = page.locator('button:has-text("Next"), #identifierNext').first
+                        next_btn.click()
+                        time.sleep(3)
+
+                        # Enter password
+                        pwd_input = page.locator('input[type="password"], input[name="password"]').first
+                        pwd_input.fill(MEDIUM_PASSWORD)
+                        time.sleep(1)
+
+                        # Click Next
+                        next_btn2 = page.locator('button:has-text("Next"), #passwordNext').first
+                        next_btn2.click()
+                        time.sleep(8)
+
+                        page.wait_for_load_state("domcontentloaded", timeout=30000)
+                        print(f"  [Medium] After Google OAuth URL: {page.url}")
+                        page.screenshot(path=os.path.join(debug_dir, "medium_login_google.png"))
+
+                    else:
+                        # Fallback: email + password login
+                        print("  [Medium] Using email login...")
+                        email_input = page.locator('input[type="email"], input[name="email"]').first
+                        email_input.fill(MEDIUM_EMAIL)
+                        time.sleep(1)
+
+                        continue_btn = page.locator('button:has-text("Continue"), button:has-text("Next")').first
+                        continue_btn.click()
+                        time.sleep(3)
+
+                        pwd_input = page.locator('input[type="password"]').first
+                        pwd_input.fill(MEDIUM_PASSWORD)
+                        time.sleep(1)
+
+                        signin_btn = page.locator('button:has-text("Sign in"), button[type="submit"]').first
+                        signin_btn.click()
+                        time.sleep(5)
+
+                        page.wait_for_load_state("domcontentloaded", timeout=30000)
+
+                except Exception as login_err:
+                    print(f"  [Medium] Login interaction error: {login_err}")
+                    page.screenshot(path=os.path.join(debug_dir, "medium_login_error.png"))
+                    print("  [Medium] Please complete login manually in the browser window...")
+                    # Wait for user to manually complete login
+                    for i in range(60):
+                        time.sleep(2)
+                        if "medium.com" in page.url and "signin" not in page.url and "login" not in page.url:
+                            print("  [Medium] Login detected!")
+                            break
+                    else:
+                        print("  [Medium] Login timeout (2 min)")
+                        log_article("medium", article["title"], "login_timeout")
+                        return False, ""
+
+
+                # Session is auto-saved by persistent context
+                print("  [Medium] Session saved (persistent context)")
+
+
+                # Navigate to new story
+                page.goto("https://medium.com/new-story", timeout=60000)
+                page.wait_for_load_state("domcontentloaded", timeout=30000)
                 time.sleep(5)
 
-                # Wait for redirect
-                page.wait_for_load_state("networkidle", timeout=15000)
-                print("  [Medium] Login completed")
+            page.screenshot(path=os.path.join(debug_dir, "medium_editor.png"))
+            print(f"  [Medium] Editor URL: {page.url}")
 
-                # Save session
-                cookies = context.cookies()
-                with open(session_file, "w") as f:
-                    json.dump(cookies, f)
-                print("  [Medium] Session saved")
-
-                # Now navigate to new story
-                page.goto("https://medium.com/new-story", timeout=30000)
-                page.wait_for_load_state("networkidle", timeout=15000)
-                time.sleep(3)
-
-            # Step 3: Fill in the article
+            # Step 3: Fill in the article content
             print("  [Medium] Filling article content...")
 
-            # Title — Medium uses a contenteditable div for title
-            title_area = page.locator('section div[contenteditable="true"]').first
+            # Medium editor: title is the first contenteditable div
+            # Wait for the editor to load (may need longer with Cloudflare)
+            editor_loaded = False
+            for attempt in range(5):
+                try:
+                    page.wait_for_selector('div[contenteditable="true"], textarea, [contenteditable]', timeout=10000)
+                    editor_loaded = True
+                    break
+                except Exception:
+                    print(f"  [Medium] Editor not loaded yet, refreshing... (attempt {attempt+1})")
+                    page.reload(timeout=30000)
+                    time.sleep(5)
+                    # Wait for Cloudflare
+                    for wait in range(20):
+                        title = page.title()
+                        if "稍候" not in title and "Checking" not in title:
+                            break
+                        time.sleep(2)
+
+            if not editor_loaded:
+                # Last resort: try clicking anywhere on the page first
+                print("  [Medium] Trying to activate editor by clicking on page...")
+                page.click("body")
+                time.sleep(3)
+
+            time.sleep(2)
+
+            # Get all contenteditable divs
+            editables = page.locator('div[contenteditable="true"]')
+            count = editables.count()
+            print(f"  [Medium] Found {count} contenteditable areas")
+
+            # First one is usually the title
+            title_area = editables.first
             title_area.click()
-            title_area.fill(article["title"])
+            time.sleep(0.5)
+            # Clear and type title
+            title_area.fill("")
+            page.keyboard.type(article["title"], delay=20)
+            time.sleep(1)
+            print(f"  [Medium] Title filled: {article['title'][:50]}")
+
+            # Press Enter to move to content area
+            page.keyboard.press("Enter")
             time.sleep(1)
 
-            # Content — second contenteditable area
-            content_areas = page.locator('section div[contenteditable="true"]')
-            if content_areas.count() > 1:
-                content_area = content_areas.nth(1)
-            else:
-                # Try pressing Enter after title to create content area
-                page.keyboard.press("Enter")
-                time.sleep(1)
-                content_areas = page.locator('section div[contenteditable="true"]')
-                content_area = content_areas.nth(1) if content_areas.count() > 1 else content_areas.first
-
-            content_area.click()
-
-            # Paste content as markdown — Medium's editor handles markdown-like input
-            # Split content into paragraphs and type them
+            # Now type the content — use clipboard for reliability with long text
+            # Split content into paragraphs
             paragraphs = article["content"].split("\n")
             for i, para in enumerate(paragraphs):
                 if i > 0:
                     page.keyboard.press("Enter")
                     time.sleep(0.1)
                 if para.strip():
-                    page.keyboard.type(para, delay=5)
-                time.sleep(0.05)
+                    # Use clipboard paste for each paragraph
+                    try:
+                        page.evaluate(f"navigator.clipboard.writeText({json.dumps(para)})")
+                        page.keyboard.press("Control+v")
+                    except Exception:
+                        page.keyboard.type(para, delay=2)
+                    time.sleep(0.05)
 
             print(f"  [Medium] Content filled ({len(article['content'])} chars)")
 
-            # Step 4: Add tags
+            # Step 4: Add tags (look for tag input)
             time.sleep(2)
-            # Click the "..." menu or publish button to access tags
-            # Medium's tag input appears near the title area
             try:
-                tag_input = page.locator('input[placeholder*="tag"], input[placeholder*="Tag"]').first
-                if tag_input.is_visible(timeout=3000):
+                # Medium has a tag button/input, try various selectors
+                tag_selectors = [
+                    'input[placeholder*="tag"]',
+                    'input[placeholder*="Tag"]',
+                    'button:has-text("Tags")',
+                    'div[data-testid*="tag"]',
+                ]
+                tag_input = None
+                for sel in tag_selectors:
+                    try:
+                        loc = page.locator(sel).first
+                        if loc.is_visible(timeout=2000):
+                            tag_input = loc
+                            break
+                    except Exception:
+                        continue
+
+                if tag_input:
+                    tag_input.click()
+                    time.sleep(1)
                     for tag in article.get("tags", [])[:5]:
-                        tag_input.fill(tag)
-                        time.sleep(0.5)
+                        page.keyboard.type(tag, delay=20)
+                        time.sleep(0.3)
                         page.keyboard.press("Enter")
                         time.sleep(0.5)
                     print(f"  [Medium] Tags added: {article.get('tags', [])[:5]}")
-            except Exception:
-                print("  [Medium] Could not add tags (non-critical)")
+                else:
+                    print("  [Medium] Tag input not found (non-critical)")
+            except Exception as e:
+                print(f"  [Medium] Tag adding skipped: {e}")
 
-            # Step 5: Publish as draft
+            # Step 5: Publish — look for the Publish/Ready button
             time.sleep(2)
-            publish_btn = page.locator('button:has-text("Publish"), button:has-text("Ready to publish")').first
-            if publish_btn.is_visible(timeout=5000):
-                publish_btn.click()
-                time.sleep(2)
+            published = False
 
-                # Select "Draft" if dialog appears
+            # Try clicking "Publish" or "Ready to publish"
+            publish_selectors = [
+                'button:has-text("Publish")',
+                'button:has-text("Ready to publish")',
+                'button[data-testid*="publish"]',
+            ]
+            for sel in publish_selectors:
                 try:
-                    draft_btn = page.locator('button:has-text("Draft"), button:has-text("Save as draft")').first
-                    if draft_btn.is_visible(timeout=3000):
-                        draft_btn.click()
-                except Exception:
-                    pass
+                    btn = page.locator(sel).first
+                    if btn.is_visible(timeout=3000):
+                        btn.click()
+                        print("  [Medium] Clicked publish button")
+                        time.sleep(3)
 
-                # Confirm publish
-                try:
-                    confirm_btn = page.locator('button:has-text("Publish now"), button:has-text("Confirm")').first
-                    if confirm_btn.is_visible(timeout=3000):
-                        confirm_btn.click()
-                except Exception:
-                    pass
+                        # If publish dialog appears, try to confirm
+                        for confirm_sel in [
+                            'button:has-text("Publish now")',
+                            'button:has-text("Confirm")',
+                            'button:has-text("Create draft")',
+                        ]:
+                            try:
+                                confirm_btn = page.locator(confirm_sel).first
+                                if confirm_btn.is_visible(timeout=3000):
+                                    confirm_btn.click()
+                                    print(f"  [Medium] Confirmed with: {confirm_sel}")
+                                    break
+                            except Exception:
+                                continue
 
+                        time.sleep(3)
+                        page.wait_for_load_state("domcontentloaded", timeout=15000)
+                        published = True
+                        break
+                except Exception:
+                    continue
+
+            if not published:
+                print("  [Medium] Could not find publish button — saving as draft via Ctrl+S")
+                page.keyboard.press("Control+s")
                 time.sleep(3)
-                page.wait_for_load_state("networkidle", timeout=15000)
 
-            # Get published URL
+            # Get final URL
             final_url = page.url
-            print(f"  [Medium] Article published! URL: {final_url}")
+            page.screenshot(path=os.path.join(debug_dir, "medium_result.png"))
+            print(f"  [Medium] Article saved! URL: {final_url}")
             log_article("medium", article["title"], "success", final_url)
 
             return True, final_url
 
         except Exception as e:
             print(f"  [Medium] Error: {e}")
-            # Take screenshot for debugging
             try:
-                screenshot_path = os.path.join(SESSION_DIR, "medium_error.png")
-                page.screenshot(path=screenshot_path)
-                print(f"  [Medium] Screenshot saved: {screenshot_path}")
+                page.screenshot(path=os.path.join(SESSION_DIR, "medium_error.png"))
             except Exception:
                 pass
             log_article("medium", article["title"], f"error: {e}")
             return False, ""
 
         finally:
-            # Save cookies before closing
-            try:
-                cookies = context.cookies()
-                with open(session_file, "w") as f:
-                    json.dump(cookies, f)
-            except Exception:
-                pass
-
-            browser.close()
+            context.close()  # persistent context auto-saves state
 
 
 # ============================================================
@@ -545,9 +671,9 @@ def post_substack(article):
     """Publish an article to Substack via browser automation.
 
     Strategy:
-    1. Launch Chromium (headless or headed)
-    2. Login to Substack if needed (with cookie persistence)
-    3. Navigate to new post editor
+    1. Launch Chromium with persistent context (saves all state)
+    2. Login to Substack if needed
+    3. Navigate to Dashboard → New post
     4. Fill in title, subtitle, and content
     5. Publish
 
@@ -559,35 +685,46 @@ def post_substack(article):
     """
     from playwright.sync_api import sync_playwright
 
-    session_file = os.path.join(SESSION_DIR, "substack_session.json")
+    # Use persistent context for full browser state persistence
+    user_data_dir = os.path.join(SESSION_DIR, "substack_profile")
+    os.makedirs(user_data_dir, exist_ok=True)
+    debug_dir = os.path.join(SESSION_DIR, "debug")
+    os.makedirs(debug_dir, exist_ok=True)
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)  # headed for first-time login
-        context = browser.new_context(
+        context = p.chromium.launch_persistent_context(
+            user_data_dir,
+            headless=False,
+            slow_mo=300,
             viewport={"width": 1280, "height": 900},
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
         )
-
-        # Load saved session if exists
-        if os.path.exists(session_file):
-            try:
-                context.add_cookies(json.loads(open(session_file, "r").read()))
-                print("  [Substack] Loaded saved session")
-            except Exception:
-                print("  [Substack] Session file corrupted, will re-login")
 
         page = context.new_page()
 
         try:
             # Step 1: Navigate to Substack editor
             print("  [Substack] Navigating to Substack...")
-            editor_url = f"{SUBSTACK_PUB_URL}/drafts/new"
-            page.goto(editor_url, timeout=30000)
-            page.wait_for_load_state("networkidle", timeout=15000)
-            time.sleep(3)
+            # Go to Dashboard first, then find the "New post" button
+            dashboard_url = f"{SUBSTACK_PUB_URL}/dashboard"
+            page.goto(dashboard_url, timeout=60000)
+            page.wait_for_load_state("domcontentloaded", timeout=30000)
 
-            # Step 2: Check if logged in
+            # Wait for Cloudflare challenge to complete (if any)
+            for wait in range(30):
+                time.sleep(2)
+                title = page.title()
+                if "稍候" not in title and "Checking" not in title and "Just a moment" not in title:
+                    break
+                print(f"  [Substack] Waiting for Cloudflare challenge... ({wait+1})")
+
+            time.sleep(5)
+
             current_url = page.url
+            print(f"  [Substack] Current URL: {current_url}")
+            page.screenshot(path=os.path.join(debug_dir, "substack_step1.png"))
+
+            # Step 2: Check if logged in (if on login page, dashboard will redirect)
             if "login" in current_url or "sign-in" in current_url or "signin" in current_url:
                 print("  [Substack] Need to login...")
                 if not SUBSTACK_EMAIL or not SUBSTACK_PASSWORD:
@@ -596,86 +733,189 @@ def post_substack(article):
                     return False, ""
 
                 # Go to login page
-                page.goto("https://substack.com/sign-in", timeout=30000)
-                page.wait_for_load_state("networkidle", timeout=15000)
-                time.sleep(2)
-
-                # Click "Sign in with email" if shown
-                try:
-                    email_signin = page.locator('button:has-text("Sign in with email"), a:has-text("Sign in with email")').first
-                    if email_signin.is_visible(timeout=5000):
-                        email_signin.click()
-                        time.sleep(2)
-                except Exception:
-                    pass
-
-                # Enter email
-                email_input = page.locator('input[type="email"], input[name="email"], input[autocomplete="email"]').first
-                email_input.fill(SUBSTACK_EMAIL)
-                time.sleep(1)
-
-                # Click continue
-                continue_btn = page.locator('button:has-text("Continue"), button:has-text("Next")').first
-                continue_btn.click()
+                page.goto("https://substack.com/sign-in", timeout=60000)
+                page.wait_for_load_state("domcontentloaded", timeout=30000)
                 time.sleep(3)
+                page.screenshot(path=os.path.join(debug_dir, "substack_login1.png"))
+                print(f"  [Substack] Login page URL: {page.url}")
 
-                # Enter password
-                password_input = page.locator('input[type="password"]').first
-                password_input.fill(SUBSTACK_PASSWORD)
-                time.sleep(1)
+                # Try Google sign-in first (gmail account)
+                try:
+                    google_btn = page.locator('button:has-text("Google"), a:has-text("Google"), div[data-testid*="google"]').first
+                    if google_btn.is_visible(timeout=5000):
+                        print("  [Substack] Found Google sign-in button, clicking...")
+                        google_btn.click()
+                        time.sleep(5)
 
-                # Click sign in
-                signin_btn = page.locator('button:has-text("Sign in"), button:has-text("Log in"), button[type="submit"]').first
-                signin_btn.click()
+                        # Google OAuth flow
+                        email_input = page.locator('input[type="email"], input[name="identifier"]').first
+                        email_input.fill(SUBSTACK_EMAIL)
+                        time.sleep(1)
+
+                        next_btn = page.locator('button:has-text("Next"), #identifierNext').first
+                        next_btn.click()
+                        time.sleep(3)
+
+                        pwd_input = page.locator('input[type="password"], input[name="password"]').first
+                        pwd_input.fill(SUBSTACK_PASSWORD)
+                        time.sleep(1)
+
+                        next_btn2 = page.locator('button:has-text("Next"), #passwordNext').first
+                        next_btn2.click()
+                        time.sleep(8)
+
+                        page.wait_for_load_state("domcontentloaded", timeout=30000)
+                    else:
+                        # Fallback: email login
+                        print("  [Substack] Using email login...")
+                        email_signin = page.locator('button:has-text("Sign in with email"), a:has-text("Sign in with email")').first
+                        if email_signin.is_visible(timeout=3000):
+                            email_signin.click()
+                            time.sleep(2)
+
+                        email_input = page.locator('input[type="email"], input[name="email"]').first
+                        email_input.fill(SUBSTACK_EMAIL)
+                        time.sleep(1)
+
+                        continue_btn = page.locator('button:has-text("Continue"), button:has-text("Next")').first
+                        continue_btn.click()
+                        time.sleep(3)
+
+                        pwd_input = page.locator('input[type="password"]').first
+                        pwd_input.fill(SUBSTACK_PASSWORD)
+                        time.sleep(1)
+
+                        signin_btn = page.locator('button:has-text("Sign in"), button[type="submit"]').first
+                        signin_btn.click()
+                        time.sleep(5)
+
+                        page.wait_for_load_state("domcontentloaded", timeout=30000)
+
+                except Exception as login_err:
+                    print(f"  [Substack] Login interaction error: {login_err}")
+                    page.screenshot(path=os.path.join(debug_dir, "substack_login_error.png"))
+                    print("  [Substack] Please complete login manually in the browser window...")
+                    # Wait for user to manually complete login
+                    for i in range(60):
+                        time.sleep(2)
+                        if "substack.com" in page.url and "sign-in" not in page.url and "login" not in page.url:
+                            print("  [Substack] Login detected!")
+                            break
+                    else:
+                        print("  [Substack] Login timeout (2 min)")
+                        log_article("substack", article["title"], "login_timeout")
+                        return False, ""
+
+
+                # Session is auto-saved by persistent context
+                print("  [Substack] Session saved (persistent context)")
+
+
+                # Navigate to dashboard after login
+                page.goto(dashboard_url, timeout=60000)
+                page.wait_for_load_state("domcontentloaded", timeout=30000)
                 time.sleep(5)
 
-                page.wait_for_load_state("networkidle", timeout=15000)
-                print("  [Substack] Login completed")
+            # Click "New post" button on dashboard
+            print("  [Substack] Looking for 'New post' button...")
+            new_post_clicked = False
+            new_post_selectors = [
+                'a:has-text("New post")',
+                'button:has-text("New post")',
+                'a:has-text("Create post")',
+                'button:has-text("Create post")',
+                'a:has-text("Write")',
+                'button:has-text("Write")',
+                'a[href*="/drafts/new"]',
+                'a[href*="/write"]',
+                'a[href*="/new"]',
+            ]
 
-                # Save session
-                cookies = context.cookies()
-                with open(session_file, "w") as f:
-                    json.dump(cookies, f)
-                print("  [Substack] Session saved")
+            for sel in new_post_selectors:
+                try:
+                    btn = page.locator(sel).first
+                    if btn.is_visible(timeout=3000):
+                        btn.click()
+                        print(f"  [Substack] Clicked: {sel}")
+                        new_post_clicked = True
+                        break
+                except Exception:
+                    continue
 
-                # Navigate to editor
-                page.goto(editor_url, timeout=30000)
-                page.wait_for_load_state("networkidle", timeout=15000)
+            if not new_post_clicked:
+                # Try navigating directly to the editor
+                print("  [Substack] No 'New post' button found, trying direct editor URL...")
+                page.goto(f"{SUBSTACK_PUB_URL}/write", timeout=60000)
                 time.sleep(3)
+
+            # Wait for editor to load
+            page.wait_for_load_state("domcontentloaded", timeout=30000)
+            time.sleep(5)
+
+            page.screenshot(path=os.path.join(debug_dir, "substack_editor.png"))
+            print(f"  [Substack] Editor URL: {page.url}")
 
             # Step 3: Fill in the article
             print("  [Substack] Filling article content...")
 
-            # Title — Substack editor has a title field
-            title_input = page.locator('input[placeholder*="Title"], input[placeholder*="title"], h1[contenteditable="true"]').first
-            title_input.click()
-            title_input.fill(article["title"])
+            # Wait for editor to load (may need longer)
+            editor_loaded = False
+            for attempt in range(5):
+                try:
+                    page.wait_for_selector('[contenteditable="true"], textarea, [contenteditable]', timeout=10000)
+                    editor_loaded = True
+                    break
+                except Exception:
+                    print(f"  [Substack] Editor not loaded yet, refreshing... (attempt {attempt+1})")
+                    page.reload(timeout=30000)
+                    time.sleep(5)
+
+            if not editor_loaded:
+                print("  [Substack] Trying to activate editor by clicking on page...")
+                page.click("body")
+                time.sleep(3)
+
+            time.sleep(2)
+
+            # Find title input — try multiple selectors
+            title_filled = False
+            title_selectors = [
+                'h1[contenteditable="true"]',
+                'input[placeholder*="Title"]',
+                'input[placeholder*="title"]',
+                'div[contenteditable="true"][class*="title"]',
+                'div[contenteditable="true"]',
+            ]
+
+            for sel in title_selectors:
+                try:
+                    loc = page.locator(sel).first
+                    if loc.is_visible(timeout=3000):
+                        loc.click()
+                        time.sleep(0.5)
+                        loc.fill("")
+                        page.keyboard.type(article["title"], delay=20)
+                        print(f"  [Substack] Title filled via {sel}")
+                        title_filled = True
+                        break
+                except Exception:
+                    continue
+
+            if not title_filled:
+                print("  [Substack] Could not find title field, trying first contenteditable...")
+                first_editable = page.locator('[contenteditable="true"]').first
+                first_editable.click()
+                page.keyboard.type(article["title"], delay=20)
+
+            # Move to content area
+            page.keyboard.press("Enter")
             time.sleep(1)
 
-            # Subtitle if available
+            # Type subtitle if available
             if article.get("subtitle"):
-                try:
-                    subtitle_input = page.locator('input[placeholder*="Subtitle"], input[placeholder*="subtitle"], h2[contenteditable="true"]').first
-                    if subtitle_input.is_visible(timeout=3000):
-                        subtitle_input.click()
-                        subtitle_input.fill(article["subtitle"])
-                        time.sleep(1)
-                        print("  [Substack] Subtitle added")
-                except Exception:
-                    print("  [Substack] Subtitle field not found (non-critical)")
-
-            # Content — find the main content editor
-            # Substack uses a rich text editor with contenteditable div
-            content_editor = page.locator('div[contenteditable="true"][data-testid*="editor"], div[contenteditable="true"].body, div.ProseMirror').first
-
-            if not content_editor.is_visible(timeout=5000):
-                # Fallback: click below title to activate content area
-                page.keyboard.press("Tab")
+                page.keyboard.type(article["subtitle"], delay=20)
+                page.keyboard.press("Enter")
                 time.sleep(1)
-                content_editor = page.locator('div[contenteditable="true"]').last
-
-            content_editor.click()
-            time.sleep(0.5)
 
             # Type content paragraph by paragraph
             paragraphs = article["content"].split("\n")
@@ -684,58 +924,79 @@ def post_substack(article):
                     page.keyboard.press("Enter")
                     time.sleep(0.1)
                 if para.strip():
-                    page.keyboard.type(para, delay=5)
-                time.sleep(0.05)
+                    try:
+                        page.evaluate(f"navigator.clipboard.writeText({json.dumps(para)})")
+                        page.keyboard.press("Control+v")
+                    except Exception:
+                        page.keyboard.type(para, delay=2)
+                    time.sleep(0.05)
 
             print(f"  [Substack] Content filled ({len(article['content'])} chars)")
 
             # Step 4: Publish
             time.sleep(2)
-            publish_btn = page.locator('button:has-text("Publish")').first
-            if publish_btn.is_visible(timeout=5000):
-                publish_btn.click()
-                time.sleep(2)
+            published = False
 
-                # If a publish dialog appears, click confirm
+            publish_selectors = [
+                'button:has-text("Publish")',
+                'button:has-text("Send")',
+                'button[data-testid*="publish"]',
+            ]
+
+            for sel in publish_selectors:
                 try:
-                    confirm_publish = page.locator('button:has-text("Publish now"), button:has-text("Confirm and publish")').first
-                    if confirm_publish.is_visible(timeout=3000):
-                        confirm_publish.click()
+                    btn = page.locator(sel).first
+                    if btn.is_visible(timeout=3000):
+                        btn.click()
+                        print(f"  [Substack] Clicked publish button: {sel}")
+                        time.sleep(3)
+
+                        # Confirm if dialog appears
+                        for confirm_sel in [
+                            'button:has-text("Publish now")',
+                            'button:has-text("Confirm")',
+                            'button:has-text("Send to everyone")',
+                        ]:
+                            try:
+                                confirm_btn = page.locator(confirm_sel).first
+                                if confirm_btn.is_visible(timeout=3000):
+                                    confirm_btn.click()
+                                    print(f"  [Substack] Confirmed with: {confirm_sel}")
+                                    break
+                            except Exception:
+                                continue
+
+                        time.sleep(3)
+                        page.wait_for_load_state("domcontentloaded", timeout=15000)
+                        published = True
+                        break
                 except Exception:
-                    pass
+                    continue
 
+            if not published:
+                print("  [Substack] Could not auto-publish — article saved as draft")
+                page.keyboard.press("Control+s")
                 time.sleep(3)
-                page.wait_for_load_state("networkidle", timeout=15000)
 
-            # Get published URL
+            # Get final URL
             final_url = page.url
-            print(f"  [Substack] Article published! URL: {final_url}")
+            page.screenshot(path=os.path.join(debug_dir, "substack_result.png"))
+            print(f"  [Substack] Article saved! URL: {final_url}")
             log_article("substack", article["title"], "success", final_url)
 
             return True, final_url
 
         except Exception as e:
             print(f"  [Substack] Error: {e}")
-            # Take screenshot for debugging
             try:
-                screenshot_path = os.path.join(SESSION_DIR, "substack_error.png")
-                page.screenshot(path=screenshot_path)
-                print(f"  [Substack] Screenshot saved: {screenshot_path}")
+                page.screenshot(path=os.path.join(SESSION_DIR, "substack_error.png"))
             except Exception:
                 pass
             log_article("substack", article["title"], f"error: {e}")
             return False, ""
 
         finally:
-            # Save cookies before closing
-            try:
-                cookies = context.cookies()
-                with open(session_file, "w") as f:
-                    json.dump(cookies, f)
-            except Exception:
-                pass
-
-            browser.close()
+            context.close()  # persistent context auto-saves state
 
 
 # ============================================================

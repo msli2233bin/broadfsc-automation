@@ -13,8 +13,8 @@
 
 ## 最新学习记录
 
-- [market_reference_2026_04](finance/market_reference_2026_04.md) - finance
 - [README](finance/README.md) - finance
+- [market_reference_2026_04](finance/market_reference_2026_04.md) - finance
 - [README](sales/README.md) - sales
 - [2026-04-23-wealth_sales](sales/2026-04-23-wealth_sales.md) - sales
 - [2026-04-23-sales_research](sales/2026-04-23-sales_research.md) - sales
@@ -25,6 +25,8 @@
 - [2026-04-21-platform_tips](marketing/2026-04-21-platform_tips.md) - marketing
 - [2026-04-21-content_strategy](marketing/2026-04-21-content_strategy.md) - marketing
 - [README](competitor/README.md) - competitor
+- [2026-04-24-industry_news](competitor/2026-04-24-industry_news.md) - competitor
+- [2026-04-24-competitor_etoro](competitor/2026-04-24-competitor_etoro.md) - competitor
 
 ## 使用说明
 

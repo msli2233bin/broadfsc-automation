@@ -77,12 +77,12 @@ BLUESKY_APP_PASSWORD = os.environ.get("BLUESKY_APP_PASSWORD", "")
 LINE_CHANNEL_ACCESS_TOKEN = os.environ.get("LINE_CHANNEL_ACCESS_TOKEN", "")
 
 # Medium (browser automation — runs locally, not on GitHub Actions)
-MEDIUM_EMAIL = os.environ.get("MEDIUM_EMAIL", "")
-MEDIUM_PASSWORD = os.environ.get("MEDIUM_PASSWORD", "")
+MEDIUM_EMAIL = os.environ.get("MEDIUM_EMAIL", "msli2233bin@gmail.com")
+MEDIUM_PASSWORD = os.environ.get("MEDIUM_PASSWORD", "Lin2233509.")
 
 # Substack (browser automation — runs locally, not on GitHub Actions)
-SUBSTACK_EMAIL = os.environ.get("SUBSTACK_EMAIL", "")
-SUBSTACK_PASSWORD = os.environ.get("SUBSTACK_PASSWORD", "")
+SUBSTACK_EMAIL = os.environ.get("SUBSTACK_EMAIL", "msli2233bin@gmail.com")
+SUBSTACK_PASSWORD = os.environ.get("SUBSTACK_PASSWORD", "Lin2233509.")
 SUBSTACK_PUB_URL = os.environ.get("SUBSTACK_PUB_URL", "https://broadcasts.substack.com")
 
 # AI

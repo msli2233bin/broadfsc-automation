@@ -183,22 +183,27 @@ LEARNING_SOURCES = {
     'competitor': [
         {
             'name': 'eToro Blog',
-            'url': 'https://www.etoro.com/news-and-analysis/',
+            'url': 'https://www.etoro.com/news-and-analysis/blog/',
             'topic': 'competitor_etoro'
         },
         {
-            'name': 'Webull Education',
-            'url': 'https://www.webull.com/education',
+            'name': 'Webull Blog',
+            'url': 'https://www.webull.com/blog',
             'topic': 'competitor_webull'
         },
         {
-            'name': 'Interactive Brokers Insights',
-            'url': 'https://www.interactivebrokers.com/en/trading/news-insights.php',
+            'name': 'Interactive Brokers Traders Insight',
+            'url': 'https://www.interactivebrokers.com/en/research/ibkr-traders-insight.php',
             'topic': 'competitor_ibkr'
         },
         {
-            'name': 'Fintech Finance News',
-            'url': 'https://ffnews.com/',
+            'name': 'Investopedia',
+            'url': 'https://www.investopedia.com/',
+            'topic': 'industry_education'
+        },
+        {
+            'name': 'Benzinga',
+            'url': 'https://www.benzinga.com/markets',
             'topic': 'industry_news'
         },
     ]
