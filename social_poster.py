@@ -76,6 +76,15 @@ BLUESKY_APP_PASSWORD = os.environ.get("BLUESKY_APP_PASSWORD", "")
 # LINE Official Account
 LINE_CHANNEL_ACCESS_TOKEN = os.environ.get("LINE_CHANNEL_ACCESS_TOKEN", "")
 
+# Medium (browser automation — runs locally, not on GitHub Actions)
+MEDIUM_EMAIL = os.environ.get("MEDIUM_EMAIL", "")
+MEDIUM_PASSWORD = os.environ.get("MEDIUM_PASSWORD", "")
+
+# Substack (browser automation — runs locally, not on GitHub Actions)
+SUBSTACK_EMAIL = os.environ.get("SUBSTACK_EMAIL", "")
+SUBSTACK_PASSWORD = os.environ.get("SUBSTACK_PASSWORD", "")
+SUBSTACK_PUB_URL = os.environ.get("SUBSTACK_PUB_URL", "https://broadcasts.substack.com")
+
 # AI
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 
@@ -150,6 +159,16 @@ LINK_STRATEGY = {
         "style": "flex",           # LINE: Flex Message with CTA button, link in button
         "link_every_n": 1,
         "prefer": "website",       # Website link goes into Flex Message CTA button
+    },
+    "medium": {
+        "style": "full",           # Medium: Full links in article body, no character limit
+        "link_every_n": 1,
+        "prefer": "hub",
+    },
+    "substack": {
+        "style": "full",           # Substack: Full links in article body, no character limit
+        "link_every_n": 1,
+        "prefer": "hub",
     },
 }
 
@@ -322,6 +341,8 @@ def generate_platform_content(platform: str):
         'tiktok': generate_tiktok_content,
         'linkedin': generate_linkedin_content,
         'line': generate_line_content,
+        'medium': generate_medium_content,
+        'substack': generate_substack_content,
     }
 
     gen_func = generators.get(platform)
@@ -1466,6 +1487,309 @@ def get_fallback_tiktok():
 
 
 # ============================================================
+# Medium & Substack — Long-form Article Content
+# ============================================================
+
+def generate_medium_content():
+    """Generate a long-form article for Medium (markdown format).
+
+    Returns:
+        dict with 'title', 'content', 'tags' — used by medium_substack_poster.py
+    """
+    if not GROQ_API_KEY:
+        return get_fallback_medium()
+
+    try:
+        from groq import Groq
+        client = Groq(api_key=GROQ_API_KEY)
+
+        now = datetime.datetime.utcnow()
+        day = now.strftime("%A")
+        date_str = now.strftime("%b %d")
+
+        persona = get_daily_persona(platform_shift=3)
+        tags = " ".join(persona["hashtags"])
+        links = get_tracked_links("medium")
+
+        response = client.chat.completions.create(
+            model="llama-3.1-8b-instant",
+            messages=[{
+                "role": "user",
+                "content": (
+                    "PERSONA: " + persona["emoji"] + " " + persona["name"] + " — " + persona["title"] + "\n"
+                    "STYLE: " + persona["style"] + "\n\n"
+                    "Write a DEEP-DIVE investment analysis article for Medium on " + day + ", " + date_str + ".\n"
+                    "Focus on US stocks, global macro, or investment strategy.\n\n"
+                    "Hook rule: " + persona["hook"] + "\n\n"
+                    "OUTPUT FORMAT — return EXACTLY this JSON structure:\n"
+                    '{\"title\": \"...\", \"content\": \"...(markdown)...\", \"tags\": [\"tag1\", \"tag2\", \"tag3\"]}\n\n'
+                    "ARTICLE STRUCTURE:\n"
+                    "1. **HOOK** — A bold opening paragraph\n"
+                    "2. **THE BIG PICTURE** — 4-6 sentences of macro context\n"
+                    "3. **DEEP DIVE** — 3-5 detailed paragraphs\n"
+                    "4. **BY THE NUMBERS** — 5-8 specific data points\n"
+                    "5. **WHAT SMART MONEY IS DOING** — Institutional positioning\n"
+                    "6. **THE CONTRARIAN CASE** — What if consensus is wrong?\n"
+                    "7. **ACTIONABLE TAKEAWAYS** — 3-5 bullet points\n"
+                    "8. **CLOSING THOUGHT** — One powerful insight\n\n"
+                    "Rules:\n"
+                    "- Article body: 1500-2500 words in markdown\n"
+                    "- Use ## for headers, **bold** for emphasis\n"
+                    "- Include 8-12 specific numbers\n"
+                    "- Stay in character as " + persona["name"] + "\n"
+                    "- End with: ⚠️ *Not financial advice*\n"
+                    "- Tags: 3-5 tags without # symbol\n"
+                    "- Title: Under 80 characters\n"
+                    "- Include: Subscribe at " + links["telegram"] + " | Learn free at " + links["hub"] + "\n"
+                    "- Do NOT promise returns"
+                )
+            }],
+            max_tokens=4000,
+            temperature=0.85
+        )
+
+        raw = response.choices[0].message.content.strip()
+        if "```json" in raw:
+            raw = raw.split("```json")[1].split("```")[0].strip()
+        elif "```" in raw:
+            raw = raw.split("```")[1].split("```")[0].strip()
+
+        article = json.loads(raw)
+        if not all(k in article for k in ["title", "content"]):
+            raise ValueError("Missing required fields")
+
+        if "tags" not in article or not article["tags"]:
+            article["tags"] = ["investing", "trading", "stockmarket"]
+
+        print("  Medium article: '" + article["title"] + "' (" + str(len(article["content"])) + " chars)")
+        return article
+
+    except json.JSONDecodeError as e:
+        print("  Medium article JSON parse failed: " + str(e))
+        return get_fallback_medium()
+    except Exception as e:
+        print("  Medium article generation failed: " + str(e))
+        return get_fallback_medium()
+
+
+def get_fallback_medium():
+    """Fallback Medium article."""
+    links = get_tracked_links("medium")
+    return {
+        "title": "The Yield Curve Is Speaking — Are You Listening?",
+        "content": (
+            "## The Signal Nobody Wants to Hear\n\n"
+            "The 10Y-2Y Treasury spread has been inverted for over 18 months. "
+            "In the last 50 years, every single recession was preceded by this signal. "
+            "We're in the lag window right now.\n\n"
+            "## The Big Picture\n\n"
+            "Markets are priced for perfection. The S&P 500 trades at 21x forward earnings. "
+            "Credit spreads sit near historic tights. The VIX refuses to break above 15.\n\n"
+            "But the bond market is telling a different story.\n\n"
+            "## By The Numbers\n\n"
+            "- **10Y-2Y Spread:** -0.35% (still inverted)\n"
+            "- **S&P 500 P/E:** 21.2x forward (10-year avg: 17.8x)\n"
+            "- **VIX:** 14.2 (bottom 10th percentile)\n"
+            "- **Commercial RE Delinquencies:** Up 2.1x YoY\n"
+            "- **Consumer Savings Rate:** 5.3% → 3.6% in 6 months\n\n"
+            "## Actionable Takeaways\n\n"
+            "- Reduce leverage\n"
+            "- Raise cash (6-month T-bills yield 5.3%)\n"
+            "- Own quality companies with strong balance sheets\n"
+            "- Add uncorrelated assets\n\n"
+            "---\n\n"
+            "Subscribe for daily briefings: " + links["telegram"] + "\n"
+            "Learn free: " + links["hub"] + "\n\n"
+            "⚠️ *Not financial advice. Always do your own research.*"
+        ),
+        "tags": ["investing", "bonds", "recession", "macro"],
+    }
+
+
+def generate_substack_content():
+    """Generate a long-form article for Substack (markdown format).
+
+    Returns:
+        dict with 'title', 'subtitle', 'content', 'tags'
+    """
+    if not GROQ_API_KEY:
+        return get_fallback_substack()
+
+    try:
+        from groq import Groq
+        client = Groq(api_key=GROQ_API_KEY)
+
+        now = datetime.datetime.utcnow()
+        day = now.strftime("%A")
+        date_str = now.strftime("%b %d")
+
+        persona = get_daily_persona(platform_shift=1)
+        tags = " ".join(persona["hashtags"])
+        links = get_tracked_links("substack")
+
+        response = client.chat.completions.create(
+            model="llama-3.1-8b-instant",
+            messages=[{
+                "role": "user",
+                "content": (
+                    "PERSONA: " + persona["emoji"] + " " + persona["name"] + " — " + persona["title"] + "\n"
+                    "STYLE: " + persona["style"] + "\n\n"
+                    "Write a DEEP-DIVE investment analysis article for Substack newsletter on " + day + ", " + date_str + ".\n"
+                    "Focus on US stocks, global macro, or investment strategy.\n\n"
+                    "Hook rule: " + persona["hook"] + "\n\n"
+                    "OUTPUT FORMAT — return EXACTLY this JSON structure:\n"
+                    '{\"title\": \"...\", \"subtitle\": \"...\", \"content\": \"...(markdown)...\", \"tags\": [\"tag1\", \"tag2\"]}\n\n'
+                    "ARTICLE STRUCTURE:\n"
+                    "1. **HOOK** — Bold opening paragraph\n"
+                    "2. **THE BIG PICTURE** — Macro context\n"
+                    "3. **DEEP DIVE** — Detailed analysis (3-5 paragraphs)\n"
+                    "4. **BY THE NUMBERS** — 5-8 data points\n"
+                    "5. **WHAT SMART MONEY IS DOING** — Institutional moves\n"
+                    "6. **THE CONTRARIAN CASE** — Challenge consensus\n"
+                    "7. **ACTIONABLE TAKEAWAYS** — 3-5 bullets\n"
+                    "8. **CLOSING THOUGHT** — Final insight\n\n"
+                    "Rules:\n"
+                    "- Article body: 1500-2500 words in markdown\n"
+                    "- Use ## for headers, **bold** for emphasis\n"
+                    "- Include 8-12 specific numbers\n"
+                    "- Stay in character as " + persona["name"] + "\n"
+                    "- End with: ⚠️ *Not financial advice*\n"
+                    "- Tags: 3-5 tags without #\n"
+                    "- Title: Under 80 chars, Subtitle: Under 120 chars\n"
+                    "- Include: Subscribe at " + links["telegram"] + " | Learn free at " + links["hub"] + "\n"
+                    "- Do NOT promise returns"
+                )
+            }],
+            max_tokens=4000,
+            temperature=0.85
+        )
+
+        raw = response.choices[0].message.content.strip()
+        if "```json" in raw:
+            raw = raw.split("```json")[1].split("```")[0].strip()
+        elif "```" in raw:
+            raw = raw.split("```")[1].split("```")[0].strip()
+
+        article = json.loads(raw)
+        if not all(k in article for k in ["title", "content"]):
+            raise ValueError("Missing required fields")
+
+        if "tags" not in article or not article["tags"]:
+            article["tags"] = ["investing", "newsletter", "markets"]
+        if "subtitle" not in article:
+            article["subtitle"] = ""
+
+        print("  Substack article: '" + article["title"] + "' (" + str(len(article["content"])) + " chars)")
+        return article
+
+    except json.JSONDecodeError as e:
+        print("  Substack article JSON parse failed: " + str(e))
+        return get_fallback_substack()
+    except Exception as e:
+        print("  Substack article generation failed: " + str(e))
+        return get_fallback_substack()
+
+
+def get_fallback_substack():
+    """Fallback Substack article."""
+    links = get_tracked_links("substack")
+    return {
+        "title": "AI Stocks at All-Time Highs: Brilliance or Bubble?",
+        "subtitle": "Separating genuine value from momentum in the AI trade",
+        "content": (
+            "## The Trillion-Dollar Question\n\n"
+            "NVIDIA just crossed $3 trillion in market cap. The Magnificent 7 now represent "
+            "30% of the S&P 500. Is this the dawn of an AI-powered productivity revolution, "
+            "or the greatest momentum trap of our generation?\n\n"
+            "## The Bull Case Is Real\n\n"
+            "AI is generating real revenue. Cloud AI services grew 85% YoY. Enterprise adoption "
+            "jumped from 35% to 65% in 12 months. This isn't vaporware.\n\n"
+            "## But Valuations Are Stretched\n\n"
+            "NVIDIA trades at 65x trailing earnings. The last time a dominant chip company "
+            "traded at these levels was Cisco in 2000.\n\n"
+            "## By The Numbers\n\n"
+            "- **Mag 7 Weight in S&P:** 30.2% (historic high)\n"
+            "- **NVIDIA P/E:** 65x trailing, 35x forward\n"
+            "- **AI Revenue Growth:** 85% YoY\n"
+            "- **Enterprise AI Adoption:** 65% (up from 35%)\n"
+            "- **AI ETF Inflows:** $12B in Q1\n\n"
+            "## Actionable Takeaways\n\n"
+            "- Trim positions that have 3x+ — lock in gains\n"
+            "- Look downstream: AI infrastructure, not just chips\n"
+            "- Value exists at 10-12x earnings outside AI\n\n"
+            "---\n\n"
+            "Subscribe for daily briefings: " + links["telegram"] + "\n"
+            "Learn free: " + links["hub"] + "\n\n"
+            "⚠️ *Not financial advice. Always do your own research.*"
+        ),
+        "tags": ["AI", "stocks", "valuation", "growth"],
+    }
+
+
+def post_medium_article(article):
+    """Post article to Medium via browser automation (calls medium_substack_poster.py)."""
+    try:
+        from medium_substack_poster import post_medium
+        success, url = post_medium(article)
+        return success, url
+    except ImportError:
+        print("  Medium: medium_substack_poster.py not found, running standalone...")
+        # Run as subprocess
+        try:
+            import subprocess
+            script = os.path.join(os.path.dirname(os.path.abspath(__file__)), "medium_substack_poster.py")
+            result = subprocess.run(
+                [sys.executable, script],
+                capture_output=True, text=True, timeout=300,
+                env={**os.environ, "MEDIUM_EMAIL": MEDIUM_EMAIL, "MEDIUM_PASSWORD": MEDIUM_PASSWORD,
+                     "GROQ_API_KEY": GROQ_API_KEY}
+            )
+            if result.returncode == 0:
+                print("  Medium poster completed")
+                return True, ""
+            else:
+                print("  Medium poster error: " + result.stderr[:200])
+                return False, ""
+        except Exception as e:
+            print("  Medium poster failed: " + str(e))
+            return False, ""
+    except Exception as e:
+        print("  Medium posting failed: " + str(e))
+        return False, ""
+
+
+def post_substack_article(article):
+    """Post article to Substack via browser automation (calls medium_substack_poster.py)."""
+    try:
+        from medium_substack_poster import post_substack
+        success, url = post_substack(article)
+        return success, url
+    except ImportError:
+        print("  Substack: medium_substack_poster.py not found, running standalone...")
+        try:
+            import subprocess
+            script = os.path.join(os.path.dirname(os.path.abspath(__file__)), "medium_substack_poster.py")
+            result = subprocess.run(
+                [sys.executable, script],
+                capture_output=True, text=True, timeout=300,
+                env={**os.environ, "SUBSTACK_EMAIL": SUBSTACK_EMAIL, "SUBSTACK_PASSWORD": SUBSTACK_PASSWORD,
+                     "SUBSTACK_PUB_URL": SUBSTACK_PUB_URL, "GROQ_API_KEY": GROQ_API_KEY}
+            )
+            if result.returncode == 0:
+                print("  Substack poster completed")
+                return True, ""
+            else:
+                print("  Substack poster error: " + result.stderr[:200])
+                return False, ""
+        except Exception as e:
+            print("  Substack poster failed: " + str(e))
+            return False, ""
+    except Exception as e:
+        print("  Substack posting failed: " + str(e))
+        return False, ""
+
+
+# ============================================================
 # Main
 # ============================================================
 def main():
@@ -1592,6 +1916,36 @@ def main():
             post_line(line_content, lang=lang)
     else:
         print("LINE: Not configured")
+    print()
+    
+    # --- Medium (browser automation, LOCAL ONLY) ---
+    print("--- Medium ---")
+    if MEDIUM_EMAIL and MEDIUM_PASSWORD:
+        print("Medium: Configured (browser automation, runs locally)")
+        medium_article = generate_platform_content('medium')
+        if isinstance(medium_article, dict):
+            print("  Title: " + medium_article.get("title", "N/A"))
+            print("  Content: " + str(len(medium_article.get("content", ""))) + " chars")
+            post_medium_article(medium_article)
+        else:
+            print("  Unexpected content type: " + str(type(medium_article)))
+    else:
+        print("Medium: Not configured (MEDIUM_EMAIL/PASSWORD missing)")
+    print()
+    
+    # --- Substack (browser automation, LOCAL ONLY) ---
+    print("--- Substack ---")
+    if SUBSTACK_EMAIL and SUBSTACK_PASSWORD:
+        print("Substack: Configured (browser automation, runs locally)")
+        substack_article = generate_platform_content('substack')
+        if isinstance(substack_article, dict):
+            print("  Title: " + substack_article.get("title", "N/A"))
+            print("  Content: " + str(len(substack_article.get("content", ""))) + " chars")
+            post_substack_article(substack_article)
+        else:
+            print("  Unexpected content type: " + str(type(substack_article)))
+    else:
+        print("Substack: Not configured (SUBSTACK_EMAIL/PASSWORD missing)")
     print()
     
     print("=" * 50)
