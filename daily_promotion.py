@@ -563,21 +563,27 @@ def generate_ai_content(region, focus_text, lang="en"):
                 "content": (
                     "PERSONA: " + persona["name"] + "\n"
                     "PERSONA STYLE: " + persona["style"] + "\n\n"
-                    "Write a pre-market briefing for " + region + " markets.\n\n"
+                    "Write a DEEP-DIVE pre-market briefing for " + region + " markets.\n\n"
                     "Title: " + persona["signature"] + " " + region_title + " | " + date_str + "\n\n"
                     "Market context: " + focus_text + "\n\n"
                     "Hook rule: " + persona["hook_format"] + "\n\n"
+                    "Structure (follow this exactly):\n"
+                    "1. HOOK — Bold opening claim or data point that grabs attention immediately\n"
+                    "2. THE BIG PICTURE — 3-4 sentences of macro context (what's happening globally that affects this region)\n"
+                    "3. WHY IT MATTERS — Connect the dots: how does this affect portfolios? What's the contrarian angle most miss?\n"
+                    "4. BY THE NUMBERS — 3-5 specific data points with context (not just 'S&P up 1%' but 'S&P at 5,280 — testing resistance from the Jan 2022 double top')\n"
+                    "5. THE TAKEAWAY — One clear, actionable conclusion for readers today\n\n"
                     "Rules:\n"
                     "- " + lang_instruction + "\n"
                     "- Format for Telegram: use <b>bold</b> for key points, bullet points, line breaks\n"
-                    "- Keep it under 480 characters (strict)\n"
+                    "- Maximum 1500 characters (deep analysis, not a headline)\n"
                     "- Stay 100% in character as " + persona["name"] + "\n"
-                    "- Include 1 specific number (index level, yield %, sector %)\n"
+                    "- Include 3-5 specific numbers (index levels, yield %, sector moves, economic data)\n"
                     "- End with this exact CTA: " + cta + "\n"
                     "- NEVER promise returns. NEVER use words like 'guaranteed' or 'certain'."
                 )
             }],
-            max_tokens=420,
+            max_tokens=800,
             temperature=0.85
         )
         result = response.choices[0].message.content
