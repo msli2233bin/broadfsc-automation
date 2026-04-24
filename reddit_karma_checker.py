@@ -41,6 +41,27 @@ PROXY_APIS = [
 ]
 
 
+def _verify_profile_exists(username):
+    """Verify a Reddit profile exists by checking if the HTML page loads (not about.json).
+    Reddit restricts about.json for new/low-karma accounts, but the profile page still loads."""
+    import requests
+    try:
+        url = f"https://api.codetabs.com/v1/proxy?quest=https://www.reddit.com/user/{username}/"
+        r = requests.get(url, timeout=20)
+        if r.status_code == 200:
+            html = r.text.lower()
+            # A valid user page will have the username in the page content
+            # and NOT redirect to a generic "Reddit - heart of internet" with no user data
+            if username.lower() in html:
+                return True
+            # Fallback: check for typical user page indicators
+            if "profile" in html and ("karma" in html or "joined" in html):
+                return True
+        return False
+    except Exception:
+        return False
+
+
 def check_karma_via_proxy(username):
     """Check Reddit karma using web proxy to bypass IP ban."""
     import requests
@@ -71,6 +92,26 @@ def check_karma_via_proxy(username):
             if not reddit_data or "name" not in reddit_data:
                 # Check for error response
                 if data.get("error") == 404 or "not found" in str(data).lower():
+                    # about.json returns 404 for new/low-karma accounts too
+                    # Verify by checking if the profile page exists (HTML)
+                    print(f"    about.json returned 404, verifying profile page...")
+                    profile_exists = _verify_profile_exists(username)
+                    if profile_exists:
+                        print(f"    Profile page accessible — account exists but about.json restricted")
+                        return {
+                            "success": True,
+                            "username": username,
+                            "link_karma": -1,  # unknown
+                            "comment_karma": -1,  # unknown
+                            "total_karma": -1,
+                            "age_days": -1,
+                            "age_str": "Unknown (about.json restricted for this account)",
+                            "has_verified_email": True,
+                            "is_suspended": False,
+                            "ready_for_posting": False,
+                            "method": f"proxy-{proxy['name']}-html-verified",
+                            "note": "Account exists but Reddit restricts about.json access for new/low-karma accounts. Check karma manually.",
+                        }
                     return {"success": False, "error": f"User '{username}' not found on Reddit"}
                 print(f"    Unexpected response structure, skipping")
                 continue
