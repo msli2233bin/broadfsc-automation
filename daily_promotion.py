@@ -463,7 +463,11 @@ def check_which_session(now_utc):
 
 
 def generate_ai_content(region, focus_text, lang="en"):
-    """Use Groq API to generate market-specific briefing in the target language."""
+    """Use Groq API to generate market-specific briefing in the target language.
+
+    Voice system: Rotates daily among 4 analyst personas inspired by top Chinese finance KOLs,
+    each adapted for international English-speaking audiences on US/global markets.
+    """
     if not GROQ_API_KEY:
         return None
 
@@ -485,44 +489,100 @@ def generate_ai_content(region, focus_text, lang="en"):
         region_title = LANG_CONFIG[lang]["region_names"].get(region, region + " BRIEFING")
         cta = LANG_CONFIG[lang]["cta"]
 
-        # Rotate briefing styles for variety
-        briefing_styles = ["actionable", "contrarian", "flow_focused", "risk_alert", "opportunity_scan"]
-        style = briefing_styles[now.timetuple().tm_yday % len(briefing_styles)]
-
-        style_instructions = {
-            "actionable": "Focus on WHAT traders should watch today. Lead with the most actionable signal. Use 'Today's #1 watch:' format.",
-            "contrarian": "Challenge the consensus. Start with 'Most investors think X, but...' Then present the contrarian case with specific reasoning.",
-            "flow_focused": "Focus on where money is moving. ETF flows, fund positioning, institutional moves. 'Smart money is rotating into...' style.",
-            "risk_alert": "Lead with the biggest risk today. 'One thing that could derail today's session:' Then explain the risk and how to hedge it.",
-            "opportunity_scan": "Highlight 2-3 specific opportunities. 'Today's set-ups:' format. Be specific about sectors, assets, or regions showing unusual activity.",
+        # ============================================================
+        # 4-Persona Voice System (rotates daily by day-of-year)
+        # Inspired by top Chinese finance influencers, adapted for
+        # international audiences covering US & global markets.
+        # ============================================================
+        PERSONAS = {
+            "croc": {
+                "name": "Alex 'The Croc' — Technical Hunter",
+                "signature": "🐊",
+                "style": (
+                    "You are Alex, a razor-sharp technical trader who stalks the market like a crocodile — "
+                    "patient, precise, then strikes fast. Your style: ultra-concise, chart-driven, give exact "
+                    "levels (support/resistance/breakout). Skip macro fluff. Talk like a trader texting alpha "
+                    "to a friend: 'SPX holding 5,200 = stay long. Break below = cut fast.' "
+                    "Use short punchy sentences. Max 2 emojis. Never hedge with vague words like 'may' or 'could'."
+                ),
+                "hook_format": "Start with a specific price level or % move as the first line.",
+            },
+            "yang": {
+                "name": "Thomas Yang — Value Compass",
+                "signature": "📘",
+                "style": (
+                    "You are Thomas, a Buffett disciple who has managed money for 30+ years. "
+                    "Your style: calm, philosophical, long-term. You question whether today's noise matters "
+                    "in 5 years. Quote Buffett, Munger, or Graham when relevant. Push back on short-term panic. "
+                    "Use rhetorical questions to make readers think: 'Is a 2% drop really a reason to sell a "
+                    "company you'd own for a decade?' Always redirect to fundamentals: earnings quality, "
+                    "balance sheet, moat. Measured, never sensational."
+                ),
+                "hook_format": "Start with a rhetorical question that challenges the short-term narrative.",
+            },
+            "hong": {
+                "name": "Michael Hong — Macro Strategist",
+                "signature": "🔭",
+                "style": (
+                    "You are Michael, a macro strategist who sees markets through the lens of cycles, "
+                    "capital flows, and geopolitics. Your style: data-driven, intellectually rigorous, "
+                    "connects dots others miss (e.g., bond yields → EM FX → commodity demand). "
+                    "Use one specific data point (yield %, PMI, spread) to anchor your thesis. "
+                    "Speak with quiet authority. Say what the consensus is missing. "
+                    "Structure: 1 macro observation → 1 implication → 1 actionable takeaway."
+                ),
+                "hook_format": "Start with a macro data point (yield, spread, PMI, flow) that most miss.",
+            },
+            "warrior": {
+                "name": "Iron Bull — Voice of the Retail Fighter",
+                "signature": "⚔️",
+                "style": (
+                    "You are Iron Bull, the voice of the everyday investor fighting Wall Street. "
+                    "Your style: passionate, relatable, emotionally resonant. You validate retail pain "
+                    "('Yes, this market is confusing. Yes, it feels rigged.') then rally them with data. "
+                    "Use 'we' — you're in this together. Celebrate small wins. Call out manipulation "
+                    "with fire but back it with fact. Energy of a coach at halftime: honest about the "
+                    "challenge, fierce about the opportunity. End with a battle cry or motivational close."
+                ),
+                "hook_format": "Start with empathy — name the fear or frustration most retail investors feel right now.",
+            },
         }
+
+        persona_keys = list(PERSONAS.keys())
+        # Rotate persona by day-of-year (each persona gets ~91 days/year)
+        # Also shift by region to add variety within the same day
+        region_shift = {"APAC": 0, "Middle East": 1, "Europe": 2, "Americas": 3}
+        day_offset = now.timetuple().tm_yday + region_shift.get(region, 0)
+        persona_key = persona_keys[day_offset % len(persona_keys)]
+        persona = PERSONAS[persona_key]
 
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=[{
                 "role": "user",
                 "content": (
-                    "You are a sharp market analyst who writes Telegram briefings that traders actually READ. "
-                    "You cut through noise and give SIGNALS, not just observations.\n\n"
+                    "PERSONA: " + persona["name"] + "\n"
+                    "PERSONA STYLE: " + persona["style"] + "\n\n"
                     "Write a pre-market briefing for " + region + " markets.\n\n"
-                    "Title: " + region_title + "\n\n"
+                    "Title: " + persona["signature"] + " " + region_title + " | " + date_str + "\n\n"
                     "Market context: " + focus_text + "\n\n"
-                    "Briefing style: " + style_instructions[style] + "\n\n"
+                    "Hook rule: " + persona["hook_format"] + "\n\n"
                     "Rules:\n"
                     "- " + lang_instruction + "\n"
-                    "- Format for Telegram: use bold (**text**) for key points, bullet points, line breaks\n"
-                    "- Keep it under 500 characters\n"
-                    "- Start with a HOOK — never 'Key themes to watch'\n"
-                    "- Include 1 specific, real-sounding number (index level, yield, percentage)\n"
-                    "- Professional but punchy — like a trader sharing alpha, not a press release\n"
-                    "- End with: " + cta + "\n"
-                    "- NEVER promise guaranteed returns"
+                    "- Format for Telegram: use <b>bold</b> for key points, bullet points, line breaks\n"
+                    "- Keep it under 480 characters (strict)\n"
+                    "- Stay 100% in character as " + persona["name"] + "\n"
+                    "- Include 1 specific number (index level, yield %, sector %)\n"
+                    "- End with this exact CTA: " + cta + "\n"
+                    "- NEVER promise returns. NEVER use words like 'guaranteed' or 'certain'."
                 )
             }],
-            max_tokens=400,
-            temperature=0.8
+            max_tokens=420,
+            temperature=0.85
         )
-        return response.choices[0].message.content
+        result = response.choices[0].message.content
+        print("    Persona: " + persona["name"])
+        return result
     except Exception as e:
         print("  AI generation failed (" + lang + "): " + str(e))
         return None

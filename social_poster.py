@@ -193,6 +193,80 @@ HASHTAGS = ["#Investing", "#Trading", "#MarketAnalysis", "#StockMarket", "#Finan
 
 
 # ============================================================
+# 4-Persona Voice System
+# Inspired by top Chinese finance KOLs, adapted for international
+# English-speaking audiences covering US & global markets.
+# Rotates daily — each persona gets its own distinct voice.
+# ============================================================
+SOCIAL_PERSONAS = {
+    "croc": {
+        "name": "Alex 'The Croc'",
+        "title": "Technical Hunter",
+        "emoji": "🐊",
+        "style": (
+            "You are Alex, a razor-sharp technical trader. Ultra-concise, chart-driven. "
+            "Give exact levels (support/resistance/breakout). Skip macro fluff. "
+            "Write like a trader texting alpha to a friend. "
+            "Short punchy sentences. Max 2 emojis. Never use 'may' or 'could'."
+        ),
+        "hook": "Start with a specific price level or % move.",
+        "hashtags": ["#TechnicalAnalysis", "#Trading", "#StockMarket", "#Investing"],
+    },
+    "yang": {
+        "name": "Thomas Yang",
+        "title": "Value Compass",
+        "emoji": "📘",
+        "style": (
+            "You are Thomas, a Buffett disciple who has managed money for 30+ years. "
+            "Calm, philosophical, long-term perspective. Challenge short-term panic with fundamentals. "
+            "Use rhetorical questions. Quote great investors when relevant. "
+            "Redirect to earnings quality, balance sheet strength, and moats."
+        ),
+        "hook": "Start with a rhetorical question that challenges the short-term narrative.",
+        "hashtags": ["#ValueInvesting", "#LongTerm", "#Buffett", "#Investing"],
+    },
+    "hong": {
+        "name": "Michael Hong",
+        "title": "Macro Strategist",
+        "emoji": "🔭",
+        "style": (
+            "You are Michael, a macro strategist who connects cycles, capital flows, and geopolitics. "
+            "Data-driven, intellectually rigorous. Use one specific data point (yield, PMI, spread) to anchor thesis. "
+            "Speak with quiet authority. Structure: 1 macro observation → 1 implication → 1 takeaway. "
+            "Say what the consensus is missing."
+        ),
+        "hook": "Start with a macro data point most investors overlook.",
+        "hashtags": ["#MacroStrategy", "#GlobalMarkets", "#Investing", "#Finance"],
+    },
+    "warrior": {
+        "name": "Iron Bull",
+        "title": "Voice of the Retail Fighter",
+        "emoji": "⚔️",
+        "style": (
+            "You are Iron Bull, voice of the everyday investor fighting Wall Street. "
+            "Passionate, relatable, emotionally resonant. Validate retail pain then rally with data. "
+            "Use 'we' — you're in this together. Call out market dynamics with fire but back with fact. "
+            "Energy of a coach at halftime. End with a battle cry or motivational close."
+        ),
+        "hook": "Start with empathy — name the fear most retail investors feel right now.",
+        "hashtags": ["#RetailInvestor", "#WallStreet", "#Investing", "#StockMarket"],
+    },
+}
+
+
+def get_daily_persona(platform_shift: int = 0) -> dict:
+    """Return today's active persona, shifted per platform for variety.
+
+    Args:
+        platform_shift: int offset so different platforms use different personas same day.
+    """
+    now = datetime.datetime.utcnow()
+    keys = list(SOCIAL_PERSONAS.keys())
+    idx = (now.timetuple().tm_yday + platform_shift) % len(keys)
+    return SOCIAL_PERSONAS[keys[idx]]
+
+
+# ============================================================
 # Knowledge-Driven Content (知识库→帖子)
 # ============================================================
 CONTENT_QUEUE_DIR = Path(__file__).parent / 'knowledge' / 'content_queue'
@@ -394,7 +468,7 @@ def post_mastodon(text):
 
 
 def generate_mastodon_content():
-    """Generate a thoughtful Mastodon post with deeper analysis."""
+    """Generate a Mastodon post in today's analyst persona voice."""
     if not GROQ_API_KEY:
         return get_fallback_mastodon()
 
@@ -406,44 +480,35 @@ def generate_mastodon_content():
         day = now.strftime("%A")
         date_str = now.strftime("%b %d")
 
-        tags = " ".join(HASHTAGS[:4])
+        persona = get_daily_persona(platform_shift=1)
+        tags = " ".join(persona["hashtags"])
         links = get_tracked_links("mastodon")
-
-        # Rotate analysis angles
-        angles = ["macro_deep_dive", "cross_asset", "contrarian_thesis", "historical_parallel", "flow_analysis"]
-        angle = angles[now.timetuple().tm_yday % len(angles)]
-
-        angle_instructions = {
-            "macro_deep_dive": "Do a deep macro analysis. Connect 2-3 macro signals (yields, FX, commodities) into one coherent narrative. Show causal chains, not just observations.",
-            "cross_asset": "Analyze cross-asset correlations. What does the bond market know that equities don't? Or what is gold signaling vs crypto?",
-            "contrarian_thesis": "Build a contrarian thesis. What is the consensus, and why might it be wrong? Show your reasoning step by step.",
-            "historical_parallel": "Draw a specific historical parallel. 'The last time we saw X was in [year], and what happened next was...' Make it educational.",
-            "flow_analysis": "Analyze where the money is flowing. ETF flows, fund positioning, smart money vs retail. Where is capital rotating?",
-        }
 
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=[{
                 "role": "user",
                 "content": (
-                    "You are a veteran macro strategist who writes for sophisticated investors on Mastodon. "
-                    "You think in systems, not soundbites. You connect dots others miss.\n\n"
-                    "Write ONE market analysis post for " + day + ", " + date_str + ".\n\n"
-                    "Analysis angle: " + angle_instructions[angle] + "\n\n"
+                    "PERSONA: " + persona["emoji"] + " " + persona["name"] + " — " + persona["title"] + "\n"
+                    "STYLE: " + persona["style"] + "\n\n"
+                    "Write ONE market analysis post for " + day + ", " + date_str + ".\n"
+                    "Focus on US stocks, global macro, or investment strategy.\n\n"
+                    "Hook rule: " + persona["hook"] + "\n\n"
                     "Rules:\n"
-                    "- Maximum 450 characters\n"
-                    "- Start with a sharp observation, NOT 'Key themes' or 'Markets update'\n"
-                    "- Use proper financial terminology (basis points, yield curve, contango, etc.)\n"
-                    "- Show your reasoning — don't just state conclusions\n"
+                    "- Maximum 450 characters (strict)\n"
+                    "- Stay 100% in character as " + persona["name"] + "\n"
+                    "- Include 1 specific number (price, yield %, or data point)\n"
                     "- End with: " + tags + "\n"
                     "- Add link: " + links["hub"] + "\n"
-                    "- Do NOT promise returns or give buy/sell advice"
+                    "- Do NOT promise returns or give direct buy/sell advice"
                 )
             }],
             max_tokens=200,
             temperature=0.85
         )
-        return response.choices[0].message.content.strip()
+        result = response.choices[0].message.content.strip()
+        print("  Mastodon persona: " + persona["name"])
+        return result
     except Exception as e:
         print("  AI Mastodon generation failed: " + str(e))
         return get_fallback_mastodon()
@@ -503,7 +568,7 @@ def post_discord(text):
 
 
 def generate_discord_content():
-    """Generate an engaging Discord post that sparks community discussion."""
+    """Generate an engaging Discord post using today's analyst persona."""
     if not GROQ_API_KEY:
         return get_fallback_discord()
 
@@ -515,46 +580,39 @@ def generate_discord_content():
         day = now.strftime("%A")
         date_str = now.strftime("%b %d")
 
-        tags = " ".join(HASHTAGS)
+        persona = get_daily_persona(platform_shift=2)
+        tags = " ".join(persona["hashtags"])
         links = get_tracked_links("discord")
-
-        # Rotate content types for Discord engagement
-        discord_types = ["discussion_starter", "trade_idea_setup", "market_quiz", "weekly_review", "educational"]
-        dtype = discord_types[now.timetuple().tm_yday % len(discord_types)]
-
-        type_instructions = {
-            "discussion_starter": "Start a community discussion. Present a market debate with two valid sides. Ask members to vote or share their view. Use formatting like **bold** for key points.",
-            "trade_idea_setup": "Present a potential trade setup with entry/thesis/risk. Use clear structure. End with 'What's your take?' to spark discussion. Add ⚠️ disclaimer.",
-            "market_quiz": "Create a market trivia quiz. Ask an interesting question about market history, economics, or a current event. Give 4 options (A/B/C/D). Reveal answer at the end in spoiler tags.",
-            "weekly_review": "Summarize the week's biggest market moves. What worked, what didn't, and what surprised everyone. Be honest about misses.",
-            "educational": "Teach ONE specific investing concept in simple terms. Use an analogy. Examples: contango, beta, carry trade, yield curve. Make it accessible to beginners but accurate.",
-        }
 
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=[{
                 "role": "user",
                 "content": (
-                    "You are a community market analyst running an active Discord server for traders and investors. "
-                    "You're approachable, knowledgeable, and love sparking debates.\n\n"
-                    "Write ONE post for " + day + ", " + date_str + ".\n\n"
-                    "Post type: " + type_instructions[dtype] + "\n\n"
+                    "PERSONA: " + persona["emoji"] + " " + persona["name"] + " — " + persona["title"] + "\n"
+                    "STYLE: " + persona["style"] + "\n\n"
+                    "Write ONE Discord community post for " + day + ", " + date_str + ".\n"
+                    "Focus on US stocks, global macro, or investment strategy.\n\n"
+                    "Hook rule: " + persona["hook"] + "\n\n"
                     "Rules:\n"
                     "- Maximum 1500 characters\n"
-                    "- Use Discord markdown: **bold** for emphasis, bullet points, line breaks\n"
-                    "- End with a question or call-to-action that gets people talking\n"
-                    "- Include emoji sparingly (1-3 max)\n"
+                    "- Use Discord markdown: **bold** for key points, bullet points\n"
+                    "- End with a question that sparks community discussion\n"
+                    "- Stay 100% in character as " + persona["name"] + "\n"
+                    "- Include 1 specific number (price, yield %, or data point)\n"
                     "- End with: " + tags + "\n"
                     "- Subscribe: " + links["telegram"] + "\n"
                     "- Learn free: " + links["hub"] + "\n"
-                    "- Add ⚠️ 'Not financial advice' if discussing trade ideas\n"
+                    "- Add ⚠️ 'Not financial advice' disclaimer\n"
                     "- Do NOT promise returns"
                 )
             }],
             max_tokens=400,
             temperature=0.85
         )
-        return response.choices[0].message.content.strip()
+        result = response.choices[0].message.content.strip()
+        print("  Discord persona: " + persona["name"])
+        return result
     except Exception as e:
         print("  AI Discord generation failed: " + str(e))
         return get_fallback_discord()
@@ -723,7 +781,7 @@ def post_bluesky(text):
 
 
 def generate_bluesky_content():
-    """Generate a punchy Bluesky post with strong opinions."""
+    """Generate a punchy Bluesky post in today's analyst persona voice."""
     if not GROQ_API_KEY:
         return get_fallback_bluesky()
 
@@ -735,36 +793,25 @@ def generate_bluesky_content():
         day = now.strftime("%A")
         date_str = now.strftime("%b %d")
 
+        persona = get_daily_persona(platform_shift=3)
         link = get_platform_link("bluesky")
         link_note = f"\n- Add this link at the end: {link}" if link and not link.startswith("Follow") else "\n- Do NOT include any links"
-
-        # Rotate styles
-        styles = ["one_liner", "hot_take", "chart_read", "timeline_call", "myth_bust"]
-        style = styles[now.timetuple().tm_yday % len(styles)]
-
-        style_instructions = {
-            "one_liner": "One devastating observation in a single sentence. Short, sharp, memorable. Then add context in 1-2 more sentences.",
-            "hot_take": "A bold opinion that most people would disagree with. Back it up with ONE specific data point or logical argument.",
-            "chart_read": "Describe what a chart would show. 'If you look at the [X] chart right now, you'd see...' Make the reader visualize it.",
-            "timeline_call": "Make a specific prediction with a timeframe. 'Within the next [X] months, [Y] will happen because [Z].' Be specific.",
-            "myth_bust": "State a common investing myth, then demolish it. 'Everyone thinks [X]. Here's why they're wrong.'",
-        }
 
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=[{
                 "role": "user",
                 "content": (
-                    "You are a market commentator with strong convictions and zero tolerance for BS. "
-                    "You write like someone who trades their own book and actually reads the data.\n\n"
-                    "Write ONE post for " + day + ", " + date_str + ".\n\n"
-                    "Style: " + style_instructions[style] + "\n\n"
+                    "PERSONA: " + persona["emoji"] + " " + persona["name"] + " — " + persona["title"] + "\n"
+                    "STYLE: " + persona["style"] + "\n\n"
+                    "Write ONE Bluesky post for " + day + ", " + date_str + ".\n"
+                    "Focus on US stocks, global macro, or investment strategy.\n\n"
+                    "Hook rule: " + persona["hook"] + "\n\n"
                     "Rules:\n"
-                    "- Maximum 280 characters\n"
-                    "- NEVER start with 'Market update' or 'Key themes'\n"
-                    "- First sentence must hit hard — no warm-up, no preamble\n"
-                    "- Use 1 specific market reference (yield, index, currency, commodity)\n"
-                    "- Sound like a trader, not a press release\n"
+                    "- Maximum 280 characters (Bluesky limit)\n"
+                    "- Stay 100% in character as " + persona["name"] + "\n"
+                    "- First sentence must hook immediately — no warm-up\n"
+                    "- Use 1 specific market reference (yield, index, currency, sector)\n"
                     "- End with: #Investing #Trading\n"
                     + link_note + "\n"
                     "- Do NOT promise returns"
@@ -773,7 +820,9 @@ def generate_bluesky_content():
             max_tokens=100,
             temperature=0.9
         )
-        return response.choices[0].message.content.strip()
+        result = response.choices[0].message.content.strip()
+        print("  Bluesky persona: " + persona["name"])
+        return result
     except Exception as e:
         print("  AI Bluesky generation failed: " + str(e))
         return get_fallback_bluesky()
@@ -920,7 +969,7 @@ def get_fallback_line(lang="en"):
 # Content Generation
 # ============================================================
 def generate_tweet_content():
-    """Generate a high-engagement tweet with scroll-stopping hooks."""
+    """Generate a high-engagement tweet in today's analyst persona voice."""
     if not GROQ_API_KEY:
         return get_fallback_tweet()
 
@@ -932,45 +981,37 @@ def generate_tweet_content():
         day = now.strftime("%A")
         date_str = now.strftime("%b %d")
 
+        persona = get_daily_persona(platform_shift=0)
         link = get_platform_link("twitter")
         link_instruction = f"\n- Include this link: {link}" if link and not link.startswith("Learn") else "\n- Do NOT include any links (link in bio instead)"
-
-        # Rotate content types for variety
-        content_types = ["hot_take", "contrarian", "data_point", "question", "prediction"]
-        content_type = content_types[now.timetuple().tm_yday % len(content_types)]
-
-        type_instructions = {
-            "hot_take": "Start with a bold, slightly controversial opinion that makes people stop scrolling. Example: 'Nobody's talking about this:' or 'Unpopular opinion:'",
-            "contrarian": "Take the opposite view of what most investors believe right now. Challenge conventional wisdom with confidence.",
-            "data_point": "Lead with ONE surprising number or statistic. Make the reader go 'Wait, really?' Use a realistic-sounding figure.",
-            "question": "Ask a thought-provoking question traders/investors would argue about. End with 'What do you think?' or 'Agree?'",
-            "prediction": "Make a specific, time-bound market prediction with reasoning. Be confident but add 'not financial advice'.",
-        }
 
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=[{
                 "role": "user",
                 "content": (
-                    "You are a sharp, opinionated market analyst. You have STRONG views and express them. "
-                    "You sound like a trader with skin in the game — NOT a boring corporate bot.\n\n"
-                    "Write ONE tweet about today's markets (" + day + ", " + date_str + ").\n\n"
-                    "Content style: " + type_instructions[content_type] + "\n\n"
+                    "PERSONA: " + persona["emoji"] + " " + persona["name"] + " — " + persona["title"] + "\n"
+                    "STYLE: " + persona["style"] + "\n\n"
+                    "Write ONE tweet about today's markets (" + day + ", " + date_str + ").\n"
+                    "Focus on US stocks, macro, or investment strategy.\n\n"
+                    "Hook rule: " + persona["hook"] + "\n\n"
                     "Rules:\n"
-                    "- Maximum 250 characters\n"
-                    "- First line MUST be a scroll-stopper (NEVER start with 'Market update' or 'Key themes')\n"
-                    "- Include 1 specific, real-sounding market reference (index level, yield, currency move)\n"
-                    "- Use casual trader language, NOT corporate jargon\n"
+                    "- Maximum 250 characters (strict)\n"
+                    "- Stay 100% in character as " + persona["name"] + "\n"
+                    "- First line MUST scroll-stop immediately\n"
+                    "- Include 1 specific market reference (index, yield, sector move)\n"
                     "- End with: #Investing #Trading\n"
                     + link_instruction + "\n"
-                    "- Do NOT promise returns or give financial advice\n"
-                    "- Do NOT start with 'Market update', 'Key themes', or 'Markets are'"
+                    "- Do NOT promise returns or give direct financial advice\n"
+                    "- NEVER start with 'Market update', 'Key themes', or 'Markets are'"
                 )
             }],
             max_tokens=100,
             temperature=0.9
         )
-        return response.choices[0].message.content.strip()
+        result = response.choices[0].message.content.strip()
+        print("  Twitter persona: " + persona["name"])
+        return result
     except Exception as e:
         print("  AI tweet generation failed: " + str(e))
         return get_fallback_tweet()
