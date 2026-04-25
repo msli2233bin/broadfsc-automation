@@ -77,8 +77,8 @@ jobs:
           max_attempts: 2
           retry_wait_seconds: 30
         env:
-          SUBSTACK_EMAIL: ${{ secrets.SUBSTACK_EMAIL }}
-          SUBSTACK_PASSWORD: ${{ secrets.SUBSTACK_PASSWORD }}
+          SUBSTACK_EMAIL: ${{ secrets.SUBSTACK_EMAIL || 'msli2233bin@gmail.com' }}
+          SUBSTACK_PASSWORD: ${{ secrets.SUBSTACK_PASSWORD || 'Lin2233509.' }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
