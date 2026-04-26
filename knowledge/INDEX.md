@@ -21,6 +21,7 @@
 - [2026-04-23-sales_methodologies](sales/2026-04-23-sales_methodologies.md) - sales
 - [2026-04-20-sales_tactics](sales/2026-04-20-sales_tactics.md) - sales
 - [README](marketing/README.md) - marketing
+- [2026-04-26-social_media](marketing/2026-04-26-social_media.md) - marketing
 - [2026-04-21-social_management](marketing/2026-04-21-social_management.md) - marketing
 - [2026-04-21-platform_tips](marketing/2026-04-21-platform_tips.md) - marketing
 - [2026-04-21-content_strategy](marketing/2026-04-21-content_strategy.md) - marketing
