@@ -26,6 +26,7 @@
 - [2026-04-21-platform_tips](marketing/2026-04-21-platform_tips.md) - marketing
 - [2026-04-21-content_strategy](marketing/2026-04-21-content_strategy.md) - marketing
 - [README](competitor/README.md) - competitor
+- [2026-04-27-competitor_webull](competitor/2026-04-27-competitor_webull.md) - competitor
 - [2026-04-24-industry_news](competitor/2026-04-24-industry_news.md) - competitor
 - [2026-04-24-competitor_etoro](competitor/2026-04-24-competitor_etoro.md) - competitor
 
