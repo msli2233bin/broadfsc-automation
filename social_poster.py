@@ -76,6 +76,13 @@ BLUESKY_APP_PASSWORD = os.environ.get("BLUESKY_APP_PASSWORD", "")
 # LINE Official Account
 LINE_CHANNEL_ACCESS_TOKEN = os.environ.get("LINE_CHANNEL_ACCESS_TOKEN", "")
 
+# Threads (Meta API)
+THREADS_ACCESS_TOKEN = os.environ.get("THREADS_ACCESS_TOKEN", "")
+THREADS_USER_ID = os.environ.get("THREADS_USER_ID", "")
+
+# StockTwits
+STOCKTWITS_ACCESS_TOKEN = os.environ.get("STOCKTWITS_ACCESS_TOKEN", "")
+
 # Medium (browser automation — runs locally, not on GitHub Actions)
 MEDIUM_EMAIL = os.environ.get("MEDIUM_EMAIL", "msli2233bin@gmail.com")
 MEDIUM_PASSWORD = os.environ.get("MEDIUM_PASSWORD", "Lin2233509.")
@@ -156,6 +163,20 @@ LINK_STRATEGY = {
     "linkedin": {
         "style": "professional",   # LinkedIn: Professional tone, website preferred
         "link_every_n": 1,
+        "prefer": "hub",
+    },
+    "threads": {
+        "style": "minimal",        # Threads: Minimal links, focus on engagement
+        "link_every_n": 2,
+        "prefer": "substack",      # Prefer Substack link for Threads audience
+        "text_fallback": "Follow for daily market insights",
+    },
+    "stocktwits": {
+        "style": "none",           # StockTwits: No links (140 char limit), cashtags only
+        "link_every_n": 0,
+        "prefer": "hub",
+        "text_fallback": "",
+    },
         "prefer": "website",
     },
     "line": {
@@ -346,6 +367,8 @@ def generate_platform_content(platform: str):
         'line': generate_line_content,
         'medium': generate_medium_content,
         'substack': generate_substack_content,
+        'threads': generate_threads_content,
+        'stocktwits': generate_stocktwits_content,
     }
 
     gen_func = generators.get(platform)
@@ -1800,6 +1823,139 @@ def post_substack_article(article):
 
 
 # ============================================================
+# Threads Content Generation (Meta API)
+# ============================================================
+def generate_threads_content():
+    """Generate a Threads thread in today's persona voice.
+
+    Threads uses Meta API, supports threads (reply chains).
+    Max 500 chars per post. Free API: 250 posts/day.
+    """
+    if not GROQ_API_KEY:
+        return "Market update: Key levels to watch. Data over drama. #Investing #Trading"
+
+    try:
+        from groq import Groq
+        client = Groq(api_key=GROQ_API_KEY)
+
+        now = datetime.datetime.utcnow()
+        day = now.strftime("%A")
+        date_str = now.strftime("%b %d")
+        persona = get_daily_persona(platform_shift=4)
+        links = get_tracked_links("threads")
+        link_line = "\n- Include this link in the LAST post: " + links["substack"] if links.get("substack") else ""
+
+        response = client.chat.completions.create(
+            model="llama-3.1-8b-instant",
+            messages=[{
+                "role": "user",
+                "content": (
+                    "PERSONA: " + persona["emoji"] + " " + persona["name"] + " — " + persona["title"] + "\n"
+                    "STYLE: " + persona["style"] + "\n\n"
+                    "Write a DEEP-DIVE Threads thread (3-4 posts) for " + day + ", " + date_str + ".\n"
+                    "Focus on US stocks, global macro, or investment strategy.\n\n"
+                    "Hook: " + persona["hook"] + "\n\n"
+                    "Thread structure:\n"
+                    "Post 1/4 — HOOK + THE SETUP\n"
+                    "Post 2/4 — THE INSIGHT\n"
+                    "Post 3/4 — BY THE NUMBERS\n"
+                    "Post 4/4 — THE TAKEAWAY\n\n"
+                    "Rules:\n"
+                    "- Each post MAX 500 characters\n"
+                    "- Start each with number: 1/, 2/, 3/, 4/\n"
+                    "- Stay in character as " + persona["name"] + "\n"
+                    "- Include 3-4 specific numbers\n"
+                    "- End LAST post with: #Investing #Trading"
+                    + link_line + "\n"
+                    "- Do NOT promise returns or add disclaimers\n"
+                    "- Separate posts with '---POST_BREAK---'"
+                )
+            }],
+            max_tokens=700,
+            temperature=0.9
+        )
+
+        raw = response.choices[0].message.content.strip()
+        posts = [p.strip() for p in raw.split("---POST_BREAK---") if p.strip()]
+        return posts if len(posts) > 1 else (posts[0] if posts else raw)
+
+    except Exception as e:
+        print(f"  Threads: AI generation failed ({e})")
+        return "Markets in focus: Key levels and setups to watch. #Investing #Trading"
+
+
+# ============================================================
+# StockTwits Content Generation (Cashtag Community)
+# ============================================================
+def generate_stocktwits_content():
+    """Generate a StockTwits message with cashtag.
+
+    StockTwits: 140 char limit, must include $TICKER cashtag.
+    Vertical investing community — high conversion potential.
+    """
+    if not GROQ_API_KEY:
+        return "$SPY Key levels to watch. Stay disciplined. #Trading"
+
+    try:
+        from groq import Groq
+        client = Groq(api_key=GROQ_API_KEY)
+
+        now = datetime.datetime.utcnow()
+        day = now.strftime("%A")
+        date_str = now.strftime("%b %d")
+        persona = get_daily_persona(platform_shift=5)
+
+        # Try to get trending symbols for smarter content
+        trending_str = "$SPY, $QQQ, $AAPL"
+        try:
+            r = requests.get("https://api.stocktwits.com/api/2/trending/symbols.json", timeout=5)
+            if r.status_code == 200:
+                symbols = r.json().get("symbols", [])
+                trending_str = ", ".join(["$" + s.get("symbol", "") for s in symbols[:5]])
+        except Exception:
+            pass
+
+        response = client.chat.completions.create(
+            model="llama-3.1-8b-instant",
+            messages=[{
+                "role": "user",
+                "content": (
+                    "PERSONA: " + persona["emoji"] + " " + persona["name"] + " — " + persona["title"] + "\n"
+                    "STYLE: " + persona["style"] + "\n\n"
+                    "Write ONE StockTwits message for " + day + ", " + date_str + ".\n"
+                    "TRENDING: " + trending_str + "\n\n"
+                    "Pick ONE trending symbol and give an actionable take.\n\n"
+                    "CRITICAL RULES:\n"
+                    "- MAXIMUM 140 characters (hard limit)\n"
+                    "- MUST include at least one cashtag like $AAPL\n"
+                    "- Punchy, actionable, timely\n"
+                    "- Stay in character as " + persona["name"] + "\n"
+                    "- Do NOT promise returns\n"
+                    "- End with one hashtag"
+                )
+            }],
+            max_tokens=80,
+            temperature=0.9
+        )
+
+        text = response.choices[0].message.content.strip()
+
+        # Ensure cashtag
+        if "$" not in text:
+            text = text[:135] + " " + persona["hashtags"][0]
+
+        # Hard truncate
+        if len(text) > 140:
+            text = text[:137] + "..."
+
+        return text
+
+    except Exception as e:
+        print(f"  StockTwits: AI generation failed ({e})")
+        return "$SPY Watching key levels. Data over drama. #Trading"
+
+
+# ============================================================
 # Main
 # ============================================================
 def main():
@@ -1926,6 +2082,36 @@ def main():
             post_line(line_content, lang=lang)
     else:
         print("LINE: Not configured")
+    print()
+    
+    # --- Threads (Meta API) ---
+    print("--- Threads ---")
+    if THREADS_ACCESS_TOKEN and THREADS_USER_ID:
+        print("Threads: Configured")
+        try:
+            from threads_poster import post_to_threads
+            post_to_threads()
+        except Exception as e:
+            print("  Threads: Failed - " + str(e))
+    else:
+        print("Threads: Not configured (THREADS_ACCESS_TOKEN / THREADS_USER_ID missing)")
+        print("  -> Setup: developers.facebook.com > create App > add Threads API")
+        print("  -> Register: threads.net with msli2233bin@gmail.com")
+    print()
+    
+    # --- StockTwits ---
+    print("--- StockTwits ---")
+    if STOCKTWITS_ACCESS_TOKEN:
+        print("StockTwits: Configured")
+        try:
+            from stocktwits_poster import post_to_stocktwits
+            post_to_stocktwits()
+        except Exception as e:
+            print("  StockTwits: Failed - " + str(e))
+    else:
+        print("StockTwits: Not configured (STOCKTWITS_ACCESS_TOKEN missing)")
+        print("  -> Register: stocktwits.com with msli2233bin@gmail.com")
+        print("  -> Create app: api.stocktwits.com/developers")
     print()
     
     # --- Medium (browser automation, LOCAL ONLY) ---
