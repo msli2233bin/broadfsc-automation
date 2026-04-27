@@ -47,5 +47,20 @@
     "method": "proxy-codetabs-html-verified",
     "note": "Account exists but Reddit restricts about.json access for new/low-karma accounts. Check karma manually.",
     "checked_at": "2026-04-26T07:11:15.594692"
+  },
+  {
+    "success": true,
+    "username": "Only-Character4025",
+    "link_karma": -1,
+    "comment_karma": -1,
+    "total_karma": -1,
+    "age_days": -1,
+    "age_str": "Unknown (about.json restricted for this account)",
+    "has_verified_email": true,
+    "is_suspended": false,
+    "ready_for_posting": false,
+    "method": "proxy-codetabs-html-verified",
+    "note": "Account exists but Reddit restricts about.json access for new/low-karma accounts. Check karma manually.",
+    "checked_at": "2026-04-27T09:32:36.694132"
   }
 ]
