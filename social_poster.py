@@ -83,7 +83,8 @@ MEDIUM_PASSWORD = os.environ.get("MEDIUM_PASSWORD", "Lin2233509.")
 # Substack (browser automation — runs locally, not on GitHub Actions)
 SUBSTACK_EMAIL = os.environ.get("SUBSTACK_EMAIL", "msli2233bin@gmail.com")
 SUBSTACK_PASSWORD = os.environ.get("SUBSTACK_PASSWORD", "Lin2233509.")
-SUBSTACK_PUB_URL = os.environ.get("SUBSTACK_PUB_URL", "https://broadcasts.substack.com")
+SUBSTACK_PUB_URL = os.environ.get("SUBSTACK_PUB_URL", "https://broadcastmarketintelligence.substack.com")
+SUBSTACK_LINK = os.environ.get("SUBSTACK_LINK", "https://broadcastmarketintelligence.substack.com")
 
 # AI
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
@@ -108,11 +109,13 @@ def get_tracked_links(platform):
             "telegram": get_tracking_url(TELEGRAM_LINK, platform, "telegram"),
             "website": get_tracking_url(WEBSITE_LINK, platform, "website"),
             "hub": get_tracking_url(HUB_LINK, platform, "website"),
+            "substack": get_tracking_url(SUBSTACK_LINK, platform, "website"),
         }
     return {
         "telegram": TELEGRAM_LINK,
         "website": WEBSITE_LINK,
         "hub": HUB_LINK,
+        "substack": SUBSTACK_LINK,
     }
 
 
@@ -590,6 +593,7 @@ def generate_mastodon_content():
                     "- Include 2-3 specific numbers (prices, yields, %, data points)\n"
                     "- End with: " + tags + "\n"
                     "- Add link: " + links["hub"] + "\n"
+                    "- Deep analysis: " + links["substack"] + "\n"
                     "- Do NOT promise returns or give direct buy/sell advice"
                 )
             }],
@@ -700,6 +704,7 @@ def generate_discord_content():
                     "- End with: " + tags + "\n"
                     "- Subscribe: " + links["telegram"] + "\n"
                     "- Learn free: " + links["hub"] + "\n"
+                    "- Deep analysis: " + links["substack"] + "\n"
                     "- Add ⚠️ 'Not financial advice' disclaimer at the very end\n"
                     "- Do NOT promise returns"
                 )
@@ -738,7 +743,8 @@ def get_fallback_discord():
             "You don't need to predict a recession. You need to be prepared for one. That means reducing leverage, raising cash, and owning assets that zig when equities zag.\n\n"
             "**What do you think — soft landing or hard reality?** Drop your take below 👇\n\n"
             f"Subscribe for daily briefings: {links['telegram']}\n"
-            f"Learn free: {links['hub']}\n\n"
+            f"Learn free: {links['hub']}\n"
+            f"Deep analysis: {links['substack']}\n\n"
             "⚠️ Not financial advice\n\n"
             "#Investing #Trading #MarketAnalysis #StockMarket #Finance"
         ),
@@ -757,7 +763,8 @@ def get_fallback_discord():
             "The biggest market moves often come from hidden leverage — not fundamentals. When you see a violent, unexplained selloff, think: who's being forced to sell?\n\n"
             "**What's the next carry trade unwind? JPY is still cheap. What happens if BOJ hikes again?** 👇\n\n"
             f"Subscribe for daily briefings: {links['telegram']}\n"
-            f"Learn free: {links['hub']}\n\n"
+            f"Learn free: {links['hub']}\n"
+            f"Deep analysis: {links['substack']}\n\n"
             "⚠️ Not financial advice\n\n"
             "#Investing #Trading #MarketAnalysis #StockMarket #Finance"
         ),
@@ -1210,7 +1217,9 @@ def generate_tweet_content():
 
         persona = get_daily_persona(platform_shift=0)
         link = get_platform_link("twitter")
+        links = get_tracked_links("twitter")
         link_line = f"\n- Include this link in the LAST tweet: {link}" if link and not link.startswith("Learn") else "\n- Do NOT include any links (link in bio instead)"
+        substack_line = f"\n- Also add in LAST tweet: 'Deep analysis: {links['substack']}'" if "substack" in links else ""
 
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
@@ -1237,6 +1246,7 @@ def generate_tweet_content():
                     "- Do NOT promise returns or give direct financial advice\n"
                     "- NEVER start with 'Market update', 'Key themes', or 'Markets are'\n"
                     "- Separate each tweet with '---TWEET_BREAK---' on its own line"
+                    + substack_line
                 )
             }],
             max_tokens=600,

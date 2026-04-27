@@ -70,7 +70,7 @@ jobs:
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
         run: python reddit_poster.py
 
-      - name: Post to Substack (Playwright headless)
+      - name: Post to Substack (Playwright headless, Mon/Wed/Fri only)
         uses: nick-fields/retry@v3
         with:
           timeout_minutes: 8
