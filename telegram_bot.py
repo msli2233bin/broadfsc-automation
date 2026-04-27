@@ -72,6 +72,14 @@ try:
 except ImportError:
     HAS_ANALYTICS = False
 
+# 🆕 主动销售 + 自我评估 + 情感学习
+try:
+    from proactive_agent import ProactiveSalesAgent, AISelfEvaluator, EmotionLearner
+    HAS_PROACTIVE = True
+except ImportError:
+    HAS_PROACTIVE = False
+    logger.warning("proactive_agent module not found — proactive outreach disabled")
+
 # ============================================================
 # 配置日志
 # ============================================================
@@ -443,6 +451,12 @@ def build_system_prompt(user_lang="en", user_name="there", memory_context="", in
 {memory_context}
 Use this knowledge naturally in conversation — don't list it, just weave it in when relevant.
 """
+    
+    # 🆕 注入情感学习上下文
+    if HAS_PROACTIVE and hasattr(EmotionLearner, '_instance') and EmotionLearner._instance:
+        emotion_context = EmotionLearner._instance.get_emotional_context(user_id)
+        if emotion_context:
+            prompt += emotion_context
     
     # 🆕 注入销售策略指令
     if sales_engine and user_id:
@@ -1508,6 +1522,11 @@ You are NOT a passive FAQ bot. You are a skilled investment advisor who naturall
 # 全局销售引擎实例
 sales_engine = None
 
+# 🆕 全局主动销售/情感学习实例
+_proactive_agent = None
+_emotion_learner = None
+_ai_evaluator = None
+
 
 def _load_sales_knowledge(query, max_chars=800):
     """从本地 knowledge/sales/ 加载相关销售知识"""
@@ -2305,6 +2324,13 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         except Exception:
             await update.message.reply_text(reply)
 
+        # 🆕 情感学习 — 从每次互动中学习情感模式
+        if HAS_PROACTIVE:
+            try:
+                _emotion_learner.learn_from_interaction(user_id, user_message, reply)
+            except Exception as e:
+                logger.debug(f"Emotion learning failed (non-critical): {e}")
+
     except Exception as e:
         logger.error(f"AI response error: {e}")
         # 友好降级回复（SOUL 风格：不说"出错了"，而是人性化的说法）
@@ -2628,6 +2654,17 @@ def main():
     global sales_engine
     sales_engine = SalesIntelligenceEngine()
 
+    # 🆕 初始化主动销售 + 情感学习 + 自我评估
+    global _proactive_agent, _emotion_learner, _ai_evaluator
+    if HAS_PROACTIVE:
+        _emotion_learner = EmotionLearner(memory_system, groq_client)
+        EmotionLearner._instance = _emotion_learner  # 供 system prompt 访问
+        _ai_evaluator = AISelfEvaluator(memory_system, sales_engine)
+        _proactive_agent = ProactiveSalesAgent(memory_system, sales_engine, groq_client)
+        logger.info("   🤝 Proactive Sales Agent: Ready ✅")
+        logger.info("   🧠 AI Self-Evaluator: Ready ✅")
+        logger.info("   ❤️ Emotion Learner: Ready ✅")
+
     # 代理配置（V2rayN / Clash 等本地代理）
     _proxy = os.environ.get("TELEGRAM_PROXY", "http://127.0.0.1:10808")
     # 验证代理是否可用（不强制，连不上也尝试直连）
@@ -2663,6 +2700,35 @@ def main():
         app.add_handler(CommandHandler("memory", admin_memory))
         app.add_handler(CommandHandler("sales", admin_sales))
 
+    # 🆕 自我评估命令
+    async def admin_eval(update: Update, context: ContextTypes.DEFAULT_TYPE):
+        if not ADMIN_CHAT_ID:
+            return
+        if str(update.effective_user.id) != ADMIN_CHAT_ID:
+            return
+        if not _ai_evaluator:
+            await update.message.reply_text("❌ AI Evaluator not initialized.")
+            return
+        report_text = _ai_evaluator.get_evaluation_summary_text()
+        await update.message.reply_text(report_text, parse_mode="Markdown")
+    
+    # 🆕 手动触发主动回访命令
+    async def admin_outreach(update: Update, context: ContextTypes.DEFAULT_TYPE):
+        if not ADMIN_CHAT_ID:
+            return
+        if str(update.effective_user.id) != ADMIN_CHAT_ID:
+            return
+        if not _proactive_agent:
+            await update.message.reply_text("❌ Proactive Agent not initialized.")
+            return
+        await update.message.reply_text("🤝 Starting proactive outreach...")
+        sent = await _proactive_agent.run_proactive_outreach()
+        await update.message.reply_text(f"✅ Outreach complete: {sent} messages sent")
+    
+    if ADMIN_CHAT_ID:
+        app.add_handler(CommandHandler("eval", admin_eval))
+        app.add_handler(CommandHandler("outreach", admin_outreach))
+
     app.add_handler(CallbackQueryHandler(button_callback))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
@@ -2676,6 +2742,48 @@ def main():
         logger.info(f"   👤 Admin: {ADMIN_CHAT_ID} — Live chat enabled")
     else:
         logger.info("   👤 No admin — WhatsApp-only mode")
+
+    # 🆕 启动主动销售回访定时器（后台任务）
+    if _proactive_agent:
+        import asyncio
+        loop = asyncio.get_event_loop()
+        
+        # 创建主动回访任务
+        async def _start_proactive(app):
+            await _proactive_agent.start_proactive_outreach(app.bot)
+        
+        loop.create_task(_start_proactive(app))
+        logger.info("   🤝 Proactive outreach scheduler started — daily at 10:00 UTC")
+    
+    # 🆕 每日自我评估 + 管理员通知
+    if _ai_evaluator and ADMIN_CHAT_ID:
+        async def _daily_self_eval(app):
+            """每天 UTC 02:00 执行自我评估并通知管理员"""
+            while True:
+                try:
+                    now = datetime.now(timezone.utc)
+                    target = now.replace(hour=2, minute=0, second=0, microsecond=0)
+                    if now >= target:
+                        target += timedelta(days=1)
+                    wait = (target - now).total_seconds()
+                    await asyncio.sleep(wait)
+                    
+                    report_text = _ai_evaluator.get_evaluation_summary_text()
+                    if report_text and ADMIN_CHAT_ID:
+                        await app.bot.send_message(
+                            chat_id=int(ADMIN_CHAT_ID),
+                            text=report_text,
+                            parse_mode="Markdown"
+                        )
+                        logger.info("🧠 Daily self-evaluation report sent to admin")
+                except asyncio.CancelledError:
+                    break
+                except Exception as e:
+                    logger.error(f"Daily self-eval error: {e}")
+                    await asyncio.sleep(3600)
+        
+        loop.create_task(_daily_self_eval(app))
+        logger.info("   🧠 Daily self-evaluation scheduler started — daily at 02:00 UTC")
 
     app.run_polling(allowed_updates=Update.ALL_TYPES)
 

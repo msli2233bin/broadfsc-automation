@@ -12,6 +12,9 @@ on:
     - cron: '30 13 * * 1-5'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   pre-market-briefing:
     runs-on: ubuntu-latest
@@ -20,6 +23,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
       - name: Setup Python 3.11
         uses: actions/setup-python@v5
@@ -43,3 +48,14 @@ jobs:
           TELEGRAM_CHANNEL_ZH_TW: ${{ secrets.TELEGRAM_CHANNEL_ZH_TW }}
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
         run: python daily_promotion.py
+
+      - name: Commit & push analytics data
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "BroadFSC Bot"
+          git config user.email "bot@broadfsc.com"
+          git add analytics/ || true
+          git diff --staged --quiet || git commit -m "chore(daily): sync analytics after briefing [skip ci]"
+          git push https://x-access-token:${GH_TOKEN}@github.com/msli2233bin/broadfsc-automation.git HEAD:main
