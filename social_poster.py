@@ -2077,7 +2077,14 @@ def main():
             print("  [" + lang_name + "]")
             line_content = generate_line_content(lang)
             print("  Content: " + line_content[:100] + "...")
-            post_line(line_content, lang=lang)
+            try:
+                result = post_line(line_content, lang=lang)
+                if HAS_ANALYTICS:
+                    log_post(platform="line", post_type=f"flex_{lang}", content_preview=line_content[:100], status="success" if result else "failed")
+            except Exception as e:
+                print("  LINE: Failed - " + str(e))
+                if HAS_ANALYTICS:
+                    log_post(platform="line", post_type=f"flex_{lang}", content_preview=line_content[:100], status="failed", error_msg=str(e)[:200])
     else:
         print("LINE: Not configured")
     print()
@@ -2088,9 +2095,16 @@ def main():
         print("Threads: Configured")
         try:
             from threads_poster import post_to_threads
-            post_to_threads()
+            success = post_to_threads()
+            if HAS_ANALYTICS:
+                if success:
+                    log_post(platform="threads", post_type="thread", content_preview="Threads post", status="success")
+                else:
+                    log_post(platform="threads", post_type="thread", content_preview="Threads post", status="failed", error_msg="post_to_threads returned False")
         except Exception as e:
             print("  Threads: Failed - " + str(e))
+            if HAS_ANALYTICS:
+                log_post(platform="threads", post_type="thread", content_preview="Threads post", status="failed", error_msg=str(e)[:200])
     else:
         print("Threads: Not configured (THREADS_ACCESS_TOKEN / THREADS_USER_ID missing)")
         print("  -> Setup: developers.facebook.com > create App > add Threads API")
@@ -2103,9 +2117,16 @@ def main():
         print("StockTwits: Configured")
         try:
             from stocktwits_poster import post_to_stocktwits
-            post_to_stocktwits()
+            success = post_to_stocktwits()
+            if HAS_ANALYTICS:
+                if success:
+                    log_post(platform="stocktwits", post_type="message", content_preview="StockTwits post", status="success")
+                else:
+                    log_post(platform="stocktwits", post_type="message", content_preview="StockTwits post", status="failed", error_msg="post_to_stocktwits returned False")
         except Exception as e:
             print("  StockTwits: Failed - " + str(e))
+            if HAS_ANALYTICS:
+                log_post(platform="stocktwits", post_type="message", content_preview="StockTwits post", status="failed", error_msg=str(e)[:200])
     else:
         print("StockTwits: Not configured (STOCKTWITS_ACCESS_TOKEN missing)")
         print("  -> Register: stocktwits.com with msli2233bin@gmail.com")
@@ -2120,7 +2141,16 @@ def main():
         if isinstance(medium_article, dict):
             print("  Title: " + medium_article.get("title", "N/A"))
             print("  Content: " + str(len(medium_article.get("content", ""))) + " chars")
-            post_medium_article(medium_article)
+            try:
+                success, url = post_medium_article(medium_article)
+                if HAS_ANALYTICS:
+                    log_post(platform="medium", post_type="story", content_preview=medium_article.get("title", "")[:100],
+                             status="success" if success else "failed", error_msg="" if success else "post_medium_article returned False")
+            except Exception as e:
+                print("  Medium: Failed - " + str(e))
+                if HAS_ANALYTICS:
+                    log_post(platform="medium", post_type="story", content_preview=medium_article.get("title", "")[:100],
+                             status="failed", error_msg=str(e)[:200])
         else:
             print("  Unexpected content type: " + str(type(medium_article)))
     else:
@@ -2135,7 +2165,19 @@ def main():
         if isinstance(substack_article, dict):
             print("  Title: " + substack_article.get("title", "N/A"))
             print("  Content: " + str(len(substack_article.get("content", ""))) + " chars")
-            post_substack_article(substack_article)
+            try:
+                success, url = post_substack_article(substack_article)
+                if HAS_ANALYTICS:
+                    log_post(platform="substack", post_type="article",
+                             content_preview=substack_article.get("title", "")[:100],
+                             status="success" if success else "failed",
+                             error_msg="" if success else "post_substack_article returned False")
+            except Exception as e:
+                print("  Substack: Failed - " + str(e))
+                if HAS_ANALYTICS:
+                    log_post(platform="substack", post_type="article",
+                             content_preview=substack_article.get("title", "")[:100],
+                             status="failed", error_msg=str(e)[:200])
         else:
             print("  Unexpected content type: " + str(type(substack_article)))
     else:
