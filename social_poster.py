@@ -177,8 +177,6 @@ LINK_STRATEGY = {
         "prefer": "hub",
         "text_fallback": "",
     },
-        "prefer": "website",
-    },
     "line": {
         "style": "flex",           # LINE: Flex Message with CTA button, link in button
         "link_every_n": 1,
