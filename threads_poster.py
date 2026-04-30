@@ -296,6 +296,13 @@ def post_threads_thread(posts):
 def post_to_threads():
     """Main entry: generate content and post to Threads."""
     print("\n📱 Threads ===")
+
+    # Auto-refresh token before posting
+    current_token = check_and_refresh_token()
+    if not current_token:
+        print("  Threads: No valid token, skipping post")
+        return False
+
     content = generate_threads_content()
 
     if isinstance(content, list):
@@ -358,6 +365,79 @@ def refresh_access_token(long_lived_token=None):
         return None
 
 
+def check_and_refresh_token():
+    """Check if token is about to expire and auto-refresh.
+
+    Long-lived tokens last 60 days and can be refreshed once per day.
+    This should be called before every posting session.
+    Returns the current (possibly refreshed) token, or None on failure.
+    """
+    global THREADS_ACCESS_TOKEN
+    token = THREADS_ACCESS_TOKEN
+    if not token:
+        print("  Threads: No token configured, skipping refresh check")
+        return None
+
+    # Try to verify current token
+    try:
+        r = requests.get(
+            f"{THREADS_API_BASE}/me",
+            params={"access_token": token},
+            timeout=10,
+        )
+        if r.status_code == 200:
+            # Token still valid, try to refresh it (extends expiry)
+            print("  Threads: Token valid, attempting daily refresh...")
+            new_token = refresh_access_token(token)
+            if new_token:
+                print("  Threads: Token refreshed successfully")
+                # Update environment for this session
+                os.environ["THREADS_ACCESS_TOKEN"] = new_token
+                THREADS_ACCESS_TOKEN = new_token
+                # Save refreshed token to .env
+                _save_token_to_env(new_token)
+                return new_token
+            else:
+                print("  Threads: Refresh not needed or failed, using current token")
+                return token
+        else:
+            print(f"  Threads: Token expired or invalid (HTTP {r.status_code})")
+            print("  Threads: Manual re-authorization required via get_threads_token_v3.py")
+            return None
+    except Exception as e:
+        print(f"  Threads: Token check error: {e}")
+        return None
+
+
+def _save_token_to_env(token):
+    """Save refreshed token to .env file."""
+    env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")
+    try:
+        env_lines = []
+        try:
+            with open(env_path, "r", encoding="utf-8") as f:
+                env_lines = f.readlines()
+        except FileNotFoundError:
+            pass
+
+        updated = False
+        new_lines = []
+        for line in env_lines:
+            if line.startswith("THREADS_ACCESS_TOKEN="):
+                new_lines.append(f"THREADS_ACCESS_TOKEN={token}\n")
+                updated = True
+            else:
+                new_lines.append(line)
+
+        if not updated:
+            new_lines.append(f"THREADS_ACCESS_TOKEN={token}\n")
+
+        with open(env_path, "w", encoding="utf-8") as f:
+            f.writelines(new_lines)
+    except Exception as e:
+        print(f"  Threads: Failed to save token to .env: {e}")
+
+
 # ============================================================
 # Main
 # ============================================================
@@ -367,15 +447,23 @@ if __name__ == "__main__":
         if cmd == "post":
             post_to_threads()
         elif cmd == "refresh-token":
-            new_token = refresh_access_token()
+            new_token = check_and_refresh_token()
             if new_token:
                 print(f"New token: {new_token[:20]}...")
+            else:
+                print("Token refresh failed. Re-authorization needed.")
         elif cmd == "exchange-token":
             short_token = sys.argv[2] if len(sys.argv) > 2 else None
             new_token = refresh_long_lived_token(short_token)
             if new_token:
                 print(f"Long-lived token: {new_token[:20]}...")
+        elif cmd == "check-token":
+            token = check_and_refresh_token()
+            if token:
+                print(f"Token OK: {token[:30]}...")
+            else:
+                print("Token invalid or expired. Run get_threads_token_v3.py")
         else:
-            print("Usage: threads_poster.py [post|refresh-token|exchange-token]")
+            print("Usage: threads_poster.py [post|refresh-token|exchange-token|check-token]")
     else:
         post_to_threads()
