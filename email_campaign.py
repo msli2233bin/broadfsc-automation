@@ -324,124 +324,146 @@ class BrevoClient:
 # Email Templates
 # ============================================================
 def get_default_templates():
-    """Pre-built email templates for BroadFSC outreach."""
+    """Professional email templates — designed to look like personal analyst notes, NOT marketing."""
 
     templates = {}
 
-    # Template 1: Market Insights Introduction
+    # Template 1: Professional Market Note — reads like a personal note from an analyst
     templates["market_insights_intro"] = {
-        "name": "Market Insights Introduction",
-        "subject": "{{personality_name}}'s Market Brief — {{ticker_focus}}",
+        "name": "Professional Market Note",
+        "subject": "{{subject}}",
         "category": "cold_outreach",
         "html": """<!DOCTYPE html>
 <html>
 <head><meta charset="utf-8"></head>
-<body style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background: #ffffff;">
+<body style="margin:0; padding:20px; background-color:#f4f5f7; font-family:Georgia,'Times New Roman',serif;">
 
-<div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 30px; border-radius: 12px 12px 0 0;">
-  <h1 style="color: #e94560; margin: 0; font-size: 22px;">{{emoji}} {{headline}}</h1>
-  <p style="color: #a8a8b3; margin: 8px 0 0; font-size: 14px;">{{personality_name}} | {{personality_title}} | BroadFSC</p>
-</div>
+<table width="100%" cellpadding="0" cellspacing="0" style="max-width:580px; margin:0 auto; background-color:#ffffff;">
+<!-- SIMPLE HEADER — just a thin accent line, no big colored box -->
+<tr><td style="background-color:#1a1a2e; height:4px; font-size:1px; line-height:1px;">&nbsp;</td></tr>
 
-<div style="padding: 25px; border: 1px solid #e0e0e0; border-top: none;">
-  <p style="font-size: 16px; line-height: 1.6; color: #333;">Hi {{first_name}},</p>
+<!-- BODY — clean, text-forward, no boxes no buttons -->
+<tr><td style="padding:32px 36px 20px;">
+  <p style="font-family:Georgia,serif; font-size:14px; color:#888; margin:0 0 20px; letter-spacing:0.5px; text-transform:uppercase;">{{headline}}</p>
 
-  <p style="font-size: 15px; line-height: 1.6; color: #444;">{{opening_paragraph}}</p>
+  <p style="font-family:Georgia,serif; font-size:17px; line-height:1.65; color:#1a1a1a; margin:0 0 18px;">{{hook_sentence}}</p>
 
-  <div style="background: #f8f9fa; border-left: 4px solid #e94560; padding: 15px; margin: 20px 0; border-radius: 0 8px 8px 0;">
-    <p style="margin: 0; font-size: 14px; color: #555;"><strong>Key Takeaway:</strong> {{key_takeaway}}</p>
-  </div>
+  <p style="font-family:Georgia,serif; font-size:15px; line-height:1.7; color:#333; margin:0 0 18px;">{{insight_paragraph}}</p>
 
-  <p style="font-size: 15px; line-height: 1.6; color: #444;">{{analysis_paragraph}}</p>
+  <p style="font-family:Georgia,serif; font-size:15px; line-height:1.7; color:#333; margin:0 0 24px;"><strong style="color:#1a1a1a;">Why it matters:</strong> {{so_what}}</p>
 
-  <p style="font-size: 15px; line-height: 1.6; color: #444;">{{action_paragraph}}</p>
+  <p style="font-family:Georgia,serif; font-size:14px; line-height:1.7; color:#555; margin:0 0 28px; border-top:1px solid #eee; padding-top:16px;">{{natural_reference}}</p>
 
-  <div style="text-align: center; margin: 25px 0;">
-    <a href="https://www.broadfsc.com/different" style="background: #e94560; color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block;">Explore BroadFSC Insights</a>
-  </div>
+  <!-- SIGNATURE — professional, includes contact naturally -->
+  <table width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #ddd; padding-top:16px;">
+  <tr>
+    <td style="padding-top:12px;">
+      <p style="font-family:Arial,sans-serif; font-size:14px; color:#1a1a1a; margin:0;"><strong>{{personality_name}}</strong></p>
+      <p style="font-family:Arial,sans-serif; font-size:13px; color:#666; margin:2px 0 0;">{{personality_title}}, BroadFSC</p>
+      <p style="font-family:Arial,sans-serif; font-size:13px; margin:6px 0 0;"><a href="mailto:msli2233bin@gmail.com" style="color:#1a1a2e; text-decoration:none;">msli2233bin@gmail.com</a></p>
+      <p style="font-family:Arial,sans-serif; font-size:13px; margin:2px 0 0;"><a href="https://www.broadfsc.com/different" style="color:#1a1a2e; text-decoration:none;">broadfsc.com</a></p>
+    </td>
+  </tr>
+  </table>
+</td></tr>
 
-  <p style="font-size: 14px; line-height: 1.6; color: #666;">{{sign_off}}</p>
-</div>
-
-<div style="background: #1a1a2e; padding: 15px 25px; border-radius: 0 0 12px 12px;">
-  <p style="color: #666; font-size: 11px; margin: 0;">Broad Investment Securities | Licensed & Regulated</p>
-  <p style="color: #555; font-size: 11px; margin: 5px 0 0;">This is not financial advice. Past performance does not guarantee future results.</p>
-</div>
+<!-- FOOTER — minimal -->
+<tr><td style="background-color:#f8f8f8; padding:14px 36px; text-align:center;">
+  <p style="font-family:Arial,sans-serif; color:#999; font-size:11px; margin:0;">Broad Investment Securities &bull; Licensed &amp; Regulated</p>
+</td></tr>
+</table>
 
 </body>
 </html>"""
     }
 
-    # Template 2: Newsletter Style
+    # Template 2: Weekly Market Note — same clean style, more data points
     templates["weekly_digest"] = {
-        "name": "Weekly Market Digest",
-        "subject": "📊 Weekly Market Digest — {{week_date}}",
+        "name": "Weekly Market Note",
+        "subject": "{{subject}}",
         "category": "newsletter",
         "html": """<!DOCTYPE html>
 <html>
 <head><meta charset="utf-8"></head>
-<body style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background: #ffffff;">
+<body style="margin:0; padding:20px; background-color:#f4f5f7; font-family:Georgia,'Times New Roman',serif;">
 
-<div style="background: #1a1a2e; padding: 25px; border-radius: 12px 12px 0 0; text-align: center;">
-  <h1 style="color: #e94560; margin: 0;">Weekly Market Digest</h1>
-  <p style="color: #a8a8b3; margin: 8px 0 0;">{{week_date}} | BroadFSC Research</p>
-</div>
+<table width="100%" cellpadding="0" cellspacing="0" style="max-width:580px; margin:0 auto; background-color:#ffffff;">
+<tr><td style="background-color:#1a1a2e; height:4px; font-size:1px; line-height:1px;">&nbsp;</td></tr>
 
-<div style="padding: 25px; border: 1px solid #e0e0e0; border-top: none;">
-  <p style="font-size: 16px; color: #333;">Hi {{first_name}},</p>
-  <p style="font-size: 15px; color: #444;">Here's your weekly market overview from the BroadFSC team:</p>
+<tr><td style="padding:32px 36px 20px;">
+  <p style="font-family:Georgia,serif; font-size:14px; color:#888; margin:0 0 20px; letter-spacing:0.5px; text-transform:uppercase;">{{headline}}</p>
 
-  {{market_sections}}
+  <p style="font-family:Georgia,serif; font-size:17px; line-height:1.65; color:#1a1a1a; margin:0 0 18px;">{{hook_sentence}}</p>
 
-  <div style="text-align: center; margin: 25px 0;">
-    <a href="https://www.broadfsc.com/different" style="background: #e94560; color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: bold;">Get Full Analysis</a>
-  </div>
+  <p style="font-family:Georgia,serif; font-size:15px; line-height:1.7; color:#333; margin:0 0 18px;">{{insight_paragraph}}</p>
 
-  <p style="font-size: 14px; color: #666;">{{sign_off}}</p>
-</div>
+  <p style="font-family:Georgia,serif; font-size:15px; line-height:1.7; color:#333; margin:0 0 24px;"><strong style="color:#1a1a1a;">Why it matters:</strong> {{so_what}}</p>
 
-<div style="background: #1a1a2e; padding: 15px 25px; border-radius: 0 0 12px 12px;">
-  <p style="color: #666; font-size: 11px; margin: 0;">Broad Investment Securities | Licensed & Regulated</p>
-</div>
+  <p style="font-family:Georgia,serif; font-size:14px; line-height:1.7; color:#555; margin:0 0 28px; border-top:1px solid #eee; padding-top:16px;">{{natural_reference}}</p>
+
+  <!-- SIGNATURE -->
+  <table width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #ddd; padding-top:16px;">
+  <tr>
+    <td style="padding-top:12px;">
+      <p style="font-family:Arial,sans-serif; font-size:14px; color:#1a1a1a; margin:0;"><strong>{{personality_name}}</strong></p>
+      <p style="font-family:Arial,sans-serif; font-size:13px; color:#666; margin:2px 0 0;">{{personality_title}}, BroadFSC</p>
+      <p style="font-family:Arial,sans-serif; font-size:13px; margin:6px 0 0;"><a href="mailto:msli2233bin@gmail.com" style="color:#1a1a2e; text-decoration:none;">msli2233bin@gmail.com</a></p>
+      <p style="font-family:Arial,sans-serif; font-size:13px; margin:2px 0 0;"><a href="https://www.broadfsc.com/different" style="color:#1a1a2e; text-decoration:none;">broadfsc.com</a></p>
+    </td>
+  </tr>
+  </table>
+</td></tr>
+
+<tr><td style="background-color:#f8f8f8; padding:14px 36px; text-align:center;">
+  <p style="font-family:Arial,sans-serif; color:#999; font-size:11px; margin:0;">Broad Investment Securities &bull; Licensed &amp; Regulated</p>
+</td></tr>
+</table>
 
 </body>
 </html>"""
     }
 
-    # Template 3: Re-engagement
+    # Template 3: Re-engagement — short, personal, no pressure
     templates["re_engage"] = {
-        "name": "Re-engagement",
-        "subject": "Still watching the markets? 📈",
+        "name": "Quick Check-in",
+        "subject": "{{subject}}",
         "category": "re_engagement",
         "html": """<!DOCTYPE html>
 <html>
 <head><meta charset="utf-8"></head>
-<body style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+<body style="margin:0; padding:20px; background-color:#f4f5f7; font-family:Georgia,'Times New Roman',serif;">
 
-<div style="background: #1a1a2e; padding: 25px; border-radius: 12px 12px 0 0;">
-  <h1 style="color: #e94560; margin: 0; font-size: 22px;">We miss you, {{first_name}} 👋</h1>
-</div>
+<table width="100%" cellpadding="0" cellspacing="0" style="max-width:580px; margin:0 auto; background-color:#ffffff;">
+<tr><td style="background-color:#1a1a2e; height:4px; font-size:1px; line-height:1px;">&nbsp;</td></tr>
 
-<div style="padding: 25px; border: 1px solid #e0e0e0; border-top: none;">
-  <p style="font-size: 16px; color: #333;">Hi {{first_name}},</p>
-  <p style="font-size: 15px; color: #444;">It's been a while since you checked in with BroadFSC. A lot has changed in the markets — and we've been busy:</p>
+<tr><td style="padding:32px 36px 20px;">
+  <p style="font-family:Georgia,serif; font-size:14px; color:#888; margin:0 0 20px; letter-spacing:0.5px; text-transform:uppercase;">Quick note</p>
 
-  <ul style="font-size: 15px; color: #444; line-height: 1.8;">
-    <li>{{recent_update_1}}</li>
-    <li>{{recent_update_2}}</li>
-    <li>{{recent_update_3}}</li>
-  </ul>
+  <p style="font-family:Georgia,serif; font-size:17px; line-height:1.65; color:#1a1a1a; margin:0 0 18px;">{{hook_sentence}}</p>
 
-  <div style="text-align: center; margin: 25px 0;">
-    <a href="https://www.broadfsc.com/different" style="background: #e94560; color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: bold;">Catch Up Now</a>
-  </div>
+  <p style="font-family:Georgia,serif; font-size:15px; line-height:1.7; color:#333; margin:0 0 18px;">{{insight_paragraph}}</p>
 
-  <p style="font-size: 14px; color: #666;">{{sign_off}}</p>
-</div>
+  <p style="font-family:Georgia,serif; font-size:15px; line-height:1.7; color:#333; margin:0 0 24px;"><strong style="color:#1a1a1a;">Why it matters:</strong> {{so_what}}</p>
 
-<div style="background: #1a1a2e; padding: 15px 25px; border-radius: 0 0 12px 12px;">
-  <p style="color: #666; font-size: 11px; margin: 0;">Broad Investment Securities</p>
-</div>
+  <p style="font-family:Georgia,serif; font-size:14px; line-height:1.7; color:#555; margin:0 0 28px; border-top:1px solid #eee; padding-top:16px;">{{natural_reference}}</p>
+
+  <!-- SIGNATURE -->
+  <table width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #ddd; padding-top:16px;">
+  <tr>
+    <td style="padding-top:12px;">
+      <p style="font-family:Arial,sans-serif; font-size:14px; color:#1a1a1a; margin:0;"><strong>{{personality_name}}</strong></p>
+      <p style="font-family:Arial,sans-serif; font-size:13px; color:#666; margin:2px 0 0;">{{personality_title}}, BroadFSC</p>
+      <p style="font-family:Arial,sans-serif; font-size:13px; margin:6px 0 0;"><a href="mailto:msli2233bin@gmail.com" style="color:#1a1a2e; text-decoration:none;">msli2233bin@gmail.com</a></p>
+      <p style="font-family:Arial,sans-serif; font-size:13px; margin:2px 0 0;"><a href="https://www.broadfsc.com/different" style="color:#1a1a2e; text-decoration:none;">broadfsc.com</a></p>
+    </td>
+  </tr>
+  </table>
+</td></tr>
+
+<tr><td style="background-color:#f8f8f8; padding:14px 36px; text-align:center;">
+  <p style="font-family:Arial,sans-serif; color:#999; font-size:11px; margin:0;">Broad Investment Securities &bull; Licensed &amp; Regulated</p>
+</td></tr>
+</table>
 
 </body>
 </html>"""
@@ -450,12 +472,11 @@ def get_default_templates():
     return templates
 
 def save_default_templates():
-    """Save default templates to disk."""
+    """Save default templates to disk (always overwrite to keep in sync)."""
     templates = get_default_templates()
     for key, tmpl in templates.items():
         filepath = TEMPLATES_DIR / f"{key}.json"
-        if not filepath.exists():
-            filepath.write_text(json.dumps(tmpl, indent=2, ensure_ascii=False), encoding='utf-8')
+        filepath.write_text(json.dumps(tmpl, indent=2, ensure_ascii=False), encoding='utf-8')
     return templates
 
 # ============================================================
@@ -624,42 +645,54 @@ GROQ_MODEL = os.environ.get("GROQ_MODEL", "llama-3.1-8b-instant")
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 
 def generate_email_content(personality_key, contact, market_data=None):
-    """Generate personalized email content using Groq AI."""
+    """Generate professional insight email content using Groq AI.
+
+    Design philosophy: This should read like a professional investor sharing
+    a genuine market observation with a colleague — NOT a marketing email.
+    The reader should think "this person knows what they're talking about"
+    before they ever see a company name.
+    """
     pers_key, pers = get_personality_for_date()
 
-    prompt = f"""You are {pers['name']}, {pers['title']} at BroadFSC (Broad Investment Securities).
-Tone: {pers['tone']}
-Focus: {pers['focus']}
+    prompt = f"""You are {pers['name']}, a real person who happens to work at BroadFSC.
+Your writing style: {pers['tone']}
+Your expertise: {pers['focus']}
 
-Write a personalized cold outreach email to a potential client.
-
-Recipient: {contact.get('name', 'Investor')} ({contact.get('email', '')})
-Contact source: {contact.get('source', 'unknown')}
-Contact tags: {', '.join(contact.get('tags', ['general']))}
+You're writing a brief personal note to a fellow investor you haven't met yet.
+This is NOT a marketing email. This is NOT a sales pitch. This is a professional
+sharing a genuine, timely market observation.
 
 REAL-TIME MARKET DATA (as of today — USE THESE EXACT NUMBERS, do NOT fabricate any price or index level):
-{market_data if market_data else "Market data unavailable — write a general market outlook without specific numbers."}
+{market_data if market_data else "Market data unavailable — write a general market observation without specific numbers."}
 
 CRITICAL RULES:
 1. ONLY use the market data provided above. Do NOT make up, guess, or fabricate any index levels, stock prices, or percentages.
 2. If market data shows S&P 500 at 7000+, do NOT write about 5000-level support. Use the ACTUAL numbers provided.
-3. Subject line: compelling, under 50 chars, include emoji
-4. Opening: personalized, not "Dear Investor"
-5. Body: 1 key market insight referencing ACTUAL data above, with actionable takeaway
-6. CTA: soft sell — invite to explore BroadFSC or contact us, not hard pitch
-7. Sign-off: {pers['sign_off']}
-8. Total length: 150-250 words (short and impactful)
-9. NO "Not financial advice" disclaimer (it's in the footer)
-10. NO "Subscribe" or "Sign up" language
+
+CONTENT RULES (these make or break whether the email gets read):
+3. Start with a SURPRISING or COUNTER-INTUITIVE observation about the market data — something that would make an experienced investor stop scrolling.
+4. Write like you're talking to one smart person, not an audience. No "Dear Investor", no "I wanted to reach out".
+5. Be SPECIFIC with numbers and levels. Vague = spam. "S&P 500 just tested 7,174 resistance for the 3rd time" > "Markets are volatile".
+6. Share one genuine CONTRARIAN or NON-OBVIOUS insight that most retail investors would miss. This is the hook.
+7. NO marketing language: no "opportunity", "unlock", "leverage", "empower", "comprehensive", "cutting-edge", "world-class".
+8. NO call-to-action phrases: no "sign up", "subscribe", "learn more", "discover", "get started", "don't miss out".
+9. Mention BroadFSC ONLY in the "natural_reference" field — nowhere else in the email body. The hook, insight, and so_what sections should contain ZERO company names.
+10. The website link (broadfsc.com/different) should appear as a natural reference, like "I wrote more about this on our site" — not as a button or promotion.
+11. Your email contact (msli2233bin@gmail.com) goes in the signature, like a normal person's email footer.
+12. Keep it SHORT: 120-200 words total. Busy people delete long emails from strangers.
+13. Subject line: specific + curiosity gap, under 50 chars, no emoji. Like a Bloomberg headline, not a newsletter.
+
+BAD subject examples (too marketing): "Your Market Edge Awaits", "Weekly Insights Inside", "Don't Miss This Opportunity"
+GOOD subject examples: "S&P testing 7,174 for 3rd time", "Why the VIX says otherwise", "Gold broke something important"
 
 Return as JSON:
 {{
   "subject": "...",
-  "opening_paragraph": "...",
-  "key_takeaway": "...",
-  "analysis_paragraph": "...",
-  "action_paragraph": "...",
-  "headline": "..."
+  "hook_sentence": "The surprising opening line that makes them keep reading",
+  "insight_paragraph": "Your specific, data-backed contrarian observation (the meat of the email)",
+  "so_what": "One sentence on why this matters for their portfolio",
+  "natural_reference": "One sentence naturally mentioning BroadFSC and the website, like you'd mention your firm in a real email",
+  "headline": "Short label for the email header (3-5 words, like 'Market Note' or 'Quick Take')"
 }}"""
 
     headers = {
@@ -678,7 +711,6 @@ Return as JSON:
         resp = requests.post(GROQ_URL, headers=headers, json=payload, timeout=30)
         if resp.status_code == 200:
             content = resp.json()["choices"][0]["message"]["content"]
-            # Try to parse JSON from response
             # Strip code fences if present
             content = re.sub(r'^```(?:json)?\s*', '', content.strip())
             content = re.sub(r'\s*```$', '', content.strip())
@@ -696,12 +728,12 @@ Return as JSON:
 
                 # Fallback: construct from raw text
                 return {
-                    "subject": f"{pers['emoji']} Market Insight from BroadFSC",
-                    "opening_paragraph": content[:200],
-                    "key_takeaway": "Markets are evolving — stay informed with BroadFSC research.",
-                    "analysis_paragraph": content[200:500] if len(content) > 200 else "",
-                    "action_paragraph": "Explore what BroadFSC can offer your investment strategy.",
-                    "headline": "Market Insight"
+                    "subject": f"Quick market note",
+                    "hook_sentence": content[:200],
+                    "insight_paragraph": content[200:500] if len(content) > 200 else "",
+                    "so_what": "Worth watching closely this week.",
+                    "natural_reference": "I shared more context on broadfsc.com/different if you're curious.",
+                    "headline": "Market Note"
                 }
         else:
             print(f"Groq API error: {resp.status_code}")
@@ -831,20 +863,17 @@ def send_email_batch(max_sends=None, dry_run=False):
             errors += 1
             continue
 
-        # Build HTML from template
+        # Build HTML from template — new professional style
         html = template.get("html", "")
-        html = html.replace("{{headline}}", ai_content.get("headline", "Market Update"))
-        html = html.replace("{{emoji}}", pers["emoji"])
+        html = html.replace("{{headline}}", ai_content.get("headline", "Market Note"))
+        html = html.replace("{{hook_sentence}}", ai_content.get("hook_sentence", ""))
+        html = html.replace("{{insight_paragraph}}", ai_content.get("insight_paragraph", ""))
+        html = html.replace("{{so_what}}", ai_content.get("so_what", ""))
+        html = html.replace("{{natural_reference}}", ai_content.get("natural_reference", ""))
         html = html.replace("{{personality_name}}", pers["name"])
         html = html.replace("{{personality_title}}", pers["title"])
-        html = html.replace("{{first_name}}", contact.get("first_name", "Investor"))
-        html = html.replace("{{opening_paragraph}}", ai_content.get("opening_paragraph", ""))
-        html = html.replace("{{key_takeaway}}", ai_content.get("key_takeaway", ""))
-        html = html.replace("{{analysis_paragraph}}", ai_content.get("analysis_paragraph", ""))
-        html = html.replace("{{action_paragraph}}", ai_content.get("action_paragraph", ""))
-        html = html.replace("{{sign_off}}", pers["sign_off"])
 
-        subject = ai_content.get("subject", f"{pers['emoji']} Market Update from BroadFSC")
+        subject = ai_content.get("subject", "Quick market note")
 
         # Send email
         result = client.send_transactional_email(
