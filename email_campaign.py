@@ -637,17 +637,20 @@ Recipient: {contact.get('name', 'Investor')} ({contact.get('email', '')})
 Contact source: {contact.get('source', 'unknown')}
 Contact tags: {', '.join(contact.get('tags', ['general']))}
 
-{f"Market context: {market_data}" if market_data else "Use current general market conditions."}
+REAL-TIME MARKET DATA (as of today — USE THESE EXACT NUMBERS, do NOT fabricate any price or index level):
+{market_data if market_data else "Market data unavailable — write a general market outlook without specific numbers."}
 
-REQUIREMENTS:
-1. Subject line: compelling, under 50 chars, include emoji
-2. Opening: personalized, not "Dear Investor"
-3. Body: 1 key market insight with actionable takeaway
-4. CTA: soft sell — invite to explore BroadFSC, not hard pitch
-5. Sign-off: {pers['sign_off']}
-6. Total length: 150-250 words (short and impactful)
-7. NO "Not financial advice" disclaimer (it's in the footer)
-8. NO "Subscribe" or "Sign up" language
+CRITICAL RULES:
+1. ONLY use the market data provided above. Do NOT make up, guess, or fabricate any index levels, stock prices, or percentages.
+2. If market data shows S&P 500 at 7000+, do NOT write about 5000-level support. Use the ACTUAL numbers provided.
+3. Subject line: compelling, under 50 chars, include emoji
+4. Opening: personalized, not "Dear Investor"
+5. Body: 1 key market insight referencing ACTUAL data above, with actionable takeaway
+6. CTA: soft sell — invite to explore BroadFSC or contact us, not hard pitch
+7. Sign-off: {pers['sign_off']}
+8. Total length: 150-250 words (short and impactful)
+9. NO "Not financial advice" disclaimer (it's in the footer)
+10. NO "Subscribe" or "Sign up" language
 
 Return as JSON:
 {{
@@ -708,20 +711,44 @@ Return as JSON:
         return None
 
 def get_market_snapshot():
-    """Get quick market data for email personalization."""
+    """Get quick market data for email personalization.
+    Uses actual index tickers (not ETFs) so AI gets real index levels.
+    Includes explicit price levels in the output to prevent AI from fabricating numbers.
+    """
     try:
         import yfinance as yf
-        tickers = {"SPY": "S&P 500", "QQQ": "Nasdaq", "TLT": "Bonds"}
+        # Use actual indices, not ETFs — AI needs real index levels
+        tickers = {
+            "^GSPC": "S&P 500",
+            "^DJI": "Dow Jones",
+            "^IXIC": "Nasdaq Composite",
+            "GC=F": "Gold",
+            "CL=F": "Crude Oil",
+            "DX-Y.NYB": "US Dollar Index",
+            "BTC-USD": "Bitcoin"
+        }
         snapshot = []
         for ticker, name in tickers.items():
-            t = yf.Ticker(ticker)
-            hist = t.history(period="2d")
-            if len(hist) >= 1:
-                latest = hist.iloc[-1]
-                prev = hist.iloc[-2] if len(hist) > 1 else hist.iloc[-1]
-                change = ((latest["Close"] - prev["Close"]) / prev["Close"]) * 100
-                direction = "up" if change > 0 else "down"
-                snapshot.append(f"{name}: ${latest['Close']:.2f} ({direction} {abs(change):.2f}%)")
+            try:
+                t = yf.Ticker(ticker)
+                hist = t.history(period="5d")
+                if len(hist) >= 2:
+                    latest = hist.iloc[-1]
+                    prev = hist.iloc[-2]
+                    close = latest["Close"]
+                    change_pct = ((close - prev["Close"]) / prev["Close"]) * 100
+                    week_ago = hist.iloc[0]["Close"]
+                    week_chg = ((close - week_ago) / week_ago) * 100
+                    direction = "▲" if change_pct > 0 else "▼"
+                    snapshot.append(
+                        f"{name}: {close:,.2f} ({direction} {abs(change_pct):.2f}% today, "
+                        f"week: {week_chg:+.2f}%)"
+                    )
+                elif len(hist) == 1:
+                    close = hist.iloc[-1]["Close"]
+                    snapshot.append(f"{name}: {close:,.2f}")
+            except Exception:
+                continue
         return "; ".join(snapshot) if snapshot else "Market data unavailable"
     except Exception:
         return "Market data unavailable"
