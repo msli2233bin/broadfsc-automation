@@ -80,6 +80,26 @@ LINE_CHANNEL_ACCESS_TOKEN = os.environ.get("LINE_CHANNEL_ACCESS_TOKEN", "")
 THREADS_ACCESS_TOKEN = os.environ.get("THREADS_ACCESS_TOKEN", "")
 THREADS_USER_ID = os.environ.get("THREADS_USER_ID", "")
 
+if not THREADS_ACCESS_TOKEN:
+    _script_dir = os.path.dirname(os.path.abspath(__file__))
+    _env_path = os.path.join(_script_dir, ".env")
+    if os.path.exists(_env_path):
+        with open(_env_path, "r", encoding="utf-8") as f:
+            for line in f:
+                if line.startswith("THREADS_ACCESS_TOKEN="):
+                    THREADS_ACCESS_TOKEN = line.strip().split("=", 1)[1]
+                elif line.startswith("THREADS_USER_ID=") and not THREADS_USER_ID:
+                    THREADS_USER_ID = line.strip().split("=", 1)[1]
+    if not THREADS_ACCESS_TOKEN:
+        _token_path = os.path.join(_script_dir, "threads_token.txt")
+        if os.path.exists(_token_path):
+            with open(_token_path, "r", encoding="utf-8") as f:
+                for line in f:
+                    if line.startswith("THREADS_ACCESS_TOKEN="):
+                        THREADS_ACCESS_TOKEN = line.strip().split("=", 1)[1]
+                    elif line.startswith("THREADS_USER_ID=") and not THREADS_USER_ID:
+                        THREADS_USER_ID = line.strip().split("=", 1)[1]
+
 # StockTwits
 STOCKTWITS_ACCESS_TOKEN = os.environ.get("STOCKTWITS_ACCESS_TOKEN", "")
 

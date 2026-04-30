@@ -29,9 +29,31 @@ import requests
 if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
-# Config
+# Config - try env first, then .env file, then threads_token.txt
 THREADS_ACCESS_TOKEN = os.environ.get("THREADS_ACCESS_TOKEN", "")
 THREADS_USER_ID = os.environ.get("THREADS_USER_ID", "")
+
+if not THREADS_ACCESS_TOKEN:
+    _script_dir = os.path.dirname(os.path.abspath(__file__))
+    # Try .env file
+    _env_path = os.path.join(_script_dir, ".env")
+    if os.path.exists(_env_path):
+        with open(_env_path, "r", encoding="utf-8") as f:
+            for line in f:
+                if line.startswith("THREADS_ACCESS_TOKEN="):
+                    THREADS_ACCESS_TOKEN = line.strip().split("=", 1)[1]
+                elif line.startswith("THREADS_USER_ID=") and not THREADS_USER_ID:
+                    THREADS_USER_ID = line.strip().split("=", 1)[1]
+    # Try threads_token.txt
+    if not THREADS_ACCESS_TOKEN:
+        _token_path = os.path.join(_script_dir, "threads_token.txt")
+        if os.path.exists(_token_path):
+            with open(_token_path, "r", encoding="utf-8") as f:
+                for line in f:
+                    if line.startswith("THREADS_ACCESS_TOKEN="):
+                        THREADS_ACCESS_TOKEN = line.strip().split("=", 1)[1]
+                    elif line.startswith("THREADS_USER_ID=") and not THREADS_USER_ID:
+                        THREADS_USER_ID = line.strip().split("=", 1)[1]
 
 # API endpoints
 THREADS_API_BASE = "https://graph.threads.net/v1.0"
