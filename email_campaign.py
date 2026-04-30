@@ -48,7 +48,7 @@ BREVO_API_URL = "https://api.brevo.com/v3"
 
 # Sender config
 SENDER_NAME = "BroadFSC"
-SENDER_EMAIL = os.environ.get("BREVO_SENDER_EMAIL", "msli2233bin@gmail.com")
+SENDER_EMAIL = os.environ.get("BREVO_SENDER_EMAIL", "msli2233bin+brevo@gmail.com")
 REPLY_TO_EMAIL = os.environ.get("BREVO_REPLY_TO", "msli2233bin@gmail.com")
 
 # When eu.org domain is approved, switch to:
