@@ -354,6 +354,13 @@ def get_default_templates():
 
   <p style="font-family:Georgia,serif; font-size:14px; line-height:1.7; color:#555; margin:0 0 28px; border-top:1px solid #eee; padding-top:16px;">{{natural_reference}}</p>
 
+  <!-- PS: Free value hook — highest recall position -->
+  <table width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;">
+  <tr><td style="background-color:#f9f9f9; border-left:3px solid #1a1a2e; padding:14px 18px;">
+    <p style="font-family:Georgia,serif; font-size:14px; color:#333; margin:0; line-height:1.6;"><strong style="color:#1a1a2e;">PS</strong> — {{ps_note}}</p>
+  </td></tr>
+  </table>
+
   <!-- SIGNATURE — professional, includes contact naturally -->
   <table width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #ddd; padding-top:16px;">
   <tr>
@@ -401,6 +408,13 @@ def get_default_templates():
 
   <p style="font-family:Georgia,serif; font-size:14px; line-height:1.7; color:#555; margin:0 0 28px; border-top:1px solid #eee; padding-top:16px;">{{natural_reference}}</p>
 
+  <!-- PS: Free value hook — highest recall position -->
+  <table width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;">
+  <tr><td style="background-color:#f9f9f9; border-left:3px solid #1a1a2e; padding:14px 18px;">
+    <p style="font-family:Georgia,serif; font-size:14px; color:#333; margin:0; line-height:1.6;"><strong style="color:#1a1a2e;">PS</strong> — {{ps_note}}</p>
+  </td></tr>
+  </table>
+
   <!-- SIGNATURE -->
   <table width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #ddd; padding-top:16px;">
   <tr>
@@ -446,6 +460,13 @@ def get_default_templates():
   <p style="font-family:Georgia,serif; font-size:15px; line-height:1.7; color:#333; margin:0 0 24px;"><strong style="color:#1a1a1a;">Why it matters:</strong> {{so_what}}</p>
 
   <p style="font-family:Georgia,serif; font-size:14px; line-height:1.7; color:#555; margin:0 0 28px; border-top:1px solid #eee; padding-top:16px;">{{natural_reference}}</p>
+
+  <!-- PS: Free value hook -- highest recall position -->
+  <table width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;">
+  <tr><td style="background-color:#f9f9f9; border-left:3px solid #1a1a2e; padding:14px 18px;">
+    <p style="font-family:Georgia,serif; font-size:14px; color:#333; margin:0; line-height:1.6;"><strong style="color:#1a1a2e;">PS</strong> — {{ps_note}}</p>
+  </td></tr>
+  </table>
 
   <!-- SIGNATURE -->
   <table width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #ddd; padding-top:16px;">
@@ -676,11 +697,15 @@ CONTENT RULES (these make or break whether the email gets read):
 6. Share one genuine CONTRARIAN or NON-OBVIOUS insight that most retail investors would miss. This is the hook.
 7. NO marketing language: no "opportunity", "unlock", "leverage", "empower", "comprehensive", "cutting-edge", "world-class".
 8. NO call-to-action phrases: no "sign up", "subscribe", "learn more", "discover", "get started", "don't miss out".
-9. Mention BroadFSC ONLY in the "natural_reference" field — nowhere else in the email body. The hook, insight, and so_what sections should contain ZERO company names.
-10. The website link (broadfsc.com/different) should appear as a natural reference, like "I wrote more about this on our site" — not as a button or promotion.
+9. Mention BroadFSC ONLY in the "natural_reference" and "ps_note" fields — nowhere else in the email body.
+10. The website link (broadfsc.com/different) should appear naturally in "natural_reference", not as a button or promotion.
 11. Your email contact (msli2233bin@gmail.com) goes in the signature, like a normal person's email footer.
 12. Keep it SHORT: 120-200 words total. Busy people delete long emails from strangers.
 13. Subject line: specific + curiosity gap, under 50 chars, no emoji. Like a Bloomberg headline, not a newsletter.
+14. PS NOTE (critical for conversion): End with a PS that offers genuine FREE value — a specific stock research report, a trade idea, or a market brief. This is the #1 thing recipients remember. Make it sound like an afterthought, not a sales pitch. Examples:
+    - "PS — If you're looking at energy names, we just finished a 12-page deep-dive on XLE's top 3 holdings. No cost, just reply."
+    - "PS — Attached is the trade plan we're running for clients this week (entry, stop, target). Happy to share."
+    - "PS — Our recent report on why small-caps are setting up (with specific ticker list) is here: broadfsc.com/different — no paywall."
 
 BAD subject examples (too marketing): "Your Market Edge Awaits", "Weekly Insights Inside", "Don't Miss This Opportunity"
 GOOD subject examples: "S&P testing 7,174 for 3rd time", "Why the VIX says otherwise", "Gold broke something important"
@@ -691,7 +716,8 @@ Return as JSON:
   "hook_sentence": "The surprising opening line that makes them keep reading",
   "insight_paragraph": "Your specific, data-backed contrarian observation (the meat of the email)",
   "so_what": "One sentence on why this matters for their portfolio",
-  "natural_reference": "One sentence naturally mentioning BroadFSC and the website, like you'd mention your firm in a real email",
+  "natural_reference": "One sentence naturally mentioning BroadFSC, like you'd mention your firm in a real email",
+  "ps_note": "The PS line that offers genuine free value (research report, trade idea, or brief). Make it specific and low-pressure.",
   "headline": "Short label for the email header (3-5 words, like 'Market Note' or 'Quick Take')"
 }}"""
 
@@ -870,6 +896,7 @@ def send_email_batch(max_sends=None, dry_run=False):
         html = html.replace("{{insight_paragraph}}", ai_content.get("insight_paragraph", ""))
         html = html.replace("{{so_what}}", ai_content.get("so_what", ""))
         html = html.replace("{{natural_reference}}", ai_content.get("natural_reference", ""))
+        html = html.replace("{{ps_note}}", ai_content.get("ps_note", ""))
         html = html.replace("{{personality_name}}", pers["name"])
         html = html.replace("{{personality_title}}", pers["title"])
 
