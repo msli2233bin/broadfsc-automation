@@ -8,6 +8,186 @@
     "attributes": {},
     "added_date": "2026-04-30",
     "status": "active",
+    "emails_sent": 1,
+    "last_email_date": "2026-04-30",
+    "opens": 0,
+    "clicks": 0,
+    "bounced": false
+  },
+  {
+    "email": "david.chen.trader@gmail.com",
+    "name": "David Chen",
+    "first_name": "David",
+    "source": "us_retail",
+    "tags": [
+      "tech_trader",
+      "us_market"
+    ],
+    "attributes": {},
+    "added_date": "2026-04-30",
+    "status": "active",
+    "emails_sent": 1,
+    "last_email_date": "2026-04-30",
+    "opens": 0,
+    "clicks": 0,
+    "bounced": false
+  },
+  {
+    "email": "sarah.investor@outlook.com",
+    "name": "Sarah Mitchell",
+    "first_name": "Sarah",
+    "source": "uk_investor",
+    "tags": [
+      "value_investor",
+      "dividend"
+    ],
+    "attributes": {},
+    "added_date": "2026-04-30",
+    "status": "active",
+    "emails_sent": 1,
+    "last_email_date": "2026-04-30",
+    "opens": 0,
+    "clicks": 0,
+    "bounced": false
+  },
+  {
+    "email": "takeshi.yamamoto@yahoo.co.jp",
+    "name": "Takeshi Yamamoto",
+    "first_name": "Takeshi",
+    "source": "jp_investor",
+    "tags": [
+      "macro",
+      "forex"
+    ],
+    "attributes": {},
+    "added_date": "2026-04-30",
+    "status": "active",
+    "emails_sent": 1,
+    "last_email_date": "2026-04-30",
+    "opens": 0,
+    "clicks": 0,
+    "bounced": false
+  },
+  {
+    "email": "maria.santos.pro@gmail.com",
+    "name": "Maria Santos",
+    "first_name": "Maria",
+    "source": "eu_investor",
+    "tags": [
+      "momentum",
+      "crypto"
+    ],
+    "attributes": {},
+    "added_date": "2026-04-30",
+    "status": "active",
+    "emails_sent": 1,
+    "last_email_date": "2026-04-30",
+    "opens": 0,
+    "clicks": 0,
+    "bounced": false
+  },
+  {
+    "email": "raj.patel.invest@hotmail.com",
+    "name": "Raj Patel",
+    "first_name": "Raj",
+    "source": "asia_investor",
+    "tags": [
+      "emerging_markets",
+      "commodities"
+    ],
+    "attributes": {},
+    "added_date": "2026-04-30",
+    "status": "active",
+    "emails_sent": 0,
+    "last_email_date": null,
+    "opens": 0,
+    "clicks": 0,
+    "bounced": false
+  },
+  {
+    "email": "msli2233bin+david@gmail.com",
+    "name": "David Chen",
+    "first_name": "David",
+    "source": "test_retail",
+    "tags": [
+      "tech_trader",
+      "us_market"
+    ],
+    "attributes": {},
+    "added_date": "2026-04-30",
+    "status": "active",
+    "emails_sent": 0,
+    "last_email_date": null,
+    "opens": 0,
+    "clicks": 0,
+    "bounced": false
+  },
+  {
+    "email": "msli2233bin+sarah@gmail.com",
+    "name": "Sarah Mitchell",
+    "first_name": "Sarah",
+    "source": "test_uk",
+    "tags": [
+      "value_investor",
+      "dividend"
+    ],
+    "attributes": {},
+    "added_date": "2026-04-30",
+    "status": "active",
+    "emails_sent": 0,
+    "last_email_date": null,
+    "opens": 0,
+    "clicks": 0,
+    "bounced": false
+  },
+  {
+    "email": "msli2233bin+takeshi@gmail.com",
+    "name": "Takeshi Yamamoto",
+    "first_name": "Takeshi",
+    "source": "test_jp",
+    "tags": [
+      "macro",
+      "forex"
+    ],
+    "attributes": {},
+    "added_date": "2026-04-30",
+    "status": "active",
+    "emails_sent": 0,
+    "last_email_date": null,
+    "opens": 0,
+    "clicks": 0,
+    "bounced": false
+  },
+  {
+    "email": "msli2233bin+maria@gmail.com",
+    "name": "Maria Santos",
+    "first_name": "Maria",
+    "source": "test_eu",
+    "tags": [
+      "momentum",
+      "crypto"
+    ],
+    "attributes": {},
+    "added_date": "2026-04-30",
+    "status": "active",
+    "emails_sent": 0,
+    "last_email_date": null,
+    "opens": 0,
+    "clicks": 0,
+    "bounced": false
+  },
+  {
+    "email": "msli2233bin+raj@gmail.com",
+    "name": "Raj Patel",
+    "first_name": "Raj",
+    "source": "test_asia",
+    "tags": [
+      "emerging_markets",
+      "commodities"
+    ],
+    "attributes": {},
+    "added_date": "2026-04-30",
+    "status": "active",
     "emails_sent": 0,
     "last_email_date": null,
     "opens": 0,

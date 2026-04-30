@@ -1,9 +1,9 @@
 {
   "start_date": "2026-04-30",
   "current_day": 1,
-  "daily_sends_today": 0,
-  "last_send_date": null,
-  "total_sends": 0,
+  "daily_sends_today": 5,
+  "last_send_date": "2026-04-30",
+  "total_sends": 5,
   "total_bounces": 0,
   "total_opens": 0,
   "total_clicks": 0

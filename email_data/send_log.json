@@ -1,0 +1,47 @@
+[
+  {
+    "to": "test@example.com",
+    "subject": "🐊 Market Insight from BroadFSC",
+    "personality": "alex",
+    "date": "2026-04-30",
+    "time": "2026-04-30T23:32:32.507155",
+    "message_id": "<202604301532.77737508210@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "david.chen.trader@gmail.com",
+    "subject": "🐊 Market Insight from BroadFSC",
+    "personality": "alex",
+    "date": "2026-04-30",
+    "time": "2026-04-30T23:32:42.466998",
+    "message_id": "<202604301532.88508199838@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "sarah.investor@outlook.com",
+    "subject": "🐊 Market Insight from BroadFSC",
+    "personality": "alex",
+    "date": "2026-04-30",
+    "time": "2026-04-30T23:32:51.058786",
+    "message_id": "<202604301532.90472240020@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "takeshi.yamamoto@yahoo.co.jp",
+    "subject": "Market Reversal Ahead? 📉",
+    "personality": "alex",
+    "date": "2026-04-30",
+    "time": "2026-04-30T23:32:58.012735",
+    "message_id": "<202604301532.88826764122@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "maria.santos.pro@gmail.com",
+    "subject": "Bull Run Fatigue? 🚨",
+    "personality": "alex",
+    "date": "2026-04-30",
+    "time": "2026-04-30T23:33:06.769211",
+    "message_id": "<202604301533.48889421103@smtp-relay.mailin.fr>",
+    "status": "sent"
+  }
+]

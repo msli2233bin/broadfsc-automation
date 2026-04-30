@@ -246,5 +246,21 @@
     "action": "message",
     "user_id": "8327500544",
     "details": "US FCHL"
+  },
+  {
+    "id": 32,
+    "timestamp": "2026-04-29T10:00:01.434019Z",
+    "platform": "telegram",
+    "action": "proactive_outreach",
+    "user_id": "8327500544",
+    "details": "Auto proactive message sent"
+  },
+  {
+    "id": 33,
+    "timestamp": "2026-04-29T10:00:42.941326Z",
+    "platform": "telegram",
+    "action": "proactive_outreach",
+    "user_id": "8639358750",
+    "details": "Auto proactive message sent"
   }
 ]

@@ -869,10 +869,7 @@ def send_email_batch(max_sends=None, dry_run=False):
 
     # Analytics
     if HAS_ANALYTICS and sent_count > 0:
-        log_post("email_brevo", f"sent_{sent_count}", subject=pers_key, details={
-            "sent": sent_count, "errors": errors, "day": day_num,
-            "personality": pers_key
-        })
+        log_post("email_brevo", f"sent_{sent_count}", content_preview=f"{pers_key} day{day_num} sent:{sent_count} err:{errors}")
 
     print(f"\n{'='*50}")
     print(f"Batch complete: {sent_count} sent, {errors} errors")
