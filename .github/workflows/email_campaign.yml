@@ -1,0 +1,76 @@
+name: Email Campaign
+
+on:
+  schedule:
+    # Run daily at 14:00 UTC (22:00 Beijing time)
+    - cron: '0 14 * * 1-5'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (no actual sending)'
+        required: false
+        default: 'false'
+      max_sends:
+        description: 'Max emails to send (override warm-up limit)'
+        required: false
+        default: ''
+
+jobs:
+  send-emails:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install requests yfinance
+
+      - name: Initialize email system
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: |
+          cd broadfsc-automation
+          python email_campaign.py --init
+
+      - name: Send email batch
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          BREVO_SENDER_EMAIL: ${{ secrets.BREVO_SENDER_EMAIL }}
+          BREVO_REPLY_TO: ${{ secrets.BREVO_REPLY_TO }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: |
+          cd broadfsc-automation
+          EXTRA_ARGS=""
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            EXTRA_ARGS="$EXTRA_ARGS --dry-run"
+          fi
+          if [ -n "${{ github.event.inputs.max_sends }}" ]; then
+            EXTRA_ARGS="$EXTRA_ARGS --max ${{ github.event.inputs.max_sends }}"
+          fi
+          python email_campaign.py --send $EXTRA_ARGS
+
+      - name: Show stats
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+        run: |
+          cd broadfsc-automation
+          python email_campaign.py --stats
+
+      - name: Commit email data
+        run: |
+          git config user.name "BroadFSC Automation"
+          git config user.email "automation@broadfsc.com"
+          git add broadfsc-automation/email_data/ || true
+          git diff --staged --quiet || git commit -m "chore(email): update send data $(date +%Y-%m-%d)"
+          git pull --rebase origin main || true
+          git push origin main || true

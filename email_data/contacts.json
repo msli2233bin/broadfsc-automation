@@ -1,0 +1,17 @@
+[
+  {
+    "email": "test@example.com",
+    "name": "Test User",
+    "first_name": "Test",
+    "source": "manual",
+    "tags": [],
+    "attributes": {},
+    "added_date": "2026-04-30",
+    "status": "active",
+    "emails_sent": 0,
+    "last_email_date": null,
+    "opens": 0,
+    "clicks": 0,
+    "bounced": false
+  }
+]
