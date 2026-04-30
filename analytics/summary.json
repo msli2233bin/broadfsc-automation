@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-30T15:29:20.871636Z",
+  "generated_at": "2026-04-30T20:01:42.408041Z",
   "period": {
     "today": "2026-04-30",
     "yesterday": "2026-04-29",
@@ -7,13 +7,13 @@
     "month_ago": "2026-03-31"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 0,
-    "posts_month": 11,
+    "posts_today": 2,
+    "posts_week": 2,
+    "posts_month": 13,
     "interactions_today": 0,
-    "interactions_week": 0,
-    "interactions_month": 31,
-    "success_rate": 9.1
+    "interactions_week": 2,
+    "interactions_month": 33,
+    "success_rate": 7.7
   },
   "platforms": {
     "tiktok": {
@@ -22,6 +22,20 @@
       "month": 11,
       "success": 1,
       "failed": 10
+    },
+    "telegram_en": {
+      "today": 1,
+      "week": 1,
+      "month": 1,
+      "success": 0,
+      "failed": 1
+    },
+    "discord": {
+      "today": 1,
+      "week": 1,
+      "month": 1,
+      "success": 0,
+      "failed": 1
     }
   },
   "interactions_by_platform": {
@@ -29,11 +43,17 @@
       "today": 0,
       "week": 0,
       "month": 31
+    },
+    "telegram": {
+      "today": 0,
+      "week": 2,
+      "month": 2
     }
   },
   "action_breakdown": {
     "message": 30,
-    "start": 1
+    "start": 1,
+    "proactive_outreach": 2
   },
   "daily_trend": {
     "2026-04-16": {
@@ -44,9 +64,17 @@
       "posts": 9,
       "interactions": 17
     },
+    "2026-04-30": {
+      "posts": 2,
+      "interactions": 0
+    },
     "2026-04-20": {
       "posts": 0,
       "interactions": 14
+    },
+    "2026-04-29": {
+      "posts": 0,
+      "interactions": 2
     }
   },
   "hourly_distribution": {
@@ -151,25 +179,27 @@
       "content_preview": "Chasing dividend yield is a trap most beginners fall into. #dividends #investing #passiveincome #div",
       "status": "failed",
       "error_msg": "Video creation failed"
-    }
-  ],
-  "recent_interactions": [
+    },
     {
       "id": 12,
-      "timestamp": "2026-04-17T07:51:57.516418Z",
-      "platform": "telegram_bot",
-      "action": "message",
-      "user_id": "8639358750",
-      "details": "Understand what aspect"
+      "timestamp": "2026-04-30T17:04:38.578655Z",
+      "platform": "telegram_en",
+      "type": "earnings",
+      "content_preview": "",
+      "status": "failed",
+      "error_msg": "log_post() got an unexpected keyword argument 'post_id'"
     },
     {
       "id": 13,
-      "timestamp": "2026-04-17T07:52:11.178267Z",
-      "platform": "telegram_bot",
-      "action": "message",
-      "user_id": "8639358750",
-      "details": "Can you communicate with me?"
-    },
+      "timestamp": "2026-04-30T17:04:39.391543Z",
+      "platform": "discord",
+      "type": "earnings",
+      "content_preview": "",
+      "status": "failed",
+      "error_msg": "log_post() got an unexpected keyword argument 'post_id'"
+    }
+  ],
+  "recent_interactions": [
     {
       "id": 14,
       "timestamp": "2026-04-17T07:52:36.797240Z",
@@ -313,6 +343,22 @@
       "action": "message",
       "user_id": "8327500544",
       "details": "US FCHL"
+    },
+    {
+      "id": 32,
+      "timestamp": "2026-04-29T10:00:01.434019Z",
+      "platform": "telegram",
+      "action": "proactive_outreach",
+      "user_id": "8327500544",
+      "details": "Auto proactive message sent"
+    },
+    {
+      "id": 33,
+      "timestamp": "2026-04-29T10:00:42.941326Z",
+      "platform": "telegram",
+      "action": "proactive_outreach",
+      "user_id": "8639358750",
+      "details": "Auto proactive message sent"
     }
   ],
   "clicks": {
