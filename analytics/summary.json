@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-04-30T23:36:50.996145Z",
+  "generated_at": "2026-05-01T07:53:33.583201Z",
   "period": {
-    "today": "2026-04-30",
-    "yesterday": "2026-04-29",
-    "week_ago": "2026-04-23",
-    "month_ago": "2026-03-31"
+    "today": "2026-05-01",
+    "yesterday": "2026-04-30",
+    "week_ago": "2026-04-24",
+    "month_ago": "2026-04-01"
   },
   "totals": {
-    "posts_today": 2,
+    "posts_today": 0,
     "posts_week": 2,
     "posts_month": 13,
     "interactions_today": 0,
@@ -24,14 +24,14 @@
       "failed": 10
     },
     "telegram_en": {
-      "today": 1,
+      "today": 0,
       "week": 1,
       "month": 1,
       "success": 0,
       "failed": 1
     },
     "discord": {
-      "today": 1,
+      "today": 0,
       "week": 1,
       "month": 1,
       "success": 0,
