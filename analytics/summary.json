@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-04T15:32:19.284127Z",
+  "generated_at": "2026-05-04T20:48:20.033756Z",
   "period": {
     "today": "2026-05-04",
     "yesterday": "2026-05-03",
@@ -7,13 +7,13 @@
     "month_ago": "2026-04-04"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 2,
-    "posts_month": 13,
+    "posts_today": 2,
+    "posts_week": 4,
+    "posts_month": 15,
     "interactions_today": 0,
     "interactions_week": 2,
     "interactions_month": 33,
-    "success_rate": 7.7
+    "success_rate": 6.7
   },
   "platforms": {
     "tiktok": {
@@ -24,18 +24,18 @@
       "failed": 10
     },
     "telegram_en": {
-      "today": 0,
-      "week": 1,
-      "month": 1,
+      "today": 1,
+      "week": 2,
+      "month": 2,
       "success": 0,
-      "failed": 1
+      "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 1,
-      "month": 1,
+      "today": 1,
+      "week": 2,
+      "month": 2,
       "success": 0,
-      "failed": 1
+      "failed": 2
     }
   },
   "interactions_by_platform": {
@@ -65,6 +65,10 @@
       "interactions": 17
     },
     "2026-04-30": {
+      "posts": 2,
+      "interactions": 0
+    },
+    "2026-05-04": {
       "posts": 2,
       "interactions": 0
     },
@@ -192,6 +196,24 @@
     {
       "id": 13,
       "timestamp": "2026-04-30T17:04:39.391543Z",
+      "platform": "discord",
+      "type": "earnings",
+      "content_preview": "",
+      "status": "failed",
+      "error_msg": "log_post() got an unexpected keyword argument 'post_id'"
+    },
+    {
+      "id": 14,
+      "timestamp": "2026-05-04T17:18:05.073631Z",
+      "platform": "telegram_en",
+      "type": "earnings",
+      "content_preview": "",
+      "status": "failed",
+      "error_msg": "log_post() got an unexpected keyword argument 'post_id'"
+    },
+    {
+      "id": 15,
+      "timestamp": "2026-05-04T17:18:05.627856Z",
       "platform": "discord",
       "type": "earnings",
       "content_preview": "",
