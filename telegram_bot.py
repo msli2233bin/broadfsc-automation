@@ -101,6 +101,7 @@ ADMIN_CHAT_ID = os.environ.get("ADMIN_CHAT_ID", "")
 LIVE_CHAT_USERS = set()
 PENDING_CHATS = set()
 USER_INFO_CACHE = {}
+EMAIL_PENDING_USERS = set()  # Users who clicked "Leave Your Email"
 
 # ============================================================
 # AI 客户端
@@ -1684,7 +1685,8 @@ def get_main_keyboard():
 def get_contact_keyboard():
     keyboard = [
         [InlineKeyboardButton("📱 WhatsApp — Chat Now", url=WHATSAPP_LINK)],
-        [InlineKeyboardButton("💬 Live Chat in Bot", callback_data="live_chat")],
+        [InlineKeyboardButton("📧 Leave Your Email", callback_data="leave_email")],
+        [InlineKeyboardButton("🔔 Join Our Channel", url="https://t.me/BroadFSC")],
         [InlineKeyboardButton("🔗 Visit Website", url=WEBSITE_URL)],
         [InlineKeyboardButton("🔙 Back to Menu", callback_data="back_menu")]
     ]
@@ -1991,6 +1993,20 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.reply_text(f"❌ Declined request from {target_id}")
         return
 
+    # === Leave Email (留资) ===
+    if data == "leave_email":
+        # Mark this user as wanting to leave email
+        EMAIL_PENDING_USERS.add(user_id)
+        await query.message.reply_text(
+            "📧 Great idea! Please type your email address below.\n\n"
+            "Our analyst will reach out with personalized insights — usually within 24 hours.\n"
+            "(Type /cancel to skip)",
+            reply_markup=InlineKeyboardMarkup([
+                [InlineKeyboardButton("❌ Cancel", callback_data="back_menu")]
+            ])
+        )
+        return
+
     if data == "back_menu":
         LIVE_CHAT_USERS.discard(user_id)
         PENDING_CHATS.discard(user_id)
@@ -2074,6 +2090,49 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "language": lang_code,
             "username": user.username or ""
         })
+
+    # ===== 邮箱留资 =====
+    if user_id in EMAIL_PENDING_USERS:
+        EMAIL_PENDING_USERS.discard(user_id)
+
+        # Validate email
+        email_regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+        if re.match(email_regex, user_message.strip()):
+            email = user_message.strip()
+
+            # Save to memory system
+            if memory_system:
+                memory_system.update_user_info(user_id, {
+                    "email": email,
+                    "lead_source": "telegram_bot",
+                    "lead_date": datetime.now(timezone.utc).isoformat()
+                })
+
+            # Notify admin
+            if ADMIN_CHAT_ID:
+                user_info = USER_INFO_CACHE.get(user_id, {})
+                username_str = f" (@{user_info.get('username', '')})" if user_info.get('username') else ""
+                await context.bot.send_message(
+                    chat_id=ADMIN_CHAT_ID,
+                    text=f"📧 **New Lead!**\n\n👤 {user_name}{username_str}\n📧 {email}\n🆔 `{user_id}`\n📅 {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}",
+                    parse_mode="Markdown"
+                )
+
+            await update.message.reply_text(
+                f"✅ Got it! We'll reach out to {email} with personalized insights within 24 hours.\n\n"
+                f"In the meantime, feel free to ask me anything about markets! 📊",
+                reply_markup=get_main_keyboard()
+            )
+            return
+        else:
+            await update.message.reply_text(
+                "🤔 That doesn't look like an email address. Please try again, or type /cancel to skip.",
+                reply_markup=InlineKeyboardMarkup([
+                    [InlineKeyboardButton("❌ Cancel", callback_data="back_menu")]
+                ])
+            )
+            EMAIL_PENDING_USERS.add(user_id)  # Re-add so they can try again
+            return
 
     # ===== 客服模式转发 =====
     if user_id in LIVE_CHAT_USERS and ADMIN_CHAT_ID:

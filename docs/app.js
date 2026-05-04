@@ -560,7 +560,7 @@ function submitRegistration() {
   closeRegisterModal();
 
   // Show success toast
-  showRegisterToast(`Welcome aboard, ${name}! 🎉 Your access to exclusive research is now unlocked.`);
+  showRegisterToast(`Welcome aboard, ${name}! 🎉 Also reach us anytime on Telegram: @BroadInvestBot`);
 
   // If chat is open, have the advisor acknowledge
   const body = document.getElementById('chatBody');

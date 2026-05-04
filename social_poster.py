@@ -635,6 +635,7 @@ def generate_mastodon_content():
                     "- End with: " + tags + "\n"
                     "- Add link: " + links["hub"] + "\n"
                     "- Deep analysis: " + links["substack"] + "\n"
+                    "- Free consult: " + links["telegram"] + " | Follow: https://t.me/BroadFSC\n"
                     "- Do NOT promise returns or give direct buy/sell advice"
                 )
             }],
@@ -743,7 +744,7 @@ def generate_discord_content():
                     "- Stay 100% in character as " + persona["name"] + "\n"
                     "- Include 3-5 specific numbers (prices, yields, %, data points)\n"
                     "- End with: " + tags + "\n"
-                    "- Subscribe: " + links["telegram"] + "\n"
+                    "- Subscribe: " + links["telegram"] + " | 📱 Free consult: https://t.me/BroadInvestBot\n"
                     "- Learn free: " + links["hub"] + "\n"
                     "- Deep analysis: " + links["substack"] + "\n"
                     "- Add ⚠️ 'Not financial advice' disclaimer at the very end\n"
@@ -1057,6 +1058,7 @@ def generate_bluesky_content():
                     "- Include 3-4 specific numbers across the whole thread\n"
                     "- End LAST post with: #Investing #Trading"
                     + link_line + "\n"
+                    "- In LAST post, also include: 📱 Free consult: https://t.me/BroadInvestBot\n"
                     "- Do NOT promise returns\n"
                     "- Separate each post with '---POST_BREAK---' on its own line"
                 )
@@ -1186,6 +1188,7 @@ def generate_line_content(lang="en"):
                     "- Use bullet points for readability\n"
                     "- Professional but engaging tone\n"
                     "- Do NOT include any links (they go in the CTA button)\n"
+                    "- Do mention: 'Free consult via Telegram: @BroadInvestBot'\n"
                     "- Do NOT promise guaranteed returns\n"
                     "- Do NOT add hashtags"
                 )
@@ -1284,6 +1287,7 @@ def generate_tweet_content():
                     "- Include 3-4 specific numbers across the whole thread\n"
                     "- End LAST tweet with: #Investing #Trading"
                     + link_line + "\n"
+                    "- In LAST tweet, also include: 📱 Free consult: https://t.me/BroadInvestBot\n"
                     "- Do NOT promise returns or give direct financial advice\n"
                     "- NEVER start with 'Market update', 'Key themes', or 'Markets are'\n"
                     "- Separate each tweet with '---TWEET_BREAK---' on its own line"
@@ -1344,6 +1348,7 @@ def generate_linkedin_content():
                     "- Include 2-3 specific market observations\n"
                     "- Reference macro trends (Fed, ECB, geopolitics)\n"
                     "- End with: 'For daily market briefings, visit " + links["website"] + "'\n"
+                    "- Also add: '📱 Free consult: https://t.me/BroadInvestBot | Follow: https://t.me/BroadFSC'\n"
                     "- Do NOT promise returns or give specific buy/sell advice"
                 )
             }],
@@ -1506,6 +1511,7 @@ def generate_tiktok_content():
                     "- Hook in the first line\n"
                     "- 2-3 relevant hashtags\n"
                     "- Add link: " + links["hub"] + "\n"
+                    "- Also add: 📱 Free consult: https://t.me/BroadInvestBot\n"
                     "- Do NOT promise guaranteed returns"
                 )
             }],
@@ -1591,7 +1597,7 @@ def generate_medium_content():
                     "- End with: ⚠️ *Not financial advice*\n"
                     "- Tags: 3-5 tags without # symbol\n"
                     "- Title: Under 80 characters\n"
-                    "- Include: Subscribe at " + links["telegram"] + " | Learn free at " + links["hub"] + "\n"
+                    "- Include: Subscribe at " + links["telegram"] + " | 📱 Free consult: https://t.me/BroadInvestBot | Learn free at " + links["hub"] + "\n"
                     "- Do NOT promise returns"
                 )
             }],
@@ -1707,7 +1713,7 @@ def generate_substack_content():
                     "- End with: ⚠️ *Not financial advice*\n"
                     "- Tags: 3-5 tags without #\n"
                     "- Title: Under 80 chars, Subtitle: Under 120 chars\n"
-                    "- Include: Subscribe at " + links["telegram"] + " | Learn free at " + links["hub"] + "\n"
+                    "- Include: Subscribe at " + links["telegram"] + " | 📱 Free consult: https://t.me/BroadInvestBot | Learn free at " + links["hub"] + "\n"
                     "- Do NOT promise returns"
                 )
             }],
@@ -1885,6 +1891,7 @@ def generate_threads_content():
                     "- Include 3-4 specific numbers\n"
                     "- End LAST post with: #Investing #Trading"
                     + link_line + "\n"
+                    "- In LAST post, also include: 📱 Free consult: https://t.me/BroadInvestBot\n"
                     "- Do NOT promise returns or add disclaimers\n"
                     "- Separate posts with '---POST_BREAK---'"
                 )
