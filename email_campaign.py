@@ -337,6 +337,8 @@ def get_default_templates():
 <html>
 <head><meta charset="utf-8"></head>
 <body style="margin:0; padding:20px; background-color:#f4f5f7; font-family:Georgia,'Times New Roman',serif;">
+<!-- Preheader: preview text shown in inbox snippet -->
+<div style="display:none; max-height:0; overflow:hidden; mso-hide:all;">{{hook_sentence}}</div>
 
 <table width="100%" cellpadding="0" cellspacing="0" style="max-width:580px; margin:0 auto; background-color:#ffffff;">
 <!-- SIMPLE HEADER — just a thin accent line, no big colored box -->
@@ -374,9 +376,11 @@ def get_default_templates():
   </table>
 </td></tr>
 
-<!-- FOOTER — minimal -->
+<!-- FOOTER — compliance + unsubscribe -->
 <tr><td style="background-color:#f8f8f8; padding:14px 36px; text-align:center;">
-  <p style="font-family:Arial,sans-serif; color:#999; font-size:11px; margin:0;">Broad Investment Securities &bull; Licensed &amp; Regulated</p>
+  <p style="font-family:Arial,sans-serif; color:#999; font-size:11px; margin:0 0 6px;">Broad Investment Securities &bull; Licensed &amp; Regulated</p>
+  <p style="font-family:Arial,sans-serif; color:#aaa; font-size:10px; margin:0 0 6px;">Investment involves risk. Past performance does not guarantee future results. This is not financial advice.</p>
+  <p style="font-family:Arial,sans-serif; color:#aaa; font-size:10px; margin:0;"><a href="mailto:msli2233bin@gmail.com?subject=Unsubscribe" style="color:#aaa; text-decoration:underline;">Unsubscribe</a></p>
 </td></tr>
 </table>
 
@@ -393,6 +397,8 @@ def get_default_templates():
 <html>
 <head><meta charset="utf-8"></head>
 <body style="margin:0; padding:20px; background-color:#f4f5f7; font-family:Georgia,'Times New Roman',serif;">
+<!-- Preheader -->
+<div style="display:none; max-height:0; overflow:hidden; mso-hide:all;">{{hook_sentence}}</div>
 
 <table width="100%" cellpadding="0" cellspacing="0" style="max-width:580px; margin:0 auto; background-color:#ffffff;">
 <tr><td style="background-color:#1a1a2e; height:4px; font-size:1px; line-height:1px;">&nbsp;</td></tr>
@@ -428,8 +434,11 @@ def get_default_templates():
   </table>
 </td></tr>
 
+<!-- FOOTER — compliance + unsubscribe -->
 <tr><td style="background-color:#f8f8f8; padding:14px 36px; text-align:center;">
-  <p style="font-family:Arial,sans-serif; color:#999; font-size:11px; margin:0;">Broad Investment Securities &bull; Licensed &amp; Regulated</p>
+  <p style="font-family:Arial,sans-serif; color:#999; font-size:11px; margin:0 0 6px;">Broad Investment Securities &bull; Licensed &amp; Regulated</p>
+  <p style="font-family:Arial,sans-serif; color:#aaa; font-size:10px; margin:0 0 6px;">Investment involves risk. Past performance does not guarantee future results. This is not financial advice.</p>
+  <p style="font-family:Arial,sans-serif; color:#aaa; font-size:10px; margin:0;"><a href="mailto:msli2233bin@gmail.com?subject=Unsubscribe" style="color:#aaa; text-decoration:underline;">Unsubscribe</a></p>
 </td></tr>
 </table>
 
@@ -446,6 +455,8 @@ def get_default_templates():
 <html>
 <head><meta charset="utf-8"></head>
 <body style="margin:0; padding:20px; background-color:#f4f5f7; font-family:Georgia,'Times New Roman',serif;">
+<!-- Preheader -->
+<div style="display:none; max-height:0; overflow:hidden; mso-hide:all;">{{hook_sentence}}</div>
 
 <table width="100%" cellpadding="0" cellspacing="0" style="max-width:580px; margin:0 auto; background-color:#ffffff;">
 <tr><td style="background-color:#1a1a2e; height:4px; font-size:1px; line-height:1px;">&nbsp;</td></tr>
@@ -481,8 +492,11 @@ def get_default_templates():
   </table>
 </td></tr>
 
+<!-- FOOTER — compliance + unsubscribe -->
 <tr><td style="background-color:#f8f8f8; padding:14px 36px; text-align:center;">
-  <p style="font-family:Arial,sans-serif; color:#999; font-size:11px; margin:0;">Broad Investment Securities &bull; Licensed &amp; Regulated</p>
+  <p style="font-family:Arial,sans-serif; color:#999; font-size:11px; margin:0 0 6px;">Broad Investment Securities &bull; Licensed &amp; Regulated</p>
+  <p style="font-family:Arial,sans-serif; color:#aaa; font-size:10px; margin:0 0 6px;">Investment involves risk. Past performance does not guarantee future results. This is not financial advice.</p>
+  <p style="font-family:Arial,sans-serif; color:#aaa; font-size:10px; margin:0;"><a href="mailto:msli2233bin@gmail.com?subject=Unsubscribe" style="color:#aaa; text-decoration:underline;">Unsubscribe</a></p>
 </td></tr>
 </table>
 
@@ -701,14 +715,16 @@ CONTENT RULES (these make or break whether the email gets read):
 10. The website link (broadfsc.com/different) should appear naturally in "natural_reference", not as a button or promotion.
 11. Your email contact (msli2233bin@gmail.com) goes in the signature, like a normal person's email footer.
 12. Keep it SHORT: 120-200 words total. Busy people delete long emails from strangers.
-13. Subject line: specific + curiosity gap, under 50 chars, no emoji. Like a Bloomberg headline, not a newsletter.
-14. PS NOTE (critical for conversion): End with a PS that offers genuine FREE value — a specific stock research report, a trade idea, or a market brief. This is the #1 thing recipients remember. Make it sound like an afterthought, not a sales pitch. Examples:
-    - "PS — If you're looking at energy names, we just finished a 12-page deep-dive on XLE's top 3 holdings. No cost, just reply."
-    - "PS — Attached is the trade plan we're running for clients this week (entry, stop, target). Happy to share."
-    - "PS — Our recent report on why small-caps are setting up (with specific ticker list) is here: broadfsc.com/different — no paywall."
+13. Subject line: 3-5 WORDS MAX, use a CURIOSITY GAP — don't give away the insight. Write subject LAST (after body). Like a Bloomberg headline, not a newsletter. Under 40 chars for mobile.
+14. PS NOTE (critical for conversion): End with a PS that offers genuine FREE value — a specific stock research report, a trade idea, or a market brief. This is the #1 thing recipients remember. Make it sound like an afterthought, not a sales pitch. Use LOSS AVERSION: lead with what the reader might MISS or LOSE by not acting — loss aversion is 2x stronger than gain framing in finance. Examples:
+    - "PS — If you're NOT looking at energy names right now, you might be leaving money on the table. Our 12-page XLE deep-dive is free — just reply."
+    - "PS — The trade plan we're running this week (entry, stop, target) is attached. Don't miss the setup window."
+    - "PS — Most investors missed why small-caps just flashed a rare signal. Our ticker list + analysis: broadfsc.com/different — no paywall."
+15. COPYWRITING FRAMEWORK: Structure your insight using PAS (Problem → Agitation → Solution) or PPPP (Problem → Promise → Prove → Push). These work best for financial audiences because they lead with risk/pain and back claims with hard data.
+16. MOBILE-FIRST: Assume the reader is on mobile. Keep paragraphs under 2 sentences. No wall of text. Every line must earn its place.
 
 BAD subject examples (too marketing): "Your Market Edge Awaits", "Weekly Insights Inside", "Don't Miss This Opportunity"
-GOOD subject examples: "S&P testing 7,174 for 3rd time", "Why the VIX says otherwise", "Gold broke something important"
+GOOD subject examples: "S&P testing 7,174 for 3rd time", "Why the VIX says otherwise", "Gold broke something important", "The signal most are missing"
 
 Return as JSON:
 {{
