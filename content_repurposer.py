@@ -232,7 +232,12 @@ STRUCTURE:
    - Connect to real earnings, guidance, or macro events happening this week
 3. ACTIONABLE FRAMEWORK: A clear framework for how to think about this (not buy/sell advice, but a decision lens with specific scenarios)
 4. WHAT WE'RE WATCHING: 2-3 specific catalysts or data points to monitor next
-5. CLOSER: One punchy sentence that sticks
+5. INTERACTIVE CTA (REQUIRED): End with an interactive element:
+   - A question: "What's your take? Comment $TICKER for deep-dive"
+   - Or poll prompt: "Poll: Bull or Bear market? B/U"
+   - Invite replies: "Reply with your top holding — I'll analyze the risk"
+   - Always end with: 📱 Free consult @BroadInvestBot | 📐 Full analysis t.me/BroadFSC
+6. CLOSER: One punchy sentence that sticks
 
 QUALITY RULES:
 - Zero filler phrases ("In today's market", "It's worth noting")

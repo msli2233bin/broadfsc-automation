@@ -483,6 +483,13 @@ def post_tweet(text):
             if HAS_ANALYTICS:
                 log_post(platform="twitter", post_type="tweet", content_preview=text[:100], post_id=tweet_id, status="success")
             return True, tweet_id
+        elif r.status_code == 402:
+            print("  X/Twitter: HTTP 402 - Payment Required (Twitter API is no longer free for posting)")
+            print("  X/Twitter: Basic plan starts at $100/month. See: https://developer.twitter.com/en/portal/products/basic")
+            print("  X/Twitter: SKIPPING (zero-cost strategy - set TWITTER_SKIP_402=true)")
+            if HAS_ANALYTICS:
+                log_post(platform="twitter", post_type="tweet", content_preview=text[:100], status="skipped", error_msg="HTTP 402 - API not free")
+            return False, None
         else:
             print("  X/Twitter: FAIL HTTP " + str(r.status_code) + " - " + r.text[:300])
             if HAS_ANALYTICS:
@@ -636,6 +643,9 @@ def generate_mastodon_content():
                     "- Add link: " + links["hub"] + "\n"
                     "- Deep analysis: " + links["substack"] + "\n"
                     "- Free consult: " + links["telegram"] + " | Follow: https://t.me/BroadFSC\n"
+                    "- End with interactive question: 'Your take?' or 'Which ticker worried you most?'"
+                    "- Include: 📱 Free consult @BroadInvestBot"
+                    "- Use $TICKER format for stock mentions (e.g, $AAPL, $TSLA)\n"
                     "- Do NOT promise returns or give direct buy/sell advice"
                 )
             }],
@@ -1288,6 +1298,9 @@ def generate_tweet_content():
                     "- End LAST tweet with: #Investing #Trading"
                     + link_line + "\n"
                     "- In LAST tweet, also include: 📱 Free consult: https://t.me/BroadInvestBot\n"
+                    "- End LAST tweet with interactive question: 'Your take? Reply with $TICKER'"
+                    "- Use $TICKER format for stock mentions (e.g, $AAPL, $TSLA)"
+                    "- Invite: 'Bull or Bear? B / bearish'"
                     "- Do NOT promise returns or give direct financial advice\n"
                     "- NEVER start with 'Market update', 'Key themes', or 'Markets are'\n"
                     "- Separate each tweet with '---TWEET_BREAK---' on its own line"
@@ -1892,6 +1905,8 @@ def generate_threads_content():
                     "- End LAST post with: #Investing #Trading"
                     + link_line + "\n"
                     "- In LAST post, also include: 📱 Free consult: https://t.me/BroadInvestBot\n"
+                    "- End LAST post with interactive question: 'Your take? Drop $TICKER below'"
+                    "- Use $TICKER format for stock mentions (e.g, $AAPL, $TSLA)"
                     "- Do NOT promise returns or add disclaimers\n"
                     "- Separate posts with '---POST_BREAK---'"
                 )

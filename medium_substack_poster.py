@@ -28,6 +28,10 @@ from pathlib import Path
 if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
+# Detect environment — headless mode for CI (GitHub Actions)
+IS_CI = os.environ.get("CI") == "true" or os.environ.get("GITHUB_ACTIONS") == "true"
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+
 # ============================================================
 # Config
 # ============================================================
@@ -363,8 +367,8 @@ def post_medium(article):
     with sync_playwright() as p:
         context = p.chromium.launch_persistent_context(
             user_data_dir,
-            headless=False,
-            slow_mo=300,
+            headless=IS_CI,
+            slow_mo=300 if not IS_CI else 50,
             viewport={"width": 1280, "height": 900},
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
         )
@@ -694,8 +698,8 @@ def post_substack(article):
     with sync_playwright() as p:
         context = p.chromium.launch_persistent_context(
             user_data_dir,
-            headless=False,
-            slow_mo=300,
+            headless=IS_CI,
+            slow_mo=300 if not IS_CI else 50,
             viewport={"width": 1280, "height": 900},
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
         )
