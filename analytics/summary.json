@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-05T11:52:27.755091Z",
+  "generated_at": "2026-05-05T17:07:54.878395Z",
   "period": {
     "today": "2026-05-05",
     "yesterday": "2026-05-04",
@@ -10,9 +10,9 @@
     "posts_today": 21,
     "posts_week": 25,
     "posts_month": 36,
-    "interactions_today": 0,
-    "interactions_week": 2,
-    "interactions_month": 33,
+    "interactions_today": 2,
+    "interactions_week": 4,
+    "interactions_month": 35,
     "success_rate": 22.2
   },
   "platforms": {
@@ -80,15 +80,15 @@
       "month": 31
     },
     "telegram": {
-      "today": 0,
-      "week": 2,
-      "month": 2
+      "today": 2,
+      "week": 4,
+      "month": 4
     }
   },
   "action_breakdown": {
     "message": 30,
     "start": 1,
-    "proactive_outreach": 2
+    "proactive_outreach": 4
   },
   "daily_trend": {
     "2026-04-16": {
@@ -109,7 +109,7 @@
     },
     "2026-05-05": {
       "posts": 21,
-      "interactions": 0
+      "interactions": 2
     },
     "2026-04-20": {
       "posts": 0,
@@ -314,22 +314,6 @@
   ],
   "recent_interactions": [
     {
-      "id": 14,
-      "timestamp": "2026-04-17T07:52:36.797240Z",
-      "platform": "telegram_bot",
-      "action": "message",
-      "user_id": "8639358750",
-      "details": "Is there one in Europe?"
-    },
-    {
-      "id": 15,
-      "timestamp": "2026-04-17T14:00:36.059548Z",
-      "platform": "telegram_bot",
-      "action": "message",
-      "user_id": "8639358750",
-      "details": "Do you swear?"
-    },
-    {
       "id": 16,
       "timestamp": "2026-04-17T14:01:17.292393Z",
       "platform": "telegram_bot",
@@ -468,6 +452,22 @@
     {
       "id": 33,
       "timestamp": "2026-04-29T10:00:42.941326Z",
+      "platform": "telegram",
+      "action": "proactive_outreach",
+      "user_id": "8639358750",
+      "details": "Auto proactive message sent"
+    },
+    {
+      "id": 34,
+      "timestamp": "2026-05-05T09:59:42.849335Z",
+      "platform": "telegram",
+      "action": "proactive_outreach",
+      "user_id": "8327500544",
+      "details": "Auto proactive message sent"
+    },
+    {
+      "id": 35,
+      "timestamp": "2026-05-05T10:00:29.314866Z",
       "platform": "telegram",
       "action": "proactive_outreach",
       "user_id": "8639358750",
