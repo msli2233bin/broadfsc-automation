@@ -47,6 +47,83 @@ IS_CI = os.environ.get("CI") == "true" or os.environ.get("GITHUB_ACTIONS") == "t
 
 
 # ============================================================
+# Cover Image Generator
+# ============================================================
+def generate_cover_image(title, article_type="Market Radar"):
+    """Generate a branded cover image for Substack posts using Pillow."""
+    try:
+        from PIL import Image, ImageDraw, ImageFont
+    except ImportError:
+        print("    [Cover] Pillow not installed, skipping cover image")
+        return None
+
+    W, H = 1200, 630
+    img = Image.new('RGB', (W, H), color='#1a1a2e')
+    draw = ImageDraw.Draw(img)
+
+    # Gradient background
+    for i in range(H):
+        r = min(255, 26 + int(i * 0.08))
+        g = min(255, 26 + int(i * 0.04))
+        b = min(255, 46 + int(i * 0.12))
+        draw.line([(0, i), (W, i)], fill=(r, g, b))
+
+    # Decorative lines
+    for y_off in [80, 550]:
+        draw.line([(50, y_off), (W - 50, y_off)], fill='#00d4aa', width=2)
+
+    # Fonts
+    try:
+        font_title = ImageFont.truetype('C:/Windows/Fonts/arialbd.ttf', 44)
+        font_sub = ImageFont.truetype('C:/Windows/Fonts/arial.ttf', 22)
+        font_brand = ImageFont.truetype('C:/Windows/Fonts/arialbd.ttf', 20)
+    except Exception:
+        font_title = ImageFont.load_default()
+        font_sub = font_title
+        font_brand = font_title
+
+    # Brand label (top-left)
+    draw.text((60, 30), "DeepSight", fill='#00d4aa', font=font_brand)
+    draw.text((200, 33), f"| {article_type}", fill='#666666', font=font_sub)
+
+    # Title (centered, word-wrapped)
+    max_chars_per_line = 30
+    words = title.split()
+    lines = []
+    current_line = ""
+    for word in words:
+        if len(current_line) + len(word) + 1 <= max_chars_per_line:
+            current_line = (current_line + " " + word).strip()
+        else:
+            lines.append(current_line)
+            current_line = word
+    if current_line:
+        lines.append(current_line)
+
+    line_height = 55
+    start_y = (H - len(lines) * line_height) // 2
+    for i, line in enumerate(lines):
+        bbox = draw.textbbox((0, 0), line, font=font_title)
+        tw = bbox[2] - bbox[0]
+        tx = (W - tw) // 2
+        draw.text((tx, start_y + i * line_height), line, fill='#ffffff', font=font_title)
+
+    # Date (bottom)
+    date_str = datetime.datetime.utcnow().strftime('%B %d, %Y')
+    bbox = draw.textbbox((0, 0), date_str, font=font_sub)
+    dw = bbox[2] - bbox[0]
+    draw.text(((W - dw) // 2, H - 60), date_str, fill='#888888', font=font_sub)
+
+    # Save
+    assets_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets")
+    os.makedirs(assets_dir, exist_ok=True)
+    path = os.path.join(assets_dir, "substack_cover.png")
+    img.save(path, quality=95)
+    print(f"    [Cover] Generated: {path}")
+    return path
+
+
+# ============================================================
 # Persona System — Substack Edition
 # ============================================================
 PERSONAS = [
@@ -574,74 +651,166 @@ def post_to_substack(article):
                 log_article("substack", article["title"], "editor_timeout")
                 return False, ""
 
-            # === Step 5: Fill article content ===
+            # === Step 5: Upload cover image ===
+            print("  [Substack] Uploading cover image...")
+            cover_path = generate_cover_image(article["title"], article.get("type", "Market Radar"))
+            if cover_path and os.path.exists(cover_path):
+                try:
+                    # Method 1: Look for "Add a cover image" button and click it
+                    cover_clicked = False
+                    cover_sels = [
+                        'button:has-text("Add a cover image")',
+                        'button:has-text("cover image")',
+                        '[class*="cover"] button',
+                        'button[data-testid="cover-image"]',
+                    ]
+                    for sel in cover_sels:
+                        try:
+                            btn = page.locator(sel).first
+                            if btn.is_visible(timeout=500):
+                                btn.click()
+                                cover_clicked = True
+                                print(f"    Cover button clicked: {sel}")
+                                time.sleep(2)
+                                break
+                        except Exception:
+                            continue
+
+                    if cover_clicked:
+                        # After clicking, a file dialog opens — use file chooser
+                        with page.expect_file_chooser(timeout=10000) as fc_info:
+                            # Click the upload area/button that appears
+                            upload_sels = [
+                                'input[type="file"]',
+                                'button:has-text("Upload")',
+                                '[class*="upload"]',
+                            ]
+                            uploaded = False
+                            for sel in upload_sels:
+                                try:
+                                    el = page.locator(sel).first
+                                    if el.is_visible(timeout=3000):
+                                        el.click()
+                                        uploaded = True
+                                        break
+                                except Exception:
+                                    continue
+                            if not uploaded:
+                                # Just click on the dialog area
+                                page.click('[class*="image-picker"], [class*="cover"]', timeout=5000)
+                        file_chooser = fc_info.value
+                        file_chooser.set_files(cover_path)
+                        print("    Cover image uploaded!")
+                        time.sleep(3)
+                    else:
+                        print("    No cover button found, skipping cover image")
+                except Exception as e:
+                    print(f"    Cover upload failed: {e}")
+
+            # === Step 6: Fill title & content ===
             print("  [Substack] Filling content...")
 
-            # Fill Title — Substack editor: click the ProseMirror body area, title is the first line
-            # The sidebar "Add a title..." is just a file name input, NOT the post title
-            # The real post title goes into the ProseMirror editor as the first content
+            # Fill TITLE — use JS to find and fill the title input (fast, no timeout waits)
             title_done = False
-            
-            # Click the main ProseMirror editor to focus it
+
+            # Method 1: JavaScript — find any input with "title" in placeholder/aria-label
+            try:
+                result = page.evaluate(f'''() => {{
+                    // Look for title input by placeholder
+                    const inputs = document.querySelectorAll('input');
+                    for (const input of inputs) {{
+                        const ph = (input.placeholder || '').toLowerCase();
+                        const aria = (input.getAttribute('aria-label') || '').toLowerCase();
+                        if (ph.includes('title') || aria.includes('title')) {{
+                            const nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+                            nativeSetter.call(input, {json.dumps(article["title"])});
+                            input.dispatchEvent(new Event('input', {{ bubbles: true }}));
+                            input.dispatchEvent(new Event('change', {{ bubbles: true }}));
+                            return {{found: true, placeholder: input.placeholder}};
+                        }}
+                    }}
+                    // Also check for contenteditable div that might be the title
+                    const editables = document.querySelectorAll('[contenteditable="true"]');
+                    for (const el of editables) {{
+                        const cls = (el.className || '').toLowerCase();
+                        const role = (el.getAttribute('role') || '').toLowerCase();
+                        if (cls.includes('title') || role === 'title' || cls.includes('headline')) {{
+                            el.textContent = {json.dumps(article["title"])};
+                            el.dispatchEvent(new Event('input', {{ bubbles: true }}));
+                            return {{found: true, type: 'contenteditable', cls: el.className}};
+                        }}
+                    }}
+                    return {{found: false}};
+                }}''')
+                if result.get('found'):
+                    title_done = True
+                    print(f"    Title filled via JS: {result}")
+            except Exception as e:
+                print(f"    JS title fill: {e}")
+
+            # Method 2: Fast selector check (short timeout)
+            if not title_done:
+                for sel in [
+                    'input[placeholder*="Add a title"]',
+                    'input[placeholder*="title" i]',
+                    'input[placeholder*="Title"]',
+                ]:
+                    try:
+                        el = page.locator(sel).first
+                        if el.is_visible(timeout=500):
+                            el.click()
+                            time.sleep(0.2)
+                            page.keyboard.press("Control+a")
+                            page.keyboard.press("Backspace")
+                            page.keyboard.type(article["title"], delay=10)
+                            title_done = True
+                            print(f"    Title filled via selector: {sel}")
+                            break
+                    except Exception:
+                        continue
+
+            # Method 3: Click ProseMirror, Shift+Tab to title field
+            if not title_done:
+                try:
+                    editor_el = page.locator('.ProseMirror[contenteditable="true"]').first
+                    if editor_el.is_visible(timeout=1000):
+                        editor_el.click()
+                        time.sleep(0.2)
+                        page.keyboard.press("Shift+Tab")
+                        time.sleep(0.2)
+                        page.keyboard.press("Control+a")
+                        page.keyboard.press("Backspace")
+                        page.keyboard.type(article["title"], delay=10)
+                        title_done = True
+                        print("    Title filled via Shift+Tab")
+                except Exception:
+                    pass
+
+            if not title_done:
+                print("    WARNING: All title fill methods failed — title may be empty")
+
+            # Fill BODY content into the ProseMirror editor
+            print("  [Substack] Filling body content...")
             try:
                 editor_el = page.locator('.ProseMirror[contenteditable="true"]').first
                 if editor_el.is_visible(timeout=3000):
                     editor_el.click()
                     time.sleep(0.5)
-                    # Type the title as the first line in the editor
-                    page.keyboard.type(article["title"], delay=15)
-                    title_done = True
-                    print(f"    Title typed into ProseMirror editor")
-            except Exception as e:
-                print(f"    ProseMirror click failed: {e}")
-            
-            if not title_done:
-                # Fallback: try sidebar title input
-                for sel in [
-                    'input[placeholder="Add a title..."]',
-                    'input[placeholder*="title"]',
-                ]:
-                    try:
-                        el = page.locator(sel).first
-                        if el.is_visible(timeout=2000):
-                            el.click()
-                            time.sleep(0.3)
-                            el.fill("")
-                            page.keyboard.type(article["title"], delay=20)
-                            title_done = True
-                            print(f"    Title filled via: {sel}")
-                            break
-                    except Exception:
-                        continue
+                    # Clear existing content
+                    page.keyboard.press("Control+a")
+                    page.keyboard.press("Backspace")
+                    time.sleep(0.3)
+            except Exception:
+                pass
 
-            if not title_done:
-                # Fallback: use first contenteditable or input
-                try:
-                    first_input = page.locator('input').first
-                    first_input.click()
-                    page.keyboard.type(article["title"], delay=20)
-                    title_done = True
-                    print("    Title filled via first input")
-                except Exception:
-                    print("    WARNING: Could not fill title")
-
-            # Move to body area — press Enter twice after title to create space
-            if title_done:
-                page.keyboard.press("Enter")
-                page.keyboard.press("Enter")
-                time.sleep(0.5)
-            
-            # If subtitle exists, type it as the next line (Substack auto-styles it)
+            # If subtitle exists, type it first
             if article.get("subtitle"):
-                page.keyboard.type(article["subtitle"], delay=15)
+                page.keyboard.type(article["subtitle"], delay=10)
                 page.keyboard.press("Enter")
                 page.keyboard.press("Enter")
                 time.sleep(0.3)
 
-            # Fill Body content — type directly into the focused ProseMirror editor
-            # (already focused from title typing above)
-
-            # Type body content paragraph by paragraph using clipboard
+            # Type body content paragraph by paragraph
             paragraphs = article["content"].split("\n")
             char_count = 0
             for i, para in enumerate(paragraphs):
@@ -746,11 +915,61 @@ def post_to_substack(article):
                 page.keyboard.press("Control+s")
                 time.sleep(3)
 
+            # === Step 7: Verify publish & get public URL ===
+            time.sleep(3)
             final_url = page.url
+            print(f"    Post-publish URL: {final_url}")
+
+            if published:
+                # After clicking "Send to everyone now", Substack may:
+                # 1. Stay on the editor URL (but the post IS published)
+                # 2. Redirect to /share-center
+                # 3. Redirect to the public post URL
+                # The most reliable method: check the post list for the public URL
+
+                # Quick check: did we already redirect?
+                current_url = page.url
+                if "/p/" in current_url and "/publish/" not in current_url:
+                    final_url = current_url
+                    print(f"    Published! Public URL: {final_url}")
+                else:
+                    # Navigate to the post list to find the public URL
+                    print("  [Substack] Checking post list for public URL...")
+                    try:
+                        page.goto(f"{PUB_URL}/publish/posts", timeout=15000)
+                        time.sleep(3)
+                        
+                        # The first post in the list should be our newly published one
+                        # Find the public link
+                        public_url = page.evaluate('''() => {
+                            const links = document.querySelectorAll('a[href*="/p/"]');
+                            for (const link of links) {
+                                const href = link.getAttribute('href') || '';
+                                if (href.includes('/p/') && !href.includes('/publish/')) {
+                                    return href;
+                                }
+                            }
+                            return null;
+                        }''')
+                        
+                        if public_url:
+                            final_url = public_url if public_url.startswith('http') else f"https://{PUBLICATION_SLUG}.substack.com{public_url}"
+                            print(f"    ✅ Post published! Public URL: {final_url}")
+                        else:
+                            # Check if the post is in "Published" state
+                            is_published = page.locator('text="Published"').count() > 0
+                            if is_published:
+                                print("    ✅ Post IS published (couldn't extract public URL)")
+                            else:
+                                print("    ⚠️ Post may be a draft")
+                                published = False
+                    except Exception as e:
+                        print(f"    Could not verify publish status: {e}")
+
             print(f"    Final URL: {final_url}")
             log_article("substack", article["title"], "published" if published else "draft_only", final_url)
-            
-            return True, final_url
+
+            return published, final_url
 
         except Exception as e:
             print(f"  [Substack] ERROR: {e}")

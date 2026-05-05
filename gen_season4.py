@@ -1071,7 +1071,7 @@ async def generate_episode(ep_def, tmp_dir, output_path):
     chart_cache = {}
     for si in range(total_scenes):
         st = scene_timings[si]
-        scene_label = f"EP{ep_num} | {st['title'].replace(chr(10), ' '}"[:40]
+        scene_label = f"EP{ep_num} | {st['title'].replace(chr(10), ' ')}"[:40]
         ci = _render_chart_full(
             ohlcv,
             chart_type=chart_type,
