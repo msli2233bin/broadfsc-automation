@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-05T17:07:54.878395Z",
+  "generated_at": "2026-05-05T20:47:14.634041Z",
   "period": {
     "today": "2026-05-05",
     "yesterday": "2026-05-04",
@@ -7,41 +7,41 @@
     "month_ago": "2026-04-05"
   },
   "totals": {
-    "posts_today": 21,
-    "posts_week": 25,
-    "posts_month": 36,
+    "posts_today": 32,
+    "posts_week": 36,
+    "posts_month": 47,
     "interactions_today": 2,
     "interactions_week": 4,
     "interactions_month": 35,
-    "success_rate": 22.2
+    "success_rate": 29.8
   },
   "platforms": {
     "tiktok": {
-      "today": 4,
-      "week": 4,
-      "month": 15,
+      "today": 6,
+      "week": 6,
+      "month": 17,
       "success": 1,
-      "failed": 14
+      "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 3,
-      "month": 3,
-      "success": 1,
+      "today": 2,
+      "week": 4,
+      "month": 4,
+      "success": 2,
       "failed": 2
     },
     "discord": {
-      "today": 3,
-      "week": 5,
-      "month": 5,
-      "success": 2,
+      "today": 5,
+      "week": 7,
+      "month": 7,
+      "success": 4,
       "failed": 3
     },
     "mastodon": {
-      "today": 4,
-      "week": 4,
-      "month": 4,
-      "success": 3,
+      "today": 6,
+      "week": 6,
+      "month": 6,
+      "success": 5,
       "failed": 1
     },
     "twitter": {
@@ -52,25 +52,25 @@
       "failed": 2
     },
     "threads": {
+      "today": 5,
+      "week": 5,
+      "month": 5,
+      "success": 2,
+      "failed": 3
+    },
+    "medium": {
       "today": 3,
       "week": 3,
       "month": 3,
-      "success": 1,
-      "failed": 2
-    },
-    "medium": {
-      "today": 2,
-      "week": 2,
-      "month": 2,
       "success": 0,
-      "failed": 2
+      "failed": 3
     },
     "substack": {
-      "today": 2,
-      "week": 2,
-      "month": 2,
+      "today": 3,
+      "week": 3,
+      "month": 3,
       "success": 0,
-      "failed": 2
+      "failed": 3
     }
   },
   "interactions_by_platform": {
@@ -108,7 +108,7 @@
       "interactions": 0
     },
     "2026-05-05": {
-      "posts": 21,
+      "posts": 32,
       "interactions": 2
     },
     "2026-04-20": {
@@ -123,110 +123,10 @@
   "hourly_distribution": {
     "15": 1,
     "10": 1,
-    "11": 6
+    "11": 6,
+    "18": 6
   },
   "recent_posts": [
-    {
-      "id": 17,
-      "timestamp": "2026-05-05T10:30:15.418873Z",
-      "platform": "twitter",
-      "type": "tweet",
-      "content_preview": "\"Did you know? Top reps use AI to orchestrate 70% more sales meetings than those relying on individu",
-      "status": "failed",
-      "error_msg": "HTTP 402"
-    },
-    {
-      "id": 18,
-      "timestamp": "2026-05-05T10:30:16.132515Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "As the social media landscape continues to evolve, platforms like TikTok are redefining the rules of",
-      "status": "failed",
-      "error_msg": "log_post() got an unexpected keyword argument 'post_id'"
-    },
-    {
-      "id": 19,
-      "timestamp": "2026-05-05T10:30:16.420861Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "",
-      "status": "failed",
-      "error_msg": "log_post() got an unexpected keyword argument 'post_id'"
-    },
-    {
-      "id": 20,
-      "timestamp": "2026-05-05T10:30:59.088383Z",
-      "platform": "tiktok",
-      "type": "video_v5_ai",
-      "content_preview": "Think the 'buy low, sell high' strategy actually hurts your returns, and here's why. investing, emot",
-      "status": "failed",
-      "error_msg": "Video creation failed"
-    },
-    {
-      "id": 21,
-      "timestamp": "2026-05-05T10:31:01.251720Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 22,
-      "timestamp": "2026-05-05T10:31:22.438074Z",
-      "platform": "medium",
-      "type": "story",
-      "content_preview": "The Yield Curve Is Speaking — Are You Listening?",
-      "status": "failed",
-      "error_msg": "post_medium_article returned False"
-    },
-    {
-      "id": 23,
-      "timestamp": "2026-05-05T10:32:12.352287Z",
-      "platform": "substack",
-      "type": "article",
-      "content_preview": "AI Stocks at All-Time Highs: Brilliance or Bubble?",
-      "status": "failed",
-      "error_msg": "post_substack_article returned False"
-    },
-    {
-      "id": 24,
-      "timestamp": "2026-05-05T10:32:41.656938Z",
-      "platform": "tiktok",
-      "type": "video_v5_signal",
-      "content_preview": "\"Gold just did something it hasn't done in over a decade - and I think it's a game-changer. Here's w",
-      "status": "failed",
-      "error_msg": "Video creation failed"
-    },
-    {
-      "id": 25,
-      "timestamp": "2026-05-05T11:18:46.206554Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Moats and Momentum: Why the Nasdaq's AI-Driven Giants Will Continue to Dominate</b>\n\n{   \"title",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "71"
-    },
-    {
-      "id": 26,
-      "timestamp": "2026-05-05T11:18:46.605691Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Moats and Momentum: Why the Nasdaq's AI-Driven Giants Will Continue to Dominate**\n\n{   \"title\": ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1501181357647335425"
-    },
-    {
-      "id": 27,
-      "timestamp": "2026-05-05T11:18:47.353310Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Moats and Momentum: Why the Nasdaq's AI-Driven Giants Will Continue to Dominate\n\n{   \"title\": \"Moa",
-      "status": "success",
-      "error_msg": ""
-    },
     {
       "id": 28,
       "timestamp": "2026-05-05T11:18:56.637881Z",
@@ -308,6 +208,110 @@
       "platform": "tiktok",
       "type": "video_v5_ai",
       "content_preview": "\"People think fees are just a hassle, but the truth is, they're quietly costing you thousands. Time ",
+      "status": "failed",
+      "error_msg": "Video creation failed"
+    },
+    {
+      "id": 37,
+      "timestamp": "2026-05-05T18:56:30.911691Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 The S&P 500 is up 17% in 2026, but is it a Bubble?</b>\n\nThe S&P 500 has been on a tear in 2026,",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "75"
+    },
+    {
+      "id": 38,
+      "timestamp": "2026-05-05T18:56:31.342294Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **The S&P 500 is up 17% in 2026, but is it a Bubble?**\n\nThe S&P 500 has been on a tear in 2026, wi",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1501296553787129997"
+    },
+    {
+      "id": 39,
+      "timestamp": "2026-05-05T18:56:31.765492Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 The S&P 500 is up 17% in 2026, but is it a Bubble?\n\nThe S&P 500 has been on a tear in 2026, with a",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 40,
+      "timestamp": "2026-05-05T18:56:41.254057Z",
+      "platform": "threads",
+      "type": "repurposed",
+      "content_preview": "📊 The S&P 500 is up 17% in 2026, but is it a Bubble?\n\nThe S&P 500 has been on a tear in 2026, with a",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "18194926906317957"
+    },
+    {
+      "id": 41,
+      "timestamp": "2026-05-05T18:56:42.705878Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "\"Understanding the nuances of stock investing is crucial for long-term success. One often-overlooked",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "116523493133621974"
+    },
+    {
+      "id": 42,
+      "timestamp": "2026-05-05T18:56:43.160963Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "**Market Musings**\n\nHey fellow traders, let's talk about stock types and risk management. As we know",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1501296603305349440"
+    },
+    {
+      "id": 43,
+      "timestamp": "2026-05-05T18:57:09.258154Z",
+      "platform": "tiktok",
+      "type": "video_v5_signal",
+      "content_preview": "\"Gold is doing something it hasn't done in years and I'm about to break down why it's got my attenti",
+      "status": "failed",
+      "error_msg": "Video creation failed"
+    },
+    {
+      "id": 44,
+      "timestamp": "2026-05-05T18:57:11.268124Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 45,
+      "timestamp": "2026-05-05T18:57:38.479591Z",
+      "platform": "medium",
+      "type": "story",
+      "content_preview": "The Yield Curve Is Speaking — Are You Listening?",
+      "status": "failed",
+      "error_msg": "post_medium_article returned False"
+    },
+    {
+      "id": 46,
+      "timestamp": "2026-05-05T18:58:25.981072Z",
+      "platform": "substack",
+      "type": "article",
+      "content_preview": "AI Stocks at All-Time Highs: Brilliance or Bubble?",
+      "status": "failed",
+      "error_msg": "post_substack_article returned False"
+    },
+    {
+      "id": 47,
+      "timestamp": "2026-05-05T18:59:11.580027Z",
+      "platform": "tiktok",
+      "type": "video_v5_ai",
+      "content_preview": "\"I just realized my 401(k) is way more complicated than I thought - and it's a total disaster waitin",
       "status": "failed",
       "error_msg": "Video creation failed"
     }
