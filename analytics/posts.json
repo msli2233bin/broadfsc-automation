@@ -133,5 +133,86 @@
     "content_preview": "",
     "status": "failed",
     "error_msg": "log_post() got an unexpected keyword argument 'post_id'"
+  },
+  {
+    "id": 16,
+    "timestamp": "2026-05-05T10:30:03.903287Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Value Investors, Rejoice: The 2026 Stock Market Is Not as Overvalued as You Think\n\nAs value invest",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 17,
+    "timestamp": "2026-05-05T10:30:15.418873Z",
+    "platform": "twitter",
+    "type": "tweet",
+    "content_preview": "\"Did you know? Top reps use AI to orchestrate 70% more sales meetings than those relying on individu",
+    "status": "failed",
+    "error_msg": "HTTP 402"
+  },
+  {
+    "id": 18,
+    "timestamp": "2026-05-05T10:30:16.132515Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "As the social media landscape continues to evolve, platforms like TikTok are redefining the rules of",
+    "status": "failed",
+    "error_msg": "log_post() got an unexpected keyword argument 'post_id'"
+  },
+  {
+    "id": 19,
+    "timestamp": "2026-05-05T10:30:16.420861Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "",
+    "status": "failed",
+    "error_msg": "log_post() got an unexpected keyword argument 'post_id'"
+  },
+  {
+    "id": 20,
+    "timestamp": "2026-05-05T10:30:59.088383Z",
+    "platform": "tiktok",
+    "type": "video_v5_ai",
+    "content_preview": "Think the 'buy low, sell high' strategy actually hurts your returns, and here's why. investing, emot",
+    "status": "failed",
+    "error_msg": "Video creation failed"
+  },
+  {
+    "id": 21,
+    "timestamp": "2026-05-05T10:31:01.251720Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 22,
+    "timestamp": "2026-05-05T10:31:22.438074Z",
+    "platform": "medium",
+    "type": "story",
+    "content_preview": "The Yield Curve Is Speaking — Are You Listening?",
+    "status": "failed",
+    "error_msg": "post_medium_article returned False"
+  },
+  {
+    "id": 23,
+    "timestamp": "2026-05-05T10:32:12.352287Z",
+    "platform": "substack",
+    "type": "article",
+    "content_preview": "AI Stocks at All-Time Highs: Brilliance or Bubble?",
+    "status": "failed",
+    "error_msg": "post_substack_article returned False"
+  },
+  {
+    "id": 24,
+    "timestamp": "2026-05-05T10:32:41.656938Z",
+    "platform": "tiktok",
+    "type": "video_v5_signal",
+    "content_preview": "\"Gold just did something it hasn't done in over a decade - and I think it's a game-changer. Here's w",
+    "status": "failed",
+    "error_msg": "Video creation failed"
   }
 ]
