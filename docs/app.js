@@ -612,15 +612,21 @@ async function submitRegistrationToBackend(name, email, interests, source) {
   }
 
   // 2. Telegram Bot notification (backup channel)
+  // NOTE: Bot token rotated frequently — using admin notification via Formspree email instead.
+  // If you have a stable bot token, encode it: btoa('BOT_TOKEN_HERE')
+  // and replace the line below.
   try {
-    const BOT_API = atob('ODI5MjQyMjAzMzpBQUhyUFVmU2FVQWNtcHZRVFhjVjRuc2QtTmFrWkgzU0l3UFU=');
+    // Attempt with current bot token (may fail if token expired)
+    const BOT_API = atob('NzcyNTY1NzY1ODpBQUhxVFBIN3VlYXZ4RnBkWi1teTUyR3ZHY2ZGaW5hbEpVNA==');
     const msg = `🆕 New Registration\n\n👤 Name: ${name}\n📧 Email: ${email}\n🎯 Interest: ${interests}\n📍 Source: ${source}\n🕐 Time: ${new Date().toLocaleString()}`;
 
     await fetch(`https://api.telegram.org/bot${BOT_API}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: '@BroadFSC', text: msg, parse_mode: 'Markdown' })
-    }).catch(() => {});
+      body: JSON.stringify({ chat_id: '@BroadFSC', text: msg })
+    }).catch(() => {
+      console.log('Telegram notification failed (token may be expired), relying on Formspree email');
+    });
   } catch (e) {}
 
   // 3. Store locally for admin dashboard access

@@ -56,7 +56,7 @@ def _save_json(filepath, data):
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 
-def log_post(platform, post_type="text", content_preview="", status="success", error_msg=""):
+def log_post(platform, post_type="text", content_preview="", post_id=None, status="success", error_msg=""):
     """记录一次帖子发布（JSON + SQLite 双写）"""
     posts = _load_json(POSTS_FILE)
     entry = {
@@ -68,6 +68,8 @@ def log_post(platform, post_type="text", content_preview="", status="success", e
         "status": status,
         "error_msg": error_msg
     }
+    if post_id is not None:
+        entry["post_id"] = str(post_id)
     posts.append(entry)
     # Keep last 5000 records
     if len(posts) > 5000:
@@ -76,7 +78,7 @@ def log_post(platform, post_type="text", content_preview="", status="success", e
     # Dual-write to SQLite
     if HAS_DB:
         try:
-            _db_log_post(platform=platform, post_type=post_type, content_preview=content_preview[:200], status=status, error_msg=error_msg[:200])
+            _db_log_post(platform=platform, post_type=post_type, content_preview=content_preview[:200], post_id="" if post_id is None else str(post_id), status=status, error_msg=error_msg[:200])
         except Exception as e:
             print(f"[analytics_logger] SQLite log_post error: {e}")
     return entry["id"]
