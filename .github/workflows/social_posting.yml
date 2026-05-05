@@ -98,11 +98,6 @@ jobs:
         run: python reddit_poster.py
 
       - name: Post to Substack (Playwright headless, Mon/Wed/Fri only)
-        uses: nick-fields/retry@v3
-        with:
-          timeout_minutes: 8
-          max_attempts: 2
-          retry_wait_seconds: 30
         env:
           SUBSTACK_EMAIL: ${{ secrets.SUBSTACK_EMAIL || 'msli2233bin@gmail.com' }}
           SUBSTACK_PASSWORD: ${{ secrets.SUBSTACK_PASSWORD || 'Lin2233509.' }}
