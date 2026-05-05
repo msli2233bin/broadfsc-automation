@@ -558,52 +558,77 @@ def post_to_substack(article):
 
             print("  [Substack] Login confirmed.")
 
-            # === Step 2: Navigate to editor (multiple methods) ===
-            print("  [Substack] Opening editor...")
+            # === Step 2: Navigate to editor (FIXED v7) ===
+            # Substack 2025+ 新UI流程：
+            # 方法1：/publish/posts → Create → Article → 等待跳转到 /publish/post/{id}
+            # 方法2：直接 /publish/post?type=newsletter → 等待跳转
+            print("  [Substack] Opening editor (v7 fixed)...")
             
             editor_url = None
 
-            # Method 1: Direct write URL (fastest, no dashboard needed)
-            print("    Trying substack.com/write...")
-            page.goto("https://substack.com/write", timeout=60000)
+            # 方法1：从 /publish/posts → Create → Article
+            print(f"    Going to {PUB_URL}/publish/posts...")
+            page.goto(f"{PUB_URL}/publish/posts", timeout=60000)
             time.sleep(5)
-            editor_url = page.url
-            print(f"    /write URL: {editor_url}")
-
-            # Method 2: If /write didn't give an editor, try dashboard -> Create -> Article
-            if "/publish" not in editor_url and "/write" not in editor_url and "/post" not in editor_url:
-                print("    /write didn't work, trying dashboard -> Create -> Article...")
-                page.goto(f"{PUB_URL}/dashboard", timeout=60000)
-                time.sleep(5)
+            print(f"    URL: {page.url}")
+            
+            try:
+                create_btns = page.locator('button:has-text("Create")').all()
+                print(f"    Found {len(create_btns)} Create buttons")
                 
+                btn_to_click = create_btns[1] if len(create_btns) >= 2 else (create_btns[0] if create_btns else None)
+                if btn_to_click:
+                    btn_to_click.click()
+                    time.sleep(2)
+                    print(f"    Clicked Create button")
+                    
+                    # 从菜单中点 Article 链接
+                    article_link = page.locator('a:has-text("Article")').first
+                    if article_link.is_visible(timeout=5000):
+                        article_link.click()
+                        print(f"    Clicked Article link, waiting for redirect...")
+                        # 等待 URL 变化到 /publish/post/{id}
+                        try:
+                            page.wait_for_url("**/publish/post/*", timeout=15000)
+                        except Exception:
+                            pass
+                        time.sleep(3)
+                        editor_url = page.url
+                        print(f"    After Article: {editor_url}")
+            except Exception as e:
+                print(f"    Create→Article error: {e}")
+            
+            # 方法2：直接访问 Article 创建 URL，等待重定向
+            if not editor_url or "/publish/post/" not in editor_url:
+                print("    Trying direct /publish/post?type=newsletter...")
+                page.goto(f"{PUB_URL}/publish/post?type=newsletter", timeout=60000)
                 try:
-                    create_btn = page.locator('button:has-text("Create")').first
-                    if create_btn.is_visible(timeout=5000):
-                        create_btn.click()
-                        time.sleep(2)
-                        article_btn = page.locator('a:has-text("Article"), button:has-text("Article")').first
-                        if article_btn.is_visible(timeout=3000):
-                            article_btn.click()
-                            time.sleep(5)
-                            editor_url = page.url
-                            print(f"    Dashboard->Article URL: {editor_url}")
-                except Exception as e:
-                    print(f"    Dashboard flow error: {e}")
-
-            # Method 3: Try direct publish URL on publication
-            if "/publish" not in (editor_url or ""):
-                print("    Trying direct publish URL...")
-                page.goto(f"{PUB_URL}/publish/post", timeout=60000)
-                time.sleep(5)
+                    page.wait_for_url("**/publish/post/*", timeout=15000)
+                except Exception:
+                    pass
+                time.sleep(3)
                 editor_url = page.url
-                print(f"    Direct publish URL: {editor_url}")
+                print(f"    Direct URL result: {editor_url}")
 
-            if not editor_url:
+            # 方法3：substack.com/write（最后的备选）
+            if not editor_url or "/publish/post/" not in editor_url:
+                print("    Trying substack.com/write...")
+                page.goto("https://substack.com/write", timeout=60000)
+                try:
+                    page.wait_for_url("**/publish/post/*", timeout=15000)
+                except Exception:
+                    pass
+                time.sleep(3)
+                editor_url = page.url
+                print(f"    /write result: {editor_url}")
+
+            # 最终检查
+            if not editor_url or "/publish/post/" not in editor_url:
                 page.screenshot(path=os.path.join(debug_dir, "substack_no_editor.png"))
                 log_article("substack", article["title"], "no_editor_found")
                 return False, ""
 
-            print(f"    Editor URL: {editor_url}")
+            print(f"    ✅ Editor URL: {editor_url}")
 
             # === Step 4: Wait for editor to load ===
             print("  [Substack] Waiting for editor...")
@@ -705,192 +730,179 @@ def post_to_substack(article):
             else:
                 print("    No cover image generated, skipping")
 
-            # === Step 6: Fill title & content ===
-            print("  [Substack] Filling content...")
+            # === Step 6: Fill title & content (FIXED v7) ===
+            # Substack 2025+ 新版编辑器：标题和正文都在同一个 ProseMirror 编辑器中
+            # 没有独立的标题 <input>！那个 input[placeholder="Add a title..."] 是侧边栏文件名
+            # 正确流程：点击 ProseMirror → 第一行打标题 → Enter → 正文
+            print("  [Substack] Filling title + content (v7 fixed)...")
 
-            # Fill TITLE — use JS to find and fill the title input (fast, no timeout waits)
             title_done = False
-
-            # Method 1: JavaScript — find any input with "title" in placeholder/aria-label
-            # Use page.evaluate with function + args to avoid f-string escaping nightmares
-            try:
-                result = page.evaluate('''(titleText) => {
-                    // Look for title input by placeholder
-                    const inputs = document.querySelectorAll("input");
-                    for (const input of inputs) {
-                        const ph = (input.placeholder || "").toLowerCase();
-                        const aria = (input.getAttribute("aria-label") || "").toLowerCase();
-                        if (ph.includes("title") || aria.includes("title")) {
-                            const nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value").set;
-                            nativeSetter.call(input, titleText);
-                            input.dispatchEvent(new Event("input", {bubbles: true}));
-                            input.dispatchEvent(new Event("change", {bubbles: true}));
-                            return {found: true, placeholder: input.placeholder};
-                        }
-                    }
-                    // Also check for contenteditable div that might be the title
-                    const editables = document.querySelectorAll("[contenteditable=true]");
-                    for (const el of editables) {
-                        const cls = (el.className || "").toLowerCase();
-                        const role = (el.getAttribute("role") || "").toLowerCase();
-                        if (cls.includes("title") || role === "title" || cls.includes("headline")) {
-                            el.textContent = titleText;
-                            el.dispatchEvent(new Event("input", {bubbles: true}));
-                            return {found: true, type: "contenteditable", cls: el.className};
-                        }
-                    }
-                    return {found: false};
-                }''', article["title"])
-                if result and result.get("found"):
-                    title_done = True
-                    print(f"    Title filled via JS: {result}")
-            except Exception as e:
-                print(f"    JS title fill error: {e}")
-
-            # Method 2: Fast selector check (short timeout)
-            if not title_done:
-                for sel in [
-                    'input[placeholder*="Add a title"]',
-                    'input[placeholder*="title" i]',
-                    'input[placeholder*="Title"]',
-                ]:
-                    try:
-                        el = page.locator(sel).first
-                        if el.is_visible(timeout=500):
-                            el.click()
-                            time.sleep(0.2)
-                            page.keyboard.press("Control+a")
-                            page.keyboard.press("Backspace")
-                            page.keyboard.type(article["title"], delay=10)
-                            title_done = True
-                            print(f"    Title filled via selector: {sel}")
-                            break
-                    except Exception:
-                        continue
-
-            # Method 3: Click ProseMirror, Shift+Tab to title field
-            if not title_done:
-                try:
-                    editor_el = page.locator('.ProseMirror[contenteditable="true"]').first
-                    if editor_el.is_visible(timeout=1000):
-                        editor_el.click()
-                        time.sleep(0.2)
-                        page.keyboard.press("Shift+Tab")
-                        time.sleep(0.2)
-                        page.keyboard.press("Control+a")
-                        page.keyboard.press("Backspace")
-                        page.keyboard.type(article["title"], delay=10)
-                        title_done = True
-                        print("    Title filled via Shift+Tab")
-                except Exception:
-                    pass
-
-            if not title_done:
-                print("    WARNING: All title fill methods failed — title may be empty")
-
-            # Fill BODY content into the ProseMirror editor
-            print("  [Substack] Filling body content...")
+            
+            # 方法1（主）：在 ProseMirror 编辑器中键盘输入标题+正文
             try:
                 editor_el = page.locator('.ProseMirror[contenteditable="true"]').first
-                if editor_el.is_visible(timeout=3000):
+                if editor_el.is_visible(timeout=5000):
                     editor_el.click()
                     time.sleep(0.5)
-                    # Clear existing content
+                    
+                    # 清空编辑器
                     page.keyboard.press("Control+a")
                     page.keyboard.press("Backspace")
                     time.sleep(0.3)
-            except Exception:
-                pass
-
-            # If subtitle exists, type it first
-            if article.get("subtitle"):
-                page.keyboard.type(article["subtitle"], delay=10)
-                page.keyboard.press("Enter")
-                page.keyboard.press("Enter")
-                time.sleep(0.3)
-
-            # Type body content paragraph by paragraph
-            paragraphs = article["content"].split("\n")
-            char_count = 0
-            for i, para in enumerate(paragraphs):
-                if para.strip():
-                    if i > 0:
+                    
+                    # 第一行：标题
+                    page.keyboard.type(article["title"], delay=15)
+                    title_done = True
+                    print(f"    Title typed in ProseMirror: {article['title'][:50]}")
+                    
+                    # 换行到正文
+                    page.keyboard.press("Enter")
+                    page.keyboard.press("Enter")
+                    time.sleep(0.3)
+                    
+                    # 如果有副标题
+                    if article.get("subtitle"):
+                        page.keyboard.type(article["subtitle"], delay=10)
                         page.keyboard.press("Enter")
-                        time.sleep(0.05)
-                    try:
-                        page.evaluate(f'navigator.clipboard.writeText({json.dumps(para)})')
-                        page.keyboard.press("Control+v")
-                    except Exception:
-                        page.keyboard.type(para[:500], delay=2)
-                    char_count += len(para)
+                        page.keyboard.press("Enter")
+                        time.sleep(0.3)
+                    
+                    # 正文段落
+                    paragraphs = article["content"].split("\n")
+                    char_count = len(article["title"])
+                    for i, para in enumerate(paragraphs):
+                        if para.strip():
+                            if i > 0:
+                                page.keyboard.press("Enter")
+                                time.sleep(0.05)
+                            try:
+                                page.evaluate(f'navigator.clipboard.writeText({json.dumps(para)})')
+                                page.keyboard.press("Control+v")
+                            except Exception:
+                                page.keyboard.type(para[:500], delay=2)
+                            char_count += len(para)
+                    
+                    print(f"    Total content: ~{char_count} chars")
+            except Exception as e:
+                print(f"    ProseMirror fill error: {e}")
+            
+            # 方法2（备）：用 JS 直接设置 ProseMirror 内容
+            if not title_done:
+                try:
+                    result = page.evaluate('''(data) => {
+                        const editor = document.querySelector('.ProseMirror[contenteditable="true"]');
+                        if (!editor) return {found: false};
+                        // 构建 HTML：标题用 h1，正文用 p
+                        let html = '<h1>' + data.title + '</h1>';
+                        if (data.subtitle) html += '<h3>' + data.subtitle + '</h3>';
+                        const paras = data.content.split('\\n');
+                        for (const p of paras) {
+                            if (p.trim()) html += '<p>' + p + '</p>';
+                        }
+                        editor.innerHTML = html;
+                        editor.dispatchEvent(new Event('input', {bubbles: true}));
+                        return {found: true, chars: html.length};
+                    }''', {"title": article["title"], "subtitle": article.get("subtitle", ""), "content": article["content"]})
+                    if result and result.get("found"):
+                        title_done = True
+                        print(f"    Title+content set via JS innerHTML: {result}")
+                except Exception as e:
+                    print(f"    JS innerHTML error: {e}")
 
-            print(f"    Content filled: ~{char_count} chars")
+            if not title_done:
+                print("    ⚠️ WARNING: All content fill methods failed!")
 
-            # === Step 6: Publish ===
-            time.sleep(2)
+            # === Step 6: Publish (FIXED v7) ===
+            # Substack 2025+ 编辑器发布流程：
+            # 1. 填完标题+内容后，Continue 按钮变为可用
+            # 2. 点 Continue → 出现发布设置对话框
+            # 3. 点 "Send to everyone now" → 完成
+            time.sleep(3)  # 等待内容保存，Continue按钮启用
             published = False
-            
-            # Substack flow: Fill content -> Click "Continue" -> Review page -> Click "Send to everyone now"
-            # Step 6a: Click "Continue" to go to review page
-            continue_sels = [
-                'button:has-text("Continue")',
-                'button:has-text("Next")',
-            ]
-            for sel in continue_sels:
-                try:
-                    btn = page.locator(sel).first
-                    if btn.is_visible(timeout=2000):
-                        btn.click()
-                        print(f"    Clicked: {sel}")
-                        time.sleep(3)
-                        break
-                except Exception:
-                    continue
-            
-            # Step 6b: Now on review page, look for the main publish button
-            # Substack uses "Send to everyone now" (not "Publish")
-            publish_sels = [
-                'button:has-text("Send to everyone now")',
+
+            # Step 6a: 点击 Continue/Publish 按钮
+            print("    [6a] Looking for Continue/Publish button...")
+            continue_btn_sels = [
+                'button:has-text("Continue")',                # 最可靠：实际测试可见
+                '[data-testid="publish-button"]',             # testid（注意不是 publish-button-wtooltip）
                 'button:has-text("Publish")',
-                'button:has-text("Publish now")',
-                'button:has-text("Post")',
-                'button:has-text("Post now")',
-                'button[data-testid="publish-button"]',
+                '[data-testid="publish-button-wtooltip"]',    # 旧版 testid，可能不可见
             ]
-            
-            for sel in publish_sels:
+
+            clicked_continue = False
+            for sel in continue_btn_sels:
                 try:
                     btn = page.locator(sel).first
-                    if btn.is_visible(timeout=2000):
+                    # 先检查是否可见
+                    if not btn.is_visible(timeout=3000):
+                        continue
+                    # 检查是否 disabled（内容为空时按钮禁用）
+                    is_disabled = btn.is_disabled(timeout=2000)
+                    if is_disabled:
+                        print(f"    ⚠️ Button {sel} is DISABLED (content may not be saved yet)")
+                        # 等更久再试
+                        time.sleep(5)
+                        is_disabled = btn.is_disabled(timeout=2000)
+                        if is_disabled:
+                            print(f"    ⚠️ Still disabled after wait, trying force click...")
+                    
+                    btn.click(force=True)  # force=True 绕过 disabled
+                    clicked_continue = True
+                    print(f"    Clicked Continue: {sel} (disabled={is_disabled})")
+                    time.sleep(4)
+                    break
+                except Exception as e:
+                    print(f"    {sel}: {e}")
+                    continue
+
+            if not clicked_continue:
+                print("    ⚠️ No Continue button found, screenshotting...")
+                page.screenshot(path=os.path.join(debug_dir, "substack_no_continue_btn.png"))
+
+            # Step 6b: 点击 "Send to everyone now" 完成发布
+            print("    [6b] Looking for Send/Publish button in dialog...")
+            time.sleep(2)
+
+            send_sels = [
+                'button:has-text("Send to everyone now")',
+                'button:has-text("Publish now")',
+                'button:has-text("Send")',
+                '[role="button"]:has-text("Send to everyone now")',
+            ]
+
+            for sel in send_sels:
+                try:
+                    btn = page.locator(sel).first
+                    if btn.is_visible(timeout=5000):
                         btn.click()
-                        print(f"    Publish button clicked: {sel}")
-                        time.sleep(4)
-                        
-                        # Confirm dialog (if any)
-                        for csel in [
-                            'button:has-text("Publish now")',
-                            'button:has-text("Confirm")',
-                            'button:has-text("Yes, publish")',
-                        ]:
+                        published = True
+                        print(f"    ✅ Clicked send button: {sel}")
+                        time.sleep(5)
+
+                        # 可能还有确认对话框
+                        for csel in ['button:has-text("Confirm")', 'button:has-text("Yes")']:
                             try:
                                 cb = page.locator(csel).first
-                                if cb.is_visible(timeout=2000):
+                                if cb.is_visible(timeout=3000):
                                     cb.click()
-                                    print(f"    Confirmed: {csel}")
                                     time.sleep(3)
                                     break
                             except Exception:
                                 continue
-                        
-                        published = True
                         break
                 except Exception:
                     continue
-            
+
             if not published:
-                print("    No publish button found, saving draft...")
-                page.keyboard.press("Control+s")
-                time.sleep(3)
+                # 最终兜底：检查 URL 或 Ctrl+S 保存草稿
+                current_url = page.url
+                if "/p/" in current_url and "/publish/" not in current_url:
+                    print(f"    ✅ Published (detected from URL)! URL: {current_url}")
+                    published = True
+                else:
+                    print("    ⚠️ Could not publish, saving as draft...")
+                    page.keyboard.press("Control+s")
+                    time.sleep(2)
 
             # === Step 7: Verify publish & get public URL ===
             time.sleep(3)

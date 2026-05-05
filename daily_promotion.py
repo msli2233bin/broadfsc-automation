@@ -639,7 +639,7 @@ def send_telegram(text, channel_id, post_type="briefing", signal_ticker=None):
         deep_link = "https://t.me/" + BOT_USERNAME + "?start=signal_" + signal_ticker
         payload["reply_markup"] = json.dumps({
             "inline_keyboard": [[
-                {"text": "📊 Get Free Analysis", "url": deep_link},
+                {"text": "📋 Get Free Research Report", "url": deep_link},
                 {"text": "💬 Talk to Advisor", "url": "https://t.me/" + BOT_USERNAME}
             ]]
         })

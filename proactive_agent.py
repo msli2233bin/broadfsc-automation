@@ -191,37 +191,51 @@ class ProactiveSalesAgent:
 
             if lang == "zh":
                 templates = [
-                    f"嗨{name}！👋\n\n"
-                    f"你在频道里关注了{tickers_str}的{signal_desc}信号，我后来又研究了一下——\n\n"
-                    f"说实话，单看RSI超卖只是一个参考。真正赚钱的投资者会问3个问题：\n"
-                    f"1️⃣ 这是真正的底部还是下跌中继？\n"
-                    f"2️⃣ 基本面是否支撑反弹？\n"
-                    f"3️⃣ 我应该用多大仓位？\n\n"
-                    f"你现在主要用什么策略应对这种超卖机会？\n"
-                    f"如果你有兴趣，我可以帮你做一个免费的组合审查，看看{tickers_str}在你整体配置中应该占多大比例 🎯",
+                    # Template 1: Lead with TA knowledge + free research report bait
+                    f"嗨{name}，你关注了{tickers_str}的{signal_desc}——\n\n"
+                    f"我后来又看了一下，有些想法想说。\n\n"
+                    f"单看RSI超卖其实意义不大。关键看有没有**背离**——"
+                    f"股价创新低但RSI没新低，那叫卖压衰竭，这才是值得动手的信号。"
+                    f"没背离？可能只是下跌中继。\n\n"
+                    f"再一个，MACD在零轴上方的金叉和零轴下方的完全不是一个量级。"
+                    f"如果{tickers_str}的MACD还在零轴下方，反弹力度可能有限。\n\n"
+                    f"这些我写在{tickers_str}的研报里了——技术面、基本面、入场止损位都有。"
+                    f"要不发你一份？不收费 📋",
 
-                    f"{name}，你关注的{tickers_str}有新进展 📊\n\n"
-                    f"上次{signal_desc}信号出来后，我想跟进问一下：\n"
-                    f"你现在手上有这个仓位吗？还是一直在观望？\n\n"
-                    f"我观察到大多数散户在超卖信号上犯的最大错误不是判断方向，而是仓位管理。\n\n"
-                    f"要不要我帮你算一下合理进场价位和止损位？完全免费 💡",
+                    # Template 2: Lead with position sizing insight + free trade guidance bait
+                    f"{name}，{tickers_str}那个{signal_desc}信号——\n\n"
+                    f"你进场了吗？还是一直在观望？\n\n"
+                    f"说个我经常观察到的情况：大多数人超卖信号上亏钱，"
+                    f"不是因为方向判断错了，而是**仓位管理**出了问题。"
+                    f"布林带开口收缩的时候重仓进去，方向还没出来就是在赌。\n\n"
+                    f"正常做法是先1/3仓试探，确认支撑有效再加仓。"
+                    f"止损放在关键支撑下方1-2%，进场前就定好。\n\n"
+                    f"要不我帮你看看{tickers_str}具体怎么操作？"
+                    f"入场价、止损位、仓位比例，一次性说清楚，免费的 🎯",
                 ]
             else:
                 templates = [
-                    f"Hey {name}! 👋\n\n"
-                    f"You showed interest in {tickers_str}'s {signal_desc} signal — I've been tracking it since.\n\n"
-                    f"Here's the thing: RSI oversold is just one data point. Smart investors ask 3 questions:\n"
-                    f"1️⃣ Is this a real bottom or a dead cat bounce?\n"
-                    f"2️⃣ Do the fundamentals support a reversal?\n"
-                    f"3️⃣ How much capital should I risk?\n\n"
-                    f"What's your current approach for these oversold setups?\n"
-                    f"I can do a free portfolio review to see how {tickers_str} fits your allocation 🎯",
+                    # Template 1: Lead with TA knowledge + free research report bait
+                    f"Hey {name} — you were watching {tickers_str}'s {signal_desc}.\n\n"
+                    f"I looked into it more — here's what I think.\n\n"
+                    f"RSI oversold by itself doesn't mean much. The key is **divergence** — "
+                    f"price makes a lower low but RSI doesn't. THAT'S selling exhaustion. "
+                    f"No divergence? Probably just a continuation.\n\n"
+                    f"Also — MACD golden cross above the zero line vs below are completely different animals. "
+                    f"If {tickers_str}'s MACD is still below zero, any bounce might be weak.\n\n"
+                    f"I put all of this in a research report on {tickers_str} — "
+                    f"technicals, fundamentals, entry/stop levels. Want me to send it? No charge 📋",
 
-                    f"{name}! Quick update on {tickers_str} 📊\n\n"
-                    f"Since that {signal_desc} signal — have you taken a position or still watching from the sidelines?\n\n"
-                    f"Biggest mistake I see retail investors make with oversold signals isn't getting the direction wrong — "
-                    f"it's the position sizing.\n\n"
-                    f"Want me to help calculate a smart entry and stop-loss? Completely free 💡",
+                    # Template 2: Lead with position sizing insight + free trade guidance bait
+                    f"{name} — that {signal_desc} signal on {tickers_str}.\n\n"
+                    f"Did you take a position? Or still sitting on the sidelines?\n\n"
+                    f"Here's what I see most people get wrong — it's not the direction call, "
+                    f"it's the position sizing. Going heavy when Bollinger Bands are squeezing "
+                    f"(big move coming, direction unclear) is just gambling.\n\n"
+                    f"Smart approach: 1/3 position to test, add when support holds. "
+                    f"Stop 1-2% below key support, set BEFORE you enter.\n\n"
+                    f"Want me to map out the exact trade plan for {tickers_str}? "
+                    f"Entry, stop, position size — all laid out. Free 🎯",
                 ]
             return random.choice(templates)
         
@@ -259,35 +273,33 @@ class ProactiveSalesAgent:
             return random.choice(templates)
         
         elif stage in ["evaluation", "decision"]:
-            # === 高价值客户：促转化 ===
+            # === 高价值客户：促转化 — 投资顾问定位，免费研报/指导交易为诱饵 ===
             if lang == "zh":
                 templates = [
-                    f"{name}，上次我们聊了挺多的，我感觉你在{interest_str}方面有很清晰的思路 💡\n\n"
-                    f"不知道你想不想试试我们的一对一投资顾问服务？"
-                    f"第一次是完全免费的——就像两个朋友坐下来聊聊你的投资策略。\n\n"
-                    f"WhatsApp: {os.environ.get('WHATSAPP_LINK', 'https://wa.me/18032150144')}\n"
-                    f"或者直接访问: https://www.broadfsc.com/different\n\n"
-                    f"当然，不着急——你觉得准备好了再说 😊",
-                    
-                    f"嗨{name}！给你分享一个好消息 🎉\n\n"
-                    f"我们正在提供免费的资产健康度检查——帮你看看当前的投资组合有没有优化空间。\n\n"
-                    f"完全免费，没有任何隐藏费用。如果感兴趣，随时告诉我！\n\n"
-                    f"毕竟，了解自己的投资状况永远不嫌早 📊",
+                    f"{name}，上次聊了挺多，你对{interest_str}确实有自己的一套。\n\n"
+                    f"我们BroadFSC做的是投资顾问——不搞开户那些，专注帮客户做决策。\n\n"
+                    f"这样，我给你做一份个股研报——你关注哪个标的都行，"
+                    f"技术面、基本面、入场计划全部写清楚。不收费，你看看我们的分析质量再说 📋",
+
+                    f"嗨{name}！\n\n"
+                    f"上次你聊到的{interest_str}方向，我刚好最近在跟踪一个标的——\n\n"
+                    f"我们做投资顾问的，不说虚的。你指定一只票，"
+                    f"我免费带你操作一次——入场价、止损位、仓位比例，实时指导。"
+                    f"做得好你自然有信心继续合作，做得不好也不亏 🎯",
                 ]
             else:
                 templates = [
-                    f"Hey {name}! After our recent chats, I can tell you have a really solid thinking around {interest_str} 💡\n\n"
-                    f"Have you considered trying our 1-on-1 advisory? The first session is completely free — "
-                    f"just two people talking about YOUR investment strategy.\n\n"
-                    f"WhatsApp: {os.environ.get('WHATSAPP_LINK', 'https://wa.me/18032150144')}\n"
-                    f"Or visit: https://www.broadfsc.com/different\n\n"
-                    f"No rush at all — just something to keep in mind 😊",
-                    
-                    f"Hey {name}! Quick update 🎉\n\n"
-                    f"We're currently offering a FREE portfolio health check — "
-                    f"it helps identify optimization opportunities in your current investments.\n\n"
-                    f"Zero cost, zero commitment. Let me know if you're interested!\n\n"
-                    f"After all, understanding your investments is never a bad idea 📊",
+                    f"{name} — after our chats, you clearly know your way around {interest_str}.\n\n"
+                    f"Quick context: BroadFSC does investment advisory — no brokerage, no account opening. "
+                    f"We help clients make decisions.\n\n"
+                    f"Here's my offer: I'll write you a research report on any stock you pick — "
+                    f"technicals, fundamentals, entry plan, the works. No charge. See if our analysis quality works for you 📋",
+
+                    f"Hey {name}!\n\n"
+                    f"That {interest_str} direction we talked about — I've been tracking a name that fits.\n\n"
+                    f"We're an advisory firm — let me put my money where my mouth is. "
+                    f"Pick any stock, and I'll walk you through the trade in real-time — "
+                    f"entry, stop, position size, all of it. Free. If it works, you'll know. If not, you're out nothing 🎯",
                 ]
             return random.choice(templates)
         

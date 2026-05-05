@@ -418,7 +418,8 @@ def build_system_prompt(user_lang="en", user_name="there", memory_context="", in
 - Portfolio strategy discussions
 - Global market insights
 - Account setup help → guide to website
-- Free portfolio review & gap analysis
+- Free individual stock research reports
+- Free trade guidance (entry, stop, position sizing)
 
 ## Hard Rules (Non-negotiable)
 - NEVER guarantee returns or profits
@@ -439,7 +440,7 @@ def build_system_prompt(user_lang="en", user_name="there", memory_context="", in
 ## Call-to-Action (Intelligent, Stage-Based)
 - DON'T push the same CTA every time — match it to where the user is in their journey
 - Early conversations: educational CTAs (visit website, read our research)
-- Mid conversations: value CTAs (free portfolio review, 15-min call)
+- Mid conversations: value CTAs (free research report, free trade guidance)
 - Late conversations: commitment CTAs (WhatsApp us, Talk to Advisor, sign up)
 - When user shows buying signals: move to direct action
 - When user raises objections: address first, then suggest appropriate next step
@@ -1437,7 +1438,7 @@ You are NOT a passive FAQ bot. You are a skilled investment advisor who naturall
 - **Do**: Use specific numbers and comparisons ("A 2% annual improvement on $100K = $20K+ over 10 years")
 - **Don't**: Badmouth competitors or make unrealistic promises
 - **SPIN Focus**: NEED-PAYOFF questions — let them envision the better outcome
-- **CTA**: Offer a specific next step (15-min call, portfolio review, etc.)
+- **CTA**: Offer a specific next step (free research report, free trade guidance, etc.)
 """
         elif stage == "decision":
             enhancement += """
@@ -1681,10 +1682,10 @@ def get_main_keyboard():
     keyboard = [
         [InlineKeyboardButton("📊 Our Services", callback_data="services"),
          InlineKeyboardButton("🌍 About Us", callback_data="about")],
-        [InlineKeyboardButton("📋 How to Register", callback_data="register"),
-         InlineKeyboardButton("🎯 Free Portfolio Review", callback_data="portfolio_review")],
+        [InlineKeyboardButton("📋 Free Research Report", callback_data="free_report"),
+         InlineKeyboardButton("🎯 Free Trade Guidance", callback_data="trade_guidance")],
         [InlineKeyboardButton("💬 Talk to Advisor", callback_data="advisor"),
-         InlineKeyboardButton("📱 WhatsApp Us", url=WHATSAPP_LINK)],
+         InlineKeyboardButton("📱 Telegram", url="https://t.me/BroadInvestBot")],
         [InlineKeyboardButton("🔗 Visit Website", url=WEBSITE_URL)]
     ]
     return InlineKeyboardMarkup(keyboard)
@@ -1692,7 +1693,7 @@ def get_main_keyboard():
 
 def get_contact_keyboard():
     keyboard = [
-        [InlineKeyboardButton("📱 WhatsApp — Chat Now", url=WHATSAPP_LINK)],
+        [InlineKeyboardButton("📱 Telegram — Chat Now", url="https://t.me/BroadInvestBot")],
         [InlineKeyboardButton("📧 Leave Your Email", callback_data="leave_email")],
         [InlineKeyboardButton("🔔 Join Our Channel", url="https://t.me/BroadFSC")],
         [InlineKeyboardButton("🔗 Visit Website", url=WEBSITE_URL)],
@@ -1739,7 +1740,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     deep_link = " ".join(context.args) if context.args else ""
 
     if deep_link.startswith("signal_"):
-        # User clicked "Get Free Analysis" button on a signal post
+        # User clicked "Get Free Research Report" button on a signal post
         ticker = deep_link[7:].upper().strip()
         await _handle_signal_engager(update, context, user, ticker, lang)
         return
@@ -1764,7 +1765,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def _handle_signal_engager(update, context, user, ticker, lang):
-    """Handle user who clicked 'Get Free Analysis' from a signal post.
+    """Handle user who clicked 'Get Free Research Report' from a signal post.
 
     This is the KEY conversion entry point:
     1. Immediately recognize them as a signal engager
@@ -1820,71 +1821,103 @@ async def _handle_signal_engager(update, context, user, ticker, lang):
     except Exception:
         ticker_data = None
 
-    # Build the response — value first, then CTA
+    # Build the response — like a real analyst, not a bot
+    # BroadFSC = Investment Advisory (NOT brokerage), bait = free research report or free trade guidance
     if lang.startswith("zh"):
         if ticker_data and ticker_data["price"] != "N/A":
+            # Embed real TA knowledge: RSI divergence, MACD zero-line, Bollinger squeeze
+            rsi_line = ticker_data.get("rsi_hint", "")
+            rsi_advice = ""
+            if "oversold" in rsi_line.lower() or "STILL oversold" in rsi_line:
+                rsi_advice = (
+                    "RSI超卖 ≠ 立刻买。关键是看有没有**背离**——股价新低但RSI没新低，那才是卖压衰竭的信号。"
+                    "没有背离的超卖，可能只是半山腰。"
+                )
+            elif "recovering" in rsi_line.lower():
+                rsi_advice = (
+                    "RSI在回升，但别急着追——如果MACD还在零轴下方，金叉的力度会弱很多。"
+                    "零轴上方的金叉才是真正的趋势确认。"
+                )
+            else:
+                rsi_advice = (
+                    "RSI已经脱离超卖区了。这时候进场要等回踩——"
+                    "上升趋势里RSI回调到40-50才是更好的买点，不是追高。"
+                )
             msg = (
-                "📊 **" + ticker + " 实时分析**\n\n"
-                "当前价格: $" + str(ticker_data["price"]) + "\n"
-                "涨跌: " + str(ticker_data.get("change_pct", "N/A")) + "\n"
+                ticker + " 现在 $" + str(ticker_data["price"]) + " "
                 + ticker_data.get("rsi_hint", "") + "\n\n"
-                "你从我们的超卖信号关注到 " + ticker + "，眼光不错。\n\n"
-                "RSI超卖只是一个起点。真正的关键问题是：\n"
-                "• 这是底部还是下跌中继？\n"
-                "• 什么价位进场风险收益比最优？\n"
-                "• 仓位应该多大？\n\n"
-                "这些问题的答案，取决于你的整体投资策略。\n\n"
-                "🎯 **我们可以免费帮你做一次投资组合审查**，看看 " + ticker + " 是否适合你当前的配置。\n\n"
-                "点击下方「Free Portfolio Review」即可开始 👇"
+                "你从频道信号关注到这只票——我多说几句。\n\n"
+                + rsi_advice + "\n\n"
+                "再看布林带，如果开口在收缩，说明大级别变盘在即，方向还不确定。"
+                "这时候重仓就是在赌，不是在交易。\n\n"
+                "我现在手头有" + ticker + "的详细研报——技术面+基本面+入场计划都有，"
+                "要不我发你一份？不收费的。或者你想直接聊聊这只票怎么操作也行 👇"
             )
         else:
             msg = (
-                "📊 **" + ticker + " 分析**\n\n"
-                "你从我们的超卖信号关注到 " + ticker + "，说明你对技术信号很有感觉。\n\n"
-                "但 RSI 超卖只是一个信号，真正的利润来自于：\n"
-                "• 在正确的时间进场\n"
-                "• 用正确的仓位管理\n"
-                "• 结合基本面判断方向\n\n"
-                "🎯 **我们提供免费的投资组合审查**，帮你制定完整的交易计划。\n\n"
-                "点击下方「Free Portfolio Review」👇"
+                ticker + " 你关注到了，说明你对技术信号有感觉。\n\n"
+                "不过我见过太多人踩一个坑——看到RSI超卖就冲进去，"
+                "结果没等来反弹，等来的是第二波下跌。\n\n"
+                "区别在哪？有没有看**背离**。股价创新低RSI没创新低，那叫卖压衰竭；"
+                "没背离的超卖，可能只是中继。再结合MACD零轴位置和布林带开口方向，"
+                "胜率能高不少。\n\n"
+                "我这里有" + ticker + "的完整研报，技术面+基本面+仓位建议都有。"
+                "要不发你一份？免费 👇"
             )
     else:
         if ticker_data and ticker_data["price"] != "N/A":
+            rsi_line = ticker_data.get("rsi_hint", "")
+            rsi_advice = ""
+            if "oversold" in rsi_line.lower() or "STILL oversold" in rsi_line:
+                rsi_advice = (
+                    "RSI oversold doesn't mean buy. The move is **divergence** — "
+                    "price makes a lower low but RSI doesn't. That's exhaustion. "
+                    "No divergence? Probably just halfway down."
+                )
+            elif "recovering" in rsi_line.lower():
+                rsi_advice = (
+                    "RSI's bouncing, but don't chase yet. If MACD is still below the zero line, "
+                    "that golden cross is weak sauce. Zero-line crossover = real trend confirmation."
+                )
+            else:
+                rsi_advice = (
+                    "RSI's out of oversold territory. Entry now means chasing — "
+                    "in an uptrend, RSI pulling back to 40-50 is the better buy zone."
+                )
             msg = (
-                "📊 **" + ticker + " Live Analysis**\n\n"
-                "Current: $" + str(ticker_data["price"]) + " | Change: " + str(ticker_data.get("change_pct", "N/A")) + "\n"
+                ticker + " currently $" + str(ticker_data["price"]) + " "
                 + ticker_data.get("rsi_hint", "") + "\n\n"
-                "You spotted " + ticker + " from our oversold signal. Good catch.\n\n"
-                "RSI oversold is a starting point. The real questions are:\n"
-                "• Bottom or dead cat bounce?\n"
-                "• What's the optimal entry for risk/reward?\n"
-                "• How much capital should you allocate?\n\n"
-                "The answers depend on your overall strategy.\n\n"
-                "🎯 **We offer a free portfolio review** — let's see if " + ticker + " fits your current allocation.\n\n"
-                "Tap **Free Portfolio Review** below 👇"
+                "You caught this from our signal — let me add some context.\n\n"
+                + rsi_advice + "\n\n"
+                "Also check Bollinger Bands — if the bands are squeezing, "
+                "a big move is coming but direction isn't clear. "
+                "Going heavy here is gambling, not trading.\n\n"
+                "I've got a full research report on " + ticker + " — "
+                "technicals, fundamentals, and an entry plan. "
+                "Want me to send it? No charge. Or we can talk through the trade directly 👇"
             )
         else:
             msg = (
-                "📊 **" + ticker + " Analysis**\n\n"
-                "You spotted " + ticker + " from our oversold signal — you clearly have an eye for setups.\n\n"
-                "But RSI oversold is just one signal. Real profits come from:\n"
-                "• Entering at the right time\n"
-                "• Proper position sizing\n"
-                "• Combining technicals with fundamentals\n\n"
-                "🎯 **We offer a free portfolio review** to help you build a complete trading plan.\n\n"
-                "Tap **Free Portfolio Review** below 👇"
+                ticker + " — you spotted the signal, so you know your charts.\n\n"
+                "But here's where most people mess up: they see RSI oversold and dive in. "
+                "No rebound — just a second leg down.\n\n"
+                "The difference? **Divergence.** Price makes a lower low but RSI doesn't — "
+                "that's selling exhaustion. No divergence? Probably continuation. "
+                "Add MACD zero-line position and Bollinger Band direction, "
+                "and your win rate goes way up.\n\n"
+                "I've got a full research report on " + ticker + " — "
+                "technicals, fundamentals, position sizing. Want it? Free 👇"
             )
 
-    # Build keyboard with conversion-focused options
+    # Build keyboard — Investment Advisory (not brokerage), bait = free research/trade guidance
     from telegram import InlineKeyboardButton, InlineKeyboardMarkup
     keyboard = InlineKeyboardMarkup([
         [
-            InlineKeyboardButton("🎯 Free Portfolio Review", callback_data="portfolio_review"),
-            InlineKeyboardButton("📋 How to Register", callback_data="register"),
+            InlineKeyboardButton("📋 Get Free Research Report", callback_data="free_report"),
+            InlineKeyboardButton("🎯 Get Trade Guidance", callback_data="trade_guidance"),
         ],
         [
             InlineKeyboardButton("💬 Talk to Advisor", callback_data="advisor"),
-            InlineKeyboardButton("📊 Our Services", callback_data="services"),
         ]
     ])
 
@@ -1902,7 +1935,7 @@ async def _handle_signal_engager(update, context, user, ticker, lang):
                 "User: " + user_name + " (ID: " + str(user.id) + ")\n"
                 "Ticker: " + ticker + "\n"
                 "Funnel: evaluation_signal\n"
-                "Action: Free analysis delivered, portfolio review offered"
+                "Action: TA knowledge delivered, free research report / trade guidance offered"
             )
             await context.bot.send_message(
                 chat_id=ADMIN_CHAT_ID,
@@ -1915,7 +1948,7 @@ async def _handle_signal_engager(update, context, user, ticker, lang):
         "Just ask me anything — markets, investing, our services, whatever's on your mind! 🌍\n\n"
         "I speak English, 中文, Español, العربية, 日本語, and more.\n\n"
         "💬 Want a real person? Tap **Talk to Advisor**!\n"
-        "📱 Or WhatsApp us anytime!\n"
+        "📱 Or reach us on Telegram: @BroadInvestBot\n"
         "🔗 https://www.broadfsc.com/different",
         reply_markup=get_main_keyboard()
     )
@@ -1928,13 +1961,15 @@ async def _handle_signal_engager(update, context, user, ticker, lang):
 QUICK_ANSWERS = {
     "services": (
         "📊 **What We Do**\n\n"
+        "We're an **investment advisory firm** — not a brokerage. We don't open accounts. We help you make better decisions.\n\n"
         "**Investment Advisory** — Custom strategies built around YOUR goals, not a template.\n"
         "**Asset Management** — We manage the portfolio so you can live your life.\n"
-        "**Wealth Planning** — Long-term thinking for long-term wealth.\n"
-        "**Market Intelligence** — Real insights, not just noise.\n\n"
-        "The truth? Most firms push products. We push understanding first.\n\n"
+        "**Market Intelligence** — Real insights, not just noise.\n"
+        "**Individual Stock Research** — Deep-dive reports with technicals, fundamentals, and entry plans.\n\n"
+        "Most firms push products. We push understanding first.\n\n"
         "💰 **The math speaks**: A 2% annual improvement on a $100K portfolio = $20K+ over 10 years. "
         "That's the difference professional guidance can make.\n\n"
+        "📋 **Try us free**: Get a research report on any stock you pick. No charge, no commitment.\n\n"
         "🔗 Deep dive: https://www.broadfsc.com/different\n"
         "💬 Questions? I'm here. Or tap **Talk to Advisor** for a real human.\n\n"
         "⚠️ _Investment involves risk._"
@@ -1978,21 +2013,27 @@ QUICK_ANSWERS = {
         "⏰ Business hours response, but we try to be faster.\n\n"
         "⚠️ _Investment involves risk._"
     ),
-    "portfolio_review": (
-        "🎯 **Free Portfolio Review**\n\n"
-        "Here's a question worth asking: *Is your current portfolio actually aligned with your goals?*\n\n"
-        "Most investors don't know — because no one ever helped them figure it out.\n\n"
-        "**What you get (free, no strings attached):**\n"
-        "📊 Risk assessment of your current approach\n"
-        "🔍 Gap analysis — where you might be missing opportunities\n"
-        "💡 Personalized suggestions based on YOUR situation\n"
-        "📋 A clear action plan — whether you work with us or not\n\n"
-        "**How it works:**\n"
-        "1. Connect with an advisor (Live Chat or WhatsApp)\n"
-        "2. Share your goals and concerns (15 minutes)\n"
-        "3. Get actionable insights\n\n"
-        "💬 Ready? Tap **Talk to Advisor** below!\n"
-        "📱 Or WhatsApp us for a quick chat: https://wa.me/118032150144\n\n"
+    "free_report": (
+        "📋 **Free Research Report**\n\n"
+        "Pick any stock — we'll write you a full research report. No charge.\n\n"
+        "**What's inside:**\n"
+        "📊 Technical analysis (trend, support/resistance, RSI, MACD, Bollinger Bands)\n"
+        "🔍 Fundamental analysis (earnings quality, valuation, capital allocation)\n"
+        "🎯 Entry plan (price level, stop-loss, position sizing)\n\n"
+        "**Why free?** We're an investment advisory firm. We believe in showing our work first.\n\n"
+        "💬 Just tell me which stock you want — or tap **Talk to Advisor** to discuss!\n\n"
+        "⚠️ _Investment involves risk. Past performance ≠ future results._"
+    ),
+    "trade_guidance": (
+        "🎯 **Free Trade Guidance**\n\n"
+        "Want someone to walk you through a trade — entry, stop, position size — in real-time?\n\n"
+        "**What you get (free, one trade):**\n"
+        "📈 Specific entry price based on technical levels\n"
+        "🛡️ Stop-loss placement (1-2% below key support)\n"
+        "⚖️ Position sizing based on your risk tolerance\n"
+        "📊 The reasoning behind every decision\n\n"
+        "**Why free?** One good trade speaks louder than any sales pitch.\n\n"
+        "💬 Tell me which stock you're watching — or tap **Talk to Advisor**!\n\n"
         "⚠️ _Investment involves risk. Past performance ≠ future results._"
     ),
     "back_menu": "back_menu",
@@ -2200,7 +2241,7 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             current = sales_engine.get_funnel_stage(user_id)
             if current == "awareness":
                 sales_engine.update_funnel_stage(user_id, "interest")
-        elif sales_engine and data in ["register", "portfolio_review"]:
+        elif sales_engine and data in ["free_report", "trade_guidance"]:
             current = sales_engine.get_funnel_stage(user_id)
             if current in ["awareness", "interest"]:
                 sales_engine.update_funnel_stage(user_id, "evaluation")

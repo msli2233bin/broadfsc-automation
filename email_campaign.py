@@ -716,10 +716,10 @@ CONTENT RULES (these make or break whether the email gets read):
 11. Your email contact (msli2233bin@gmail.com) goes in the signature, like a normal person's email footer.
 12. Keep it SHORT: 120-200 words total. Busy people delete long emails from strangers.
 13. Subject line: 3-5 WORDS MAX, use a CURIOSITY GAP — don't give away the insight. Write subject LAST (after body). Like a Bloomberg headline, not a newsletter. Under 40 chars for mobile.
-14. PS NOTE (critical for conversion): End with a PS that offers genuine FREE value — a specific stock research report, a trade idea, or a market brief. This is the #1 thing recipients remember. Make it sound like an afterthought, not a sales pitch. Use LOSS AVERSION: lead with what the reader might MISS or LOSE by not acting — loss aversion is 2x stronger than gain framing in finance. Examples:
-    - "PS — If you're NOT looking at energy names right now, you might be leaving money on the table. Our 12-page XLE deep-dive is free — just reply."
-    - "PS — The trade plan we're running this week (entry, stop, target) is attached. Don't miss the setup window."
-    - "PS — Most investors missed why small-caps just flashed a rare signal. Our ticker list + analysis: broadfsc.com/different — no paywall."
+14. PS NOTE (critical for conversion): End with a PS that offers genuine FREE value — a specific stock research report or free trade guidance on a specific stock. BroadFSC is an investment advisory firm (NOT brokerage), so the bait should be RESEARCH or TRADE GUIDANCE, not account opening. This is the #1 thing recipients remember. Make it sound like an afterthought, not a sales pitch. Use LOSS AVERSION: lead with what the reader might MISS or LOSE by not acting — loss aversion is 2x stronger than gain framing in finance. Examples:
+    - "PS — If you're NOT looking at energy names right now, you might be leaving money on the table. Our XLE research report — technicals, fundamentals, entry plan — is free. Just reply."
+    - "PS — I'm offering free trade guidance on one stock this week — entry, stop, position size. Pick your ticker and reply."
+    - "PS — Most investors missed why small-caps just flashed a rare RSI divergence. Our research note + trade plan: broadfsc.com/different — no paywall."
 15. COPYWRITING FRAMEWORK: Structure your insight using PAS (Problem → Agitation → Solution) or PPPP (Problem → Promise → Prove → Push). These work best for financial audiences because they lead with risk/pain and back claims with hard data.
 16. MOBILE-FIRST: Assume the reader is on mobile. Keep paragraphs under 2 sentences. No wall of text. Every line must earn its place.
 
