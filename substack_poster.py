@@ -656,48 +656,54 @@ def post_to_substack(article):
             cover_path = generate_cover_image(article["title"], article.get("type", "Market Radar"))
             if cover_path and os.path.exists(cover_path):
                 try:
-                    # Method 1: Look for "Add a cover image" button and click it
+                    # Substack cover image: the button triggers a file chooser dialog
+                    # We must set up expect_file_chooser BEFORE clicking the button
                     cover_clicked = False
+                    
+                    # Strategy: set up file_chooser listener, then click the cover button
+                    # Try multiple selectors for the cover button
                     cover_sels = [
                         'button:has-text("Add a cover image")',
                         'button:has-text("cover image")',
-                        '[class*="cover"] button',
-                        'button[data-testid="cover-image"]',
+                        'a:has-text("Add a cover image")',
+                        'div:has-text("Add a cover image")',
                     ]
+                    
                     for sel in cover_sels:
                         try:
                             btn = page.locator(sel).first
                             if btn.is_visible(timeout=1000):
-                                btn.click()
+                                # Set up file chooser listener BEFORE clicking
+                                with page.expect_file_chooser(timeout=10000) as fc_info:
+                                    btn.click()
+                                file_chooser = fc_info.value
+                                file_chooser.set_files(cover_path)
                                 cover_clicked = True
-                                print(f"    Cover button clicked: {sel}")
-                                time.sleep(2)
+                                print(f"    Cover uploaded via: {sel}")
+                                time.sleep(3)
                                 break
-                        except Exception:
+                        except Exception as e:
+                            print(f"    {sel} failed: {e}")
                             continue
                     
-                    if cover_clicked:
-                        # Wait for file chooser (Substack should open file dialog)
+                    if not cover_clicked:
+                        # Last resort: try hidden file input (some Substack versions have one)
                         try:
-                            with page.expect_file_chooser(timeout=5000) as fc_info:
-                                pass  # File chooser should already be triggered
-                            file_chooser = fc_info.value
-                            file_chooser.set_files(cover_path)
-                            print("    Cover image uploaded!")
-                            time.sleep(3)
-                        except Exception as e:
-                            print(f"    File chooser not triggered: {e}")
-                            # Try alternative: set file input directly
-                            try:
-                                page.locator('input[type="file"]').set_input_files(cover_path)
-                                print("    Cover image uploaded via file input!")
+                            file_inputs = page.locator('input[type="file"]').all()
+                            if file_inputs:
+                                file_inputs[0].set_input_files(cover_path)
+                                cover_clicked = True
+                                print("    Cover uploaded via hidden file input!")
                                 time.sleep(3)
-                            except Exception as e2:
-                                print(f"    File input method failed: {e2}")
-                    else:
-                        print("    No cover button found, skipping cover image")
+                        except Exception as e:
+                            print(f"    Hidden file input failed: {e}")
+                    
+                    if not cover_clicked:
+                        print("    ⚠️ No cover button found, skipping cover image")
                 except Exception as e:
                     print(f"    Cover upload failed: {e}")
+            else:
+                print("    No cover image generated, skipping")
 
             # === Step 6: Fill title & content ===
             print("  [Substack] Filling content...")
@@ -911,17 +917,17 @@ def post_to_substack(article):
                         time.sleep(3)
                         
                         # The first post in the list should be our newly published one
-                        # Find the public link - use page.evaluate with function, no f-string needed
-                        public_url = page.evaluate('''() => {
-                            const links = document.querySelectorAll("a[href*=\"/p/\"]");
-                            for (const link of links) {
-                                const href = link.getAttribute("href") || "";
-                                if (href.includes("/p/") && !href.includes("/publish/")) {
+                        # Use page.evaluate with a named function to avoid any string escaping issues
+                        public_url = page.evaluate("""() => {
+                            var links = document.querySelectorAll('a');
+                            for (var i = 0; i < links.length; i++) {
+                                var href = links[i].getAttribute('href') || '';
+                                if (href.indexOf('/p/') !== -1 && href.indexOf('/publish/') === -1) {
                                     return href;
                                 }
                             }
                             return null;
-                        }''')
+                        }""")
                         
                         if public_url:
                             final_url = public_url if public_url.startswith("http") else f"https://{PUBLICATION_SLUG}.substack.com{public_url}"
