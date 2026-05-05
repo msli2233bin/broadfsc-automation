@@ -80,6 +80,14 @@ except ImportError:
     HAS_PROACTIVE = False
     logger.warning("proactive_agent module not found — proactive outreach disabled")
 
+# 🆕 互动追踪器 — 识别频道帖子高互动用户
+try:
+    from engagement_tracker import get_pending_followups, mark_followed_up, register_signal_post
+    HAS_ENGAGEMENT_TRACKER = True
+except ImportError:
+    HAS_ENGAGEMENT_TRACKER = False
+    logger.warning("engagement_tracker module not found — signal follow-up disabled")
+
 # ============================================================
 # 配置日志
 # ============================================================
@@ -1706,7 +1714,7 @@ def get_end_chat_keyboard():
 # ============================================================
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """处理 /start 命令 — SOUL 风格个性化欢迎"""
+    """处理 /start 命令 — SOUL 风格个性化欢迎 + 信号互动者识别"""
     user = update.effective_user
     USER_INFO_CACHE[user.id] = {
         "name": user.first_name or "User",
@@ -1721,11 +1729,21 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "language": user.language_code or "en",
             "username": user.username or ""
         })
-    
+
     if HAS_ANALYTICS:
         log_interaction("telegram_bot", "start", user_id=user.id)
 
     lang = user.language_code or "en"
+
+    # Check for deep_link parameter (e.g. /start signal_AAPL)
+    deep_link = " ".join(context.args) if context.args else ""
+
+    if deep_link.startswith("signal_"):
+        # User clicked "Get Free Analysis" button on a signal post
+        ticker = deep_link[7:].upper().strip()
+        await _handle_signal_engager(update, context, user, ticker, lang)
+        return
+
     if lang.startswith("zh"):
         msg = WELCOME_MESSAGES["zh"]
     elif lang.startswith("es"):
@@ -1745,7 +1763,154 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 
-async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def _handle_signal_engager(update, context, user, ticker, lang):
+    """Handle user who clicked 'Get Free Analysis' from a signal post.
+
+    This is the KEY conversion entry point:
+    1. Immediately recognize them as a signal engager
+    2. Push their sales funnel stage to 'interest' (or 'evaluation' if already interest)
+    3. Fetch real-time data for the ticker they're interested in
+    4. Deliver value first (analysis), then soft CTA
+    5. Mark as followed_up in engagement tracker
+    """
+    user_name = user.first_name or "there"
+
+    # Update sales funnel — signal engagers are high-intent
+    if sales_engine:
+        sales_engine.advance_funnel(user.id, "signal_engagement")
+        # Signal engagers who click through are evaluation-ready
+        current_stage = sales_engine.get_user_stage(user.id)
+        if current_stage in ("awareness", "interest"):
+            sales_engine.advance_funnel(user.id, "evaluation_signal")
+
+    # Mark as followed up in engagement tracker
+    if HAS_ENGAGEMENT_TRACKER:
+        mark_followed_up(str(user.id))
+
+    # Try to fetch real-time data for the ticker
+    ticker_data = None
+    try:
+        import yfinance as yf
+        stock = yf.Ticker(ticker)
+        info = stock.info or {}
+        price = info.get("currentPrice") or info.get("regularMarketPrice", "N/A")
+        change_pct = info.get("regularMarketChangePercent", "N/A")
+        rsi_hint = ""
+
+        # Try to determine if still oversold
+        hist = stock.history(period="1mo")
+        if len(hist) >= 14:
+            delta = hist["Close"].diff()
+            gain = delta.where(delta > 0, 0).rolling(14).mean()
+            loss = (-delta.where(delta < 0, 0)).rolling(14).mean()
+            rs = gain.iloc[-1] / loss.iloc[-1] if loss.iloc[-1] != 0 else 100
+            rsi_val = 100 - (100 / (1 + rs))
+            if rsi_val < 30:
+                rsi_hint = " (STILL oversold — RSI: " + str(round(rsi_val, 1)) + ")"
+            elif rsi_val < 40:
+                rsi_hint = " (RSI recovering: " + str(round(rsi_val, 1)) + ")"
+            else:
+                rsi_hint = " (RSI: " + str(round(rsi_val, 1)) + ", no longer oversold)"
+
+        ticker_data = {
+            "price": price,
+            "change_pct": change_pct,
+            "rsi_hint": rsi_hint
+        }
+    except Exception:
+        ticker_data = None
+
+    # Build the response — value first, then CTA
+    if lang.startswith("zh"):
+        if ticker_data and ticker_data["price"] != "N/A":
+            msg = (
+                "📊 **" + ticker + " 实时分析**\n\n"
+                "当前价格: $" + str(ticker_data["price"]) + "\n"
+                "涨跌: " + str(ticker_data.get("change_pct", "N/A")) + "\n"
+                + ticker_data.get("rsi_hint", "") + "\n\n"
+                "你从我们的超卖信号关注到 " + ticker + "，眼光不错。\n\n"
+                "RSI超卖只是一个起点。真正的关键问题是：\n"
+                "• 这是底部还是下跌中继？\n"
+                "• 什么价位进场风险收益比最优？\n"
+                "• 仓位应该多大？\n\n"
+                "这些问题的答案，取决于你的整体投资策略。\n\n"
+                "🎯 **我们可以免费帮你做一次投资组合审查**，看看 " + ticker + " 是否适合你当前的配置。\n\n"
+                "点击下方「Free Portfolio Review」即可开始 👇"
+            )
+        else:
+            msg = (
+                "📊 **" + ticker + " 分析**\n\n"
+                "你从我们的超卖信号关注到 " + ticker + "，说明你对技术信号很有感觉。\n\n"
+                "但 RSI 超卖只是一个信号，真正的利润来自于：\n"
+                "• 在正确的时间进场\n"
+                "• 用正确的仓位管理\n"
+                "• 结合基本面判断方向\n\n"
+                "🎯 **我们提供免费的投资组合审查**，帮你制定完整的交易计划。\n\n"
+                "点击下方「Free Portfolio Review」👇"
+            )
+    else:
+        if ticker_data and ticker_data["price"] != "N/A":
+            msg = (
+                "📊 **" + ticker + " Live Analysis**\n\n"
+                "Current: $" + str(ticker_data["price"]) + " | Change: " + str(ticker_data.get("change_pct", "N/A")) + "\n"
+                + ticker_data.get("rsi_hint", "") + "\n\n"
+                "You spotted " + ticker + " from our oversold signal. Good catch.\n\n"
+                "RSI oversold is a starting point. The real questions are:\n"
+                "• Bottom or dead cat bounce?\n"
+                "• What's the optimal entry for risk/reward?\n"
+                "• How much capital should you allocate?\n\n"
+                "The answers depend on your overall strategy.\n\n"
+                "🎯 **We offer a free portfolio review** — let's see if " + ticker + " fits your current allocation.\n\n"
+                "Tap **Free Portfolio Review** below 👇"
+            )
+        else:
+            msg = (
+                "📊 **" + ticker + " Analysis**\n\n"
+                "You spotted " + ticker + " from our oversold signal — you clearly have an eye for setups.\n\n"
+                "But RSI oversold is just one signal. Real profits come from:\n"
+                "• Entering at the right time\n"
+                "• Proper position sizing\n"
+                "• Combining technicals with fundamentals\n\n"
+                "🎯 **We offer a free portfolio review** to help you build a complete trading plan.\n\n"
+                "Tap **Free Portfolio Review** below 👇"
+            )
+
+    # Build keyboard with conversion-focused options
+    from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+    keyboard = InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton("🎯 Free Portfolio Review", callback_data="portfolio_review"),
+            InlineKeyboardButton("📋 How to Register", callback_data="register"),
+        ],
+        [
+            InlineKeyboardButton("💬 Talk to Advisor", callback_data="advisor"),
+            InlineKeyboardButton("📊 Our Services", callback_data="services"),
+        ]
+    ])
+
+    await update.message.reply_text(
+        msg,
+        parse_mode="Markdown",
+        reply_markup=keyboard
+    )
+
+    # Notify admin about high-value signal engager
+    if ADMIN_CHAT_ID:
+        try:
+            admin_msg = (
+                "🔔 **Signal Engager Clicked Through!**\n\n"
+                "User: " + user_name + " (ID: " + str(user.id) + ")\n"
+                "Ticker: " + ticker + "\n"
+                "Funnel: evaluation_signal\n"
+                "Action: Free analysis delivered, portfolio review offered"
+            )
+            await context.bot.send_message(
+                chat_id=ADMIN_CHAT_ID,
+                text=admin_msg,
+                parse_mode="Markdown"
+            )
+        except Exception:
+            pass
     await update.message.reply_text(
         "Just ask me anything — markets, investing, our services, whatever's on your mind! 🌍\n\n"
         "I speak English, 中文, Español, العربية, 日本語, and more.\n\n"

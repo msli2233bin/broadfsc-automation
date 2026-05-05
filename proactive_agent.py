@@ -149,8 +149,9 @@ class ProactiveSalesAgent:
     def _build_proactive_message(self, user_id, profile):
         """
         基于客户画像生成个性化主动消息
-        
+
         策略矩阵：
+        - 信号互动者: 该股深度跟进 + SPIN提问（最高优先级）
         - 新客户 + 无互动: 市场动态 + 破冰
         - interest + 有投资兴趣: 个性化分析 + SPIN提问
         - evaluation+: 价值推送 + 促转化
@@ -163,9 +164,66 @@ class ProactiveSalesAgent:
         hours = self._hours_since_last_contact(profile)
         interests = profile.get("investment_interests", [])
         topics = profile.get("topics_discussed", [])
-        
+
         # 个性化上下文
         interest_str = ", ".join(interests[:3]) if interests else "the markets"
+
+        # 🆕 信号互动者专属跟进
+        is_signal_engager = profile.get("is_signal_engager", False)
+        signal_tickers = profile.get("signal_tickers", [])
+        if is_signal_engager and signal_tickers:
+            # Extract ticker info
+            tickers_str = ", ".join(list(set(
+                e.get("ticker", "") for e in signal_tickers if isinstance(e, dict) and e.get("ticker")
+            ))[:3]) or "that stock"
+            signal_type = ""
+            for e in signal_tickers:
+                if isinstance(e, dict) and e.get("signal_type"):
+                    signal_type = e["signal_type"]
+                    break
+
+            signal_desc = {
+                "rsi_oversold": "RSI oversold" if lang != "zh" else "RSI超卖",
+                "breakout": "breakout" if lang != "zh" else "突破",
+                "volume_spike": "volume surge" if lang != "zh" else "放量",
+                "golden_cross": "golden cross" if lang != "zh" else "金叉",
+            }.get(signal_type, "technical signal" if lang != "zh" else "技术信号")
+
+            if lang == "zh":
+                templates = [
+                    f"嗨{name}！👋\n\n"
+                    f"你在频道里关注了{tickers_str}的{signal_desc}信号，我后来又研究了一下——\n\n"
+                    f"说实话，单看RSI超卖只是一个参考。真正赚钱的投资者会问3个问题：\n"
+                    f"1️⃣ 这是真正的底部还是下跌中继？\n"
+                    f"2️⃣ 基本面是否支撑反弹？\n"
+                    f"3️⃣ 我应该用多大仓位？\n\n"
+                    f"你现在主要用什么策略应对这种超卖机会？\n"
+                    f"如果你有兴趣，我可以帮你做一个免费的组合审查，看看{tickers_str}在你整体配置中应该占多大比例 🎯",
+
+                    f"{name}，你关注的{tickers_str}有新进展 📊\n\n"
+                    f"上次{signal_desc}信号出来后，我想跟进问一下：\n"
+                    f"你现在手上有这个仓位吗？还是一直在观望？\n\n"
+                    f"我观察到大多数散户在超卖信号上犯的最大错误不是判断方向，而是仓位管理。\n\n"
+                    f"要不要我帮你算一下合理进场价位和止损位？完全免费 💡",
+                ]
+            else:
+                templates = [
+                    f"Hey {name}! 👋\n\n"
+                    f"You showed interest in {tickers_str}'s {signal_desc} signal — I've been tracking it since.\n\n"
+                    f"Here's the thing: RSI oversold is just one data point. Smart investors ask 3 questions:\n"
+                    f"1️⃣ Is this a real bottom or a dead cat bounce?\n"
+                    f"2️⃣ Do the fundamentals support a reversal?\n"
+                    f"3️⃣ How much capital should I risk?\n\n"
+                    f"What's your current approach for these oversold setups?\n"
+                    f"I can do a free portfolio review to see how {tickers_str} fits your allocation 🎯",
+
+                    f"{name}! Quick update on {tickers_str} 📊\n\n"
+                    f"Since that {signal_desc} signal — have you taken a position or still watching from the sidelines?\n\n"
+                    f"Biggest mistake I see retail investors make with oversold signals isn't getting the direction wrong — "
+                    f"it's the position sizing.\n\n"
+                    f"Want me to help calculate a smart entry and stop-loss? Completely free 💡",
+                ]
+            return random.choice(templates)
         
         # 根据冷却时间和漏斗阶段选择策略
         is_cold = hours > 168  # 7天+
@@ -337,32 +395,51 @@ class ProactiveSalesAgent:
     def _get_priority_users(self):
         """
         获取需要主动回访的用户列表（按优先级排序）
-        
+
         优先级：
-        1. evaluation/decision 阶段的高价值客户（最可能转化）
-        2. interest 阶段有互动记录但已冷却的客户
-        3. 有过对话但超过7天未联系的客户
+        1. 信号互动者（从频道RSI/超卖帖互动过来的高意图用户）— 新增
+        2. evaluation/decision 阶段的高价值客户（最可能转化）
+        3. interest 阶段有互动记录但已冷却的客户
+        4. 有过对话但超过7天未联系的客户
         """
         if not self.memory or not self.memory.user_preferences:
             return []
-        
+
+        # Load signal engagers for priority boost
+        signal_engager_ids = set()
+        signal_engager_info = {}
+        try:
+            engager_file = os.path.join(
+                os.path.dirname(os.path.abspath(__file__)),
+                ".bot_memory", "signal_engagers.json"
+            )
+            if os.path.exists(engager_file):
+                with open(engager_file, "r", encoding="utf-8") as f:
+                    engagers_data = json.load(f)
+                for uid, info in engagers_data.get("engagers", {}).items():
+                    if not info.get("followed_up", False):
+                        signal_engager_ids.add(uid)
+                        signal_engager_info[uid] = info
+        except Exception:
+            pass
+
         candidates = []
         for uid_str, profile in self.memory.user_preferences.items():
             hours = self._hours_since_last_contact(profile)
-            
+
             # 跳过刚联系过的
             if hours < self.min_hours_since_last_contact:
                 continue
-            
+
             # 跳过应该过滤的
             conv_count = profile.get("conversation_count", 0)
             if conv_count < 1:
                 continue
-            
+
             user_id = int(uid_str)
             full_profile = self._get_user_profile(user_id)
             stage = full_profile.get("funnel_stage", "awareness")
-            
+
             # 计算优先级分数
             priority = 0
             if stage in ["evaluation", "decision"]:
@@ -371,24 +448,33 @@ class ProactiveSalesAgent:
                 priority = 70
             else:
                 priority = 30
-            
+
+            # 🆕 信号互动者额外加分 — 这些用户从频道互动而来，意图极高
+            if uid_str in signal_engager_ids:
+                priority += 40  # 最高加分项
+                full_profile["is_signal_engager"] = True
+                full_profile["signal_tickers"] = signal_engager_info.get(uid_str, {}).get("engagements", [])
+                # 信号互动者缩短最小间隔到12小时
+                if hours < 12:
+                    continue  # 仍然跳过12小时内联系过的
+
             # 超过7天未联系 → 加分
             if hours > 168:
                 priority += 20
-            
+
             # 互动次数多 → 加分（说明有黏性）
             if conv_count >= 5:
                 priority += 15
             elif conv_count >= 3:
                 priority += 10
-            
+
             # 亲密度高 → 加分
             intimacy = full_profile.get("intimacy_score", 0)
             if intimacy >= 20:
                 priority += 10
-            
+
             candidates.append((priority, user_id, full_profile))
-        
+
         # 按优先级降序排列
         candidates.sort(key=lambda x: x[0], reverse=True)
         return candidates

@@ -611,8 +611,15 @@ def get_fallback_content(region, lang="en"):
     )
 
 
-def send_telegram(text, channel_id):
-    """Send message to a specific Telegram channel."""
+def send_telegram(text, channel_id, post_type="briefing", signal_ticker=None):
+    """Send message to a specific Telegram channel.
+
+    Args:
+        text: Message content
+        channel_id: Telegram channel/chat ID
+        post_type: 'briefing' (default) or 'signal' (RSI/oversold etc.)
+        signal_ticker: For signal posts, the ticker symbol (e.g. 'AAPL')
+    """
     if not BOT_TOKEN or not channel_id:
         print("  FAIL: Missing BOT_TOKEN or channel_id")
         return False
@@ -624,6 +631,19 @@ def send_telegram(text, channel_id):
         "parse_mode": "HTML",
         "disable_web_page_preview": False
     }
+
+    # Add Inline Keyboard CTA for signal-type posts (RSI oversold, breakout, etc.)
+    if post_type == "signal" and signal_ticker:
+        BOT_USERNAME = os.environ.get("TELEGRAM_BOT_USERNAME", "BroadInvestBot")
+        # deep_link: clicking opens bot with /signal command pre-filled
+        deep_link = "https://t.me/" + BOT_USERNAME + "?start=signal_" + signal_ticker
+        payload["reply_markup"] = json.dumps({
+            "inline_keyboard": [[
+                {"text": "📊 Get Free Analysis", "url": deep_link},
+                {"text": "💬 Talk to Advisor", "url": "https://t.me/" + BOT_USERNAME}
+            ]]
+        })
+
     try:
         r = requests.post(url, json=payload, timeout=15)
         if r.status_code == 200:
@@ -631,19 +651,19 @@ def send_telegram(text, channel_id):
             print("  Sent to " + channel_id + " - Message ID: " + str(msg_id))
             if HAS_ANALYTICS:
                 lang = CHANNEL_LANG_MAP.get(channel_id, 'en')
-                log_post(platform=f"telegram_{lang}", post_type="briefing", channel=channel_id, content_preview=text[:100], post_id=str(msg_id), status="success")
+                log_post(platform=f"telegram_{lang}", post_type=post_type, channel=channel_id, content_preview=text[:100], post_id=str(msg_id), status="success")
             return True
         else:
             print("  FAIL [" + channel_id + "]: HTTP " + str(r.status_code) + " - " + r.text[:200])
             if HAS_ANALYTICS:
                 lang = CHANNEL_LANG_MAP.get(channel_id, 'en')
-                log_post(platform=f"telegram_{lang}", post_type="briefing", channel=channel_id, content_preview=text[:100], status="failed", error_msg=f"HTTP {r.status_code}")
+                log_post(platform=f"telegram_{lang}", post_type=post_type, channel=channel_id, content_preview=text[:100], status="failed", error_msg=f"HTTP {r.status_code}")
             return False
     except Exception as e:
         print("  FAIL [" + channel_id + "]: " + str(e))
         if HAS_ANALYTICS:
             lang = CHANNEL_LANG_MAP.get(channel_id, 'en')
-            log_post(platform=f"telegram_{lang}", post_type="briefing", channel=channel_id, status="failed", error_msg=str(e)[:200])
+            log_post(platform=f"telegram_{lang}", post_type=post_type, channel=channel_id, status="failed", error_msg=str(e)[:200])
         return False
 
 
