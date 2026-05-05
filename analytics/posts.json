@@ -327,5 +327,109 @@
     "content_preview": "\"People think fees are just a hassle, but the truth is, they're quietly costing you thousands. Time ",
     "status": "failed",
     "error_msg": "Video creation failed"
+  },
+  {
+    "id": 37,
+    "timestamp": "2026-05-05T18:56:30.911691Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The S&P 500 is up 17% in 2026, but is it a Bubble?</b>\n\nThe S&P 500 has been on a tear in 2026,",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "75"
+  },
+  {
+    "id": 38,
+    "timestamp": "2026-05-05T18:56:31.342294Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The S&P 500 is up 17% in 2026, but is it a Bubble?**\n\nThe S&P 500 has been on a tear in 2026, wi",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1501296553787129997"
+  },
+  {
+    "id": 39,
+    "timestamp": "2026-05-05T18:56:31.765492Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The S&P 500 is up 17% in 2026, but is it a Bubble?\n\nThe S&P 500 has been on a tear in 2026, with a",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 40,
+    "timestamp": "2026-05-05T18:56:41.254057Z",
+    "platform": "threads",
+    "type": "repurposed",
+    "content_preview": "📊 The S&P 500 is up 17% in 2026, but is it a Bubble?\n\nThe S&P 500 has been on a tear in 2026, with a",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "18194926906317957"
+  },
+  {
+    "id": 41,
+    "timestamp": "2026-05-05T18:56:42.705878Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "\"Understanding the nuances of stock investing is crucial for long-term success. One often-overlooked",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "116523493133621974"
+  },
+  {
+    "id": 42,
+    "timestamp": "2026-05-05T18:56:43.160963Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "**Market Musings**\n\nHey fellow traders, let's talk about stock types and risk management. As we know",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1501296603305349440"
+  },
+  {
+    "id": 43,
+    "timestamp": "2026-05-05T18:57:09.258154Z",
+    "platform": "tiktok",
+    "type": "video_v5_signal",
+    "content_preview": "\"Gold is doing something it hasn't done in years and I'm about to break down why it's got my attenti",
+    "status": "failed",
+    "error_msg": "Video creation failed"
+  },
+  {
+    "id": 44,
+    "timestamp": "2026-05-05T18:57:11.268124Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 45,
+    "timestamp": "2026-05-05T18:57:38.479591Z",
+    "platform": "medium",
+    "type": "story",
+    "content_preview": "The Yield Curve Is Speaking — Are You Listening?",
+    "status": "failed",
+    "error_msg": "post_medium_article returned False"
+  },
+  {
+    "id": 46,
+    "timestamp": "2026-05-05T18:58:25.981072Z",
+    "platform": "substack",
+    "type": "article",
+    "content_preview": "AI Stocks at All-Time Highs: Brilliance or Bubble?",
+    "status": "failed",
+    "error_msg": "post_substack_article returned False"
+  },
+  {
+    "id": 47,
+    "timestamp": "2026-05-05T18:59:11.580027Z",
+    "platform": "tiktok",
+    "type": "video_v5_ai",
+    "content_preview": "\"I just realized my 401(k) is way more complicated than I thought - and it's a total disaster waitin",
+    "status": "failed",
+    "error_msg": "Video creation failed"
   }
 ]
