@@ -667,7 +667,7 @@ def post_to_substack(article):
                     for sel in cover_sels:
                         try:
                             btn = page.locator(sel).first
-                            if btn.is_visible(timeout=500):
+                            if btn.is_visible(timeout=1000):
                                 btn.click()
                                 cover_clicked = True
                                 print(f"    Cover button clicked: {sel}")
@@ -675,33 +675,25 @@ def post_to_substack(article):
                                 break
                         except Exception:
                             continue
-
+                    
                     if cover_clicked:
-                        # After clicking, a file dialog opens — use file chooser
-                        with page.expect_file_chooser(timeout=10000) as fc_info:
-                            # Click the upload area/button that appears
-                            upload_sels = [
-                                'input[type="file"]',
-                                'button:has-text("Upload")',
-                                '[class*="upload"]',
-                            ]
-                            uploaded = False
-                            for sel in upload_sels:
-                                try:
-                                    el = page.locator(sel).first
-                                    if el.is_visible(timeout=3000):
-                                        el.click()
-                                        uploaded = True
-                                        break
-                                except Exception:
-                                    continue
-                            if not uploaded:
-                                # Just click on the dialog area
-                                page.click('[class*="image-picker"], [class*="cover"]', timeout=5000)
-                        file_chooser = fc_info.value
-                        file_chooser.set_files(cover_path)
-                        print("    Cover image uploaded!")
-                        time.sleep(3)
+                        # Wait for file chooser (Substack should open file dialog)
+                        try:
+                            with page.expect_file_chooser(timeout=5000) as fc_info:
+                                pass  # File chooser should already be triggered
+                            file_chooser = fc_info.value
+                            file_chooser.set_files(cover_path)
+                            print("    Cover image uploaded!")
+                            time.sleep(3)
+                        except Exception as e:
+                            print(f"    File chooser not triggered: {e}")
+                            # Try alternative: set file input directly
+                            try:
+                                page.locator('input[type="file"]').set_input_files(cover_path)
+                                print("    Cover image uploaded via file input!")
+                                time.sleep(3)
+                            except Exception as e2:
+                                print(f"    File input method failed: {e2}")
                     else:
                         print("    No cover button found, skipping cover image")
                 except Exception as e:
@@ -714,39 +706,40 @@ def post_to_substack(article):
             title_done = False
 
             # Method 1: JavaScript — find any input with "title" in placeholder/aria-label
+            # Use page.evaluate with function + args to avoid f-string escaping nightmares
             try:
-                result = page.evaluate(f'''() => {{
+                result = page.evaluate('''(titleText) => {
                     // Look for title input by placeholder
-                    const inputs = document.querySelectorAll('input');
-                    for (const input of inputs) {{
-                        const ph = (input.placeholder || '').toLowerCase();
-                        const aria = (input.getAttribute('aria-label') || '').toLowerCase();
-                        if (ph.includes('title') || aria.includes('title')) {{
-                            const nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
-                            nativeSetter.call(input, {json.dumps(article["title"])});
-                            input.dispatchEvent(new Event('input', {{ bubbles: true }}));
-                            input.dispatchEvent(new Event('change', {{ bubbles: true }}));
-                            return {{found: true, placeholder: input.placeholder}};
-                        }}
-                    }}
+                    const inputs = document.querySelectorAll("input");
+                    for (const input of inputs) {
+                        const ph = (input.placeholder || "").toLowerCase();
+                        const aria = (input.getAttribute("aria-label") || "").toLowerCase();
+                        if (ph.includes("title") || aria.includes("title")) {
+                            const nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value").set;
+                            nativeSetter.call(input, titleText);
+                            input.dispatchEvent(new Event("input", {bubbles: true}));
+                            input.dispatchEvent(new Event("change", {bubbles: true}));
+                            return {found: true, placeholder: input.placeholder};
+                        }
+                    }
                     // Also check for contenteditable div that might be the title
-                    const editables = document.querySelectorAll('[contenteditable="true"]');
-                    for (const el of editables) {{
-                        const cls = (el.className || '').toLowerCase();
-                        const role = (el.getAttribute('role') || '').toLowerCase();
-                        if (cls.includes('title') || role === 'title' || cls.includes('headline')) {{
-                            el.textContent = {json.dumps(article["title"])};
-                            el.dispatchEvent(new Event('input', {{ bubbles: true }}));
-                            return {{found: true, type: 'contenteditable', cls: el.className}};
-                        }}
-                    }}
-                    return {{found: false}};
-                }}''')
-                if result.get('found'):
+                    const editables = document.querySelectorAll("[contenteditable=true]");
+                    for (const el of editables) {
+                        const cls = (el.className || "").toLowerCase();
+                        const role = (el.getAttribute("role") || "").toLowerCase();
+                        if (cls.includes("title") || role === "title" || cls.includes("headline")) {
+                            el.textContent = titleText;
+                            el.dispatchEvent(new Event("input", {bubbles: true}));
+                            return {found: true, type: "contenteditable", cls: el.className};
+                        }
+                    }
+                    return {found: false};
+                }''', article["title"])
+                if result and result.get("found"):
                     title_done = True
                     print(f"    Title filled via JS: {result}")
             except Exception as e:
-                print(f"    JS title fill: {e}")
+                print(f"    JS title fill error: {e}")
 
             # Method 2: Fast selector check (short timeout)
             if not title_done:
@@ -831,7 +824,8 @@ def post_to_substack(article):
             time.sleep(2)
             published = False
             
-            # First click "Continue" if visible (Substack has Continue -> Review -> Publish flow)
+            # Substack flow: Fill content -> Click "Continue" -> Review page -> Click "Send to everyone now"
+            # Step 6a: Click "Continue" to go to review page
             continue_sels = [
                 'button:has-text("Continue")',
                 'button:has-text("Next")',
@@ -846,8 +840,8 @@ def post_to_substack(article):
                         break
                 except Exception:
                     continue
-
-            # Now look for Publish/Send button
+            
+            # Step 6b: Now on review page, look for the main publish button
             # Substack uses "Send to everyone now" (not "Publish")
             publish_sels = [
                 'button:has-text("Send to everyone now")',
@@ -864,11 +858,12 @@ def post_to_substack(article):
                     if btn.is_visible(timeout=2000):
                         btn.click()
                         print(f"    Publish button clicked: {sel}")
-                        time.sleep(3)
+                        time.sleep(4)
                         
                         # Confirm dialog (if any)
                         for csel in [
-                            'button:has-text("Publish now")', 'button:has-text("Confirm")',
+                            'button:has-text("Publish now")',
+                            'button:has-text("Confirm")',
                             'button:has-text("Yes, publish")',
                         ]:
                             try:
@@ -885,31 +880,7 @@ def post_to_substack(article):
                         break
                 except Exception:
                     continue
-
-            if not published:
-                # Try clicking Continue one more time if there's a multi-step flow
-                for sel in continue_sels:
-                    try:
-                        btn = page.locator(sel).first
-                        if btn.is_visible(timeout=2000):
-                            btn.click()
-                            print(f"    Second Continue: {sel}")
-                            time.sleep(3)
-                            # Try publish again
-                            for psel in publish_sels:
-                                try:
-                                    pbtn = page.locator(psel).first
-                                    if pbtn.is_visible(timeout=2000):
-                                        pbtn.click()
-                                        time.sleep(3)
-                                        published = True
-                                        break
-                                except Exception:
-                                    continue
-                            break
-                    except Exception:
-                        continue
-
+            
             if not published:
                 print("    No publish button found, saving draft...")
                 page.keyboard.press("Control+s")
@@ -940,12 +911,12 @@ def post_to_substack(article):
                         time.sleep(3)
                         
                         # The first post in the list should be our newly published one
-                        # Find the public link
+                        # Find the public link - use page.evaluate with function, no f-string needed
                         public_url = page.evaluate('''() => {
-                            const links = document.querySelectorAll('a[href*="/p/"]');
+                            const links = document.querySelectorAll("a[href*=\"/p/\"]");
                             for (const link of links) {
-                                const href = link.getAttribute('href') || '';
-                                if (href.includes('/p/') && !href.includes('/publish/')) {
+                                const href = link.getAttribute("href") || "";
+                                if (href.includes("/p/") && !href.includes("/publish/")) {
                                     return href;
                                 }
                             }
@@ -953,7 +924,7 @@ def post_to_substack(article):
                         }''')
                         
                         if public_url:
-                            final_url = public_url if public_url.startswith('http') else f"https://{PUBLICATION_SLUG}.substack.com{public_url}"
+                            final_url = public_url if public_url.startswith("http") else f"https://{PUBLICATION_SLUG}.substack.com{public_url}"
                             print(f"    ✅ Post published! Public URL: {final_url}")
                         else:
                             # Check if the post is in "Published" state
