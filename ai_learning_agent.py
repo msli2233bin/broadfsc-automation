@@ -277,7 +277,21 @@ Format as structured Markdown with actionable insights."""
         result = response.json()
         return result['choices'][0]['message']['content']
     except Exception as e:
+        error_msg = str(e)
         print(f"    ⚠️ Groq API 错误: {e}")
+        # 写入事件记忆（融合：失败捕获）
+        try:
+            write_episodic_record(
+                event_id=f"EVT-API-{agent_role.upper()}",
+                title=f"Groq API 调用失败 - {source_name}",
+                domain=agent_role,
+                event=f"AI提炼失败: {error_msg[:100]}",
+                result="失败",
+                root_cause="API超时或Key失效",
+                related_domains=['ai_tech']
+            )
+        except:
+            pass
         # fallback: 简单清理
         lines = [l.strip() for l in raw_content.split('\n') if len(l.strip()) > 40]
         return f"# {source_name} 学习笔记\n\n" + '\n'.join(lines[:40])
@@ -476,7 +490,110 @@ def notify_telegram(message: str):
         print(f"    ⚠️ Telegram 通知失败: {e}")
 
 
-# =================== 主执行逻辑 ===================
+# =================== 知识融合模块 ===================
+import datetime as dt
+
+FUSION_INDEX_PATH = KNOWLEDGE_DIR / 'FUSION_INDEX.md'
+
+def write_episodic_record(event_id: str, title: str, domain: str, event: str, result: str, root_cause: str, related_domains: list):
+    """写入事件记忆 → episodic/"""
+    ep_dir = KNOWLEDGE_DIR / 'episodic'
+    ep_dir.mkdir(parents=True, exist_ok=True)
+    filepath = ep_dir / f"{TODAY}.md"
+    
+    entry = "\n## " + event_id + ": " + title + "\n"
+    entry += "- **日期**: " + TODAY + "\n"
+    entry += "- **领域**: " + domain + "\n"
+    entry += "- **事件**: " + event + "\n"
+    entry += "- **结果**: " + result + "\n"
+    entry += "- **直接原因**: " + root_cause + "\n"
+    entry += "- **关联域**: " + ", ".join(related_domains) + "\n"
+    
+    if filepath.exists():
+        old = filepath.read_text(encoding='utf-8')
+        filepath.write_text(old + entry, encoding='utf-8')
+    else:
+        filepath.write_text("# 事件记忆 - " + TODAY + "\n" + entry, encoding='utf-8')
+    
+    print("    📝 事件记忆已记录: " + event_id)
+
+
+def check_cross_domain_fusion(agent: str, topic: str, content: str):
+    """检查跨域关联，触发融合动作"""
+    if not FUSION_INDEX_PATH.exists():
+        return
+    
+    fusion_text = FUSION_INDEX_PATH.read_text(encoding='utf-8')
+    
+    # 检查金融×销售关联：TA信号 → 销售触发
+    ta_keywords = ['RSI', 'MACD', '金叉', '死叉', '背离', '支撑', '阻力', '突破', 'bullish', 'bearish']
+    sales_keywords = ['outreach', 'follow up', 'lead', 'convert', ' Cold ', 'warm']
+    
+    triggered_actions = []
+    
+    # 规则1: 金融知识含TA信号 → 通知销售Agent
+    if agent == 'finance' and any(k.lower() in content.lower() for k in ta_keywords):
+        triggered_actions.append({
+            'type': 'ta_signal_detected',
+            'message': f"📈 检测到技术分析信号知识点 ({topic})，建议销售Agent生成触发式外联话术"
+        })
+    
+    # 规则2: 竞品弱点 → 更新销售异议处理
+    if agent == 'competitor' and any(k in content.lower() for k in ['weakness', '劣势', '缺点', 'complaint', 'fee', '费用']):
+        triggered_actions.append({
+            'type': 'competitor_weakness',
+            'message': f"🎯 检测到竞品弱点分析 ({topic})，建议更新销售异议处理话术"
+        })
+    
+    # 规则3: 营销平台更新 → 检查内容队列
+    if agent == 'marketing' and any(k in content.lower() for k in ['algorithm', '算法', 'hook', ' viral ', 'engagement']):
+        triggered_actions.append({
+            'type': 'marketing_insight',
+            'message': f"📱 检测到营销洞察 ({topic})，建议生成新平台内容"
+        })
+    
+    # 规则4: 所有新知识 → 尝试生成跨域内容
+    if FUSION_INDEX_PATH.exists():
+        # 检查 FUSION_INDEX 中的关联矩阵，看当前agent/topic是否匹配跨域组合
+        for line in fusion_text.split('\n'):
+            if agent.capitalize() in line and ('×' in line or '×' in line):
+                triggered_actions.append({
+                    'type': 'cross_domain_match',
+                    'message': f"🔗 跨域关联匹配: {agent}/{topic} 在 FUSION_INDEX 中有对应融合策略"
+                })
+                break
+    
+    if triggered_actions:
+        print(f"    🔗 跨域关联检查: {len(triggered_actions)} 个融合动作被触发")
+        for action in triggered_actions:
+            print(f"       → {action['message']}")
+        
+        # 写入融合日志
+        fusion_log = KNOWLEDGE_DIR / 'fusion_log.md'
+        log_entry = f"\n## {dt.datetime.now().strftime('%H:%M:%S')} | {agent}/{topic}\n"
+        for action in triggered_actions:
+            log_entry += f"- [{action['type']}] {action['message']}\n"
+        
+        if fusion_log.exists():
+            fusion_log.write_text(fusion_log.read_text(encoding='utf-8') + log_entry, encoding='utf-8')
+        else:
+            fusion_log.write_text(f"# 知识融合日志\n{log_entry}", encoding='utf-8')
+    else:
+        print(f"    ℹ️ 跨域关联检查: 无触发动作")
+
+
+def update_fusion_index_references(agent: str, topic: str, filepath: str):
+    """更新 FUSION_INDEX.md 中的最新学习记录引用"""
+    if not FUSION_INDEX_PATH.exists():
+        return
+    
+    content = FUSION_INDEX_PATH.read_text(encoding='utf-8')
+    # 在"最新学习记录"部分追加（如果存在）
+    # 简单策略：每次运行后打印提示，人工Review后更新
+    print(f"    💡 提示: 请检查 FUSION_INDEX.md 是否有 {agent}/{topic} 的跨域关联可添加")
+
+
+
 def run_agent(agent: str):
     """运行指定 Agent 的学习任务"""
     sources = LEARNING_SOURCES.get(agent, [])
@@ -523,6 +640,11 @@ def run_agent(agent: str):
         seen_hashes.add(content_hash)
         
         print(f"   ✅ 已写入: {Path(filepath).name}")
+        
+        # 🆕 跨域关联检查（融合Step 1）
+        print(f"   🔗 执行跨域关联检查...")
+        check_cross_domain_fusion(agent, source['topic'], summary)
+        update_fusion_index_references(agent, source['topic'], filepath)
         
         # 同步到 IMA
         ima_title = f"🤖 {agent.upper()} - {source['topic']} - {TODAY}"
@@ -687,12 +809,59 @@ def generate_social_content(knowledge_file: str, agent: str, topic: str):
         return []
 
 
+def run_fusion_check():
+    """全库跨域关联扫描（每周五自动或手动触发）"""
+    print("\n" + "=" * 60)
+    print("🔗 执行全库跨域关联扫描")
+    print("=" * 60)
+    
+    if not FUSION_INDEX_PATH.exists():
+        print("   ⚠️ FUSION_INDEX.md 不存在，跳过")
+        return
+    
+    fusion_text = FUSION_INDEX_PATH.read_text(encoding='utf-8')
+    
+    # 扫描各域最新文件，检查是否有跨域关联可建立
+    domains = ['finance', 'sales', 'marketing', 'competitor']
+    suggestions = []
+    
+    for domain in domains:
+        domain_dir = KNOWLEDGE_DIR / domain
+        if not domain_dir.exists():
+            continue
+        files = sorted(domain_dir.glob('*.md'), reverse=True)[:3]
+        for f in files:
+            content = f.read_text(encoding='utf-8')[:500]
+            # 检查是否含其他域的关键词
+            if domain == 'finance':
+                if any(k in content.lower() for k in ['销售', 'sales', '转化', 'convert']):
+                    suggestions.append(f"💡 {f.stem} 含销售相关关键词，建议在FUSION_INDEX中添加Finance×Sales关联")
+            elif domain == 'marketing':
+                if any(k in content.lower() for k in ['RSI', 'MACD', '技术分析', 'fundamental']):
+                    suggestions.append(f"💡 {f.stem} 含金融分析，建议在FUSION_INDEX中添加Finance×Marketing关联")
+    
+    if suggestions:
+        print(f"   ✅ 发现 {len(suggestions)} 个跨域关联建议:")
+        for s in suggestions:
+            print(f"      {s}")
+    else:
+        print("   ℹ️ 暂无新的跨域关联建议")
+    
+    print("=" * 60)
+
+
 def main():
     parser = argparse.ArgumentParser(description='BroadFSC AI 自主学习团队')
     parser.add_argument('--agent', choices=['finance', 'sales', 'marketing', 'competitor', 'all'],
                         default='all', help='运行指定Agent')
     parser.add_argument('--no-content', action='store_true', help='只学习不生成内容')
+    parser.add_argument('--fusion', action='store_true', help='执行跨域关联扫描')
     args = parser.parse_args()
+    
+    # 单独执行融合扫描
+    if args.fusion:
+        run_fusion_check()
+        return
     
     agents_to_run = ['finance', 'sales', 'marketing', 'competitor'] if args.agent == 'all' else [args.agent]
     
@@ -701,7 +870,7 @@ def main():
         results = run_agent(agent)
         if results:
             total_results.extend(results)
-
+            
             # 🆕 学完自动生成社交内容
             if not args.no_content:
                 for r in results:
@@ -710,14 +879,19 @@ def main():
                         print(f"\n  🎨 从知识生成社交内容: {r['topic']}")
                         generate_social_content(str(knowledge_file), agent, r['topic'])
                         time.sleep(2)
-
+        
         time.sleep(5)  # Agent 之间间隔
+    
+    # 所有Agent完成后，执行一次跨域关联扫描
+    print("\n🔗 执行跨域关联检查...")
+    run_fusion_check()
     
     print(f"\n{'='*60}")
     print(f"🎉 AI 学习团队全部完成！共学习 {len(total_results)} 条知识")
     print(f"📁 存储路径: broadfsc-automation/knowledge/")
     print(f"🎨 社交内容队列: knowledge/content_queue/")
     print(f"🌐 IMA 知识库: 已同步")
+    print(f"🔗 融合索引: knowledge/FUSION_INDEX.md")
     print(f"{'='*60}")
 
 
