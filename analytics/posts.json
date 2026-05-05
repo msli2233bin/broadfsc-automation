@@ -214,5 +214,118 @@
     "content_preview": "\"Gold just did something it hasn't done in over a decade - and I think it's a game-changer. Here's w",
     "status": "failed",
     "error_msg": "Video creation failed"
+  },
+  {
+    "id": 25,
+    "timestamp": "2026-05-05T11:18:46.206554Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Moats and Momentum: Why the Nasdaq's AI-Driven Giants Will Continue to Dominate</b>\n\n{   \"title",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "71"
+  },
+  {
+    "id": 26,
+    "timestamp": "2026-05-05T11:18:46.605691Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Moats and Momentum: Why the Nasdaq's AI-Driven Giants Will Continue to Dominate**\n\n{   \"title\": ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1501181357647335425"
+  },
+  {
+    "id": 27,
+    "timestamp": "2026-05-05T11:18:47.353310Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Moats and Momentum: Why the Nasdaq's AI-Driven Giants Will Continue to Dominate\n\n{   \"title\": \"Moa",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 28,
+    "timestamp": "2026-05-05T11:18:56.637881Z",
+    "platform": "threads",
+    "type": "repurposed",
+    "content_preview": "📊 Moats and Momentum: Why the Nasdaq's AI-Driven Giants Will Continue to Dominate\n\n{   \"title\": \"Moa",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "17951544534149184"
+  },
+  {
+    "id": 29,
+    "timestamp": "2026-05-05T11:18:57.435880Z",
+    "platform": "twitter",
+    "type": "tweet",
+    "content_preview": "\"Did you know? Top reps use AI to orchestrate 70% more sales meetings than those relying on individu",
+    "status": "failed",
+    "error_msg": "HTTP 402"
+  },
+  {
+    "id": 30,
+    "timestamp": "2026-05-05T11:18:58.082362Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "As I analyze the current market trends, I'm reminded of the importance of adapting our content strat",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "116521693192721601"
+  },
+  {
+    "id": 31,
+    "timestamp": "2026-05-05T11:18:58.343397Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "**Market Musings**\n\nHey fellow traders, let's talk about stock types and risk management. As we know",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1501181407463084073"
+  },
+  {
+    "id": 32,
+    "timestamp": "2026-05-05T11:19:40.218625Z",
+    "platform": "tiktok",
+    "type": "video_v5_ai",
+    "content_preview": "Just because the market's on a roll doesn't mean you're doing it right. Don't get caught up in the h",
+    "status": "failed",
+    "error_msg": "Video creation failed"
+  },
+  {
+    "id": 33,
+    "timestamp": "2026-05-05T11:19:41.903729Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 34,
+    "timestamp": "2026-05-05T11:19:59.367277Z",
+    "platform": "medium",
+    "type": "story",
+    "content_preview": "The Yield Curve Is Speaking — Are You Listening?",
+    "status": "failed",
+    "error_msg": "post_medium_article returned False"
+  },
+  {
+    "id": 35,
+    "timestamp": "2026-05-05T11:20:55.958340Z",
+    "platform": "substack",
+    "type": "article",
+    "content_preview": "AI Stocks at All-Time Highs: Brilliance or Bubble?",
+    "status": "failed",
+    "error_msg": "post_substack_article returned False"
+  },
+  {
+    "id": 36,
+    "timestamp": "2026-05-05T11:21:49.793058Z",
+    "platform": "tiktok",
+    "type": "video_v5_ai",
+    "content_preview": "\"People think fees are just a hassle, but the truth is, they're quietly costing you thousands. Time ",
+    "status": "failed",
+    "error_msg": "Video creation failed"
   }
 ]
