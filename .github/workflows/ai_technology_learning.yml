@@ -1,0 +1,62 @@
+name: AI Technology Daily Learning
+
+on:
+  schedule:
+    # 北京时间每天10:00运行（UTC 02:00）
+    - cron: '0 2 * * *'
+  workflow_dispatch:  # 支持手动触发
+
+jobs:
+  learn-ai-tech:
+    runs-on: ubuntu-latest
+    env:
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_ADMIN_CHAT_ID: ${{ secrets.TELEGRAM_ADMIN_CHAT_ID }}
+      IMA_CLIENT_ID: ${{ secrets.IMA_CLIENT_ID }}
+      IMA_API_KEY: ${{ secrets.IMA_API_KEY }}
+      IMA_KB_ID: ${{ secrets.IMA_KB_ID }}
+
+    steps:
+      - name: Checkout代码
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true  # 允许后续git push
+
+      - name: 设置Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装依赖
+        run: pip install requests
+
+      - name: 运行AI技术每日学习
+        run: python ai_technology_learner.py
+
+      - name: Commit新学到的知识
+        run: |
+          git config user.name "AI Technology Learner"
+          git config user.email "ai-learn@broadfsc.com"
+          git add knowledge/ai_technology/ || true
+          git diff --quiet && git diff --staged --quiet || git commit -m "🤖 AI技术每日学习 - $(date +%Y-%m-%d)"
+
+      - name: Push知识更新
+        run: git push
+        continue-on-error: true
+
+      - name: 通知Telegram
+        if: always()
+        run: |
+          python -c "
+import requests, json, os
+token = os.environ.get('TELEGRAM_BOT_TOKEN', '')
+chat = os.environ.get('TELEGRAM_ADMIN_CHAT_ID', '')
+if token and chat:
+    try:
+        requests.post(f'https://api.telegram.org/bot{token}/sendMessage',
+            json={'chat_id': chat, 'text': '🤖 <b>AI技术每日学习完成</b>\n📅 ' + os.popen('date +%Y-%m-%d').read().strip() + '\n📁 知识已保存到 knowledge/ai_technology/\n📈 今天的我已比昨天更聪明！', 'parse_mode': 'HTML'},
+            timeout=15)
+    except: pass
+"
+        continue-on-error: true
