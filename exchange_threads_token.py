@@ -6,7 +6,7 @@ import requests
 import sys
 import os
 
-APP_SECRET = "9857adbca8c910959a78e14d813c0e53"
+APP_SECRET = "a7f15d3af0877cb904782bd0372b2382"
 
 token = input("Paste fresh Access Token here and press Enter: ").strip()
 

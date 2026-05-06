@@ -38,8 +38,8 @@ from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeo
 FB_EMAIL = os.environ.get("FB_EMAIL", "")
 FB_PASSWORD = os.environ.get("FB_PASSWORD", "")
 
-APP_ID = "1479983126925807"
-APP_SECRET = "9857adbca8c910959a78e14d813c0e53"
+APP_ID = "1294846036082794"
+APP_SECRET = "a7f15d3af0877cb904782bd0372b2382"
 API_BASE = "https://graph.threads.net/v1.0"
 REDIRECT_URI = "https://www.broadfsc.com/different"
 

@@ -8,8 +8,8 @@ import requests
 import json
 
 # App 凭证
-APP_ID = "1479983126925807"
-APP_SECRET = "9857adbca8c910959a78e14d813c0e53"
+APP_ID = "1294846036082794"
+APP_SECRET = "a7f15d3af0877cb904782bd0372b2382"
 
 def main():
     print("=" * 60)
