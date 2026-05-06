@@ -431,5 +431,25 @@
     "content_preview": "\"I just realized my 401(k) is way more complicated than I thought - and it's a total disaster waitin",
     "status": "failed",
     "error_msg": "Video creation failed"
+  },
+  {
+    "id": 48,
+    "timestamp": "2026-05-06T17:17:33.287048Z",
+    "platform": "telegram_en",
+    "type": "earnings",
+    "content_preview": "<b>📊 Earnings Calendar: Week of May 06</b>\n\n\n📅 <b>Wednesday, May 06</b>\n  • Disney (DIS) @ $107.14 |",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "79"
+  },
+  {
+    "id": 49,
+    "timestamp": "2026-05-06T17:17:33.888475Z",
+    "platform": "discord",
+    "type": "earnings",
+    "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of May 06**\n\n\n📅 **Wednesday, May 06**\n  •",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1501634037092192297"
   }
 ]
