@@ -1,72 +1,72 @@
 {
-  "generated_at": "2026-05-05T23:36:44.786015Z",
+  "generated_at": "2026-05-06T15:53:56.297424Z",
   "period": {
-    "today": "2026-05-05",
-    "yesterday": "2026-05-04",
-    "week_ago": "2026-04-28",
-    "month_ago": "2026-04-05"
+    "today": "2026-05-06",
+    "yesterday": "2026-05-05",
+    "week_ago": "2026-04-29",
+    "month_ago": "2026-04-06"
   },
   "totals": {
-    "posts_today": 32,
+    "posts_today": 0,
     "posts_week": 36,
     "posts_month": 47,
-    "interactions_today": 2,
+    "interactions_today": 0,
     "interactions_week": 4,
     "interactions_month": 35,
     "success_rate": 29.8
   },
   "platforms": {
     "tiktok": {
-      "today": 6,
+      "today": 0,
       "week": 6,
       "month": 17,
       "success": 1,
       "failed": 16
     },
     "telegram_en": {
-      "today": 2,
+      "today": 0,
       "week": 4,
       "month": 4,
       "success": 2,
       "failed": 2
     },
     "discord": {
-      "today": 5,
+      "today": 0,
       "week": 7,
       "month": 7,
       "success": 4,
       "failed": 3
     },
     "mastodon": {
-      "today": 6,
+      "today": 0,
       "week": 6,
       "month": 6,
       "success": 5,
       "failed": 1
     },
     "twitter": {
-      "today": 2,
+      "today": 0,
       "week": 2,
       "month": 2,
       "success": 0,
       "failed": 2
     },
     "threads": {
-      "today": 5,
+      "today": 0,
       "week": 5,
       "month": 5,
       "success": 2,
       "failed": 3
     },
     "medium": {
-      "today": 3,
+      "today": 0,
       "week": 3,
       "month": 3,
       "success": 0,
       "failed": 3
     },
     "substack": {
-      "today": 3,
+      "today": 0,
       "week": 3,
       "month": 3,
       "success": 0,
@@ -80,7 +80,7 @@
       "month": 31
     },
     "telegram": {
-      "today": 2,
+      "today": 0,
       "week": 4,
       "month": 4
     }
