@@ -120,7 +120,7 @@ def post_entry(title, content, draft=False):
             print(f"  Hatena: ✅ {status} — '{title}' → {blog_url}")
             if HAS_ANALYTICS:
                 log_post(platform="hatena", post_type="email", content_preview=title[:100],
-                         status="success", post_url=blog_url)
+                         status="success")
             return True, blog_url
         else:
             error_msg = f"Brevo HTTP {r.status_code}: {r.text[:300]}"
