@@ -35,8 +35,8 @@ from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeo
 # ============================================================
 # Config
 # ============================================================
-FB_EMAIL = "msli2233bin@gmail.com"
-FB_PASSWORD = "Lin2233509."
+FB_EMAIL = os.environ.get("FB_EMAIL", "")
+FB_PASSWORD = os.environ.get("FB_PASSWORD", "")
 
 APP_ID = "1479983126925807"
 APP_SECRET = "9857adbca8c910959a78e14d813c0e53"

@@ -39,7 +39,6 @@ jobs:
           BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: |
-          cd broadfsc-automation
           python email_campaign.py --init
 
       - name: Send email batch
@@ -49,7 +48,6 @@ jobs:
           BREVO_REPLY_TO: ${{ secrets.BREVO_REPLY_TO }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: |
-          cd broadfsc-automation
           EXTRA_ARGS=""
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
             EXTRA_ARGS="$EXTRA_ARGS --dry-run"
@@ -63,14 +61,13 @@ jobs:
         env:
           BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
         run: |
-          cd broadfsc-automation
           python email_campaign.py --stats
 
       - name: Commit email data
         run: |
           git config user.name "BroadFSC Automation"
           git config user.email "automation@broadfsc.com"
-          git add broadfsc-automation/email_data/ || true
+          git add email_data/ || true
           git diff --staged --quiet || git commit -m "chore(email): update send data $(date +%Y-%m-%d)"
           git pull --rebase origin main || true
           git push origin main || true

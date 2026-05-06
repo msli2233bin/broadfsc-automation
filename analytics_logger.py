@@ -56,8 +56,18 @@ def _save_json(filepath, data):
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 
-def log_post(platform, post_type="text", content_preview="", post_id=None, status="success", error_msg=""):
-    """记录一次帖子发布（JSON + SQLite 双写）"""
+def log_post(platform, post_type="text", content_preview="", channel="", post_id=None, status="success", error_msg=""):
+    """记录一次帖子发布（JSON + SQLite 双写）
+
+    Args:
+        platform: 平台名称
+        post_type: 帖子类型（text/image/thread等）
+        content_preview: 内容预览
+        channel: 频道/频道ID（Telegram频道名、Discord频道等）
+        post_id: 平台返回的发帖ID
+        status: 状态（success/failed/skipped）
+        error_msg: 错误信息
+    """
     posts = _load_json(POSTS_FILE)
     entry = {
         "id": len(posts) + 1,
@@ -68,6 +78,8 @@ def log_post(platform, post_type="text", content_preview="", post_id=None, statu
         "status": status,
         "error_msg": error_msg
     }
+    if channel:
+        entry["channel"] = channel
     if post_id is not None:
         entry["post_id"] = str(post_id)
     posts.append(entry)
@@ -75,10 +87,25 @@ def log_post(platform, post_type="text", content_preview="", post_id=None, statu
     if len(posts) > 5000:
         posts = posts[-5000:]
     _save_json(POSTS_FILE, posts)
-    # Dual-write to SQLite
+    # Dual-write to SQLite（容错：SQLite失败不影响JSON日志）
     if HAS_DB:
         try:
-            _db_log_post(platform=platform, post_type=post_type, content_preview=content_preview[:200], post_id="" if post_id is None else str(post_id), status=status, error_msg=error_msg[:200])
+            _db_log_post(
+                platform=platform,
+                post_type=post_type,
+                channel=channel,
+                content_preview=content_preview[:200],
+                post_id="" if post_id is None else str(post_id),
+                status=status,
+                error_msg=error_msg[:200]
+            )
+        except TypeError as e:
+            # analytics_db.py 的 log_post 签名不匹配时，尝试位置参数调用
+            print(f"[analytics_logger] SQLite log_post TypeError: {e}，尝试兼容调用")
+            try:
+                _db_log_post(platform, post_type, channel, content_preview[:200], "" if post_id is None else str(post_id), status, error_msg[:200])
+            except Exception as e2:
+                print(f"[analytics_logger] SQLite log_post fallback error: {e2}")
         except Exception as e:
             print(f"[analytics_logger] SQLite log_post error: {e}")
     return entry["id"]

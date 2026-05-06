@@ -26,8 +26,8 @@ if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
 # ============================================================
 # Config
 # ============================================================
-SUBSTACK_EMAIL = os.environ.get("SUBSTACK_EMAIL", "msli2233bin@gmail.com")
-SUBSTACK_PASSWORD = os.environ.get("SUBSTACK_PASSWORD", "Lin2233509.")
+SUBSTACK_EMAIL = os.environ.get("SUBSTACK_EMAIL", "")
+SUBSTACK_PASSWORD = os.environ.get("SUBSTACK_PASSWORD", "")
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 PUBLICATION_SLUG = "broadcastmarketintelligence"
 PUBLICATION_ID = "8790672"  # Discovered from public API

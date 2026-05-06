@@ -134,7 +134,17 @@ def init_db():
 # ============================================================
 
 def log_post(platform, post_type="post", channel="", content_preview="", post_id="", status="success", error_msg=""):
-    """Log a post event."""
+    """Log a post event.
+    
+    Args:
+        platform: 平台名称
+        post_type: 帖子类型
+        channel: 频道/频道ID
+        content_preview: 内容预览
+        post_id: 平台返回的发帖ID
+        status: 状态
+        error_msg: 错误信息
+    """
     try:
         db = get_db()
         db.execute(
@@ -143,7 +153,7 @@ def log_post(platform, post_type="post", channel="", content_preview="", post_id
         )
         db.commit()
     except Exception as e:
-        print(f"[analytics] log_post error: {e}")
+        print(f"[analytics_db] log_post error: {e}")
 
 
 def log_click(source_platform, source_post_id="", link_type="website", target_url="", ip_hash="", country="", referrer=""):

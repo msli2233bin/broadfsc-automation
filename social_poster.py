@@ -104,12 +104,12 @@ if not THREADS_ACCESS_TOKEN:
 STOCKTWITS_ACCESS_TOKEN = os.environ.get("STOCKTWITS_ACCESS_TOKEN", "")
 
 # Medium (browser automation — runs locally, not on GitHub Actions)
-MEDIUM_EMAIL = os.environ.get("MEDIUM_EMAIL", "msli2233bin@gmail.com")
-MEDIUM_PASSWORD = os.environ.get("MEDIUM_PASSWORD", "Lin2233509.")
+MEDIUM_EMAIL = os.environ.get("MEDIUM_EMAIL", "")
+MEDIUM_PASSWORD = os.environ.get("MEDIUM_PASSWORD", "")
 
 # Substack (browser automation — runs locally, not on GitHub Actions)
-SUBSTACK_EMAIL = os.environ.get("SUBSTACK_EMAIL", "msli2233bin@gmail.com")
-SUBSTACK_PASSWORD = os.environ.get("SUBSTACK_PASSWORD", "Lin2233509.")
+SUBSTACK_EMAIL = os.environ.get("SUBSTACK_EMAIL", "")
+SUBSTACK_PASSWORD = os.environ.get("SUBSTACK_PASSWORD", "")
 SUBSTACK_PUB_URL = os.environ.get("SUBSTACK_PUB_URL", "https://broadcastmarketintelligence.substack.com")
 SUBSTACK_LINK = os.environ.get("SUBSTACK_LINK", "https://broadcastmarketintelligence.substack.com")
 
@@ -1944,6 +1944,18 @@ def get_fallback_substack():
 
 def post_medium_article(article):
     """Post article to Medium via browser automation (calls medium_substack_poster.py)."""
+    # 检测 Playwright 是否可用（GitHub Actions 主步骤未安装）
+    _playwright_available = False
+    try:
+        import playwright
+        _playwright_available = True
+    except ImportError:
+        pass
+
+    if not _playwright_available:
+        print("  Medium: Playwright 未安装，跳过（由 dedicated workflow step 处理）")
+        return False, ""
+
     try:
         from medium_substack_poster import post_medium
         success, url = post_medium(article)
@@ -1955,7 +1967,7 @@ def post_medium_article(article):
             import subprocess
             script = os.path.join(os.path.dirname(os.path.abspath(__file__)), "medium_substack_poster.py")
             result = subprocess.run(
-                [sys.executable, script],
+                [sys.executable, script, "--medium"],
                 capture_output=True, text=True, timeout=300,
                 env={**os.environ, "MEDIUM_EMAIL": MEDIUM_EMAIL, "MEDIUM_PASSWORD": MEDIUM_PASSWORD,
                      "GROQ_API_KEY": GROQ_API_KEY}
@@ -1975,16 +1987,29 @@ def post_medium_article(article):
 
 
 def post_substack_article(article):
-    """Post article to Substack via browser automation (calls medium_substack_poster.py)."""
+    """Post article to Substack via browser automation (calls substack_poster.py)."""
+    # 检测 Playwright 是否可用（GitHub Actions 主步骤未安装）
+    _playwright_available = False
     try:
-        from medium_substack_poster import post_substack
+        import playwright
+        _playwright_available = True
+    except ImportError:
+        pass
+
+    if not _playwright_available:
+        print("  Substack: Playwright 未安装，跳过（由 dedicated workflow step 处理）")
+        return False, ""
+
+    try:
+        from substack_poster import post_substack
         success, url = post_substack(article)
         return success, url
     except ImportError:
-        print("  Substack: medium_substack_poster.py not found, running standalone...")
+        print("  Substack: substack_poster.py not found, running standalone...")
+        # Run as subprocess
         try:
             import subprocess
-            script = os.path.join(os.path.dirname(os.path.abspath(__file__)), "medium_substack_poster.py")
+            script = os.path.join(os.path.dirname(os.path.abspath(__file__)), "substack_poster.py")
             result = subprocess.run(
                 [sys.executable, script],
                 capture_output=True, text=True, timeout=300,

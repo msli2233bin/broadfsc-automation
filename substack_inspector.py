@@ -11,8 +11,8 @@ if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
 
 from playwright.sync_api import sync_playwright
 
-SUBSTACK_EMAIL = os.environ.get("SUBSTACK_EMAIL", "msli2233bin@gmail.com")
-SUBSTACK_PASSWORD = os.environ.get("SUBSTACK_PASSWORD", "Lin2233509.")
+SUBSTACK_EMAIL = os.environ.get("SUBSTACK_EMAIL", "")
+SUBSTACK_PASSWORD = os.environ.get("SUBSTACK_PASSWORD", "")
 PUB_URL = "https://broadcastmarketintelligence.substack.com"
 
 def inspect_editor():

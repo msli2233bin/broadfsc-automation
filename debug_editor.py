@@ -13,10 +13,10 @@ SESSION_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".browser
 DEBUG_DIR = os.path.join(SESSION_DIR, "debug")
 os.makedirs(DEBUG_DIR, exist_ok=True)
 
-MEDIUM_EMAIL = os.environ.get("MEDIUM_EMAIL", "msli2233bin@gmail.com")
-MEDIUM_PASSWORD = os.environ.get("MEDIUM_PASSWORD", "Lin2233509.")
-SUBSTACK_EMAIL = os.environ.get("SUBSTACK_EMAIL", "msli2233bin@gmail.com")
-SUBSTACK_PASSWORD = os.environ.get("SUBSTACK_PASSWORD", "Lin2233509.")
+MEDIUM_EMAIL = os.environ.get("MEDIUM_EMAIL", "")
+MEDIUM_PASSWORD = os.environ.get("MEDIUM_PASSWORD", "")
+SUBSTACK_EMAIL = os.environ.get("SUBSTACK_EMAIL", "")
+SUBSTACK_PASSWORD = os.environ.get("SUBSTACK_PASSWORD", "")
 
 
 def debug_page(page, name, step):

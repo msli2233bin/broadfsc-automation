@@ -30,15 +30,14 @@ if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
 
 # Detect environment — headless mode for CI (GitHub Actions)
 IS_CI = os.environ.get("CI") == "true" or os.environ.get("GITHUB_ACTIONS") == "true"
-    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
 # ============================================================
 # Config
 # ============================================================
-MEDIUM_EMAIL = os.environ.get("MEDIUM_EMAIL", "msli2233bin@gmail.com")
-MEDIUM_PASSWORD = os.environ.get("MEDIUM_PASSWORD", "Lin2233509.")
-SUBSTACK_EMAIL = os.environ.get("SUBSTACK_EMAIL", "msli2233bin@gmail.com")
-SUBSTACK_PASSWORD = os.environ.get("SUBSTACK_PASSWORD", "Lin2233509.")
+MEDIUM_EMAIL = os.environ.get("MEDIUM_EMAIL", "")
+MEDIUM_PASSWORD = os.environ.get("MEDIUM_PASSWORD", "")
+SUBSTACK_EMAIL = os.environ.get("SUBSTACK_EMAIL", "")
+SUBSTACK_PASSWORD = os.environ.get("SUBSTACK_PASSWORD", "")
 
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 

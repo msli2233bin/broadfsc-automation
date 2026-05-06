@@ -878,14 +878,16 @@ def build_spoken_lines(script):
     """
     Build full spoken text lines from v5 script with labels.
     v5.2: promise is shown on screen during the hook card, NOT spoken separately.
-    Structure: hook → body[0..n] → cta
+    Structure: hook → body[0..n] → midpoint + detail → cta
     Returns: [(label, text), ...]
     """
     lines = []
     lines.append(("hook", script["hook"]))
     # Note: promise is intentionally skipped here — it's rendered on the hook card
-    for i, scene in enumerate(script["scenes"]):
+    for i, scene in enumerate(script["body"]):
         lines.append((f"scene_{i}", scene))
+    lines.append(("midpoint", script["midpoint"]))
+    lines.append(("midpoint_detail", script["midpoint_detail"]))
     lines.append(("cta", script["cta"]))
     return lines
 
