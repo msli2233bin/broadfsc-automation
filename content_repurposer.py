@@ -492,20 +492,58 @@ def adapt_for_bluesky_thread(core):
 
 
 def adapt_for_threads(core):
-    """Threads: 500字符，简洁有力"""
+    """Threads: 3-post thread, each ≤500 chars. Returns list of strings.
+
+    Strategy: Split core content into hook → insight → takeaway+CTA.
+    Much more engaging than a single 500-char post.
+    """
+    import re
     title = core.get('title', 'Market Insight')
     body = core.get('body', '')
+    key_data = core.get('key_data', [])
     tickers = core.get('tickers_mentioned', [])
 
-    text = f"📊 {title}\n\n"
-    if len(body) > 430:
-        body = body[:427] + "..."
-    text += body
+    # Split body into sentences
+    sentences = re.split(r'(?<=[.!?])\s+', body)
+    sentences = [s.strip() for s in sentences if s.strip() and len(s.strip()) > 10]
 
-    if tickers and len(text) + 30 < 500:
-        text += "\n" + " ".join(f"#{t}" for t in tickers[:4])
+    posts = []
 
-    return text[:500]
+    # Post 1: Hook — title + first 2-3 sentences
+    hook = f"🔥 {title}"
+    if sentences:
+        hook += "\n\n" + " ".join(sentences[:2])
+    if len(hook) > 480:
+        hook = hook[:477] + "..."
+    posts.append(hook)
+
+    # Post 2: Insight — next 3-4 sentences + key data
+    insight_parts = sentences[2:6] if len(sentences) > 2 else sentences[:3]
+    insight = "💡 " + " ".join(insight_parts)
+    if key_data:
+        kd = " | ".join(key_data[:3])
+        insight += "\n\n🔢 " + kd
+    if len(insight) > 480:
+        insight = insight[:477] + "..."
+    posts.append(insight)
+
+    # Post 3: Takeaway + CTA + tickers
+    takeaway = "🎯 "
+    if len(sentences) > 6:
+        takeaway += " ".join(sentences[6:8])
+    else:
+        takeaway += "Key levels in focus. Stay sharp."
+    takeaway += "\n\n💬 What's your take? Reply $TICKER for deep-dive"
+    if tickers:
+        tag_str = " ".join(f"#{t}" for t in tickers[:4])
+        if len(takeaway) + len(tag_str) + 20 < 490:
+            takeaway += "\n" + tag_str
+    takeaway += "\n#Investing #Trading 📱@BroadInvestBot"
+    if len(takeaway) > 500:
+        takeaway = takeaway[:497] + "..."
+    posts.append(takeaway)
+
+    return posts
 
 
 # ============================================================
@@ -533,7 +571,8 @@ def send_telegram(text):
         return False
 
 
-def send_discord(text):
+def send_discord(text, retries=2):
+    """Post to Discord with retry on transient failures."""
     if not DISCORD_BOT_TOKEN or not DISCORD_CHANNEL_ID:
         print("  Discord: SKIP (no token)")
         return False
@@ -541,41 +580,80 @@ def send_discord(text):
     headers = {"Authorization": f"Bot {DISCORD_BOT_TOKEN}", "Content-Type": "application/json"}
     if len(text) > 1900:
         text = text[:1897] + "..."
-    try:
-        r = requests.post(url, headers=headers, json={"content": text}, timeout=15)
-        if r.status_code == 200:
-            msg_id = r.json().get("id", "")
-            print(f"  Discord: OK (msg {msg_id})")
-            if HAS_ANALYTICS:
-                log_post(platform="discord", post_type="repurposed", content_preview=text[:100], post_id=str(msg_id), status="success")
-            return True
-        else:
-            print(f"  Discord: FAIL HTTP {r.status_code}")
+    for attempt in range(1, retries + 1):
+        try:
+            r = requests.post(url, headers=headers, json={"content": text}, timeout=15)
+            if r.status_code == 200:
+                msg_id = r.json().get("id", "")
+                print(f"  Discord: OK (msg {msg_id})")
+                if HAS_ANALYTICS:
+                    log_post(platform="discord", post_type="repurposed", content_preview=text[:100], post_id=str(msg_id), status="success")
+                return True
+            elif r.status_code in (429, 500, 502, 503, 504) and attempt < retries:
+                wait = 2 ** attempt
+                if r.status_code == 429:
+                    try:
+                        retry_after = r.json().get("retry_after", wait)
+                        wait = max(wait, float(retry_after))
+                    except Exception:
+                        pass
+                print(f"  Discord: HTTP {r.status_code} — retry {attempt}/{retries} in {wait}s")
+                import time; time.sleep(wait)
+                continue
+            else:
+                print(f"  Discord: FAIL HTTP {r.status_code}")
+                if HAS_ANALYTICS:
+                    log_post(platform="discord", post_type="repurposed", content_preview=text[:100], status="failed", error_msg=f"HTTP {r.status_code}")
+                return False
+        except requests.exceptions.ConnectionError:
+            if attempt < retries:
+                import time; time.sleep(2 ** attempt)
+                continue
+            print(f"  Discord: FAIL (connection)")
             return False
-    except Exception as e:
-        print(f"  Discord: FAIL {e}")
-        return False
+        except Exception as e:
+            print(f"  Discord: FAIL {e}")
+            return False
+    return False
 
 
-def send_mastodon(text):
+def send_mastodon(text, retries=2):
+    """Post to Mastodon with retry on transient failures."""
     if not MASTODON_ACCESS_TOKEN:
         print("  Mastodon: SKIP (no token)")
         return False
     url = f"https://{MASTODON_INSTANCE}/api/v1/statuses"
     headers = {"Authorization": f"Bearer {MASTODON_ACCESS_TOKEN}"}
-    try:
-        r = requests.post(url, headers=headers, data={"status": text}, timeout=15)
-        if r.status_code == 200:
-            print(f"  Mastodon: OK")
-            if HAS_ANALYTICS:
-                log_post(platform="mastodon", post_type="repurposed", content_preview=text[:100], status="success")
-            return True
-        else:
-            print(f"  Mastodon: FAIL HTTP {r.status_code}")
+    if len(text) > 500:
+        text = text[:497] + "..."
+    for attempt in range(1, retries + 1):
+        try:
+            r = requests.post(url, headers=headers, data={"status": text}, timeout=15)
+            if r.status_code == 200:
+                print(f"  Mastodon: OK")
+                if HAS_ANALYTICS:
+                    log_post(platform="mastodon", post_type="repurposed", content_preview=text[:100], status="success")
+                return True
+            elif r.status_code in (429, 500, 502, 503, 504) and attempt < retries:
+                wait = 2 ** attempt
+                print(f"  Mastodon: HTTP {r.status_code} — retry {attempt}/{retries} in {wait}s")
+                import time; time.sleep(wait)
+                continue
+            else:
+                print(f"  Mastodon: FAIL HTTP {r.status_code}")
+                if HAS_ANALYTICS:
+                    log_post(platform="mastodon", post_type="repurposed", content_preview=text[:100], status="failed", error_msg=f"HTTP {r.status_code}")
+                return False
+        except requests.exceptions.ConnectionError:
+            if attempt < retries:
+                import time; time.sleep(2 ** attempt)
+                continue
+            print(f"  Mastodon: FAIL (connection)")
             return False
-    except Exception as e:
-        print(f"  Mastodon: FAIL {e}")
-        return False
+        except Exception as e:
+            print(f"  Mastodon: FAIL {e}")
+            return False
+    return False
 
 
 def send_bluesky(posts):
@@ -654,48 +732,78 @@ def send_twitter_thread(tweets):
         return False
 
 
-def send_threads(text):
-    """发送到 Threads（2步: create container → publish）"""
+def send_threads(content):
+    """发送到 Threads — 支持 thread(多帖) 和 单帖两种模式
+
+    content: str → 单帖
+    content: list[str] → thread 串帖（首帖 + 回复链）
+    """
     if not THREADS_ACCESS_TOKEN or not THREADS_USER_ID:
         print("  Threads: SKIP (no token)")
         return False
     api_base = "https://graph.threads.net/v1.0"
 
-    try:
-        # Step 1: Create container
-        r = requests.post(
-            f"{api_base}/{THREADS_USER_ID}/threads",
-            params={
+    # Single post mode
+    if isinstance(content, str):
+        content = [content]
+
+    # Thread mode: post first, then reply chain
+    post_id = None
+    for i, text in enumerate(content):
+        if len(text) > 497:
+            text = text[:494] + "..."
+
+        try:
+            params = {
                 "media_type": "TEXT",
                 "text": text,
                 "access_token": THREADS_ACCESS_TOKEN,
-            },
-            timeout=15,
-        )
-        if r.status_code != 200:
-            print(f"  Threads: Container FAIL HTTP {r.status_code} - {r.text[:200]}")
-            return False
+            }
+            if post_id:
+                params["reply_to_id"] = post_id
 
-        creation_id = r.json().get("id")
+            # Step 1: Create container
+            r = requests.post(
+                f"{api_base}/{THREADS_USER_ID}/threads",
+                params=params,
+                timeout=15,
+            )
+            if r.status_code != 200:
+                print(f"  Threads: Container FAIL (post {i+1}) HTTP {r.status_code} - {r.text[:200]}")
+                if i == 0:
+                    return False  # First post failed, abort
+                continue  # Reply failed, try next
 
-        # Step 2: Publish
-        r = requests.post(
-            f"{api_base}/{THREADS_USER_ID}/threads_publish",
-            params={"creation_id": creation_id, "access_token": THREADS_ACCESS_TOKEN},
-            timeout=15,
-        )
-        if r.status_code == 200:
-            post_id = r.json().get("id", "")
-            print(f"  Threads: OK (post {post_id})")
-            if HAS_ANALYTICS:
-                log_post(platform="threads", post_type="repurposed", content_preview=text[:100], post_id=str(post_id), status="success")
-            return True
-        else:
-            print(f"  Threads: Publish FAIL HTTP {r.status_code}")
-            return False
-    except Exception as e:
-        print(f"  Threads: FAIL {e}")
-        return False
+            creation_id = r.json().get("id")
+
+            # Step 2: Publish
+            pub_r = requests.post(
+                f"{api_base}/{THREADS_USER_ID}/threads_publish",
+                params={"creation_id": creation_id, "access_token": THREADS_ACCESS_TOKEN},
+                timeout=15,
+            )
+            if pub_r.status_code == 200:
+                post_id = pub_r.json().get("id", "")
+                print(f"  Threads: Post {i+1}/{len(content)} OK (id: {post_id})")
+            else:
+                print(f"  Threads: Publish FAIL (post {i+1}) HTTP {pub_r.status_code}")
+                if i == 0:
+                    return False
+                continue
+
+            # Small delay between replies to avoid rate limiting
+            if i < len(content) - 1:
+                import time; time.sleep(2)
+
+        except Exception as e:
+            print(f"  Threads: Post {i+1} FAIL {e}")
+            if i == 0:
+                return False
+            continue
+
+    if HAS_ANALYTICS and content:
+        log_post(platform="threads", post_type="thread" if len(content) > 1 else "single", content_preview=content[0][:100], status="success")
+    return True
 
 
 # ============================================================

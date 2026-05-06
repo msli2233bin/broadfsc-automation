@@ -565,12 +565,12 @@ def post_tweet_thread(tweets):
 # ============================================================
 # Mastodon Poster
 # ============================================================
-def post_mastodon(text):
-    """Post to Mastodon using access token."""
+def post_mastodon(text, retries=2):
+    """Post to Mastodon using access token. Retries on transient failures."""
     if not MASTODON_ACCESS_TOKEN or not MASTODON_INSTANCE:
         print("  Mastodon: Missing MASTODON_ACCESS_TOKEN or MASTODON_INSTANCE")
         return False
-    
+
     url = "https://" + MASTODON_INSTANCE + "/api/v1/statuses"
     headers = {
         "Authorization": "Bearer " + MASTODON_ACCESS_TOKEN,
@@ -580,31 +580,81 @@ def post_mastodon(text):
     if len(text) > 500:
         text = text[:497] + "..."
     payload = {"status": text}
-    
-    try:
-        r = requests.post(url, headers=headers, json=payload, timeout=15)
-        if r.status_code == 200:
-            toot_id = r.json().get("id", "")
-            toot_url = r.json().get("url", "")
-            print("  Mastodon: Posted! ID: " + str(toot_id))
-            print("  URL: " + str(toot_url))
+
+    for attempt in range(1, retries + 1):
+        try:
+            r = requests.post(url, headers=headers, json=payload, timeout=15)
+            if r.status_code == 200:
+                toot_id = r.json().get("id", "")
+                toot_url = r.json().get("url", "")
+                print("  Mastodon: Posted! ID: " + str(toot_id))
+                print("  URL: " + str(toot_url))
+                if HAS_ANALYTICS:
+                    log_post(platform="mastodon", post_type="toot", content_preview=text[:100], post_id=str(toot_id), status="success")
+                return True
+            elif r.status_code in (429, 500, 502, 503, 504) and attempt < retries:
+                wait = 2 ** attempt
+                print("  Mastodon: HTTP " + str(r.status_code) + " — retry " + str(attempt) + "/" + str(retries) + " in " + str(wait) + "s")
+                import time; time.sleep(wait)
+                continue
+            else:
+                print("  Mastodon: FAIL HTTP " + str(r.status_code) + " - " + r.text[:300])
+                if HAS_ANALYTICS:
+                    log_post(platform="mastodon", post_type="toot", content_preview=text[:100], status="failed", error_msg=f"HTTP {r.status_code}")
+                return False
+        except requests.exceptions.ConnectionError as e:
+            if attempt < retries:
+                wait = 2 ** attempt
+                print("  Mastodon: Connection error — retry " + str(attempt) + "/" + str(retries) + " in " + str(wait) + "s")
+                import time; time.sleep(wait)
+                continue
+            print("  Mastodon: FAIL (connection) - " + str(e))
             if HAS_ANALYTICS:
-                log_post(platform="mastodon", post_type="toot", content_preview=text[:100], post_id=str(toot_id), status="success")
-            return True
-        else:
-            print("  Mastodon: FAIL HTTP " + str(r.status_code) + " - " + r.text[:300])
-            if HAS_ANALYTICS:
-                log_post(platform="mastodon", post_type="toot", content_preview=text[:100], status="failed", error_msg=f"HTTP {r.status_code}")
+                log_post(platform="mastodon", post_type="toot", content_preview=text[:100], status="failed", error_msg=str(e)[:200])
             return False
-    except Exception as e:
-        print("  Mastodon: FAIL - " + str(e))
-        if HAS_ANALYTICS:
-            log_post(platform="mastodon", post_type="toot", content_preview=text[:100], status="failed", error_msg=str(e)[:200])
-        return False
+        except Exception as e:
+            print("  Mastodon: FAIL - " + str(e))
+            if HAS_ANALYTICS:
+                log_post(platform="mastodon", post_type="toot", content_preview=text[:100], status="failed", error_msg=str(e)[:200])
+            return False
+    return False
+
+
+def _get_market_snippet():
+    """Fetch a compact real-time market data snippet for AI prompt injection.
+
+    Returns a short string like "SPY=5280(+0.8%) VIX=14.2 10Y=4.35%"
+    Falls back gracefully if yfinance is unavailable.
+    """
+    try:
+        import yfinance as yf
+        parts = []
+        for sym, label in [("^GSPC", "SPY"), ("^IXIC", "QQQ"), ("^VIX", "VIX"), ("^TNX", "10Y")]:
+            try:
+                t = yf.Ticker(sym)
+                h = t.history(period="2d")
+                if len(h) >= 1:
+                    c = h['Close'].iloc[-1]
+                    if len(h) >= 2:
+                        pct = (c / h['Close'].iloc[-2] - 1) * 100
+                        parts.append(label + "=" + f"{c:.1f}" + "(" + f"{pct:+.1f}%" + ")")
+                    else:
+                        parts.append(label + "=" + f"{c:.1f}")
+            except Exception:
+                continue
+        return " | ".join(parts) if parts else "US markets open"
+    except ImportError:
+        return "US markets open"
+    except Exception:
+        return "US markets open"
 
 
 def generate_mastodon_content():
-    """Generate a deep-dive Mastodon analysis post in today's analyst persona voice."""
+    """Generate a punchy Mastodon toot in today's analyst persona voice.
+
+    Strategy for 500-char limit: Front-load insight, end with CTA + link.
+    The AI must produce the VALUE first — links get truncated if needed.
+    """
     if not GROQ_API_KEY:
         return get_fallback_mastodon()
 
@@ -620,6 +670,9 @@ def generate_mastodon_content():
         tags = " ".join(persona["hashtags"])
         links = get_tracked_links("mastodon")
 
+        # Inject real market data
+        market_snippet = _get_market_snippet()
+
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=[{
@@ -627,35 +680,45 @@ def generate_mastodon_content():
                 "content": (
                     "PERSONA: " + persona["emoji"] + " " + persona["name"] + " — " + persona["title"] + "\n"
                     "STYLE: " + persona["style"] + "\n\n"
-                    "Write a DEEP-DIVE market analysis for " + day + ", " + date_str + ".\n"
-                    "Focus on US stocks, global macro, or investment strategy.\n\n"
-                    "Hook rule: " + persona["hook"] + "\n\n"
-                    "Structure (follow this exactly):\n"
-                    "1. HOOK — Open with a bold, specific claim or data point\n"
-                    "2. THE SETUP — 2-3 sentences of context (what's happening, why it matters)\n"
-                    "3. THE INSIGHT — Your unique angle that others miss (data-driven reasoning)\n"
-                    "4. THE TAKEAWAY — One clear, actionable conclusion\n\n"
-                    "Rules:\n"
-                    "- Maximum 500 characters (strict Mastodon limit)\n"
+                    "Write a PUNCHY Mastodon toot for " + day + ", " + date_str + ".\n\n"
+                    "LIVE DATA: " + market_snippet + "\n\n"
+                    "HOOK: " + persona["hook"] + "\n\n"
+                    "Structure (STRICT — you have only 500 chars total):\n"
+                    "1. BOLD HOOK — One specific data point or contrarian claim (1 sentence)\n"
+                    "2. THE INSIGHT — Why it matters, what others miss (2-3 short sentences)\n"
+                    "3. THE TAKE — One actionable takeaway (1 sentence)\n"
+                    "4. ENGAGE — Ask a question that invites replies\n"
+                    "5. TAGS — 2-3 hashtags\n\n"
+                    "CRITICAL RULES:\n"
+                    "- TOTAL output MUST be under 480 characters (leave room for link)\n"
+                    "- Include 2-3 specific numbers (prices, %, yields)\n"
+                    "- Use $TICKER format for stock mentions\n"
                     "- Stay 100% in character as " + persona["name"] + "\n"
-                    "- Include 2-3 specific numbers (prices, yields, %, data points)\n"
-                    "- End with: " + tags + "\n"
-                    "- Add link: " + links["hub"] + "\n"
-                    "- Deep analysis: " + links["substack"] + "\n"
-                    "- Free consult: " + links["telegram"] + " | Follow: https://t.me/BroadFSC\n"
-                    "- End with interactive question: 'Your take?' or 'Which ticker worried you most?'"
-                    "- Include: 📱 Free consult @BroadInvestBot"
-                    "- Use $TICKER format for stock mentions (e.g, $AAPL, $TSLA)\n"
-                    "- Do NOT promise returns or give direct buy/sell advice"
+                    "- Do NOT include any links — they will be appended automatically\n"
+                    "- Do NOT promise returns or give buy/sell advice\n"
+                    "- Write like a trader texting alpha, not a newsletter\n"
+                    "- Every word must earn its place — zero filler"
                 )
             }],
-            max_tokens=350,
-            temperature=0.85
+            max_tokens=300,
+            temperature=0.9
         )
         result = response.choices[0].message.content.strip()
-        # Hard-truncate to 500 chars if AI exceeded
+
+        # Append CTA + link (auto-truncate body if needed)
+        cta_line = " 📱@BroadInvestBot"
+        link_line = " " + links["substack"]
+        footer = cta_line + link_line
+
+        available = 497 - len(footer)
+        if len(result) > available:
+            result = result[:available - 3] + "..."
+        result += footer
+
+        # Final safety net
         if len(result) > 500:
             result = result[:497] + "..."
+
         print("  Mastodon persona: " + persona["name"] + " (" + str(len(result)) + " chars)")
         return result
     except Exception as e:
@@ -664,26 +727,32 @@ def generate_mastodon_content():
 
 
 def get_fallback_mastodon():
-    """Fallback Mastodon content with deep-dive analysis."""
+    """Fallback Mastodon content — 5 diverse toots, always under 480 chars."""
     links = get_tracked_links("mastodon")
     day_idx = datetime.datetime.utcnow().timetuple().tm_yday
     toots = [
-        f"The bond market is pricing in something equities refuse to acknowledge. 10Y-2Y inverted for 18+ months — historically that's never resolved with a soft landing. Which asset class blinks first? My money's on credit. {links['hub']} #Investing #Trading #MarketAnalysis #Finance",
-        f"Cross-asset divergence: Gold at ATH while real yields stay elevated. That's not supposed to happen. Either gold is wrong or bonds are wrong. Central banks will cut faster than priced — that's the bet. {links['hub']} #Investing #Trading #MarketAnalysis #Finance",
-        f"AI stocks = 2000 dot-com parallel. Transformative tech, insane valuations, 50%+ correction before real winners emerged. The tech is real. The prices aren't. Patience will be rewarded — but only if you survive the drawdown. {links['hub']} #Investing #Trading #StockMarket #Finance",
+        "10Y-2Y inverted 18+ months. Every recession in 50 years followed. Credit spreads say 'all clear' — they said that in 2007 too. Which blinks first: bonds or equities? #Investing #Bonds 📱@BroadInvestBot " + links["substack"],
+        "Gold at ATH while real yields stay elevated. Cross-asset divergence this extreme happened 3 times in 40 years — each time, central banks cut faster than priced. #Gold #Macro 📱@BroadInvestBot " + links["substack"],
+        "AI stocks = 2000 dot-com. Transformative tech, insane valuations. $NVDA at 65x sales vs $CSCO at 40x in 2000. The tech is real. The prices aren't. Patience wins. #AI #Investing 📱@BroadInvestBot " + links["substack"],
+        "S&P earnings growth 4% but multiples expanding 15%. This market runs on multiple expansion, not earnings. That works until it doesn't. What's your exit signal? #SP500 #Trading 📱@BroadInvestBot " + links["substack"],
+        "Consumer savings rate dropped from 5.3% to 3.6% in 6 months. Credit card delinquencies at 12-year high. The consumer engine is sputtering — markets haven't noticed. #Economy #Risk 📱@BroadInvestBot " + links["substack"],
     ]
-    return toots[day_idx % len(toots)]
+    fallback = toots[day_idx % len(toots)]
+    # Safety: ensure under 500 chars
+    if len(fallback) > 500:
+        fallback = fallback[:497] + "..."
+    return fallback
 
 
 # ============================================================
 # Discord Poster
 # ============================================================
-def post_discord(text):
-    """Post a message to a Discord channel using Bot token."""
+def post_discord(text, retries=2):
+    """Post a message to Discord channel. Retries on transient failures."""
     if not DISCORD_BOT_TOKEN or not DISCORD_CHANNEL_ID:
         print("  Discord: Missing DISCORD_BOT_TOKEN or DISCORD_CHANNEL_ID")
         return False
-    
+
     url = "https://discord.com/api/v10/channels/" + DISCORD_CHANNEL_ID + "/messages"
     headers = {
         "Authorization": "Bot " + DISCORD_BOT_TOKEN,
@@ -693,29 +762,53 @@ def post_discord(text):
     if len(text) > 1900:
         text = text[:1897] + "..."
     payload = {"content": text}
-    
-    try:
-        r = requests.post(url, headers=headers, json=payload, timeout=15)
-        if r.status_code == 200:
-            msg_id = r.json().get("id", "")
-            print("  Discord: Posted! Message ID: " + str(msg_id))
+
+    for attempt in range(1, retries + 1):
+        try:
+            r = requests.post(url, headers=headers, json=payload, timeout=15)
+            if r.status_code == 200:
+                msg_id = r.json().get("id", "")
+                print("  Discord: Posted! Message ID: " + str(msg_id))
+                if HAS_ANALYTICS:
+                    log_post(platform="discord", post_type="message", content_preview=text[:100], post_id=str(msg_id), status="success")
+                return True
+            elif r.status_code in (429, 500, 502, 503, 504) and attempt < retries:
+                wait = 2 ** attempt
+                if r.status_code == 429:
+                    retry_after = r.json().get("retry_after", wait)
+                    wait = max(wait, float(retry_after))
+                print("  Discord: HTTP " + str(r.status_code) + " — retry " + str(attempt) + "/" + str(retries) + " in " + str(wait) + "s")
+                import time; time.sleep(wait)
+                continue
+            else:
+                print("  Discord: FAIL HTTP " + str(r.status_code) + " - " + r.text[:300])
+                if HAS_ANALYTICS:
+                    log_post(platform="discord", post_type="message", content_preview=text[:100], status="failed", error_msg=f"HTTP {r.status_code}")
+                return False
+        except requests.exceptions.ConnectionError as e:
+            if attempt < retries:
+                wait = 2 ** attempt
+                print("  Discord: Connection error — retry " + str(attempt) + "/" + str(retries) + " in " + str(wait) + "s")
+                import time; time.sleep(wait)
+                continue
+            print("  Discord: FAIL (connection) - " + str(e))
             if HAS_ANALYTICS:
-                log_post(platform="discord", post_type="message", content_preview=text[:100], post_id=str(msg_id), status="success")
-            return True
-        else:
-            print("  Discord: FAIL HTTP " + str(r.status_code) + " - " + r.text[:300])
-            if HAS_ANALYTICS:
-                log_post(platform="discord", post_type="message", content_preview=text[:100], status="failed", error_msg=f"HTTP {r.status_code}")
+                log_post(platform="discord", post_type="message", status="failed", error_msg=str(e)[:200])
             return False
-    except Exception as e:
-        print("  Discord: FAIL - " + str(e))
-        if HAS_ANALYTICS:
-            log_post(platform="discord", post_type="message", status="failed", error_msg=str(e)[:200])
-        return False
+        except Exception as e:
+            print("  Discord: FAIL - " + str(e))
+            if HAS_ANALYTICS:
+                log_post(platform="discord", post_type="message", status="failed", error_msg=str(e)[:200])
+            return False
+    return False
 
 
 def generate_discord_content():
-    """Generate a deep-dive Discord analysis post using today's analyst persona."""
+    """Generate a Discord community post in today's analyst persona voice.
+
+    Discord advantage: 2000 chars, markdown, community engagement.
+    Strategy: Rich analysis + embedded data + discussion hook.
+    """
     if not GROQ_API_KEY:
         return get_fallback_discord()
 
@@ -731,6 +824,9 @@ def generate_discord_content():
         tags = " ".join(persona["hashtags"])
         links = get_tracked_links("discord")
 
+        # Inject real market data
+        market_snippet = _get_market_snippet()
+
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=[{
@@ -738,36 +834,53 @@ def generate_discord_content():
                 "content": (
                     "PERSONA: " + persona["emoji"] + " " + persona["name"] + " — " + persona["title"] + "\n"
                     "STYLE: " + persona["style"] + "\n\n"
-                    "Write a DEEP-DIVE market analysis post for Discord community on " + day + ", " + date_str + ".\n"
-                    "Focus on US stocks, global macro, or investment strategy.\n\n"
-                    "Hook rule: " + persona["hook"] + "\n\n"
-                    "Structure (follow this exactly):\n"
-                    "1. **HOOK** — Open with a bold, specific claim or data point that stops scrolling\n"
-                    "2. **THE BIG PICTURE** — 3-4 sentences of macro context (what's happening globally)\n"
-                    "3. **WHY IT MATTERS** — Connect the dots: how does this affect portfolios? What's the contrarian angle?\n"
-                    "4. **BY THE NUMBERS** — 2-3 specific data points with context (not just 'S&P up 1%' but 'S&P at 5,280 — testing resistance from the Jan 2022 double top')\n"
-                    "5. **THE BOTTOM LINE** — One clear takeaway for readers\n"
-                    "6. **DISCUSSION** — End with a thought-provoking question for the community\n\n"
+                    "Write a DEEP-DIVE Discord post for " + day + ", " + date_str + ".\n\n"
+                    "LIVE DATA: " + market_snippet + "\n\n"
+                    "HOOK: " + persona["hook"] + "\n\n"
+                    "Structure (follow exactly, use Discord markdown):\n"
+                    "1. **🔥 HOOK** — One bold claim with a specific number (stops scrolling)\n"
+                    "2. **📊 THE SETUP** — 3-4 sentences of context connecting to LIVE DATA above\n"
+                    "3. **💡 THE INSIGHT** — Your contrarian angle. What's the consensus missing? Use $TICKER format.\n"
+                    "4. **🔢 BY THE NUMBERS** — Bullet list of 3-4 specific data points:\n"
+                    "   • Point with context (not just 'S&P up 1%')\n"
+                    "   • Each bullet = one insight, not one number\n"
+                    "5. **🎯 THE TAKE** — One clear, actionable takeaway\n"
+                    "6. **💬 DISCUSSION** — End with a specific, provocative question that demands an opinion\n\n"
                     "Rules:\n"
-                    "- Maximum 1800 characters\n"
-                    "- Use Discord markdown: **bold** for section headers, bullet points for data\n"
+                    "- Maximum 1700 characters (leave room for footer)\n"
+                    "- Use **bold** for headers, bullet points for data\n"
                     "- Stay 100% in character as " + persona["name"] + "\n"
-                    "- Include 3-5 specific numbers (prices, yields, %, data points)\n"
-                    "- End with: " + tags + "\n"
-                    "- Subscribe: " + links["telegram"] + " | 📱 Free consult: https://t.me/BroadInvestBot\n"
-                    "- Learn free: " + links["hub"] + "\n"
-                    "- Deep analysis: " + links["substack"] + "\n"
-                    "- Add ⚠️ 'Not financial advice' disclaimer at the very end\n"
-                    "- Do NOT promise returns"
+                    "- Include 4-6 specific numbers across the post\n"
+                    "- Use $TICKER for every stock mention (e.g. $AAPL, $TSLA, $NVDA)\n"
+                    "- Sound like a senior analyst sharing alpha, not a chatbot\n"
+                    "- Do NOT include links or CTAs — they will be appended\n"
+                    "- Do NOT promise returns or give buy/sell advice\n"
+                    "- Zero filler: 'In today's market', 'It's worth noting' = DELETE"
                 )
             }],
-            max_tokens=800,
-            temperature=0.85
+            max_tokens=750,
+            temperature=0.9
         )
         result = response.choices[0].message.content.strip()
-        # Discord limit is 2000 chars
+
+        # Append footer with links and CTA
+        footer = (
+            "\n\n━━━━━━━━━━━━━━━━━━\n"
+            "📱 Free consult @BroadInvestBot | 📐 Full analysis t.me/BroadFSC\n"
+            "📖 Deep dives: " + links["substack"] + "\n"
+            "⚠️ Not financial advice\n\n"
+            + tags
+        )
+
+        # Ensure total under 1900 chars
+        available = 1897 - len(footer)
+        if len(result) > available:
+            result = result[:available - 3] + "..."
+        result += footer
+
         if len(result) > 1900:
             result = result[:1897] + "..."
+
         print("  Discord persona: " + persona["name"] + " (" + str(len(result)) + " chars)")
         return result
     except Exception as e:
@@ -776,52 +889,85 @@ def generate_discord_content():
 
 
 def get_fallback_discord():
-    """Fallback Discord content with deep analysis and engagement hooks."""
+    """Fallback Discord content — 5 diverse community posts with engagement hooks."""
     links = get_tracked_links("discord")
     day_idx = datetime.datetime.utcnow().timetuple().tm_yday
     posts = [
         (
             "**🔥 The Soft Landing Illusion?**\n\n"
-            "Here's the question splitting Wall Street right now — and your portfolio depends on the answer.\n\n"
-            "**The Big Picture:**\n"
-            "Markets are priced for perfection. S&P earnings multiples at 21x. Credit spreads near historic tights. VIX below 15. Everything says 'all clear.'\n\n"
-            "**Why It Matters:**\n"
-            "But the yield curve has been inverted for 18+ months. Historically, every recession in the last 50 years was preceded by an inversion — with a 12-18 month lag. We're in that lag window NOW.\n\n"
-            "**By The Numbers:**\n"
+            "Markets are priced for perfection. S&P at 21x earnings. Credit spreads near historic tights. VIX below 15. Everything says 'all clear.'\n\n"
+            "**💡 The Insight:**\n"
+            "The yield curve has been inverted for 18+ months. Every recession in 50 years was preceded by an inversion — with a 12-18 month lag. We're in that lag window NOW.\n\n"
+            "**🔢 By The Numbers:**\n"
             "• 10Y-2Y spread: -0.35% (still inverted)\n"
-            "• Commercial real estate delinquencies: up 2.1x YoY\n"
-            "• Consumer savings rate: dropped from 5.3% → 3.6% in 6 months\n\n"
-            "**The Bottom Line:**\n"
-            "You don't need to predict a recession. You need to be prepared for one. That means reducing leverage, raising cash, and owning assets that zig when equities zag.\n\n"
-            "**What do you think — soft landing or hard reality?** Drop your take below 👇\n\n"
-            f"Subscribe for daily briefings: {links['telegram']}\n"
-            f"Learn free: {links['hub']}\n"
-            f"Deep analysis: {links['substack']}\n\n"
-            "⚠️ Not financial advice\n\n"
-            "#Investing #Trading #MarketAnalysis #StockMarket #Finance"
+            "• CRE delinquencies: up 2.1x YoY\n"
+            "• Consumer savings: 5.3% → 3.6% in 6 months\n\n"
+            "**🎯 Take:** Don't predict a recession. Prepare for one. Reduce leverage, raise cash, own zig-when-equities-zag assets.\n\n"
+            "**💬 Soft landing or hard reality? What's your positioning?**"
         ),
         (
-            "**📊 The Carry Trade: The Hidden Force Moving Your Portfolio**\n\n"
-            "Ever wonder why the market suddenly tanked in August 2024 — and recovered just as fast? The answer is the carry trade, and understanding it will make you a better investor.\n\n"
-            "**The Setup:**\n"
-            "Imagine borrowing money at 0.5% and investing it at 5%. That 4.5% difference is the 'carry.' Hedge funds do this at scale — borrowing in JPY (near-zero rates) and buying USD assets (high yields + equity upside).\n\n"
-            "**Why It Matters:**\n"
-            "This trade was worth an estimated $4 TRILLION. When the BOJ unexpectedly hiked rates in July 2024, the math flipped. Borrowing costs rose → funds had to unwind → forced selling of US equities → market crash. All in 3 trading days.\n\n"
-            "**By The Numbers:**\n"
-            "• JPY/USD moved 12% in 3 weeks (massive for FX)\n"
-            "• Nikkei dropped 12% in a single day\n"
-            "• S&P 500 fell 6% before rebounding\n\n"
-            "**The Takeaway:**\n"
-            "The biggest market moves often come from hidden leverage — not fundamentals. When you see a violent, unexplained selloff, think: who's being forced to sell?\n\n"
-            "**What's the next carry trade unwind? JPY is still cheap. What happens if BOJ hikes again?** 👇\n\n"
-            f"Subscribe for daily briefings: {links['telegram']}\n"
-            f"Learn free: {links['hub']}\n"
-            f"Deep analysis: {links['substack']}\n\n"
-            "⚠️ Not financial advice\n\n"
-            "#Investing #Trading #MarketAnalysis #StockMarket #Finance"
+            "**📊 The $4 Trillion Carry Trade Nobody Talks About**\n\n"
+            "Borrow at 0.5%, invest at 5%. That 4.5% spread is 'carry.' Hedge funds do this at scale — borrowing JPY to buy USD assets.\n\n"
+            "**💡 The Insight:**\n"
+            "When BOJ hiked rates in July 2024, the math flipped. Forced selling of $SPY, $QQQ, $NVDA — all in 3 trading days. The biggest moves come from hidden leverage, not fundamentals.\n\n"
+            "**🔢 By The Numbers:**\n"
+            "• $JPY moved 12% in 3 weeks\n"
+            "• Nikkei: -12% in a single day\n"
+            "• $SPY: -6% before rebound\n"
+            "• Estimated carry trade: $4 TRILLION\n\n"
+            "**🎯 Take:** When you see violent unexplained selloffs, ask: who's being forced to sell?\n\n"
+            "**💬 What's the next carry trade unwind? If BOJ hikes again, what breaks?**"
+        ),
+        (
+            "**⚠️ AI Valuations: This Time Is Different (Said Everyone Before a Crash)**\n\n"
+            "$NVDA at 65x sales. $MSFT at 35x earnings for 12% growth. $PLTR at 20x revenue. Sound familiar?\n\n"
+            "**💡 The Insight:**\n"
+            "In 2000, $CSCO hit 40x sales. The internet was real — the valuations weren't. $CSCO took 15 years to recover. AI is transformative. That doesn't mean today's prices are justified.\n\n"
+            "**🔢 By The Numbers:**\n"
+            "• Magnificent 7 = 30% of $SPY market cap\n"
+            "• AI capex: $200B+ in 2025, revenue? Unclear\n"
+            "• Top 5 AI stocks: avg P/E of 55x vs S&P 500 at 21x\n\n"
+            "**🎯 Take:** The winners will be huge. But 80% of today's 'AI stocks' won't survive the correction.\n\n"
+            "**💬 Which AI stock do you think is actually worth its price? Reply with $TICKER**"
+        ),
+        (
+            "**🛡️ The Portfolio Armor Test: How Protected Are You?**\n\n"
+            "Most investors think they're diversified. They're not. Correlation goes to 1 in a crisis.\n\n"
+            "**💡 The Insight:**\n"
+            "If your 'diversification' is $AAPL + $MSFT + $GOOGL + $AMZN + $NVDA, you have one bet: US tech megacap. When $SPY drops 20%, these all drop 25%+. Real diversification means owning things that zig when equities zag.\n\n"
+            "**🔢 By The Numbers:**\n"
+            "• Top 10 $SPY stocks = 35% of index\n"
+            "• 60/40 portfolio correlation: 0.6 (not the 0.2 people assume)\n"
+            "• Gold + TLT + $SPY: only combo with <0.3 correlation in 2022\n\n"
+            "**🎯 Take:** Stress-test your portfolio. What happens if $SPY drops 30%? If your answer is 'I lose 30%,' you're not diversified.\n\n"
+            "**💬 What's your non-correlated hedge? Gold, bonds, cash, or something else?**"
+        ),
+        (
+            "**📉 Earnings Season Reality Check**\n\n"
+            "Companies are beating estimates. Markets are rallying. Everything looks great — until you look closer.\n\n"
+            "**💡 The Insight:**\n"
+            "Earnings 'beats' are manufactured. 78% of companies beat EPS estimates, but that's because estimates were cut 15% before reporting. Revenue growth is the real number — and it's slowing.\n\n"
+            "**🔢 By The Numbers:**\n"
+            "• EPS beat rate: 78% (historical avg: 73%)\n"
+            "• Pre-season estimate cuts: -15% average\n"
+            "• Revenue growth S&P 500: 4% (vs 8% last year)\n"
+            "• Forward P/E: 20.5x (10-year avg: 17.5x)\n\n"
+            "**🎯 Take:** Don't celebrate beats from lowered bars. Watch revenue, not EPS. Watch guidance, not backwards-looking results.\n\n"
+            "**💬 Which company's earnings surprised you most this season? Bull or bear?**"
         ),
     ]
-    return posts[day_idx % len(posts)]
+    base = posts[day_idx % len(posts)]
+    footer = (
+        "\n\n━━━━━━━━━━━━━━━━━━\n"
+        "📱 Free consult @BroadInvestBot | 📐 Full analysis t.me/BroadFSC\n"
+        "📖 Deep dives: " + links["substack"] + "\n"
+        "⚠️ Not financial advice\n\n"
+        "#Investing #Trading #MarketAnalysis #StockMarket #Finance"
+    )
+    combined = base + footer
+    if len(combined) > 1900:
+        combined = combined[:1897] + "..."
+    return combined
 
 
 # ============================================================
