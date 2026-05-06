@@ -51,6 +51,8 @@ jobs:
           # TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
           THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
           THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
+          HATENA_POST_EMAIL: ${{ secrets.HATENA_POST_EMAIL }}
+          HATENA_BLOG_DOMAIN: ${{ secrets.HATENA_BLOG_DOMAIN }}
         run: python content_repurposer.py
 
       - name: Post to X, LinkedIn, Mastodon, Bluesky, LINE, Threads, StockTwits (and notify Telegram)
@@ -76,6 +78,8 @@ jobs:
           THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
           THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
           STOCKTWITS_ACCESS_TOKEN: ${{ secrets.STOCKTWITS_ACCESS_TOKEN }}
+          HATENA_POST_EMAIL: ${{ secrets.HATENA_POST_EMAIL }}
+          HATENA_BLOG_DOMAIN: ${{ secrets.HATENA_BLOG_DOMAIN }}
         run: python social_poster.py
 
       - name: Post to TikTok (image carousel)

@@ -4,7 +4,7 @@ Usage: python3 update_github_secret.py <github_token>
 """
 import sys, json, base64
 import urllib.request, urllib.parse, urllib.error
-from pynacl.public import SealedBox, PublicKey
+from nacl.public import SealedBox, PublicKey
 
 REPO = "msli2233bin/broadfsc-automation"
 SECRET_NAME = "TELEGRAM_BOT_TOKEN"

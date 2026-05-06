@@ -103,6 +103,10 @@ if not THREADS_ACCESS_TOKEN:
 # StockTwits
 STOCKTWITS_ACCESS_TOKEN = os.environ.get("STOCKTWITS_ACCESS_TOKEN", "")
 
+# Hatena Blog (はてなブログ) — Japan market (email posting)
+HATENA_POST_EMAIL = os.environ.get("HATENA_POST_EMAIL", "")
+HATENA_BLOG_DOMAIN = os.environ.get("HATENA_BLOG_DOMAIN", "")
+
 # Medium (browser automation — runs locally, not on GitHub Actions)
 MEDIUM_EMAIL = os.environ.get("MEDIUM_EMAIL", "")
 MEDIUM_PASSWORD = os.environ.get("MEDIUM_PASSWORD", "")
@@ -196,6 +200,11 @@ LINK_STRATEGY = {
         "link_every_n": 0,
         "prefer": "hub",
         "text_fallback": "",
+    },
+    "hatena": {
+        "style": "full",           # Hatena Blog: Full links in HTML body
+        "link_every_n": 1,
+        "prefer": "hub",
     },
     "line": {
         "style": "flex",           # LINE: Flex Message with CTA button, link in button
@@ -2346,6 +2355,28 @@ def main():
         print("  -> Create app: api.stocktwits.com/developers")
     print()
     
+    # --- Hatena Blog (はてなブログ) — Japan market (email) ---
+    print("--- Hatena Blog (はてなブログ) ---")
+    if HATENA_POST_EMAIL:
+        print("Hatena: Configured (" + HATENA_BLOG_DOMAIN + ")")
+        try:
+            from hatena_poster import post_to_hatena
+            success = post_to_hatena(draft=False)
+            if HAS_ANALYTICS:
+                log_post(platform="hatena", post_type="email", content_preview="Hatena Blog post",
+                         status="success" if success else "failed",
+                         error_msg="" if success else "post_to_hatena returned False")
+        except Exception as e:
+            print("  Hatena: Failed - " + str(e))
+            if HAS_ANALYTICS:
+                log_post(platform="hatena", post_type="email", content_preview="Hatena Blog post",
+                         status="failed", error_msg=str(e)[:200])
+    else:
+        print("Hatena: Not configured (HATENA_POST_EMAIL missing)")
+        print("  -> Register: https://blog.hatena.ne.jp/register")
+        print("  -> Posting email: 設定 → 詳細設定 → 投稿メールアドレス")
+    print()
+
     # --- Medium (browser automation, LOCAL ONLY) ---
     print("--- Medium ---")
     if MEDIUM_EMAIL and MEDIUM_PASSWORD:

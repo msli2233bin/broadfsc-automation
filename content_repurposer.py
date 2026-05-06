@@ -48,6 +48,11 @@ TWITTER_ACCESS_TOKEN_SECRET = os.environ.get("TWITTER_ACCESS_TOKEN_SECRET", "")
 THREADS_ACCESS_TOKEN = os.environ.get("THREADS_ACCESS_TOKEN", "")
 THREADS_USER_ID = os.environ.get("THREADS_USER_ID", "")
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
+
+# Hatena Blog (email posting)
+HATENA_POST_EMAIL = os.environ.get("HATENA_POST_EMAIL", "")
+HATENA_BLOG_DOMAIN = os.environ.get("HATENA_BLOG_DOMAIN", "")
+
 SUBSTACK_LINK = os.environ.get("SUBSTACK_LINK", "https://broadcastmarketintelligence.substack.com")
 
 # Fallback from .env
@@ -546,6 +551,73 @@ def adapt_for_threads(core):
     return posts
 
 
+def adapt_for_hatena(core):
+    """Hatena Blog: Markdown format, Japanese-optimized, no char limit.
+
+    Returns dict with 'title', 'content' (Markdown), 'categories' keys.
+    Hatena Blog uses text/x-markdown content type.
+    The hatena_poster.py handles the actual AtomPub posting.
+    """
+    title = core.get('title', 'Market Insight')
+    body = core.get('body', '')
+    key_data = core.get('key_data', [])
+    tickers = core.get('tickers_mentioned', [])
+
+    # Build Markdown content
+    md_parts = []
+
+    # Body paragraphs
+    if body:
+        paragraphs = [p.strip() for p in body.split('\n\n') if p.strip()]
+        if not paragraphs:
+            sentences = body.split('. ')
+            paragraphs = []
+            chunk = ""
+            for s in sentences:
+                if len(chunk) + len(s) > 300:
+                    if chunk:
+                        paragraphs.append(chunk.strip())
+                    chunk = s
+                else:
+                    chunk += ". " + s if chunk else s
+            if chunk:
+                paragraphs.append(chunk.strip())
+
+        for i, p in enumerate(paragraphs[:6]):
+            md_parts.append(p)
+            md_parts.append("")
+
+    # Key data section
+    if key_data:
+        md_parts.append("## 📊 Key Data")
+        for d in key_data[:5]:
+            md_parts.append(f"- {d}")
+        md_parts.append("")
+
+    # Tickers
+    if tickers:
+        clean_tickers = [t.replace("^", "") for t in tickers[:8]]
+        md_parts.append("🏷️ " + " | ".join(f"[{t}](https://finance.yahoo.com/quote/{t})" for t in clean_tickers))
+        md_parts.append("")
+
+    # CTA
+    md_parts.append("---")
+    md_parts.append("📱 **Free Stock Research Report** → [@BroadInvestBot](https://t.me/BroadInvestBot) | [BroadFSC Channel](https://t.me/BroadFSC)")
+    md_parts.append("")
+    md_parts.append("*投資にはリスクが伴います。ライセンス保有のアドバイザーにご相談ください。*")
+
+    # Japanese-optimized categories
+    categories = ["投資", "マーケット"]
+    for t in tickers[:3]:
+        categories.append(t)
+
+    return {
+        "title": f"📊 {title}",
+        "content": "\n".join(md_parts),
+        "categories": categories,
+    }
+
+
 # ============================================================
 # 发布函数
 # ============================================================
@@ -806,6 +878,36 @@ def send_threads(content):
     return True
 
 
+def send_hatena(article):
+    """Post to はてなブログ via hatena_poster module (email posting).
+
+    article: dict with 'title', 'content', 'categories' keys.
+    """
+    if not HATENA_POST_EMAIL:
+        print("  Hatena: SKIP (missing HATENA_POST_EMAIL)")
+        return False
+    try:
+        from hatena_poster import post_entry
+        success, result = post_entry(
+            title=article.get("title", "Market Update"),
+            content=article.get("content", ""),
+            draft=False,
+        )
+        if success:
+            print(f"  Hatena: OK → {result}")
+        else:
+            print(f"  Hatena: FAIL — {result}")
+        if HAS_ANALYTICS:
+            log_post(platform="hatena", post_type="repurposed",
+                     content_preview=article.get("title", "")[:100],
+                     status="success" if success else "failed",
+                     error_msg="" if success else str(result)[:200])
+        return success
+    except Exception as e:
+        print(f"  Hatena: FAIL {e}")
+        return False
+
+
 # ============================================================
 # Main
 # ============================================================
@@ -854,6 +956,7 @@ def main():
         "mastodon": adapt_for_mastodon(core),
         "bluesky": adapt_for_bluesky_thread(core),
         "threads": adapt_for_threads(core),
+        "hatena": adapt_for_hatena(core),
     }
 
     for platform, content in adaptations.items():
@@ -905,6 +1008,8 @@ def main():
             results[platform] = send_bluesky(content)
         elif platform == "threads":
             results[platform] = send_threads(content)
+        elif platform == "hatena":
+            results[platform] = send_hatena(content)
 
     # Summary
     print("\n" + "=" * 60)
