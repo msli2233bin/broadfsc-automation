@@ -1,6 +1,6 @@
 # BroadFSC 知识库总索引
 
-*最后更新: 2026-05-06*
+*最后更新: 2026-05-07*
 
 ## 知识分类
 
@@ -15,9 +15,9 @@
 
 - [market_reference_2026_04](finance/market_reference_2026_04.md) - finance
 - [README](finance/README.md) - finance
+- [2026-05-06-global_technical_analysis_practice](finance/2026-05-06-global_technical_analysis_practice.md) - finance
 - [2026-05-01-stock_basics](finance/2026-05-01-stock_basics.md) - finance
 - [2026-04-30-trading_strategies](finance/2026-04-30-trading_strategies.md) - finance
-- [2026-04-30-fundamental_analysis](finance/2026-04-30-fundamental_analysis.md) - finance
 - [README](sales/README.md) - sales
 - [2026-05-04-sales_research](sales/2026-05-04-sales_research.md) - sales
 - [2026-05-04-crm_sales](sales/2026-05-04-crm_sales.md) - sales
