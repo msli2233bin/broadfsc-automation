@@ -554,5 +554,24 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 61,
+    "timestamp": "2026-05-07T18:01:18.454096Z",
+    "platform": "telegram_en",
+    "type": "earnings",
+    "content_preview": "<b>📊 Earnings Calendar: Week of May 07</b>\n\n\n📅 <b>Thursday, May 07</b>\n  • McDonald's (MCD) @ $282.6",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "83"
+  },
+  {
+    "id": 62,
+    "timestamp": "2026-05-07T18:01:18.631436Z",
+    "platform": "discord",
+    "type": "earnings",
+    "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of May 07**\n\n\n📅 **Thursday, May 07**\n  • ",
+    "status": "failed",
+    "error_msg": "HTTP 401"
   }
 ]
