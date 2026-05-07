@@ -1,0 +1,36 @@
+{
+  "replied_to": [
+    "116528385985923099",
+    "116525847990345551",
+    "116519300521407899"
+  ],
+  "daily_count": 3,
+  "last_reset": "2026-05-07",
+  "total_engagements": 3,
+  "engagements": [
+    {
+      "date": "2026-05-07T06:33:21.746044+00:00",
+      "post_id": "116528385985923099",
+      "author": "marketwatch",
+      "my_reply_id": "116531894715169221",
+      "post_preview": "The Dow is about to exit correction territory, showing the old-school economy’s role in the AI boom\n",
+      "reply_preview": "Market sentiment is turning, but the real question is what's driving the Dow's exit from correction "
+    },
+    {
+      "date": "2026-05-07T06:34:16.189368+00:00",
+      "post_id": "116525847990345551",
+      "author": "blog",
+      "my_reply_id": "116531898286987012",
+      "post_preview": "What is Vibe Coding?\n\n\nI have talked about Vibe coding in a lot of my posts about AI and I just real",
+      "reply_preview": "Your analysis on Vibe Coding is thorough and sheds light on the pros and cons of this emerging techn"
+    },
+    {
+      "date": "2026-05-07T06:42:37.887537+00:00",
+      "post_id": "116519300521407899",
+      "author": "forexworld",
+      "my_reply_id": "116531931044421158",
+      "post_preview": "EUR/JPY Pulls Back Sharply on 4-Hour Chart After Failing Near 187.50 Zone\n#EURJPY #ForexNews #ForexM",
+      "reply_preview": "EUR/JPY's drop near 187.50 is indeed concerning, but I'd look at the 50-period SMA on the 4-hour cha"
+    }
+  ]
+}
