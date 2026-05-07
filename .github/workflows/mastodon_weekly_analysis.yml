@@ -1,0 +1,44 @@
+name: Mastodon Weekly Pattern Analysis
+
+on:
+  schedule:
+    # Every Monday 01:00 UTC
+    - cron: '0 1 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests groq
+
+      - name: Analyze patterns
+        env:
+          MASTODON_ACCESS_TOKEN: ${{ secrets.MASTODON_ACCESS_TOKEN }}
+          MASTODON_INSTANCE: ${{ secrets.MASTODON_INSTANCE }}
+        run: |
+          python mastodon_engager.py --check
+          python mastodon_engager.py --analyze
+
+      - name: Commit pattern report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add knowledge/patterns/mastodon_engagement_patterns.md 2>/dev/null || true
+          git add .bot_memory/mastodon_engagements.json 2>/dev/null || true
+          git diff --cached --quiet || git commit -m "chore: weekly mastodon engagement pattern analysis"
+          git push

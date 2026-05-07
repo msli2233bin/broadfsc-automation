@@ -21,6 +21,13 @@ try:
 except ImportError:
     HAS_ANALYTICS = False
 
+# 🔗 跨域知识融合
+try:
+    from knowledge_fusion import get_content_prompt_injection, get_realtime_market_brief
+    HAS_FUSION = True
+except ImportError:
+    HAS_FUSION = False
+
 if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
@@ -462,6 +469,22 @@ def check_which_session(now_utc):
     return matched
 
 
+def _get_fusion_context(region):
+    """🔗 获取跨域知识注入（市场数据+营销策略+竞品分析）"""
+    if not HAS_FUSION:
+        return ""
+    parts = []
+    # 实时市场参考数据
+    brief = get_realtime_market_brief()
+    if brief:
+        parts.append(f"REAL MARKET DATA (use these exact numbers, do NOT invent):\n{brief[:800]}")
+    # 跨域知识
+    fusion = get_content_prompt_injection(f"{region} market briefing technical analysis")
+    if fusion:
+        parts.append(f"CROSS-DOMAIN KNOWLEDGE (weave naturally):\n{fusion[:600]}")
+    return "\n\n" + "\n\n".join(parts) + "\n" if parts else ""
+
+
 def generate_ai_content(region, focus_text, lang="en"):
     """Use Groq API to generate market-specific briefing in the target language.
 
@@ -566,6 +589,7 @@ def generate_ai_content(region, focus_text, lang="en"):
                     "Write a DEEP-DIVE pre-market briefing for " + region + " markets.\n\n"
                     "Title: " + persona["signature"] + " " + region_title + " | " + date_str + "\n\n"
                     "Market context: " + focus_text + "\n\n"
+                    + _get_fusion_context(region) + "\n"
                     "Hook rule: " + persona["hook_format"] + "\n\n"
                     "Structure (follow this exactly):\n"
                     "1. HOOK — Bold opening claim or data point that grabs attention immediately\n"

@@ -72,6 +72,13 @@ try:
 except ImportError:
     HAS_ANALYTICS = False
 
+# 🔗 跨域知识融合
+try:
+    from knowledge_fusion import get_bot_prompt_injection
+    HAS_FUSION = True
+except ImportError:
+    HAS_FUSION = False
+
 # 🆕 主动销售 + 自我评估 + 情感学习
 try:
     from proactive_agent import ProactiveSalesAgent, AISelfEvaluator, EmotionLearner
@@ -1539,7 +1546,15 @@ _ai_evaluator = None
 
 
 def _load_sales_knowledge(query, max_chars=800):
-    """从本地 knowledge/sales/ 加载相关销售知识"""
+    """🔗 从本地 knowledge/ 加载跨域知识（Finance+Sales+Marketing+Competitor）
+    通过 knowledge_fusion 模块自动检测需要的知识域并融合。
+    """
+    if HAS_FUSION:
+        result = get_bot_prompt_injection(query)
+        if result:
+            return result[:max_chars]
+    
+    # Fallback: 如果没有 knowledge_fusion，只加载 sales
     try:
         sales_dir = os.path.join(os.path.dirname(__file__), "knowledge", "sales")
         if not os.path.exists(sales_dir):
@@ -1555,7 +1570,6 @@ def _load_sales_knowledge(query, max_chars=800):
             try:
                 with open(fpath, 'r', encoding='utf-8') as f:
                     content = f.read()
-                # 简单关键词匹配
                 content_lower = content.lower()
                 score = sum(1 for kw in query_lower.split() if len(kw) > 3 and kw in content_lower)
                 if score > 0:
@@ -1567,8 +1581,7 @@ def _load_sales_knowledge(query, max_chars=800):
             return ""
         
         relevant_parts.sort(key=lambda x: x[0], reverse=True)
-        result = relevant_parts[0][1]
-        return result[:max_chars]
+        return relevant_parts[0][1][:max_chars]
     except Exception as e:
         logger.debug(f"Sales knowledge loading failed (non-critical): {e}")
         return ""
@@ -2460,12 +2473,12 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     "content": f"[Context from company knowledge base — use this to enrich your answer if relevant]{kb_context}"
                 })
 
-        # 🆕 ===== 本地销售知识库检索 =====
+        # 🔗 ===== 跨域知识库检索（Finance+Sales+Marketing+Competitor）=====
         sales_kb_context = _load_sales_knowledge(user_message)
         if sales_kb_context:
             messages.insert(-1, {
                 "role": "system",
-                "content": f"[Sales techniques from our knowledge base — apply naturally if relevant]{sales_kb_context}"
+                "content": f"[Cross-domain knowledge from BroadFSC knowledge base — Finance, Sales, Marketing, Competitor insights. Apply naturally, don't list them.]{sales_kb_context}"
             })
 
         # 🆕 ===== 实时市场数据注入 =====

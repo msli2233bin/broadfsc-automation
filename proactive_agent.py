@@ -28,6 +28,13 @@ import time
 import random
 import asyncio
 import logging
+
+# 🔗 跨域知识融合
+try:
+    from knowledge_fusion import get_sales_prompt_injection, get_technical_analysis_for_ticker
+    HAS_FUSION = True
+except ImportError:
+    HAS_FUSION = False
 from datetime import datetime, timedelta, timezone
 from collections import defaultdict
 from pathlib import Path
@@ -896,27 +903,33 @@ class EmotionLearner:
             logger.error(f"Save emotion profiles failed: {e}")
     
     def _load_sales_psychology_knowledge(self):
-        """从 knowledge/sales/ 加载销售心理学知识"""
+        """🔗 从 knowledge/ 跨域加载（Finance+Sales+Marketing+Competitor）"""
         knowledge = {}
         try:
-            sales_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "knowledge", "sales")
-            if not os.path.exists(sales_dir):
-                return knowledge
+            if HAS_FUSION:
+                # 使用知识融合系统获取跨域知识
+                domain_dirs = ['sales', 'finance', 'competitor']
+            else:
+                domain_dirs = ['sales']
             
-            for fname in os.listdir(sales_dir):
-                if not fname.endswith(".md"):
+            base_dir = os.path.dirname(os.path.abspath(__file__))
+            for domain in domain_dirs:
+                domain_path = os.path.join(base_dir, "knowledge", domain)
+                if not os.path.exists(domain_path):
                     continue
-                fpath = os.path.join(sales_dir, fname)
-                try:
-                    with open(fpath, 'r', encoding='utf-8') as f:
-                        content = f.read()
-                    # 提取关键知识点（每个文件取前500字核心内容）
-                    if "psychology" in fname.lower() or "emotion" in fname.lower():
-                        knowledge[fname] = content[:800]
-                    else:
-                        knowledge[fname] = content[:300]
-                except Exception:
-                    continue
+                for fname in os.listdir(domain_path):
+                    if not fname.endswith(".md"):
+                        continue
+                    fpath = os.path.join(domain_path, fname)
+                    try:
+                        with open(fpath, 'r', encoding='utf-8') as f:
+                            content = f.read()
+                        if "psychology" in fname.lower() or "emotion" in fname.lower():
+                            knowledge[f"{domain}/{fname}"] = content[:800]
+                        else:
+                            knowledge[f"{domain}/{fname}"] = content[:300]
+                    except Exception:
+                        continue
         except Exception as e:
             logger.debug(f"Sales knowledge loading failed: {e}")
         

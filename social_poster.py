@@ -38,6 +38,13 @@ try:
 except ImportError:
     HAS_ANALYTICS = False
 
+# 🔗 跨域知识融合
+try:
+    from knowledge_fusion import get_content_prompt_injection, get_realtime_market_brief
+    HAS_FUSION = True
+except ImportError:
+    HAS_FUSION = False
+
 if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
@@ -634,7 +641,9 @@ def _get_market_snippet():
 
     Returns a short string like "SPY=5280(+0.8%) VIX=14.2 10Y=4.35%"
     Falls back gracefully if yfinance is unavailable.
+    Enhanced with cross-domain knowledge when available.
     """
+    result = ""
     try:
         import yfinance as yf
         parts = []
@@ -651,11 +660,22 @@ def _get_market_snippet():
                         parts.append(label + "=" + f"{c:.1f}")
             except Exception:
                 continue
-        return " | ".join(parts) if parts else "US markets open"
+        result = " | ".join(parts) if parts else "US markets open"
     except ImportError:
-        return "US markets open"
+        result = "US markets open"
     except Exception:
-        return "US markets open"
+        result = "US markets open"
+    
+    # 🔗 注入跨域知识（Finance+Marketing+Competitor）
+    if HAS_FUSION and result:
+        try:
+            fusion = get_content_prompt_injection("market analysis technical patterns trading strategy")
+            if fusion:
+                result += f"\n\n--- CROSS-DOMAIN KNOWLEDGE (use naturally in your analysis) ---\n{fusion[:800]}"
+        except Exception:
+            pass
+    
+    return result
 
 
 def generate_mastodon_content():

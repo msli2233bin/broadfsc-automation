@@ -1,0 +1,50 @@
+name: Mastodon Community Engagement
+
+on:
+  schedule:
+    # 3x/day to catch different timezones
+    # 10:00 UTC = 06:00 ET (pre-market US) / 18:00 CST
+    # 16:00 UTC = 12:00 ET (midday US) 
+    # 22:00 UTC = 18:00 ET (after-market US)
+    - cron: '0 10,16,22 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  engage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install requests groq python-dotenv
+
+      - name: Run Mastodon Engager
+        env:
+          MASTODON_ACCESS_TOKEN: ${{ secrets.MASTODON_ACCESS_TOKEN }}
+          MASTODON_INSTANCE: ${{ secrets.MASTODON_INSTANCE }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: |
+          python mastodon_engager.py --limit 3
+          echo "---"
+          python mastodon_engager.py --check
+
+      - name: Commit engagement state & patterns
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .bot_memory/mastodon_engagements.json 2>/dev/null || true
+          git add knowledge/patterns/mastodon_engagement_patterns.md 2>/dev/null || true
+          git diff --cached --quiet || git commit -m "chore: update mastodon engagement state & patterns"
+          git push

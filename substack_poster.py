@@ -531,32 +531,48 @@ def post_to_substack(article):
                 print(f"    Cloudflare wait... ({wait+1})")
 
             settings_text = page.locator("body").inner_text(timeout=5000)
-            is_logged_in = SUBSTACK_EMAIL in settings_text or "broadcastmarketintelligence" in settings_text
+            current_url = page.url
 
-            if not is_logged_in:
-                # Check URL for redirect to sign-in
-                current_url = page.url
-                if "/sign-in" in current_url or "/signin" in current_url:
-                    print("  [Substack] NOT LOGGED IN - need manual login first")
-                    print("    Run: python login_substack_v4.py")
-                    log_article("substack", article["title"], "not_logged_in")
-                    return False, ""
-                # Double-check via dashboard
-                page.goto("https://substack.com/dashboard", timeout=30000)
-                time.sleep(3)
-                dash_text = page.locator("body").inner_text(timeout=3000)
-                if "Discover world class culture" in dash_text and "Create" not in dash_text:
-                    print("  [Substack] NOT LOGGED IN - session expired")
-                    log_article("substack", article["title"], "session_expired")
-                    return False, ""
-                # Maybe settings page loaded differently - check for email
-                if SUBSTACK_EMAIL.split("@")[0] in dash_text or "Broadcast" in dash_text:
-                    is_logged_in = True
+            # More robust login detection
+            # 1. Check for obvious logged-out indicators
+            logged_out_indicators = [
+                "Discover world class culture",
+                "Browse top publications",
+                "Sign in to your account",
+                "Sign in to Substack",
+            ]
+            logged_in_indicators = [
+                SUBSTACK_EMAIL,
+                "broadcastmarketintelligence",
+                "settings",
+                "Your account",
+            ]
 
-            if not is_logged_in:
-                print("  [Substack] Login status unclear, proceeding anyway...")
+            is_logged_out = any(ind in settings_text for ind in logged_out_indicators)
+            is_logged_in = any(ind in settings_text for ind in logged_in_indicators)
 
-            print("  [Substack] Login confirmed.")
+            # 2. Check URL redirect
+            if "/sign-in" in current_url or "/signin" in current_url or "/login" in current_url:
+                is_logged_out = True
+
+            if not is_logged_in or is_logged_out:
+                print("  [Substack] ⚠️ SESSION EXPIRED - User not logged in")
+                print("  [Substack] URL:", current_url)
+                print("  [Substack] Body text snippet:", settings_text[:200])
+                print("")
+                print("  To fix this:")
+                print("  1. Run: python login_substack_v7.py")
+                print("  2. Substack will send Magic Link to your email")
+                print("  3. Click the Magic Link to refresh session")
+                print("  4. Re-run this script")
+                print("")
+
+                # Take screenshot for debugging
+                page.screenshot(path=os.path.join(debug_dir, "substack_login_expired.png"))
+                log_article("substack", article["title"], "session_expired_magic_link_required")
+                return False, ""
+
+            print("  [Substack] ✅ Login confirmed.")
 
             # === Step 2: Navigate to editor (FIXED v7) ===
             # Substack 2025+ 新UI流程：
