@@ -451,5 +451,108 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1501634037092192297"
+  },
+  {
+    "id": 50,
+    "timestamp": "2026-05-07T08:56:49.569068Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Alert: AI-Driven Growth, Supercharged by Inflation!</b>\n\nWe're witnessing a once-in-a-de",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "80"
+  },
+  {
+    "id": 51,
+    "timestamp": "2026-05-07T08:56:50.051053Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Alert: AI-Driven Growth, Supercharged by Inflation!**\n\nWe're witnessing a once-in-a-decad",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1501870412517085194"
+  },
+  {
+    "id": 52,
+    "timestamp": "2026-05-07T08:56:50.835074Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: AI-Driven Growth, Supercharged by Inflation!\n\nWe're witnessing a once-in-a-decade co",
+    "status": "failed",
+    "error_msg": "HTTP 401"
+  },
+  {
+    "id": 53,
+    "timestamp": "2026-05-07T08:56:55.120046Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 We're witnessing a once-in-a-decade convergence of inflation-driven growth, AI-driven innovation, ",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 54,
+    "timestamp": "2026-05-07T08:57:21.576057Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "🔥 Market Alert: AI-Driven Growth, Supercharged by Inflation!\n\nWe're witnessing a once-in-a-decade co",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 55,
+    "timestamp": "2026-05-07T08:57:21.580853Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: AI-Driven Growth, Supercharged by Inflation!",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 56,
+    "timestamp": "2026-05-07T08:57:22.468513Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "Analyzing competitor Webull's strategy reveals a focus on education and financial literacy. By creat",
+    "status": "failed",
+    "error_msg": "HTTP 401"
+  },
+  {
+    "id": 57,
+    "timestamp": "2026-05-07T08:57:22.728772Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "**Market Musings**\n\nHey fellow traders, let's talk about stock types and risk management. As we know",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1501870550392504421"
+  },
+  {
+    "id": 58,
+    "timestamp": "2026-05-07T08:57:23.594379Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "\"Webull's secret sauce? Emphasizing education & financial literacy. By empowering investors, they're",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mlatvzzqls2x"
+  },
+  {
+    "id": 59,
+    "timestamp": "2026-05-07T08:57:59.230188Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 60,
+    "timestamp": "2026-05-07T08:58:01.473654Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
