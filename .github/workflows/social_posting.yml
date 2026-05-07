@@ -104,10 +104,8 @@ jobs:
         run: python reddit_poster.py
 
       - name: Post to Substack (Playwright headless, Mon/Wed/Fri only)
-        if: ${{ secrets.SUBSTACK_EMAIL != '' }}
+        if: always()
         env:
-          SUBSTACK_EMAIL: ${{ secrets.SUBSTACK_EMAIL }}
-          SUBSTACK_PASSWORD: ${{ secrets.SUBSTACK_PASSWORD }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
