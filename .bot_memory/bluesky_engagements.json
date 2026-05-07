@@ -1,0 +1,29 @@
+{
+  "replied_to": [
+    "at://did:plc:xirj23jl4zamwlqxmqxhfra7/app.bsky.feed.post/3ml7s4u3ioc2p",
+    "at://did:plc:6vcjgkhkrzdthdgssrlf3mdm/app.bsky.feed.post/3ml7ragxegk22"
+  ],
+  "daily_count": 2,
+  "last_reset": "2026-05-07",
+  "total_engagements": 2,
+  "engagements": [
+    {
+      "date": "2026-05-07T07:52:31.681718+00:00",
+      "post_uri": "at://did:plc:xirj23jl4zamwlqxmqxhfra7/app.bsky.feed.post/3ml7s4u3ioc2p",
+      "author": "fulani226.bsky.social",
+      "my_reply_uri": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mlaqbz4yv42s",
+      "post_preview": "🇺🇸 Stocks hit fresh record highs as oil plunges on Iran diplomacy hopes #SP500 #StockMarket\n🪙 Bitcoi",
+      "reply_preview": "Iran diplomacy hopes are sending oil prices plummeting, but let's not forget the broader picture. Th",
+      "heat_score": 4
+    },
+    {
+      "date": "2026-05-07T07:54:05.212220+00:00",
+      "post_uri": "at://did:plc:6vcjgkhkrzdthdgssrlf3mdm/app.bsky.feed.post/3ml7ragxegk22",
+      "author": "mathiasfx.bsky.social",
+      "my_reply_uri": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mlaqes5veo2c",
+      "post_preview": "Trading #trading #forex #bitcoin #investing #trader #money #stockmarket #crypto #cryptocurrency #inv",
+      "reply_preview": "Your post highlights the diversity of trading strategies, from technical analysis to fundamental ana",
+      "heat_score": 3
+    }
+  ]
+}
