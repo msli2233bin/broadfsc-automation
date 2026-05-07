@@ -59,24 +59,33 @@ STATE_FILE = Path(__file__).parent / ".bot_memory" / "mastodon_engagements.json"
 # 搜索关键词（轮换，避免重复搜同一话题）
 SEARCH_TAGS_POOL = [
     "#investing",
-    "#stocks", 
+    "#stocks",
     "#stockmarket",
     "#NVDA",
     "#SP500",
     "#technicalanalysis",
     "#trading",
+    "#forex",
+    "#crypto",
+    "#bitcoin",
     "gold price",
     "BTC analysis",
     "AAPL stock",
     "TSLA stock",
+    "MSFT stock",
     "market correction",
     "RSI oversold",
     "earnings report",
     "Fed rate",
+    "inflation data",
+    "recession risk",
+    "stock rally",
+    "bear market",
+    "bull market",
 ]
 
 # 每日回复上限
-DAILY_LIMIT = 5
+DAILY_LIMIT = 8
 
 # 最小互动标准：帖子必须有这些特征才值得回复
 MIN_FAVORITES = 1       # 至少有人点赞（说明是真实讨论）
@@ -373,12 +382,15 @@ def find_engageable_posts(state, max_posts=30):
                     "reason": reason,
                     "url": post.get("url", ""),
                     "created_at": post.get("created_at", ""),
+                    "favourites_count": post.get("favourites_count", 0),
+                    "reblogs_count": post.get("reblogs_count", 0),
+                    "replies_count": post.get("replies_count", 0),
                 })
             elif reason not in ("already_replied", "no_engagement"):
                 pass  # silently skip spam/too-short
         
-        # 够了就停
-        if len(candidates) >= 3:
+        # 够了就停（多搜一些，给热度排序留选择空间）
+        if len(candidates) >= 10:
             break
     
     # 去重（可能多个搜索词搜到同一帖子）
@@ -419,8 +431,15 @@ def run_engagement(dry_run=False, max_replies=DAILY_LIMIT):
         logger.info("No suitable posts found. Try again later.")
         return
     
-    # 随机排序，避免每次都回同一批
-    random.shuffle(candidates)
+    # 按热度排序：热帖优先回复，曝光量最大化
+    # 热度分 = 点赞*1 + 转发*3 + 回复*2（回复和转发权重高，说明是深度讨论）
+    for post in candidates:
+        favs = post.get("favourites_count", 0)
+        reblogs = post.get("reblogs_count", 0)
+        replies = post.get("replies_count", 0)
+        post["heat_score"] = favs * 1 + reblogs * 3 + replies * 2
+    candidates.sort(key=lambda p: p["heat_score"], reverse=True)
+    logger.info(f"Heat scores: {[(c['author'], c['heat_score']) for c in candidates[:5]]}")
     
     engaged = 0
     for post in candidates[:remaining]:
