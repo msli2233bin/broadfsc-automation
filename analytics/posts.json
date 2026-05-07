@@ -573,5 +573,106 @@
     "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of May 07**\n\n\n📅 **Thursday, May 07**\n  • ",
     "status": "failed",
     "error_msg": "HTTP 401"
+  },
+  {
+    "id": 63,
+    "timestamp": "2026-05-07T19:57:56.355680Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The Great Repricing: S&P 500, Nasdaq, and the Mispriced Market</b>\n\nThe S&P 500 and Nasdaq have",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "84"
+  },
+  {
+    "id": 64,
+    "timestamp": "2026-05-07T19:57:58.545313Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The Great Repricing: S&P 500, Nasdaq, and the Mispriced Market**\n\nThe S&P 500 and Nasdaq have re",
+    "status": "failed",
+    "error_msg": "HTTP 401"
+  },
+  {
+    "id": 65,
+    "timestamp": "2026-05-07T19:57:59.684352Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The Great Repricing: S&P 500, Nasdaq, and the Mispriced Market\n\nThe S&P 500 and Nasdaq have reache",
+    "status": "failed",
+    "error_msg": "HTTP 401"
+  },
+  {
+    "id": 66,
+    "timestamp": "2026-05-07T19:58:04.509511Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The S&P 500 and Nasdaq have reached new highs, but the market's true value lies in the mispriced s",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 67,
+    "timestamp": "2026-05-07T19:58:24.400812Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "🔥 The Great Repricing: S&P 500, Nasdaq, and the Mispriced Market\n\nThe S&P 500 and Nasdaq have reache",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 68,
+    "timestamp": "2026-05-07T19:58:24.405318Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The Great Repricing: S&P 500, Nasdaq, and the Mispriced Market",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 69,
+    "timestamp": "2026-05-07T19:58:25.546056Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "\"As a technical analyst, I often see investors get caught up in the excitement of a hockey stick cha",
+    "status": "failed",
+    "error_msg": "HTTP 401"
+  },
+  {
+    "id": 70,
+    "timestamp": "2026-05-07T19:58:26.178351Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "\"Hey everyone, I wanted to share some TikTok insights with you all. If you're looking to grow your p",
+    "status": "failed",
+    "error_msg": "HTTP 401"
+  },
+  {
+    "id": 71,
+    "timestamp": "2026-05-07T19:58:26.822175Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "\"Diving into the world of stocks? Remember that non-cyclical stocks tend to be more stable, performi",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mlbyu3ubps2h"
+  },
+  {
+    "id": 72,
+    "timestamp": "2026-05-07T19:58:47.210428Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 73,
+    "timestamp": "2026-05-07T19:58:50.981512Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
