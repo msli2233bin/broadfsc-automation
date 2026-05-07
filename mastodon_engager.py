@@ -85,6 +85,8 @@ SKIP_PATTERNS = [        # 跳过的帖子类型
     r"buy now|sell now|pump|dump|moon|to the moon",  # 喊单
     r"click here|sign up|follow me|subscribe",        # 硬广告
     r"giveaway|free money|airdrop",                    # 抽奖
+    r"get funded|prop firm|prop trading|instant funding|evaluation.*funding|funded trader|funding.*code|discount.*code|off.*funding",  # prop firm促销
+    r"use code|promo code|coupon|take \d+% off",      # 优惠码
 ]
 
 
