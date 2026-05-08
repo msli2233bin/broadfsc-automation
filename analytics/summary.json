@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-08T16:02:02.822237Z",
+  "generated_at": "2026-05-08T20:16:21.705381Z",
   "period": {
     "today": "2026-05-08",
     "yesterday": "2026-05-07",
@@ -7,13 +7,13 @@
     "month_ago": "2026-04-08"
   },
   "totals": {
-    "posts_today": 1,
-    "posts_week": 61,
-    "posts_month": 74,
+    "posts_today": 3,
+    "posts_week": 63,
+    "posts_month": 76,
     "interactions_today": 0,
     "interactions_week": 3,
     "interactions_month": 36,
-    "success_rate": 40.5
+    "success_rate": 42.1
   },
   "platforms": {
     "tiktok": {
@@ -24,17 +24,17 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 7,
-      "month": 8,
-      "success": 6,
+      "today": 1,
+      "week": 8,
+      "month": 9,
+      "success": 7,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 12,
-      "month": 13,
-      "success": 7,
+      "today": 1,
+      "week": 13,
+      "month": 14,
+      "success": 8,
       "failed": 6
     },
     "mastodon": {
@@ -134,7 +134,7 @@
       "interactions": 1
     },
     "2026-05-08": {
-      "posts": 1,
+      "posts": 3,
       "interactions": 0
     },
     "2026-04-20": {
@@ -153,27 +153,10 @@
     "18": 7,
     "17": 2,
     "8": 7,
-    "19": 5
+    "19": 5,
+    "16": 2
   },
   "recent_posts": [
-    {
-      "id": 55,
-      "timestamp": "2026-05-07T08:57:21.580853Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Alert: AI-Driven Growth, Supercharged by Inflation!",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 56,
-      "timestamp": "2026-05-07T08:57:22.468513Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "Analyzing competitor Webull's strategy reveals a focus on education and financial literacy. By creat",
-      "status": "failed",
-      "error_msg": "HTTP 401"
-    },
     {
       "id": 57,
       "timestamp": "2026-05-07T08:57:22.728772Z",
@@ -340,6 +323,26 @@
       "content_preview": "日経平均と米国市場が連動する！ 10Y利回りとドル円の影響を考えてみよう | 2026年05月08日",
       "status": "success",
       "error_msg": ""
+    },
+    {
+      "id": 75,
+      "timestamp": "2026-05-08T16:53:37.518103Z",
+      "platform": "telegram_en",
+      "type": "earnings",
+      "content_preview": "<b>📊 Earnings Calendar: Week of May 08</b>\n\n\n📅 <b>Friday, May 08</b>\n  • Sony (6758.T) @ $nan | Rev ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "97"
+    },
+    {
+      "id": 76,
+      "timestamp": "2026-05-08T16:53:37.836707Z",
+      "platform": "discord",
+      "type": "earnings",
+      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of May 08**\n\n\n📅 **Friday, May 08**\n  • So",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1502352790616277173"
     }
   ],
   "recent_interactions": [
