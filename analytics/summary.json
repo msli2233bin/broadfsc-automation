@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-08T10:57:14.446478Z",
+  "generated_at": "2026-05-08T16:02:02.822237Z",
   "period": {
     "today": "2026-05-08",
     "yesterday": "2026-05-07",
@@ -7,13 +7,13 @@
     "month_ago": "2026-04-08"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 60,
-    "posts_month": 73,
+    "posts_today": 1,
+    "posts_week": 61,
+    "posts_month": 74,
     "interactions_today": 0,
     "interactions_week": 3,
     "interactions_month": 36,
-    "success_rate": 39.7
+    "success_rate": 40.5
   },
   "platforms": {
     "tiktok": {
@@ -80,10 +80,10 @@
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 4,
-      "month": 4,
-      "success": 0,
+      "today": 1,
+      "week": 5,
+      "month": 5,
+      "success": 1,
       "failed": 4
     }
   },
@@ -133,6 +133,10 @@
       "posts": 24,
       "interactions": 1
     },
+    "2026-05-08": {
+      "posts": 1,
+      "interactions": 0
+    },
     "2026-04-20": {
       "posts": 0,
       "interactions": 14
@@ -145,22 +149,13 @@
   "hourly_distribution": {
     "15": 1,
     "10": 1,
-    "11": 6,
+    "11": 7,
     "18": 7,
     "17": 2,
     "8": 7,
     "19": 5
   },
   "recent_posts": [
-    {
-      "id": 54,
-      "timestamp": "2026-05-07T08:57:21.576057Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "🔥 Market Alert: AI-Driven Growth, Supercharged by Inflation!\n\nWe're witnessing a once-in-a-decade co",
-      "status": "success",
-      "error_msg": ""
-    },
     {
       "id": 55,
       "timestamp": "2026-05-07T08:57:21.580853Z",
@@ -336,6 +331,15 @@
       "content_preview": "Hatena Blog post",
       "status": "failed",
       "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 74,
+      "timestamp": "2026-05-08T11:00:43.445831Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "日経平均と米国市場が連動する！ 10Y利回りとドル円の影響を考えてみよう | 2026年05月08日",
+      "status": "success",
+      "error_msg": ""
     }
   ],
   "recent_interactions": [
