@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-08T06:24:31.097495Z",
+  "generated_at": "2026-05-08T10:57:14.446478Z",
   "period": {
     "today": "2026-05-08",
     "yesterday": "2026-05-07",
@@ -11,8 +11,8 @@
     "posts_week": 60,
     "posts_month": 73,
     "interactions_today": 0,
-    "interactions_week": 2,
-    "interactions_month": 35,
+    "interactions_week": 3,
+    "interactions_month": 36,
     "success_rate": 39.7
   },
   "platforms": {
@@ -95,14 +95,14 @@
     },
     "telegram": {
       "today": 0,
-      "week": 2,
-      "month": 4
+      "week": 3,
+      "month": 5
     }
   },
   "action_breakdown": {
     "message": 30,
     "start": 1,
-    "proactive_outreach": 4
+    "proactive_outreach": 5
   },
   "daily_trend": {
     "2026-04-16": {
@@ -131,7 +131,7 @@
     },
     "2026-05-07": {
       "posts": 24,
-      "interactions": 0
+      "interactions": 1
     },
     "2026-04-20": {
       "posts": 0,
@@ -340,14 +340,6 @@
   ],
   "recent_interactions": [
     {
-      "id": 16,
-      "timestamp": "2026-04-17T14:01:17.292393Z",
-      "platform": "telegram_bot",
-      "action": "message",
-      "user_id": "8639358750",
-      "details": "Clumsy"
-    },
-    {
       "id": 17,
       "timestamp": "2026-04-17T14:02:13.370876Z",
       "platform": "telegram_bot",
@@ -497,6 +489,14 @@
       "platform": "telegram",
       "action": "proactive_outreach",
       "user_id": "8639358750",
+      "details": "Auto proactive message sent"
+    },
+    {
+      "id": 36,
+      "timestamp": "2026-05-07T09:59:56.853121Z",
+      "platform": "telegram",
+      "action": "proactive_outreach",
+      "user_id": "8327500544",
       "details": "Auto proactive message sent"
     }
   ],
