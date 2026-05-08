@@ -87,11 +87,36 @@ async function loadData() {
 }
 
 function render(data) {
+    // 时间转换：UTC/ISO → 北京时间字符串
+    function toBeiingTime(ts) {
+        if (!ts) return '';
+        try {
+            let d;
+            if (ts.includes('T')) {
+                d = new Date(ts);
+            } else if (ts.includes(' ')) {
+                // "2026-05-08 12:33:07" → 当作UTC解析
+                d = new Date(ts.replace(' ', 'T') + 'Z');
+            } else {
+                return ts;
+            }
+            // +8小时 = 北京时间
+            const beijingMs = d.getTime() + 8 * 3600 * 1000;
+            const bd = new Date(beijingMs);
+            const Y = bd.getUTCFullYear();
+            const M = String(bd.getUTCMonth()+1).padStart(2,'0');
+            const D = String(bd.getUTCDate()).padStart(2,'0');
+            const h = String(bd.getUTCHours()).padStart(2,'0');
+            const m = String(bd.getUTCMinutes()).padStart(2,'0');
+            return `${Y}-${M}-${D} ${h}:${m}`;
+        } catch(e) { return ts; }
+    }
+
     const o = data.overview || {};
     const ps = data.platform_summary || {};
     const sr = data.success_rates || {};
     const trend = data.trend || {};
-    const posts = data.recent_posts || [];
+    const posts = (data.recent_posts || []).map(p => ({...p, _ts: toBeiingTime(p.ts)}));
     const funnel = data.funnel || {};
     const pipeline = data.pipeline || {};
 
@@ -161,7 +186,7 @@ function render(data) {
     for (const p of posts.slice(0, 15)) {
         const sc = p.status === 'success' ? 'status-success' : 'status-failed';
         html += `<tr>
-            <td>${p.ts}</td>
+            <td>${p._ts || p.ts}</td>
             <td>${p.platform}</td>
             <td>${p.type}</td>
             <td class="${sc}">${p.status}</td>
@@ -170,7 +195,17 @@ function render(data) {
     }
     html += '</tbody></table></div></div>';
 
-    html += `<div class="last-update">Last update: ${data.report_time || 'N/A'} | Data range: ${data.days || DAYS} days</div>`;
+    // Last updated (UTC→北京时间)
+    let reportTime = data.report_time || '';
+    if (reportTime) {
+        try {
+            const d = new Date(reportTime);
+            const beijingMs = d.getTime() + 8 * 3600 * 1000;
+            const bd = new Date(beijingMs);
+            reportTime = `${bd.getUTCFullYear()}-${String(bd.getUTCMonth()+1).padStart(2,'0')}-${String(bd.getUTCDate()).padStart(2,'0')} ${String(bd.getUTCHours()).padStart(2,'0')}:${String(bd.getUTCMinutes()).padStart(2,'0')} (北京时间)`;
+        } catch(e) {}
+    }
+    html += `<div class="last-update">Last update: ${reportTime || 'N/A'} | Data range: ${data.days || DAYS} days</div>`;
 
     document.getElementById('dashboard').innerHTML = html;
 
