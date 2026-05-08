@@ -1,0 +1,57 @@
+name: Community Commenter
+
+on:
+  schedule:
+    # 工作日多个时间点（模拟不定时）
+    - cron: '0 9,14,19 * * 1-5'    # 北京时间 17:00, 22:00, 次日03:00
+    - cron: '30 11,16,21 * * 1-5'  # 北京时间 19:30, 00:30, 05:30
+  workflow_dispatch:      # 支持手动触发
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install atproto groq requests 2>/dev/null || true
+
+      - name: Run community commenter (with probability check)
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+          MASTODON_ACCESS_TOKEN: ${{ secrets.MASTODON_ACCESS_TOKEN }}
+          MASTODON_INSTANCE: ${{ secrets.MASTODON_INSTANCE }}
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+        run: |
+          # 60%概率执行（模拟不定时）
+          python -c "import random; exit(0 if random.random() < 0.6 else 1)" || {
+            echo "[SKIP] Random skip this run (simulate irregular scheduling)"
+            exit 0
+          }
+          python community_commenter.py
+
+      - name: Commit state files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .bot_memory/analytics.db 2>/dev/null || true
+          git add .bot_memory/*engagements*.json 2>/dev/null || true
+          git diff --cached --quiet || git commit -m "chore: update engager state [skip ci]"
+          git push || true
