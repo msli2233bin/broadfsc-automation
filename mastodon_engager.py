@@ -61,7 +61,8 @@ SEARCH_TAGS_POOL = [
     "#investing",
     "#stocks",
     "#stockmarket",
-    "#NVDA",
+    "$NVDA",
+    "Nvidia stock",
     "#SP500",
     "#technicalanalysis",
     "#trading",
@@ -96,6 +97,7 @@ SKIP_PATTERNS = [        # 跳过的帖子类型
     r"giveaway|free money|airdrop",                    # 抽奖
     r"get funded|prop firm|prop trading|instant funding|evaluation.*funding|funded trader|funding.*code|discount.*code|off.*funding",  # prop firm促销
     r"use code|promo code|coupon|take \d+% off",      # 优惠码
+    r"screen reader|accessibility|jaws|voiceover|talkback|narrator|html support",  # NVDA屏幕阅读器误匹配
 ]
 
 

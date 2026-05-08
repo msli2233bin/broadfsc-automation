@@ -65,7 +65,8 @@ SEARCH_TERMS_POOL = [
     "#investing",
     "#stocks",
     "#stockmarket",
-    "#NVDA",
+    "$NVDA",
+    "Nvidia stock",
     "#SP500",
     "#technicalanalysis",
     "#trading",
@@ -99,6 +100,7 @@ SKIP_PATTERNS = [
     r"giveaway|free money|airdrop",
     r"get funded|prop firm|prop trading|instant funding|evaluation.*funding|funded trader|funding.*code|discount.*code|off.*funding",
     r"use code|promo code|coupon|take \d+% off",
+    r"screen reader|accessibility|jaws|voiceover|talkback|narrator|html support",
 ]
 
 # 投资主题必需关键词
