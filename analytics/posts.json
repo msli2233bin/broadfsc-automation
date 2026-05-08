@@ -683,5 +683,25 @@
     "content_preview": "日経平均と米国市場が連動する！ 10Y利回りとドル円の影響を考えてみよう | 2026年05月08日",
     "status": "success",
     "error_msg": ""
+  },
+  {
+    "id": 75,
+    "timestamp": "2026-05-08T16:53:37.518103Z",
+    "platform": "telegram_en",
+    "type": "earnings",
+    "content_preview": "<b>📊 Earnings Calendar: Week of May 08</b>\n\n\n📅 <b>Friday, May 08</b>\n  • Sony (6758.T) @ $nan | Rev ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "97"
+  },
+  {
+    "id": 76,
+    "timestamp": "2026-05-08T16:53:37.836707Z",
+    "platform": "discord",
+    "type": "earnings",
+    "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of May 08**\n\n\n📅 **Friday, May 08**\n  • So",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1502352790616277173"
   }
 ]
