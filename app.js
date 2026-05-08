@@ -240,7 +240,7 @@ async function submitRegistrationToBackend(name, email, interests, source) {
 
   // 2. Telegram Bot notification (backup channel)
   try {
-    const BOT_API = atob('ODI5MjQyMjAzMzpBQUhyUFVmU2FVQWNtcHZRVFhjVjRuc2QtTmFrWkgzU0l3UFU=');
+    const BOT_API = atob('ODI5MjQyMjAzMzpBQUZabnIxWXAtbDIxam5Ca0V1cTlIR3lSS3c4LW44cVI3NA==');
     const msg = `🆕 New Registration\n\n👤 Name: ${name}\n📧 Email: ${email}\n🎯 Interest: ${interests}\n📍 Source: ${source}\n🕐 Time: ${new Date().toLocaleString()}`;
 
     await fetch(`https://api.telegram.org/bot${BOT_API}/sendMessage`, {
