@@ -207,38 +207,41 @@ function submitRegistration() {
 }
 
 // ── Registration Backend ──
-// Zero-cost solution: Send to BroadFSC Telegram Bot which forwards to admin
-// The bot is already running on your server and can process registrations
+// Zero-cost Supabase solution: stores registrations in a free PostgreSQL table
+// Setup: (1) Create Supabase project, (2) create 'registrations' table, (3) paste URL + anon key below
+const SUPABASE_URL = 'https://glkdwwiszcqireqntxdg.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_scqlIW0XhJDT7FYC8Dz8_w_8F5j1r9X';
+
 async function submitRegistrationToBackend(name, email, interests, source) {
   const timestamp = new Date().toISOString();
-  const regData = { name, email, interests, source, date: timestamp };
+  const regData = { name, email, interests, source, created_at: timestamp };
 
-  // 1. Formspree (primary backend - free 100 submissions/month)
-  // Sign up at https://formspree.io/ → Create form → Copy the form ID
-  // Set your form ID below (e.g. 'xyzabcde' from https://formspree.io/f/xyzabcde)
-  const FORMSPREE_FORM_ID = 'xjgjebwd';
-  if (FORMSPREE_FORM_ID) {
+  // 1. Supabase (primary backend — free 500MB)
+  if (SUPABASE_URL && SUPABASE_KEY) {
     try {
-      const resp = await fetch(`https://formspree.io/f/${FORMSPREE_FORM_ID}`, {
+      const resp = await fetch(`${SUPABASE_URL}/rest/v1/registrations`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          name: name,
-          email: email,
-          interest: interests,
-          source: source,
-          _subject: `🆕 BroadFSC Registration: ${name}`
-        })
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({ name, email, interests, source })
       });
       if (resp.ok) {
-        console.log('Registration sent to Formspree successfully');
+        console.log('Registration saved to Supabase successfully');
+      } else {
+        console.error('Supabase error:', await resp.text());
       }
     } catch (e) {
-      console.log('Formspree submission failed:', e);
+      console.error('Supabase submission failed:', e);
     }
+  } else {
+    console.warn('Supabase credentials not configured — registration not saved to database');
   }
 
-  // 2. Telegram Bot notification (backup channel)
+  // 2. Telegram Bot notification (backup + instant alert)
   try {
     const BOT_API = atob('ODI5MjQyMjAzMzpBQUZabnIxWXAtbDIxam5Ca0V1cTlIR3lSS3c4LW44cVI3NA==');
     const msg = `🆕 New Registration\n\n👤 Name: ${name}\n📧 Email: ${email}\n🎯 Interest: ${interests}\n📍 Source: ${source}\n🕐 Time: ${new Date().toLocaleString()}`;
@@ -250,13 +253,23 @@ async function submitRegistrationToBackend(name, email, interests, source) {
     }).catch(() => {});
   } catch (e) {}
 
-  // 3. Store locally for admin dashboard access
-  try {
-    const regs = JSON.parse(localStorage.getItem('bfs_registrations') || '[]');
-    regs.push(regData);
-    if (regs.length > 500) regs.splice(0, regs.length - 500);
-    localStorage.setItem('bfs_registrations', JSON.stringify(regs));
-  } catch (e) {}
+  // 3. Formspree (tertiary backup — free 100/month)
+  const FORMSPREE_FORM_ID = 'xjgjebwd';
+  if (FORMSPREE_FORM_ID) {
+    try {
+      await fetch(`https://formspree.io/f/${FORMSPREE_FORM_ID}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          interest: interests,
+          source: source,
+          _subject: `🆕 BroadFSC Registration: ${name}`
+        })
+      });
+    } catch (e) {}
+  }
 }
 
 function showRegisterToast(msg) {
