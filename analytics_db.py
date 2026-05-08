@@ -32,7 +32,7 @@ def get_db():
         _local.conn.row_factory = sqlite3.Row
         _local.conn.execute("PRAGMA journal_mode=WAL")
     if not _db_initialized:
-        init_db()
+        _ensure_tables_exist()
         _db_initialized = True
     return _local.conn
 
@@ -45,9 +45,21 @@ def close_db():
 
 
 def init_db():
-    """Initialize all tables."""
-    db = get_db()
-    db.executescript("""
+    """Initialize all tables (public wrapper, for manual init)."""
+    _ensure_tables_exist()
+
+
+def _ensure_tables_exist():
+    """Create tables if they don't exist, using existing connection if available."""
+    if hasattr(_local, 'conn') and _local.conn is not None:
+        conn = _local.conn
+        needs_close = False
+    else:
+        conn = sqlite3.connect(DB_PATH, timeout=10)
+        conn.row_factory = sqlite3.Row
+        needs_close = True
+
+    conn.executescript("""
         CREATE TABLE IF NOT EXISTS posts (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             timestamp TEXT NOT NULL DEFAULT (datetime('now')),
@@ -131,8 +143,59 @@ def init_db():
         CREATE INDEX IF NOT EXISTS idx_visits_timestamp ON website_visits(timestamp);
         CREATE INDEX IF NOT EXISTS idx_registrations_timestamp ON registrations(timestamp);
         CREATE INDEX IF NOT EXISTS idx_registrations_email ON registrations(email);
+
+        -- Engage engagements tracking (跨平台互动)
+        CREATE TABLE IF NOT EXISTS engagements (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            timestamp TEXT NOT NULL DEFAULT (datetime('now')),
+            platform TEXT NOT NULL,
+            engagement_type TEXT NOT NULL,
+            target_post_id TEXT DEFAULT '',
+            target_user_id TEXT DEFAULT '',
+            target_user_name TEXT DEFAULT '',
+            content_preview TEXT DEFAULT '',
+            status TEXT DEFAULT 'success',
+            error_msg TEXT DEFAULT ''
+        );
+
+        -- Cross-platform customer contacts (跨平台客户画像)
+        CREATE TABLE IF NOT EXISTS customer_contacts (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            timestamp TEXT NOT NULL DEFAULT (datetime('now')),
+            platform TEXT NOT NULL,
+            username TEXT NOT NULL,
+            display_name TEXT DEFAULT '',
+            follower_count INTEGER DEFAULT 0,
+            source TEXT DEFAULT '',
+            first_interaction TEXT DEFAULT '',
+            last_interaction TEXT DEFAULT '',
+            cta_clicked INTEGER DEFAULT 0,
+            funnel_stage TEXT DEFAULT 'awareness',
+            notes TEXT DEFAULT '',
+            UNIQUE(platform, username)
+        );
+
+        -- Funnel stage transitions (漏斗转化日志)
+        CREATE TABLE IF NOT EXISTS funnel_events (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            timestamp TEXT NOT NULL DEFAULT (datetime('now')),
+            platform TEXT NOT NULL,
+            username TEXT NOT NULL,
+            from_stage TEXT NOT NULL,
+            to_stage TEXT NOT NULL,
+            trigger_event TEXT DEFAULT '',
+            notes TEXT DEFAULT ''
+        );
+
+        CREATE INDEX IF NOT EXISTS idx_engagements_platform ON engagements(platform);
+        CREATE INDEX IF NOT EXISTS idx_engagements_timestamp ON engagements(timestamp);
+        CREATE INDEX IF NOT EXISTS idx_contacts_platform ON customer_contacts(platform);
+        CREATE INDEX IF NOT EXISTS idx_contacts_stage ON customer_contacts(funnel_stage);
+        CREATE INDEX IF NOT EXISTS idx_funnel_timestamp ON funnel_events(timestamp);
     """)
-    db.commit()
+    conn.commit()
+    if needs_close:
+        conn.close()
 
 
 # ============================================================
@@ -212,6 +275,128 @@ def log_registration(name, email, interests="", source="", ip_hash="", country="
         db.commit()
     except Exception as e:
         print(f"[analytics] log_registration error: {e}")
+
+
+def log_engagement(platform, engagement_type, target_post_id="", target_user_id="", target_user_name="", content_preview="", status="success", error_msg=""):
+    """Log a community engagement event (reply, like, follow, etc.)."""
+    try:
+        db = get_db()
+        db.execute(
+            "INSERT INTO engagements (platform, engagement_type, target_post_id, target_user_id, target_user_name, content_preview, status, error_msg) VALUES (?,?,?,?,?,?,?,?)",
+            (platform, engagement_type, target_post_id, target_user_id, target_user_name, content_preview[:200], status, error_msg[:200])
+        )
+        db.commit()
+    except Exception as e:
+        print(f"[analytics] log_engagement error: {e}")
+
+
+def upsert_customer_contact(platform, username, display_name="", follower_count=0, source="", funnel_stage="awareness", notes=""):
+    """Create or update a cross-platform customer contact profile."""
+    try:
+        db = get_db()
+        now = datetime.datetime.utcnow().isoformat()
+        existing = db.execute(
+            "SELECT id, funnel_stage, first_interaction FROM customer_contacts WHERE platform=? AND username=?",
+            (platform, username)
+        ).fetchone()
+
+        if existing:
+            # Update existing
+            prev_stage = existing['funnel_stage']
+            db.execute(
+                "UPDATE customer_contacts SET display_name=COALESCE(NULLIF(?,''), display_name), follower_count=MAX(follower_count,?), source=CASE WHEN ?!='' THEN ? ELSE source END, last_interaction=?, funnel_stage=CASE WHEN ?!='' THEN ? ELSE funnel_stage END, notes=? WHERE id=?",
+                (display_name, follower_count, source, source, now, funnel_stage, funnel_stage, notes, existing['id'])
+            )
+            # Log funnel transition if stage changed
+            if funnel_stage and funnel_stage != prev_stage:
+                log_funnel_event(platform, username, prev_stage, funnel_stage, trigger_event="auto_update")
+        else:
+            db.execute(
+                "INSERT INTO customer_contacts (platform, username, display_name, follower_count, source, first_interaction, last_interaction, funnel_stage, notes) VALUES (?,?,?,?,?,?,?,?,?)",
+                (platform, username, display_name, follower_count, source, now, now, funnel_stage, notes)
+            )
+        db.commit()
+    except Exception as e:
+        print(f"[analytics] upsert_customer_contact error: {e}")
+
+
+def log_funnel_event(platform, username, from_stage, to_stage, trigger_event="", notes=""):
+    """Log a funnel stage transition."""
+    try:
+        db = get_db()
+        db.execute(
+            "INSERT INTO funnel_events (platform, username, from_stage, to_stage, trigger_event, notes) VALUES (?,?,?,?,?,?)",
+            (platform, username, from_stage, to_stage, trigger_event, notes)
+        )
+        db.commit()
+    except Exception as e:
+        print(f"[analytics] log_funnel_event error: {e}")
+
+
+def get_recent_engagements(limit=50, platform=None):
+    """Get recent engagement events."""
+    db = get_db()
+    if platform:
+        rows = db.execute(
+            "SELECT * FROM engagements WHERE platform=? ORDER BY timestamp DESC LIMIT ?",
+            (platform, limit)
+        ).fetchall()
+    else:
+        rows = db.execute(
+            "SELECT * FROM engagements ORDER BY timestamp DESC LIMIT ?",
+            (limit,)
+        ).fetchall()
+    return [dict(r) for r in rows]
+
+
+def get_customer_pipeline():
+    """Get customer pipeline by funnel stage."""
+    db = get_db()
+    rows = db.execute(
+        "SELECT funnel_stage, COUNT(*) as cnt FROM customer_contacts GROUP BY funnel_stage"
+    ).fetchall()
+    return {r['funnel_stage']: r['cnt'] for r in rows}
+
+
+def get_customers_by_stage(stage, limit=20):
+    """Get customers at a specific funnel stage."""
+    db = get_db()
+    rows = db.execute(
+        "SELECT * FROM customer_contacts WHERE funnel_stage=? ORDER BY last_interaction DESC LIMIT ?",
+        (stage, limit)
+    ).fetchall()
+    return [dict(r) for r in rows]
+
+
+def get_customer_count():
+    """Get total customer counts by platform."""
+    db = get_db()
+    rows = db.execute(
+        "SELECT platform, COUNT(*) as cnt, SUM(CASE WHEN funnel_stage != 'awareness' THEN 1 ELSE 0 END) as engaged FROM customer_contacts GROUP BY platform"
+    ).fetchall()
+    return {r['platform']: {'total': r['cnt'], 'engaged': r['engaged']} for r in rows}
+
+
+def get_funnel_metrics(days=30):
+    """Get funnel conversion metrics."""
+    db = get_db()
+    since = (datetime.datetime.utcnow() - datetime.timedelta(days=days)).isoformat()
+
+    # Stage counts
+    rows = db.execute(
+        "SELECT funnel_stage, COUNT(*) as cnt FROM customer_contacts WHERE last_interaction >= ? GROUP BY funnel_stage",
+        (since,)
+    ).fetchall()
+    stages = {r['funnel_stage']: r['cnt'] for r in rows}
+
+    # Recent transitions
+    rows = db.execute(
+        "SELECT from_stage, to_stage, COUNT(*) as cnt FROM funnel_events WHERE timestamp >= ? GROUP BY from_stage, to_stage",
+        (since,)
+    ).fetchall()
+    transitions = [{'from': r['from_stage'], 'to': r['to_stage'], 'cnt': r['cnt']} for r in rows]
+
+    return {'stages': stages, 'transitions': transitions}
 
 
 # ============================================================

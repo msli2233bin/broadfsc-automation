@@ -1,209 +1,92 @@
 """
-BroadFSC Analytics Dashboard — Flask API Backend
-Serves analytics data as JSON API and the dashboard HTML.
-
-Run: python dashboard_api.py
-Open: http://localhost:5000
+BroadFSC Analytics Dashboard API
+Serves JSON data for the HTML dashboard visualization.
 """
+import os, sys, json, datetime
 
-import os
-import sys
-import json
-import datetime
-
-if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
-    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
-
-from flask import Flask, jsonify, request, send_from_directory, redirect
-from analytics_db import init_db, get_db, close_db, log_click, log_website_visit, log_conversation, log_registration
-
-app = Flask(__name__, static_folder=os.path.dirname(os.path.abspath(__file__)))
-
-# Initialize DB on startup
-init_db()
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, SCRIPT_DIR)
 
 
-# ============================================================
-# API Endpoints
-# ============================================================
-
-@app.route('/')
-def index():
-    """Serve the dashboard HTML."""
-    dashboard_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'dashboard.html')
-    if os.path.exists(dashboard_path):
-        return send_from_directory(os.path.dirname(os.path.abspath(__file__)), 'dashboard.html')
-    return "<h1>BroadFSC Analytics Dashboard</h1><p>dashboard.html not found</p>"
-
-
-@app.route('/api/overview')
-def api_overview():
-    """Get overview stats."""
-    days = request.args.get('days', 30, type=int)
-    from analytics_db import get_overview
-    return jsonify(get_overview(days=days))
-
-
-@app.route('/api/trend')
-def api_trend():
-    """Get daily trend data."""
-    days = request.args.get('days', 30, type=int)
-    from analytics_db import get_daily_trend
-    return jsonify(get_daily_trend(days=days))
-
-
-@app.route('/api/recent/posts')
-def api_recent_posts():
-    """Get recent posts."""
-    limit = request.args.get('limit', 50, type=int)
-    from analytics_db import get_recent_posts
-    return jsonify(get_recent_posts(limit=limit))
-
-
-@app.route('/api/recent/conversations')
-def api_recent_conversations():
-    """Get recent conversations."""
-    limit = request.args.get('limit', 50, type=int)
-    from analytics_db import get_recent_conversations
-    return jsonify(get_recent_conversations(limit=limit))
-
-
-@app.route('/api/hourly')
-def api_hourly():
-    """Get hourly distribution."""
-    days = request.args.get('days', 7, type=int)
-    from analytics_db import get_hourly_distribution
-    return jsonify(get_hourly_distribution(days=days))
-
-
-# ============================================================
-# Click / Visit Tracking Endpoints
-# ============================================================
-
-@app.route('/track/click')
-def track_click():
-    """Track a click event (called from short links)."""
-    source = request.args.get('source', 'unknown')
-    post_id = request.args.get('post_id', '')
-    link_type = request.args.get('type', 'website')
-    target = request.args.get('url', 'https://www.broadfsc.com/different')
-    campaign = request.args.get('campaign', '')
-
-    # Get visitor info
-    ip = request.headers.get('X-Forwarded-For', request.remote_addr or '')
-    import hashlib
-    ip_hash = hashlib.sha256(ip.encode()).hexdigest()[:16] if ip else ''
-
-    log_click(
-        source_platform=source,
-        source_post_id=post_id,
-        link_type=link_type,
-        target_url=target,
-        ip_hash=ip_hash,
-        referrer=request.headers.get('Referer', '')
+def get_full_report(days=30):
+    """Get complete analytics report for dashboard."""
+    from analytics_db import (
+        get_overview, get_daily_trend, get_recent_posts,
+        get_hourly_distribution, get_customer_count, get_customer_pipeline,
+        get_recent_engagements, get_funnel_metrics
     )
 
-    # Redirect to target
-    return redirect(target)
+    overview = get_overview(days=days)
+    trend = get_daily_trend(days=days)
+    hourly = get_hourly_distribution(days=days)
+    recent_posts = get_recent_posts(limit=20)
+    customers = get_customer_count()
+    pipeline = get_customer_pipeline()
+    funnel = get_funnel_metrics(days=days)
+
+    # Format recent posts
+    formatted_posts = []
+    for p in recent_posts:
+        formatted_posts.append({
+            'ts': p['timestamp'][:19] if p.get('timestamp') else '?',
+            'platform': p.get('platform', '?'),
+            'type': p.get('post_type', '?'),
+            'status': p.get('status', '?'),
+            'preview': (p.get('content_preview', '') or '')[:60],
+        })
+
+    # Platform summary
+    platform_summary = {}
+    for plat, count in overview.get('posts_by_platform', {}).items():
+        platform_summary[plat] = {
+            'posts': count,
+            'customers': customers.get(plat, {}).get('total', 0),
+            'engaged': customers.get(plat, {}).get('engaged', 0),
+        }
+
+    # Post success rate by platform
+    from analytics_db import get_db
+    db = get_db()
+    since = (datetime.datetime.utcnow() - datetime.timedelta(days=days)).isoformat()
+    rows = db.execute("""
+        SELECT platform,
+               COUNT(*) as total,
+               SUM(CASE WHEN status='success' THEN 1 ELSE 0 END) as success
+        FROM posts WHERE timestamp >= ?
+        GROUP BY platform
+    """, (since,)).fetchall()
+    success_rates = {}
+    for r in rows:
+        total = r['total'] or 1
+        success_rates[r['platform']] = round(r['success'] / total * 100, 1)
+
+    return {
+        'report_time': datetime.datetime.utcnow().isoformat(),
+        'days': days,
+        'overview': overview,
+        'trend': trend,
+        'hourly': hourly,
+        'recent_posts': formatted_posts,
+        'platform_summary': platform_summary,
+        'success_rates': success_rates,
+        'customers': customers,
+        'pipeline': pipeline,
+        'funnel': funnel,
+    }
 
 
-@app.route('/track/visit')
-def track_visit():
-    """Track a website visit (called from website embed)."""
-    source = request.args.get('source', 'direct')
-    campaign = request.args.get('campaign', '')
+if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--days', type=int, default=30)
+    parser.add_argument('--output', '-o', default=None)
+    args = parser.parse_args()
 
-    ip = request.headers.get('X-Forwarded-For', request.remote_addr or '')
-    import hashlib
-    ip_hash = hashlib.sha256(ip.encode()).hexdigest()[:16] if ip else ''
+    report = get_full_report(days=args.days)
 
-    log_website_visit(
-        source=source,
-        campaign=campaign,
-        ip_hash=ip_hash,
-        user_agent=request.headers.get('User-Agent', ''),
-        referrer=request.headers.get('Referer', '')
-    )
-
-    return jsonify({'status': 'ok'})
-
-
-@app.route('/track/conversation', methods=['POST'])
-def track_conversation():
-    """Track a conversation event (called from telegram_bot.py)."""
-    data = request.get_json() or {}
-    log_conversation(
-        platform=data.get('platform', 'telegram'),
-        user_id=data.get('user_id', ''),
-        user_name=data.get('user_name', ''),
-        direction=data.get('direction', 'inbound'),
-        message_type=data.get('message_type', 'text'),
-        is_ai_response=data.get('is_ai_response', True),
-        chat_mode=data.get('chat_mode', 'auto')
-    )
-    return jsonify({'status': 'ok'})
-
-
-@app.route('/track/registration', methods=['POST'])
-def track_registration():
-    """Track a new user registration from the website."""
-    data = request.get_json() or {}
-    name = data.get('name', '')
-    email = data.get('email', '')
-    if not name or not email:
-        return jsonify({'status': 'error', 'message': 'Name and email required'}), 400
-
-    # Get visitor info
-    ip = request.headers.get('X-Forwarded-For', request.remote_addr or '')
-    import hashlib
-    ip_hash = hashlib.sha256(ip.encode()).hexdigest()[:16] if ip else ''
-
-    log_registration(
-        name=name,
-        email=email,
-        interests=data.get('interests', ''),
-        source=data.get('source', ''),
-        ip_hash=ip_hash,
-        user_agent=request.headers.get('User-Agent', '')
-    )
-    return jsonify({'status': 'ok'})
-
-
-# ============================================================
-# Registration Endpoints (Admin View)
-# ============================================================
-
-@app.route('/api/registrations')
-def api_registrations():
-    """Get registration list."""
-    days = request.args.get('days', 30, type=int)
-    from analytics_db import get_registrations
-    return jsonify(get_registrations(days=days))
-
-
-@app.route('/api/registration-stats')
-def api_registration_stats():
-    """Get registration statistics."""
-    days = request.args.get('days', 30, type=int)
-    from analytics_db import get_registration_stats
-    return jsonify(get_registration_stats(days=days))
-
-
-# ============================================================
-# Health check
-# ============================================================
-
-@app.route('/api/health')
-def health():
-    return jsonify({
-        'status': 'ok',
-        'db_path': os.path.join(os.path.dirname(os.path.abspath(__file__)), 'analytics.db'),
-        'time': datetime.datetime.utcnow().isoformat()
-    })
-
-
-if __name__ == '__main__':
-    print("🚀 BroadFSC Analytics Dashboard starting...")
-    print("📊 Dashboard: http://localhost:5000")
-    print("📡 API: http://localhost:5000/api/overview")
-    app.run(host='0.0.0.0', port=5000, debug=False)
+    if args.output:
+        with open(args.output, 'w', encoding='utf-8') as f:
+            json.dump(report, f, ensure_ascii=False, indent=2)
+        print(f"Report saved to {args.output}")
+    else:
+        print(json.dumps(report, ensure_ascii=False, indent=2))
