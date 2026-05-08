@@ -43,5 +43,41 @@
     "time": "2026-04-30T23:33:06.769211",
     "message_id": "<202604301533.48889421103@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "raj.patel.invest@hotmail.com",
+    "subject": "Gold's Hidden Trend",
+    "personality": "alex",
+    "date": "2026-05-08",
+    "time": "2026-05-08T18:54:38.416950",
+    "message_id": "<202605081854.85480024534@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+david@gmail.com",
+    "subject": "Nasdaq's odd 200DMA bounce",
+    "personality": "alex",
+    "date": "2026-05-08",
+    "time": "2026-05-08T18:54:42.824678",
+    "message_id": "<202605081854.86935495747@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+sarah@gmail.com",
+    "subject": "Why VIX Says Otherwise",
+    "personality": "alex",
+    "date": "2026-05-08",
+    "time": "2026-05-08T18:54:50.812351",
+    "message_id": "<202605081854.27785723833@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "test@example.com",
+    "subject": "VIX ignores S&P 500",
+    "personality": "alex",
+    "date": "2026-05-08",
+    "time": "2026-05-08T18:54:59.665003",
+    "message_id": "<202605081854.79896696064@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
