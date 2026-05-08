@@ -877,37 +877,47 @@ def post_to_substack(article):
 
             # Step 6b: 点击 "Send to everyone now" 完成发布
             print("    [6b] Looking for Send/Publish button in dialog...")
-            time.sleep(2)
+            time.sleep(5)  # Wait longer for dialog to fully render (was 2, too short for CI)
 
+            # Retry logic: dialog may take time to appear in headless CI
             send_sels = [
                 'button:has-text("Send to everyone now")',
                 'button:has-text("Publish now")',
-                'button:has-text("Send")',
                 '[role="button"]:has-text("Send to everyone now")',
+                'button:has-text("Send")',
             ]
 
-            for sel in send_sels:
-                try:
-                    btn = page.locator(sel).first
-                    if btn.is_visible(timeout=5000):
-                        btn.click()
-                        published = True
-                        print(f"    ✅ Clicked send button: {sel}")
-                        time.sleep(5)
+            for attempt in range(3):
+                for sel in send_sels:
+                    try:
+                        btn = page.locator(sel).first
+                        if btn.is_visible(timeout=8000):
+                            btn.click()
+                            published = True
+                            print(f"    ✅ Clicked send button: {sel} (attempt {attempt+1})")
+                            time.sleep(5)
 
-                        # 可能还有确认对话框
-                        for csel in ['button:has-text("Confirm")', 'button:has-text("Yes")']:
-                            try:
-                                cb = page.locator(csel).first
-                                if cb.is_visible(timeout=3000):
-                                    cb.click()
-                                    time.sleep(3)
-                                    break
-                            except Exception:
-                                continue
-                        break
-                except Exception:
-                    continue
+                            # 可能还有确认对话框
+                            for csel in ['button:has-text("Confirm")', 'button:has-text("Yes")']:
+                                try:
+                                    cb = page.locator(csel).first
+                                    if cb.is_visible(timeout=3000):
+                                        cb.click()
+                                        time.sleep(3)
+                                        break
+                                except Exception:
+                                    continue
+                            break
+                    except Exception:
+                        continue
+                
+                if published:
+                    break
+                
+                # Take screenshot for debugging
+                page.screenshot(path=os.path.join(debug_dir, f"substack_6b_attempt{attempt+1}.png"))
+                print(f"    ⚠️ Send button not found (attempt {attempt+1}/3), retrying...")
+                time.sleep(5)
 
             if not published:
                 # 最终兜底：检查 URL 或 Ctrl+S 保存草稿
@@ -1037,15 +1047,31 @@ def main():
     print()
 
     if test_mode:
-        print("[Test Mode] Checking login only...\n")
-        result, url = post_to_substack({
-            "title": "[TEST] Connection Check",
-            "subtitle": "",
-            "content": "This is a test post. Please ignore.",
-            "tags": [],
-        })
-        print(f"\nResult: {'OK' if result else 'FAILED'} | URL: {url}")
-        return
+        print("[Test Mode] Checking login only (no post will be published)...\n")
+        from playwright.sync_api import sync_playwright as _pw
+        user_data_dir = os.path.join(SESSION_DIR, "substack_profile")
+        os.makedirs(user_data_dir, exist_ok=True)
+        with _pw() as p:
+            context = p.chromium.launch_persistent_context(
+                user_data_dir,
+                headless=IS_CI,
+                slow_mo=100 if not IS_CI else 50,
+                viewport={"width": 1280, "height": 900},
+                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+            )
+            page = context.new_page()
+            page.goto("https://substack.com/settings", timeout=60000)
+            time.sleep(5)
+            for wait in range(30):
+                title = page.title()
+                if all(x not in title for x in ["稍候", "Checking", "Just a moment", "Attention"]):
+                    break
+                time.sleep(2)
+            settings_text = page.locator("body").inner_text(timeout=5000)
+            logged_in = any(ind in settings_text for ind in [SUBSTACK_EMAIL, "broadcastmarketintelligence", "Your account"])
+            context.close()
+            print(f"\nLogin: {'✅ OK' if logged_in else '❌ FAILED'}")
+            return
 
     # Check if today is a Substack publishing day (Mon/Wed/Fri)
     weekday = datetime.datetime.utcnow().weekday()  # 0=Mon, 6=Sun
