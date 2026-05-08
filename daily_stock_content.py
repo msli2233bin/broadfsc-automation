@@ -457,7 +457,7 @@ def generate_content_for_platform(data, platform):
     return gen(data)
 
 
-def save_to_queue(platform, symbol, content):
+def save_to_queue(platform, symbol, content, chart_paths=None):
     """Save generated content to the knowledge queue."""
     now = datetime.datetime.now()
     date_str = now.strftime('%Y-%m-%d')
@@ -481,6 +481,7 @@ def save_to_queue(platform, symbol, content):
         "symbol": symbol,
         "created": now.isoformat(),
         "used": False,
+        "chart_paths": chart_paths or {},
     }
 
     filename = f"{date_str}_{time_str}_{platform}_{symbol}_ta.json"
@@ -520,6 +521,17 @@ def main():
         print(f"  ✅ ${data['price']} ({data['change_pct']:+.1f}%) | RSI: {data['rsi']} | Bias: {data['bias']}")
         stocks_fetched += 1
 
+        # Generate charts for this symbol
+        chart_paths = {}
+        try:
+            from chart_generator import generate_all_charts
+            chart_results = generate_all_charts(symbol)
+            if chart_results:
+                chart_paths = chart_results
+                print(f"  📊 Charts: {', '.join(chart_paths.keys())}")
+        except Exception as e:
+            print(f"  ⚠️ Chart generation failed: {e}")
+
         # Generate content for each platform
         for platform in platforms:
             try:
@@ -527,7 +539,7 @@ def main():
                 if content is None:
                     continue
 
-                filepath = save_to_queue(platform, symbol, content)
+                filepath = save_to_queue(platform, symbol, content, chart_paths=chart_paths)
                 print(f"  📝 {platform:12s} → {filepath.name}")
                 generated += 1
             except Exception as e:

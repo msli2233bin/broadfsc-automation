@@ -77,13 +77,16 @@ except ImportError:
 # ============================================================
 # Email Posting via Brevo API
 # ============================================================
-def post_entry(title, content, draft=False):
+def post_entry(title, content, draft=False, image_paths=None):
     """Post a blog entry to はてなブログ via email.
 
     Args:
         title: Post title (becomes email subject)
         content: Post body in Markdown format (becomes email body)
         draft: If True, use draft posting address (if configured)
+        image_paths: Optional list of local image file paths to attach.
+                     Hatena auto-uploads attachments to Fotolife and
+                     embeds them in the post.
 
     Returns:
         (success: bool, message: str)
@@ -95,6 +98,10 @@ def post_entry(title, content, draft=False):
     if not BREVO_API_KEY:
         print("  Hatena: SKIP (missing BREVO_API_KEY)")
         return False, "Missing BREVO_API_KEY"
+
+    # If image_paths provided, embed them in content as Markdown image references
+    if image_paths:
+        content = _embed_images_in_content(content, image_paths)
 
     # Send email via Brevo API
     url = "https://api.brevo.com/v3/smtp/email"
@@ -109,6 +116,27 @@ def post_entry(title, content, draft=False):
         "subject": title,
         "textContent": content,
     }
+
+    # Add image attachments if provided
+    # Brevo API supports base64 attachments
+    if image_paths:
+        attachment_list = []
+        for img_path in image_paths:
+            if os.path.exists(img_path):
+                try:
+                    import base64
+                    with open(img_path, 'rb') as f:
+                        img_data = base64.b64encode(f.read()).decode()
+                    filename = os.path.basename(img_path)
+                    attachment_list.append({
+                        "content": img_data,
+                        "name": filename,
+                        "contentType": "image/png",
+                    })
+                except Exception as e:
+                    print(f"  Hatena: ⚠️ Could not attach {img_path}: {e}")
+        if attachment_list:
+            payload["attachment"] = attachment_list
 
     try:
         r = requests.post(url, headers=headers, json=payload, timeout=30)
@@ -136,6 +164,33 @@ def post_entry(title, content, draft=False):
     except Exception as e:
         print(f"  Hatena: ❌ Error: {e}")
         return False, str(e)
+
+
+def _embed_images_in_content(content, image_paths):
+    """Add Markdown image references to content for Hatena blog posts.
+
+    Hatena Fotolife images attached to email are auto-uploaded,
+    but for remote images we use Markdown syntax with public URLs.
+    For attached images, Hatena auto-places them — we just add
+    a placeholder reference for context.
+    """
+    chart_section = "\n\n---\n**📊 チャート分析**\n\n"
+    for i, img_path in enumerate(image_paths):
+        filename = os.path.basename(img_path)
+        # Hatena email posting: attached images are auto-inserted
+        # We add descriptive text before each auto-inserted image
+        if 'candlestick' in filename:
+            chart_section += "**ローソク足チャート & 主要レベル:**\n\n"
+        elif 'indicators' in filename:
+            chart_section += "**RSI & MACD 分析:**\n\n"
+        elif 'bollinger' in filename:
+            chart_section += "**ボリンジャーバンド分析:**\n\n"
+        elif 'trend_card' in filename:
+            chart_section += "**トレンドサマリー:**\n\n"
+        else:
+            chart_section += f"**チャート {i+1}:**\n\n"
+
+    return content + chart_section
 
 
 # ============================================================

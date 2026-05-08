@@ -691,6 +691,64 @@ def send_telegram(text, channel_id, post_type="briefing", signal_ticker=None):
         return False
 
 
+def send_telegram_photo(image_path, caption, channel_id, post_type="signal", signal_ticker=None):
+    """Send a photo with caption to a Telegram channel.
+
+    Args:
+        image_path: Local path to the image file
+        caption: Caption text (supports HTML)
+        channel_id: Telegram channel/chat ID
+        post_type: 'signal' or 'briefing'
+        signal_ticker: For signal posts, the ticker symbol
+    """
+    if not BOT_TOKEN or not channel_id:
+        print("  FAIL: Missing BOT_TOKEN or channel_id")
+        return False
+
+    if not os.path.exists(image_path):
+        print(f"  FAIL: Image not found: {image_path}")
+        return False
+
+    url = "https://api.telegram.org/bot" + BOT_TOKEN + "/sendPhoto"
+
+    try:
+        with open(image_path, 'rb') as f:
+            files = {'photo': f}
+            data = {
+                "chat_id": channel_id,
+                "caption": caption + DISCLAIMER,
+                "parse_mode": "HTML",
+            }
+
+            # Add Inline Keyboard CTA for signal posts
+            if post_type == "signal" and signal_ticker:
+                BOT_USERNAME = os.environ.get("TELEGRAM_BOT_USERNAME", "BroadInvestBot")
+                deep_link = "https://t.me/" + BOT_USERNAME + "?start=signal_" + signal_ticker
+                data["reply_markup"] = json.dumps({
+                    "inline_keyboard": [[
+                        {"text": "📋 Get Free Research Report", "url": deep_link},
+                        {"text": "💬 Talk to Advisor", "url": "https://t.me/" + BOT_USERNAME}
+                    ]]
+                })
+
+            r = requests.post(url, files=files, data=data, timeout=30)
+
+        if r.status_code == 200:
+            msg_id = r.json()['result']['message_id']
+            print(f"  Photo sent to {channel_id} - Message ID: {msg_id}")
+            if HAS_ANALYTICS:
+                lang = CHANNEL_LANG_MAP.get(channel_id, 'en')
+                log_post(platform=f"telegram_{lang}_photo", post_type=post_type, channel=channel_id,
+                         content_preview=caption[:100], post_id=str(msg_id), status="success")
+            return True
+        else:
+            print(f"  FAIL [{channel_id}]: HTTP {r.status_code} - {r.text[:200]}")
+            return False
+    except Exception as e:
+        print(f"  FAIL [{channel_id}]: {e}")
+        return False
+
+
 def send_line(text, lang="en"):
     """Send market briefing to LINE Official Account via Flex Message."""
     if not LINE_CHANNEL_ACCESS_TOKEN:

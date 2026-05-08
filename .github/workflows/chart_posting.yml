@@ -1,0 +1,75 @@
+name: Chart Posting — Generate & Post Charts
+
+on:
+  schedule:
+    # Run at 13:30 UTC (21:30 Beijing) — US market pre-open
+    - cron: '30 13 * * 1-5'
+  workflow_dispatch:
+    inputs:
+      symbols:
+        description: 'Stock symbols (space-separated, empty=auto-pick 3)'
+        required: false
+        default: ''
+      platforms:
+        description: 'Platforms (comma-separated, empty=all)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  post-charts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install yfinance matplotlib mplfinance Pillow requests groq
+
+      - name: Generate & post charts
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+          TELEGRAM_ADMIN_ID: ${{ secrets.TELEGRAM_ADMIN_ID }}
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
+          BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+          MASTODON_INSTANCE: ${{ secrets.MASTODON_INSTANCE }}
+          MASTODON_ACCESS_TOKEN: ${{ secrets.MASTODON_ACCESS_TOKEN }}
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: |
+          ARGS=""
+          if [ -n "${{ github.event.inputs.symbols }}" ]; then
+            ARGS="${{ github.event.inputs.symbols }}"
+          fi
+          if [ -n "${{ github.event.inputs.platforms }}" ]; then
+            ARGS="$ARGS --platform ${{ github.event.inputs.platforms }}"
+          fi
+          python chart_poster.py $ARGS
+
+      - name: Commit generated charts
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "BroadFSC Bot"
+          git config user.email "bot@broadfsc.com"
+          git add charts/ || true
+          git diff --staged --quiet || git commit -m "chore(charts): daily chart generation [skip ci]"
+          git push https://x-access-token:${GH_TOKEN}@github.com/msli2233bin/broadfsc-automation.git HEAD:main
