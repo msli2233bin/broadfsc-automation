@@ -22,12 +22,18 @@ DB_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(DB_DIR, "analytics.db")
 
 
+_db_initialized = False
+
 def get_db():
-    """Get thread-local DB connection."""
+    """Get thread-local DB connection (auto-initializes tables on first call)."""
+    global _db_initialized
     if not hasattr(_local, 'conn') or _local.conn is None:
         _local.conn = sqlite3.connect(DB_PATH, timeout=10)
         _local.conn.row_factory = sqlite3.Row
         _local.conn.execute("PRAGMA journal_mode=WAL")
+    if not _db_initialized:
+        init_db()
+        _db_initialized = True
     return _local.conn
 
 
@@ -135,7 +141,7 @@ def init_db():
 
 def log_post(platform, post_type="post", channel="", content_preview="", post_id="", status="success", error_msg=""):
     """Log a post event.
-    
+
     Args:
         platform: 平台名称
         post_type: 帖子类型
