@@ -42,7 +42,7 @@ STATE_FILE = Path(__file__).parent / ".bot_memory" / "bluesky_reply_monitor.json
 ENGAGER_FILE = Path(__file__).parent / ".bot_memory" / "signal_engagers.json"
 
 # 每次检查最近N篇帖子
-CHECK_POST_COUNT = 20
+CHECK_POST_COUNT = 50
 
 # 每篇帖子最多回复N条评论
 MAX_REPLIES_PER_POST = 3
@@ -91,6 +91,49 @@ def get_client():
     profile = _client.login(BLUESKY_HANDLE, BLUESKY_APP_PASSWORD)
     logger.info(f"Logged in as {profile.display_name} (@{profile.handle})")
     return _client
+
+# ============================================================
+# 获取通知中的回复
+# ============================================================
+def get_replies_from_notifications(limit=50):
+    """从通知中获取回复我的帖子/评论的通知"""
+    client = get_client()
+    if not client:
+        return []
+    
+    try:
+        response = client.app.bsky.notification.list_notifications(
+            models.AppBskyNotificationListNotifications.Params(
+                limit=limit,
+                reasons=["reply", "mention"],
+            )
+        )
+        
+        replies = []
+        for notif in response.notifications:
+            # 只处理reply和mention类型的通知
+            if notif.reason not in ("reply", "mention"):
+                continue
+            
+            # 获取回复内容
+            reply_post = notif.record if hasattr(notif, 'record') else None
+            author = notif.author if hasattr(notif, 'author') else None
+            
+            if reply_post and author:
+                replies.append({
+                    "uri": str(notif.uri),
+                    "cid": str(notif.cid),
+                    "author_handle": author.handle if hasattr(author, 'handle') else "",
+                    "author_display": author.display_name if hasattr(author, 'display_name') else "",
+                    "text": reply_post.text if hasattr(reply_post, 'text') else "",
+                    "parent_uri": str(notif.reason_subject) if hasattr(notif, 'reason_subject') else "",
+                })
+        
+        logger.info(f"从通知中提取了 {len(replies)} 条回复/提及")
+        return replies
+    except Exception as e:
+        logger.error(f"获取通知失败: {e}")
+        return []
 
 # ============================================================
 # 获取自己最近的帖子
@@ -275,6 +318,46 @@ def update_engager(comment):
     ENGAGER_FILE.write_text(json.dumps(engagers, ensure_ascii=False, indent=2), encoding='utf-8')
     logger.info(f"  📝 已更新互动者记录: @{author_handle}")
 
+def _update_engager_simple(author_handle, author_display=""):
+    """简化版互动者更新（直接从通知更新）"""
+    if not author_handle:
+        return
+    
+    engagers = {}
+    if ENGAGER_FILE.exists():
+        try:
+            engagers = json.loads(ENGAGER_FILE.read_text(encoding='utf-8'))
+        except Exception:
+            engagers = {}
+    
+    if "engagers" not in engagers:
+        engagers["engagers"] = {}
+    
+    key = author_handle
+    if key not in engagers["engagers"]:
+        engagers["engagers"][key] = {
+            "handle": author_handle,
+            "display_name": author_display,
+            "platform": "bluesky",
+            "engagement_type": "comment_reply",
+            "engagement_count": 1,
+            "first_engaged": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+            "last_engaged": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+            "score": 70,
+            "needs_followup": True,
+            "followup_stage": "commented_on_my_post",
+        }
+    else:
+        engagers["engagers"][key]["engagement_count"] += 1
+        engagers["engagers"][key]["last_engaged"] = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+        engagers["engagers"][key]["score"] = min(100, engagers["engagers"][key]["score"] + 5)
+        engagers["engagers"][key]["needs_followup"] = True
+    
+    ENGAGER_FILE.parent.mkdir(parents=True, exist_ok=True)
+    ENGAGER_FILE.write_text(json.dumps(engagers, ensure_ascii=False, indent=2), encoding='utf-8')
+    logger.info(f"  📝 已更新互动者记录: @{author_handle}")
+
+
 # ============================================================
 # 主运行函数
 # ============================================================
@@ -292,90 +375,97 @@ def run_monitor(dry_run=False):
         logger.info(f"今日回复上限已达 ({state['daily_count']}/{DAILY_LIMIT})")
         return 0
     
-    logger.info(f"开始检查自己最近的帖子（最多{CHECK_POST_COUNT}篇）...")
+    logger.info(f"开始检查通知中的回复...")
     
-    # 获取自己最近的帖子
-    my_posts = get_my_recent_posts(limit=CHECK_POST_COUNT)
-    logger.info(f"获取到 {len(my_posts)} 篇帖子")
+    # 从通知中获取回复
+    notifications = get_replies_from_notifications(limit=50)
+    logger.info(f"获取到 {len(notifications)} 条回复/提及通知")
+    logger.info(f"通知详情: {notifications}")  # 调试输出
     
     reply_count = 0
     
-    for post in my_posts:
+    for notif in notifications:
         if reply_count >= remaining:
             break
         
-        post_uri = str(post.uri) if hasattr(post, 'uri') else ""
-        post_cid = str(post.cid) if hasattr(post, 'cid') else ""
-        post_text = post.record.text if hasattr(post, 'record') and hasattr(post.record, 'text') else ""
+        notif_cid = notif["cid"]
+        notif_uri = notif["uri"]
+        author_handle = notif["author_handle"]
+        comment_text = notif["text"]
+        parent_uri = notif["parent_uri"]  # 原帖子URI
         
-        logger.info(f"\n检查帖子: {post_text[:80]}...")
-        
-        # 获取这篇帖子的评论
-        comments = get_post_replies(post_uri)
-        if not comments:
-            logger.info(f"  无评论")
+        # 检查是否已回复
+        if notif_cid in state["replied_cids"]:
+            logger.debug(f"  跳过已回复的通知: {notif_uri}")
             continue
         
-        logger.info(f"  发现 {len(comments)} 条评论")
-        
-        # 筛选需要回复的评论
-        to_reply = []
-        for comment in comments:
-            should, reason = should_reply_to_comment(comment, state)
-            if should:
-                to_reply.append(comment)
-            else:
-                logger.debug(f"  跳过评论: {reason}")
-        
-        if not to_reply:
-            logger.info(f"  无新评论需要回复")
+        # 跳过自己的通知
+        if author_handle.lower() == BLUESKY_HANDLE.lower().replace("@", ""):
             continue
         
-        # 最多回复N条
-        for comment in to_reply[:MAX_REPLIES_PER_POST]:
-            if reply_count >= remaining:
-                break
+        if len(comment_text.strip()) < 10:
+            continue
+        
+        logger.info(f"\n  回复 @{author_handle}: {comment_text[:100]}...")
+        
+        if dry_run:
+            logger.info(f"  [DRY RUN] 会回复这条评论")
+            continue
+        
+        # 获取原帖子内容和CID
+        post_text = ""
+        post_cid = ""
+        try:
+            thread = get_client().app.bsky.feed.get_post_thread(
+                models.AppBskyFeedGetPostThread.Params(uri=parent_uri)
+            )
+            if hasattr(thread, 'thread') and hasattr(thread.thread, 'post'):
+                post = thread.thread.post
+                if hasattr(post, 'record') and hasattr(post.record, 'text'):
+                    post_text = post.record.text or ""
+                post_cid = str(post.cid) if hasattr(post, 'cid') else ""
+        except Exception:
+            post_text = ""
+            post_cid = ""
+        
+        # 生成AI回复
+        ai_reply = generate_reply_to_comment(post_text, comment_text, author_handle)
+        if not ai_reply:
+            logger.warning(f"  ⚠️ AI生成失败，跳过")
+            continue
+        
+        logger.info(f"  AI回复: {ai_reply}")
+        
+        # 发送回复
+        # 回复到评论：parent=评论，root=原帖子
+        reply_ref = models.AppBskyFeedPost.ReplyRef(
+            parent=models.ComAtprotoRepoStrongRef.Main(uri=notif_uri, cid=notif_cid),
+            root=models.ComAtprotoRepoStrongRef.Main(uri=parent_uri, cid=post_cid if post_cid else notif_cid),
+        )
+        
+        try:
+            result = get_client().send_post(ai_reply, reply_to=reply_ref)
+            logger.info(f"  ✅ 回复已发送: {result.uri}")
             
-            comment_text = comment.record.text if hasattr(comment, 'record') and hasattr(comment.record, 'text') else ""
-            comment_author = comment.author.handle if hasattr(comment, 'author') and hasattr(comment.author, 'handle') else "unknown"
+            # 更新状态
+            state["replied_cids"].append(notif_cid)
+            state["daily_count"] += 1
+            state["total_replies"] = state.get("total_replies", 0) + 1
+            reply_count += 1
             
-            logger.info(f"\n  回复 @{comment_author}: {comment_text[:100]}...")
+            # 更新互动者记录
+            # 直接调用更新函数
+            _update_engager_simple(author_handle, notif["author_display"])
             
-            if dry_run:
-                logger.info(f"  [DRY RUN] 会回复这条评论")
-                continue
+            # 保存状态
+            save_state(state)
             
-            # 生成AI回复
-            ai_reply = generate_reply_to_comment(post_text, comment_text, comment_author)
-            if not ai_reply:
-                logger.warning(f"  ⚠️ AI生成失败，跳过")
-                continue
-            
-            logger.info(f"  AI回复: {ai_reply}")
-            
-            # 发送回复
-            comment_cid = str(comment.cid) if hasattr(comment, 'cid') else ""
-            result = send_reply(post_uri, comment_cid, ai_reply)
-            
-            if result:
-                # 更新状态
-                state["replied_cids"].append(comment_cid)
-                state["daily_count"] += 1
-                state["total_replies"] = state.get("total_replies", 0) + 1
-                reply_count += 1
-                
-                # 更新互动者记录
-                update_engager(comment)
-                
-                # 保存状态
-                save_state(state)
-                
-                # 随机延迟
-                delay = random.randint(30, 90)
-                logger.info(f"  等待 {delay} 秒...")
-                time.sleep(delay)
-            else:
-                logger.error(f"  ❌ 回复发送失败")
+            # 随机延迟
+            delay = random.randint(30, 90)
+            logger.info(f"  等待 {delay} 秒...")
+            time.sleep(delay)
+        except Exception as e:
+            logger.error(f"  ❌ 回复发送失败: {e}")
     
     save_state(state)
     logger.info(f"\n✅ 完成！本次回复 {reply_count} 条，今日总计 {state['daily_count']}/{DAILY_LIMIT}")
