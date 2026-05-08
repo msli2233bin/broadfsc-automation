@@ -4,11 +4,18 @@
     "116529419104320186",
     "116523756605473051",
     "116523780700167740",
-    "116527770454354197"
+    "116527770454354197",
+    "116533371016549201",
+    "116533985561335348",
+    "116531461838828837",
+    "116538503401013135",
+    "116530772755077001",
+    "116532742764030561",
+    "116534588579793239"
   ],
-  "daily_count": 0,
+  "daily_count": 7,
   "last_reset": "2026-05-08",
-  "total_engagements": 10,
+  "total_engagements": 17,
   "engagements": [
     {
       "date": "2026-05-07T06:33:21.746044+00:00",
@@ -159,6 +166,62 @@
       },
       "result": "silent",
       "outcome_checked": "2026-05-07T16:27:01.072428+00:00"
+    },
+    {
+      "date": "2026-05-08T11:09:47.039283+00:00",
+      "post_id": "116533371016549201",
+      "author": "SteveFaulkner",
+      "my_reply_id": "116538643906950378",
+      "post_preview": "Screen Reader HTML Support – Lookup \nupdated 7th May 2026\n﻿#JAWS #TalkBack #VoiceOver #NVDA #Narrato",
+      "reply_preview": "@SteveFaulkner, nice find on the screen reader HTML support. Now, back to markets - what's the real "
+    },
+    {
+      "date": "2026-05-08T11:11:07.517583+00:00",
+      "post_id": "116533985561335348",
+      "author": "somegregariousdude",
+      "my_reply_id": "116538649186720929",
+      "post_preview": "Question for my fellow fedi blind folk: Is it worth buying an annual sub for JAWS in 2026, or should",
+      "reply_preview": "NVDA 2026.1 has a 10% higher market cap than JAWS, but JAWS has a 2.5x higher RSI momentum score. Th"
+    },
+    {
+      "date": "2026-05-08T11:12:11.337468+00:00",
+      "post_id": "116531461838828837",
+      "author": "bitsacb",
+      "my_reply_id": "116538653371802816",
+      "post_preview": "Ever wonder what window or application is currently active? Both JAWS and NVDA use the same shortcut",
+      "reply_preview": "\"Window shopping for a trade? Insert + T's got your back, but for me, it's all about the RSI. 28 and"
+    },
+    {
+      "date": "2026-05-08T11:13:35.022225+00:00",
+      "post_id": "116538503401013135",
+      "author": "thejapantimes",
+      "my_reply_id": "116538658829475152",
+      "post_preview": "Japan's repeated interventions to support the yen may provide temporary relief, but deep structural ",
+      "reply_preview": "The Japantimes editorial raises valid points about Japan's structural economic pressures. However, t"
+    },
+    {
+      "date": "2026-05-08T11:14:13.260209+00:00",
+      "post_id": "116530772755077001",
+      "author": "thejapantimes",
+      "my_reply_id": "116538661362763411",
+      "post_preview": "Sharp moves in the Japanese yen that sent the currency to a 10-week high renewed speculation that th",
+      "reply_preview": "10-week high on the yen? Don't get too excited, folks. The real metric is the Nikkei's RSI at 35, in"
+    },
+    {
+      "date": "2026-05-08T11:15:22.561479+00:00",
+      "post_id": "116532742764030561",
+      "author": "thejapantimes",
+      "my_reply_id": "116538665892785823",
+      "post_preview": "U.S. Treasury Secretary Scott Bessent will meet Prime Minister Sanae Takaichi, Finance Minister Sats",
+      "reply_preview": "U.S. officials descending on Tokyo. Meanwhile, USD/JPY's at 131.50 - a 3% drop from the 2025 highs w"
+    },
+    {
+      "date": "2026-05-08T11:18:07.500587+00:00",
+      "post_id": "116534588579793239",
+      "author": "BusinessInsider",
+      "my_reply_id": "116538676577333137",
+      "post_preview": "Famed hedge fund investor Paul Tudor Jones says the AI-fueled market rally can go for another 2 year",
+      "reply_preview": "@BusinessInsider Tudor Jones might be right about the AI-fueled rally, but he's underestimating the "
     }
   ]
 }

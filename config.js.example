@@ -1,0 +1,17 @@
+/**
+ * BroadFSC - 可选配置文件
+ * 
+ * 使用方法：
+ * 1. 复制此文件为 config.js（不会被 git 追踪）
+ * 2. 填入你自己的 Groq API Key
+ * 3. 在 index.html 中引入：<script src="config.js"></script>
+ * 
+ * 注意：如果不配置，网站将只使用 Pollinations（免费，无需 Key）
+ */
+
+// Groq API Key（可选，留空则只用 Pollinations）
+window.GROQ_API_KEY = 'gsk_你的GroqKey这里';
+
+// Supabase 配置（已完成，无需修改）
+// window.SUPABASE_URL = '...';
+// window.SUPABASE_KEY = '...';

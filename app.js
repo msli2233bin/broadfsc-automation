@@ -598,8 +598,10 @@ const POLLINATIONS_URL = 'https://text.pollinations.ai/';
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
 const GROQ_MODEL = 'llama-3.1-8b-instant';
 
-// Encoded Groq API key (may expire — Pollinations is the primary free fallback)
-const _gk = atob('Z3FkXzN0bHJhM0haaWFCTkhnM0tNS2p3ZU05Vjdybw==');
+// Groq API Key: 已移除，改用 Pollinations（免费）
+// 如需 Groq，请创建 config.js 并添加:
+// window.GROQ_API_KEY = 'gsk_你的key';
+const _gk = window.GROQ_API_KEY || null;
 
 // Track which AI source is working so we don't keep retrying broken ones
 let _aiSourceWorking = { pollinations: true, groq: true };

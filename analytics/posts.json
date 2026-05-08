@@ -674,5 +674,14 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 74,
+    "timestamp": "2026-05-08T11:00:43.445831Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "日経平均と米国市場が連動する！ 10Y利回りとドル円の影響を考えてみよう | 2026年05月08日",
+    "status": "success",
+    "error_msg": ""
   }
 ]

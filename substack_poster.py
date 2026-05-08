@@ -506,11 +506,13 @@ def post_to_substack(article):
     slow_mo = 100 if not IS_CI else 50
 
     with sync_playwright() as p:
+        viewport_w = 1920  # ★ v14: 1920足够，sidebar input不需要在viewport内
+        viewport_h = 1080
         context = p.chromium.launch_persistent_context(
             user_data_dir,
             headless=headless,
             slow_mo=slow_mo,
-            viewport={"width": 1280, "height": 900},
+            viewport={"width": viewport_w, "height": viewport_h},
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
         )
 
@@ -693,8 +695,9 @@ def post_to_substack(article):
                 return False, ""
 
             # === Step 5: Upload cover image ===
-            print("  [Substack] Uploading cover image...")
-            cover_path = generate_cover_image(article["title"], article.get("type", "Market Radar"))
+            # ★ v14: 暂时跳过cover image上传——可能干扰发布流程
+            print("  [Substack] Skipping cover image (v14 — debugging publish issue)...")
+            cover_path = None  # 不上传cover image
             if cover_path and os.path.exists(cover_path):
                 try:
                     # Substack cover image: the button triggers a file chooser dialog
@@ -746,98 +749,170 @@ def post_to_substack(article):
             else:
                 print("    No cover image generated, skipping")
 
-            # === Step 6: Fill title & content (FIXED v7) ===
-            # Substack 2025+ 新版编辑器：标题和正文都在同一个 ProseMirror 编辑器中
-            # 没有独立的标题 <input>！那个 input[placeholder="Add a title..."] 是侧边栏文件名
-            # 正确流程：点击 ProseMirror → 第一行打标题 → Enter → 正文
-            print("  [Substack] Filling title + content (v7 fixed)...")
-
-            title_done = False
+            # === Step 6: Fill title & content (v15 — API set title + page.reload + native setter fallback) ===
+            # ★ v15 根本性修复（基于成功发布 ID:196882839 的逆向分析）：
+            # 1. 先用 API PUT 设置 draft_title（服务端持久化）
+            # 2. ★ page.reload() 让 React state 从 API 数据重新初始化（关键！）
+            #    - 成功版本做了 reload，失败版本没有
+            #    - React 内部 state 和 DOM 值不一致时，publish API 读的是 React state
+            #    - reload 让 React 从服务端数据重建 state，确保一致性
+            # 3. reload 后如果 sidebar input 仍为空，用 native setter + InputEvent 补设
+            # 4. 不使用 route 拦截器（会阻止 POST /publish API 调用）
+            print("  [Substack] Filling title + content (v15 API + reload)...")
             
-            # 方法1（主）：在 ProseMirror 编辑器中键盘输入标题+正文
+            # 提取 post_id from editor_url
+            post_id_match = re.search(r'/publish/post/(\d+)', editor_url)
+            post_id = post_id_match.group(1) if post_id_match else None
+            print(f"    Post ID: {post_id}")
+            
+            # === Step 6a: 先用 ProseMirror 填写正文内容 ===
+            # ★ 先填内容，再设标题（避免标题设置后被内容操作干扰）
+            content_done = False
             try:
-                editor_el = page.locator('.ProseMirror[contenteditable="true"]').first
-                if editor_el.is_visible(timeout=5000):
-                    editor_el.click()
-                    time.sleep(0.5)
-                    
-                    # 清空编辑器
-                    page.keyboard.press("Control+a")
-                    page.keyboard.press("Backspace")
-                    time.sleep(0.3)
-                    
-                    # 第一行：标题
-                    page.keyboard.type(article["title"], delay=15)
-                    title_done = True
-                    print(f"    Title typed in ProseMirror: {article['title'][:50]}")
-                    
-                    # 换行到正文
-                    page.keyboard.press("Enter")
-                    page.keyboard.press("Enter")
-                    time.sleep(0.3)
-                    
-                    # 如果有副标题
-                    if article.get("subtitle"):
-                        page.keyboard.type(article["subtitle"], delay=10)
-                        page.keyboard.press("Enter")
-                        page.keyboard.press("Enter")
-                        time.sleep(0.3)
-                    
-                    # 正文段落
-                    paragraphs = article["content"].split("\n")
-                    char_count = len(article["title"])
-                    for i, para in enumerate(paragraphs):
-                        if para.strip():
-                            if i > 0:
-                                page.keyboard.press("Enter")
-                                time.sleep(0.05)
-                            try:
-                                page.evaluate(f'navigator.clipboard.writeText({json.dumps(para)})')
-                                page.keyboard.press("Control+v")
-                            except Exception:
-                                page.keyboard.type(para[:500], delay=2)
-                            char_count += len(para)
-                    
-                    print(f"    Total content: ~{char_count} chars")
+                result = page.evaluate('''(data) => {
+                    const editor = document.querySelector('.ProseMirror[contenteditable="true"]');
+                    if (!editor) return {found: false};
+                    let html = '';
+                    if (data.subtitle) html += '<h3>' + data.subtitle + '</h3>';
+                    const paras = data.content.split('\\n');
+                    for (const p of paras) {
+                        if (p.trim()) html += '<p>' + p + '</p>';
+                    }
+                    editor.innerHTML = html;
+                    editor.dispatchEvent(new Event('input', {bubbles: true}));
+                    return {found: true, chars: html.length};
+                }''', {"title": article["title"], "subtitle": article.get("subtitle", ""), "content": article["content"]})
+                if result and result.get("found"):
+                    content_done = True
+                    print(f"    ProseMirror content set: {result.get('chars')} chars")
+                else:
+                    print(f"    ⚠️ ProseMirror innerHTML failed: {result}")
             except Exception as e:
-                print(f"    ProseMirror fill error: {e}")
-            
-            # 方法2（备）：用 JS 直接设置 ProseMirror 内容
-            if not title_done:
+                print(f"    ProseMirror innerHTML error: {e}")
+
+            # 备用 — keyboard.type 输入
+            if not content_done:
                 try:
-                    result = page.evaluate('''(data) => {
-                        const editor = document.querySelector('.ProseMirror[contenteditable="true"]');
-                        if (!editor) return {found: false};
-                        // 构建 HTML：标题用 h1，正文用 p
-                        let html = '<h1>' + data.title + '</h1>';
-                        if (data.subtitle) html += '<h3>' + data.subtitle + '</h3>';
-                        const paras = data.content.split('\\n');
-                        for (const p of paras) {
-                            if (p.trim()) html += '<p>' + p + '</p>';
-                        }
-                        editor.innerHTML = html;
-                        editor.dispatchEvent(new Event('input', {bubbles: true}));
-                        return {found: true, chars: html.length};
-                    }''', {"title": article["title"], "subtitle": article.get("subtitle", ""), "content": article["content"]})
-                    if result and result.get("found"):
-                        title_done = True
-                        print(f"    Title+content set via JS innerHTML: {result}")
+                    editor_el = page.locator('.ProseMirror[contenteditable="true"]').first
+                    if editor_el.is_visible(timeout=5000):
+                        editor_el.click()
+                        time.sleep(0.5)
+                        paragraphs = article["content"].split("\n")
+                        for i, para in enumerate(paragraphs):
+                            if para.strip():
+                                if i > 0:
+                                    page.keyboard.press("Enter")
+                                    time.sleep(0.05)
+                                try:
+                                    page.evaluate(f'navigator.clipboard.writeText({json.dumps(para)})')
+                                    page.keyboard.press("Control+v")
+                                except Exception:
+                                    page.keyboard.type(para[:500], delay=2)
+                        content_done = True
+                        print(f"    Content typed in ProseMirror (keyboard)")
                 except Exception as e:
-                    print(f"    JS innerHTML error: {e}")
+                    print(f"    ProseMirror keyboard fill error: {e}")
 
-            if not title_done:
-                print("    ⚠️ WARNING: All content fill methods failed!")
+            if not content_done:
+                print("    ⚠️ WARNING: ProseMirror content fill failed!")
+            
+            # 等内容自动保存
+            print("    Waiting for content auto-save...")
+            time.sleep(5)
+            
+            # === Step 6b: 用 API PUT 设置 draft_title（服务端持久化）===
+            # ★ 这是成功发布版本的关键第一步
+            if post_id:
+                try:
+                    api_result = page.evaluate('''async (params) => {
+                        try {
+                            const resp = await fetch(`/api/v1/drafts/${params.postId}`, {
+                                method: 'PUT',
+                                headers: {'Content-Type': 'application/json'},
+                                body: JSON.stringify({
+                                    draft_title: params.title,
+                                    draft_subtitle: params.subtitle || ''
+                                })
+                            });
+                            const status = resp.status;
+                            const data = await resp.json();
+                            return {status: status, draft_title: data.draft_title || ''};
+                        } catch(e) {
+                            return {error: e.message};
+                        }
+                    }''', {"postId": post_id, "title": article["title"], "subtitle": article.get("subtitle", "")})
+                    print(f"    API title set: {api_result}")
+                except Exception as e:
+                    print(f"    API title set error: {e}")
+            
+            # === Step 6c: ★ page.reload() 让 React state 从 API 数据重建 ===
+            # ★★★ 这是成功版本的关键差异！★★★
+            # 没有这一步，React 的内部 state 和 DOM 值不一致，
+            # publish API 读的是 React state 而非 DOM，导致标题丢失
+            print("    ★ Reloading editor to sync React state from API...")
+            try:
+                page.reload(timeout=30000)
+                time.sleep(5)  # 等页面完全加载
+                
+                # 检查 sidebar input 是否从 API 加载了标题
+                sidebar_val = page.evaluate('''() => {
+                    const input = document.querySelector('input[placeholder*="title"], input[placeholder*="Title"]');
+                    return input ? input.value : 'NO_INPUT';
+                }''')
+                print(f"    Sidebar input after reload: '{str(sidebar_val)[:60]}'")
+                
+                if sidebar_val and article["title"][:20] in str(sidebar_val):
+                    print("    ✅ Title loaded from API after reload!")
+                else:
+                    # ★ reload 后 sidebar 仍为空，用 native setter + InputEvent 补设
+                    print("    ⚠️ Sidebar still empty after reload — trying native setter + InputEvent...")
+                    try:
+                        page.evaluate('''(titleText) => {
+                            const input = document.querySelector('input[placeholder*="title"], input[placeholder*="Title"]');
+                            if (!input) return;
+                            input.focus();
+                            const nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+                            nativeSetter.call(input, titleText);
+                            const inputEvent = new InputEvent('input', {
+                                bubbles: true, cancelable: true, composed: true,
+                                inputType: 'insertText', data: titleText
+                            });
+                            input.dispatchEvent(inputEvent);
+                            input.dispatchEvent(new Event('change', {bubbles: true}));
+                            input.blur();
+                        }''', article["title"])
+                        time.sleep(1)
+                        verify_val = page.evaluate('''() => {
+                            const input = document.querySelector('input[placeholder*="title"], input[placeholder*="Title"]');
+                            return input ? input.value : 'NO_INPUT';
+                        }''')
+                        print(f"    After native setter: '{str(verify_val)[:60]}'")
+                    except Exception as e:
+                        print(f"    Native setter fallback error: {e}")
+            except Exception as e:
+                print(f"    Page reload error: {e}")
+            
+            # === Step 6d: 最终验证标题状态 ===
+            if post_id:
+                try:
+                    final_check = page.evaluate('''async (postId) => {
+                        const resp = await fetch(`/api/v1/drafts/${postId}`);
+                        const data = await resp.json();
+                        return {draft_title: data.draft_title || '', is_published: data.is_published || false};
+                    }''', post_id)
+                    print(f"    Draft before publish: draft_title='{str(final_check.get('draft_title', ''))[:40]}', is_published={final_check.get('is_published')}")
+                except Exception as e:
+                    print(f"    Final check error: {e}")
 
-            # === Step 6: Publish (FIXED v7) ===
-            # Substack 2025+ 编辑器发布流程：
-            # 1. 填完标题+内容后，Continue 按钮变为可用
-            # 2. 点 Continue → 出现发布设置对话框
-            # 3. 点 "Send to everyone now" → 完成
-            time.sleep(3)  # 等待内容保存，Continue按钮启用
+            # === Step 7: Publish (v15 — API + reload ensures React state sync) ===
+            # ★ v15: page.reload() 已确保 React state 和 API 数据一致
+            # 不需要额外 blur sync，直接发布
+            
+            time.sleep(3)  # 短暂等待确保页面稳定
             published = False
 
-            # Step 6a: 点击 Continue/Publish 按钮
-            print("    [6a] Looking for Continue/Publish button...")
+            # Step 7a: 点击 Continue/Publish 按钮
+            print("    [7a] Looking for Continue/Publish button...")
             continue_btn_sels = [
                 'button:has-text("Continue")',                # 最可靠：实际测试可见
                 '[data-testid="publish-button"]',             # testid（注意不是 publish-button-wtooltip）
@@ -875,9 +950,9 @@ def post_to_substack(article):
                 print("    ⚠️ No Continue button found, screenshotting...")
                 page.screenshot(path=os.path.join(debug_dir, "substack_no_continue_btn.png"))
 
-            # Step 6b: 点击 "Send to everyone now" 完成发布
-            print("    [6b] Looking for Send/Publish button in dialog...")
-            time.sleep(5)  # Wait longer for dialog to fully render (was 2, too short for CI)
+            # Step 7b: 点击 "Send to everyone now" 完成发布
+            print("    [7b] Looking for Send/Publish button in dialog...")
+            time.sleep(8)  # ★ v14: 等更久让发布对话框完全渲染
 
             # Retry logic: dialog may take time to appear in headless CI
             send_sels = [
@@ -930,56 +1005,140 @@ def post_to_substack(article):
                     page.keyboard.press("Control+s")
                     time.sleep(2)
 
-            # === Step 7: Verify publish & get public URL ===
-            time.sleep(3)
+            # === Step 9: Post-publish title verification (v15) ===
+            # ★ v15: API + page.reload() 确保 React state 同步，标题应正确保留
+            time.sleep(5)
+            if published and post_id:
+                print("  [Substack] Post-publish title verification...")
+                try:
+                    recheck = page.evaluate('''async (params) => {
+                        const checkResp = await fetch(`/api/v1/drafts/${params.postId}`);
+                        const checkData = await checkResp.json();
+                        return {
+                            draft_title: checkData.draft_title || '',
+                            title: checkData.title || '',
+                            is_published: checkData.is_published || false,
+                            post_url: checkData.post_url || ''
+                        };
+                    }''', {"postId": post_id, "title": article["title"], "subtitle": article.get("subtitle", "")})
+                    print(f"    Post-publish API check: {recheck}")
+                    
+                    if recheck.get("is_published") and recheck.get("title"):
+                        print("    ✅ Article published with title!")
+                    elif recheck.get("is_published") and not recheck.get("title"):
+                        print("    ⚠️ Published but title is empty — may need API fix")
+                        # 尝试API PUT修复
+                        try:
+                            fix_result = page.evaluate('''async (params) => {
+                                const resp = await fetch(`/api/v1/drafts/${params.postId}`, {
+                                    method: 'PUT',
+                                    headers: {'Content-Type': 'application/json'},
+                                    body: JSON.stringify({
+                                        draft_title: params.title,
+                                        draft_subtitle: params.subtitle || ''
+                                    })
+                                });
+                                const data = await resp.json();
+                                return {status: resp.status, draft_title: data.draft_title || ''};
+                            }''', {"postId": post_id, "title": article["title"], "subtitle": article.get("subtitle", "")})
+                            print(f"    Post-publish API fix: {fix_result}")
+                        except Exception as e:
+                            print(f"    Post-publish API fix error: {e}")
+                    elif not recheck.get("is_published"):
+                        print("    ⚠️ Article not published — publish may have failed")
+                except Exception as e:
+                    print(f"    Post-publish check error: {e}")
+
+            # === Step 10: Verify publish by checking Published list ===
+            # ★ 关键修复：点击 "Send to everyone now" 不等于真的发布了！
+            # 必须去 Published 列表确认文章是否真的出现，否则是进草稿了
+            time.sleep(8)  # Wait for Substack to process (增加等待时间)
             final_url = page.url
             print(f"    Post-publish URL: {final_url}")
 
             if published:
-                # After clicking "Send to everyone now", Substack may:
-                # 1. Stay on the editor URL (but the post IS published)
-                # 2. Redirect to /share-center
-                # 3. Redirect to the public post URL
-                # The most reliable method: check the post list for the public URL
-
-                # Quick check: did we already redirect?
-                current_url = page.url
-                if "/p/" in current_url and "/publish/" not in current_url:
-                    final_url = current_url
-                    print(f"    Published! Public URL: {final_url}")
-                else:
-                    # Navigate to the post list to find the public URL
-                    print("  [Substack] Checking post list for public URL...")
-                    try:
-                        page.goto(f"{PUB_URL}/publish/posts", timeout=15000)
-                        time.sleep(3)
-                        
-                        # The first post in the list should be our newly published one
-                        # Use page.evaluate with a named function to avoid any string escaping issues
-                        public_url = page.evaluate("""() => {
+                # Verify by checking the Published posts list
+                print("  [Substack] Verifying publish status in Published list...")
+                try:
+                    page.goto(f"{PUB_URL}/publish/posts/published", timeout=15000)
+                    time.sleep(6)  # 等列表加载完成
+                    
+                    # 用更宽松的匹配：取标题前3个词做关键词
+                    title_words = article["title"].split()[:3]
+                    title_prefix = " ".join(title_words)
+                    
+                    page_text = page.evaluate('''() => document.body.innerText''')
+                    
+                    # 多种匹配策略：完整前30字符 / 前3词 / 前15字符
+                    matched = False
+                    for check_str in [article["title"][:30], title_prefix, article["title"][:15]]:
+                        if check_str and check_str in page_text:
+                            matched = True
+                            break
+                    
+                    if matched:
+                        print(f"    ✅ VERIFIED: Article '{article['title'][:40]}' is in Published list!")
+                        # Try to get public URL
+                        public_url = page.evaluate('''(titlePrefix) => {
                             var links = document.querySelectorAll('a');
                             for (var i = 0; i < links.length; i++) {
                                 var href = links[i].getAttribute('href') || '';
                                 if (href.indexOf('/p/') !== -1 && href.indexOf('/publish/') === -1) {
-                                    return href;
+                                    var text = links[i].textContent.trim();
+                                    if (text.indexOf(titlePrefix) !== -1) return href;
                                 }
                             }
-                            return null;
-                        }""")
-                        
+                            return '';
+                        }''', title_words[0] if title_words else article["title"][:10])
                         if public_url:
                             final_url = public_url if public_url.startswith("http") else f"https://{PUBLICATION_SLUG}.substack.com{public_url}"
-                            print(f"    ✅ Post published! Public URL: {final_url}")
+                            print(f"    Public URL: {final_url}")
                         else:
-                            # Check if the post is in "Published" state
-                            is_published = page.locator('text="Published"').count() > 0
-                            if is_published:
-                                print("    ✅ Post IS published (couldn't extract public URL)")
+                            print("    ✅ Published (couldn't extract public URL)")
+                    else:
+                        # Article NOT in published list — check if still processing
+                        print(f"    ⚠️ Not found in Published list yet, checking for 'Untitled' entries...")
+                        # 可能刚发布还在索引中，等更久重试一次
+                        time.sleep(10)
+                        page.reload(timeout=15000)
+                        time.sleep(6)
+                        page_text2 = page.evaluate('''() => document.body.innerText''')
+                        
+                        matched2 = False
+                        for check_str in [article["title"][:30], title_prefix, article["title"][:15]]:
+                            if check_str and check_str in page_text2:
+                                matched2 = True
+                                break
+                        
+                        if matched2:
+                            print(f"    ✅ VERIFIED (2nd try): Article is in Published list!")
+                        else:
+                            # 最终检查：是否文章名变成了 Untitled
+                            if "Untitled" in page_text2:
+                                print(f"    ⚠️ Found 'Untitled' entries — sidebar title may not have saved!")
+                            print(f"    ⚠️ VERIFICATION FAILED: '{article['title'][:40]}' NOT in Published list!")
+                            # 检查是否实际已通过post URL发布成功
+                            published = False
+                            # Check drafts
+                            page.goto(f"{PUB_URL}/publish/posts/drafts", timeout=15000)
+                            time.sleep(4)
+                            draft_text = page.evaluate('''() => document.body.innerText''')
+                            for check_str in [article["title"][:20], title_prefix, article["title"][:15]]:
+                                if check_str and check_str in draft_text:
+                                    print(f"    ⚠️ CONFIRMED: Article is in DRAFTS — publish failed")
+                                    break
                             else:
-                                print("    ⚠️ Post may be a draft")
-                                published = False
-                    except Exception as e:
-                        print(f"    Could not verify publish status: {e}")
+                                print("    ⚠️ Article not found in drafts either (may still be processing)")
+                except Exception as e:
+                    print(f"    Verification error: {e}")
+            else:
+                # Not published — at least check drafts
+                try:
+                    page.goto(f"{PUB_URL}/publish/posts/drafts", timeout=15000)
+                    time.sleep(3)
+                    print("    ⚠️ Article saved as draft (publish button not found)")
+                except Exception:
+                    pass
 
             print(f"    Final URL: {final_url}")
             log_article("substack", article["title"], "published" if published else "draft_only", final_url)
@@ -1056,7 +1215,7 @@ def main():
                 user_data_dir,
                 headless=IS_CI,
                 slow_mo=100 if not IS_CI else 50,
-                viewport={"width": 1280, "height": 900},
+                viewport={"width": 2560, "height": 1440},
                 user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
             )
             page = context.new_page()

@@ -1,11 +1,19 @@
 {
   "replied_to": [
     "at://did:plc:xirj23jl4zamwlqxmqxhfra7/app.bsky.feed.post/3ml7s4u3ioc2p",
-    "at://did:plc:6vcjgkhkrzdthdgssrlf3mdm/app.bsky.feed.post/3ml7ragxegk22"
+    "at://did:plc:6vcjgkhkrzdthdgssrlf3mdm/app.bsky.feed.post/3ml7ragxegk22",
+    "at://did:plc:nlsfcgybvcmtu2trv47dzy76/app.bsky.feed.post/3mlbauiz2mc2h",
+    "at://did:plc:w7fdhsws3nohbisnhzppxsu5/app.bsky.feed.post/3mlbp2jg2k22f",
+    "at://did:plc:w7fdhsws3nohbisnhzppxsu5/app.bsky.feed.post/3mlbia2my7q2s",
+    "at://did:plc:djsgemplvbdsbhvxuf46qbbf/app.bsky.feed.post/3mlbb2ug4mw2s",
+    "at://did:plc:553eofo6hvuxcsxo7qfidxjs/app.bsky.feed.post/3mldez65f6w2h",
+    "at://did:plc:xz62jrpjzuxe6qmohhkfhfep/app.bsky.feed.post/3mlc4jldfpw25",
+    "at://did:plc:eftfshpe5zgrxxjrfulquuhs/app.bsky.feed.post/3mldhfu44vc22",
+    "at://did:plc:4aeinxjwao74le6dktiiyxg4/app.bsky.feed.post/3mldlwafy372v"
   ],
-  "daily_count": 2,
-  "last_reset": "2026-05-07",
-  "total_engagements": 2,
+  "daily_count": 8,
+  "last_reset": "2026-05-08",
+  "total_engagements": 10,
   "engagements": [
     {
       "date": "2026-05-07T07:52:31.681718+00:00",
@@ -14,7 +22,12 @@
       "my_reply_uri": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mlaqbz4yv42s",
       "post_preview": "🇺🇸 Stocks hit fresh record highs as oil plunges on Iran diplomacy hopes #SP500 #StockMarket\n🪙 Bitcoi",
       "reply_preview": "Iran diplomacy hopes are sending oil prices plummeting, but let's not forget the broader picture. Th",
-      "heat_score": 4
+      "heat_score": 4,
+      "checked_likes": 1,
+      "checked_reposts": 0,
+      "checked_replies": 0,
+      "last_checked": "2026-05-08T10:47:49.181457+00:00",
+      "result": "noticed"
     },
     {
       "date": "2026-05-07T07:54:05.212220+00:00",
@@ -23,7 +36,84 @@
       "my_reply_uri": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mlaqes5veo2c",
       "post_preview": "Trading #trading #forex #bitcoin #investing #trader #money #stockmarket #crypto #cryptocurrency #inv",
       "reply_preview": "Your post highlights the diversity of trading strategies, from technical analysis to fundamental ana",
-      "heat_score": 3
+      "heat_score": 3,
+      "checked_likes": 1,
+      "checked_reposts": 0,
+      "checked_replies": 0,
+      "last_checked": "2026-05-08T10:47:50.496372+00:00",
+      "result": "noticed"
+    },
+    {
+      "date": "2026-05-08T10:48:15.283624+00:00",
+      "post_uri": "at://did:plc:nlsfcgybvcmtu2trv47dzy76/app.bsky.feed.post/3mlbauiz2mc2h",
+      "author": "stevefaulkner.eurosky.social",
+      "my_reply_uri": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mldkl5jzwq2u",
+      "post_preview": "Screen Reader HTML Support – Lookup \nupdated 7th May 2026\n\n﻿#JAWS #TalkBack #VoiceOver #NVDA #Narrat",
+      "reply_preview": "HTML support for screen readers is crucial, but @stevefaulkner overlooks the fact that accessibility",
+      "heat_score": 22
+    },
+    {
+      "date": "2026-05-08T10:49:26.093667+00:00",
+      "post_uri": "at://did:plc:w7fdhsws3nohbisnhzppxsu5/app.bsky.feed.post/3mlbp2jg2k22f",
+      "author": "beingexponential.bsky.social",
+      "my_reply_uri": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mldknb33vn2s",
+      "post_preview": "New Being Exponential pod\n\n- #SPY earnings growth 27.1% on AI demand\n- #NVDA #MU #GOOGL #AMZN drivin",
+      "reply_preview": "AI driving non-recession boom is the real story, but who's factoring in the 80%+ rise in #NVDA's lab",
+      "heat_score": 4
+    },
+    {
+      "date": "2026-05-08T10:50:53.153360+00:00",
+      "post_uri": "at://did:plc:w7fdhsws3nohbisnhzppxsu5/app.bsky.feed.post/3mlbia2my7q2s",
+      "author": "beingexponential.bsky.social",
+      "my_reply_uri": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mldkpu3nnb2c",
+      "post_preview": "Since July 30th...\n\n#NVDA is up 16%\n\n#PSI, a semiconductor ETF with reduced Nvidia exposure, is up 1",
+      "reply_preview": "Semiconductor ETFs with reduced Nvidia exposure are indeed getting crushed. Look at #SMH, down 12%. ",
+      "heat_score": 2
+    },
+    {
+      "date": "2026-05-08T10:51:48.153978+00:00",
+      "post_uri": "at://did:plc:djsgemplvbdsbhvxuf46qbbf/app.bsky.feed.post/3mlbb2ug4mw2s",
+      "author": "inteliview.bsky.social",
+      "my_reply_uri": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mldkrijdc62s",
+      "post_preview": "SanDisk just beat Qualcomm's 1999 run by over 1,300 points.\nBurry thinks the math on $650B in AI spe",
+      "reply_preview": "Your chart's a great illustration of AI hype, but Burry's math doesn't tell the whole story. 22% of ",
+      "heat_score": 2
+    },
+    {
+      "date": "2026-05-08T11:29:10.747251+00:00",
+      "post_uri": "at://did:plc:553eofo6hvuxcsxo7qfidxjs/app.bsky.feed.post/3mldez65f6w2h",
+      "author": "rwatimes.bsky.social",
+      "my_reply_uri": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mldmud4dhj2q",
+      "post_preview": "Kraken Hits a Milestone: TradFi Futures Arrive in Europe\nMay 07 2026 17:05 UTC\nKraken deploys its Tr",
+      "reply_preview": "Kraken just dropped TradFi Futures in Europe, but everyone's missing the bigger picture. Low vol reg",
+      "heat_score": 6
+    },
+    {
+      "date": "2026-05-08T11:31:10.978471+00:00",
+      "post_uri": "at://did:plc:xz62jrpjzuxe6qmohhkfhfep/app.bsky.feed.post/3mlc4jldfpw25",
+      "author": "yancyfx.bsky.social",
+      "my_reply_uri": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mldmxvr5op2l",
+      "post_preview": "If you are not criticized - Donald H Rumsfeld\n\n\n#YancyFX #YFX #forex #fx #foreignexchange #forexmark",
+      "reply_preview": "Every \"combine both approaches\" take misses the point. When the VIX is this high, I'm not looking at",
+      "heat_score": 2
+    },
+    {
+      "date": "2026-05-08T11:31:45.142639+00:00",
+      "post_uri": "at://did:plc:eftfshpe5zgrxxjrfulquuhs/app.bsky.feed.post/3mldhfu44vc22",
+      "author": "forexprwire.bsky.social",
+      "my_reply_uri": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mldmywdpyh2l",
+      "post_preview": "$EUR / $USD has recovered strongly from the 1.1680 area and is now pushing back toward 1.1770.\n\nHigh",
+      "reply_preview": "EUR/USD at 1.1735, but daily RSI's still 55 - don't get too excited. Fundamentals haven't changed; t",
+      "heat_score": 1
+    },
+    {
+      "date": "2026-05-08T11:32:23.217919+00:00",
+      "post_uri": "at://did:plc:4aeinxjwao74le6dktiiyxg4/app.bsky.feed.post/3mldlwafy372v",
+      "author": "marketwire.bsky.social",
+      "my_reply_uri": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mldn22nian2x",
+      "post_preview": "💵 #Forex\n\n\"Japanese authorities likely refrained from intervening in the currency market on Thursday",
+      "reply_preview": "Vol died on that 28 RSI but I saw no climax selling. If they're not willing to price in 8% growth, i",
+      "heat_score": 0
     }
   ]
 }
