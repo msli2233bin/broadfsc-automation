@@ -224,7 +224,6 @@ def post_bluesky_with_image(text, image_path, alt_text=""):
     # Create post with embedded image
     # NOTE: Bluesky client shows "ALT" badge on images with alt text.
     # Using empty alt to avoid the badge; the chart itself is self-explanatory.
-    alt_val = alt_text.strip() if alt_text and alt_text.strip() else ""
     record = {
         "$type": "app.bsky.feed.post",
         "text": text,
