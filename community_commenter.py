@@ -45,7 +45,7 @@ ENGAGERS = {
 
 
 def pick_platforms():
-    """随机选1-2个平台"""
+    """随机选1-2个平台（不重复）"""
     enabled = [p for p, cfg in ENGAGERS.items() if cfg["enabled"]]
     if not enabled:
         return []
@@ -53,7 +53,14 @@ def pick_platforms():
     # 75%概率选1个，25%选2个
     n = random.choices([1, 2], weights=[3, 1])[0]
     n = min(n, len(enabled))
-    return random.choices(enabled, weights=weights, k=n)
+    if n == 1:
+        return random.choices(enabled, weights=weights, k=1)
+    # n==2: 不重复抽样
+    import itertools
+    # 按权重排序后取前2（简化实现）
+    sorted_platforms = sorted(zip(enabled, weights), key=lambda x: x[1], reverse=True)
+    candidates = [p for p, w in sorted_platforms]
+    return candidates[:2]
 
 
 def run_engager(platform, dry_run=False):
@@ -77,14 +84,16 @@ def run_engager(platform, dry_run=False):
         text=True,
         timeout=180,
         cwd=str(script.parent),
+        encoding='utf-8',
+        errors='replace',
     )
     # 打印最后几行输出
-    out = result.stdout.strip()
+    out = result.stdout.strip() if result.stdout else ""
     if out:
         for line in out.splitlines()[-8:]:
             print(f"    {line}")
     if result.stderr:
-        err = result.stderr.strip()
+        err = result.stderr.strip() if result.stderr else ""
         for line in err.splitlines()[-4:]:
             print(f"    [ERR] {line}")
     return result.returncode == 0

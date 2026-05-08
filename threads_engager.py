@@ -1,16 +1,18 @@
 """
-Threads 社区评论机器人
+Threads 社区评论机器人（v2）
 ==================
-搜索投资相关hashtag，AI生成有见地的评论并回复。
+策略：监控对本账号的提及+回复，进行互动。
 
-API 限制：250 posts/day, 1000 replies/day
-认证：OAuth 2.0 Bearer Token
+Threads API 限制：
+- 不支持 hashtag 搜索
+- 支持：获取 mentions、获取自己帖子的回复、发布回复
+- API: https://graph.threads.net/v1.0
 
 运行：
-    python threads_engager.py              # 默认：搜索+回复最多5条
-    python threads_engager.py --dry-run    # 只搜索不回复
+    python threads_engager.py              # 默认：处理mentions+回复，最多回复5条
+    python threads_engager.py --dry-run    # 只查看不回复
     python threads_engager.py --limit 3    # 最多回复3条
-    python threads_engager.py --check      # 查看已回复效果
+    python threads_engager.py --check      # 查看已回复
 """
 import os
 import sys
@@ -19,7 +21,6 @@ import time
 import random
 import re
 import logging
-from datetime import datetime, timezone
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -38,51 +39,28 @@ THREADS_USER_ID = os.environ.get("THREADS_USER_ID", "")
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 
 API_BASE = "https://graph.threads.net/v1.0"
-
-# 状态文件
 STATE_FILE = Path(__file__).parent / ".bot_memory" / "threads_engagements.json"
 
-# 搜索hashtag池（Threads用hashtag搜索）
-SEARCH_HASHTAGS = [
-    "investing", "stocks", "stockmarket", "trading", "technicalanalysis",
-    "Nvidia", "Apple", "Tesla", "Bitcoin", "ETF", "forex", "goldprice",
-    "marketNews", "earnings", "SP500", "nasdaq", "fedrate", "recession",
-]
-
-# 每日回复上限
 DAILY_LIMIT = 5
 
-# 跳过模式（广告/垃圾）
 SKIP_PATTERNS = [
-    r"buy now|sell now|pump|to the moon|moon shot",
-    r"click here|sign up|follow me|subscribe|dm me",
-    r"giveaway|free money|airdrop|promo code",
-    r"prop firm|funded trader|instant funding",
+    r"buy now|sell now|pump|to the moon",
+    r"click here|sign up|follow me|dm me",
+    r"giveaway|free money|airdrop",
 ]
 
 FINANCE_KEYWORDS = [
-    "stock", "invest", "trad", "portfolio", "market", "etf", "bond",
-    "dividend", "earning", "revenue", "valuation", "bull", "bear",
-    "sector", "index", "fed", "rate", "inflation", "gdp", "recession",
-    "option", "future", "forex", "crypto", "bitcoin", "commodity",
-    "rsi", "macd", "support", "resistance", "breakout", "volume",
-    "$aapl", "$tsla", "$nvda", "$msft", "$amzn", "$googl", "$meta",
+    "stock", "invest", "trad", "portfolio", "market", "etf",
+    "rsi", "macd", "support", "resistance", "breakout",
+    "$aapl", "$tsla", "$nvda", "$msft",
+    "earnings", "fed", "inflation", "recession",
 ]
 
-# ============================================================
-# Groq 客户端
-# ============================================================
-def get_groq():
-    if not GROQ_API_KEY:
-        return None
-    return Groq(api_key=GROQ_API_KEY)
-
 
 # ============================================================
-# Threads API 封装
+# API 封装
 # ============================================================
 def threads_get(endpoint, params=None):
-    """GET 请求 Threads API"""
     if params is None:
         params = {}
     params["access_token"] = THREADS_ACCESS_TOKEN
@@ -97,7 +75,6 @@ def threads_get(endpoint, params=None):
 
 
 def threads_post(endpoint, data=None, params=None):
-    """POST 请求 Threads API"""
     if params is None:
         params = {}
     params["access_token"] = THREADS_ACCESS_TOKEN
@@ -111,33 +88,36 @@ def threads_post(endpoint, data=None, params=None):
         return None
 
 
-def get_hashtag_id(hashtag):
-    """获取hashtag的ID（用于搜索）"""
-    result = threads_get(f"tags/{hashtag}")
-    if result and "id" in result:
-        return result["id"]
-    return None
-
-
-def search_hashtag_posts(hashtag, limit=25):
-    """搜索hashtag下的帖子"""
-    hid = get_hashtag_id(hashtag)
-    if not hid:
-        logger.warning(f"Hashtag '{hashtag}' not found")
-        return []
-    result = threads_get(f"tags/{hid}/recent_media", {
-        "fields": "id,caption,media_type,timestamp,permalink,username,comments_count,like_count",
+def get_mentions(limit=25):
+    """获取提及本账号的帖子"""
+    result = threads_get(f"{THREADS_USER_ID}/mentions", {
+        "fields": "id,caption,username,timestamp,permalink,like_count,replies_count",
         "limit": limit,
     })
-    if result and "data" in result:
-        return result["data"]
-    return []
+    return result.get("data", []) if result else []
+
+
+def get_my_threads(limit=25):
+    """获取我发的帖子（用于检查有哪些回复）"""
+    result = threads_get(f"{THREADS_USER_ID}/threads", {
+        "fields": "id,caption,username,timestamp,permalink,like_count,replies_count",
+        "limit": limit,
+    })
+    return result.get("data", []) if result else []
+
+
+def get_thread_replies(thread_id):
+    """获取某条帖子下的回复"""
+    result = threads_get(f"{thread_id}/replies", {
+        "fields": "id,caption,username,timestamp,like_count",
+        "limit": 50,
+    })
+    return result.get("data", []) if result else []
 
 
 def reply_to_post(media_id, text):
     """回复一条Threads帖子"""
-    result = threads_post(f"{media_id}/replies", {"text": text})
-    return result
+    return threads_post(f"{media_id}/replies", {"text": text})
 
 
 # ============================================================
@@ -158,6 +138,7 @@ def save_state(state):
 
 
 def reset_daily_count(state):
+    from datetime import datetime, timezone
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     if state.get("last_reset") != today:
         state["daily_count"] = 0
@@ -168,70 +149,41 @@ def reset_daily_count(state):
 # ============================================================
 # 内容筛选
 # ============================================================
-def should_engage(post, state):
-    """判断是否值得回复"""
-    media_id = post.get("id", "")
-    caption = post.get("caption", "") or ""
-    username = post.get("username", "")
+def should_engage(post_or_reply, state):
+    item_id = post_or_reply.get("id", "")
+    caption = post_or_reply.get("caption", "") or ""
+    username = post_or_reply.get("username", "")
 
-    # 已回复过
-    if media_id in state["replied_to"]:
+    if item_id in state["replied_to"]:
         return False, "already_replied"
-
-    # 内容太短
-    if len(caption) < 60:
+    if len(caption) < 30:
         return False, "too_short"
-
-    # 跳过广告
     text_lower = caption.lower()
     for pattern in SKIP_PATTERNS:
         if re.search(pattern, text_lower):
-            return False, "spam_pattern"
-
-    # 必须投资相关
+            return False, "spam"
     has_finance = any(kw in text_lower for kw in FINANCE_KEYWORDS)
     if not has_finance:
-        return False, "not_finance_related"
-
+        return False, "not_finance"
     return True, "ok"
-
-
-def classify_post(caption):
-    """分类帖子类型"""
-    text_lower = caption.lower()
-    if "?" in caption or any(w in text_lower for w in ["how", "what", "why", "should i", "do you think"]):
-        return "question"
-    if any(w in text_lower for w in ["rsi", "macd", "support", "resistance", "earnings", "revenue"]):
-        return "analysis"
-    return "discussion"
 
 
 # ============================================================
 # AI 生成评论
 # ============================================================
-def generate_comment(post_caption, post_type, groq_client):
-    """用AI生成有见地的评论"""
+def generate_comment(post_caption, groq_client):
     if not groq_client:
-        # 后备模板
-        templates = {
-            "question": "Great question. The key is to look at the technical indicators alongside fundamentals. RSI divergence often signals a reversal before price action confirms it.",
-            "analysis": "Solid analysis. One thing to add: volume confirmation is critical when evaluating breakout setups. Without it, false breakouts are common.",
-            "discussion": "Interesting perspective. The interplay between macro factors and technical levels is what makes this market particularly nuanced right now.",
-        }
-        return templates.get(post_type, templates["discussion"])[:300]
+        return "Interesting point. The technical setup here suggests watching the key support level closely. Volume confirmation will be critical."
 
-    prompt = f"""You are a seasoned financial analyst commenting on a social media post.
+    prompt = f"""You are a seasoned financial analyst replying to a social media comment.
 
 RULES:
-- Write a thoughtful, concise reply (150-280 chars, keep it short)
-- Add 1 specific insight (RSI, MACD, support/resistance, earnings, sector trend)
-- Do NOT use emojis
-- Do NOT introduce yourself or pitch anything
-- Sound like a real person, not an AI
-- Do not use "Great post" or "Thanks for sharing"
+- Write a thoughtful reply (150-280 chars)
+- Add 1 specific technical or fundamental insight
+- No emojis, no self-introduction, no pitching
+- Sound like a real person
 
-Post type: {post_type}
-Post content: {post_caption[:300]}
+Original comment: {post_caption[:300]}
 
 Your reply:"""
 
@@ -243,7 +195,6 @@ Your reply:"""
             temperature=0.8,
         )
         comment = resp.choices[0].message.content.strip()
-        # 清理引号和多余内容
         comment = re.sub(r'^["\']+|["\']+$', '', comment)
         return comment[:500]
     except Exception as e:
@@ -255,7 +206,6 @@ Your reply:"""
 # 主逻辑
 # ============================================================
 def run_engager(dry_run=False, limit=None):
-    """主函数：搜索并回复"""
     if not THREADS_ACCESS_TOKEN:
         logger.error("THREADS_ACCESS_TOKEN not set!")
         return
@@ -263,69 +213,69 @@ def run_engager(dry_run=False, limit=None):
     state = load_state()
     state = reset_daily_count(state)
 
-    groq_client = get_groq()
-    if not groq_client:
-        logger.warning("Groq not available, using templates")
+    groq_client = Groq(api_key=GROQ_API_KEY) if GROQ_API_KEY else None
 
-    # 选随机hashtag
-    hashtags = random.sample(SEARCH_HASHTAGS, min(5, len(SEARCH_HASHTAGS)))
-    logger.info(f"Searching hashtags: {hashtags}")
-
+    # 收集候选：mentions + 自己帖子的回复
     candidates = []
-    for tag in hashtags:
-        posts = search_hashtag_posts(tag, limit=20)
-        logger.info(f"  #{tag}: {len(posts)} posts")
-        for post in posts:
-            ok, reason = should_engage(post, state)
+
+    # 1. 提及
+    mentions = get_mentions(limit=20)
+    logger.info(f"Found {len(mentions)} mentions")
+    for m in mentions:
+        ok, reason = should_engage(m, state)
+        if ok:
+            m["_source"] = "mention"
+            candidates.append(m)
+
+    # 2. 自己帖子的回复
+    my_threads = get_my_threads(limit=10)
+    for thread in my_threads:
+        replies = get_thread_replies(thread["id"])
+        logger.info(f"Thread {thread['id'][:8]}: {len(replies)} replies")
+        for r in replies:
+            ok, reason = should_engage(r, state)
             if ok:
-                post["_tag"] = tag
-                post["_type"] = classify_post(post.get("caption", ""))
-                candidates.append(post)
-        if len(candidates) >= (limit or DAILY_LIMIT) * 3:
-            break
+                r["_source"] = "reply_to_my_post"
+                candidates.append(r)
+        time.sleep(1)
 
     if not candidates:
-        logger.info("No suitable posts found to engage with.")
+        logger.info("No suitable items to engage with.")
         return
 
-    # 按热度排序
-    candidates.sort(key=lambda p: (p.get("like_count", 0) + p.get("comments_count", 0) * 3), reverse=True)
     to_reply = candidates[:limit or DAILY_LIMIT]
+    logger.info(f"Replying to {len(to_reply)} items...")
 
-    logger.info(f"Found {len(candidates)} candidates, replying to {len(to_reply)}")
-
-    for post in to_reply:
+    for item in to_reply:
         if state["daily_count"] >= DAILY_LIMIT:
-            logger.info("Daily limit reached.")
             break
         if dry_run:
-            print(f"[DRY-RUN] Would reply to @{post.get('username')}: {post.get('caption', '')[:80]}...")
+            print(f"[DRY-RUN] Would reply to {item.get('username')}: {item.get('caption','')[:60]}...")
             continue
 
-        comment = generate_comment(post.get("caption", ""), post.get("_type", "discussion"), groq_client)
+        comment = generate_comment(item.get("caption", ""), groq_client)
         if not comment:
             continue
 
-        result = reply_to_post(post["id"], comment)
+        result = reply_to_post(item["id"], comment)
         if result and "id" in result:
-            logger.info(f"✓ Replied to @{post.get('username')} | {post.get('_type')} | {comment[:60]}...")
-            state["replied_to"].append(post["id"])
+            logger.info(f"✓ Replied to {item.get('username')} via {item.get('_source')}")
+            state["replied_to"].append(item["id"])
             state["daily_count"] += 1
             state["total_engagements"] = state.get("total_engagements", 0) + 1
             save_state(state)
-            time.sleep(random.uniform(30, 90))  # 随机延迟
+            time.sleep(random.uniform(30, 90))
         else:
             logger.error(f"Failed to reply: {result}")
 
-    logger.info(f"Done. Daily count: {state['daily_count']}/{DAILY_LIMIT}")
+    logger.info(f"Done. Daily: {state['daily_count']}/{DAILY_LIMIT}")
 
 
-def check_effectiveness():
-    """查看已回复帖子的效果"""
+def check_status():
     state = load_state()
     print(f"Total engagements: {state.get('total_engagements', 0)}")
     print(f"Today's count: {state.get('daily_count', 0)}")
-    print(f"Replied to {len(state.get('replied_to', []))} posts")
+    print(f"Replied to {len(state.get('replied_to', []))} items total")
 
 
 # ============================================================
@@ -333,13 +283,13 @@ def check_effectiveness():
 # ============================================================
 if __name__ == "__main__":
     import argparse
-    parser = argparse.ArgumentParser(description="Threads Community Engager")
-    parser.add_argument("--dry-run", action="store_true", help="Search only, don't reply")
-    parser.add_argument("--limit", type=int, default=None, help="Max replies this run")
-    parser.add_argument("--check", action="store_true", help="Check effectiveness")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--limit", type=int, default=None)
+    parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
 
     if args.check:
-        check_effectiveness()
+        check_status()
     else:
         run_engager(dry_run=args.dry_run, limit=args.limit)
