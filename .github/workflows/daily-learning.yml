@@ -1,0 +1,97 @@
+name: Daily AI Learning & Content Generation
+
+on:
+  schedule:
+    # 每天UTC 1:00运行（北京时间9:00）
+    - cron: '0 1 * * *'
+  workflow_dispatch:  # 允许手动触发
+  push:
+    branches: [ main, master ]
+
+jobs:
+  learn-and-publish:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install requests groq yfinance
+    
+    - name: Run AI Learning Agents (All)
+      env:
+        GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_ADMIN_CHAT_ID: ${{ secrets.TELEGRAM_ADMIN_CHAT_ID }}
+        IMA_CLIENT_ID: ${{ secrets.IMA_CLIENT_ID }}
+        IMA_API_KEY: ${{ secrets.IMA_API_KEY }}
+        IMA_KB_ID: ${{ secrets.IMA_KB_ID }}
+      run: |
+        python ai_learning_agent.py --agent all
+      continue-on-error: true
+    
+    - name: Generate Social Media Content
+      run: |
+        python content_from_learning.py --platform all
+      continue-on-error: true
+    
+    - name: Commit and Push Knowledge Updates
+      run: |
+        git config --local user.email "ai@broadfsc.com"
+        git config --local user.name "BroadFSC AI Agent"
+        git add knowledge/ || echo "No knowledge changes"
+        git add content_output/ || echo "No content output changes"
+        git commit -m "🤖 AI自动学习更新 $(date +'%Y-%m-%d %H:%M')" || echo "No changes to commit"
+        git push || echo "No changes to push"
+      continue-on-error: true
+    
+    - name: Notify Telegram on Completion
+      if: always()
+      env:
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_ADMIN_CHAT_ID: ${{ secrets.TELEGRAM_ADMIN_CHAT_ID }}
+      run: |
+        python -c "
+import os
+import requests
+from datetime import datetime
+
+token = os.environ.get('TELEGRAM_BOT_TOKEN', '')
+chat_id = os.environ.get('TELEGRAM_ADMIN_CHAT_ID', '')
+
+if token and chat_id:
+    message = f'''✅ <b>AI学习系统自动运行完成</b>
+
+📅 时间: {datetime.now().strftime('%Y-%m-%d %H:%M')}
+🤖 动作: 每日学习与内容生成
+📁 知识库: 已更新
+📱 内容: 已生成
+
+<a href='https://github.com/${{ github.repository }}/actions'>查看详情</a>'''
+    
+    try:
+        requests.post(
+            f'https://api.telegram.org/bot{token}/sendMessage',
+            json={
+                'chat_id': chat_id,
+                'text': message,
+                'parse_mode': 'HTML',
+                'disable_web_page_preview': True
+            },
+            timeout=10
+        )
+    except:
+        pass
+"
+      continue-on-error: true

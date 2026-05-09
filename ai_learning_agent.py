@@ -68,6 +68,32 @@ LEARNING_SOURCES = {
             'url': 'https://www.investopedia.com/stocks-4427785',
             'topic': 'stock_basics'
         },
+        # 🆕 财报分析专用学习源
+        {
+            'name': 'SEC EDGAR - Public Company Filings',
+            'url': 'https://www.sec.gov/cgi-bin/browse-edgar',
+            'topic': 'sec_filings'
+        },
+        {
+            'name': 'Seeking Alpha - Earnings Analysis',
+            'url': 'https://seekingalpha.com/earnings/earnings-calendar',
+            'topic': 'earnings_analysis'
+        },
+        {
+            'name': 'Motley Fool - Stock Analysis',
+            'url': 'https://www.fool.com/investing/stock-market/types-of-stocks/',
+            'topic': 'stock_analysis'
+        },
+        {
+            'name': 'Bloomberg - Market Data',
+            'url': 'https://www.bloomberg.com/markets/stocks',
+            'topic': 'market_data'
+        },
+        {
+            'name': 'Yahoo Finance - Company Financials',
+            'url': 'https://finance.yahoo.com/',
+            'topic': 'company_financials'
+        },
     ],
     'sales': [
         {
