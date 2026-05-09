@@ -703,5 +703,109 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1502352790616277173"
+  },
+  {
+    "id": 77,
+    "timestamp": "2026-05-09T09:58:41.100224Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Goldilocks Zone: Where Stocks Meet Earnings, and Bonds Feel the Pinch</b>\n\nThe S&P 500 is tradi",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "107"
+  },
+  {
+    "id": 78,
+    "timestamp": "2026-05-09T09:58:41.425530Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Goldilocks Zone: Where Stocks Meet Earnings, and Bonds Feel the Pinch**\n\nThe S&P 500 is trading ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1502610755021967413"
+  },
+  {
+    "id": 79,
+    "timestamp": "2026-05-09T09:58:42.084970Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Goldilocks Zone: Where Stocks Meet Earnings, and Bonds Feel the Pinch\n\nThe S&P 500 is trading at a",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 80,
+    "timestamp": "2026-05-09T09:58:46.267023Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The S&P 500 is trading at an all-time high with a price-to-earnings ratio of 24. 🧵",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 81,
+    "timestamp": "2026-05-09T09:59:07.379003Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "🔥 Goldilocks Zone: Where Stocks Meet Earnings, and Bonds Feel the Pinch\n\nThe S&P 500 is trading at a",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 82,
+    "timestamp": "2026-05-09T09:59:07.386419Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Goldilocks Zone: Where Stocks Meet Earnings, and Bonds Feel the Pinch",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 83,
+    "timestamp": "2026-05-09T09:59:10.723494Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "\"Unlocking the Future of Sales: Leveraging AI for Competitive Advantage\n\nAs sales professionals, we'",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "116544028638982916"
+  },
+  {
+    "id": 84,
+    "timestamp": "2026-05-09T09:59:10.942606Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $COIN — Coinbase Global, Inc. | $192.96 (-2.5%)\n\n**Setup:** correction in play → Bias: **BEARIS",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1502610879169040406"
+  },
+  {
+    "id": 85,
+    "timestamp": "2026-05-09T09:59:11.393662Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "\"Diving into the world of stocks? Remember that non-cyclical stocks tend to be more stable, performi",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mlfycezkvv2x"
+  },
+  {
+    "id": 86,
+    "timestamp": "2026-05-09T09:59:26.053084Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 87,
+    "timestamp": "2026-05-09T09:59:33.334325Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
