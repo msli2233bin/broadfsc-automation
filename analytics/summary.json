@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-05-08T23:40:31.365673Z",
+  "generated_at": "2026-05-09T07:23:12.354974Z",
   "period": {
-    "today": "2026-05-08",
-    "yesterday": "2026-05-07",
-    "week_ago": "2026-05-01",
-    "month_ago": "2026-04-08"
+    "today": "2026-05-09",
+    "yesterday": "2026-05-08",
+    "week_ago": "2026-05-02",
+    "month_ago": "2026-04-09"
   },
   "totals": {
-    "posts_today": 3,
+    "posts_today": 0,
     "posts_week": 63,
     "posts_month": 76,
     "interactions_today": 0,
@@ -24,14 +24,14 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
+      "today": 0,
       "week": 8,
       "month": 9,
       "success": 7,
       "failed": 2
     },
     "discord": {
-      "today": 1,
+      "today": 0,
       "week": 13,
       "month": 14,
       "success": 8,
@@ -80,7 +80,7 @@
       "failed": 0
     },
     "hatena": {
-      "today": 1,
+      "today": 0,
       "week": 5,
       "month": 5,
       "success": 1,
