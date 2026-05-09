@@ -11,11 +11,13 @@
     "116538503401013135",
     "116530772755077001",
     "116532742764030561",
-    "116534588579793239"
+    "116534588579793239",
+    "116541294526395467",
+    "116533273243008526"
   ],
-  "daily_count": 7,
-  "last_reset": "2026-05-08",
-  "total_engagements": 17,
+  "daily_count": 2,
+  "last_reset": "2026-05-09",
+  "total_engagements": 19,
   "engagements": [
     {
       "date": "2026-05-07T06:33:21.746044+00:00",
@@ -271,6 +273,36 @@
       },
       "result": "silent",
       "outcome_checked": "2026-05-08T20:01:54.689794+00:00"
+    },
+    {
+      "date": "2026-05-09T06:27:39.221294+00:00",
+      "post_id": "116541294526395467",
+      "author": "WSJ",
+      "my_reply_id": "116543196959482432",
+      "post_preview": "Jobs Report, Chip-Stock Rally Power Stocks to New Records\nhttps://www.wsj.com/finance/stocks/jobs-re",
+      "reply_preview": "WSJ thinks chip stocks are powering the rally? Not so fast. Nvidia's up 12% in the last 2 weeks, but",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-09T06:29:05.438914+00:00"
+    },
+    {
+      "date": "2026-05-09T06:28:16.891761+00:00",
+      "post_id": "116533273243008526",
+      "author": "TheMotleyFool",
+      "my_reply_id": "116543199430373421",
+      "post_preview": "The MacBook Neo Could Be the Best Reason to Buy Apple Stock\nhttps://www.fool.com/investing/2026/05/0",
+      "reply_preview": "@TheMotleyFool Apple's MacBook Neo could propel AAPL stock, but 2% sales bump won't cut it in Q3. I'",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-09T06:29:05.852742+00:00"
     }
   ]
 }
