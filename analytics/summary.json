@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-09T07:23:12.354974Z",
+  "generated_at": "2026-05-09T10:37:38.477927Z",
   "period": {
     "today": "2026-05-09",
     "yesterday": "2026-05-08",
@@ -7,13 +7,13 @@
     "month_ago": "2026-04-09"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 63,
-    "posts_month": 76,
+    "posts_today": 11,
+    "posts_week": 74,
+    "posts_month": 87,
     "interactions_today": 0,
     "interactions_week": 3,
     "interactions_month": 36,
-    "success_rate": 42.1
+    "success_rate": 47.1
   },
   "platforms": {
     "tiktok": {
@@ -24,24 +24,24 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 8,
-      "month": 9,
-      "success": 7,
+      "today": 1,
+      "week": 9,
+      "month": 10,
+      "success": 8,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 13,
-      "month": 14,
-      "success": 8,
+      "today": 2,
+      "week": 15,
+      "month": 16,
+      "success": 10,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 10,
-      "month": 10,
-      "success": 5,
+      "today": 2,
+      "week": 12,
+      "month": 12,
+      "success": 7,
       "failed": 5
     },
     "twitter": {
@@ -52,10 +52,10 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 9,
-      "month": 9,
-      "success": 6,
+      "today": 2,
+      "week": 11,
+      "month": 11,
+      "success": 8,
       "failed": 3
     },
     "medium": {
@@ -73,18 +73,18 @@
       "failed": 3
     },
     "bluesky": {
-      "today": 0,
-      "week": 4,
-      "month": 4,
-      "success": 4,
+      "today": 2,
+      "week": 6,
+      "month": 6,
+      "success": 6,
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 5,
-      "month": 5,
+      "today": 2,
+      "week": 7,
+      "month": 7,
       "success": 1,
-      "failed": 4
+      "failed": 6
     }
   },
   "interactions_by_platform": {
@@ -137,6 +137,10 @@
       "posts": 3,
       "interactions": 0
     },
+    "2026-05-09": {
+      "posts": 11,
+      "interactions": 0
+    },
     "2026-04-20": {
       "posts": 0,
       "interactions": 14
@@ -154,112 +158,10 @@
     "17": 2,
     "8": 7,
     "19": 5,
-    "16": 2
+    "16": 2,
+    "9": 9
   },
   "recent_posts": [
-    {
-      "id": 57,
-      "timestamp": "2026-05-07T08:57:22.728772Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "**Market Musings**\n\nHey fellow traders, let's talk about stock types and risk management. As we know",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1501870550392504421"
-    },
-    {
-      "id": 58,
-      "timestamp": "2026-05-07T08:57:23.594379Z",
-      "platform": "bluesky",
-      "type": "post",
-      "content_preview": "\"Webull's secret sauce? Emphasizing education & financial literacy. By empowering investors, they're",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mlatvzzqls2x"
-    },
-    {
-      "id": 59,
-      "timestamp": "2026-05-07T08:57:59.230188Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 60,
-      "timestamp": "2026-05-07T08:58:01.473654Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 61,
-      "timestamp": "2026-05-07T18:01:18.454096Z",
-      "platform": "telegram_en",
-      "type": "earnings",
-      "content_preview": "<b>📊 Earnings Calendar: Week of May 07</b>\n\n\n📅 <b>Thursday, May 07</b>\n  • McDonald's (MCD) @ $282.6",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "83"
-    },
-    {
-      "id": 62,
-      "timestamp": "2026-05-07T18:01:18.631436Z",
-      "platform": "discord",
-      "type": "earnings",
-      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of May 07**\n\n\n📅 **Thursday, May 07**\n  • ",
-      "status": "failed",
-      "error_msg": "HTTP 401"
-    },
-    {
-      "id": 63,
-      "timestamp": "2026-05-07T19:57:56.355680Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 The Great Repricing: S&P 500, Nasdaq, and the Mispriced Market</b>\n\nThe S&P 500 and Nasdaq have",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "84"
-    },
-    {
-      "id": 64,
-      "timestamp": "2026-05-07T19:57:58.545313Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **The Great Repricing: S&P 500, Nasdaq, and the Mispriced Market**\n\nThe S&P 500 and Nasdaq have re",
-      "status": "failed",
-      "error_msg": "HTTP 401"
-    },
-    {
-      "id": 65,
-      "timestamp": "2026-05-07T19:57:59.684352Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 The Great Repricing: S&P 500, Nasdaq, and the Mispriced Market\n\nThe S&P 500 and Nasdaq have reache",
-      "status": "failed",
-      "error_msg": "HTTP 401"
-    },
-    {
-      "id": 66,
-      "timestamp": "2026-05-07T19:58:04.509511Z",
-      "platform": "bluesky",
-      "type": "repurposed",
-      "content_preview": "📊 The S&P 500 and Nasdaq have reached new highs, but the market's true value lies in the mispriced s",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 67,
-      "timestamp": "2026-05-07T19:58:24.400812Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "🔥 The Great Repricing: S&P 500, Nasdaq, and the Mispriced Market\n\nThe S&P 500 and Nasdaq have reache",
-      "status": "success",
-      "error_msg": ""
-    },
     {
       "id": 68,
       "timestamp": "2026-05-07T19:58:24.405318Z",
@@ -343,6 +245,110 @@
       "status": "success",
       "error_msg": "",
       "post_id": "1502352790616277173"
+    },
+    {
+      "id": 77,
+      "timestamp": "2026-05-09T09:58:41.100224Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Goldilocks Zone: Where Stocks Meet Earnings, and Bonds Feel the Pinch</b>\n\nThe S&P 500 is tradi",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "107"
+    },
+    {
+      "id": 78,
+      "timestamp": "2026-05-09T09:58:41.425530Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Goldilocks Zone: Where Stocks Meet Earnings, and Bonds Feel the Pinch**\n\nThe S&P 500 is trading ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1502610755021967413"
+    },
+    {
+      "id": 79,
+      "timestamp": "2026-05-09T09:58:42.084970Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Goldilocks Zone: Where Stocks Meet Earnings, and Bonds Feel the Pinch\n\nThe S&P 500 is trading at a",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 80,
+      "timestamp": "2026-05-09T09:58:46.267023Z",
+      "platform": "bluesky",
+      "type": "repurposed",
+      "content_preview": "📊 The S&P 500 is trading at an all-time high with a price-to-earnings ratio of 24. 🧵",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 81,
+      "timestamp": "2026-05-09T09:59:07.379003Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "🔥 Goldilocks Zone: Where Stocks Meet Earnings, and Bonds Feel the Pinch\n\nThe S&P 500 is trading at a",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 82,
+      "timestamp": "2026-05-09T09:59:07.386419Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Goldilocks Zone: Where Stocks Meet Earnings, and Bonds Feel the Pinch",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 83,
+      "timestamp": "2026-05-09T09:59:10.723494Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "\"Unlocking the Future of Sales: Leveraging AI for Competitive Advantage\n\nAs sales professionals, we'",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "116544028638982916"
+    },
+    {
+      "id": 84,
+      "timestamp": "2026-05-09T09:59:10.942606Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🔴 $COIN — Coinbase Global, Inc. | $192.96 (-2.5%)\n\n**Setup:** correction in play → Bias: **BEARIS",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1502610879169040406"
+    },
+    {
+      "id": 85,
+      "timestamp": "2026-05-09T09:59:11.393662Z",
+      "platform": "bluesky",
+      "type": "post",
+      "content_preview": "\"Diving into the world of stocks? Remember that non-cyclical stocks tend to be more stable, performi",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mlfycezkvv2x"
+    },
+    {
+      "id": 86,
+      "timestamp": "2026-05-09T09:59:26.053084Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 87,
+      "timestamp": "2026-05-09T09:59:33.334325Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
     }
   ],
   "recent_interactions": [
