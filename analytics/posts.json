@@ -807,5 +807,109 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 88,
+    "timestamp": "2026-05-09T16:37:29.319670Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Insight: The AI-Driven Bull Run Continues, But at What Cost?</b>\n\nThe Nasdaq, led by tec",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "108"
+  },
+  {
+    "id": 89,
+    "timestamp": "2026-05-09T16:37:29.797409Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Insight: The AI-Driven Bull Run Continues, But at What Cost?**\n\nThe Nasdaq, led by tech g",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1502711117657542869"
+  },
+  {
+    "id": 90,
+    "timestamp": "2026-05-09T16:37:30.661763Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The AI-Driven Bull Run Continues, But at What Cost?\n\nThe Nasdaq, led by tech giant",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 91,
+    "timestamp": "2026-05-09T16:37:34.907152Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The Nasdaq, led by tech giants like GOOGL and MSFT, has broken out to new highs, with a MACD cross",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 92,
+    "timestamp": "2026-05-09T16:37:50.233590Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "🔥 Market Insight: The AI-Driven Bull Run Continues, But at What Cost?\n\nThe Nasdaq, led by tech giant",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 93,
+    "timestamp": "2026-05-09T16:37:50.242391Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The AI-Driven Bull Run Continues, But at What Cost?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 94,
+    "timestamp": "2026-05-09T16:37:51.395837Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$COIN Coinbase Global, Inc.\n\n💰 192.96 (-2.5%) | 5D: +2.8%\n📊 RSI: 42.7 | MACD: bearish\n📈 MA20: $194.1",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "116545596372507981"
+  },
+  {
+    "id": 95,
+    "timestamp": "2026-05-09T16:37:51.650196Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "\"Hey fellow traders,\n\nLet's take a page from Webull's playbook and focus on what sets us apart. Here",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1502711210259251200"
+  },
+  {
+    "id": 96,
+    "timestamp": "2026-05-09T16:37:52.354044Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $AMZN Amazon.com, Inc. 💰 271.17 (-1.4%)\n\nSetup: overbought, watching for pullback\nRSI: 74.6 | MAC",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mlgolbspg42s"
+  },
+  {
+    "id": 97,
+    "timestamp": "2026-05-09T16:38:01.906957Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 98,
+    "timestamp": "2026-05-09T16:38:11.744123Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
