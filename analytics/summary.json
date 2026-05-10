@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-05-09T22:29:27.434528Z",
+  "generated_at": "2026-05-10T07:34:42.689623Z",
   "period": {
-    "today": "2026-05-09",
-    "yesterday": "2026-05-08",
-    "week_ago": "2026-05-02",
-    "month_ago": "2026-04-09"
+    "today": "2026-05-10",
+    "yesterday": "2026-05-09",
+    "week_ago": "2026-05-03",
+    "month_ago": "2026-04-10"
   },
   "totals": {
-    "posts_today": 22,
+    "posts_today": 0,
     "posts_week": 85,
     "posts_month": 98,
     "interactions_today": 0,
@@ -24,21 +24,21 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 2,
+      "today": 0,
       "week": 10,
       "month": 11,
       "success": 9,
       "failed": 2
     },
     "discord": {
-      "today": 4,
+      "today": 0,
       "week": 17,
       "month": 18,
       "success": 12,
       "failed": 6
     },
     "mastodon": {
-      "today": 4,
+      "today": 0,
       "week": 14,
       "month": 14,
       "success": 9,
@@ -52,7 +52,7 @@
       "failed": 2
     },
     "threads": {
-      "today": 4,
+      "today": 0,
       "week": 13,
       "month": 13,
       "success": 10,
@@ -73,14 +73,14 @@
       "failed": 3
     },
     "bluesky": {
-      "today": 4,
+      "today": 0,
       "week": 8,
       "month": 8,
       "success": 8,
       "failed": 0
     },
     "hatena": {
-      "today": 4,
+      "today": 0,
       "week": 9,
       "month": 9,
       "success": 1,
