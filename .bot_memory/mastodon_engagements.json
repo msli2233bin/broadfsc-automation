@@ -24,51 +24,6 @@
   "total_engagements": 23,
   "engagements": [
     {
-      "date": "2026-05-07T07:08:41.582117+00:00",
-      "post_id": "116529435429578430",
-      "author": "jonchevreau.bsky.social",
-      "my_reply_id": "116532033633670247",
-      "post_preview": "Dow exits Correction: fresh record closes for S&P and Nasdaq #stocks #Markets www.marketwatch.com/li",
-      "reply_preview": "The Dow exiting correction is a significant event, but the real question is how sustainable it is. I",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-07T16:26:59.110477+00:00"
-    },
-    {
-      "date": "2026-05-07T07:09:45.908717+00:00",
-      "post_id": "116527694396476548",
-      "author": "Propedgetools",
-      "my_reply_id": "116532037849780901",
-      "post_preview": "Get funded faster.\nTake 10% OFF instant funding with code **PROPEDGE**\n✔ All accounts\n✔ Evaluation &",
-      "reply_preview": "Propedgetools' instant funding sounds like a fast lane, but it's essential to evaluate the financial",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-07T16:26:59.428072+00:00"
-    },
-    {
-      "date": "2026-05-07T07:14:16.140344+00:00",
-      "post_id": "116525500688420064",
-      "author": "bloomberg",
-      "my_reply_id": "116532055558320947",
-      "post_preview": "CATL Bears Retreat in Hong Kong After Blockbuster Share Sale\nhttps://www.bloomberg.com/news/articles",
-      "reply_preview": "CATL's blockbuster share sale has bulls excited, but let's not forget the fundamentals: is CATL's ma",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-07T16:26:59.731279+00:00"
-    },
-    {
       "date": "2026-05-07T07:15:45.397749+00:00",
       "post_id": "116529419104320186",
       "author": "fllics",
@@ -277,6 +232,51 @@
       },
       "result": "silent",
       "outcome_checked": "2026-05-09T14:20:28.783245+00:00"
+    },
+    {
+      "date": "2026-05-10T07:17:32.211296+00:00",
+      "post_id": "116544658483275026",
+      "author": "selfawarepatterns.com",
+      "my_reply_id": "116549055419538132",
+      "post_preview": "The Astropolis trilogy\n\n\nIn the last post I discussed my recent exploration of Reddit. The one conve",
+      "reply_preview": "Risk management is all about probabilities, not guarantees. In the Astropolis trilogy, the Primes an",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-10T07:21:46.763128+00:00"
+    },
+    {
+      "date": "2026-05-10T07:18:41.141212+00:00",
+      "post_id": "116541325404736056",
+      "author": "Aleums",
+      "my_reply_id": "116549059934918106",
+      "post_preview": "@dankwraith i think in toronto and vancouver that's correct but we generally have way less urban den",
+      "reply_preview": "@Aleums, you're right about urban density, but let's not forget the correlation between housing supp",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-10T07:21:47.018083+00:00"
+    },
+    {
+      "date": "2026-05-10T07:20:29.159166+00:00",
+      "post_id": "116540494756188024",
+      "author": "derstieg",
+      "my_reply_id": "116549067001621908",
+      "post_preview": "Markets today: Nasdaq leading, strong jobs data, US-Iran tensions rising.\nThe pattern is clear — cap",
+      "reply_preview": "@derstieg, you're spot on about the AI infrastructure gravy train. $200B+ per year is unsustainable ",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-10T07:21:47.424077+00:00"
     },
     {
       "date": "2026-05-10T07:17:32.211296+00:00",
