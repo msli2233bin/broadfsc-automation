@@ -2968,7 +2968,7 @@ def main():
         app = Application.builder().token(token).build()
 
     app.add_handler(CommandHandler("start", start))
-    app.add_handler(CommandHandler("help", help_command))
+    app.add_handler(CommandHandler("help", start))
 
     if ADMIN_CHAT_ID:
         app.add_handler(CommandHandler("reply", admin_reply))
