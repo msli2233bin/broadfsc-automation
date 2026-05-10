@@ -14,57 +14,15 @@
     "116534588579793239",
     "116541294526395467",
     "116533273243008526",
-    "116544968042937316"
+    "116544968042937316",
+    "116544658483275026",
+    "116541325404736056",
+    "116540494756188024"
   ],
   "daily_count": 3,
-  "last_reset": "2026-05-09",
-  "total_engagements": 20,
+  "last_reset": "2026-05-10",
+  "total_engagements": 23,
   "engagements": [
-    {
-      "date": "2026-05-07T06:33:21.746044+00:00",
-      "post_id": "116528385985923099",
-      "author": "marketwatch",
-      "my_reply_id": "116531894715169221",
-      "post_preview": "The Dow is about to exit correction territory, showing the old-school economy’s role in the AI boom\n",
-      "reply_preview": "Market sentiment is turning, but the real question is what's driving the Dow's exit from correction ",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-07T16:26:58.195961+00:00"
-    },
-    {
-      "date": "2026-05-07T06:34:16.189368+00:00",
-      "post_id": "116525847990345551",
-      "author": "blog",
-      "my_reply_id": "116531898286987012",
-      "post_preview": "What is Vibe Coding?\n\n\nI have talked about Vibe coding in a lot of my posts about AI and I just real",
-      "reply_preview": "Your analysis on Vibe Coding is thorough and sheds light on the pros and cons of this emerging techn",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-07T16:26:58.501377+00:00"
-    },
-    {
-      "date": "2026-05-07T06:42:37.887537+00:00",
-      "post_id": "116519300521407899",
-      "author": "forexworld",
-      "my_reply_id": "116531931044421158",
-      "post_preview": "EUR/JPY Pulls Back Sharply on 4-Hour Chart After Failing Near 187.50 Zone\n#EURJPY #ForexNews #ForexM",
-      "reply_preview": "EUR/JPY's drop near 187.50 is indeed concerning, but I'd look at the 50-period SMA on the 4-hour cha",
-      "outcome": {
-        "favorites": 1,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "favorited",
-      "outcome_checked": "2026-05-07T16:26:58.804853+00:00"
-    },
     {
       "date": "2026-05-07T07:08:41.582117+00:00",
       "post_id": "116529435429578430",
@@ -319,6 +277,96 @@
       },
       "result": "silent",
       "outcome_checked": "2026-05-09T14:20:28.783245+00:00"
+    },
+    {
+      "date": "2026-05-10T07:17:32.211296+00:00",
+      "post_id": "116544658483275026",
+      "author": "selfawarepatterns.com",
+      "my_reply_id": "116549055419538132",
+      "post_preview": "The Astropolis trilogy\n\n\nIn the last post I discussed my recent exploration of Reddit. The one conve",
+      "reply_preview": "Risk management is all about probabilities, not guarantees. In the Astropolis trilogy, the Primes an",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-10T07:21:46.763128+00:00"
+    },
+    {
+      "date": "2026-05-10T07:18:41.141212+00:00",
+      "post_id": "116541325404736056",
+      "author": "Aleums",
+      "my_reply_id": "116549059934918106",
+      "post_preview": "@dankwraith i think in toronto and vancouver that's correct but we generally have way less urban den",
+      "reply_preview": "@Aleums, you're right about urban density, but let's not forget the correlation between housing supp",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-10T07:21:47.018083+00:00"
+    },
+    {
+      "date": "2026-05-10T07:20:29.159166+00:00",
+      "post_id": "116540494756188024",
+      "author": "derstieg",
+      "my_reply_id": "116549067001621908",
+      "post_preview": "Markets today: Nasdaq leading, strong jobs data, US-Iran tensions rising.\nThe pattern is clear — cap",
+      "reply_preview": "@derstieg, you're spot on about the AI infrastructure gravy train. $200B+ per year is unsustainable ",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-10T07:21:47.424077+00:00"
+    },
+    {
+      "date": "2026-05-10T07:17:32.211296+00:00",
+      "post_id": "116544658483275026",
+      "author": "selfawarepatterns.com",
+      "my_reply_id": "116549055419538132",
+      "post_preview": "The Astropolis trilogy\n\n\nIn the last post I discussed my recent exploration of Reddit. The one conve",
+      "reply_preview": "Risk management is all about probabilities, not guarantees. In the Astropolis trilogy, the Primes an",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-10T07:21:46.763128+00:00"
+    },
+    {
+      "date": "2026-05-10T07:18:41.141212+00:00",
+      "post_id": "116541325404736056",
+      "author": "Aleums",
+      "my_reply_id": "116549059934918106",
+      "post_preview": "@dankwraith i think in toronto and vancouver that's correct but we generally have way less urban den",
+      "reply_preview": "@Aleums, you're right about urban density, but let's not forget the correlation between housing supp",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-10T07:21:47.018083+00:00"
+    },
+    {
+      "date": "2026-05-10T07:20:29.159166+00:00",
+      "post_id": "116540494756188024",
+      "author": "derstieg",
+      "my_reply_id": "116549067001621908",
+      "post_preview": "Markets today: Nasdaq leading, strong jobs data, US-Iran tensions rising.\nThe pattern is clear — cap",
+      "reply_preview": "@derstieg, you're spot on about the AI infrastructure gravy train. $200B+ per year is unsustainable ",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-10T07:21:47.424077+00:00"
     }
   ]
 }
