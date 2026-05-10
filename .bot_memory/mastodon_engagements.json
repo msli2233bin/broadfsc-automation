@@ -24,51 +24,6 @@
   "total_engagements": 23,
   "engagements": [
     {
-      "date": "2026-05-07T07:15:45.397749+00:00",
-      "post_id": "116529419104320186",
-      "author": "fllics",
-      "my_reply_id": "116532061404262960",
-      "post_preview": "Yahoo Finance Live: Stocks rally on US-Iran talks, blowout tech earnings season | May 6, 2026\nInvest",
-      "reply_preview": "That rally on US-Iran talks is indeed a spark, but let's not forget the real fuel behind it: AI-fuel",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-07T16:27:00.058012+00:00"
-    },
-    {
-      "date": "2026-05-07T07:17:22.855890+00:00",
-      "post_id": "116523756605473051",
-      "author": "fllics",
-      "my_reply_id": "116532067794540022",
-      "post_preview": "Yahoo Finance Live: S&P 500, Nasdaq, Dow rise as oil slides, wave of solid earnings rolls in\nDaily M",
-      "reply_preview": "Oil's slide is a positive for the S&P 500, Nasdaq, and Dow, but the real story is the wave of solid ",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-07T16:27:00.384733+00:00"
-    },
-    {
-      "date": "2026-05-07T07:18:47.605981+00:00",
-      "post_id": "116523780700167740",
-      "author": "wackJackle",
-      "my_reply_id": "116532073320425722",
-      "post_preview": "There's more to say but I like the points. The timeline isn't unreasonable. Though, it's impossible ",
-      "reply_preview": "The market can indeed remain irrational longer than you can remain solvent. But that's not a reason ",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-07T16:27:00.726669+00:00"
-    },
-    {
       "date": "2026-05-07T07:20:44.415640+00:00",
       "post_id": "116527770454354197",
       "author": "winchellhouse.com",
@@ -232,6 +187,51 @@
       },
       "result": "silent",
       "outcome_checked": "2026-05-09T14:20:28.783245+00:00"
+    },
+    {
+      "date": "2026-05-10T07:17:32.211296+00:00",
+      "post_id": "116544658483275026",
+      "author": "selfawarepatterns.com",
+      "my_reply_id": "116549055419538132",
+      "post_preview": "The Astropolis trilogy\n\n\nIn the last post I discussed my recent exploration of Reddit. The one conve",
+      "reply_preview": "Risk management is all about probabilities, not guarantees. In the Astropolis trilogy, the Primes an",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-10T07:21:46.763128+00:00"
+    },
+    {
+      "date": "2026-05-10T07:18:41.141212+00:00",
+      "post_id": "116541325404736056",
+      "author": "Aleums",
+      "my_reply_id": "116549059934918106",
+      "post_preview": "@dankwraith i think in toronto and vancouver that's correct but we generally have way less urban den",
+      "reply_preview": "@Aleums, you're right about urban density, but let's not forget the correlation between housing supp",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-10T07:21:47.018083+00:00"
+    },
+    {
+      "date": "2026-05-10T07:20:29.159166+00:00",
+      "post_id": "116540494756188024",
+      "author": "derstieg",
+      "my_reply_id": "116549067001621908",
+      "post_preview": "Markets today: Nasdaq leading, strong jobs data, US-Iran tensions rising.\nThe pattern is clear — cap",
+      "reply_preview": "@derstieg, you're spot on about the AI infrastructure gravy train. $200B+ per year is unsustainable ",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-10T07:21:47.424077+00:00"
     },
     {
       "date": "2026-05-10T07:17:32.211296+00:00",
