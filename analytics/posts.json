@@ -1006,5 +1006,100 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 109,
+    "timestamp": "2026-05-10T16:38:23.447751Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Alert: AI-Driven Stocks in Overbought Territory</b>\n\nWe've observed a striking phenomeno",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "112"
+  },
+  {
+    "id": 110,
+    "timestamp": "2026-05-10T16:38:24.133282Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Alert: AI-Driven Stocks in Overbought Territory**\n\nWe've observed a striking phenomenon i",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1503073733152215222"
+  },
+  {
+    "id": 111,
+    "timestamp": "2026-05-10T16:38:25.191305Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: AI-Driven Stocks in Overbought Territory\n\nWe've observed a striking phenomenon in th",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 112,
+    "timestamp": "2026-05-10T16:38:29.082377Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 We've observed a striking phenomenon in the Nasdaq: AI-driven stocks, led by NVIDIA (NVDA) and Tes",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 113,
+    "timestamp": "2026-05-10T16:38:29.904554Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: AI-Driven Stocks in Overbought Territory",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 114,
+    "timestamp": "2026-05-10T16:38:31.645909Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$META Meta Platforms, Inc.\n\n💰 616.81 (+0.6%) | 5D: +0.8%\n📊 RSI: 26.0 | MACD: bearish\n📈 MA20: $649.87",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "116551261289627701"
+  },
+  {
+    "id": 115,
+    "timestamp": "2026-05-10T16:38:33.645208Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "**Staying Ahead of the Curve: Insights from the Frontlines of Social Media**\n\nHey fellow traders and",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1503073767205634148"
+  },
+  {
+    "id": 116,
+    "timestamp": "2026-05-10T16:38:34.161352Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "\"Webull's secret sauce? Emphasizing education & financial literacy. By empowering investors, they're",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mlj73h5mwx2g"
+  },
+  {
+    "id": 117,
+    "timestamp": "2026-05-10T16:38:40.629477Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 118,
+    "timestamp": "2026-05-10T16:39:14.238000Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
