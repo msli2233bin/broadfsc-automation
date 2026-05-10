@@ -911,5 +911,100 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 99,
+    "timestamp": "2026-05-10T10:44:22.837442Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The $4.8T Question: Can the S&P 500 Keep its Bullish Trend?</b>\n\nThe S&P 500 has been on a tear",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "111"
+  },
+  {
+    "id": 100,
+    "timestamp": "2026-05-10T10:44:23.441810Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The $4.8T Question: Can the S&P 500 Keep its Bullish Trend?**\n\nThe S&P 500 has been on a tear, u",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1502984643224404063"
+  },
+  {
+    "id": 101,
+    "timestamp": "2026-05-10T10:44:24.541255Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The $4.8T Question: Can the S&P 500 Keep its Bullish Trend?\n\nThe S&P 500 has been on a tear, up 13",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 102,
+    "timestamp": "2026-05-10T10:44:28.386757Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The S&P 500 has been on a tear, up 13. 🧵",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 103,
+    "timestamp": "2026-05-10T10:44:29.399123Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The $4.8T Question: Can the S&P 500 Keep its Bullish Trend?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 104,
+    "timestamp": "2026-05-10T10:44:30.665816Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "As I analyze the current market trends, I'm reminded of the importance of adapting our content strat",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "116549869263727592"
+  },
+  {
+    "id": 105,
+    "timestamp": "2026-05-10T10:44:30.946094Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $META — Meta Platforms, Inc. | $616.81 (+0.6%)\n\n**Setup:** oversold bounce setup → Bias: **BULL",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1502984675868541051"
+  },
+  {
+    "id": 106,
+    "timestamp": "2026-05-10T10:44:31.995769Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $COIN Coinbase Global, Inc. 💰 192.96 (-2.5%)\n\nSetup: correction in play\nRSI: 42.7 | MACD: bearish",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mlilcezx7z2s"
+  },
+  {
+    "id": 107,
+    "timestamp": "2026-05-10T10:44:38.929902Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 108,
+    "timestamp": "2026-05-10T10:44:51.686054Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
