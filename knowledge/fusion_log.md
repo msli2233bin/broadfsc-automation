@@ -17,3 +17,6 @@
 
 ## 14:00:28 | sales/modern_sales
 - [cross_domain_match] 🔗 跨域关联匹配: sales/modern_sales 在 FUSION_INDEX 中有对应融合策略
+
+## 16:16:57 | competitor/competitor_etoro
+- [cross_domain_match] 🔗 跨域关联匹配: competitor/competitor_etoro 在 FUSION_INDEX 中有对应融合策略
