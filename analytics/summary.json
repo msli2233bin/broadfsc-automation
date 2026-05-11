@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-11T12:25:13.795359Z",
+  "generated_at": "2026-05-11T18:29:38.029202Z",
   "period": {
     "today": "2026-05-11",
     "yesterday": "2026-05-10",
@@ -7,13 +7,13 @@
     "month_ago": "2026-04-11"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 105,
-    "posts_month": 118,
-    "interactions_today": 0,
-    "interactions_week": 3,
-    "interactions_month": 36,
-    "success_rate": 54.2
+    "posts_today": 14,
+    "posts_week": 119,
+    "posts_month": 132,
+    "interactions_today": 2,
+    "interactions_week": 5,
+    "interactions_month": 38,
+    "success_rate": 56.8
   },
   "platforms": {
     "tiktok": {
@@ -24,24 +24,24 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 12,
-      "month": 13,
-      "success": 11,
+      "today": 2,
+      "week": 14,
+      "month": 15,
+      "success": 13,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 21,
-      "month": 22,
-      "success": 16,
+      "today": 3,
+      "week": 24,
+      "month": 25,
+      "success": 19,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 18,
-      "month": 18,
-      "success": 13,
+      "today": 2,
+      "week": 20,
+      "month": 20,
+      "success": 15,
       "failed": 5
     },
     "twitter": {
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 15,
-      "month": 15,
+      "today": 1,
+      "week": 16,
+      "month": 16,
       "success": 10,
-      "failed": 5
+      "failed": 6
     },
     "medium": {
       "today": 0,
@@ -73,18 +73,18 @@
       "failed": 3
     },
     "bluesky": {
-      "today": 0,
-      "week": 12,
-      "month": 12,
-      "success": 12,
+      "today": 2,
+      "week": 14,
+      "month": 14,
+      "success": 14,
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 13,
-      "month": 13,
-      "success": 1,
-      "failed": 12
+      "today": 4,
+      "week": 17,
+      "month": 17,
+      "success": 3,
+      "failed": 14
     }
   },
   "interactions_by_platform": {
@@ -94,15 +94,15 @@
       "month": 31
     },
     "telegram": {
-      "today": 0,
-      "week": 3,
-      "month": 5
+      "today": 2,
+      "week": 5,
+      "month": 7
     }
   },
   "action_breakdown": {
     "message": 30,
     "start": 1,
-    "proactive_outreach": 5
+    "proactive_outreach": 7
   },
   "daily_trend": {
     "2026-04-16": {
@@ -145,6 +145,10 @@
       "posts": 20,
       "interactions": 0
     },
+    "2026-05-11": {
+      "posts": 14,
+      "interactions": 2
+    },
     "2026-04-20": {
       "posts": 0,
       "interactions": 14
@@ -158,147 +162,15 @@
     "15": 1,
     "10": 8,
     "11": 7,
-    "18": 7,
+    "18": 9,
     "17": 2,
     "8": 7,
     "19": 5,
-    "16": 18,
-    "9": 9
+    "16": 25,
+    "9": 9,
+    "14": 2
   },
   "recent_posts": [
-    {
-      "id": 99,
-      "timestamp": "2026-05-10T10:44:22.837442Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 The $4.8T Question: Can the S&P 500 Keep its Bullish Trend?</b>\n\nThe S&P 500 has been on a tear",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "111"
-    },
-    {
-      "id": 100,
-      "timestamp": "2026-05-10T10:44:23.441810Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **The $4.8T Question: Can the S&P 500 Keep its Bullish Trend?**\n\nThe S&P 500 has been on a tear, u",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1502984643224404063"
-    },
-    {
-      "id": 101,
-      "timestamp": "2026-05-10T10:44:24.541255Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 The $4.8T Question: Can the S&P 500 Keep its Bullish Trend?\n\nThe S&P 500 has been on a tear, up 13",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 102,
-      "timestamp": "2026-05-10T10:44:28.386757Z",
-      "platform": "bluesky",
-      "type": "repurposed",
-      "content_preview": "📊 The S&P 500 has been on a tear, up 13. 🧵",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 103,
-      "timestamp": "2026-05-10T10:44:29.399123Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 The $4.8T Question: Can the S&P 500 Keep its Bullish Trend?",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 104,
-      "timestamp": "2026-05-10T10:44:30.665816Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "As I analyze the current market trends, I'm reminded of the importance of adapting our content strat",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "116549869263727592"
-    },
-    {
-      "id": 105,
-      "timestamp": "2026-05-10T10:44:30.946094Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟢 $META — Meta Platforms, Inc. | $616.81 (+0.6%)\n\n**Setup:** oversold bounce setup → Bias: **BULL",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1502984675868541051"
-    },
-    {
-      "id": 106,
-      "timestamp": "2026-05-10T10:44:31.995769Z",
-      "platform": "bluesky",
-      "type": "post",
-      "content_preview": "1/ $COIN Coinbase Global, Inc. 💰 192.96 (-2.5%)\n\nSetup: correction in play\nRSI: 42.7 | MACD: bearish",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mlilcezx7z2s"
-    },
-    {
-      "id": 107,
-      "timestamp": "2026-05-10T10:44:38.929902Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 108,
-      "timestamp": "2026-05-10T10:44:51.686054Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 109,
-      "timestamp": "2026-05-10T16:38:23.447751Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Alert: AI-Driven Stocks in Overbought Territory</b>\n\nWe've observed a striking phenomeno",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "112"
-    },
-    {
-      "id": 110,
-      "timestamp": "2026-05-10T16:38:24.133282Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Alert: AI-Driven Stocks in Overbought Territory**\n\nWe've observed a striking phenomenon i",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1503073733152215222"
-    },
-    {
-      "id": 111,
-      "timestamp": "2026-05-10T16:38:25.191305Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Alert: AI-Driven Stocks in Overbought Territory\n\nWe've observed a striking phenomenon in th",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 112,
-      "timestamp": "2026-05-10T16:38:29.082377Z",
-      "platform": "bluesky",
-      "type": "repurposed",
-      "content_preview": "📊 We've observed a striking phenomenon in the Nasdaq: AI-driven stocks, led by NVIDIA (NVDA) and Tes",
-      "status": "success",
-      "error_msg": ""
-    },
     {
       "id": 113,
       "timestamp": "2026-05-10T16:38:29.904554Z",
@@ -355,25 +227,142 @@
       "content_preview": "Hatena Blog post",
       "status": "failed",
       "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 119,
+      "timestamp": "2026-05-11T14:27:27.421506Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "テスト投稿 — BroadFSC",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 120,
+      "timestamp": "2026-05-11T14:28:20.567356Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "2026年05月11日 マーケット分析：米国市場と日本市場の連動性、高度不確実性の影響、トレンドを握るトッピング",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 121,
+      "timestamp": "2026-05-11T16:18:09.967742Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 The Bullish Uptrend Continues, But Watch Out for Overbought Signals</b>\n\nAs we kick off the wee",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "115"
+    },
+    {
+      "id": 122,
+      "timestamp": "2026-05-11T16:18:10.968377Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **The Bullish Uptrend Continues, But Watch Out for Overbought Signals**\n\nAs we kick off the week, ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1503431030906814665"
+    },
+    {
+      "id": 123,
+      "timestamp": "2026-05-11T16:18:11.342166Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 The Bullish Uptrend Continues, But Watch Out for Overbought Signals\n\nAs we kick off the week, let'",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 124,
+      "timestamp": "2026-05-11T16:18:15.292040Z",
+      "platform": "bluesky",
+      "type": "repurposed",
+      "content_preview": "📊 As we kick off the week, let's dive into the latest market snapshot. 🧵",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 125,
+      "timestamp": "2026-05-11T16:18:16.548472Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 The Bullish Uptrend Continues, But Watch Out for Overbought Signals",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 126,
+      "timestamp": "2026-05-11T16:18:17.768049Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "As the social media landscape continues to evolve, platforms like TikTok are redefining the rules of",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "116556844077314666"
+    },
+    {
+      "id": 127,
+      "timestamp": "2026-05-11T16:18:18.012842Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "**Modern Sales Techniques for Financial Services**\n\nHey fellow traders, \n\nAs we navigate the complex",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1503431063228383384"
+    },
+    {
+      "id": 128,
+      "timestamp": "2026-05-11T16:18:18.635955Z",
+      "platform": "bluesky",
+      "type": "post",
+      "content_preview": "1/ $NVDA NVIDIA Corporation 💰 211.5 (+1.8%)\n\nSetup: consolidation\nRSI: 58.2 | MACD: bearish\nVol: 1.1",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mllog5fd6v2i"
+    },
+    {
+      "id": 129,
+      "timestamp": "2026-05-11T16:18:24.931716Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 130,
+      "timestamp": "2026-05-11T16:18:38.133611Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 131,
+      "timestamp": "2026-05-11T18:24:17.116884Z",
+      "platform": "telegram_en",
+      "type": "earnings",
+      "content_preview": "<b>📊 Earnings Calendar: Week of May 11</b>\n\n\n📅 <b>Wednesday, May 13</b>\n  • Tencent (0700.HK) @ $nan",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "117"
+    },
+    {
+      "id": 132,
+      "timestamp": "2026-05-11T18:24:17.609923Z",
+      "platform": "discord",
+      "type": "earnings",
+      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of May 11**\n\n\n📅 **Wednesday, May 13**\n  •",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1503462769553576096"
     }
   ],
   "recent_interactions": [
-    {
-      "id": 17,
-      "timestamp": "2026-04-17T14:02:13.370876Z",
-      "platform": "telegram_bot",
-      "action": "message",
-      "user_id": "8639358750",
-      "details": "How to contact your customer service"
-    },
-    {
-      "id": 18,
-      "timestamp": "2026-04-20T13:18:20.815180Z",
-      "platform": "telegram_bot",
-      "action": "message",
-      "user_id": "8327500544",
-      "details": "你好"
-    },
     {
       "id": 19,
       "timestamp": "2026-04-20T13:18:52.914224Z",
@@ -516,6 +505,22 @@
       "platform": "telegram",
       "action": "proactive_outreach",
       "user_id": "8327500544",
+      "details": "Auto proactive message sent"
+    },
+    {
+      "id": 37,
+      "timestamp": "2026-05-11T10:00:01.413656Z",
+      "platform": "telegram",
+      "action": "proactive_outreach",
+      "user_id": "8327500544",
+      "details": "Auto proactive message sent"
+    },
+    {
+      "id": 38,
+      "timestamp": "2026-05-11T10:00:50.931903Z",
+      "platform": "telegram",
+      "action": "proactive_outreach",
+      "user_id": "8639358750",
       "details": "Auto proactive message sent"
     }
   ],
