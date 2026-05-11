@@ -217,122 +217,72 @@ def extract_title_from_article(article_text):
 
 
 # ============================================================
-# Step 3: Publish to Substack (Playwright)
+# Step 3: Publish to Substack (Email Method - No Browser)
 # ============================================================
 def publish_to_substack(title, article_body, dry_run=False):
-    """Publish article to Substack using Playwright."""
+    """Publish to Substack via email (no browser needed)."""
     if dry_run:
         print("[Substack] DRY RUN — not publishing")
         print(f"[Substack] Title: {title}")
         print(f"[Substack] Body length: {len(article_body)} chars")
         return True
-
+    
+    print("[Substack] 📧 Publishing via email...")
+    
+    import smtplib
+    from email.mime.multipart import MIMEMultipart
+    from email.mime.text import MIMEText
+    
+    # Substack email-to-publish address
+    # Format: post+{publication_slug}@{substack_domain}
+    publish_email = f"post+{PUBLICATION_SLUG}@substack.com"
+    
+    # Your email (must be authorized in Substack)
+    sender_email = SUBSTACK_EMAIL
+    
+    # Create message
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = title
+    msg['From'] = sender_email
+    msg['To'] = publish_email
+    
+    # Plain text version
+    text_part = MIMEText(article_body, 'plain', 'utf-8')
+    msg.attach(text_part)
+    
+    # HTML version (optional)
+    html_body = article_body.replace('\n\n', '<br><br>').replace('\n', '<br>')
+    html_part = MIMEText(f"<html><body>{html_body}</body></html>", 'html', 'utf-8')
+    msg.attach(html_part)
+    
     try:
-        from playwright.sync_api import sync_playwright
-    except ImportError:
-        print("[Substack] ❌ Playwright not installed")
+        # Send email via SMTP
+        # Note: Substack requires sender email to be verified
+        # Use Gmail SMTP or Substack's own SMTP settings
+        
+        # For Gmail (less secure, but works)
+        # You need to set SUBSTACK_PASSWORD to Gmail app password
+        smtp_server = "smtp.gmail.com"
+        smtp_port = 587
+        
+        server = smtplib.SMTP(smtp_server, smtp_port)
+        server.starttls()
+        server.login(sender_email, SUBSTACK_PASSWORD)
+        
+        server.send_message(msg)
+        server.quit()
+        
+        print("[Substack] ✅ Article sent via email!")
+        print(f"[Substack] Check: https://{PUBLICATION_SLUG}.substack.com")
+        return True
+    
+    except Exception as e:
+        print(f"[Substack] ❌ Email failed: {e}")
+        print("[Substack] Make sure:")
+        print("  1. Sender email is verified in Substack")
+        print("  2. SUBSTACK_PASSWORD is Gmail app password (not regular password)")
+        print("  3. Or use Substack's SMTP settings")
         return False
-
-    print("[Substack] 🚀 Launching browser...")
-
-    with sync_playwright() as p:
-        # Use persistent context (reuses login session)
-        context = p.chromium.launch_persistent_context(
-            SESSION_DIR,
-            headless=IS_CI,
-            args=['--no-sandbox', '--disable-setuid-sandbox'] if IS_CI else []
-        )
-
-        page = context.pages[0] if context.pages else context.new_page()
-
-        # Check if already logged in
-        print("[Substack] Checking login status...")
-        page.goto(f"{PUB_URL}/publish", timeout=30000)
-        time.sleep(3)
-
-        if "login" in page.url.lower():
-            print("[Substack] Need to login...")
-            page.fill('input[type="email"]', SUBSTACK_EMAIL)
-            page.fill('input[type="password"]', SUBSTACK_PASSWORD)
-            page.click('button[type="submit"]')
-            time.sleep(5)
-            # Save session
-            context.storage_state(path=os.path.join(SESSION_DIR, "state.json"))
-
-        # Create new draft
-        print("[Substack] Creating new draft...")
-        page.goto(f"{PUB_URL}/publish", timeout=30000)
-        time.sleep(3)
-
-        # Set title via API (required for React state)
-        # Use Substack's internal API
-        import requests
-        api_url = f"https://substackapi.com/api/draft"
-        # Note: Substack doesn't have a public API, so we use Playwright
-
-        # Click "New Post" button
-        try:
-            page.click('text="New Post"', timeout=5000)
-        except Exception:
-            print("[Substack] 'New Post' not found, trying direct URL...")
-            page.goto(f"{PUB_URL}/publish/post", timeout=30000)
-
-        time.sleep(3)
-
-        # Set title using React state (title → reload → verify)
-        print("[Substack] Setting title...")
-        title_selector = 'input[placeholder*="title"], input[name*="title"]'
-        try:
-            page.fill(title_selector, title)
-            page.reload()
-            time.sleep(3)
-            # Verify title persisted
-            current_url = page.url
-            if "/publish/post/" in current_url:
-                draft_id = current_url.split("/")[-1]
-                print(f"[Substack] Draft created: {draft_id}")
-        except Exception as e:
-            print(f"[Substack] Title setting warning: {e}")
-
-        # Fill body content
-        print("[Substack] Filling article body...")
-        # Substack uses ProseMirror editor
-        editor_selector = '.ProseMirror, [contenteditable="true"]'
-        try:
-            page.click(editor_selector)
-            time.sleep(1)
-            # Type article content (chunked to avoid timeout)
-            chunk_size = 500
-            for i in range(0, len(article_body), chunk_size):
-                chunk = article_body[i:i+chunk_size]
-                page.keyboard.type(chunk)
-                time.sleep(0.5)
-        except Exception as e:
-            print(f"[Substack] Editor warning: {e}")
-
-        time.sleep(2)
-
-        # Publish
-        print("[Substack] Publishing...")
-        try:
-            page.click('text="Send to everyone now"', timeout=5000)
-            time.sleep(5)
-            print("[Substack] ✅ Article published!")
-            return True
-        except Exception as e:
-            print(f"[Substack] Publish button warning: {e}")
-            # Try alternative selectors
-            try:
-                page.click('button:has-text("Publish")')
-                time.sleep(5)
-                print("[Substack] ✅ Article published (alt method)!")
-                return True
-            except Exception as e2:
-                print(f"[Substack] ❌ Publish failed: {e2}")
-                return False
-
-        finally:
-            context.close()
 
 
 # ============================================================
