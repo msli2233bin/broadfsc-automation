@@ -1,26 +1,23 @@
 #!/usr/bin/env python3
 """
 Substack Auto-Post: Daily Article Generator
-Reads latest knowledge files, generates English article via Groq, publishes via Email.
+Reads latest knowledge files, generates English article via Groq, auto-posts to Substack.
+
+Publish method: Playwright browser automation (uses saved cookies, no email needed).
 
 Usage:
   python substack_auto_post.py          # Generate + publish 1 article
   python substack_auto_post.py --test  # Test only (no publish)
   python substack_auto_post.py --dry-run  # Generate only (no publish)
 
-Publish method: Email to Substack (post+[slug]@substack.com)
-Most reliable - no browser needed.
-
 Schedule: Daily via GitHub Actions (08:00 Beijing time)
 """
 
 import os
 import sys
+import json
 import datetime
 import time
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
 
 if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
@@ -39,6 +36,9 @@ SESSION_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".browser
 os.makedirs(SESSION_DIR, exist_ok=True)
 
 KNOWLEDGE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "knowledge")
+
+# Detect environment
+IS_CI = os.environ.get("CI") == "true" or os.environ.get("GITHUB_ACTIONS") == "true"
 
 
 # ============================================================
@@ -212,62 +212,213 @@ def extract_title_from_article(article_text):
 
 
 # ============================================================
-# Step 3: Publish to Substack via EMAIL (Most Reliable)
+# Step 3: Publish to Substack via Playwright (Browser)
 # ============================================================
 
-def publish_via_brevo(title, article_body):
-    """Publish to Substack via Brevo API (most reliable method)."""
-    import requests
-
-    brevo_key = os.environ.get("BREVO_API_KEY", "")
-    sender = os.environ.get("BREVO_SENDER_EMAIL", "msli2233bin+brevo@gmail.com")
-    if not brevo_key:
-        print("[Brevo] ❌ BREVO_API_KEY not set")
-        return False
-
-    publish_email = f"post+{PUBLICATION_SLUG}@substack.com"
-    print(f"[Brevo] 📧 Sending to {publish_email}...")
-
-    # Convert article to HTML
-    html_content = article_body.replace('\n\n', '</p><p>').replace('\n', '<br>')
-    html_content = f"<html><body>{html_content}</body></html>"
-
-    payload = {
-        "sender": {"name": "BroadFSC", "email": sender},
-        "to": [{"email": publish_email}],
-        "subject": title,
-        "htmlContent": html_content,
-        "textContent": article_body
-    }
-
-    headers = {
-        "accept": "application/json",
-        "api-key": brevo_key,
-        "content-type": "application/json"
-    }
-
+def save_substack_cookies():
+    """Interactive: save Substack login cookies to file (run once locally)."""
     try:
-        resp = requests.post("https://api.brevo.com/v3/smtp/email",
-                           json=payload, headers=headers, timeout=30)
-        if resp.status_code in (200, 201, 202):
-            print(f"[Brevo] ✅ Sent! Check: {PUB_URL}")
-            return True
-        else:
-            print(f"[Brevo] ❌ Failed: {resp.status_code} {resp.text[:200]}")
-            return False
-    except Exception as e:
-        print(f"[Brevo] ❌ Error: {e}")
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        print("[Substack] ❌ Playwright not installed. Run: pip install playwright && playwright install chromium")
         return False
+
+    state_file = os.path.join(SESSION_DIR, "substack_state.json")
+    print(f"[Substack] 💾 Saving login cookies to {state_file}...")
+    print("[Substack] A browser window will open. Please log in to Substack manually.")
+
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=False)
+        context = browser.new_context()
+        page = context.new_page()
+
+        print(f"[Substack] Opening: {PUB_URL}/publish")
+        page.goto(f"{PUB_URL}/publish")
+        print("\n" + "="*50)
+        print("Please log in to Substack in the browser window.")
+        print("After logging in, navigate to: " + PUB_URL + "/publish")
+        print("Then press Enter here to save cookies...")
+        print("="*50 + "\n")
+        input()  # Wait for user to log in
+
+        # Save cookies
+        context.storage_state(path=state_file)
+        print(f"[Substack] ✅ Cookies saved to {state_file}")
+        print("[Substack] You can now run the auto-post script without manual login.")
+        browser.close()
+        return True
 
 
 def publish_to_substack(title, article_body, dry_run=False):
-    """Publish article to Substack via Brevo email (primary method)."""
+    """Publish article to Substack using Playwright (with saved cookies)."""
     if dry_run:
-        print(f"[Substack] DRY RUN — not sending")
+        print("[Substack] DRY RUN — not publishing")
         print(f"[Substack] Title: {title}")
         print(f"[Substack] Body length: {len(article_body)} chars")
         return True
-    return publish_via_brevo(title, article_body)
+
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        print("[Substack] ❌ Playwright not installed. Run: pip install playwright && playwright install chromium")
+        return False
+
+    print("[Substack] 🚀 Launching browser...")
+
+    with sync_playwright() as p:
+        state_file = os.path.join(SESSION_DIR, "substack_state.json")
+
+        launch_options = {'headless': IS_CI}
+        if IS_CI:
+            launch_options['args'] = ['--no-sandbox', '--disable-setuid-sandbox']
+
+        context_options = {}
+        if os.path.exists(state_file):
+            print(f"[Substack] ✅ Loading saved cookies from {state_file}")
+            context_options['storage_state'] = state_file
+        else:
+            print(f"[Substack] ⚠️ No saved cookies ({state_file} not found)")
+            print("[Substack] Run: python substack_auto_post.py --save-cookies")
+            browser.close()
+            return False
+
+        browser = p.chromium.launch(**launch_options)
+        context = browser.new_context(**context_options)
+        page = context.new_page()
+
+        # Check if already logged in
+        print("[Substack] Checking login status...")
+        try:
+            page.goto(f"{PUB_URL}/publish", timeout=30000)
+            time.sleep(3)
+            current_url = page.url.lower()
+            if "login" in current_url or "sign-in" in current_url:
+                print("[Substack] ❌ Not logged in! Cookies expired.")
+                print("[Substack] Run locally: python substack_auto_post.py --save-cookies")
+                browser.close()
+                return False
+        except Exception as e:
+            print(f"[Substack] ⚠️ Login check warning: {e}")
+
+        # Create new draft
+        print("[Substack] Creating new draft...")
+        try:
+            page.goto(f"{PUB_URL}/publish", timeout=30000)
+            time.sleep(3)
+            try:
+                page.get_by_text("New post", exact=False).click(timeout=5000)
+                print("[Substack] ✅ Clicked 'New post' button")
+            except Exception:
+                print("[Substack] 'New post' not found, trying direct URL...")
+                page.goto(f"{PUB_URL}/publish/post", timeout=30000)
+
+            time.sleep(5)
+            current_url = page.url
+            print(f"[Substack] Current URL after new post: {current_url}")
+
+            if "/publish/post/" not in current_url:
+                print(f"[Substack] ⚠️ Draft URL not detected, current: {current_url}")
+        except Exception as e:
+            print(f"[Substack] ⚠️ New draft warning: {e}")
+
+        # Fill title and body
+        print("[Substack] Filling title and body...")
+
+        # Extract title and body from article
+        lines = article_body.strip().split('\n')
+        article_title = title
+        body_start = 0
+        for i, line in enumerate(lines):
+            if line.startswith('# '):
+                article_title = line.lstrip('# ').strip()
+                body_start = i + 1
+                break
+        article_body_only = '\n'.join(lines[body_start:])
+
+        # Use JavaScript to set content (more reliable than selectors)
+        # Use placeholders, then replace (avoids f-string backslash error)
+        js_script = """
+        () => {
+            // Set title
+            let titleSet = false;
+            document.querySelectorAll('input[placeholder*="title" i], input[aria-label*="title" i]').forEach(el => {
+                if (!titleSet) {
+                    el.focus();
+                    el.value = "___TITLE___";
+                    el.dispatchEvent(new Event('input', {bubbles: true}));
+                    el.dispatchEvent(new Event('change', {bubbles: true}));
+                    titleSet = true;
+                    console.log('Title set');
+                }
+            });
+
+            // Click into body editor and type
+            setTimeout(() => {
+                let bodySet = false;
+                document.querySelectorAll('[contenteditable="true"], .ProseMirror').forEach(el => {
+                    if (!bodySet) {
+                        el.focus();
+                        const text = "___BODY___";
+                        el.innerHTML = '<p>' + text.replace(/\\n\\n/g, '</p><p>').replace(/\\n/g, '<br>') + '</p>';
+                        el.dispatchEvent(new Event('input', {bubbles: true}));
+                        bodySet = true;
+                        console.log('Body set');
+                    }
+                });
+            }, 1000);
+
+            return {titleSet, bodySet};
+        }
+        """
+        # Safely inject title and body (escape JS strings)
+        import json
+        title_escaped = json.dumps(article_title)[1:-1]  # remove surrounding quotes
+        body_escaped = json.dumps(article_body_only)[1:-1]
+        js_script = js_script.replace("___TITLE___", title_escaped)
+        js_script = js_script.replace("___BODY___", body_escaped)
+
+        try:
+            result = page.evaluate(js_script)
+            print(f"[Substack] JS result: {result}")
+            time.sleep(3)
+        except Exception as e:
+            print(f"[Substack] ⚠️ JavaScript injection warning: {e}")
+
+        # Publish
+        print("[Substack] Publishing...")
+        publish_selectors = [
+            'button:has-text("Send to everyone now")',
+            'button:has-text("Publish")',
+            'button:has-text("Save")',
+            '[role="button"]:has-text("Send")',
+        ]
+
+        published = False
+        for selector in publish_selectors:
+            try:
+                page.click(selector, timeout=3000)
+                time.sleep(5)
+                print(f"[Substack] ✅ Published via: {selector}")
+                published = True
+                break
+            except Exception:
+                continue
+
+        if not published:
+            print("[Substack] ⚠️ Could not find publish button")
+            screenshot_path = os.path.join(SESSION_DIR, f"debug_publish_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.png")
+            page.screenshot(path=screenshot_path)
+            print(f"[Substack] Screenshot saved: {screenshot_path}")
+            browser.close()
+            return False
+
+        # Save updated cookies
+        if os.path.exists(state_file):
+            context.storage_state(path=state_file)
+            print(f"[Substack] ✅ Cookies updated: {state_file}")
+
+        browser.close()
+        return True
 
 
 # ============================================================
@@ -278,11 +429,16 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--test', action='store_true', help='Test mode (no publish)')
     parser.add_argument('--dry-run', action='store_true', help='Generate only (no publish)')
+    parser.add_argument('--save-cookies', action='store_true', help='Interactive: save Substack login cookies')
     args = parser.parse_args()
 
     print("=" * 60)
     print("Substack Auto-Post: Daily Article Generator")
     print("=" * 60)
+
+    if args.save_cookies:
+        save_substack_cookies()
+        return
 
     # Step 1: Find latest knowledge file
     print("\n[Step 1] Finding latest knowledge file...")
@@ -316,12 +472,14 @@ def main():
 
     # Step 4: Publish to Substack
     if not args.dry_run:
-        print("\n[Step 4] Publishing to Substack via email...")
+        print("\n[Step 4] Publishing to Substack via Playwright...")
         success = publish_to_substack(article_title, article, dry_run=args.test)
         if success:
             print("\n✅ Article published successfully!")
+            print(f"[Substack] Check: {PUB_URL}/archive")
         else:
             print("\n⚠️ Publish failed. Article saved locally.")
+            print("[Substack] Try running: python substack_auto_post.py --save-cookies")
             sys.exit(1)
     else:
         print("\n[DRY RUN] Skipping publish step.")
