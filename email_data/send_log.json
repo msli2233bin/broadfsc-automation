@@ -79,5 +79,41 @@
     "time": "2026-05-08T18:54:59.665003",
     "message_id": "<202605081854.79896696064@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "msli2233bin+takeshi@gmail.com",
+    "subject": "Why Crude Oil just Stole the Show",
+    "personality": "iron_bull",
+    "date": "2026-05-11",
+    "time": "2026-05-11T20:23:48.894349",
+    "message_id": "<202605112023.26761027617@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+maria@gmail.com",
+    "subject": "VIX says 'not so fast' on S&P",
+    "personality": "iron_bull",
+    "date": "2026-05-11",
+    "time": "2026-05-11T20:23:57.026973",
+    "message_id": "<202605112023.65020592407@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+raj@gmail.com",
+    "subject": "Gold just broke 4,750 resistance",
+    "personality": "iron_bull",
+    "date": "2026-05-11",
+    "time": "2026-05-11T20:24:05.105969",
+    "message_id": "<202605112024.87866777972@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "maria.santos.pro@gmail.com",
+    "subject": "Why the Dow's Quiet Day Matters",
+    "personality": "iron_bull",
+    "date": "2026-05-11",
+    "time": "2026-05-11T20:24:11.794325",
+    "message_id": "<202605112024.34927299383@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
