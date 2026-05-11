@@ -3,8 +3,6 @@
 Substack Auto-Post: Daily Article Generator
 Reads latest knowledge files, generates English article via Groq, auto-posts to Substack.
 
-Publish method: Playwright browser automation (uses saved cookies, no email needed).
-
 Usage:
   python substack_auto_post.py          # Generate + publish 1 article
   python substack_auto_post.py --test  # Test only (no publish)
@@ -18,6 +16,7 @@ import sys
 import json
 import datetime
 import time
+from pathlib import Path
 
 if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
@@ -52,6 +51,7 @@ def find_latest_knowledge_file():
 
     all_md_files = []
     for root, dirs, files in os.walk(KNOWLEDGE_DIR):
+        # Skip hidden dirs and episodic/patterns/strategic
         dirs[:] = [d for d in dirs if not d.startswith('.')]
         for f in files:
             if f.endswith('.md') and not f.startswith('_'):
@@ -62,6 +62,7 @@ def find_latest_knowledge_file():
         print("[Knowledge] No .md files found")
         return None
 
+    # Sort by modification time (newest first)
     all_md_files.sort(key=os.path.getmtime, reverse=True)
     latest = all_md_files[0]
     print(f"[Knowledge] Latest file: {os.path.basename(latest)}")
@@ -73,6 +74,7 @@ def read_knowledge_file(filepath):
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
 
+    # Extract title (first # header)
     lines = content.split('\n')
     title = ""
     body_start = 0
@@ -86,7 +88,7 @@ def read_knowledge_file(filepath):
 
     return {
         'title': title,
-        'body': body[:3000],
+        'body': body[:3000],  # First 3000 chars for context
         'filename': os.path.basename(filepath)
     }
 
@@ -124,7 +126,7 @@ Title: {title_zh}
 Body: {body_zh}
 
 IMPORTANT:
-- Write in native English (no AI traces)
+- Write in native English (no AI痕迹)
 - Include specific numbers and percentages
 - Use professional financial terminology
 - End with: "Disclaimer: This is for informational purposes only, not financial advice."
@@ -148,6 +150,8 @@ IMPORTANT:
 def generate_template_article(title_zh, body_zh):
     """Fallback template if Groq fails."""
     date_str = datetime.datetime.now().strftime("%B %d, %Y")
+
+    # Extract English title
     title_en = title_zh.replace("—", "-").replace("（", "(").replace("）", ")")
     if len(title_en) > 60:
         title_en = "Market Radar: " + title_en[:40] + "..."
@@ -207,50 +211,16 @@ def extract_title_from_article(article_text):
     for line in lines:
         if line.startswith('# '):
             return line.lstrip('# ').strip()
+    # Fallback
     date_str = datetime.datetime.now().strftime("%Y-%m-%d")
     return f"Market Radar: Technical Analysis Update {date_str}"
 
 
 # ============================================================
-# Step 3: Publish to Substack via Playwright (Browser)
+# Step 3: Publish to Substack (Playwright)
 # ============================================================
-
-def save_substack_cookies():
-    """Interactive: save Substack login cookies to file (run once locally)."""
-    try:
-        from playwright.sync_api import sync_playwright
-    except ImportError:
-        print("[Substack] ❌ Playwright not installed. Run: pip install playwright && playwright install chromium")
-        return False
-
-    state_file = os.path.join(SESSION_DIR, "substack_state.json")
-    print(f"[Substack] 💾 Saving login cookies to {state_file}...")
-    print("[Substack] A browser window will open. Please log in to Substack manually.")
-
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
-        context = browser.new_context()
-        page = context.new_page()
-
-        print(f"[Substack] Opening: {PUB_URL}/publish")
-        page.goto(f"{PUB_URL}/publish")
-        print("\n" + "="*50)
-        print("Please log in to Substack in the browser window.")
-        print("After logging in, navigate to: " + PUB_URL + "/publish")
-        print("Then press Enter here to save cookies...")
-        print("="*50 + "\n")
-        input()  # Wait for user to log in
-
-        # Save cookies
-        context.storage_state(path=state_file)
-        print(f"[Substack] ✅ Cookies saved to {state_file}")
-        print("[Substack] You can now run the auto-post script without manual login.")
-        browser.close()
-        return True
-
-
 def publish_to_substack(title, article_body, dry_run=False):
-    """Publish article to Substack using Playwright (with saved cookies)."""
+    """Publish article to Substack using Playwright."""
     if dry_run:
         print("[Substack] DRY RUN — not publishing")
         print(f"[Substack] Title: {title}")
@@ -260,165 +230,109 @@ def publish_to_substack(title, article_body, dry_run=False):
     try:
         from playwright.sync_api import sync_playwright
     except ImportError:
-        print("[Substack] ❌ Playwright not installed. Run: pip install playwright && playwright install chromium")
+        print("[Substack] ❌ Playwright not installed")
         return False
 
     print("[Substack] 🚀 Launching browser...")
 
     with sync_playwright() as p:
-        state_file = os.path.join(SESSION_DIR, "substack_state.json")
+        # Use persistent context (reuses login session)
+        context = p.chromium.launch_persistent_context(
+            SESSION_DIR,
+            headless=IS_CI,
+            args=['--no-sandbox', '--disable-setuid-sandbox'] if IS_CI else []
+        )
 
-        launch_options = {'headless': IS_CI}
-        if IS_CI:
-            launch_options['args'] = ['--no-sandbox', '--disable-setuid-sandbox']
-
-        context_options = {}
-        if os.path.exists(state_file):
-            print(f"[Substack] ✅ Loading saved cookies from {state_file}")
-            context_options['storage_state'] = state_file
-        else:
-            print(f"[Substack] ⚠️ No saved cookies ({state_file} not found)")
-            print("[Substack] Run: python substack_auto_post.py --save-cookies")
-            browser.close()
-            return False
-
-        browser = p.chromium.launch(**launch_options)
-        context = browser.new_context(**context_options)
-        page = context.new_page()
+        page = context.pages[0] if context.pages else context.new_page()
 
         # Check if already logged in
         print("[Substack] Checking login status...")
-        try:
-            page.goto(f"{PUB_URL}/publish", timeout=30000)
-            time.sleep(3)
-            current_url = page.url.lower()
-            if "login" in current_url or "sign-in" in current_url:
-                print("[Substack] ❌ Not logged in! Cookies expired.")
-                print("[Substack] Run locally: python substack_auto_post.py --save-cookies")
-                browser.close()
-                return False
-        except Exception as e:
-            print(f"[Substack] ⚠️ Login check warning: {e}")
+        page.goto(f"{PUB_URL}/publish", timeout=30000)
+        time.sleep(3)
+
+        if "login" in page.url.lower():
+            print("[Substack] Need to login...")
+            page.fill('input[type="email"]', SUBSTACK_EMAIL)
+            page.fill('input[type="password"]', SUBSTACK_PASSWORD)
+            page.click('button[type="submit"]')
+            time.sleep(5)
+            # Save session
+            context.storage_state(path=os.path.join(SESSION_DIR, "state.json"))
 
         # Create new draft
         print("[Substack] Creating new draft...")
-        try:
-            page.goto(f"{PUB_URL}/publish", timeout=30000)
-            time.sleep(3)
-            try:
-                page.get_by_text("New post", exact=False).click(timeout=5000)
-                print("[Substack] ✅ Clicked 'New post' button")
-            except Exception:
-                print("[Substack] 'New post' not found, trying direct URL...")
-                page.goto(f"{PUB_URL}/publish/post", timeout=30000)
+        page.goto(f"{PUB_URL}/publish", timeout=30000)
+        time.sleep(3)
 
-            time.sleep(5)
+        # Set title via API (required for React state)
+        # Use Substack's internal API
+        import requests
+        api_url = f"https://substackapi.com/api/draft"
+        # Note: Substack doesn't have a public API, so we use Playwright
+
+        # Click "New Post" button
+        try:
+            page.click('text="New Post"', timeout=5000)
+        except Exception:
+            print("[Substack] 'New Post' not found, trying direct URL...")
+            page.goto(f"{PUB_URL}/publish/post", timeout=30000)
+
+        time.sleep(3)
+
+        # Set title using React state (title → reload → verify)
+        print("[Substack] Setting title...")
+        title_selector = 'input[placeholder*="title"], input[name*="title"]'
+        try:
+            page.fill(title_selector, title)
+            page.reload()
+            time.sleep(3)
+            # Verify title persisted
             current_url = page.url
-            print(f"[Substack] Current URL after new post: {current_url}")
-
-            if "/publish/post/" not in current_url:
-                print(f"[Substack] ⚠️ Draft URL not detected, current: {current_url}")
+            if "/publish/post/" in current_url:
+                draft_id = current_url.split("/")[-1]
+                print(f"[Substack] Draft created: {draft_id}")
         except Exception as e:
-            print(f"[Substack] ⚠️ New draft warning: {e}")
+            print(f"[Substack] Title setting warning: {e}")
 
-        # Fill title and body
-        print("[Substack] Filling title and body...")
-
-        # Extract title and body from article
-        lines = article_body.strip().split('\n')
-        article_title = title
-        body_start = 0
-        for i, line in enumerate(lines):
-            if line.startswith('# '):
-                article_title = line.lstrip('# ').strip()
-                body_start = i + 1
-                break
-        article_body_only = '\n'.join(lines[body_start:])
-
-        # Use JavaScript to set content (more reliable than selectors)
-        # Use placeholders, then replace (avoids f-string backslash error)
-        js_script = """
-        () => {
-            // Set title
-            let titleSet = false;
-            document.querySelectorAll('input[placeholder*="title" i], input[aria-label*="title" i]').forEach(el => {
-                if (!titleSet) {
-                    el.focus();
-                    el.value = "___TITLE___";
-                    el.dispatchEvent(new Event('input', {bubbles: true}));
-                    el.dispatchEvent(new Event('change', {bubbles: true}));
-                    titleSet = true;
-                    console.log('Title set');
-                }
-            });
-
-            // Click into body editor and type
-            setTimeout(() => {
-                let bodySet = false;
-                document.querySelectorAll('[contenteditable="true"], .ProseMirror').forEach(el => {
-                    if (!bodySet) {
-                        el.focus();
-                        const text = "___BODY___";
-                        el.innerHTML = '<p>' + text.replace(/\\n\\n/g, '</p><p>').replace(/\\n/g, '<br>') + '</p>';
-                        el.dispatchEvent(new Event('input', {bubbles: true}));
-                        bodySet = true;
-                        console.log('Body set');
-                    }
-                });
-            }, 1000);
-
-            return {titleSet, bodySet};
-        }
-        """
-        # Safely inject title and body (escape JS strings)
-        import json
-        title_escaped = json.dumps(article_title)[1:-1]  # remove surrounding quotes
-        body_escaped = json.dumps(article_body_only)[1:-1]
-        js_script = js_script.replace("___TITLE___", title_escaped)
-        js_script = js_script.replace("___BODY___", body_escaped)
-
+        # Fill body content
+        print("[Substack] Filling article body...")
+        # Substack uses ProseMirror editor
+        editor_selector = '.ProseMirror, [contenteditable="true"]'
         try:
-            result = page.evaluate(js_script)
-            print(f"[Substack] JS result: {result}")
-            time.sleep(3)
+            page.click(editor_selector)
+            time.sleep(1)
+            # Type article content (chunked to avoid timeout)
+            chunk_size = 500
+            for i in range(0, len(article_body), chunk_size):
+                chunk = article_body[i:i+chunk_size]
+                page.keyboard.type(chunk)
+                time.sleep(0.5)
         except Exception as e:
-            print(f"[Substack] ⚠️ JavaScript injection warning: {e}")
+            print(f"[Substack] Editor warning: {e}")
+
+        time.sleep(2)
 
         # Publish
         print("[Substack] Publishing...")
-        publish_selectors = [
-            'button:has-text("Send to everyone now")',
-            'button:has-text("Publish")',
-            'button:has-text("Save")',
-            '[role="button"]:has-text("Send")',
-        ]
-
-        published = False
-        for selector in publish_selectors:
+        try:
+            page.click('text="Send to everyone now"', timeout=5000)
+            time.sleep(5)
+            print("[Substack] ✅ Article published!")
+            return True
+        except Exception as e:
+            print(f"[Substack] Publish button warning: {e}")
+            # Try alternative selectors
             try:
-                page.click(selector, timeout=3000)
+                page.click('button:has-text("Publish")')
                 time.sleep(5)
-                print(f"[Substack] ✅ Published via: {selector}")
-                published = True
-                break
-            except Exception:
-                continue
+                print("[Substack] ✅ Article published (alt method)!")
+                return True
+            except Exception as e2:
+                print(f"[Substack] ❌ Publish failed: {e2}")
+                return False
 
-        if not published:
-            print("[Substack] ⚠️ Could not find publish button")
-            screenshot_path = os.path.join(SESSION_DIR, f"debug_publish_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.png")
-            page.screenshot(path=screenshot_path)
-            print(f"[Substack] Screenshot saved: {screenshot_path}")
-            browser.close()
-            return False
-
-        # Save updated cookies
-        if os.path.exists(state_file):
-            context.storage_state(path=state_file)
-            print(f"[Substack] ✅ Cookies updated: {state_file}")
-
-        browser.close()
-        return True
+        finally:
+            context.close()
 
 
 # ============================================================
@@ -429,16 +343,11 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--test', action='store_true', help='Test mode (no publish)')
     parser.add_argument('--dry-run', action='store_true', help='Generate only (no publish)')
-    parser.add_argument('--save-cookies', action='store_true', help='Interactive: save Substack login cookies')
     args = parser.parse_args()
 
     print("=" * 60)
     print("Substack Auto-Post: Daily Article Generator")
     print("=" * 60)
-
-    if args.save_cookies:
-        save_substack_cookies()
-        return
 
     # Step 1: Find latest knowledge file
     print("\n[Step 1] Finding latest knowledge file...")
@@ -472,14 +381,12 @@ def main():
 
     # Step 4: Publish to Substack
     if not args.dry_run:
-        print("\n[Step 4] Publishing to Substack via Playwright...")
+        print("\n[Step 4] Publishing to Substack...")
         success = publish_to_substack(article_title, article, dry_run=args.test)
         if success:
             print("\n✅ Article published successfully!")
-            print(f"[Substack] Check: {PUB_URL}/archive")
         else:
             print("\n⚠️ Publish failed. Article saved locally.")
-            print("[Substack] Try running: python substack_auto_post.py --save-cookies")
             sys.exit(1)
     else:
         print("\n[DRY RUN] Skipping publish step.")
