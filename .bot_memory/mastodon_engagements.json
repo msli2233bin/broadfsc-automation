@@ -27,96 +27,6 @@
   "total_engagements": 26,
   "engagements": [
     {
-      "date": "2026-05-08T11:15:22.561479+00:00",
-      "post_id": "116532742764030561",
-      "author": "thejapantimes",
-      "my_reply_id": "116538665892785823",
-      "post_preview": "U.S. Treasury Secretary Scott Bessent will meet Prime Minister Sanae Takaichi, Finance Minister Sats",
-      "reply_preview": "U.S. officials descending on Tokyo. Meanwhile, USD/JPY's at 131.50 - a 3% drop from the 2025 highs w",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-08T20:01:54.372145+00:00"
-    },
-    {
-      "date": "2026-05-08T11:18:07.500587+00:00",
-      "post_id": "116534588579793239",
-      "author": "BusinessInsider",
-      "my_reply_id": "116538676577333137",
-      "post_preview": "Famed hedge fund investor Paul Tudor Jones says the AI-fueled market rally can go for another 2 year",
-      "reply_preview": "@BusinessInsider Tudor Jones might be right about the AI-fueled rally, but he's underestimating the ",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-08T20:01:54.689794+00:00"
-    },
-    {
-      "date": "2026-05-09T06:27:39.221294+00:00",
-      "post_id": "116541294526395467",
-      "author": "WSJ",
-      "my_reply_id": "116543196959482432",
-      "post_preview": "Jobs Report, Chip-Stock Rally Power Stocks to New Records\nhttps://www.wsj.com/finance/stocks/jobs-re",
-      "reply_preview": "WSJ thinks chip stocks are powering the rally? Not so fast. Nvidia's up 12% in the last 2 weeks, but",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-09T06:29:05.438914+00:00"
-    },
-    {
-      "date": "2026-05-09T06:28:16.891761+00:00",
-      "post_id": "116533273243008526",
-      "author": "TheMotleyFool",
-      "my_reply_id": "116543199430373421",
-      "post_preview": "The MacBook Neo Could Be the Best Reason to Buy Apple Stock\nhttps://www.fool.com/investing/2026/05/0",
-      "reply_preview": "@TheMotleyFool Apple's MacBook Neo could propel AAPL stock, but 2% sales bump won't cut it in Q3. I'",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-09T06:29:05.852742+00:00"
-    },
-    {
-      "date": "2026-05-09T14:19:49.020818+00:00",
-      "post_id": "116544968042937316",
-      "author": "bocvip",
-      "my_reply_id": "116545053580728421",
-      "post_preview": "Driverless cars still 5 years away – again. The Tesla version costs $130K and is geo-fenced to a 25 ",
-      "reply_preview": "Geo-fencing Tesla's $130K driverless car to a 25 square mile grid is a nice PR stunt but misses the ",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-09T14:20:28.783245+00:00"
-    },
-    {
-      "date": "2026-05-10T07:17:32.211296+00:00",
-      "post_id": "116544658483275026",
-      "author": "selfawarepatterns.com",
-      "my_reply_id": "116549055419538132",
-      "post_preview": "The Astropolis trilogy\n\n\nIn the last post I discussed my recent exploration of Reddit. The one conve",
-      "reply_preview": "Risk management is all about probabilities, not guarantees. In the Astropolis trilogy, the Primes an",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-10T07:21:46.763128+00:00"
-    },
-    {
       "date": "2026-05-10T07:18:41.141212+00:00",
       "post_id": "116541325404736056",
       "author": "Aleums",
@@ -235,6 +145,96 @@
       },
       "result": "silent",
       "outcome_checked": "2026-05-10T07:21:47.424077+00:00"
+    },
+    {
+      "date": "2026-05-10T07:17:32.211296+00:00",
+      "post_id": "116544658483275026",
+      "author": "selfawarepatterns.com",
+      "my_reply_id": "116549055419538132",
+      "post_preview": "The Astropolis trilogy\n\n\nIn the last post I discussed my recent exploration of Reddit. The one conve",
+      "reply_preview": "Risk management is all about probabilities, not guarantees. In the Astropolis trilogy, the Primes an",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-10T07:21:46.763128+00:00"
+    },
+    {
+      "date": "2026-05-10T07:18:41.141212+00:00",
+      "post_id": "116541325404736056",
+      "author": "Aleums",
+      "my_reply_id": "116549059934918106",
+      "post_preview": "@dankwraith i think in toronto and vancouver that's correct but we generally have way less urban den",
+      "reply_preview": "@Aleums, you're right about urban density, but let's not forget the correlation between housing supp",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-10T07:21:47.018083+00:00"
+    },
+    {
+      "date": "2026-05-10T07:20:29.159166+00:00",
+      "post_id": "116540494756188024",
+      "author": "derstieg",
+      "my_reply_id": "116549067001621908",
+      "post_preview": "Markets today: Nasdaq leading, strong jobs data, US-Iran tensions rising.\nThe pattern is clear — cap",
+      "reply_preview": "@derstieg, you're spot on about the AI infrastructure gravy train. $200B+ per year is unsustainable ",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-10T07:21:47.424077+00:00"
+    },
+    {
+      "date": "2026-05-11T10:46:25.049471+00:00",
+      "post_id": "116554347315916797",
+      "author": "bloomberg",
+      "my_reply_id": "116555539079447146",
+      "post_preview": "Kiwi May Defy Hedge-Fund Bears on Hawkish RBNZ, Analysts Say\nhttps://www.bloomberg.com/news/articles",
+      "reply_preview": "RBNZ hawkish? That's old news. The real question is how the Kiwi plays out against the Aussie. With ",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-11T10:49:48.860384+00:00"
+    },
+    {
+      "date": "2026-05-11T10:48:08.229256+00:00",
+      "post_id": "116553292525083279",
+      "author": "bloomberg",
+      "my_reply_id": "116555545844768220",
+      "post_preview": "Yen Bears Retreat as Intervention Seen Capping Currency Weakness\nhttps://www.bloomberg.com/news/arti",
+      "reply_preview": "@markets-bloomberg  Interventions can calm the waters, but Yen bears aren't ready to surrender. RSI ",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-11T10:49:49.268367+00:00"
+    },
+    {
+      "date": "2026-05-11T10:49:16.065232+00:00",
+      "post_id": "116551926806740033",
+      "author": "bloomberg",
+      "my_reply_id": "116555550288473509",
+      "post_preview": "Bond Traders Brace for Inflation Data as Fed’s Powell Era Ends\nhttps://www.bloomberg.com/news/articl",
+      "reply_preview": "@bloomberg Powell's era ending, huh? Inflation data's got everyone spooked. But here's the thing: PP",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-11T10:49:49.492460+00:00"
     },
     {
       "date": "2026-05-10T07:17:32.211296+00:00",
