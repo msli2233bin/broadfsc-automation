@@ -1101,5 +1101,23 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 119,
+    "timestamp": "2026-05-11T14:27:27.421506Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "テスト投稿 — BroadFSC",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 120,
+    "timestamp": "2026-05-11T14:28:20.567356Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "2026年05月11日 マーケット分析：米国市場と日本市場の連動性、高度不確実性の影響、トレンドを握るトッピング",
+    "status": "success",
+    "error_msg": ""
   }
 ]
