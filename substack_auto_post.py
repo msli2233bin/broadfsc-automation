@@ -219,6 +219,41 @@ def extract_title_from_article(article_text):
 # ============================================================
 # Step 3: Publish to Substack (Email Method - No Browser)
 # ============================================================
+
+def publish_via_smtp(title, article_body):
+    """Fallback: Send via SMTP (Gmail)."""
+    import smtplib
+    from email.mime.multipart import MIMEMultipart
+    from email.mime.text import MIMEText
+    
+    publish_email = f"post+{PUBLICATION_SLUG}@substack.com"
+    sender_email = SUBSTACK_EMAIL
+    
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = title
+    msg['From'] = sender_email
+    msg['To'] = publish_email
+    
+    text_part = MIMEText(article_body, 'plain', 'utf-8')
+    msg.attach(text_part)
+    
+    html_body = article_body.replace('\n\n', '<br><br>').replace('\n', '<br>')
+    html_part = MIMEText(f"<html><body><p>{html_body}</p></body></html>", 'html', 'utf-8')
+    msg.attach(html_part)
+    
+    try:
+        server = smtplib.SMTP("smtp.gmail.com", 587)
+        server.starttls()
+        server.login(sender_email, SUBSTACK_PASSWORD)
+        server.send_message(msg)
+        server.quit()
+        print("[Substack] ✅ Article sent via SMTP!")
+        return True
+    except Exception as e:
+        print(f"[Substack] ❌ SMTP failed: {e}")
+        return False
+
+
 def publish_to_substack(title, article_body, dry_run=False):
     """Publish to Substack via email (no browser needed)."""
     if dry_run:
@@ -227,62 +262,57 @@ def publish_to_substack(title, article_body, dry_run=False):
         print(f"[Substack] Body length: {len(article_body)} chars")
         return True
     
-    print("[Substack] 📧 Publishing via email...")
+    print("[Substack] 📧 Publishing via Brevo API...")
     
-    import smtplib
-    from email.mime.multipart import MIMEMultipart
-    from email.mime.text import MIMEText
+    import requests
+    
+    # Brevo API key
+    brevo_key = os.environ.get("BREVO_API_KEY", "")
+    if not brevo_key:
+        print("[Substack] ❌ BREVO_API_KEY not set")
+        print("[Substack] Falling back to SMTP...")
+        return publish_via_smtp(title, article_body)
     
     # Substack email-to-publish address
-    # Format: post+{publication_slug}@{substack_domain}
     publish_email = f"post+{PUBLICATION_SLUG}@substack.com"
-    
-    # Your email (must be authorized in Substack)
     sender_email = SUBSTACK_EMAIL
     
-    # Create message
-    msg = MIMEMultipart('alternative')
-    msg['Subject'] = title
-    msg['From'] = sender_email
-    msg['To'] = publish_email
+    # Brevo API endpoint
+    url = "https://api.brevo.com/v3/smtp/email"
     
-    # Plain text version
-    text_part = MIMEText(article_body, 'plain', 'utf-8')
-    msg.attach(text_part)
+    headers = {
+        "accept": "application/json",
+        "api-key": brevo_key,
+        "content-type": "application/json"
+    }
     
-    # HTML version (optional)
-    html_body = article_body.replace('\n\n', '<br><br>').replace('\n', '<br>')
-    html_part = MIMEText(f"<html><body>{html_body}</body></html>", 'html', 'utf-8')
-    msg.attach(html_part)
+    # Prepare email content
+    html_content = article_body.replace('\n\n', '</p><p>').replace('\n', '<br>')
+    html_content = f"<html><body><p>{html_content}</p></body></html>"
+    
+    payload = {
+        "sender": {"name": "BroadFSC Automation", "email": sender_email},
+        "to": [{"email": publish_email}],
+        "subject": title,
+        "htmlContent": html_content,
+        "textContent": article_body
+    }
     
     try:
-        # Send email via SMTP
-        # Note: Substack requires sender email to be verified
-        # Use Gmail SMTP or Substack's own SMTP settings
-        
-        # For Gmail (less secure, but works)
-        # You need to set SUBSTACK_PASSWORD to Gmail app password
-        smtp_server = "smtp.gmail.com"
-        smtp_port = 587
-        
-        server = smtplib.SMTP(smtp_server, smtp_port)
-        server.starttls()
-        server.login(sender_email, SUBSTACK_PASSWORD)
-        
-        server.send_message(msg)
-        server.quit()
-        
-        print("[Substack] ✅ Article sent via email!")
-        print(f"[Substack] Check: https://{PUBLICATION_SLUG}.substack.com")
-        return True
-    
+        response = requests.post(url, json=payload, headers=headers, timeout=30)
+        if response.status_code in [200, 201, 202]:
+            print("[Substack] ✅ Article sent via Brevo API!")
+            print(f"[Substack] Check: https://{PUBLICATION_SLUG}.substack.com")
+            return True
+        else:
+            print(f"[Substack] ❌ Brevo API failed: {response.status_code}")
+            print(f"[Substack] Response: {response.text[:200]}")
+            print("[Substack] Falling back to SMTP...")
+            return publish_via_smtp(title, article_body)
     except Exception as e:
-        print(f"[Substack] ❌ Email failed: {e}")
-        print("[Substack] Make sure:")
-        print("  1. Sender email is verified in Substack")
-        print("  2. SUBSTACK_PASSWORD is Gmail app password (not regular password)")
-        print("  3. Or use Substack's SMTP settings")
-        return False
+        print(f"[Substack] ❌ Brevo API error: {e}")
+        print("[Substack] Falling back to SMTP...")
+        return publish_via_smtp(title, article_body)
 
 
 # ============================================================
