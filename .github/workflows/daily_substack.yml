@@ -33,7 +33,6 @@ jobs:
         python ai_learning_agent.py || echo "AI Learning Agent failed, continuing..."
 
     - name: Generate & Publish Substack Article
-      continue-on-error: true
       env:
         GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         SUBSTACK_EMAIL: ${{ secrets.SUBSTACK_EMAIL }}
