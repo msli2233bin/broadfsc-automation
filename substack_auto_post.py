@@ -1,22 +1,26 @@
 #!/usr/bin/env python3
 """
 Substack Auto-Post: Daily Article Generator
-Reads latest knowledge files, generates English article via Groq, auto-posts to Substack.
+Reads latest knowledge files, generates English article via Groq, publishes via Email.
 
 Usage:
   python substack_auto_post.py          # Generate + publish 1 article
   python substack_auto_post.py --test  # Test only (no publish)
   python substack_auto_post.py --dry-run  # Generate only (no publish)
 
+Publish method: Email to Substack (post+[slug]@substack.com)
+Most reliable - no browser needed.
+
 Schedule: Daily via GitHub Actions (08:00 Beijing time)
 """
 
 import os
 import sys
-import json
 import datetime
 import time
-from pathlib import Path
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
@@ -36,9 +40,6 @@ os.makedirs(SESSION_DIR, exist_ok=True)
 
 KNOWLEDGE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "knowledge")
 
-# Detect environment
-IS_CI = os.environ.get("CI") == "true" or os.environ.get("GITHUB_ACTIONS") == "true"
-
 
 # ============================================================
 # Step 1: Find Latest Knowledge File
@@ -51,7 +52,6 @@ def find_latest_knowledge_file():
 
     all_md_files = []
     for root, dirs, files in os.walk(KNOWLEDGE_DIR):
-        # Skip hidden dirs and episodic/patterns/strategic
         dirs[:] = [d for d in dirs if not d.startswith('.')]
         for f in files:
             if f.endswith('.md') and not f.startswith('_'):
@@ -62,7 +62,6 @@ def find_latest_knowledge_file():
         print("[Knowledge] No .md files found")
         return None
 
-    # Sort by modification time (newest first)
     all_md_files.sort(key=os.path.getmtime, reverse=True)
     latest = all_md_files[0]
     print(f"[Knowledge] Latest file: {os.path.basename(latest)}")
@@ -74,7 +73,6 @@ def read_knowledge_file(filepath):
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # Extract title (first # header)
     lines = content.split('\n')
     title = ""
     body_start = 0
@@ -88,7 +86,7 @@ def read_knowledge_file(filepath):
 
     return {
         'title': title,
-        'body': body[:3000],  # First 3000 chars for context
+        'body': body[:3000],
         'filename': os.path.basename(filepath)
     }
 
@@ -126,7 +124,7 @@ Title: {title_zh}
 Body: {body_zh}
 
 IMPORTANT:
-- Write in native English (no AI痕迹)
+- Write in native English (no AI traces)
 - Include specific numbers and percentages
 - Use professional financial terminology
 - End with: "Disclaimer: This is for informational purposes only, not financial advice."
@@ -150,8 +148,6 @@ IMPORTANT:
 def generate_template_article(title_zh, body_zh):
     """Fallback template if Groq fails."""
     date_str = datetime.datetime.now().strftime("%B %d, %Y")
-
-    # Extract English title
     title_en = title_zh.replace("—", "-").replace("（", "(").replace("）", ")")
     if len(title_en) > 60:
         title_en = "Market Radar: " + title_en[:40] + "..."
@@ -211,141 +207,67 @@ def extract_title_from_article(article_text):
     for line in lines:
         if line.startswith('# '):
             return line.lstrip('# ').strip()
-    # Fallback
     date_str = datetime.datetime.now().strftime("%Y-%m-%d")
     return f"Market Radar: Technical Analysis Update {date_str}"
 
 
 # ============================================================
-# Step 3: Publish to Substack (Playwright)
+# Step 3: Publish to Substack via EMAIL (Most Reliable)
 # ============================================================
+
+def publish_via_brevo(title, article_body):
+    """Publish to Substack via Brevo API (most reliable method)."""
+    import requests
+
+    brevo_key = os.environ.get("BREVO_API_KEY", "")
+    sender = os.environ.get("BREVO_SENDER_EMAIL", "msli2233bin+brevo@gmail.com")
+    if not brevo_key:
+        print("[Brevo] ❌ BREVO_API_KEY not set")
+        return False
+
+    publish_email = f"post+{PUBLICATION_SLUG}@substack.com"
+    print(f"[Brevo] 📧 Sending to {publish_email}...")
+
+    # Convert article to HTML
+    html_content = article_body.replace('\n\n', '</p><p>').replace('\n', '<br>')
+    html_content = f"<html><body>{html_content}</body></html>"
+
+    payload = {
+        "sender": {"name": "BroadFSC", "email": sender},
+        "to": [{"email": publish_email}],
+        "subject": title,
+        "htmlContent": html_content,
+        "textContent": article_body
+    }
+
+    headers = {
+        "accept": "application/json",
+        "api-key": brevo_key,
+        "content-type": "application/json"
+    }
+
+    try:
+        resp = requests.post("https://api.brevo.com/v3/smtp/email",
+                           json=payload, headers=headers, timeout=30)
+        if resp.status_code in (200, 201, 202):
+            print(f"[Brevo] ✅ Sent! Check: {PUB_URL}")
+            return True
+        else:
+            print(f"[Brevo] ❌ Failed: {resp.status_code} {resp.text[:200]}")
+            return False
+    except Exception as e:
+        print(f"[Brevo] ❌ Error: {e}")
+        return False
+
+
 def publish_to_substack(title, article_body, dry_run=False):
-    """Publish article to Substack using Playwright."""
+    """Publish article to Substack via Brevo email (primary method)."""
     if dry_run:
-        print("[Substack] DRY RUN — not publishing")
+        print(f"[Substack] DRY RUN — not sending")
         print(f"[Substack] Title: {title}")
         print(f"[Substack] Body length: {len(article_body)} chars")
         return True
-
-    try:
-        from playwright.sync_api import sync_playwright
-    except ImportError:
-        print("[Substack] ❌ Playwright not installed")
-        return False
-
-    print("[Substack] 🚀 Launching browser...")
-
-    with sync_playwright() as p:
-        # Cookie file path
-        state_file = os.path.join(SESSION_DIR, "substack_state.json")
-
-        # Launch options
-        launch_options = {
-            'headless': IS_CI,
-        }
-        if IS_CI:
-            launch_options['args'] = ['--no-sandbox', '--disable-setuid-sandbox']
-
-        # Try to load saved cookies
-        if os.path.exists(state_file):
-            print(f"[Substack] ✅ Loading saved cookies from {state_file}")
-            launch_options['storage_state'] = state_file
-
-        browser = p.chromium.launch(**launch_options)
-        context = browser.new_context()
-        page = context.new_page()
-
-        # Check if already logged in
-        print("[Substack] Checking login status...")
-        try:
-            page.goto(f"{PUB_URL}/publish", timeout=30000)
-            time.sleep(3)
-
-            if "login" in page.url.lower():
-                print("[Substack] ❌ Not logged in! Cookies expired.")
-                print("[Substack] Please run: python save_substack_login.py")
-                browser.close()
-                return False
-
-            print("[Substack] ✅ Already logged in!")
-
-        except Exception as e:
-            print(f"[Substack] ⚠️ Login check warning: {e}")
-
-        # Create new draft
-        print("[Substack] Creating new draft...")
-        page.goto(f"{PUB_URL}/publish", timeout=30000)
-        time.sleep(3)
-
-        # Set title via API (required for React state)
-        # Use Substack's internal API
-        import requests
-        api_url = f"https://substackapi.com/api/draft"
-        # Note: Substack doesn't have a public API, so we use Playwright
-
-        # Click "New Post" button
-        try:
-            page.click('text="New Post"', timeout=5000)
-        except Exception:
-            print("[Substack] 'New Post' not found, trying direct URL...")
-            page.goto(f"{PUB_URL}/publish/post", timeout=30000)
-
-        time.sleep(3)
-
-        # Set title using React state (title → reload → verify)
-        print("[Substack] Setting title...")
-        title_selector = 'input[placeholder*="title"], input[name*="title"]'
-        try:
-            page.fill(title_selector, title)
-            page.reload()
-            time.sleep(3)
-            # Verify title persisted
-            current_url = page.url
-            if "/publish/post/" in current_url:
-                draft_id = current_url.split("/")[-1]
-                print(f"[Substack] Draft created: {draft_id}")
-        except Exception as e:
-            print(f"[Substack] Title setting warning: {e}")
-
-        # Fill body content
-        print("[Substack] Filling article body...")
-        # Substack uses ProseMirror editor
-        editor_selector = '.ProseMirror, [contenteditable="true"]'
-        try:
-            page.click(editor_selector)
-            time.sleep(1)
-            # Type article content (chunked to avoid timeout)
-            chunk_size = 500
-            for i in range(0, len(article_body), chunk_size):
-                chunk = article_body[i:i+chunk_size]
-                page.keyboard.type(chunk)
-                time.sleep(0.5)
-        except Exception as e:
-            print(f"[Substack] Editor warning: {e}")
-
-        time.sleep(2)
-
-        # Publish
-        print("[Substack] Publishing...")
-        try:
-            page.click('text="Send to everyone now"', timeout=5000)
-            time.sleep(5)
-            print("[Substack] ✅ Article published!")
-            return True
-        except Exception as e:
-            print(f"[Substack] Publish button warning: {e}")
-            # Try alternative selectors
-            try:
-                page.click('button:has-text("Publish")')
-                time.sleep(5)
-                print("[Substack] ✅ Article published (alt method)!")
-                return True
-            except Exception as e2:
-                print(f"[Substack] ❌ Publish failed: {e2}")
-                return False
-
-        finally:
-            context.close()
+    return publish_via_brevo(title, article_body)
 
 
 # ============================================================
@@ -394,7 +316,7 @@ def main():
 
     # Step 4: Publish to Substack
     if not args.dry_run:
-        print("\n[Step 4] Publishing to Substack...")
+        print("\n[Step 4] Publishing to Substack via email...")
         success = publish_to_substack(article_title, article, dry_run=args.test)
         if success:
             print("\n✅ Article published successfully!")
