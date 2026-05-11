@@ -6,6 +6,9 @@ __pycache__/
 venv/
 .venv/
 # .browser_sessions/  # REMOVED - need to save login state
+# Only commit substack_state.json, ignore other browser session files
+.browser_sessions/*
+!.browser_sessions/substack_state.json
 article_log.json
 debug_substack/
 config.js
