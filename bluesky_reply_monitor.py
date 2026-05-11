@@ -438,9 +438,30 @@ def run_monitor(dry_run=False):
         
         # 发送回复
         # 回复到评论：parent=评论，root=原帖子
+        # 正确构造：root必须是线程根帖，parent是直接回复对象
+        client = get_client()
+        root_uri = parent_uri
+        root_cid = post_cid if post_cid else notif_cid
+        
+        # 尝试从线程获取真正的root（如果parent_uri本身也是回复）
+        try:
+            thread = client.app.bsky.feed.get_post_thread(
+                models.AppBskyFeedGetPostThread.Params(uri=parent_uri)
+            )
+            # 如果parent_uri的post有reply引用，说明它不是root，需要向上找
+            if hasattr(thread, 'thread') and hasattr(thread.thread, 'post'):
+                post_record = thread.thread.post.record if hasattr(thread.thread.post, 'record') else None
+                if post_record and hasattr(post_record, 'reply') and post_record.reply:
+                    # parent_uri是回复，真正的root在reply.root里
+                    root_uri = post_record.reply.root.uri
+                    root_cid = post_record.reply.root.cid
+                    logger.info(f"  检测到嵌套回复，真正的root: {root_uri[:50]}...")
+        except Exception as e:
+            logger.warning(f"  无法获取真实root，使用parent_uri作为root: {e}")
+        
         reply_ref = models.AppBskyFeedPost.ReplyRef(
             parent=models.ComAtprotoRepoStrongRef.Main(uri=notif_uri, cid=notif_cid),
-            root=models.ComAtprotoRepoStrongRef.Main(uri=parent_uri, cid=post_cid if post_cid else notif_cid),
+            root=models.ComAtprotoRepoStrongRef.Main(uri=root_uri, cid=root_cid),
         )
         
         try:

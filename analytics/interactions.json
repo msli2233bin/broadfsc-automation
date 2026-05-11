@@ -286,5 +286,21 @@
     "action": "proactive_outreach",
     "user_id": "8327500544",
     "details": "Auto proactive message sent"
+  },
+  {
+    "id": 37,
+    "timestamp": "2026-05-11T10:00:01.413656Z",
+    "platform": "telegram",
+    "action": "proactive_outreach",
+    "user_id": "8327500544",
+    "details": "Auto proactive message sent"
+  },
+  {
+    "id": 38,
+    "timestamp": "2026-05-11T10:00:50.931903Z",
+    "platform": "telegram",
+    "action": "proactive_outreach",
+    "user_id": "8639358750",
+    "details": "Auto proactive message sent"
   }
 ]

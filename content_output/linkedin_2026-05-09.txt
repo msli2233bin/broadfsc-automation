@@ -1,0 +1,44 @@
+🚀 Weekly Financial Market Insights (2026-05-09)
+
+1. **Market Reference 2026 04**
+   • BroadFSC 实时市场数据参考 — 2026年5月6日
+
+> ⚠️ 此文件为 AI 客服的背景参考数据。具体股价由 yfinance 实时接口提供，此文件仅作通用背景补充。
+> 上次更新：2026-05-06（yfinance实时拉取）
+
+ 全球主要市场概览（2026年5月）
+
+ 美股指数
+| ...
+
+2. **Readme**
+   • 金融知识库 - BroadFSC
+
+*由 AI 金融学者自动维护，每天更新*
+
+ 核心知识点（手动整理）
+
+ 技术分析基础
+- **支撑位/阻力位**: 价格反复触碰但未突破的关键价格区域
+- **移动平均线(MA)**: 5日均线 < 20日均线 < 60日均线 趋势判断
+- **RSI**: 超...
+
+3. **2026-05-06-Global Technical Analysis Practice**
+   • 全球市场技术分析实战手册 — 2026年5月6日
+
+> **基于实时市场数据编写。数据来源：yfinance + 专业分析报告。用于客户沟通和内容创作。**
+
+---
+
+ 第一部分：当前市场技术面全景（2026-05-06）
+
+ 1.1 美股三大指数
+
+| 指标 | S&P 500 (7,338) ...
+
+---
+
+📊 Powered by BroadFSC AI Learning Agent
+🔗 Analyzing global financial markets 24/7
+
+#FinancialAnalysis #MarketInsights #AI #BroadFSC

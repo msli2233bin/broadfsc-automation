@@ -1,0 +1,16 @@
+{
+  "engagers": {
+    "beingexponential.bsky.social": {
+      "handle": "beingexponential.bsky.social",
+      "display_name": "Being Exponential | Luke Lango",
+      "platform": "bluesky",
+      "engagement_type": "comment_reply",
+      "engagement_count": 3,
+      "first_engaged": "2026-05-08",
+      "last_engaged": "2026-05-08",
+      "score": 80,
+      "needs_followup": true,
+      "followup_stage": "commented_on_my_post"
+    }
+  }
+}
