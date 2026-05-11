@@ -5,6 +5,11 @@ on:
     # Daily at 08:00 Beijing time (00:00 UTC)
     - cron: '0 0 * * *'
   workflow_dispatch:  # Manual trigger
+  push:
+    branches: [ main ]
+    paths:
+      - 'substack_auto_post.py'
+      - '.github/workflows/daily_substack.yml'
 
 jobs:
   post:
