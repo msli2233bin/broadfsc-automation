@@ -1119,5 +1119,100 @@
     "content_preview": "2026年05月11日 マーケット分析：米国市場と日本市場の連動性、高度不確実性の影響、トレンドを握るトッピング",
     "status": "success",
     "error_msg": ""
+  },
+  {
+    "id": 121,
+    "timestamp": "2026-05-11T16:18:09.967742Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The Bullish Uptrend Continues, But Watch Out for Overbought Signals</b>\n\nAs we kick off the wee",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "115"
+  },
+  {
+    "id": 122,
+    "timestamp": "2026-05-11T16:18:10.968377Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The Bullish Uptrend Continues, But Watch Out for Overbought Signals**\n\nAs we kick off the week, ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1503431030906814665"
+  },
+  {
+    "id": 123,
+    "timestamp": "2026-05-11T16:18:11.342166Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The Bullish Uptrend Continues, But Watch Out for Overbought Signals\n\nAs we kick off the week, let'",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 124,
+    "timestamp": "2026-05-11T16:18:15.292040Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 As we kick off the week, let's dive into the latest market snapshot. 🧵",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 125,
+    "timestamp": "2026-05-11T16:18:16.548472Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The Bullish Uptrend Continues, But Watch Out for Overbought Signals",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 126,
+    "timestamp": "2026-05-11T16:18:17.768049Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "As the social media landscape continues to evolve, platforms like TikTok are redefining the rules of",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "116556844077314666"
+  },
+  {
+    "id": 127,
+    "timestamp": "2026-05-11T16:18:18.012842Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "**Modern Sales Techniques for Financial Services**\n\nHey fellow traders, \n\nAs we navigate the complex",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1503431063228383384"
+  },
+  {
+    "id": 128,
+    "timestamp": "2026-05-11T16:18:18.635955Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $NVDA NVIDIA Corporation 💰 211.5 (+1.8%)\n\nSetup: consolidation\nRSI: 58.2 | MACD: bearish\nVol: 1.1",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mllog5fd6v2i"
+  },
+  {
+    "id": 129,
+    "timestamp": "2026-05-11T16:18:24.931716Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 130,
+    "timestamp": "2026-05-11T16:18:38.133611Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
