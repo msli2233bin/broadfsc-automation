@@ -14,3 +14,6 @@
 
 ## 21:53:10 | sales/crm_sales
 - [cross_domain_match] 🔗 跨域关联匹配: sales/crm_sales 在 FUSION_INDEX 中有对应融合策略
+
+## 14:00:28 | sales/modern_sales
+- [cross_domain_match] 🔗 跨域关联匹配: sales/modern_sales 在 FUSION_INDEX 中有对应融合策略
