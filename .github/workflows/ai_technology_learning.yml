@@ -47,16 +47,12 @@ jobs:
 
       - name: 通知Telegram
         if: always()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_ADMIN_CHAT_ID: ${{ secrets.TELEGRAM_ADMIN_CHAT_ID }}
         run: |
-          python -c "
-import requests, json, os
-token = os.environ.get('TELEGRAM_BOT_TOKEN', '')
-chat = os.environ.get('TELEGRAM_ADMIN_CHAT_ID', '')
-if token and chat:
-    try:
-        requests.post(f'https://api.telegram.org/bot{token}/sendMessage',
-            json={'chat_id': chat, 'text': '🤖 <b>AI技术每日学习完成</b>\n📅 ' + os.popen('date +%Y-%m-%d').read().strip() + '\n📁 知识已保存到 knowledge/ai_technology/\n📈 今天的我已比昨天更聪明！', 'parse_mode': 'HTML'},
-            timeout=15)
-    except: pass
-"
+          DATE=$(date +%Y-%m-%d)
+          MSG="🤖 AI技术每日学习完成%0A📅 ${DATE}%0A📁 知识已保存到 knowledge/ai_technology/"
+          curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            -d "chat_id=${TELEGRAM_ADMIN_CHAT_ID}&text=${MSG}" || true
         continue-on-error: true
