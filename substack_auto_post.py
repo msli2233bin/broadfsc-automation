@@ -307,7 +307,7 @@ def publish_via_smtp(title, article_body):
 
 
 def publish_to_substack(title, article_body, dry_run=False):
-    """Publish to Substack via email (no browser needed)."""
+    """Publish to Substack via email (prioritize SMTP over Brevo)."""
     if dry_run:
         print("[Substack] DRY RUN — not publishing")
         print(f"[Substack] Title: {title}")
@@ -316,29 +316,30 @@ def publish_to_substack(title, article_body, dry_run=False):
 
     print("\n[Substack] Starting publication process...")
 
-    # Validate config first
+    # Validate config
     if not validate_config():
         print("[Substack] ❌ Configuration invalid, aborting")
         return False
 
-    print("\n[Substack] 📧 Attempting to publish via Brevo API...")
+    # Try SMTP first (more reliable, no sender verification needed)
+    print("\n[Substack] 📧 Attempting SMTP (Gmail) first...")
+    if publish_via_smtp(title, article_body):
+        return True
 
+    # Fallback to Brevo API
+    print("\n[Substack] 📧 SMTP failed, trying Brevo API...")
     import requests
 
-    # Substack email-to-publish address
     publish_email = f"post+{PUBLICATION_SLUG}@substack.com"
     sender_email = SUBSTACK_EMAIL
 
-    # Brevo API endpoint
     url = "https://api.brevo.com/v3/smtp/email"
-
     headers = {
         "accept": "application/json",
         "api-key": BREVO_API_KEY,
         "content-type": "application/json"
     }
 
-    # Better HTML formatting
     html_content = article_body.replace('\n\n', '</p><p>').replace('\n', '<br>')
     html_content = f"<html><head><meta charset='utf-8'></head><body><p>{html_content}</p></body></html>"
 
@@ -353,7 +354,6 @@ def publish_to_substack(title, article_body, dry_run=False):
     print(f"[Brevo] From: {sender_email}")
     print(f"[Brevo] To: {publish_email}")
     print(f"[Brevo] Subject: {title}")
-    print(f"[Brevo] HTML length: {len(html_content)} chars")
 
     try:
         response = requests.post(url, json=payload, headers=headers, timeout=30)
@@ -366,12 +366,10 @@ def publish_to_substack(title, article_body, dry_run=False):
         else:
             print(f"[Brevo] ❌ Brevo API failed: {response.status_code}")
             print(f"[Brevo] Response: {response.text[:500]}")
-            print("[Brevo] Falling back to SMTP...")
-            return publish_via_smtp(title, article_body)
+            return False
     except Exception as e:
         print(f"[Brevo] ❌ Brevo API error: {e}")
-        print("[Brevo] Falling back to SMTP...")
-        return publish_via_smtp(title, article_body)
+        return False
 
 
 # ============================================================
