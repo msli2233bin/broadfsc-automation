@@ -28,7 +28,7 @@ jobs:
 
       - name: Check Reddit Karma
         env:
-          REDDIT_USERNAME: Only-Character4025
+          REDDIT_USERNAME: ${{ secrets.REDDIT_USERNAME }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
         run: python reddit_karma_checker.py
