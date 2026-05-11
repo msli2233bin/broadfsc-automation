@@ -5,7 +5,7 @@ __pycache__/
 .env
 venv/
 .venv/
-.browser_sessions/
+# .browser_sessions/  # REMOVED - need to save login state
 article_log.json
 debug_substack/
 config.js

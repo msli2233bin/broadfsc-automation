@@ -5,6 +5,11 @@ on:
     # Daily at 08:00 Beijing time (00:00 UTC)
     - cron: '0 0 * * *'
   workflow_dispatch:  # Manual trigger
+  push:
+    branches: [ main ]
+    paths:
+      - 'substack_auto_post.py'
+      - '.github/workflows/daily_substack.yml'
 
 jobs:
   post:
@@ -34,7 +39,6 @@ jobs:
         python ai_learning_agent.py || echo "AI Learning Agent failed, continuing..."
 
     - name: Generate & Publish Substack Article
-      continue-on-error: true
       env:
         GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
       run: |
