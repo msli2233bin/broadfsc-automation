@@ -23,7 +23,8 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install groq yfinance requests pillow
+        pip install groq yfinance requests pillow playwright
+        playwright install chromium
 
     - name: Run AI Learning Agent (update knowledge base)
       continue-on-error: true
@@ -36,9 +37,6 @@ jobs:
       continue-on-error: true
       env:
         GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-        SUBSTACK_EMAIL: ${{ secrets.SUBSTACK_EMAIL }}
-        SUBSTACK_PASSWORD: ${{ secrets.SUBSTACK_PASSWORD }}
-        BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
       run: |
         python substack_auto_post.py
 

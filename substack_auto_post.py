@@ -217,102 +217,135 @@ def extract_title_from_article(article_text):
 
 
 # ============================================================
-# Step 3: Publish to Substack (Email Method - No Browser)
+# Step 3: Publish to Substack (Playwright)
 # ============================================================
-
-def publish_via_smtp(title, article_body):
-    """Fallback: Send via SMTP (Gmail)."""
-    import smtplib
-    from email.mime.multipart import MIMEMultipart
-    from email.mime.text import MIMEText
-    
-    publish_email = f"post+{PUBLICATION_SLUG}@substack.com"
-    sender_email = SUBSTACK_EMAIL
-    
-    msg = MIMEMultipart('alternative')
-    msg['Subject'] = title
-    msg['From'] = sender_email
-    msg['To'] = publish_email
-    
-    text_part = MIMEText(article_body, 'plain', 'utf-8')
-    msg.attach(text_part)
-    
-    html_body = article_body.replace('\n\n', '<br><br>').replace('\n', '<br>')
-    html_part = MIMEText(f"<html><body><p>{html_body}</p></body></html>", 'html', 'utf-8')
-    msg.attach(html_part)
-    
-    try:
-        server = smtplib.SMTP("smtp.gmail.com", 587)
-        server.starttls()
-        server.login(sender_email, SUBSTACK_PASSWORD)
-        server.send_message(msg)
-        server.quit()
-        print("[Substack] ✅ Article sent via SMTP!")
-        return True
-    except Exception as e:
-        print(f"[Substack] ❌ SMTP failed: {e}")
-        return False
-
-
 def publish_to_substack(title, article_body, dry_run=False):
-    """Publish to Substack via email (no browser needed)."""
+    """Publish article to Substack using Playwright."""
     if dry_run:
         print("[Substack] DRY RUN — not publishing")
         print(f"[Substack] Title: {title}")
         print(f"[Substack] Body length: {len(article_body)} chars")
         return True
-    
-    print("[Substack] 📧 Publishing via Brevo API...")
-    
-    import requests
-    
-    # Brevo API key
-    brevo_key = os.environ.get("BREVO_API_KEY", "")
-    if not brevo_key:
-        print("[Substack] ❌ BREVO_API_KEY not set")
-        print("[Substack] Falling back to SMTP...")
-        return publish_via_smtp(title, article_body)
-    
-    # Substack email-to-publish address
-    publish_email = f"post+{PUBLICATION_SLUG}@substack.com"
-    sender_email = SUBSTACK_EMAIL
-    
-    # Brevo API endpoint
-    url = "https://api.brevo.com/v3/smtp/email"
-    
-    headers = {
-        "accept": "application/json",
-        "api-key": brevo_key,
-        "content-type": "application/json"
-    }
-    
-    # Prepare email content
-    html_content = article_body.replace('\n\n', '</p><p>').replace('\n', '<br>')
-    html_content = f"<html><body><p>{html_content}</p></body></html>"
-    
-    payload = {
-        "sender": {"name": "BroadFSC Automation", "email": sender_email},
-        "to": [{"email": publish_email}],
-        "subject": title,
-        "htmlContent": html_content,
-        "textContent": article_body
-    }
-    
+
     try:
-        response = requests.post(url, json=payload, headers=headers, timeout=30)
-        if response.status_code in [200, 201, 202]:
-            print("[Substack] ✅ Article sent via Brevo API!")
-            print(f"[Substack] Check: https://{PUBLICATION_SLUG}.substack.com")
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        print("[Substack] ❌ Playwright not installed")
+        return False
+
+    print("[Substack] 🚀 Launching browser...")
+
+    with sync_playwright() as p:
+        # Cookie file path
+        state_file = os.path.join(SESSION_DIR, "substack_state.json")
+
+        # Launch options
+        launch_options = {
+            'headless': IS_CI,
+        }
+        if IS_CI:
+            launch_options['args'] = ['--no-sandbox', '--disable-setuid-sandbox']
+
+        # Try to load saved cookies
+        if os.path.exists(state_file):
+            print(f"[Substack] ✅ Loading saved cookies from {state_file}")
+            launch_options['storage_state'] = state_file
+
+        browser = p.chromium.launch(**launch_options)
+        context = browser.new_context()
+        page = context.new_page()
+
+        # Check if already logged in
+        print("[Substack] Checking login status...")
+        try:
+            page.goto(f"{PUB_URL}/publish", timeout=30000)
+            time.sleep(3)
+
+            if "login" in page.url.lower():
+                print("[Substack] ❌ Not logged in! Cookies expired.")
+                print("[Substack] Please run: python save_substack_login.py")
+                browser.close()
+                return False
+
+            print("[Substack] ✅ Already logged in!")
+
+        except Exception as e:
+            print(f"[Substack] ⚠️ Login check warning: {e}")
+
+        # Create new draft
+        print("[Substack] Creating new draft...")
+        page.goto(f"{PUB_URL}/publish", timeout=30000)
+        time.sleep(3)
+
+        # Set title via API (required for React state)
+        # Use Substack's internal API
+        import requests
+        api_url = f"https://substackapi.com/api/draft"
+        # Note: Substack doesn't have a public API, so we use Playwright
+
+        # Click "New Post" button
+        try:
+            page.click('text="New Post"', timeout=5000)
+        except Exception:
+            print("[Substack] 'New Post' not found, trying direct URL...")
+            page.goto(f"{PUB_URL}/publish/post", timeout=30000)
+
+        time.sleep(3)
+
+        # Set title using React state (title → reload → verify)
+        print("[Substack] Setting title...")
+        title_selector = 'input[placeholder*="title"], input[name*="title"]'
+        try:
+            page.fill(title_selector, title)
+            page.reload()
+            time.sleep(3)
+            # Verify title persisted
+            current_url = page.url
+            if "/publish/post/" in current_url:
+                draft_id = current_url.split("/")[-1]
+                print(f"[Substack] Draft created: {draft_id}")
+        except Exception as e:
+            print(f"[Substack] Title setting warning: {e}")
+
+        # Fill body content
+        print("[Substack] Filling article body...")
+        # Substack uses ProseMirror editor
+        editor_selector = '.ProseMirror, [contenteditable="true"]'
+        try:
+            page.click(editor_selector)
+            time.sleep(1)
+            # Type article content (chunked to avoid timeout)
+            chunk_size = 500
+            for i in range(0, len(article_body), chunk_size):
+                chunk = article_body[i:i+chunk_size]
+                page.keyboard.type(chunk)
+                time.sleep(0.5)
+        except Exception as e:
+            print(f"[Substack] Editor warning: {e}")
+
+        time.sleep(2)
+
+        # Publish
+        print("[Substack] Publishing...")
+        try:
+            page.click('text="Send to everyone now"', timeout=5000)
+            time.sleep(5)
+            print("[Substack] ✅ Article published!")
             return True
-        else:
-            print(f"[Substack] ❌ Brevo API failed: {response.status_code}")
-            print(f"[Substack] Response: {response.text[:200]}")
-            print("[Substack] Falling back to SMTP...")
-            return publish_via_smtp(title, article_body)
-    except Exception as e:
-        print(f"[Substack] ❌ Brevo API error: {e}")
-        print("[Substack] Falling back to SMTP...")
-        return publish_via_smtp(title, article_body)
+        except Exception as e:
+            print(f"[Substack] Publish button warning: {e}")
+            # Try alternative selectors
+            try:
+                page.click('button:has-text("Publish")')
+                time.sleep(5)
+                print("[Substack] ✅ Article published (alt method)!")
+                return True
+            except Exception as e2:
+                print(f"[Substack] ❌ Publish failed: {e2}")
+                return False
+
+        finally:
+            context.close()
 
 
 # ============================================================
