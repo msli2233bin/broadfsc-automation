@@ -1214,5 +1214,25 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 131,
+    "timestamp": "2026-05-11T18:24:17.116884Z",
+    "platform": "telegram_en",
+    "type": "earnings",
+    "content_preview": "<b>📊 Earnings Calendar: Week of May 11</b>\n\n\n📅 <b>Wednesday, May 13</b>\n  • Tencent (0700.HK) @ $nan",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "117"
+  },
+  {
+    "id": 132,
+    "timestamp": "2026-05-11T18:24:17.609923Z",
+    "platform": "discord",
+    "type": "earnings",
+    "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of May 11**\n\n\n📅 **Wednesday, May 13**\n  •",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1503462769553576096"
   }
 ]
