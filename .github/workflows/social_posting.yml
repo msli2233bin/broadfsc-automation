@@ -103,17 +103,17 @@ jobs:
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
         run: python reddit_poster.py
 
-      - name: Post to Substack (Playwright headless, Mon/Wed/Fri only)
-        if: always()
-        env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
-          CI: "true"
-        run: |
-          pip install playwright
-          playwright install chromium --with-deps
-          python substack_poster.py
+      # - name: Post to Substack (REMOVED - use daily_substack.yml instead)
+      #   if: always()
+      #   env:
+      #     GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      #     TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      #     TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+      #     CI: "true"
+      #   run: |
+      #     pip install playwright
+      #     playwright install chromium --with-deps
+      #     python substack_poster.py
 
       - name: Commit & push analytics data
         if: always()
