@@ -115,5 +115,41 @@
     "time": "2026-05-11T20:24:11.794325",
     "message_id": "<202605112024.34927299383@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "david.chen.trader@gmail.com",
+    "subject": "Why Oil's Surge Ignites Caution",
+    "personality": "alex",
+    "date": "2026-05-12",
+    "time": "2026-05-12T20:17:48.980765",
+    "message_id": "<202605122017.12173563778@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "sarah.investor@outlook.com",
+    "subject": "Crude surges, S&P 500 yawns",
+    "personality": "alex",
+    "date": "2026-05-12",
+    "time": "2026-05-12T20:17:56.728919",
+    "message_id": "<202605122017.37942095962@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "takeshi.yamamoto@yahoo.co.jp",
+    "subject": "Why Crude Oil just broke a Critical Zone",
+    "personality": "alex",
+    "date": "2026-05-12",
+    "time": "2026-05-12T20:18:05.407282",
+    "message_id": "<202605122018.70375347839@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "raj.patel.invest@hotmail.com",
+    "subject": "Gold just broke 4,700 support",
+    "personality": "alex",
+    "date": "2026-05-12",
+    "time": "2026-05-12T20:18:14.038546",
+    "message_id": "<202605122018.62897943364@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
