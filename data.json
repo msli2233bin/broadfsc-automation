@@ -1,20 +1,20 @@
 {
-  "report_time": "2026-05-12T00:12:47.601662",
+  "report_time": "2026-05-12T11:26:28.776049",
   "days": 30,
   "overview": {
     "posts_by_platform": {
       "bluesky": 4,
       "discord": 13,
-      "hatena": 5,
+      "hatena": 8,
       "mastodon": 10,
       "medium": 3,
       "substack": 3,
       "telegram_en": 8,
-      "threads": 9,
+      "threads": 10,
       "tiktok": 17,
       "twitter": 2
     },
-    "total_posts": 74,
+    "total_posts": 78,
     "total_clicks": 0,
     "clicks_by_platform": {},
     "total_conversations": 0,
@@ -22,7 +22,7 @@
     "live_chats": 0,
     "website_visits": 0,
     "whatsapp_clicks": 0,
-    "post_success_rate": 40.5
+    "post_success_rate": 42.3
   },
   "trend": {
     "posts": {
@@ -37,6 +37,10 @@
         "threads": 9,
         "tiktok": 17,
         "twitter": 2
+      },
+      "2026-05-11": {
+        "hatena": 3,
+        "threads": 1
       }
     },
     "clicks": {},
@@ -45,11 +49,41 @@
   },
   "hourly": {
     "posts": {
-      "12": 74
+      "12": 74,
+      "14": 2,
+      "16": 2
     },
     "clicks": {}
   },
   "recent_posts": [
+    {
+      "ts": "2026-05-11 16:49:49",
+      "platform": "threads",
+      "type": "thread",
+      "status": "failed",
+      "preview": "Threads post"
+    },
+    {
+      "ts": "2026-05-11 16:49:27",
+      "platform": "hatena",
+      "type": "email",
+      "status": "success",
+      "preview": "テスト投稿 — BroadFSC"
+    },
+    {
+      "ts": "2026-05-11 14:28:20",
+      "platform": "hatena",
+      "type": "email",
+      "status": "success",
+      "preview": "2026年05月11日 マーケット分析：米国市場と日本市場の連動性、高度不確実性の影響、トレンドを握るトッピング"
+    },
+    {
+      "ts": "2026-05-11 14:27:27",
+      "platform": "hatena",
+      "type": "email",
+      "status": "success",
+      "preview": "テスト投稿 — BroadFSC"
+    },
     {
       "ts": "2026-05-08 12:33:07",
       "platform": "hatena",
@@ -161,34 +195,6 @@
       "type": "post",
       "status": "success",
       "preview": "Threads post"
-    },
-    {
-      "ts": "2026-05-08 12:33:07",
-      "platform": "bluesky",
-      "type": "post",
-      "status": "success",
-      "preview": "\"Webull's secret sauce? Emphasizing education & financial li"
-    },
-    {
-      "ts": "2026-05-08 12:33:07",
-      "platform": "discord",
-      "type": "post",
-      "status": "success",
-      "preview": "**Market Musings**\n\nHey fellow traders, let's talk about sto"
-    },
-    {
-      "ts": "2026-05-08 12:33:07",
-      "platform": "mastodon",
-      "type": "post",
-      "status": "failed",
-      "preview": "Analyzing competitor Webull's strategy reveals a focus on ed"
-    },
-    {
-      "ts": "2026-05-08 12:33:07",
-      "platform": "hatena",
-      "type": "post",
-      "status": "failed",
-      "preview": "📊 Market Alert: AI-Driven Growth, Supercharged by Inflation!"
     }
   ],
   "platform_summary": {
@@ -203,7 +209,7 @@
       "engaged": 0
     },
     "hatena": {
-      "posts": 5,
+      "posts": 8,
       "customers": 0,
       "engaged": 0
     },
@@ -228,7 +234,7 @@
       "engaged": 0
     },
     "threads": {
-      "posts": 9,
+      "posts": 10,
       "customers": 0,
       "engaged": 0
     },
@@ -246,12 +252,12 @@
   "success_rates": {
     "bluesky": 100.0,
     "discord": 53.8,
-    "hatena": 20.0,
+    "hatena": 50.0,
     "mastodon": 50.0,
     "medium": 0.0,
     "substack": 0.0,
     "telegram_en": 75.0,
-    "threads": 66.7,
+    "threads": 60.0,
     "tiktok": 5.9,
     "twitter": 0.0
   },
