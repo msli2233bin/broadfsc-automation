@@ -22,8 +22,8 @@
     "116553292525083279",
     "116551926806740033"
   ],
-  "daily_count": 3,
-  "last_reset": "2026-05-11",
+  "daily_count": 0,
+  "last_reset": "2026-05-12",
   "total_engagements": 26,
   "engagements": [
     {
@@ -102,49 +102,49 @@
       "outcome_checked": "2026-05-10T07:21:47.424077+00:00"
     },
     {
-      "date": "2026-05-10T07:17:32.211296+00:00",
-      "post_id": "116544658483275026",
-      "author": "selfawarepatterns.com",
-      "my_reply_id": "116549055419538132",
-      "post_preview": "The Astropolis trilogy\n\n\nIn the last post I discussed my recent exploration of Reddit. The one conve",
-      "reply_preview": "Risk management is all about probabilities, not guarantees. In the Astropolis trilogy, the Primes an",
+      "date": "2026-05-11T10:46:25.049471+00:00",
+      "post_id": "116554347315916797",
+      "author": "bloomberg",
+      "my_reply_id": "116555539079447146",
+      "post_preview": "Kiwi May Defy Hedge-Fund Bears on Hawkish RBNZ, Analysts Say\nhttps://www.bloomberg.com/news/articles",
+      "reply_preview": "RBNZ hawkish? That's old news. The real question is how the Kiwi plays out against the Aussie. With ",
       "outcome": {
         "favorites": 0,
         "reblogs": 0,
         "replies": 0
       },
       "result": "silent",
-      "outcome_checked": "2026-05-10T07:21:46.763128+00:00"
+      "outcome_checked": "2026-05-11T10:49:48.860384+00:00"
     },
     {
-      "date": "2026-05-10T07:18:41.141212+00:00",
-      "post_id": "116541325404736056",
-      "author": "Aleums",
-      "my_reply_id": "116549059934918106",
-      "post_preview": "@dankwraith i think in toronto and vancouver that's correct but we generally have way less urban den",
-      "reply_preview": "@Aleums, you're right about urban density, but let's not forget the correlation between housing supp",
+      "date": "2026-05-11T10:48:08.229256+00:00",
+      "post_id": "116553292525083279",
+      "author": "bloomberg",
+      "my_reply_id": "116555545844768220",
+      "post_preview": "Yen Bears Retreat as Intervention Seen Capping Currency Weakness\nhttps://www.bloomberg.com/news/arti",
+      "reply_preview": "@markets-bloomberg  Interventions can calm the waters, but Yen bears aren't ready to surrender. RSI ",
       "outcome": {
         "favorites": 0,
         "reblogs": 0,
         "replies": 0
       },
       "result": "silent",
-      "outcome_checked": "2026-05-10T07:21:47.018083+00:00"
+      "outcome_checked": "2026-05-11T10:49:49.268367+00:00"
     },
     {
-      "date": "2026-05-10T07:20:29.159166+00:00",
-      "post_id": "116540494756188024",
-      "author": "derstieg",
-      "my_reply_id": "116549067001621908",
-      "post_preview": "Markets today: Nasdaq leading, strong jobs data, US-Iran tensions rising.\nThe pattern is clear — cap",
-      "reply_preview": "@derstieg, you're spot on about the AI infrastructure gravy train. $200B+ per year is unsustainable ",
+      "date": "2026-05-11T10:49:16.065232+00:00",
+      "post_id": "116551926806740033",
+      "author": "bloomberg",
+      "my_reply_id": "116555550288473509",
+      "post_preview": "Bond Traders Brace for Inflation Data as Fed’s Powell Era Ends\nhttps://www.bloomberg.com/news/articl",
+      "reply_preview": "@bloomberg Powell's era ending, huh? Inflation data's got everyone spooked. But here's the thing: PP",
       "outcome": {
         "favorites": 0,
         "reblogs": 0,
         "replies": 0
       },
       "result": "silent",
-      "outcome_checked": "2026-05-10T07:21:47.424077+00:00"
+      "outcome_checked": "2026-05-11T10:49:49.492460+00:00"
     },
     {
       "date": "2026-05-10T07:17:32.211296+00:00",
