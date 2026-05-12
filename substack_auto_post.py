@@ -3,7 +3,7 @@
 Substack Auto-Post: Daily Article Generator
 Reads latest knowledge files, generates English article via Groq, auto-posts to Substack.
 
-Publishing method: Email via Brevo API → post+broadcastmarketintelligence@substack.com
+Publishing method: Email via Brevo API → broadcastmarketintelligence@substack.com
 (More reliable than Playwright-based login in CI environments)
 
 Usage:
@@ -31,10 +31,11 @@ GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 PUBLICATION_SLUG = "broadcastmarketintelligence"
 PUB_URL = f"https://{PUBLICATION_SLUG}.substack.com"
 
-# Substack email posting address (Settings → Email posting address)
+# Substack email posting address (Settings → Emails)
+# Try without 'post+' prefix if posts don't appear
 SUBSTACK_POST_EMAIL = os.environ.get(
     "SUBSTACK_POST_EMAIL",
-    "post+broadcastmarketintelligence@substack.com"
+    "broadcastmarketintelligence@substack.com"
 )
 
 # Brevo API (for sending emails)
