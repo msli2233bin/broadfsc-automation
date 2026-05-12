@@ -212,5 +212,10 @@
     "method": "proxy-codetabs-html-verified",
     "note": "Account exists but Reddit restricts about.json access for new/low-karma accounts. Check karma manually.",
     "checked_at": "2026-05-11T12:28:32.984270"
+  },
+  {
+    "success": false,
+    "error": "Blocked by Reddit (403) - IP banned",
+    "checked_at": "2026-05-12T10:17:16.006780"
   }
 ]
