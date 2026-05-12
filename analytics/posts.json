@@ -1232,5 +1232,100 @@
     "content_preview": "Threads post",
     "status": "failed",
     "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 133,
+    "timestamp": "2026-05-12T12:29:34.790136Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Dislocation: AI-Driven Nasdaq at New Heights, But What's Next?</b>\n\nThe Nasdaq has soare",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "127"
+  },
+  {
+    "id": 134,
+    "timestamp": "2026-05-12T12:29:35.006566Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Dislocation: AI-Driven Nasdaq at New Heights, But What's Next?**\n\nThe Nasdaq has soared t",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1503735892333035532"
+  },
+  {
+    "id": 135,
+    "timestamp": "2026-05-12T12:29:35.757165Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Dislocation: AI-Driven Nasdaq at New Heights, But What's Next?\n\nThe Nasdaq has soared to a ",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 136,
+    "timestamp": "2026-05-12T12:29:39.796061Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The Nasdaq has soared to a fresh high, driven by the unstoppable force of AI-powered innovation. 🧵",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 137,
+    "timestamp": "2026-05-12T12:29:40.646692Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Dislocation: AI-Driven Nasdaq at New Heights, But What's Next?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 138,
+    "timestamp": "2026-05-12T12:29:41.846083Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "**Unlocking the Power of Social Media for Financial Services**\n\nAs a licensed investment securities ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "116561607505656194"
+  },
+  {
+    "id": 139,
+    "timestamp": "2026-05-12T12:29:42.135533Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "**Sales Methodologies 101: Why 64% of Sales Reps Miss Quota**\n\nHey fellow traders (and sales enthusi",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1503735922443948182"
+  },
+  {
+    "id": 140,
+    "timestamp": "2026-05-12T12:29:42.595764Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $COIN Coinbase Global, Inc. 💰 216.6 (+7.7%)\n\nSetup: uptrend intact\nRSI: 61.0 | MACD: bullish\nVol:",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mlns4cax6k2x"
+  },
+  {
+    "id": 141,
+    "timestamp": "2026-05-12T12:29:53.972357Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 142,
+    "timestamp": "2026-05-12T12:30:09.222823Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
