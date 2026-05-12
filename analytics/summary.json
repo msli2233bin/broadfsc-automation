@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-12T08:12:46.032734Z",
+  "generated_at": "2026-05-12T16:37:17.359863Z",
   "period": {
     "today": "2026-05-12",
     "yesterday": "2026-05-11",
@@ -7,13 +7,13 @@
     "month_ago": "2026-04-12"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 117,
-    "posts_month": 132,
+    "posts_today": 10,
+    "posts_week": 127,
+    "posts_month": 142,
     "interactions_today": 0,
     "interactions_week": 5,
     "interactions_month": 38,
-    "success_rate": 56.8
+    "success_rate": 57.0
   },
   "platforms": {
     "tiktok": {
@@ -24,24 +24,24 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
+      "today": 1,
       "week": 13,
       "month": 15,
       "success": 13,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 23,
-      "month": 25,
-      "success": 19,
+      "today": 2,
+      "week": 24,
+      "month": 26,
+      "success": 20,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 20,
-      "month": 20,
-      "success": 15,
+      "today": 2,
+      "week": 22,
+      "month": 22,
+      "success": 17,
       "failed": 5
     },
     "twitter": {
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 16,
-      "month": 16,
+      "today": 1,
+      "week": 18,
+      "month": 18,
       "success": 10,
-      "failed": 6
+      "failed": 8
     },
     "medium": {
       "today": 0,
@@ -73,18 +73,18 @@
       "failed": 3
     },
     "bluesky": {
-      "today": 0,
-      "week": 14,
-      "month": 14,
-      "success": 14,
+      "today": 2,
+      "week": 16,
+      "month": 16,
+      "success": 16,
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 17,
-      "month": 17,
-      "success": 3,
-      "failed": 14
+      "today": 2,
+      "week": 20,
+      "month": 20,
+      "success": 4,
+      "failed": 16
     }
   },
   "interactions_by_platform": {
@@ -149,6 +149,10 @@
       "posts": 14,
       "interactions": 2
     },
+    "2026-05-12": {
+      "posts": 10,
+      "interactions": 0
+    },
     "2026-04-20": {
       "posts": 0,
       "interactions": 14
@@ -162,110 +166,16 @@
     "15": 1,
     "10": 8,
     "11": 7,
-    "18": 9,
+    "18": 7,
     "17": 2,
     "8": 7,
     "19": 5,
-    "16": 25,
+    "16": 26,
     "9": 9,
-    "14": 2
+    "14": 2,
+    "12": 7
   },
   "recent_posts": [
-    {
-      "id": 113,
-      "timestamp": "2026-05-10T16:38:29.904554Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Alert: AI-Driven Stocks in Overbought Territory",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 114,
-      "timestamp": "2026-05-10T16:38:31.645909Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$META Meta Platforms, Inc.\n\n💰 616.81 (+0.6%) | 5D: +0.8%\n📊 RSI: 26.0 | MACD: bearish\n📈 MA20: $649.87",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "116551261289627701"
-    },
-    {
-      "id": 115,
-      "timestamp": "2026-05-10T16:38:33.645208Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "**Staying Ahead of the Curve: Insights from the Frontlines of Social Media**\n\nHey fellow traders and",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1503073767205634148"
-    },
-    {
-      "id": 116,
-      "timestamp": "2026-05-10T16:38:34.161352Z",
-      "platform": "bluesky",
-      "type": "post",
-      "content_preview": "\"Webull's secret sauce? Emphasizing education & financial literacy. By empowering investors, they're",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mlj73h5mwx2g"
-    },
-    {
-      "id": 117,
-      "timestamp": "2026-05-10T16:38:40.629477Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 118,
-      "timestamp": "2026-05-10T16:39:14.238000Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 119,
-      "timestamp": "2026-05-11T14:27:27.421506Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "テスト投稿 — BroadFSC",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 120,
-      "timestamp": "2026-05-11T14:28:20.567356Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "2026年05月11日 マーケット分析：米国市場と日本市場の連動性、高度不確実性の影響、トレンドを握るトッピング",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 121,
-      "timestamp": "2026-05-11T16:18:09.967742Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 The Bullish Uptrend Continues, But Watch Out for Overbought Signals</b>\n\nAs we kick off the wee",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "115"
-    },
-    {
-      "id": 122,
-      "timestamp": "2026-05-11T16:18:10.968377Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **The Bullish Uptrend Continues, But Watch Out for Overbought Signals**\n\nAs we kick off the week, ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1503431030906814665"
-    },
     {
       "id": 123,
       "timestamp": "2026-05-11T16:18:11.342166Z",
@@ -343,23 +253,116 @@
     },
     {
       "id": 131,
-      "timestamp": "2026-05-11T18:24:17.116884Z",
-      "platform": "telegram_en",
-      "type": "earnings",
-      "content_preview": "<b>📊 Earnings Calendar: Week of May 11</b>\n\n\n📅 <b>Wednesday, May 13</b>\n  • Tencent (0700.HK) @ $nan",
+      "timestamp": "2026-05-11T16:49:27.507682Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "テスト投稿 — BroadFSC",
       "status": "success",
-      "error_msg": "",
-      "post_id": "117"
+      "error_msg": ""
     },
     {
       "id": 132,
-      "timestamp": "2026-05-11T18:24:17.609923Z",
-      "platform": "discord",
-      "type": "earnings",
-      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of May 11**\n\n\n📅 **Wednesday, May 13**\n  •",
+      "timestamp": "2026-05-11T16:49:49.767643Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 133,
+      "timestamp": "2026-05-12T12:29:34.790136Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Dislocation: AI-Driven Nasdaq at New Heights, But What's Next?</b>\n\nThe Nasdaq has soare",
       "status": "success",
       "error_msg": "",
-      "post_id": "1503462769553576096"
+      "post_id": "127"
+    },
+    {
+      "id": 134,
+      "timestamp": "2026-05-12T12:29:35.006566Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Dislocation: AI-Driven Nasdaq at New Heights, But What's Next?**\n\nThe Nasdaq has soared t",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1503735892333035532"
+    },
+    {
+      "id": 135,
+      "timestamp": "2026-05-12T12:29:35.757165Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Dislocation: AI-Driven Nasdaq at New Heights, But What's Next?\n\nThe Nasdaq has soared to a ",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 136,
+      "timestamp": "2026-05-12T12:29:39.796061Z",
+      "platform": "bluesky",
+      "type": "repurposed",
+      "content_preview": "📊 The Nasdaq has soared to a fresh high, driven by the unstoppable force of AI-powered innovation. 🧵",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 137,
+      "timestamp": "2026-05-12T12:29:40.646692Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Dislocation: AI-Driven Nasdaq at New Heights, But What's Next?",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 138,
+      "timestamp": "2026-05-12T12:29:41.846083Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "**Unlocking the Power of Social Media for Financial Services**\n\nAs a licensed investment securities ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "116561607505656194"
+    },
+    {
+      "id": 139,
+      "timestamp": "2026-05-12T12:29:42.135533Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "**Sales Methodologies 101: Why 64% of Sales Reps Miss Quota**\n\nHey fellow traders (and sales enthusi",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1503735922443948182"
+    },
+    {
+      "id": 140,
+      "timestamp": "2026-05-12T12:29:42.595764Z",
+      "platform": "bluesky",
+      "type": "post",
+      "content_preview": "1/ $COIN Coinbase Global, Inc. 💰 216.6 (+7.7%)\n\nSetup: uptrend intact\nRSI: 61.0 | MACD: bullish\nVol:",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mlns4cax6k2x"
+    },
+    {
+      "id": 141,
+      "timestamp": "2026-05-12T12:29:53.972357Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 142,
+      "timestamp": "2026-05-12T12:30:09.222823Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
     }
   ],
   "recent_interactions": [
