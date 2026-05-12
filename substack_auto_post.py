@@ -3,6 +3,9 @@
 Substack Auto-Post: Daily Article Generator
 Reads latest knowledge files, generates English article via Groq, auto-posts to Substack.
 
+Publishing method: Email via Brevo API → post+broadcastmarketintelligence@substack.com
+(More reliable than Playwright-based login in CI environments)
+
 Usage:
   python substack_auto_post.py          # Generate + publish 1 article
   python substack_auto_post.py --test  # Test only (no publish)
@@ -15,7 +18,7 @@ import os
 import sys
 import json
 import datetime
-import time
+import requests
 from pathlib import Path
 
 if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
@@ -25,19 +28,38 @@ if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
 # Config
 # ============================================================
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
-SUBSTACK_EMAIL = os.environ.get("SUBSTACK_EMAIL", "")
-SUBSTACK_PASSWORD = os.environ.get("SUBSTACK_PASSWORD", "")
 PUBLICATION_SLUG = "broadcastmarketintelligence"
-PUBLICATION_ID = "8790672"
 PUB_URL = f"https://{PUBLICATION_SLUG}.substack.com"
 
-SESSION_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".browser_sessions")
-os.makedirs(SESSION_DIR, exist_ok=True)
+# Substack email posting address (Settings → Email posting address)
+SUBSTACK_POST_EMAIL = os.environ.get(
+    "SUBSTACK_POST_EMAIL",
+    "post+broadcastmarketintelligence@substack.com"
+)
+
+# Brevo API (for sending emails)
+BREVO_API_KEY = os.environ.get("BREVO_API_KEY", "")
+BREVO_SENDER_EMAIL = os.environ.get("BREVO_SENDER_EMAIL", "msli2233bin+brevo@gmail.com")
 
 KNOWLEDGE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "knowledge")
 
-# Detect environment
-IS_CI = os.environ.get("CI") == "true" or os.environ.get("GITHUB_ACTIONS") == "true"
+# Fallback: load from .env if running locally
+_script_dir = os.path.dirname(os.path.abspath(__file__))
+_env_path = os.path.join(_script_dir, ".env")
+if os.path.exists(_env_path):
+    with open(_env_path, "r", encoding="utf-8") as _f:
+        for _line in _f:
+            _line = _line.strip()
+            if _line.startswith("#") or "=" not in _line:
+                continue
+            _k, _v = _line.split("=", 1)
+            _k, _v = _k.strip(), _v.strip()
+            if _k == "BREVO_API_KEY" and not BREVO_API_KEY:
+                BREVO_API_KEY = _v
+            elif _k == "BREVO_SENDER_EMAIL" and not BREVO_SENDER_EMAIL:
+                BREVO_SENDER_EMAIL = _v
+            elif _k == "GROQ_API_KEY" and not GROQ_API_KEY:
+                GROQ_API_KEY = _v
 
 
 # ============================================================
@@ -217,122 +239,124 @@ def extract_title_from_article(article_text):
 
 
 # ============================================================
-# Step 3: Publish to Substack (Playwright)
+# Step 3: Publish to Substack via Email (Brevo API)
 # ============================================================
 def publish_to_substack(title, article_body, dry_run=False):
-    """Publish article to Substack using Playwright."""
+    """Publish article to Substack by emailing post+broadcastmarketintelligence@substack.com via Brevo API.
+
+    Substack Email Posting Notes:
+    - Email subject = post title
+    - Email body (plain text or HTML) = post content
+    - Post is published immediately (no draft mode via email)
+    - Brevo sender email must be verified in Brevo account
+    """
     if dry_run:
         print("[Substack] DRY RUN — not publishing")
         print(f"[Substack] Title: {title}")
         print(f"[Substack] Body length: {len(article_body)} chars")
         return True
 
-    try:
-        from playwright.sync_api import sync_playwright
-    except ImportError:
-        print("[Substack] ❌ Playwright not installed")
+    if not BREVO_API_KEY:
+        print("[Substack] ❌ BREVO_API_KEY not configured")
         return False
 
-    print("[Substack] 🚀 Launching browser...")
+    if not SUBSTACK_POST_EMAIL:
+        print("[Substack] ❌ SUBSTACK_POST_EMAIL not configured")
+        return False
 
-    with sync_playwright() as p:
-        # Use persistent context (reuses login session)
-        context = p.chromium.launch_persistent_context(
-            SESSION_DIR,
-            headless=IS_CI,
-            args=['--no-sandbox', '--disable-setuid-sandbox'] if IS_CI else []
-        )
+    print(f"[Substack] Sending email via Brevo → {SUBSTACK_POST_EMAIL}")
 
-        page = context.pages[0] if context.pages else context.new_page()
+    # Convert Markdown to simple HTML for better Substack rendering
+    html_body = markdown_to_simple_html(article_body)
 
-        # Check if already logged in
-        print("[Substack] Checking login status...")
-        page.goto(f"{PUB_URL}/publish", timeout=30000)
-        time.sleep(3)
+    url = "https://api.brevo.com/v3/smtp/email"
+    headers = {
+        "api-key": BREVO_API_KEY,
+        "Content-Type": "application/json",
+        "accept": "application/json",
+    }
+    payload = {
+        "sender": {"name": "BroadFSC Market Intelligence", "email": BREVO_SENDER_EMAIL},
+        "to": [{"email": SUBSTACK_POST_EMAIL}],
+        "subject": title,
+        "htmlContent": html_body,
+        "textContent": article_body,
+    }
 
-        if "login" in page.url.lower():
-            print("[Substack] Need to login...")
-            page.fill('input[type="email"]', SUBSTACK_EMAIL)
-            page.fill('input[type="password"]', SUBSTACK_PASSWORD)
-            page.click('button[type="submit"]')
-            time.sleep(5)
-            # Save session
-            context.storage_state(path=os.path.join(SESSION_DIR, "state.json"))
-
-        # Create new draft
-        print("[Substack] Creating new draft...")
-        page.goto(f"{PUB_URL}/publish", timeout=30000)
-        time.sleep(3)
-
-        # Set title via API (required for React state)
-        # Use Substack's internal API
-        import requests
-        api_url = f"https://substackapi.com/api/draft"
-        # Note: Substack doesn't have a public API, so we use Playwright
-
-        # Click "New Post" button
-        try:
-            page.click('text="New Post"', timeout=5000)
-        except Exception:
-            print("[Substack] 'New Post' not found, trying direct URL...")
-            page.goto(f"{PUB_URL}/publish/post", timeout=30000)
-
-        time.sleep(3)
-
-        # Set title using React state (title → reload → verify)
-        print("[Substack] Setting title...")
-        title_selector = 'input[placeholder*="title"], input[name*="title"]'
-        try:
-            page.fill(title_selector, title)
-            page.reload()
-            time.sleep(3)
-            # Verify title persisted
-            current_url = page.url
-            if "/publish/post/" in current_url:
-                draft_id = current_url.split("/")[-1]
-                print(f"[Substack] Draft created: {draft_id}")
-        except Exception as e:
-            print(f"[Substack] Title setting warning: {e}")
-
-        # Fill body content
-        print("[Substack] Filling article body...")
-        # Substack uses ProseMirror editor
-        editor_selector = '.ProseMirror, [contenteditable="true"]'
-        try:
-            page.click(editor_selector)
-            time.sleep(1)
-            # Type article content (chunked to avoid timeout)
-            chunk_size = 500
-            for i in range(0, len(article_body), chunk_size):
-                chunk = article_body[i:i+chunk_size]
-                page.keyboard.type(chunk)
-                time.sleep(0.5)
-        except Exception as e:
-            print(f"[Substack] Editor warning: {e}")
-
-        time.sleep(2)
-
-        # Publish
-        print("[Substack] Publishing...")
-        try:
-            page.click('text="Send to everyone now"', timeout=5000)
-            time.sleep(5)
-            print("[Substack] ✅ Article published!")
+    try:
+        r = requests.post(url, headers=headers, json=payload, timeout=30)
+        if r.status_code in (200, 201):
+            msg_id = r.json().get("messageId", "unknown")
+            print(f"[Substack] ✅ Email sent! messageId={msg_id}")
+            print(f"[Substack] ✅ Article '{title}' published to {PUB_URL}")
             return True
-        except Exception as e:
-            print(f"[Substack] Publish button warning: {e}")
-            # Try alternative selectors
-            try:
-                page.click('button:has-text("Publish")')
-                time.sleep(5)
-                print("[Substack] ✅ Article published (alt method)!")
-                return True
-            except Exception as e2:
-                print(f"[Substack] ❌ Publish failed: {e2}")
-                return False
+        else:
+            print(f"[Substack] ❌ Brevo API error {r.status_code}: {r.text[:300]}")
+            return False
+    except requests.exceptions.ConnectionError:
+        print("[Substack] ❌ Connection failed (network error)")
+        return False
+    except Exception as e:
+        print(f"[Substack] ❌ Unexpected error: {e}")
+        return False
 
-        finally:
-            context.close()
+
+def markdown_to_simple_html(markdown_text):
+    """Convert Markdown to simple HTML suitable for Substack email posting."""
+    import re
+    html = markdown_text
+
+    # Headers
+    html = re.sub(r'^### (.+)$', r'<h3>\1</h3>', html, flags=re.MULTILINE)
+    html = re.sub(r'^## (.+)$', r'<h2>\1</h2>', html, flags=re.MULTILINE)
+    html = re.sub(r'^# (.+)$', r'<h1>\1</h1>', html, flags=re.MULTILINE)
+
+    # Bold and italic
+    html = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', html)
+    html = re.sub(r'\*(.+?)\*', r'<em>\1</em>', html)
+
+    # Horizontal rule
+    html = re.sub(r'^---+$', r'<hr>', html, flags=re.MULTILINE)
+
+    # Unordered list items
+    lines = html.split('\n')
+    result = []
+    in_list = False
+    for line in lines:
+        if re.match(r'^[*\-] (.+)', line):
+            if not in_list:
+                result.append('<ul>')
+                in_list = True
+            item = re.sub(r'^[*\-] ', '', line)
+            result.append(f'<li>{item}</li>')
+        else:
+            if in_list:
+                result.append('</ul>')
+                in_list = False
+            result.append(line)
+    if in_list:
+        result.append('</ul>')
+    html = '\n'.join(result)
+
+    # Paragraphs: wrap non-tag lines
+    paragraphs = html.split('\n\n')
+    wrapped = []
+    for para in paragraphs:
+        para = para.strip()
+        if not para:
+            continue
+        if para.startswith('<'):
+            wrapped.append(para)
+        else:
+            wrapped.append(f'<p>{para}</p>')
+    html = '\n\n'.join(wrapped)
+
+    return f"""<!DOCTYPE html>
+<html>
+<body style="font-family: Georgia, serif; max-width: 700px; margin: auto; padding: 20px; color: #333;">
+{html}
+</body>
+</html>"""
 
 
 # ============================================================
