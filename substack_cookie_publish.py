@@ -5,6 +5,14 @@ Substack Auto-Publish via Playwright (using saved session cookies)
 Strategy: Use state.json (which has valid substack.sid cookie) to initialize
 a browser context, then create and publish a new article on Substack.
 
+Publishing flow:
+1. Load cookies from state.json
+2. Navigate to /publish/post
+3. Fill title and body via JavaScript (handles React state)
+4. Click Continue button
+5. Click "Send to everyone now" button
+6. Verify published by checking URL
+
 This replaces the broken email-based approach (Substack doesn't support post-by-email)
 and the password-login approach (Substack only supports Magic Link).
 """
@@ -28,13 +36,8 @@ PUBLICATION_SLUG = "broadcastmarketintelligence"
 PUB_URL = f"https://{PUBLICATION_SLUG}.substack.com"
 
 
-def merge_state_into_profile():
-    """Merge cookies from state.json into the Playwright profile directory.
-    
-    Playwright's launch_persistent_context uses its own cookie storage in the
-    profile directory. We need to ensure the substack.sid cookie is available.
-    Instead, we'll use add_cookies() after launching the browser.
-    """
+def load_state():
+    """Load cookies from state.json."""
     if not os.path.exists(STATE_FILE):
         print("❌ state.json not found! Need to login first.")
         return None
@@ -58,16 +61,15 @@ def publish_article(title, article_body):
     """Publish article to Substack using Playwright with saved session."""
     from playwright.sync_api import sync_playwright
     
-    state = merge_state_into_profile()
+    state = load_state()
     if state is None:
         return False
     
     print("\n[1/5] Launching browser with saved session...")
     
     with sync_playwright() as p:
-        # Use a fresh context (NOT persistent) so we can add cookies manually
         browser = p.chromium.launch(
-            headless=False,  # Use headed mode for better compatibility
+            headless=False,
             args=['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
         )
         context = browser.new_context(
@@ -100,7 +102,7 @@ def publish_article(title, article_body):
         page = context.new_page()
         
         try:
-            # Step 1: Navigate to publish page to check login status
+            # Step 1: Check login status
             print("\n[2/5] Checking login status...")
             page.goto(f"{PUB_URL}/publish", timeout=30000)
             time.sleep(5)
@@ -110,7 +112,6 @@ def publish_article(title, article_body):
             
             if "sign-in" in current_url.lower() or "login" in current_url.lower():
                 print("❌ Session expired - redirected to login page!")
-                print("  Need to refresh session manually. Run substack_manual_login.py first.")
                 page.screenshot(path=os.path.join(SESSION_DIR, "debug_session_expired.png"))
                 browser.close()
                 return False
@@ -126,14 +127,10 @@ def publish_article(title, article_body):
             print(f"  Editor URL: {current_url}")
             page.screenshot(path=os.path.join(SESSION_DIR, "debug_editor.png"))
             
-            # Verify we're on the editor page
-            if "/publish" not in current_url:
-                print(f"  ⚠️ Unexpected URL. May not be on editor page.")
-            
             # Step 3: Fill in the article content
             print("\n[4/5] Filling editor...")
             
-            # Wait for contenteditable elements (Substack uses ProseMirror)
+            # Wait for contenteditable elements
             editor_found = False
             for attempt in range(30):
                 try:
@@ -143,10 +140,6 @@ def publish_article(title, article_body):
                         editor_found = True
                         print(f"  Found {count} contenteditable elements")
                         break
-                    elif count == 1:
-                        editor_found = True
-                        print(f"  Found 1 contenteditable element")
-                        break
                 except:
                     pass
                 time.sleep(1)
@@ -154,37 +147,29 @@ def publish_article(title, article_body):
                     print(f"  Waiting for editor... ({attempt+1}s)")
             
             if not editor_found:
-                print("  ❌ Editor not found! Taking screenshot...")
+                print("  ❌ Editor not found!")
                 page.screenshot(path=os.path.join(SESSION_DIR, "debug_no_editor.png"))
                 browser.close()
                 return False
             
             # Fill title (first contenteditable)
             print("  Setting title...")
-            
-            # Use JavaScript to directly set the title (handles React state properly)
             page.evaluate("""(title) => {
-                // Find the title contenteditable
                 const titleEl = document.querySelector('[contenteditable="true"]');
                 if (titleEl) {
-                    // Focus the element
                     titleEl.focus();
-                    // Clear existing content
                     titleEl.innerHTML = '';
-                    // Create a text node
                     const textNode = document.createTextNode(title);
                     titleEl.appendChild(textNode);
-                    // Trigger input event for React
                     titleEl.dispatchEvent(new InputEvent('input', { bubbles: true }));
                     titleEl.dispatchEvent(new Event('change', { bubbles: true }));
-                    // Blur to trigger save
                     titleEl.blur();
                 }
                 return !!titleEl;
             }""", title)
             time.sleep(2)
             
-            # Also try keyboard approach as backup
+            # Backup: keyboard input
             title_el = page.locator('[contenteditable="true"]').first
             title_el.click()
             time.sleep(0.5)
@@ -195,18 +180,13 @@ def publish_article(title, article_body):
             
             print(f"  ✅ Title set: {title}")
             
-            # Fill body (second contenteditable or continue typing)
-            print("  Typing article body...")
-            
-            # Use JavaScript to set body content directly
+            # Fill body (second contenteditable)
+            print("  Setting article body...")
             page.evaluate("""(body) => {
-                // Find all contenteditable elements
                 const editors = document.querySelectorAll('[contenteditable="true"]');
-                // Body is usually the 2nd one (index 1) or the one with "Start writing..." placeholder
                 let bodyEl = null;
                 for (let el of editors) {
                     if (el !== document.activeElement) {
-                        // Check if this looks like the body editor
                         const text = el.textContent || el.innerText || '';
                         if (text.includes('Start writing') || text.length === 0 || el.getAttribute('data-placeholder')) {
                             bodyEl = el;
@@ -214,7 +194,6 @@ def publish_article(title, article_body):
                         }
                     }
                 }
-                // If not found, use the second one
                 if (!bodyEl && editors.length >= 2) {
                     bodyEl = editors[1];
                 }
@@ -231,110 +210,81 @@ def publish_article(title, article_body):
             }""", article_body)
             time.sleep(2)
             
-            # Also try keyboard typing as backup
-            page.keyboard.press("Enter")
-            page.keyboard.press("Enter")
-            time.sleep(0.5)
-            
-            # Type article in chunks (as backup to ensure content is there)
-            chunk_size = 500
-            for i in range(0, min(len(article_body), 1000), chunk_size):  # Only type first 1000 chars via keyboard
-                chunk = article_body[i:i+chunk_size]
-                page.keyboard.type(chunk, delay=5)
-                time.sleep(0.2)
-            
             print(f"  ✅ Content set ({len(article_body)} chars)")
             time.sleep(3)
             
             page.screenshot(path=os.path.join(SESSION_DIR, "debug_content_filled.png"))
             
-            # Step 4: Publish the article
+            # Step 4: Publish - Use JavaScript to find and click buttons
             print("\n[5/5] Publishing...")
             
-            # Get the draft ID from the URL
-            current_url = page.url
-            draft_id = None
-            if "/publish/post/" in current_url:
-                draft_id = current_url.split("/publish/post/")[-1].split("?")[0]
-                print(f"  Draft ID: {draft_id}")
-            
-            # Step 4a: Click "Continue" button to go to publish options
+            # First, click Continue button
             print("  Clicking Continue button...")
-            continue_clicked = False
-            try:
-                # Try to find the Continue button (orange button in top right)
-                continue_btn = page.locator('button:has-text("Continue"), a:has-text("Continue")')
-                if continue_btn.count() > 0:
-                    continue_btn.first.click()
-                    continue_clicked = True
-                    print("  ✅ Clicked Continue")
-                else:
-                    # Try alternative selectors
-                    for sel in ['button[class*="continue" i]', 'button[class*="publish" i]', 'button:has-text("Next")']:
-                        try:
-                            loc = page.locator(sel)
-                            if loc.count() > 0 and loc.first.is_visible(timeout=2000):
-                                loc.first.click()
-                                continue_clicked = True
-                                print(f"  ✅ Clicked alternative: {sel}")
-                                break
-                        except:
-                            continue
-            except Exception as e:
-                print(f"  Continue button error: {e}")
-            
-            if not continue_clicked:
-                print("  ⚠️ Could not find Continue button")
-                page.screenshot(path=os.path.join(SESSION_DIR, "debug_no_continue.png"))
-            
-            # Wait for publish options page to load
-            time.sleep(5)
-            page.screenshot(path=os.path.join(SESSION_DIR, "debug_publish_options.png"))
-            
-            # Step 4b: Click "Send to everyone now" on the publish options page
-            published = False
-            if continue_clicked:
-                print("  Looking for 'Send to everyone now' button...")
-                publish_selectors = [
-                    'button:has-text("Send to everyone now")',
-                    'button:has-text("Send to everyone")',
-                    'button:has-text("Publish now")',
-                    'button:has-text("Publish")',
-                    'div[role="button"]:has-text("Send to everyone")',
-                    'button[class*="send" i]',
-                    'button[class*="publish" i]',
-                ]
-                
-                for sel in publish_selectors:
-                    try:
-                        loc = page.locator(sel)
-                        if loc.count() > 0 and loc.first.is_visible(timeout=5000):
-                            loc.first.click()
-                            published = True
-                            print(f"  ✅ Clicked publish: {sel}")
-                            break
-                    except Exception as e:
-                        continue
-                
-                if not published:
-                    print("  ⚠️ Could not find publish button. Taking screenshot...")
-                    page.screenshot(path=os.path.join(SESSION_DIR, "debug_no_publish_btn.png"))
-            
+            continue_result = page.evaluate("""() => {
+                // Find all buttons and check their text content
+                const allButtons = document.querySelectorAll('button, a[role="button"], div[role="button"]');
+                for (let btn of allButtons) {
+                    const text = (btn.textContent || btn.innerText || '').trim().toLowerCase();
+                    if (text === 'continue' || text.includes('continue')) {
+                        btn.click();
+                        return 'Clicked: ' + text;
+                    }
+                }
+                // Try by class
+                const continueBtn = document.querySelector('button[class*="continue"], button[class*="publish"]');
+                if (continueBtn) {
+                    continueBtn.click();
+                    return 'Clicked by class';
+                }
+                return 'Not found';
+            }""")
+            print(f"  Continue result: {continue_result}")
             time.sleep(5)
             
+            page.screenshot(path=os.path.join(SESSION_DIR, "debug_after_continue.png"))
+            
+            # Then, click "Send to everyone now" button
+            print("  Clicking 'Send to everyone now'...")
+            publish_result = page.evaluate("""() => {
+                const allButtons = document.querySelectorAll('button, a[role="button"], div[role="button"]');
+                for (let btn of allButtons) {
+                    const text = (btn.textContent || btn.innerText || '').trim().toLowerCase();
+                    if (text.includes('send to everyone now') || text.includes('send to everyone') || 
+                        text.includes('publish now') || text === 'publish') {
+                        btn.click();
+                        return 'Clicked: ' + text;
+                    }
+                }
+                // Try by class
+                const publishBtn = document.querySelector('button[class*="send"], button[class*="publish"]');
+                if (publishBtn) {
+                    publishBtn.click();
+                    return 'Clicked by class';
+                }
+                return 'Not found';
+            }""")
+            print(f"  Publish result: {publish_result}")
             time.sleep(5)
+            
             page.screenshot(path=os.path.join(SESSION_DIR, "debug_after_publish.png"))
+            
+            # Verify publication by checking URL
+            final_url = page.url
+            print(f"  Final URL: {final_url}")
             
             # Save updated state
             context.storage_state(path=os.path.join(SESSION_DIR, "state.json"))
             print("  ✅ Session state saved")
             
+            # Check if published successfully
+            # If published, URL should be the post URL (not /publish)
+            published = "/publish" not in final_url or "draft" not in final_url.lower()
+            
             if published:
                 print(f"\n✅ Article published to {PUB_URL}")
                 print(f"   Title: {title}")
             else:
-                print("\n⚠️ Could not auto-publish. Article is in editor as draft.")
-                print("   You may need to click Publish manually in the browser.")
+                print("\n⚠️ May not have published. Check debug screenshots.")
             
             browser.close()
             return published
@@ -360,7 +310,6 @@ def main():
     draft_file = os.path.join(_script_dir, f"substack_draft_{date_str}.md")
     
     if not os.path.exists(draft_file):
-        # Try to find any recent draft
         import glob
         drafts = sorted(glob.glob(os.path.join(_script_dir, "substack_draft_*.md")), reverse=True)
         if drafts:
