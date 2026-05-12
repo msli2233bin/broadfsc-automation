@@ -3,13 +3,16 @@
 Substack Auto-Post: Daily Article Generator
 Reads latest knowledge files, generates English article via Groq, auto-posts to Substack.
 
-Publishing method: Email via Brevo API → broadcastmarketintelligence@substack.com
-(More reliable than Playwright-based login in CI environments)
+Publishing methods (auto-detected):
+1. Playwright launch_persistent_context (local Windows — most reliable)
+2. Brevo API email (CI/GitHub Actions fallback)
 
 Usage:
-  python substack_auto_post.py          # Generate + publish 1 article
-  python substack_auto_post.py --test  # Test only (no publish)
-  python substack_auto_post.py --dry-run  # Generate only (no publish)
+  python substack_auto_post.py          # Generate + publish (auto-detect method)
+  python substack_auto_post.py --playwright  # Force Playwright method
+  python substack_auto_post.py --email       # Force email/Brevo method
+  python substack_auto_post.py --test        # Test only (no publish)
+  python substack_auto_post.py --dry-run     # Generate only (no publish)
 
 Schedule: Daily via GitHub Actions (08:00 Beijing time)
 """
@@ -29,18 +32,22 @@ if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
 # ============================================================
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 PUBLICATION_SLUG = "broadcastmarketintelligence"
-PUB_URL = f"https://{PUBLICATION_SLUG}.substack.com"
+PUB_URL = "https://{}.substack.com".format(PUBLICATION_SLUG)
 
-# Substack email posting address (Settings → Emails)
-# Try without 'post+' prefix if posts don't appear
+# Substack email posting address
 SUBSTACK_POST_EMAIL = os.environ.get(
     "SUBSTACK_POST_EMAIL",
-    "broadcastmarketintelligence@substack.com"
+    "post+broadcastmarketintelligence@substack.com"
 )
 
-# Brevo API (for sending emails)
+# Brevo API (for sending emails — CI fallback)
 BREVO_API_KEY = os.environ.get("BREVO_API_KEY", "")
 BREVO_SENDER_EMAIL = os.environ.get("BREVO_SENDER_EMAIL", "msli2233bin+brevo@gmail.com")
+
+# Playwright profile paths
+SESSION_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".browser_sessions")
+STATE_FILE = os.path.join(SESSION_DIR, "state.json")
+PROFILE_DIR = os.path.join(SESSION_DIR, "substack_profile")
 
 KNOWLEDGE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "knowledge")
 
@@ -69,12 +76,11 @@ if os.path.exists(_env_path):
 def find_latest_knowledge_file():
     """Find the most recent .md file across all knowledge subdirectories."""
     if not os.path.exists(KNOWLEDGE_DIR):
-        print(f"[Knowledge] Directory not found: {KNOWLEDGE_DIR}")
+        print("[Knowledge] Directory not found: {}".format(KNOWLEDGE_DIR))
         return None
 
     all_md_files = []
     for root, dirs, files in os.walk(KNOWLEDGE_DIR):
-        # Skip hidden dirs and episodic/patterns/strategic
         dirs[:] = [d for d in dirs if not d.startswith('.')]
         for f in files:
             if f.endswith('.md') and not f.startswith('_'):
@@ -85,10 +91,9 @@ def find_latest_knowledge_file():
         print("[Knowledge] No .md files found")
         return None
 
-    # Sort by modification time (newest first)
     all_md_files.sort(key=os.path.getmtime, reverse=True)
     latest = all_md_files[0]
-    print(f"[Knowledge] Latest file: {os.path.basename(latest)}")
+    print("[Knowledge] Latest file: {}".format(os.path.basename(latest)))
     return latest
 
 
@@ -97,7 +102,6 @@ def read_knowledge_file(filepath):
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # Extract title (first # header)
     lines = content.split('\n')
     title = ""
     body_start = 0
@@ -111,7 +115,7 @@ def read_knowledge_file(filepath):
 
     return {
         'title': title,
-        'body': body[:3000],  # First 3000 chars for context
+        'body': body[:3000],
         'filename': os.path.basename(filepath)
     }
 
@@ -133,27 +137,27 @@ def generate_article(title_zh, body_zh):
 
     client = Groq(api_key=GROQ_API_KEY)
 
-    prompt = f"""You are a professional investment analyst writing for Substack.
+    prompt = """You are a professional investment analyst writing for Substack.
 
 Based on the Chinese market analysis below, write an English article (800-1200 words) with:
 
 1. An engaging title (SEO-friendly, starting with "Market Radar:" or "Technical Analysis:")
 2. Professional tone (like Bloomberg/Seeking Alpha)
-3. Clear structure: Introduction → Analysis → Key Levels → Conclusion
+3. Clear structure: Introduction -> Analysis -> Key Levels -> Conclusion
 4. Include specific data points (RSI, MACD, Bollinger Bands)
 5. Actionable insights (not just news, but what it means for investors)
 6. A soft CTA at the end: "For deeper analysis, message @BroadInvestBot on Telegram"
 
 Chinese source content:
-Title: {title_zh}
-Body: {body_zh}
+Title: {}
+Body: {}
 
 IMPORTANT:
-- Write in native English (no AI痕迹)
+- Write in native English (no AI traces)
 - Include specific numbers and percentages
 - Use professional financial terminology
 - End with: "Disclaimer: This is for informational purposes only, not financial advice."
-"""
+""".format(title_zh, body_zh)
 
     try:
         chat_completion = client.chat.completions.create(
@@ -163,25 +167,23 @@ IMPORTANT:
             temperature=0.7,
         )
         article = chat_completion.choices[0].message.content
-        print("[Groq] ✅ Article generated successfully")
+        print("[Groq] + Article generated successfully")
         return article
     except Exception as e:
-        print(f"[Groq] ❌ Error: {e}")
+        print("[Groq] x Error: {}".format(e))
         return generate_template_article(title_zh, body_zh)
 
 
 def generate_template_article(title_zh, body_zh):
     """Fallback template if Groq fails."""
     date_str = datetime.datetime.now().strftime("%B %d, %Y")
-
-    # Extract English title
-    title_en = title_zh.replace("—", "-").replace("（", "(").replace("）", ")")
+    title_en = title_zh.replace("\u2014", "-").replace("\uff08", "(").replace("\uff09", ")")
     if len(title_en) > 60:
         title_en = "Market Radar: " + title_en[:40] + "..."
 
-    article = f"""# {title_en}
+    article = """# {}
 
-**{date_str}** | BroadFSC Market Briefing
+**{}** | BroadFSC Market Briefing
 
 ---
 
@@ -195,7 +197,7 @@ Our algorithmic screening has identified several high-conviction setups across m
 
 ### RSI Divergence Watch
 
-When price makes a lower low but RSI makes a higher low — that's bullish divergence. We're seeing this pattern emerge in several tech names after the recent consolidation.
+When price makes a lower low but RSI makes a higher low - that is bullish divergence. We are seeing this pattern emerge in several tech names after the recent consolidation.
 
 ### MACD Zero-Line Cross
 
@@ -203,7 +205,7 @@ Three S&P 500 components are showing MACD histograms turning positive above the 
 
 ### Bollinger Band Squeeze
 
-Multiple sectors are showing contracting Bollinger Bands — a classic precursor to volatility expansion. Our models flag these setups 2-3 days before the breakout.
+Multiple sectors are showing contracting Bollinger Bands - a classic precursor to volatility expansion. Our models flag these setups 2-3 days before the breakout.
 
 ## Actionable Insights
 
@@ -215,16 +217,16 @@ Multiple sectors are showing contracting Bollinger Bands — a classic precursor
 
 Want a professional review of your current holdings? Our licensed analysts offer **free portfolio assessments** to newsletter subscribers.
 
-👉 **Get your free analysis**: Message @BroadInvestBot on Telegram
+For deeper analysis, message @BroadInvestBot on Telegram
 
 Available this week only. No obligations.
 
 ---
 
 *Disclaimer: This content is for informational purposes only and does not constitute financial advice. Past performance does not guarantee future results.*
-"""
+""".format(title_en, date_str)
 
-    print("[Template] ✅ Using fallback template article")
+    print("[Template] + Using fallback template article")
     return article
 
 
@@ -234,40 +236,44 @@ def extract_title_from_article(article_text):
     for line in lines:
         if line.startswith('# '):
             return line.lstrip('# ').strip()
-    # Fallback
     date_str = datetime.datetime.now().strftime("%Y-%m-%d")
-    return f"Market Radar: Technical Analysis Update {date_str}"
+    return "Market Radar: Technical Analysis Update {}".format(date_str)
 
 
 # ============================================================
-# Step 3: Publish to Substack via Email (Brevo API)
+# Step 3: Publish to Substack (Playwright or Brevo)
 # ============================================================
-def publish_to_substack(title, article_body, dry_run=False):
-    """Publish article to Substack by emailing post+broadcastmarketintelligence@substack.com via Brevo API.
+def publish_via_playwright(title, article_body):
+    """Publish via Playwright launch_persistent_context (most reliable, local only)."""
+    try:
+        from substack_cookie_publish import publish_article
+        print("[Playwright] Attempting publish via launch_persistent_context...")
+        success = publish_article(title, article_body)
+        if success:
+            print("[Playwright] + Article published successfully!")
+        else:
+            print("[Playwright] - Publishing failed")
+        return success
+    except ImportError:
+        print("[Playwright] substack_cookie_publish module not available")
+        return False
+    except Exception as e:
+        print("[Playwright] Error: {}".format(e))
+        return False
 
-    Substack Email Posting Notes:
-    - Email subject = post title
-    - Email body (plain text or HTML) = post content
-    - Post is published immediately (no draft mode via email)
-    - Brevo sender email must be verified in Brevo account
-    """
-    if dry_run:
-        print("[Substack] DRY RUN — not publishing")
-        print(f"[Substack] Title: {title}")
-        print(f"[Substack] Body length: {len(article_body)} chars")
-        return True
 
+def publish_via_email(title, article_body):
+    """Publish via Brevo API email (fallback for CI)."""
     if not BREVO_API_KEY:
-        print("[Substack] ❌ BREVO_API_KEY not configured")
+        print("[Email] x BREVO_API_KEY not configured")
         return False
 
     if not SUBSTACK_POST_EMAIL:
-        print("[Substack] ❌ SUBSTACK_POST_EMAIL not configured")
+        print("[Email] x SUBSTACK_POST_EMAIL not configured")
         return False
 
-    print(f"[Substack] Sending email via Brevo → {SUBSTACK_POST_EMAIL}")
+    print("[Email] Sending via Brevo -> {}".format(SUBSTACK_POST_EMAIL))
 
-    # Convert Markdown to simple HTML for better Substack rendering
     html_body = markdown_to_simple_html(article_body)
 
     url = "https://api.brevo.com/v3/smtp/email"
@@ -288,17 +294,16 @@ def publish_to_substack(title, article_body, dry_run=False):
         r = requests.post(url, headers=headers, json=payload, timeout=30)
         if r.status_code in (200, 201):
             msg_id = r.json().get("messageId", "unknown")
-            print(f"[Substack] ✅ Email sent! messageId={msg_id}")
-            print(f"[Substack] ✅ Article '{title}' published to {PUB_URL}")
+            print("[Email] + Email sent! messageId={}".format(msg_id))
             return True
         else:
-            print(f"[Substack] ❌ Brevo API error {r.status_code}: {r.text[:300]}")
+            print("[Email] x Brevo API error {}: {}".format(r.status_code, r.text[:300]))
             return False
     except requests.exceptions.ConnectionError:
-        print("[Substack] ❌ Connection failed (network error)")
+        print("[Email] x Connection failed (network error)")
         return False
     except Exception as e:
-        print(f"[Substack] ❌ Unexpected error: {e}")
+        print("[Email] x Unexpected error: {}".format(e))
         return False
 
 
@@ -307,19 +312,13 @@ def markdown_to_simple_html(markdown_text):
     import re
     html = markdown_text
 
-    # Headers
     html = re.sub(r'^### (.+)$', r'<h3>\1</h3>', html, flags=re.MULTILINE)
     html = re.sub(r'^## (.+)$', r'<h2>\1</h2>', html, flags=re.MULTILINE)
     html = re.sub(r'^# (.+)$', r'<h1>\1</h1>', html, flags=re.MULTILINE)
-
-    # Bold and italic
     html = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', html)
     html = re.sub(r'\*(.+?)\*', r'<em>\1</em>', html)
-
-    # Horizontal rule
     html = re.sub(r'^---+$', r'<hr>', html, flags=re.MULTILINE)
 
-    # Unordered list items
     lines = html.split('\n')
     result = []
     in_list = False
@@ -329,7 +328,7 @@ def markdown_to_simple_html(markdown_text):
                 result.append('<ul>')
                 in_list = True
             item = re.sub(r'^[*\-] ', '', line)
-            result.append(f'<li>{item}</li>')
+            result.append('<li>{}</li>'.format(item))
         else:
             if in_list:
                 result.append('</ul>')
@@ -339,7 +338,6 @@ def markdown_to_simple_html(markdown_text):
         result.append('</ul>')
     html = '\n'.join(result)
 
-    # Paragraphs: wrap non-tag lines
     paragraphs = html.split('\n\n')
     wrapped = []
     for para in paragraphs:
@@ -349,15 +347,15 @@ def markdown_to_simple_html(markdown_text):
         if para.startswith('<'):
             wrapped.append(para)
         else:
-            wrapped.append(f'<p>{para}</p>')
+            wrapped.append('<p>{}</p>'.format(para))
     html = '\n\n'.join(wrapped)
 
-    return f"""<!DOCTYPE html>
+    return """<!DOCTYPE html>
 <html>
 <body style="font-family: Georgia, serif; max-width: 700px; margin: auto; padding: 20px; color: #333;">
-{html}
+{}
 </body>
-</html>"""
+</html>""".format(html)
 
 
 # ============================================================
@@ -368,6 +366,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--test', action='store_true', help='Test mode (no publish)')
     parser.add_argument('--dry-run', action='store_true', help='Generate only (no publish)')
+    parser.add_argument('--playwright', action='store_true', help='Force Playwright method')
+    parser.add_argument('--email', action='store_true', help='Force email/Brevo method')
     args = parser.parse_args()
 
     print("=" * 60)
@@ -378,43 +378,78 @@ def main():
     print("\n[Step 1] Finding latest knowledge file...")
     latest_file = find_latest_knowledge_file()
     if not latest_file:
-        print("❌ No knowledge files found. Run ai_learning_agent.py first.")
+        print("x No knowledge files found. Run ai_learning_agent.py first.")
         sys.exit(1)
 
     # Step 2: Read content
     print("\n[Step 2] Reading knowledge content...")
     content = read_knowledge_file(latest_file)
-    print(f"  Title (ZH): {content['title']}")
-    print(f"  Body length: {len(content['body'])} chars")
+    print("  Title (ZH): {}".format(content['title']))
+    print("  Body length: {} chars".format(len(content['body'])))
 
     # Step 3: Generate English article
     print("\n[Step 3] Generating English article via Groq...")
     article = generate_article(content['title'], content['body'])
 
-    # Extract title
     article_title = extract_title_from_article(article)
-    print(f"  Article title: {article_title}")
-    print(f"  Article length: {len(article)} chars")
+    print("  Article title: {}".format(article_title))
+    print("  Article length: {} chars".format(len(article)))
 
     # Save article locally (backup)
     date_str = datetime.datetime.now().strftime("%Y-%m-%d")
-    output_file = f"substack_draft_{date_str}.md"
+    output_file = "substack_draft_{}.md".format(date_str)
     with open(output_file, 'w', encoding='utf-8') as f:
-        f.write(f"# {article_title}\n\n")
+        f.write("# {}\n\n".format(article_title))
         f.write(article)
-    print(f"\n[Backup] Article saved to: {output_file}")
+    print("\n[Backup] Article saved to: {}".format(output_file))
 
-    # Step 4: Publish to Substack
-    if not args.dry_run:
-        print("\n[Step 4] Publishing to Substack...")
-        success = publish_to_substack(article_title, article, dry_run=args.test)
-        if success:
-            print("\n✅ Article published successfully!")
-        else:
-            print("\n⚠️ Publish failed. Article saved locally.")
-            sys.exit(1)
-    else:
+    # Step 4: Publish
+    if args.dry_run:
         print("\n[DRY RUN] Skipping publish step.")
+    elif args.test:
+        print("\n[TEST] Skipping publish step.")
+    else:
+        print("\n[Step 4] Publishing to Substack...")
+
+        # Extract body (without title header)
+        body_lines = article.strip().split('\n')
+        body_start = 0
+        for i, line in enumerate(body_lines):
+            if line.startswith('# '):
+                body_start = i + 1
+                break
+        article_body = '\n'.join(body_lines[body_start:]).strip()
+
+        published = False
+
+        # Determine publishing method
+        force_playwright = args.playwright
+        force_email = args.email
+        is_ci = os.environ.get("CI") == "true" or os.environ.get("GITHUB_ACTIONS") == "true"
+
+        if force_playwright:
+            # Force Playwright
+            published = publish_via_playwright(article_title, article_body)
+        elif force_email:
+            # Force email
+            published = publish_via_email(article_title, article)
+        elif is_ci:
+            # CI environment: use email (no browser profile available)
+            print("[Auto-detect] CI environment detected, using email method")
+            published = publish_via_email(article_title, article)
+        else:
+            # Local environment: try Playwright first, fall back to email
+            print("[Auto-detect] Local environment, trying Playwright first")
+            published = publish_via_playwright(article_title, article_body)
+            if not published:
+                print("[Fallback] Playwright failed, trying email method...")
+                published = publish_via_email(article_title, article)
+
+        if published:
+            print("\n+ Article published successfully!")
+        else:
+            print("\nx Publish failed. Article saved locally.")
+            sys.exit(1)
 
     print("\n" + "=" * 60)
     print("Done!")
