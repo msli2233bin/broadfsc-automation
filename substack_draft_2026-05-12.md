@@ -1,8 +1,8 @@
-# SALES 学习笔记 - 2026-05-11
+# 知识融合日志
 
-# SALES 学习笔记 - 2026-05-11
+# 知识融合日志
 
-**May 11, 2026** | BroadFSC Market Briefing
+**May 12, 2026** | BroadFSC Market Briefing
 
 ---
 
