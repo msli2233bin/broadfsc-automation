@@ -36,15 +36,11 @@ jobs:
     - name: Generate & Publish Substack Article
       env:
         GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
       run: |
         cd broadfsc-automation
-        # Write Substack session cookies from secret
-        mkdir -p .browser_sessions
-        echo '${{ secrets.SUBSTACK_STATE_JSON }}' > .browser_sessions/state.json
-        # Generate article
+        # One-shot: yfinance数据 + Groq生成 + Brevo邮件发布到Substack
         python publish_now.py
-        # Publish article via Playwright with saved cookies
-        python substack_cookie_publish.py
 
     - name: Commit updated knowledge base
       run: |

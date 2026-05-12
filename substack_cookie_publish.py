@@ -215,57 +215,94 @@ def publish_article(title, article_body):
             
             page.screenshot(path=os.path.join(SESSION_DIR, "debug_content_filled.png"))
             
-            # Step 4: Publish - Use JavaScript to find and click buttons
+            # Step 4: Publish - Use Playwright to click buttons (handles modals properly)
             print("\n[5/5] Publishing...")
             
-            # First, click Continue button
+            # First, click Continue button using Playwright locator
             print("  Clicking Continue button...")
-            continue_result = page.evaluate("""() => {
-                // Find all buttons and check their text content
-                const allButtons = document.querySelectorAll('button, a[role="button"], div[role="button"]');
-                for (let btn of allButtons) {
-                    const text = (btn.textContent || btn.innerText || '').trim().toLowerCase();
-                    if (text === 'continue' || text.includes('continue')) {
-                        btn.click();
-                        return 'Clicked: ' + text;
-                    }
-                }
-                // Try by class
-                const continueBtn = document.querySelector('button[class*="continue"], button[class*="publish"]');
-                if (continueBtn) {
-                    continueBtn.click();
-                    return 'Clicked by class';
-                }
-                return 'Not found';
-            }""")
-            print(f"  Continue result: {continue_result}")
-            time.sleep(5)
+            continue_clicked = False
+            try:
+                # Wait for and click the Continue button
+                continue_btn = page.get_by_role("button", name="Continue", exact=True)
+                if continue_btn.count() > 0:
+                    continue_btn.first.click()
+                    continue_clicked = True
+                    print("  ✅ Clicked Continue (exact match)")
+                else:
+                    # Try partial match
+                    continue_btn = page.get_by_role("button", name=re.compile(r"continue", re.IGNORECASE))
+                    if continue_btn.count() > 0:
+                        continue_btn.first.click()
+                        continue_clicked = True
+                        print("  ✅ Clicked Continue (partial match)")
+            except Exception as e:
+                print(f"  Continue button error: {e}")
             
+            if not continue_clicked:
+                print("  ⚠️ Could not find Continue button with Playwright, trying JavaScript...")
+                page.evaluate("""() => {
+                    const btns = document.querySelectorAll('button');
+                    for (let b of btns) {
+                        if (b.textContent.trim().toLowerCase() === 'continue') {
+                            b.click();
+                            return;
+                        }
+                    }
+                }""")
+            
+            time.sleep(5)
             page.screenshot(path=os.path.join(SESSION_DIR, "debug_after_continue.png"))
             
             # Then, click "Send to everyone now" button
             print("  Clicking 'Send to everyone now'...")
-            publish_result = page.evaluate("""() => {
-                const allButtons = document.querySelectorAll('button, a[role="button"], div[role="button"]');
-                for (let btn of allButtons) {
-                    const text = (btn.textContent || btn.innerText || '').trim().toLowerCase();
-                    if (text.includes('send to everyone now') || text.includes('send to everyone') || 
-                        text.includes('publish now') || text === 'publish') {
-                        btn.click();
-                        return 'Clicked: ' + text;
-                    }
-                }
-                // Try by class
-                const publishBtn = document.querySelector('button[class*="send"], button[class*="publish"]');
-                if (publishBtn) {
-                    publishBtn.click();
-                    return 'Clicked by class';
-                }
-                return 'Not found';
-            }""")
-            print(f"  Publish result: {publish_result}")
-            time.sleep(5)
+            published = False
             
+            # Wait for modal to fully load
+            time.sleep(3)
+            
+            # Method 1: Use Playwright's locator with has-text
+            try:
+                # Find button that contains the text "Send to everyone now"
+                publish_btn = page.locator('button:has-text("Send to everyone now")')
+                if publish_btn.count() > 0:
+                    publish_btn.first.click()
+                    published = True
+                    print("  ✅ Clicked 'Send to everyone now' (has-text)")
+            except Exception as e:
+                print(f"  has-text click failed: {e}")
+            
+            # Method 2: Try get_by_text
+            if not published:
+                try:
+                    publish_btn = page.get_by_text("Send to everyone now", exact=True)
+                    if publish_btn.count() > 0:
+                        publish_btn.first.click()
+                        published = True
+                        print("  ✅ Clicked 'Send to everyone now' (get_by_text)")
+                except Exception as e:
+                    print(f"  get_by_text click failed: {e}")
+            
+            # Method 3: JavaScript - use elementFromPoint to find and click
+            if not published:
+                print("  Trying JavaScript elementFromPoint...")
+                result = page.evaluate("""() => {
+                    // The button is typically at bottom right of viewport
+                    // Try clicking at that location
+                    const x = window.innerWidth - 150;
+                    const y = window.innerHeight - 50;
+                    
+                    const el = document.elementFromPoint(x, y);
+                    if (el) {
+                        el.click();
+                        return 'clicked element at (' + x + ',' + y + '): ' + el.tagName;
+                    }
+                    return 'no element found';
+                }""")
+                print(f"  elementFromPoint result: {result}")
+                if 'clicked' in result:
+                    published = True
+            
+            time.sleep(5)
             page.screenshot(path=os.path.join(SESSION_DIR, "debug_after_publish.png"))
             
             # Verify publication by checking URL
