@@ -1,0 +1,11 @@
+{
+  "platform": "mastodon",
+  "topic": "NVDA_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "$NVDA NVIDIA Corporation\n\n💰 219.44 (+2.0%) | 5D: +10.6%\n📊 RSI: 64.9 | MACD: bullish\n📈 MA20: $204.69 (above)\n🎯 Resistance: $222.3 | Support: $164.27\n📢 Vol: 1.1x avg\n\nSetup: uptrend intact → bias: BULLISH\n\n📱 Free TA signals: t.me/BroadInvestBot\n#$NVDA #Trading #TechnicalAnalysis #Stocks",
+  "content_type": "single",
+  "symbol": "NVDA",
+  "created": "2026-05-12T11:32:50.032612",
+  "used": false,
+  "chart_paths": {}
+}
