@@ -616,7 +616,7 @@ async function submitRegistrationToBackend(name, email, interests, source) {
   // If you have a stable bot token, encode it: btoa('BOT_TOKEN_HERE')
   // and replace the line below.
   try {
-    const BOT_API = atob('ODI5MjQyMjAzMzpBQUhyUFVmU2FVQWNtcHZRWGNWNG5zZC1OYWtaSDNTSXdQVQ==');
+    const BOT_API = atob('ODI5MjQyMjAzMzpBQUZabnIxWXB0bDIxam5Ca0V1cTlIR3lSS3c4LW44cVIzNA==');
     const ADMIN_CHAT_ID = '8327500544';
     const msg = `🆕 New Registration\n👤 Name: ${name}\n📧 Email: ${email}\n🎯 Interest: ${interests}\n📍 Source: ${source}\n🕐 Time: ${new Date().toLocaleString()}`;
 
