@@ -151,5 +151,32 @@
     "time": "2026-05-12T20:18:14.038546",
     "message_id": "<202605122018.62897943364@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "msli2233bin+david@gmail.com",
+    "subject": "Gold's Unlikely Squeeze",
+    "personality": "thomas",
+    "date": "2026-05-13",
+    "time": "2026-05-13T20:24:55.964831",
+    "message_id": "<202605132024.80910300816@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+sarah@gmail.com",
+    "subject": "S&P 3-day momentum anomaly",
+    "personality": "thomas",
+    "date": "2026-05-13",
+    "time": "2026-05-13T20:25:05.158981",
+    "message_id": "<202605132025.12848025169@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "test@example.com",
+    "subject": "Why the Dow's 0.14% drop is significant",
+    "personality": "thomas",
+    "date": "2026-05-13",
+    "time": "2026-05-13T20:25:11.346920",
+    "message_id": "<202605132025.79388863486@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
