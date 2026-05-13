@@ -1347,5 +1347,100 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1503825658491703436"
+  },
+  {
+    "id": 145,
+    "timestamp": "2026-05-13T13:39:03.129650Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The S&P 500's 'Superb' 10-Year Run Hits a Speed Bump</b>\n\nThe S&P 500 has clocked a 10-year str",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "138"
+  },
+  {
+    "id": 146,
+    "timestamp": "2026-05-13T13:39:03.613790Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The S&P 500's 'Superb' 10-Year Run Hits a Speed Bump**\n\nThe S&P 500 has clocked a 10-year streak",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1504115763517325484"
+  },
+  {
+    "id": 147,
+    "timestamp": "2026-05-13T13:39:04.578395Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The S&P 500's 'Superb' 10-Year Run Hits a Speed Bump\n\nThe S&P 500 has clocked a 10-year streak of ",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 148,
+    "timestamp": "2026-05-13T13:39:08.091269Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The S&P 500 has clocked a 10-year streak of steady growth, defying predictions of a major downturn",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 149,
+    "timestamp": "2026-05-13T13:39:09.361876Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The S&P 500's 'Superb' 10-Year Run Hits a Speed Bump",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 150,
+    "timestamp": "2026-05-13T13:39:10.392489Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AMZN Amazon.com, Inc.\n\n💰 271.17 (-1.4%) | 5D: +2.3%\n📊 RSI: 74.6 | MACD: bullish\n📈 MA20: $257.88 (ab",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "116567543004247034"
+  },
+  {
+    "id": 151,
+    "timestamp": "2026-05-13T13:39:10.593535Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $TSLA — Tesla, Inc. | $433.45 (-2.6%)\n\n**Setup:** overbought, watching for pullback → Bias: **C",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1504115794462642237"
+  },
+  {
+    "id": 152,
+    "timestamp": "2026-05-13T13:39:11.016761Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $AMZN Amazon.com, Inc. 💰 271.17 (-1.4%)\n\nSetup: overbought, watching for pullback\nRSI: 74.6 | MAC",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mlqghgzpne2g"
+  },
+  {
+    "id": 153,
+    "timestamp": "2026-05-13T13:39:18.784274Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 154,
+    "timestamp": "2026-05-13T13:39:27.649309Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
