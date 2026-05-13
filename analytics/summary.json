@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-13T08:21:07.245478Z",
+  "generated_at": "2026-05-13T16:40:53.294257Z",
   "period": {
     "today": "2026-05-13",
     "yesterday": "2026-05-12",
@@ -7,13 +7,13 @@
     "month_ago": "2026-04-13"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 97,
-    "posts_month": 144,
+    "posts_today": 10,
+    "posts_week": 107,
+    "posts_month": 154,
     "interactions_today": 0,
     "interactions_week": 3,
     "interactions_month": 38,
-    "success_rate": 57.6
+    "success_rate": 58.4
   },
   "platforms": {
     "tiktok": {
@@ -24,24 +24,24 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 12,
-      "month": 16,
-      "success": 14,
+      "today": 1,
+      "week": 13,
+      "month": 17,
+      "success": 15,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 20,
-      "month": 27,
-      "success": 21,
+      "today": 2,
+      "week": 22,
+      "month": 29,
+      "success": 23,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 16,
-      "month": 22,
-      "success": 17,
+      "today": 2,
+      "week": 18,
+      "month": 24,
+      "success": 19,
       "failed": 5
     },
     "twitter": {
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 13,
-      "month": 18,
+      "today": 1,
+      "week": 14,
+      "month": 19,
       "success": 10,
-      "failed": 8
+      "failed": 9
     },
     "medium": {
       "today": 0,
@@ -73,18 +73,18 @@
       "failed": 3
     },
     "bluesky": {
-      "today": 0,
-      "week": 16,
-      "month": 16,
-      "success": 16,
+      "today": 2,
+      "week": 18,
+      "month": 18,
+      "success": 18,
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 20,
-      "month": 20,
+      "today": 2,
+      "week": 22,
+      "month": 22,
       "success": 4,
-      "failed": 16
+      "failed": 18
     }
   },
   "interactions_by_platform": {
@@ -153,6 +153,10 @@
       "posts": 12,
       "interactions": 0
     },
+    "2026-05-13": {
+      "posts": 10,
+      "interactions": 0
+    },
     "2026-04-20": {
       "posts": 0,
       "interactions": 14
@@ -173,104 +177,10 @@
     "16": 26,
     "9": 9,
     "14": 2,
-    "12": 7
+    "12": 7,
+    "13": 7
   },
   "recent_posts": [
-    {
-      "id": 125,
-      "timestamp": "2026-05-11T16:18:16.548472Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 The Bullish Uptrend Continues, But Watch Out for Overbought Signals",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 126,
-      "timestamp": "2026-05-11T16:18:17.768049Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "As the social media landscape continues to evolve, platforms like TikTok are redefining the rules of",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "116556844077314666"
-    },
-    {
-      "id": 127,
-      "timestamp": "2026-05-11T16:18:18.012842Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "**Modern Sales Techniques for Financial Services**\n\nHey fellow traders, \n\nAs we navigate the complex",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1503431063228383384"
-    },
-    {
-      "id": 128,
-      "timestamp": "2026-05-11T16:18:18.635955Z",
-      "platform": "bluesky",
-      "type": "post",
-      "content_preview": "1/ $NVDA NVIDIA Corporation 💰 211.5 (+1.8%)\n\nSetup: consolidation\nRSI: 58.2 | MACD: bearish\nVol: 1.1",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mllog5fd6v2i"
-    },
-    {
-      "id": 129,
-      "timestamp": "2026-05-11T16:18:24.931716Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 130,
-      "timestamp": "2026-05-11T16:18:38.133611Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 131,
-      "timestamp": "2026-05-11T16:49:27.507682Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "テスト投稿 — BroadFSC",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 132,
-      "timestamp": "2026-05-11T16:49:49.767643Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 133,
-      "timestamp": "2026-05-12T12:29:34.790136Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Dislocation: AI-Driven Nasdaq at New Heights, But What's Next?</b>\n\nThe Nasdaq has soare",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "127"
-    },
-    {
-      "id": 134,
-      "timestamp": "2026-05-12T12:29:35.006566Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Dislocation: AI-Driven Nasdaq at New Heights, But What's Next?**\n\nThe Nasdaq has soared t",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1503735892333035532"
-    },
     {
       "id": 135,
       "timestamp": "2026-05-12T12:29:35.757165Z",
@@ -365,6 +275,101 @@
       "status": "success",
       "error_msg": "",
       "post_id": "1503825658491703436"
+    },
+    {
+      "id": 145,
+      "timestamp": "2026-05-13T13:39:03.129650Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 The S&P 500's 'Superb' 10-Year Run Hits a Speed Bump</b>\n\nThe S&P 500 has clocked a 10-year str",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "138"
+    },
+    {
+      "id": 146,
+      "timestamp": "2026-05-13T13:39:03.613790Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **The S&P 500's 'Superb' 10-Year Run Hits a Speed Bump**\n\nThe S&P 500 has clocked a 10-year streak",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1504115763517325484"
+    },
+    {
+      "id": 147,
+      "timestamp": "2026-05-13T13:39:04.578395Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 The S&P 500's 'Superb' 10-Year Run Hits a Speed Bump\n\nThe S&P 500 has clocked a 10-year streak of ",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 148,
+      "timestamp": "2026-05-13T13:39:08.091269Z",
+      "platform": "bluesky",
+      "type": "repurposed",
+      "content_preview": "📊 The S&P 500 has clocked a 10-year streak of steady growth, defying predictions of a major downturn",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 149,
+      "timestamp": "2026-05-13T13:39:09.361876Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 The S&P 500's 'Superb' 10-Year Run Hits a Speed Bump",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 150,
+      "timestamp": "2026-05-13T13:39:10.392489Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$AMZN Amazon.com, Inc.\n\n💰 271.17 (-1.4%) | 5D: +2.3%\n📊 RSI: 74.6 | MACD: bullish\n📈 MA20: $257.88 (ab",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "116567543004247034"
+    },
+    {
+      "id": 151,
+      "timestamp": "2026-05-13T13:39:10.593535Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟡 $TSLA — Tesla, Inc. | $433.45 (-2.6%)\n\n**Setup:** overbought, watching for pullback → Bias: **C",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1504115794462642237"
+    },
+    {
+      "id": 152,
+      "timestamp": "2026-05-13T13:39:11.016761Z",
+      "platform": "bluesky",
+      "type": "post",
+      "content_preview": "1/ $AMZN Amazon.com, Inc. 💰 271.17 (-1.4%)\n\nSetup: overbought, watching for pullback\nRSI: 74.6 | MAC",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mlqghgzpne2g"
+    },
+    {
+      "id": 153,
+      "timestamp": "2026-05-13T13:39:18.784274Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 154,
+      "timestamp": "2026-05-13T13:39:27.649309Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
     }
   ],
   "recent_interactions": [
