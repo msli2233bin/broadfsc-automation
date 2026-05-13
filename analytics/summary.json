@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-13T16:40:53.294257Z",
+  "generated_at": "2026-05-13T21:57:23.888983Z",
   "period": {
     "today": "2026-05-13",
     "yesterday": "2026-05-12",
@@ -7,13 +7,13 @@
     "month_ago": "2026-04-13"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 107,
-    "posts_month": 154,
+    "posts_today": 20,
+    "posts_week": 117,
+    "posts_month": 164,
     "interactions_today": 0,
     "interactions_week": 3,
     "interactions_month": 38,
-    "success_rate": 58.4
+    "success_rate": 59.1
   },
   "platforms": {
     "tiktok": {
@@ -24,24 +24,24 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 13,
-      "month": 17,
-      "success": 15,
+      "today": 2,
+      "week": 14,
+      "month": 18,
+      "success": 16,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 22,
-      "month": 29,
-      "success": 23,
+      "today": 4,
+      "week": 24,
+      "month": 31,
+      "success": 25,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 18,
-      "month": 24,
-      "success": 19,
+      "today": 4,
+      "week": 20,
+      "month": 26,
+      "success": 21,
       "failed": 5
     },
     "twitter": {
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 14,
-      "month": 19,
+      "today": 2,
+      "week": 15,
+      "month": 20,
       "success": 10,
-      "failed": 9
+      "failed": 10
     },
     "medium": {
       "today": 0,
@@ -73,18 +73,18 @@
       "failed": 3
     },
     "bluesky": {
-      "today": 2,
-      "week": 18,
-      "month": 18,
-      "success": 18,
+      "today": 4,
+      "week": 20,
+      "month": 20,
+      "success": 20,
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 22,
-      "month": 22,
+      "today": 4,
+      "week": 24,
+      "month": 24,
       "success": 4,
-      "failed": 18
+      "failed": 20
     }
   },
   "interactions_by_platform": {
@@ -154,7 +154,7 @@
       "interactions": 0
     },
     "2026-05-13": {
-      "posts": 10,
+      "posts": 20,
       "interactions": 0
     },
     "2026-04-20": {
@@ -178,104 +178,10 @@
     "9": 9,
     "14": 2,
     "12": 7,
-    "13": 7
+    "13": 7,
+    "20": 7
   },
   "recent_posts": [
-    {
-      "id": 135,
-      "timestamp": "2026-05-12T12:29:35.757165Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Dislocation: AI-Driven Nasdaq at New Heights, But What's Next?\n\nThe Nasdaq has soared to a ",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 136,
-      "timestamp": "2026-05-12T12:29:39.796061Z",
-      "platform": "bluesky",
-      "type": "repurposed",
-      "content_preview": "📊 The Nasdaq has soared to a fresh high, driven by the unstoppable force of AI-powered innovation. 🧵",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 137,
-      "timestamp": "2026-05-12T12:29:40.646692Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Dislocation: AI-Driven Nasdaq at New Heights, But What's Next?",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 138,
-      "timestamp": "2026-05-12T12:29:41.846083Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "**Unlocking the Power of Social Media for Financial Services**\n\nAs a licensed investment securities ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "116561607505656194"
-    },
-    {
-      "id": 139,
-      "timestamp": "2026-05-12T12:29:42.135533Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "**Sales Methodologies 101: Why 64% of Sales Reps Miss Quota**\n\nHey fellow traders (and sales enthusi",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1503735922443948182"
-    },
-    {
-      "id": 140,
-      "timestamp": "2026-05-12T12:29:42.595764Z",
-      "platform": "bluesky",
-      "type": "post",
-      "content_preview": "1/ $COIN Coinbase Global, Inc. 💰 216.6 (+7.7%)\n\nSetup: uptrend intact\nRSI: 61.0 | MACD: bullish\nVol:",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mlns4cax6k2x"
-    },
-    {
-      "id": 141,
-      "timestamp": "2026-05-12T12:29:53.972357Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 142,
-      "timestamp": "2026-05-12T12:30:09.222823Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 143,
-      "timestamp": "2026-05-12T18:26:16.544386Z",
-      "platform": "telegram_en",
-      "type": "earnings",
-      "content_preview": "<b>📊 Earnings Calendar: Week of May 12</b>\n\n\n📅 <b>Wednesday, May 13</b>\n  • Tencent (0700.HK) @ $457",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "128"
-    },
-    {
-      "id": 144,
-      "timestamp": "2026-05-12T18:26:17.222700Z",
-      "platform": "discord",
-      "type": "earnings",
-      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of May 12**\n\n\n📅 **Wednesday, May 13**\n  •",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1503825658491703436"
-    },
     {
       "id": 145,
       "timestamp": "2026-05-13T13:39:03.129650Z",
@@ -365,6 +271,101 @@
     {
       "id": 154,
       "timestamp": "2026-05-13T13:39:27.649309Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 155,
+      "timestamp": "2026-05-13T20:23:01.259272Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 The Great Rotation: From Growth to Value</b>\n\nThe S&P 500's RSI has reached a 30-year high of 8",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "146"
+    },
+    {
+      "id": 156,
+      "timestamp": "2026-05-13T20:23:01.822723Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **The Great Rotation: From Growth to Value**\n\nThe S&P 500's RSI has reached a 30-year high of 87.4",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1504217426152394762"
+    },
+    {
+      "id": 157,
+      "timestamp": "2026-05-13T20:23:02.200174Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 The Great Rotation: From Growth to Value\n\nThe S&P 500's RSI has reached a 30-year high of 87.4, in",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 158,
+      "timestamp": "2026-05-13T20:23:06.560408Z",
+      "platform": "bluesky",
+      "type": "repurposed",
+      "content_preview": "📊 The S&P 500's RSI has reached a 30-year high of 87. 🧵",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 159,
+      "timestamp": "2026-05-13T20:23:07.646759Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 The Great Rotation: From Growth to Value",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 160,
+      "timestamp": "2026-05-13T20:23:08.763448Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$MSFT Microsoft Corporation\n\n💰 420.77 (+1.6%) | 5D: +3.2%\n📊 RSI: 48.9 | MACD: bearish\n📈 MA20: $413.9",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "116569131487336219"
+    },
+    {
+      "id": 161,
+      "timestamp": "2026-05-13T20:23:09.082138Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "**Staying Ahead of the Curve: Insights from the Frontlines of Social Media**\n\nHey fellow traders and",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1504217457827778732"
+    },
+    {
+      "id": 162,
+      "timestamp": "2026-05-13T20:23:09.693411Z",
+      "platform": "bluesky",
+      "type": "post",
+      "content_preview": "1/ $COIN Coinbase Global, Inc. 💰 192.96 (-2.5%)\n\nSetup: correction in play\nRSI: 42.7 | MACD: bearish",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mlr4zssibp2s"
+    },
+    {
+      "id": 163,
+      "timestamp": "2026-05-13T20:23:15.409418Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 164,
+      "timestamp": "2026-05-13T20:23:21.957616Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
