@@ -1,0 +1,11 @@
+{
+  "platform": "telegram",
+  "topic": "AAPL_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "🟡 <b>$AAPL Technical Analysis</b> — Apple Inc.\n\n💰 Price: $294.8 (+0.7%) | Cap: $4.33T\n📊 Setup: <b>overbought, watching for pullback</b> | Bias: <b>CAUTIOUS</b>\n\n<b>Indicators:</b>\n• RSI(14): 76.0 — ⚠️ Overbought\n• MACD: 8.28 (Signal: 6.31) — Bullish\n• BB: $256.63 — $296.28 (Position: 96.3%)\n• Volume: 0.9x average\n\n<b>Moving Averages:</b>\n• MA20: $276.46 | MA50: $263.74 | MA200: $263.37\n• Price above all MAs ✅\n\n<b>Performance:</b>\n• 1D: +0.7% | 5D: +3.8% | 20D: +14.0%\n\n<b>Key Levels:</b>\n• Resistance: $295.27\n• Support: $242.97\n\n<b>Trade Idea:</b>\nWait for support confirmation at $245.4\n\n📱 <b>Free daily TA signals</b> — message @BroadInvestBot",
+  "content_type": "single",
+  "symbol": "AAPL",
+  "created": "2026-05-13T11:51:44.518416",
+  "used": false,
+  "chart_paths": {}
+}

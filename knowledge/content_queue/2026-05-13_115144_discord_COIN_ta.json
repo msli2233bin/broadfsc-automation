@@ -1,0 +1,11 @@
+{
+  "platform": "discord",
+  "topic": "COIN_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "## 🟢 $COIN — Coinbase Global, Inc. | $207.64 (-4.1%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n### 📊 Technical Indicators\n| Indicator | Value | Signal |\n|-----------|-------|--------|\n| RSI(14) | 50.8 | Neutral ✅ |\n| MACD | 4.7719 | Bullish (above signal) |\n| BB Position | 76.4% | Mid-range |\n| Volume | 0.9x avg | Normal |\n\n### 📈 Key Levels\n| Level | Price |\n|-------|-------|\n| Resistance | $263.07 |\n| MA20 | $199.11 |\n| MA50 | $191.49 |\n| MA200 | $195.05 |\n| Support | $139.36 |\n\n### 📉 Performance\n1D: -4.1% | 5D: +5.0% | 20D: +12.6%\n\n### 🎯 Bollinger Bands\nUpper: $215.3 | Lower: $182.92\n\n---\n📱 Get daily TA signals for 5 stocks → **t.me/BroadInvestBot**\nFree. No spam. Just levels that matter.",
+  "content_type": "single",
+  "symbol": "COIN",
+  "created": "2026-05-13T11:51:44.734589",
+  "used": false,
+  "chart_paths": {}
+}

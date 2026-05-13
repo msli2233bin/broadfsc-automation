@@ -1,0 +1,11 @@
+{
+  "platform": "mastodon",
+  "topic": "MSFT_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "$MSFT Microsoft Corporation\n\n💰 407.77 (-1.2%) | 5D: -0.9%\n📊 RSI: 35.1 | MACD: bearish\n📈 MA20: $418.29 (below)\n🎯 Resistance: $488.58 | Support: $356.28\n📢 Vol: 1.1x avg\n\nSetup: correction in play → bias: BEARISH\n\n📱 Free TA signals: t.me/BroadInvestBot\n#$MSFT #Trading #TechnicalAnalysis #Stocks",
+  "content_type": "single",
+  "symbol": "MSFT",
+  "created": "2026-05-13T11:51:45.029754",
+  "used": false,
+  "chart_paths": {}
+}

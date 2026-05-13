@@ -1,0 +1,11 @@
+{
+  "platform": "mastodon",
+  "topic": "AAPL_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "$AAPL Apple Inc.\n\n💰 294.8 (+0.7%) | 5D: +3.8%\n📊 RSI: 76.0 | MACD: bullish\n📈 MA20: $276.46 (above)\n🎯 Resistance: $295.27 | Support: $242.97\n📢 Vol: 0.9x avg\n\nSetup: overbought, watching for pullback → bias: CAUTIOUS\n\n📱 Free TA signals: t.me/BroadInvestBot\n#$AAPL #Trading #TechnicalAnalysis #Stocks",
+  "content_type": "single",
+  "symbol": "AAPL",
+  "created": "2026-05-13T11:51:44.518043",
+  "used": false,
+  "chart_paths": {}
+}

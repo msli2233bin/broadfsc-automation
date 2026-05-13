@@ -1,0 +1,11 @@
+{
+  "platform": "threads",
+  "topic": "MSFT_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "1/ $MSFT — Microsoft Corporation\n\n407.77 (-1.2% today) | $3.03T\n\nCORRECTION IN PLAY. This is the setup you need to see.---THREAD_BREAK---2/ Technical snapshot:\nRSI 35.1 — momentum zone\nMACD bearish, caution warranted\nMA20 $418.29 | MA50 $398.73\nVolume: 1.1x avg\n5D: -0.9% | 20D: +3.7%---THREAD_BREAK---3/ The trade:\nResistance: $488.58\nSupport: $356.28\nBias: BEARISH\n\nRisk-off until trend reverses---THREAD_BREAK---4/ I post TA signals for 5 stocks daily.\n\n📱 Get them free: t.me/BroadInvestBot",
+  "content_type": "thread",
+  "symbol": "MSFT",
+  "created": "2026-05-13T11:51:45.030056",
+  "used": false,
+  "chart_paths": {}
+}

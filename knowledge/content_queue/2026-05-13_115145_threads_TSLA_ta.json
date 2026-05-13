@@ -1,0 +1,11 @@
+{
+  "platform": "threads",
+  "topic": "TSLA_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "1/ $TSLA — Tesla, Inc.\n\n433.45 (-2.6% today) | $1.63T\n\nOVERBOUGHT, WATCHING FOR PULLBACK. This is the setup you need to see.---THREAD_BREAK---2/ Technical snapshot:\nRSI 70.0 — momentum zone\nMACD bullish, momentum intact\nMA20 $394.85 | MA50 $384.64\nVolume: 0.9x avg\n5D: +11.3% | 20D: +19.0%---THREAD_BREAK---3/ The trade:\nResistance: $458.34\nSupport: $337.24\nBias: CAUTIOUS\n\nRisk-off until trend reverses---THREAD_BREAK---4/ I post TA signals for 5 stocks daily.\n\n📱 Get them free: t.me/BroadInvestBot",
+  "content_type": "thread",
+  "symbol": "TSLA",
+  "created": "2026-05-13T11:51:45.241030",
+  "used": false,
+  "chart_paths": {}
+}
