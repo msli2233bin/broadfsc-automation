@@ -1,86 +1,86 @@
 {
-  "generated_at": "2026-05-12T21:51:42.365349Z",
+  "generated_at": "2026-05-13T08:21:07.245478Z",
   "period": {
-    "today": "2026-05-12",
-    "yesterday": "2026-05-11",
-    "week_ago": "2026-05-05",
-    "month_ago": "2026-04-12"
+    "today": "2026-05-13",
+    "yesterday": "2026-05-12",
+    "week_ago": "2026-05-06",
+    "month_ago": "2026-04-13"
   },
   "totals": {
-    "posts_today": 12,
-    "posts_week": 129,
+    "posts_today": 0,
+    "posts_week": 97,
     "posts_month": 144,
     "interactions_today": 0,
-    "interactions_week": 5,
+    "interactions_week": 3,
     "interactions_month": 38,
     "success_rate": 57.6
   },
   "platforms": {
     "tiktok": {
       "today": 0,
-      "week": 6,
+      "week": 0,
       "month": 17,
       "success": 1,
       "failed": 16
     },
     "telegram_en": {
-      "today": 2,
-      "week": 14,
+      "today": 0,
+      "week": 12,
       "month": 16,
       "success": 14,
       "failed": 2
     },
     "discord": {
-      "today": 3,
-      "week": 25,
+      "today": 0,
+      "week": 20,
       "month": 27,
       "success": 21,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 22,
+      "today": 0,
+      "week": 16,
       "month": 22,
       "success": 17,
       "failed": 5
     },
     "twitter": {
       "today": 0,
-      "week": 2,
+      "week": 0,
       "month": 2,
       "success": 0,
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 18,
+      "today": 0,
+      "week": 13,
       "month": 18,
       "success": 10,
       "failed": 8
     },
     "medium": {
       "today": 0,
-      "week": 3,
+      "week": 0,
       "month": 3,
       "success": 0,
       "failed": 3
     },
     "substack": {
       "today": 0,
-      "week": 3,
+      "week": 0,
       "month": 3,
       "success": 0,
       "failed": 3
     },
     "bluesky": {
-      "today": 2,
+      "today": 0,
       "week": 16,
       "month": 16,
       "success": 16,
       "failed": 0
     },
     "hatena": {
-      "today": 2,
+      "today": 0,
       "week": 20,
       "month": 20,
       "success": 4,
@@ -95,7 +95,7 @@
     },
     "telegram": {
       "today": 0,
-      "week": 5,
+      "week": 3,
       "month": 7
     }
   },
