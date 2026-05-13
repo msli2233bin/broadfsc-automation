@@ -1730,6 +1730,11 @@ def get_end_chat_keyboard():
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """处理 /start 命令 — SOUL 风格个性化欢迎 + 信号互动者识别"""
     user = update.effective_user
+
+    # ===== 注册新用户到销售漏斗 =====
+    if sales_engine and str(user.id) not in sales_engine.funnel_data:
+        sales_engine.update_funnel_stage(user.id, "awareness")
+
     USER_INFO_CACHE[user.id] = {
         "name": user.first_name or "User",
         "username": user.username or "",
@@ -2289,6 +2294,11 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_message = update.message.text
     user_id = update.effective_user.id
     user_name = update.effective_user.first_name or "there"
+
+    # ===== 注册新用户到销售漏斗 =====
+    if sales_engine and str(user_id) not in sales_engine.funnel_data:
+        sales_engine.update_funnel_stage(user_id, "awareness")
+
 
     if HAS_ANALYTICS:
         log_interaction("telegram_bot", "message", user_id=user_id, details=user_message[:100])
