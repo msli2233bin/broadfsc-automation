@@ -222,5 +222,10 @@
     "success": false,
     "error": "Blocked by Reddit (403) - IP banned",
     "checked_at": "2026-05-13T10:08:45.210416"
+  },
+  {
+    "success": false,
+    "error": "Blocked by Reddit (403) - IP banned",
+    "checked_at": "2026-05-14T09:57:48.207693"
   }
 ]
