@@ -1537,5 +1537,100 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 165,
+    "timestamp": "2026-05-14T12:13:17.541419Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Insight: The $15 Trillion Shift</b>\n\nThe global bond market has just experienced a $15 t",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "149"
+  },
+  {
+    "id": 166,
+    "timestamp": "2026-05-14T12:13:17.936191Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Insight: The $15 Trillion Shift**\n\nThe global bond market has just experienced a $15 tril",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1504456569960665128"
+  },
+  {
+    "id": 167,
+    "timestamp": "2026-05-14T12:13:18.484128Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The $15 Trillion Shift\n\nThe global bond market has just experienced a $15 trillion",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 168,
+    "timestamp": "2026-05-14T12:13:22.480753Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The global bond market has just experienced a $15 trillion shift, with the 10-year US Treasury yie",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 169,
+    "timestamp": "2026-05-14T12:13:23.441913Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The $15 Trillion Shift",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 170,
+    "timestamp": "2026-05-14T12:13:24.725713Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$NVDA NVIDIA Corporation\n\n💰 211.5 (+1.8%) | 5D: +6.0%\n📊 RSI: 58.2 | MACD: bearish\n📈 MA20: $201.85 (a",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "116572868078115130"
+  },
+  {
+    "id": 171,
+    "timestamp": "2026-05-14T12:13:24.917800Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "\"Hey FSC Community,\n\nAs the FIFA World Cup 2026 approaches, I wanted to share some insights on how s",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1504456599857790996"
+  },
+  {
+    "id": 172,
+    "timestamp": "2026-05-14T12:13:25.186276Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $GOOGL Alphabet Inc. 💰 387.35 (-0.3%)\n\nSetup: overbought, watching for pullback\nRSI: 79.3 | MACD:",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mlss4z2m3m2s"
+  },
+  {
+    "id": 173,
+    "timestamp": "2026-05-14T12:13:32.600917Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 174,
+    "timestamp": "2026-05-14T12:14:00.592490Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
