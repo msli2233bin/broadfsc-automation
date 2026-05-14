@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-14T08:11:07.442392Z",
+  "generated_at": "2026-05-14T16:21:05.201689Z",
   "period": {
     "today": "2026-05-14",
     "yesterday": "2026-05-13",
@@ -7,13 +7,13 @@
     "month_ago": "2026-04-14"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 115,
-    "posts_month": 164,
+    "posts_today": 10,
+    "posts_week": 125,
+    "posts_month": 174,
     "interactions_today": 0,
     "interactions_week": 3,
     "interactions_month": 38,
-    "success_rate": 59.1
+    "success_rate": 59.8
   },
   "platforms": {
     "tiktok": {
@@ -24,24 +24,24 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 13,
-      "month": 18,
-      "success": 16,
+      "today": 1,
+      "week": 14,
+      "month": 19,
+      "success": 17,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 23,
-      "month": 31,
-      "success": 25,
+      "today": 2,
+      "week": 25,
+      "month": 33,
+      "success": 27,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 20,
-      "month": 26,
-      "success": 21,
+      "today": 2,
+      "week": 22,
+      "month": 28,
+      "success": 23,
       "failed": 5
     },
     "twitter": {
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 15,
-      "month": 20,
+      "today": 1,
+      "week": 16,
+      "month": 21,
       "success": 10,
-      "failed": 10
+      "failed": 11
     },
     "medium": {
       "today": 0,
@@ -73,18 +73,18 @@
       "failed": 3
     },
     "bluesky": {
-      "today": 0,
-      "week": 20,
-      "month": 20,
-      "success": 20,
+      "today": 2,
+      "week": 22,
+      "month": 22,
+      "success": 22,
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 24,
-      "month": 24,
+      "today": 2,
+      "week": 26,
+      "month": 26,
       "success": 4,
-      "failed": 20
+      "failed": 22
     }
   },
   "interactions_by_platform": {
@@ -157,6 +157,10 @@
       "posts": 20,
       "interactions": 0
     },
+    "2026-05-14": {
+      "posts": 10,
+      "interactions": 0
+    },
     "2026-04-20": {
       "posts": 0,
       "interactions": 14
@@ -177,106 +181,11 @@
     "16": 26,
     "9": 9,
     "14": 2,
-    "12": 7,
+    "12": 14,
     "13": 7,
     "20": 7
   },
   "recent_posts": [
-    {
-      "id": 145,
-      "timestamp": "2026-05-13T13:39:03.129650Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 The S&P 500's 'Superb' 10-Year Run Hits a Speed Bump</b>\n\nThe S&P 500 has clocked a 10-year str",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "138"
-    },
-    {
-      "id": 146,
-      "timestamp": "2026-05-13T13:39:03.613790Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **The S&P 500's 'Superb' 10-Year Run Hits a Speed Bump**\n\nThe S&P 500 has clocked a 10-year streak",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1504115763517325484"
-    },
-    {
-      "id": 147,
-      "timestamp": "2026-05-13T13:39:04.578395Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 The S&P 500's 'Superb' 10-Year Run Hits a Speed Bump\n\nThe S&P 500 has clocked a 10-year streak of ",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 148,
-      "timestamp": "2026-05-13T13:39:08.091269Z",
-      "platform": "bluesky",
-      "type": "repurposed",
-      "content_preview": "📊 The S&P 500 has clocked a 10-year streak of steady growth, defying predictions of a major downturn",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 149,
-      "timestamp": "2026-05-13T13:39:09.361876Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 The S&P 500's 'Superb' 10-Year Run Hits a Speed Bump",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 150,
-      "timestamp": "2026-05-13T13:39:10.392489Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$AMZN Amazon.com, Inc.\n\n💰 271.17 (-1.4%) | 5D: +2.3%\n📊 RSI: 74.6 | MACD: bullish\n📈 MA20: $257.88 (ab",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "116567543004247034"
-    },
-    {
-      "id": 151,
-      "timestamp": "2026-05-13T13:39:10.593535Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟡 $TSLA — Tesla, Inc. | $433.45 (-2.6%)\n\n**Setup:** overbought, watching for pullback → Bias: **C",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1504115794462642237"
-    },
-    {
-      "id": 152,
-      "timestamp": "2026-05-13T13:39:11.016761Z",
-      "platform": "bluesky",
-      "type": "post",
-      "content_preview": "1/ $AMZN Amazon.com, Inc. 💰 271.17 (-1.4%)\n\nSetup: overbought, watching for pullback\nRSI: 74.6 | MAC",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mlqghgzpne2g"
-    },
-    {
-      "id": 153,
-      "timestamp": "2026-05-13T13:39:18.784274Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 154,
-      "timestamp": "2026-05-13T13:39:27.649309Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
     {
       "id": 155,
       "timestamp": "2026-05-13T20:23:01.259272Z",
@@ -366,6 +275,101 @@
     {
       "id": 164,
       "timestamp": "2026-05-13T20:23:21.957616Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 165,
+      "timestamp": "2026-05-14T12:13:17.541419Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Insight: The $15 Trillion Shift</b>\n\nThe global bond market has just experienced a $15 t",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "149"
+    },
+    {
+      "id": 166,
+      "timestamp": "2026-05-14T12:13:17.936191Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Insight: The $15 Trillion Shift**\n\nThe global bond market has just experienced a $15 tril",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1504456569960665128"
+    },
+    {
+      "id": 167,
+      "timestamp": "2026-05-14T12:13:18.484128Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Insight: The $15 Trillion Shift\n\nThe global bond market has just experienced a $15 trillion",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 168,
+      "timestamp": "2026-05-14T12:13:22.480753Z",
+      "platform": "bluesky",
+      "type": "repurposed",
+      "content_preview": "📊 The global bond market has just experienced a $15 trillion shift, with the 10-year US Treasury yie",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 169,
+      "timestamp": "2026-05-14T12:13:23.441913Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Insight: The $15 Trillion Shift",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 170,
+      "timestamp": "2026-05-14T12:13:24.725713Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$NVDA NVIDIA Corporation\n\n💰 211.5 (+1.8%) | 5D: +6.0%\n📊 RSI: 58.2 | MACD: bearish\n📈 MA20: $201.85 (a",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "116572868078115130"
+    },
+    {
+      "id": 171,
+      "timestamp": "2026-05-14T12:13:24.917800Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "\"Hey FSC Community,\n\nAs the FIFA World Cup 2026 approaches, I wanted to share some insights on how s",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1504456599857790996"
+    },
+    {
+      "id": 172,
+      "timestamp": "2026-05-14T12:13:25.186276Z",
+      "platform": "bluesky",
+      "type": "post",
+      "content_preview": "1/ $GOOGL Alphabet Inc. 💰 387.35 (-0.3%)\n\nSetup: overbought, watching for pullback\nRSI: 79.3 | MACD:",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mlss4z2m3m2s"
+    },
+    {
+      "id": 173,
+      "timestamp": "2026-05-14T12:13:32.600917Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 174,
+      "timestamp": "2026-05-14T12:14:00.592490Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
