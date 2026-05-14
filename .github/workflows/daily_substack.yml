@@ -27,11 +27,12 @@ jobs:
         python -m playwright install chromium
 
     - name: Run AI Learning Agent (update knowledge base)
+      continue-on-error: true
       env:
         GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
       run: |
         cd broadfsc-automation
-        python ai_learning_agent.py || true
+        python ai_learning_agent.py
 
     - name: Generate & Publish Substack Article
       env:
