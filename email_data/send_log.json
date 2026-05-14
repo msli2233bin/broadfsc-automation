@@ -178,5 +178,41 @@
     "time": "2026-05-13T20:25:11.346920",
     "message_id": "<202605132025.79388863486@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "msli2233bin+takeshi@gmail.com",
+    "subject": "S&P 500's quiet 0.77% gain",
+    "personality": "michael",
+    "date": "2026-05-14",
+    "time": "2026-05-14T20:17:35.367555",
+    "message_id": "<202605142017.80875514953@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+maria@gmail.com",
+    "subject": "Gold broke a 22-year pattern",
+    "personality": "michael",
+    "date": "2026-05-14",
+    "time": "2026-05-14T20:17:43.599699",
+    "message_id": "<202605142017.30050654239@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+raj@gmail.com",
+    "subject": "S&P 500 just broke a 2-year pattern",
+    "personality": "michael",
+    "date": "2026-05-14",
+    "time": "2026-05-14T20:17:49.479283",
+    "message_id": "<202605142017.21826275350@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "maria.santos.pro@gmail.com",
+    "subject": "Why the VIX says otherwise",
+    "personality": "michael",
+    "date": "2026-05-14",
+    "time": "2026-05-14T20:17:58.446917",
+    "message_id": "<202605142017.64183892814@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
