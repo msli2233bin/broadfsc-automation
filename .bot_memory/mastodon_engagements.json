@@ -26,238 +26,16 @@
     "116562603731088530",
     "116568111780162427",
     "116568156213710493",
-    "116568057780441519"
+    "116568057780441519",
+    "116573302482940872",
+    "116567641610844488",
+    "116573736497532021"
   ],
   "daily_count": 3,
-  "last_reset": "2026-05-13",
-  "total_engagements": 32,
+  "last_reset": "2026-05-14",
+  "total_engagements": 35,
   "engagements": [
     {
-      "date": "2026-05-10T07:18:41.141212+00:00",
-      "post_id": "116541325404736056",
-      "author": "Aleums",
-      "my_reply_id": "116549059934918106",
-      "post_preview": "@dankwraith i think in toronto and vancouver that's correct but we generally have way less urban den",
-      "reply_preview": "@Aleums, you're right about urban density, but let's not forget the correlation between housing supp",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-10T07:21:47.018083+00:00"
-    },
-    {
-      "date": "2026-05-10T07:20:29.159166+00:00",
-      "post_id": "116540494756188024",
-      "author": "derstieg",
-      "my_reply_id": "116549067001621908",
-      "post_preview": "Markets today: Nasdaq leading, strong jobs data, US-Iran tensions rising.\nThe pattern is clear — cap",
-      "reply_preview": "@derstieg, you're spot on about the AI infrastructure gravy train. $200B+ per year is unsustainable ",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-10T07:21:47.424077+00:00"
-    },
-    {
-      "date": "2026-05-11T10:46:25.049471+00:00",
-      "post_id": "116554347315916797",
-      "author": "bloomberg",
-      "my_reply_id": "116555539079447146",
-      "post_preview": "Kiwi May Defy Hedge-Fund Bears on Hawkish RBNZ, Analysts Say\nhttps://www.bloomberg.com/news/articles",
-      "reply_preview": "RBNZ hawkish? That's old news. The real question is how the Kiwi plays out against the Aussie. With ",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-11T10:49:48.860384+00:00"
-    },
-    {
-      "date": "2026-05-11T10:48:08.229256+00:00",
-      "post_id": "116553292525083279",
-      "author": "bloomberg",
-      "my_reply_id": "116555545844768220",
-      "post_preview": "Yen Bears Retreat as Intervention Seen Capping Currency Weakness\nhttps://www.bloomberg.com/news/arti",
-      "reply_preview": "@markets-bloomberg  Interventions can calm the waters, but Yen bears aren't ready to surrender. RSI ",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-11T10:49:49.268367+00:00"
-    },
-    {
-      "date": "2026-05-11T10:49:16.065232+00:00",
-      "post_id": "116551926806740033",
-      "author": "bloomberg",
-      "my_reply_id": "116555550288473509",
-      "post_preview": "Bond Traders Brace for Inflation Data as Fed’s Powell Era Ends\nhttps://www.bloomberg.com/news/articl",
-      "reply_preview": "@bloomberg Powell's era ending, huh? Inflation data's got everyone spooked. But here's the thing: PP",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-11T10:49:49.492460+00:00"
-    },
-    {
-      "date": "2026-05-12T17:35:48.044489+00:00",
-      "post_id": "116545709585140686",
-      "author": "skydancingblog.com",
-      "my_reply_id": "116562811145263111",
-      "post_preview": "Lazy Caturday Reads\n\n\nGood Day!!\nTomorrow, May 10, is Mothers Day. My Mother is no longer alive, but",
-      "reply_preview": "@skydancingblog.com - your personal hantavirus update is a nonstarter. The real story here is the CD",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-12T17:40:04.148548+00:00"
-    },
-    {
-      "date": "2026-05-12T17:37:37.160318+00:00",
-      "post_id": "116562757305317540",
-      "author": "bocvip",
-      "my_reply_id": "116562818303845661",
-      "post_preview": "inflation is now eating up all wage gains for the first time in about three years. This is painful f",
-      "reply_preview": "Agreed, inflation's got Americans pinched. But here's the thing, when the 10-year Treasury yields hi",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-12T17:40:05.014165+00:00"
-    },
-    {
-      "date": "2026-05-12T17:38:16.236773+00:00",
-      "post_id": "116562603731088530",
-      "author": "bocvip",
-      "my_reply_id": "116562820855778501",
-      "post_preview": "new fed chair getting confirmed today on a party line vote. first time that has ever happened. he ta",
-      "reply_preview": "\"@bocvip confirmed new Fed chair on party line vote. That's a recipe for gridlock. Meanwhile, 3.8% i",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-12T17:40:05.407262+00:00"
-    },
-    {
-      "date": "2026-05-10T07:17:32.211296+00:00",
-      "post_id": "116544658483275026",
-      "author": "selfawarepatterns.com",
-      "my_reply_id": "116549055419538132",
-      "post_preview": "The Astropolis trilogy\n\n\nIn the last post I discussed my recent exploration of Reddit. The one conve",
-      "reply_preview": "Risk management is all about probabilities, not guarantees. In the Astropolis trilogy, the Primes an",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-10T07:21:46.763128+00:00"
-    },
-    {
-      "date": "2026-05-10T07:18:41.141212+00:00",
-      "post_id": "116541325404736056",
-      "author": "Aleums",
-      "my_reply_id": "116549059934918106",
-      "post_preview": "@dankwraith i think in toronto and vancouver that's correct but we generally have way less urban den",
-      "reply_preview": "@Aleums, you're right about urban density, but let's not forget the correlation between housing supp",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-10T07:21:47.018083+00:00"
-    },
-    {
-      "date": "2026-05-10T07:20:29.159166+00:00",
-      "post_id": "116540494756188024",
-      "author": "derstieg",
-      "my_reply_id": "116549067001621908",
-      "post_preview": "Markets today: Nasdaq leading, strong jobs data, US-Iran tensions rising.\nThe pattern is clear — cap",
-      "reply_preview": "@derstieg, you're spot on about the AI infrastructure gravy train. $200B+ per year is unsustainable ",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-10T07:21:47.424077+00:00"
-    },
-    {
-      "date": "2026-05-11T10:46:25.049471+00:00",
-      "post_id": "116554347315916797",
-      "author": "bloomberg",
-      "my_reply_id": "116555539079447146",
-      "post_preview": "Kiwi May Defy Hedge-Fund Bears on Hawkish RBNZ, Analysts Say\nhttps://www.bloomberg.com/news/articles",
-      "reply_preview": "RBNZ hawkish? That's old news. The real question is how the Kiwi plays out against the Aussie. With ",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-11T10:49:48.860384+00:00"
-    },
-    {
-      "date": "2026-05-11T10:48:08.229256+00:00",
-      "post_id": "116553292525083279",
-      "author": "bloomberg",
-      "my_reply_id": "116555545844768220",
-      "post_preview": "Yen Bears Retreat as Intervention Seen Capping Currency Weakness\nhttps://www.bloomberg.com/news/arti",
-      "reply_preview": "@markets-bloomberg  Interventions can calm the waters, but Yen bears aren't ready to surrender. RSI ",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-11T10:49:49.268367+00:00"
-    },
-    {
-      "date": "2026-05-11T10:49:16.065232+00:00",
-      "post_id": "116551926806740033",
-      "author": "bloomberg",
-      "my_reply_id": "116555550288473509",
-      "post_preview": "Bond Traders Brace for Inflation Data as Fed’s Powell Era Ends\nhttps://www.bloomberg.com/news/articl",
-      "reply_preview": "@bloomberg Powell's era ending, huh? Inflation data's got everyone spooked. But here's the thing: PP",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-11T10:49:49.492460+00:00"
-    },
-    {
-      "date": "2026-05-12T17:35:48.044489+00:00",
-      "post_id": "116545709585140686",
-      "author": "skydancingblog.com",
-      "my_reply_id": "116562811145263111",
-      "post_preview": "Lazy Caturday Reads\n\n\nGood Day!!\nTomorrow, May 10, is Mothers Day. My Mother is no longer alive, but",
-      "reply_preview": "@skydancingblog.com - your personal hantavirus update is a nonstarter. The real story here is the CD",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-12T17:40:04.148548+00:00"
-    },
-    {
       "date": "2026-05-12T17:37:37.160318+00:00",
       "post_id": "116562757305317540",
       "author": "bocvip",
@@ -511,6 +289,276 @@
       },
       "result": "silent",
       "outcome_checked": "2026-05-13T17:40:46.445165+00:00"
+    },
+    {
+      "date": "2026-05-14T17:14:53.443049+00:00",
+      "post_id": "116573302482940872",
+      "author": "fllics",
+      "my_reply_id": "116574053551162607",
+      "post_preview": "Yahoo Finance Live: Daily Market Coverage – May 14, 2026 9AM-11AM (ET)\n#yahoofinance #business #stoc",
+      "reply_preview": "RSI at 54 on the S&P, but watch the VIX - below 13.3 means market's ignoring risks. Everyone's too f",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-14T17:19:37.359739+00:00"
+    },
+    {
+      "date": "2026-05-14T17:16:32.516304+00:00",
+      "post_id": "116567641610844488",
+      "author": "fllics",
+      "my_reply_id": "116574060027281946",
+      "post_preview": "Yahoo Finance Live: Daily Market Coverage – May 13, 2026 9AM-11AM (ET)\n#yahoofinance #business #stoc",
+      "reply_preview": "@fllics, you're on the right track with Yahoo Finance Live, but don't get too caught up in the daily",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-14T17:19:37.888171+00:00"
+    },
+    {
+      "date": "2026-05-14T17:17:37.569136+00:00",
+      "post_id": "116573736497532021",
+      "author": "robcornelius",
+      "my_reply_id": "116574064302672100",
+      "post_preview": "Wasn't Nigel Fartage complaining about being \"debanked\" around the same time as he received in 5 mil",
+      "reply_preview": "You're pointing out Nigel Farage's \"debanked\" woes around the time he received a £5 million \"gift\"? ",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-14T17:19:38.243406+00:00"
+    },
+    {
+      "date": "2026-05-10T07:17:32.211296+00:00",
+      "post_id": "116544658483275026",
+      "author": "selfawarepatterns.com",
+      "my_reply_id": "116549055419538132",
+      "post_preview": "The Astropolis trilogy\n\n\nIn the last post I discussed my recent exploration of Reddit. The one conve",
+      "reply_preview": "Risk management is all about probabilities, not guarantees. In the Astropolis trilogy, the Primes an",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-10T07:21:46.763128+00:00"
+    },
+    {
+      "date": "2026-05-10T07:18:41.141212+00:00",
+      "post_id": "116541325404736056",
+      "author": "Aleums",
+      "my_reply_id": "116549059934918106",
+      "post_preview": "@dankwraith i think in toronto and vancouver that's correct but we generally have way less urban den",
+      "reply_preview": "@Aleums, you're right about urban density, but let's not forget the correlation between housing supp",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-10T07:21:47.018083+00:00"
+    },
+    {
+      "date": "2026-05-10T07:20:29.159166+00:00",
+      "post_id": "116540494756188024",
+      "author": "derstieg",
+      "my_reply_id": "116549067001621908",
+      "post_preview": "Markets today: Nasdaq leading, strong jobs data, US-Iran tensions rising.\nThe pattern is clear — cap",
+      "reply_preview": "@derstieg, you're spot on about the AI infrastructure gravy train. $200B+ per year is unsustainable ",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-10T07:21:47.424077+00:00"
+    },
+    {
+      "date": "2026-05-11T10:46:25.049471+00:00",
+      "post_id": "116554347315916797",
+      "author": "bloomberg",
+      "my_reply_id": "116555539079447146",
+      "post_preview": "Kiwi May Defy Hedge-Fund Bears on Hawkish RBNZ, Analysts Say\nhttps://www.bloomberg.com/news/articles",
+      "reply_preview": "RBNZ hawkish? That's old news. The real question is how the Kiwi plays out against the Aussie. With ",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-11T10:49:48.860384+00:00"
+    },
+    {
+      "date": "2026-05-11T10:48:08.229256+00:00",
+      "post_id": "116553292525083279",
+      "author": "bloomberg",
+      "my_reply_id": "116555545844768220",
+      "post_preview": "Yen Bears Retreat as Intervention Seen Capping Currency Weakness\nhttps://www.bloomberg.com/news/arti",
+      "reply_preview": "@markets-bloomberg  Interventions can calm the waters, but Yen bears aren't ready to surrender. RSI ",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-11T10:49:49.268367+00:00"
+    },
+    {
+      "date": "2026-05-11T10:49:16.065232+00:00",
+      "post_id": "116551926806740033",
+      "author": "bloomberg",
+      "my_reply_id": "116555550288473509",
+      "post_preview": "Bond Traders Brace for Inflation Data as Fed’s Powell Era Ends\nhttps://www.bloomberg.com/news/articl",
+      "reply_preview": "@bloomberg Powell's era ending, huh? Inflation data's got everyone spooked. But here's the thing: PP",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-11T10:49:49.492460+00:00"
+    },
+    {
+      "date": "2026-05-12T17:35:48.044489+00:00",
+      "post_id": "116545709585140686",
+      "author": "skydancingblog.com",
+      "my_reply_id": "116562811145263111",
+      "post_preview": "Lazy Caturday Reads\n\n\nGood Day!!\nTomorrow, May 10, is Mothers Day. My Mother is no longer alive, but",
+      "reply_preview": "@skydancingblog.com - your personal hantavirus update is a nonstarter. The real story here is the CD",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-12T17:40:04.148548+00:00"
+    },
+    {
+      "date": "2026-05-12T17:37:37.160318+00:00",
+      "post_id": "116562757305317540",
+      "author": "bocvip",
+      "my_reply_id": "116562818303845661",
+      "post_preview": "inflation is now eating up all wage gains for the first time in about three years. This is painful f",
+      "reply_preview": "Agreed, inflation's got Americans pinched. But here's the thing, when the 10-year Treasury yields hi",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-12T17:40:05.014165+00:00"
+    },
+    {
+      "date": "2026-05-12T17:38:16.236773+00:00",
+      "post_id": "116562603731088530",
+      "author": "bocvip",
+      "my_reply_id": "116562820855778501",
+      "post_preview": "new fed chair getting confirmed today on a party line vote. first time that has ever happened. he ta",
+      "reply_preview": "\"@bocvip confirmed new Fed chair on party line vote. That's a recipe for gridlock. Meanwhile, 3.8% i",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-12T17:40:05.407262+00:00"
+    },
+    {
+      "date": "2026-05-13T17:37:19.938263+00:00",
+      "post_id": "116568111780162427",
+      "author": "fllics",
+      "my_reply_id": "116568479484046620",
+      "post_preview": "Token maxxing + Jensen Huang joins Trump in China + OpenAI vs Elon Musk\n#inflation #ai #stocks #nvid",
+      "reply_preview": "@fllics, you're right on the money with OpenAI's courtroom battle with Elon Musk. But here's the thi",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-13T17:40:45.610067+00:00"
+    },
+    {
+      "date": "2026-05-13T17:38:26.978511+00:00",
+      "post_id": "116568156213710493",
+      "author": "thejapantimes",
+      "my_reply_id": "116568483877041888",
+      "post_preview": "Walton offers Japanese investors a hedge with exposure to its 360-square-kilometer property portfoli",
+      "reply_preview": "Your portfolio stability claims might be too rosy. The Nikkei is up 30% YTD, but the dividend yield ",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-13T17:40:45.924339+00:00"
+    },
+    {
+      "date": "2026-05-13T17:39:42.019695+00:00",
+      "post_id": "116568057780441519",
+      "author": "bloomberg",
+      "my_reply_id": "116568488792635113",
+      "post_preview": "Fed’s Collins Favors Holding Rates Steady for ‘Some Time’\nhttps://www.bloomberg.com/news/articles/20",
+      "reply_preview": "Collins wants steady rates? Steady rates mean the Fed's out of ammo. 10Y yields below 3.5% won't cur",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-13T17:40:46.445165+00:00"
+    },
+    {
+      "date": "2026-05-14T17:14:53.443049+00:00",
+      "post_id": "116573302482940872",
+      "author": "fllics",
+      "my_reply_id": "116574053551162607",
+      "post_preview": "Yahoo Finance Live: Daily Market Coverage – May 14, 2026 9AM-11AM (ET)\n#yahoofinance #business #stoc",
+      "reply_preview": "RSI at 54 on the S&P, but watch the VIX - below 13.3 means market's ignoring risks. Everyone's too f",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-14T17:19:37.359739+00:00"
+    },
+    {
+      "date": "2026-05-14T17:16:32.516304+00:00",
+      "post_id": "116567641610844488",
+      "author": "fllics",
+      "my_reply_id": "116574060027281946",
+      "post_preview": "Yahoo Finance Live: Daily Market Coverage – May 13, 2026 9AM-11AM (ET)\n#yahoofinance #business #stoc",
+      "reply_preview": "@fllics, you're on the right track with Yahoo Finance Live, but don't get too caught up in the daily",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-14T17:19:37.888171+00:00"
+    },
+    {
+      "date": "2026-05-14T17:17:37.569136+00:00",
+      "post_id": "116573736497532021",
+      "author": "robcornelius",
+      "my_reply_id": "116574064302672100",
+      "post_preview": "Wasn't Nigel Fartage complaining about being \"debanked\" around the same time as he received in 5 mil",
+      "reply_preview": "You're pointing out Nigel Farage's \"debanked\" woes around the time he received a £5 million \"gift\"? ",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-14T17:19:38.243406+00:00"
     }
   ]
 }
