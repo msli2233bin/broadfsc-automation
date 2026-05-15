@@ -28,3 +28,11 @@
 ## 11:26:45 | marketing/tiktok_updates
 - [marketing_insight] 📱 检测到营销洞察 (tiktok_updates)，建议生成新平台内容
 - [cross_domain_match] 🔗 跨域关联匹配: marketing/tiktok_updates 在 FUSION_INDEX 中有对应融合策略
+
+## 11:06:04 | finance/earnings_analysis
+- [ta_signal_detected] 📈 检测到技术分析信号知识点 (earnings_analysis)，建议销售Agent生成触发式外联话术
+- [cross_domain_match] 🔗 跨域关联匹配: finance/earnings_analysis 在 FUSION_INDEX 中有对应融合策略
+
+## 11:06:15 | finance/market_data
+- [ta_signal_detected] 📈 检测到技术分析信号知识点 (market_data)，建议销售Agent生成触发式外联话术
+- [cross_domain_match] 🔗 跨域关联匹配: finance/market_data 在 FUSION_INDEX 中有对应融合策略
