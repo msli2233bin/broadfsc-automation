@@ -269,12 +269,24 @@ def publish_via_browser(title, markdown_body):
     """Publish to Substack entirely via browser fetch (avoids proxy/cookie issues with requests)."""
     from playwright.sync_api import sync_playwright
     
+    # Auto-detect headless mode
+    # GitHub Actions: headless=True (no GUI); Local: headless=False (needs visible browser for login)
+    is_github_actions = os.environ.get('GITHUB_ACTIONS', '') == 'true'
+    headless_mode = is_github_actions or ('--headless' in sys.argv)
+    
+    print("  + Browser mode: {}".format('headless' if headless_mode else 'visible'))
+    if is_github_actions:
+        print("  + Detected GitHub Actions environment")
+    
     with sync_playwright() as p:
-        # Use headless=False — headless mode has proxy/DNS issues on this server
+        launch_args = dict(
+            headless=headless_mode,
+            viewport={'width': 1280, 'height': 900}
+        )
+        # Use persistent context to save/load cookies across runs
         browser = p.chromium.launch_persistent_context(
             user_data_dir=BROWSER_SESSION_DIR,
-            headless=False,
-            viewport={'width': 1280, 'height': 900}
+            **launch_args
         )
         page = browser.new_page()
         
