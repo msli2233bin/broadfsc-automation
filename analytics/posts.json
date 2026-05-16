@@ -1842,5 +1842,100 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 197,
+    "timestamp": "2026-05-16T14:58:14.352914Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Gold Rush? Or Bear Market? We Break Down the Tickers to Watch</b>\n\nGold prices have plummeted t",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "172"
+  },
+  {
+    "id": 198,
+    "timestamp": "2026-05-16T14:58:14.558484Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Gold Rush? Or Bear Market? We Break Down the Tickers to Watch**\n\nGold prices have plummeted to a",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1505222855514919033"
+  },
+  {
+    "id": 199,
+    "timestamp": "2026-05-16T14:58:15.101649Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Gold Rush? Or Bear Market? We Break Down the Tickers to Watch\n\nGold prices have plummeted to a 2-y",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 200,
+    "timestamp": "2026-05-16T14:58:18.173001Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 Gold prices have plummeted to a 2-year low, sparking a 'buy the dip' frenzy. 🧵",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 201,
+    "timestamp": "2026-05-16T14:58:19.353593Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Gold Rush? Or Bear Market? We Break Down the Tickers to Watch",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 202,
+    "timestamp": "2026-05-16T14:58:20.307970Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "Analyzing competitor Webull's strategy reveals a focus on education and financial literacy. By creat",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "116584841228826970"
+  },
+  {
+    "id": 203,
+    "timestamp": "2026-05-16T14:58:20.455580Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "**Community Post:**\n\nHey fellow traders,\n\nLet's talk about something that caught my attention lately",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1505222880500125786"
+  },
+  {
+    "id": 204,
+    "timestamp": "2026-05-16T14:58:20.730378Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $META Meta Platforms, Inc. 💰 616.63 (+2.3%)\n\nSetup: correction in play\nRSI: 35.2 | MACD: bearish\n",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mly4br45oh2s"
+  },
+  {
+    "id": 205,
+    "timestamp": "2026-05-16T14:58:28.220720Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 206,
+    "timestamp": "2026-05-16T14:58:37.030923Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
