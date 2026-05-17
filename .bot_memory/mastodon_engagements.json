@@ -37,27 +37,13 @@
     "116579311505772329",
     "116580135710019080",
     "116560416029772570",
-    "116578668486597919"
+    "116578668486597919",
+    "116551261289627701"
   ],
-  "daily_count": 2,
+  "daily_count": 3,
   "last_reset": "2026-05-17",
-  "total_engagements": 43,
+  "total_engagements": 44,
   "engagements": [
-    {
-      "date": "2026-05-11T10:46:25.049471+00:00",
-      "post_id": "116554347315916797",
-      "author": "bloomberg",
-      "my_reply_id": "116555539079447146",
-      "post_preview": "Kiwi May Defy Hedge-Fund Bears on Hawkish RBNZ, Analysts Say\nhttps://www.bloomberg.com/news/articles",
-      "reply_preview": "RBNZ hawkish? That's old news. The real question is how the Kiwi plays out against the Aussie. With ",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-11T10:49:48.860384+00:00"
-    },
     {
       "date": "2026-05-11T10:48:08.229256+00:00",
       "post_id": "116553292525083279",
@@ -342,6 +328,21 @@
       },
       "result": "silent",
       "outcome_checked": "2026-05-17T10:59:35.898949+00:00"
+    },
+    {
+      "date": "2026-05-17T16:41:58.465976+00:00",
+      "post_id": "116551261289627701",
+      "author": "msli2233bin",
+      "my_reply_id": "116590911043681873",
+      "post_preview": "$META Meta Platforms, Inc.\n💰 616.81 (+0.6%) | 5D: +0.8%\n📊 RSI: 26.0 | MACD: bearish\n📈 MA20: $649.87 ",
+      "reply_preview": "RSI at 26 is oversold, but the real story's in the volume - 0.8x avg, that's not the kind of buying ",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-17T16:43:03.108963+00:00"
     },
     {
       "date": "2026-05-10T07:17:32.211296+00:00",
@@ -687,6 +688,21 @@
       },
       "result": "silent",
       "outcome_checked": "2026-05-17T10:59:35.898949+00:00"
+    },
+    {
+      "date": "2026-05-17T16:41:58.465976+00:00",
+      "post_id": "116551261289627701",
+      "author": "msli2233bin",
+      "my_reply_id": "116590911043681873",
+      "post_preview": "$META Meta Platforms, Inc.\n💰 616.81 (+0.6%) | 5D: +0.8%\n📊 RSI: 26.0 | MACD: bearish\n📈 MA20: $649.87 ",
+      "reply_preview": "RSI at 26 is oversold, but the real story's in the volume - 0.8x avg, that's not the kind of buying ",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-17T16:43:03.108963+00:00"
     }
   ]
 }
