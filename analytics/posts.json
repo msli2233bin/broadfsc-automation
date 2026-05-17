@@ -2023,5 +2023,91 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 216,
+    "timestamp": "2026-05-17T14:58:31.866309Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Insight: The Great Rotation</b>\n\nAs the S&P 500 closes in on its all-time high, we're wi",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "176"
+  },
+  {
+    "id": 217,
+    "timestamp": "2026-05-17T14:58:32.168866Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Insight: The Great Rotation**\n\nAs the S&P 500 closes in on its all-time high, we're witne",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1505585317057527988"
+  },
+  {
+    "id": 218,
+    "timestamp": "2026-05-17T14:58:32.757627Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The Great Rotation\n\nAs the S&P 500 closes in on its all-time high, we're witnessin",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 219,
+    "timestamp": "2026-05-17T14:58:37.139852Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The Great Rotation",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 220,
+    "timestamp": "2026-05-17T14:58:38.476055Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "As the social media landscape continues to evolve, platforms like TikTok are redefining the rules of",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "116590504715673773"
+  },
+  {
+    "id": 221,
+    "timestamp": "2026-05-17T14:58:38.696057Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "\"Hey fellow traders, let's talk about diversification. It's a crucial aspect of building a robust po",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1505585344807047240"
+  },
+  {
+    "id": 222,
+    "timestamp": "2026-05-17T14:58:39.173256Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $PLTR Palantir Technologies Inc. 💰 133.73 (+2.8%)\n\nSetup: correction in play\nRSI: 38.6 | MACD: be",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mm2mra5m2k2l"
+  },
+  {
+    "id": 223,
+    "timestamp": "2026-05-17T14:58:50.678192Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 224,
+    "timestamp": "2026-05-17T14:59:22.960624Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
