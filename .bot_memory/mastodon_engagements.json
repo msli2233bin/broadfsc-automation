@@ -35,42 +35,14 @@
     "116572443285001573",
     "116580605720871830",
     "116579311505772329",
-    "116580135710019080"
+    "116580135710019080",
+    "116560416029772570",
+    "116578668486597919"
   ],
-  "daily_count": 3,
-  "last_reset": "2026-05-16",
-  "total_engagements": 41,
+  "daily_count": 2,
+  "last_reset": "2026-05-17",
+  "total_engagements": 43,
   "engagements": [
-    {
-      "date": "2026-05-10T07:18:41.141212+00:00",
-      "post_id": "116541325404736056",
-      "author": "Aleums",
-      "my_reply_id": "116549059934918106",
-      "post_preview": "@dankwraith i think in toronto and vancouver that's correct but we generally have way less urban den",
-      "reply_preview": "@Aleums, you're right about urban density, but let's not forget the correlation between housing supp",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-10T07:21:47.018083+00:00"
-    },
-    {
-      "date": "2026-05-10T07:20:29.159166+00:00",
-      "post_id": "116540494756188024",
-      "author": "derstieg",
-      "my_reply_id": "116549067001621908",
-      "post_preview": "Markets today: Nasdaq leading, strong jobs data, US-Iran tensions rising.\nThe pattern is clear — cap",
-      "reply_preview": "@derstieg, you're spot on about the AI infrastructure gravy train. $200B+ per year is unsustainable ",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-10T07:21:47.424077+00:00"
-    },
     {
       "date": "2026-05-11T10:46:25.049471+00:00",
       "post_id": "116554347315916797",
@@ -340,6 +312,36 @@
       },
       "result": "silent",
       "outcome_checked": "2026-05-16T10:56:06.686563+00:00"
+    },
+    {
+      "date": "2026-05-17T10:57:37.511856+00:00",
+      "post_id": "116560416029772570",
+      "author": "marjolica",
+      "my_reply_id": "116589557013657954",
+      "post_preview": "@brucelawson @heydon while extremely profitable, Apple is sitting on a P/E ratio of 35, and this is ",
+      "reply_preview": "@apple's 35 P/E ratio is indeed stratospheric. But what's often ignored is how Apple's market cap is",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-17T10:59:35.653912+00:00"
+    },
+    {
+      "date": "2026-05-17T10:58:30.002933+00:00",
+      "post_id": "116578668486597919",
+      "author": "marketwatch",
+      "my_reply_id": "116589560452934692",
+      "post_preview": "Here are the new bulls on the block for 2026\nhttps://www.marketwatch.com/story/here-are-the-new-bull",
+      "reply_preview": "@marketwatch Your new bulls for 2026 are interesting, but I question the timing on that list. RSI on",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-17T10:59:35.898949+00:00"
     },
     {
       "date": "2026-05-10T07:17:32.211296+00:00",
@@ -655,6 +657,36 @@
       },
       "result": "silent",
       "outcome_checked": "2026-05-16T10:56:06.686563+00:00"
+    },
+    {
+      "date": "2026-05-17T10:57:37.511856+00:00",
+      "post_id": "116560416029772570",
+      "author": "marjolica",
+      "my_reply_id": "116589557013657954",
+      "post_preview": "@brucelawson @heydon while extremely profitable, Apple is sitting on a P/E ratio of 35, and this is ",
+      "reply_preview": "@apple's 35 P/E ratio is indeed stratospheric. But what's often ignored is how Apple's market cap is",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-17T10:59:35.653912+00:00"
+    },
+    {
+      "date": "2026-05-17T10:58:30.002933+00:00",
+      "post_id": "116578668486597919",
+      "author": "marketwatch",
+      "my_reply_id": "116589560452934692",
+      "post_preview": "Here are the new bulls on the block for 2026\nhttps://www.marketwatch.com/story/here-are-the-new-bull",
+      "reply_preview": "@marketwatch Your new bulls for 2026 are interesting, but I question the timing on that list. RSI on",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-17T10:59:35.898949+00:00"
     }
   ]
 }
