@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-05-16T23:51:39.111099Z",
+  "generated_at": "2026-05-17T02:56:04.521161Z",
   "period": {
-    "today": "2026-05-16",
-    "yesterday": "2026-05-15",
-    "week_ago": "2026-05-09",
-    "month_ago": "2026-04-16"
+    "today": "2026-05-17",
+    "yesterday": "2026-05-16",
+    "week_ago": "2026-05-10",
+    "month_ago": "2026-04-17"
   },
   "totals": {
-    "posts_today": 20,
-    "posts_week": 130,
-    "posts_month": 206,
+    "posts_today": 0,
+    "posts_week": 108,
+    "posts_month": 204,
     "interactions_today": 0,
     "interactions_week": 2,
     "interactions_month": 38,
-    "success_rate": 61.7
+    "success_rate": 61.8
   },
   "platforms": {
     "tiktok": {
@@ -24,22 +24,22 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 2,
-      "week": 14,
+      "today": 0,
+      "week": 12,
       "month": 23,
       "success": 21,
       "failed": 2
     },
     "discord": {
-      "today": 4,
-      "week": 26,
+      "today": 0,
+      "week": 22,
       "month": 40,
       "success": 34,
       "failed": 6
     },
     "mastodon": {
-      "today": 4,
-      "week": 24,
+      "today": 0,
+      "week": 20,
       "month": 34,
       "success": 29,
       "failed": 5
@@ -52,8 +52,8 @@
       "failed": 2
     },
     "threads": {
-      "today": 2,
-      "week": 15,
+      "today": 0,
+      "week": 11,
       "month": 24,
       "success": 10,
       "failed": 14
@@ -73,15 +73,15 @@
       "failed": 3
     },
     "bluesky": {
-      "today": 4,
-      "week": 24,
+      "today": 0,
+      "week": 20,
       "month": 28,
       "success": 28,
       "failed": 0
     },
     "hatena": {
-      "today": 4,
-      "week": 27,
+      "today": 0,
+      "week": 23,
       "month": 32,
       "success": 4,
       "failed": 28
@@ -105,10 +105,6 @@
     "proactive_outreach": 7
   },
   "daily_trend": {
-    "2026-04-16": {
-      "posts": 2,
-      "interactions": 0
-    },
     "2026-04-17": {
       "posts": 9,
       "interactions": 17
@@ -179,7 +175,6 @@
     }
   },
   "hourly_distribution": {
-    "15": 1,
     "10": 8,
     "11": 7,
     "18": 11,
