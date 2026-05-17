@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-17T14:43:07.896972Z",
+  "generated_at": "2026-05-17T15:57:52.420721Z",
   "period": {
     "today": "2026-05-17",
     "yesterday": "2026-05-16",
@@ -7,13 +7,13 @@
     "month_ago": "2026-04-17"
   },
   "totals": {
-    "posts_today": 9,
-    "posts_week": 117,
-    "posts_month": 213,
+    "posts_today": 18,
+    "posts_week": 126,
+    "posts_month": 222,
     "interactions_today": 0,
     "interactions_week": 2,
     "interactions_month": 38,
-    "success_rate": 62.0
+    "success_rate": 62.2
   },
   "platforms": {
     "tiktok": {
@@ -24,24 +24,24 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 13,
-      "month": 24,
-      "success": 22,
+      "today": 2,
+      "week": 14,
+      "month": 25,
+      "success": 23,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 24,
-      "month": 42,
-      "success": 36,
+      "today": 4,
+      "week": 26,
+      "month": 44,
+      "success": 38,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 22,
-      "month": 36,
-      "success": 31,
+      "today": 4,
+      "week": 24,
+      "month": 38,
+      "success": 33,
       "failed": 5
     },
     "twitter": {
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 12,
-      "month": 25,
+      "today": 2,
+      "week": 13,
+      "month": 26,
       "success": 10,
-      "failed": 15
+      "failed": 16
     },
     "medium": {
       "today": 0,
@@ -73,18 +73,18 @@
       "failed": 3
     },
     "bluesky": {
-      "today": 1,
-      "week": 21,
-      "month": 29,
-      "success": 29,
+      "today": 2,
+      "week": 22,
+      "month": 30,
+      "success": 30,
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 25,
-      "month": 34,
+      "today": 4,
+      "week": 27,
+      "month": 36,
       "success": 4,
-      "failed": 30
+      "failed": 32
     }
   },
   "interactions_by_platform": {
@@ -166,7 +166,7 @@
       "interactions": 0
     },
     "2026-05-17": {
-      "posts": 9,
+      "posts": 18,
       "interactions": 0
     },
     "2026-04-20": {
@@ -187,98 +187,12 @@
     "19": 5,
     "16": 26,
     "9": 9,
-    "14": 9,
+    "14": 15,
     "12": 21,
     "13": 7,
     "20": 7
   },
   "recent_posts": [
-    {
-      "id": 196,
-      "timestamp": "2026-05-16T08:04:02.381745Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 197,
-      "timestamp": "2026-05-16T14:58:14.352914Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Gold Rush? Or Bear Market? We Break Down the Tickers to Watch</b>\n\nGold prices have plummeted t",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "172"
-    },
-    {
-      "id": 198,
-      "timestamp": "2026-05-16T14:58:14.558484Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Gold Rush? Or Bear Market? We Break Down the Tickers to Watch**\n\nGold prices have plummeted to a",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1505222855514919033"
-    },
-    {
-      "id": 199,
-      "timestamp": "2026-05-16T14:58:15.101649Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Gold Rush? Or Bear Market? We Break Down the Tickers to Watch\n\nGold prices have plummeted to a 2-y",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 200,
-      "timestamp": "2026-05-16T14:58:18.173001Z",
-      "platform": "bluesky",
-      "type": "repurposed",
-      "content_preview": "📊 Gold prices have plummeted to a 2-year low, sparking a 'buy the dip' frenzy. 🧵",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 201,
-      "timestamp": "2026-05-16T14:58:19.353593Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Gold Rush? Or Bear Market? We Break Down the Tickers to Watch",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 202,
-      "timestamp": "2026-05-16T14:58:20.307970Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "Analyzing competitor Webull's strategy reveals a focus on education and financial literacy. By creat",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "116584841228826970"
-    },
-    {
-      "id": 203,
-      "timestamp": "2026-05-16T14:58:20.455580Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "**Community Post:**\n\nHey fellow traders,\n\nLet's talk about something that caught my attention lately",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1505222880500125786"
-    },
-    {
-      "id": 204,
-      "timestamp": "2026-05-16T14:58:20.730378Z",
-      "platform": "bluesky",
-      "type": "post",
-      "content_preview": "1/ $META Meta Platforms, Inc. 💰 616.63 (+2.3%)\n\nSetup: correction in play\nRSI: 35.2 | MACD: bearish\n",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mly4br45oh2s"
-    },
     {
       "id": 205,
       "timestamp": "2026-05-16T14:58:28.220720Z",
@@ -377,6 +291,92 @@
     {
       "id": 215,
       "timestamp": "2026-05-17T08:21:29.601157Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 216,
+      "timestamp": "2026-05-17T14:58:31.866309Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Insight: The Great Rotation</b>\n\nAs the S&P 500 closes in on its all-time high, we're wi",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "176"
+    },
+    {
+      "id": 217,
+      "timestamp": "2026-05-17T14:58:32.168866Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Insight: The Great Rotation**\n\nAs the S&P 500 closes in on its all-time high, we're witne",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1505585317057527988"
+    },
+    {
+      "id": 218,
+      "timestamp": "2026-05-17T14:58:32.757627Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Insight: The Great Rotation\n\nAs the S&P 500 closes in on its all-time high, we're witnessin",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 219,
+      "timestamp": "2026-05-17T14:58:37.139852Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Insight: The Great Rotation",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 220,
+      "timestamp": "2026-05-17T14:58:38.476055Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "As the social media landscape continues to evolve, platforms like TikTok are redefining the rules of",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "116590504715673773"
+    },
+    {
+      "id": 221,
+      "timestamp": "2026-05-17T14:58:38.696057Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "\"Hey fellow traders, let's talk about diversification. It's a crucial aspect of building a robust po",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1505585344807047240"
+    },
+    {
+      "id": 222,
+      "timestamp": "2026-05-17T14:58:39.173256Z",
+      "platform": "bluesky",
+      "type": "post",
+      "content_preview": "1/ $PLTR Palantir Technologies Inc. 💰 133.73 (+2.8%)\n\nSetup: correction in play\nRSI: 38.6 | MACD: be",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mm2mra5m2k2l"
+    },
+    {
+      "id": 223,
+      "timestamp": "2026-05-17T14:58:50.678192Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 224,
+      "timestamp": "2026-05-17T14:59:22.960624Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
