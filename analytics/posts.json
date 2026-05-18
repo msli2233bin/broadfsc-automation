@@ -2109,5 +2109,100 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 225,
+    "timestamp": "2026-05-18T10:02:41.606969Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Gold Bugs Rejoice: $4.8K Resistance Ahead?</b>\n\nAs the S&P 500 (7,408.50) and Dow Jones (49,526",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "179"
+  },
+  {
+    "id": 226,
+    "timestamp": "2026-05-18T10:02:42.253180Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Gold Bugs Rejoice: $4.8K Resistance Ahead?**\n\nAs the S&P 500 (7,408.50) and Dow Jones (49,526.17",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1505873254831882321"
+  },
+  {
+    "id": 227,
+    "timestamp": "2026-05-18T10:02:42.771846Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Gold Bugs Rejoice: $4.8K Resistance Ahead?\n\nAs the S&P 500 (7,408.50) and Dow Jones (49,526.17) co",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 228,
+    "timestamp": "2026-05-18T10:02:45.546990Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 As the S&P 500 (7,408. 🧵",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 229,
+    "timestamp": "2026-05-18T10:02:46.349646Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Gold Bugs Rejoice: $4.8K Resistance Ahead?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 230,
+    "timestamp": "2026-05-18T10:02:47.339404Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "**Unlocking the Power of Social Media for Financial Services**\n\nAs a licensed investment securities ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "116595003703054487"
+  },
+  {
+    "id": 231,
+    "timestamp": "2026-05-18T10:02:47.883943Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $TSLA — Tesla, Inc. | $443.3 (-0.4%)\n\n**Setup:** overbought, watching for pullback → Bias: **CA",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1505873279993249882"
+  },
+  {
+    "id": 232,
+    "timestamp": "2026-05-18T10:02:48.548950Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $AAPL Apple Inc. 💰 298.21 (-0.2%)\n\nSetup: overbought, watching for pullback\nRSI: 81.0 | MACD: bul",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mm4mp5cwxb2l"
+  },
+  {
+    "id": 233,
+    "timestamp": "2026-05-18T10:02:53.699670Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 234,
+    "timestamp": "2026-05-18T10:03:25.947386Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
