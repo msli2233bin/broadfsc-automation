@@ -1,6 +1,6 @@
 # BroadFSC 知识库总索引
 
-*最后更新: 2026-05-15*
+*最后更新: 2026-05-18*
 
 ## 知识分类
 
@@ -24,10 +24,10 @@
 - [2026-05-04-sales_research](sales/2026-05-04-sales_research.md) - sales
 - [2026-05-04-crm_sales](sales/2026-05-04-crm_sales.md) - sales
 - [README](marketing/README.md) - marketing
+- [2026-05-17-social_media](marketing/2026-05-17-social_media.md) - marketing
 - [2026-05-14-tiktok_updates](marketing/2026-05-14-tiktok_updates.md) - marketing
 - [2026-05-10-social_media](marketing/2026-05-10-social_media.md) - marketing
 - [2026-05-07-content_strategy](marketing/2026-05-07-content_strategy.md) - marketing
-- [2026-05-03-tiktok_updates](marketing/2026-05-03-tiktok_updates.md) - marketing
 - [README](competitor/README.md) - competitor
 - [2026-05-11-competitor_etoro](competitor/2026-05-11-competitor_etoro.md) - competitor
 - [2026-05-04-industry_news](competitor/2026-05-04-industry_news.md) - competitor
