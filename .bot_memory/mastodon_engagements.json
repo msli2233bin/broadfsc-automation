@@ -38,57 +38,15 @@
     "116580135710019080",
     "116560416029772570",
     "116578668486597919",
-    "116551261289627701"
+    "116551261289627701",
+    "116574039604816184",
+    "116569131487336219",
+    "116563053048397774"
   ],
   "daily_count": 3,
-  "last_reset": "2026-05-17",
-  "total_engagements": 44,
+  "last_reset": "2026-05-18",
+  "total_engagements": 47,
   "engagements": [
-    {
-      "date": "2026-05-11T10:48:08.229256+00:00",
-      "post_id": "116553292525083279",
-      "author": "bloomberg",
-      "my_reply_id": "116555545844768220",
-      "post_preview": "Yen Bears Retreat as Intervention Seen Capping Currency Weakness\nhttps://www.bloomberg.com/news/arti",
-      "reply_preview": "@markets-bloomberg  Interventions can calm the waters, but Yen bears aren't ready to surrender. RSI ",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-11T10:49:49.268367+00:00"
-    },
-    {
-      "date": "2026-05-11T10:49:16.065232+00:00",
-      "post_id": "116551926806740033",
-      "author": "bloomberg",
-      "my_reply_id": "116555550288473509",
-      "post_preview": "Bond Traders Brace for Inflation Data as Fed’s Powell Era Ends\nhttps://www.bloomberg.com/news/articl",
-      "reply_preview": "@bloomberg Powell's era ending, huh? Inflation data's got everyone spooked. But here's the thing: PP",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-11T10:49:49.492460+00:00"
-    },
-    {
-      "date": "2026-05-12T17:35:48.044489+00:00",
-      "post_id": "116545709585140686",
-      "author": "skydancingblog.com",
-      "my_reply_id": "116562811145263111",
-      "post_preview": "Lazy Caturday Reads\n\n\nGood Day!!\nTomorrow, May 10, is Mothers Day. My Mother is no longer alive, but",
-      "reply_preview": "@skydancingblog.com - your personal hantavirus update is a nonstarter. The real story here is the CD",
-      "outcome": {
-        "favorites": 0,
-        "reblogs": 0,
-        "replies": 0
-      },
-      "result": "silent",
-      "outcome_checked": "2026-05-12T17:40:04.148548+00:00"
-    },
     {
       "date": "2026-05-12T17:37:37.160318+00:00",
       "post_id": "116562757305317540",
@@ -343,6 +301,51 @@
       },
       "result": "silent",
       "outcome_checked": "2026-05-17T16:43:03.108963+00:00"
+    },
+    {
+      "date": "2026-05-18T12:58:45.712672+00:00",
+      "post_id": "116574039604816184",
+      "author": "BusinessInsider",
+      "my_reply_id": "116595695650126251",
+      "post_preview": "Retail traders are trimming holdings of longtime AI favorite Palantir in a pivot from software stock",
+      "reply_preview": "\"Volume dried up on Palantir's sell, no buying pressure to speak of. That 10% RSI drop in a day is a",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-18T13:03:25.219148+00:00"
+    },
+    {
+      "date": "2026-05-18T13:00:43.777311+00:00",
+      "post_id": "116569131487336219",
+      "author": "msli2233bin",
+      "my_reply_id": "116595703382286409",
+      "post_preview": "$MSFT Microsoft Corporation\n💰 420.77 (+1.6%) | 5D: +3.2%\n📊 RSI: 48.9 | MACD: bearish\n📈 MA20: $413.93",
+      "reply_preview": "\"RSI at 48.9 but the daily RSI is even lower at 40.3. That tells me the selling has momentum but has",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-18T13:03:25.727225+00:00"
+    },
+    {
+      "date": "2026-05-18T13:02:05.353258+00:00",
+      "post_id": "116563053048397774",
+      "author": "kevinbeachus9",
+      "my_reply_id": "116595708721759832",
+      "post_preview": "Legendary investor Ron Baron says Tesla and SpaceX stock buys will continue\nhttps://www.teslarati.co",
+      "reply_preview": "@kevinbeachus9, don't get too caught up in Ron Baron's enthusiasm. I've got my eye on Tesla's debt-t",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-18T13:03:26.084240+00:00"
     },
     {
       "date": "2026-05-10T07:17:32.211296+00:00",
@@ -703,6 +706,51 @@
       },
       "result": "silent",
       "outcome_checked": "2026-05-17T16:43:03.108963+00:00"
+    },
+    {
+      "date": "2026-05-18T12:58:45.712672+00:00",
+      "post_id": "116574039604816184",
+      "author": "BusinessInsider",
+      "my_reply_id": "116595695650126251",
+      "post_preview": "Retail traders are trimming holdings of longtime AI favorite Palantir in a pivot from software stock",
+      "reply_preview": "\"Volume dried up on Palantir's sell, no buying pressure to speak of. That 10% RSI drop in a day is a",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-18T13:03:25.219148+00:00"
+    },
+    {
+      "date": "2026-05-18T13:00:43.777311+00:00",
+      "post_id": "116569131487336219",
+      "author": "msli2233bin",
+      "my_reply_id": "116595703382286409",
+      "post_preview": "$MSFT Microsoft Corporation\n💰 420.77 (+1.6%) | 5D: +3.2%\n📊 RSI: 48.9 | MACD: bearish\n📈 MA20: $413.93",
+      "reply_preview": "\"RSI at 48.9 but the daily RSI is even lower at 40.3. That tells me the selling has momentum but has",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-18T13:03:25.727225+00:00"
+    },
+    {
+      "date": "2026-05-18T13:02:05.353258+00:00",
+      "post_id": "116563053048397774",
+      "author": "kevinbeachus9",
+      "my_reply_id": "116595708721759832",
+      "post_preview": "Legendary investor Ron Baron says Tesla and SpaceX stock buys will continue\nhttps://www.teslarati.co",
+      "reply_preview": "@kevinbeachus9, don't get too caught up in Ron Baron's enthusiasm. I've got my eye on Tesla's debt-t",
+      "outcome": {
+        "favorites": 0,
+        "reblogs": 0,
+        "replies": 0
+      },
+      "result": "silent",
+      "outcome_checked": "2026-05-18T13:03:26.084240+00:00"
     }
   ]
 }
