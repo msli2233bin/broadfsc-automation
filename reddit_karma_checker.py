@@ -90,29 +90,15 @@ def check_karma_via_proxy(username):
             # Extract karma data from Reddit API response
             reddit_data = data.get("data", {})
             if not reddit_data or "name" not in reddit_data:
-                # Check for error response
+                # Check for error response from proxy (Reddit returns 429/404 via proxy)
+                if data.get("error") == 429 or "too many requests" in str(data).lower():
+                    print(f"    Reddit rate-limited this proxy ({proxy['name']}), trying next...")
+                    continue
                 if data.get("error") == 404 or "not found" in str(data).lower():
-                    # about.json returns 404 for new/low-karma accounts too
-                    # Verify by checking if the profile page exists (HTML)
-                    print(f"    about.json returned 404, verifying profile page...")
-                    profile_exists = _verify_profile_exists(username)
-                    if profile_exists:
-                        print(f"    Profile page accessible — account exists but about.json restricted")
-                        return {
-                            "success": True,
-                            "username": username,
-                            "link_karma": -1,  # unknown
-                            "comment_karma": -1,  # unknown
-                            "total_karma": -1,
-                            "age_days": -1,
-                            "age_str": "Unknown (about.json restricted for this account)",
-                            "has_verified_email": True,
-                            "is_suspended": False,
-                            "ready_for_posting": False,
-                            "method": f"proxy-{proxy['name']}-html-verified",
-                            "note": "Account exists but Reddit restricts about.json access for new/low-karma accounts. Check karma manually.",
-                        }
-                    return {"success": False, "error": f"User '{username}' not found on Reddit"}
+                    # about.json returns 404 for new/low-karma accounts
+                    # Skip to HTML profile check (avoids double request to same proxy)
+                    print(f"    about.json returned 404 — will check HTML profile page...")
+                    break  # Exit proxy loop, fallthrough to HTML profile check
                 print(f"    Unexpected response structure, skipping")
                 continue
 
@@ -150,56 +136,50 @@ def check_karma_via_proxy(username):
             print(f"    Error: {str(e)[:100]}, trying next proxy...")
             continue
 
-    # All proxies failed, try direct API as last resort
-    print("  All proxies failed, trying direct API...")
-    return check_karma_direct(username)
+    # All proxies failed (429/403/522). Try HTML profile page as last resort.
+    print("  All proxies failed. Checking HTML profile page...")
+    return check_karma_html_profile(username)
 
 
-def check_karma_direct(username):
-    """Last resort: direct API call (likely blocked on server IPs)."""
+def check_karma_html_profile(username):
+    """Last resort: check HTML profile page when all proxies/API are rate-limited.
+    Returns a proxy-rate-limited status so we don't get false failure alerts daily."""
     import requests
-    headers = {"User-Agent": "BroadFSC-Karma-Check/1.0"}
+
     try:
-        r = requests.get(
-            f"https://www.reddit.com/user/{username}/about.json",
-            headers=headers, timeout=15
-        )
+        # Use codetabs to access the HTML profile page (HTML is less rate-limited than API)
+        url = f"https://api.codetabs.com/v1/proxy?quest=https://www.reddit.com/user/{username}/"
+        r = requests.get(url, timeout=30)
+
         if r.status_code == 200:
-            data = r.json().get("data", {})
-            link_karma = data.get("link_karma", 0)
-            comment_karma = data.get("comment_karma", 0)
-            created_utc = data.get("created_utc", 0)
-            has_verified_email = data.get("has_verified_email", False)
+            html = r.text.lower()
+            if username.lower() in html:
+                # Account exists, but we can't get karma data
+                return {
+                    "success": True,  # Not a failure — account is alive
+                    "username": username,
+                    "link_karma": -1,
+                    "comment_karma": -1,
+                    "total_karma": -1,
+                    "age_days": -1,
+                    "age_str": "Unknown (proxy rate-limited)",
+                    "has_verified_email": True,
+                    "is_suspended": False,
+                    "ready_for_posting": False,
+                    "method": "proxy-html-profile",
+                    "note": "Reddit is rate-limiting all proxies (429/403). Profile page is accessible — account is alive. Karma data unavailable. Check manually at reddit.com/u/" + username,
+                }
+            # Generic block page
+            if "blocked" in html or "theme-beta" in html:
+                return {"success": False, "error": "Reddit blocking all access (HTML profile also blocked)"}
+            return {"success": False, "error": "Profile page returned unexpected content"}
 
-            if created_utc:
-                created_date = datetime.datetime.utcfromtimestamp(created_utc)
-                age_days = (datetime.datetime.utcnow() - created_date).days
-                age_str = f"{age_days} days (since {created_date.strftime('%Y-%m-%d')})"
-            else:
-                age_days = 0
-                age_str = "Unknown"
-
-            return {
-                "success": True,
-                "username": username,
-                "link_karma": link_karma,
-                "comment_karma": comment_karma,
-                "total_karma": link_karma + comment_karma,
-                "age_days": age_days,
-                "age_str": age_str,
-                "has_verified_email": has_verified_email,
-                "is_suspended": data.get("is_suspended", False),
-                "ready_for_posting": comment_karma >= MIN_COMMENT_KARMA and age_days >= MIN_ACCOUNT_AGE_DAYS,
-                "method": "direct-api",
-            }
         elif r.status_code == 404:
             return {"success": False, "error": f"User '{username}' not found"}
-        elif r.status_code == 403:
-            return {"success": False, "error": "Blocked by Reddit (403) - IP banned"}
         else:
-            return {"success": False, "error": f"HTTP {r.status_code}"}
+            return {"success": False, "error": f"HTML profile check failed: HTTP {r.status_code}"}
     except Exception as e:
-        return {"success": False, "error": str(e)}
+        return {"success": False, "error": f"HTML profile check error: {str(e)[:100]}"}
 
 
 def format_telegram_message(result):
@@ -210,6 +190,23 @@ def format_telegram_message(result):
             f"User: u/{REDDIT_USERNAME}\n"
             f"Error: {result['error']}"
         )
+
+    # Handle proxy-rate-limited state (karma = -1, can't get data)
+    is_rate_limited = result.get("comment_karma", 0) == -1
+    method = result.get("method", "unknown")
+
+    if is_rate_limited:
+        msg = (
+            f"⚠️ <b>Reddit Karma Check — Proxy Rate Limited</b>\n\n"
+            f"👤 User: u/{result['username']}\n"
+            f"🔧 Method: {method}\n\n"
+            f"📊 Karma data unavailable — Reddit is rate-limiting all proxies (429/403).\n\n"
+            f"✅ Account is alive (profile page accessible)\n"
+            f"❌ Karma data cannot be fetched automatically\n\n"
+            f"💡 <a href='https://www.reddit.com/user/{result['username']}'>Check karma manually</a>\n\n"
+            f"📝 Note: {result.get('note', 'N/A')[:120]}"
+        )
+        return msg
 
     if result["ready_for_posting"]:
         status = "✅ READY FOR AUTO-POSTING"
@@ -223,7 +220,6 @@ def format_telegram_message(result):
 
     verified = "✅" if result.get("has_verified_email") else "❌"
     suspended = "⚠️ SUSPENDED" if result.get("is_suspended") else ""
-    method = result.get("method", "unknown")
 
     msg = (
         f"📊 <b>Reddit Karma Report</b>\n\n"
