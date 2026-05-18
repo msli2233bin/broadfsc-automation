@@ -214,5 +214,32 @@
     "time": "2026-05-14T20:17:58.446917",
     "message_id": "<202605142017.64183892814@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "david.chen.trader@gmail.com",
+    "subject": "US Dollar Reversal Alert",
+    "personality": "michael",
+    "date": "2026-05-18",
+    "time": "2026-05-18T16:46:58.786731",
+    "message_id": "<202605181646.39201121218@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "sarah.investor@outlook.com",
+    "subject": "S&P at 7,370: A False Sense of Safety",
+    "personality": "michael",
+    "date": "2026-05-18",
+    "time": "2026-05-18T16:47:06.119849",
+    "message_id": "<202605181647.46316481658@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "takeshi.yamamoto@yahoo.co.jp",
+    "subject": "S&P at 7,370, but...",
+    "personality": "michael",
+    "date": "2026-05-18",
+    "time": "2026-05-18T16:47:12.800512",
+    "message_id": "<202605181647.62864141048@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
