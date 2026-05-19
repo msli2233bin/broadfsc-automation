@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-19T13:54:38.617322Z",
+  "generated_at": "2026-05-19T16:49:24.705109Z",
   "period": {
     "today": "2026-05-19",
     "yesterday": "2026-05-18",
@@ -7,13 +7,13 @@
     "month_ago": "2026-04-19"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 124,
-    "posts_month": 245,
+    "posts_today": 12,
+    "posts_week": 126,
+    "posts_month": 247,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 21,
-    "success_rate": 64.9
+    "success_rate": 65.2
   },
   "platforms": {
     "tiktok": {
@@ -24,17 +24,17 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 15,
-      "month": 29,
-      "success": 27,
+      "today": 2,
+      "week": 16,
+      "month": 30,
+      "success": 28,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 27,
-      "month": 51,
-      "success": 45,
+      "today": 3,
+      "week": 28,
+      "month": 52,
+      "success": 46,
       "failed": 6
     },
     "mastodon": {
@@ -169,7 +169,7 @@
       "interactions": 0
     },
     "2026-05-19": {
-      "posts": 10,
+      "posts": 12,
       "interactions": 0
     },
     "2026-04-20": {
@@ -190,33 +190,13 @@
     "19": 5,
     "16": 33,
     "9": 14,
-    "14": 15,
+    "14": 17,
     "12": 21,
     "13": 7,
     "20": 7,
     "15": 2
   },
   "recent_posts": [
-    {
-      "id": 237,
-      "timestamp": "2026-05-18T16:48:29.444357Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 The $1.7 Trillion Question: Is the US Market Overbought?</b>\n\nAs the S&P 500 continues its upwa",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "187"
-    },
-    {
-      "id": 238,
-      "timestamp": "2026-05-18T16:48:29.695202Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **The $1.7 Trillion Question: Is the US Market Overbought?**\n\nAs the S&P 500 continues its upward ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1505975377162408038"
-    },
     {
       "id": 239,
       "timestamp": "2026-05-18T16:48:30.336560Z",
@@ -385,6 +365,26 @@
       "content_preview": "Hatena Blog post",
       "status": "failed",
       "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 257,
+      "timestamp": "2026-05-19T14:54:57.869665Z",
+      "platform": "telegram_en",
+      "type": "earnings",
+      "content_preview": "<b>📊 Earnings Calendar: Week of May 19</b>\n\n\n📅 <b>Tuesday, May 19</b>\n  • Home Depot (HD) @ $299.88 ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "191"
+    },
+    {
+      "id": 258,
+      "timestamp": "2026-05-19T14:54:58.217469Z",
+      "platform": "discord",
+      "type": "earnings",
+      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of May 19**\n\n\n📅 **Tuesday, May 19**\n  • H",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1506309195283300512"
     }
   ],
   "recent_interactions": [
