@@ -2433,5 +2433,99 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1506309195283300512"
+  },
+  {
+    "id": 259,
+    "timestamp": "2026-05-19T16:50:56.474180Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Update: A Surprising Disconnect Between Stocks and Bonds</b>\n\nAs we navigate the complex",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "198"
+  },
+  {
+    "id": 260,
+    "timestamp": "2026-05-19T16:50:56.756641Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Update: A Surprising Disconnect Between Stocks and Bonds**\n\nAs we navigate the complex la",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1506338381523587214"
+  },
+  {
+    "id": 261,
+    "timestamp": "2026-05-19T16:50:57.291625Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Update: A Surprising Disconnect Between Stocks and Bonds\n\nAs we navigate the complex landsc",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 262,
+    "timestamp": "2026-05-19T16:51:00.851196Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 As we navigate the complex landscape of the stock market, one striking observation catches our att",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 263,
+    "timestamp": "2026-05-19T16:51:01.935774Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Update: A Surprising Disconnect Between Stocks and Bonds",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 264,
+    "timestamp": "2026-05-19T16:51:02.974899Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 136.89 (-0.7%) | 5D: -6.3%\n📊 RSI: 40.8 | MACD: bearish\n📈 MA20: $",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 265,
+    "timestamp": "2026-05-19T16:51:03.153052Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $NVDA — NVIDIA Corporation | $222.32 (-1.3%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n##",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1506338408535167140"
+  },
+  {
+    "id": 266,
+    "timestamp": "2026-05-19T16:51:03.747714Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $AAPL Apple Inc. 💰 292.68 (-0.1%)\n\nSetup: overbought, watching for pullback\nRSI: 78.5 | MACD: bul",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mm7ty2vhzb2u"
+  },
+  {
+    "id": 267,
+    "timestamp": "2026-05-19T16:51:16.112056Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 268,
+    "timestamp": "2026-05-19T16:51:48.910012Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
