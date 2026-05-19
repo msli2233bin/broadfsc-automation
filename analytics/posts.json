@@ -2319,5 +2319,99 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 247,
+    "timestamp": "2026-05-19T09:41:25.266451Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Alert: The AI-Driven Bull Runs Out of Steam</b>\n\nThe Nasdaq Composite index has reached ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "190"
+  },
+  {
+    "id": 248,
+    "timestamp": "2026-05-19T09:41:25.648989Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Alert: The AI-Driven Bull Runs Out of Steam**\n\nThe Nasdaq Composite index has reached 76.",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1506230289213427774"
+  },
+  {
+    "id": 249,
+    "timestamp": "2026-05-19T09:41:26.140537Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: The AI-Driven Bull Runs Out of Steam\n\nThe Nasdaq Composite index has reached 76.6 RS",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 250,
+    "timestamp": "2026-05-19T09:41:29.148513Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The Nasdaq Composite index has reached 76. 🧵",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 251,
+    "timestamp": "2026-05-19T09:41:29.846363Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: The AI-Driven Bull Runs Out of Steam",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 252,
+    "timestamp": "2026-05-19T09:41:31.067200Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AMD Advanced Micro Devices, Inc.\n\n💰 445.5 (-0.6%) | 5D: +5.7%\n📊 RSI: 75.0 | MACD: bullish\n📈 MA20: $",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 253,
+    "timestamp": "2026-05-19T09:41:31.330261Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $GOOGL — Alphabet Inc. | $396.78 (-1.1%)\n\n**Setup:** overbought, watching for pullback → Bias: ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1506230313691648031"
+  },
+  {
+    "id": 254,
+    "timestamp": "2026-05-19T09:41:31.765984Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $COIN Coinbase Global, Inc. 💰 192.96 (-2.5%)\n\nSetup: correction in play\nRSI: 42.7 | MACD: bearish",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mm73xz5bol2q"
+  },
+  {
+    "id": 255,
+    "timestamp": "2026-05-19T09:41:38.149437Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 256,
+    "timestamp": "2026-05-19T09:41:47.323699Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
