@@ -1,0 +1,11 @@
+{
+  "platform": "mastodon",
+  "topic": "META_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "$META Meta Platforms, Inc.\n\n💰 602.61 (-1.4%) | 5D: -0.1%\n📊 RSI: 24.9 | MACD: bearish\n📈 MA20: $628.41 (below)\n🎯 Resistance: $743.36 | Support: $520.26\n📢 Vol: 0.7x avg\n\nSetup: oversold bounce setup → bias: BULLISH\n\n📱 Free TA signals: t.me/BroadInvestBot\n#$META #Trading #TechnicalAnalysis #Stocks",
+  "content_type": "single",
+  "symbol": "META",
+  "created": "2026-05-20T07:33:03.484575",
+  "used": false,
+  "chart_paths": {}
+}
