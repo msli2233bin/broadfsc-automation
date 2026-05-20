@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-20T13:37:08.318725Z",
+  "generated_at": "2026-05-20T16:51:05.940333Z",
   "period": {
     "today": "2026-05-20",
     "yesterday": "2026-05-19",
@@ -7,13 +7,13 @@
     "month_ago": "2026-04-20"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 134,
-    "posts_month": 267,
+    "posts_today": 12,
+    "posts_week": 136,
+    "posts_month": 269,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 21,
-    "success_rate": 64.0
+    "success_rate": 64.3
   },
   "platforms": {
     "tiktok": {
@@ -24,17 +24,17 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 16,
-      "month": 32,
-      "success": 30,
+      "today": 2,
+      "week": 17,
+      "month": 33,
+      "success": 31,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 29,
-      "month": 56,
-      "success": 50,
+      "today": 3,
+      "week": 30,
+      "month": 57,
+      "success": 51,
       "failed": 6
     },
     "mastodon": {
@@ -173,7 +173,7 @@
       "interactions": 0
     },
     "2026-05-20": {
-      "posts": 10,
+      "posts": 12,
       "interactions": 0
     },
     "2026-04-20": {
@@ -194,33 +194,13 @@
     "19": 5,
     "16": 38,
     "9": 19,
-    "14": 17,
+    "14": 19,
     "12": 21,
     "13": 7,
     "20": 7,
     "15": 2
   },
   "recent_posts": [
-    {
-      "id": 259,
-      "timestamp": "2026-05-19T16:50:56.474180Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Update: A Surprising Disconnect Between Stocks and Bonds</b>\n\nAs we navigate the complex",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "198"
-    },
-    {
-      "id": 260,
-      "timestamp": "2026-05-19T16:50:56.756641Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Update: A Surprising Disconnect Between Stocks and Bonds**\n\nAs we navigate the complex la",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1506338381523587214"
-    },
     {
       "id": 261,
       "timestamp": "2026-05-19T16:50:57.291625Z",
@@ -388,6 +368,26 @@
       "content_preview": "Hatena Blog post",
       "status": "failed",
       "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 279,
+      "timestamp": "2026-05-20T14:56:29.557900Z",
+      "platform": "telegram_en",
+      "type": "earnings",
+      "content_preview": "<b>📊 Earnings Calendar: Week of May 20</b>\n\n\n📅 <b>Wednesday, May 20</b>\n  • NVIDIA (NVDA) @ $224.86 ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "202"
+    },
+    {
+      "id": 280,
+      "timestamp": "2026-05-20T14:56:29.857165Z",
+      "platform": "discord",
+      "type": "earnings",
+      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of May 20**\n\n\n📅 **Wednesday, May 20**\n  •",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1506671967552409600"
     }
   ],
   "recent_interactions": [
