@@ -2621,5 +2621,25 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 279,
+    "timestamp": "2026-05-20T14:56:29.557900Z",
+    "platform": "telegram_en",
+    "type": "earnings",
+    "content_preview": "<b>📊 Earnings Calendar: Week of May 20</b>\n\n\n📅 <b>Wednesday, May 20</b>\n  • NVIDIA (NVDA) @ $224.86 ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "202"
+  },
+  {
+    "id": 280,
+    "timestamp": "2026-05-20T14:56:29.857165Z",
+    "platform": "discord",
+    "type": "earnings",
+    "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of May 20**\n\n\n📅 **Wednesday, May 20**\n  •",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1506671967552409600"
   }
 ]
