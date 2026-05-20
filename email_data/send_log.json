@@ -241,5 +241,32 @@
     "time": "2026-05-18T16:47:12.800512",
     "message_id": "<202605181647.62864141048@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "raj.patel.invest@hotmail.com",
+    "subject": "S&P 400-Points Swing in 2 Days",
+    "personality": "alex",
+    "date": "2026-05-20",
+    "time": "2026-05-20T16:51:42.132752",
+    "message_id": "<202605201651.79289413365@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+david@gmail.com",
+    "subject": "Gold broke something important",
+    "personality": "alex",
+    "date": "2026-05-20",
+    "time": "2026-05-20T16:51:48.013265",
+    "message_id": "<202605201651.31851505764@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+sarah@gmail.com",
+    "subject": "Gold broke a 4-mo trend line",
+    "personality": "alex",
+    "date": "2026-05-20",
+    "time": "2026-05-20T16:51:53.960150",
+    "message_id": "<202605201651.99501903358@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
