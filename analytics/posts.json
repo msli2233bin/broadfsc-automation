@@ -2641,5 +2641,99 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1506671967552409600"
+  },
+  {
+    "id": 281,
+    "timestamp": "2026-05-20T16:54:07.859619Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 US Stocks: The Bullish Momentum Continues Amidst Earnings Season</b>\n\nThe S&P 500 just broke ab",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "209"
+  },
+  {
+    "id": 282,
+    "timestamp": "2026-05-20T16:54:08.245084Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **US Stocks: The Bullish Momentum Continues Amidst Earnings Season**\n\nThe S&P 500 just broke above",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1506701572128903168"
+  },
+  {
+    "id": 283,
+    "timestamp": "2026-05-20T16:54:09.086614Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 US Stocks: The Bullish Momentum Continues Amidst Earnings Season\n\nThe S&P 500 just broke above the",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 284,
+    "timestamp": "2026-05-20T16:54:11.943940Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The S&P 500 just broke above the 7,375 resistance level, which was previously tested multiple time",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 285,
+    "timestamp": "2026-05-20T16:54:12.628620Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 US Stocks: The Bullish Momentum Continues Amidst Earnings Season",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 286,
+    "timestamp": "2026-05-20T16:54:17.205572Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$GOOGL Alphabet Inc.\n\n💰 387.66 (-2.3%) | 5D: +0.1%\n📊 RSI: 68.9 | MACD: bearish\n📈 MA20: $378.64 (abov",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 287,
+    "timestamp": "2026-05-20T16:54:17.398538Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $GOOGL — Alphabet Inc. | $387.66 (-2.3%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n### 📊 T",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1506701611425333390"
+  },
+  {
+    "id": 288,
+    "timestamp": "2026-05-20T16:54:17.661667Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $TSLA Tesla, Inc. 💰 404.11 (-1.4%)\n\nSetup: uptrend intact\nRSI: 60.9 | MACD: bullish\nVol: 0.8x avg",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmcemrmfvy2a"
+  },
+  {
+    "id": 289,
+    "timestamp": "2026-05-20T16:54:27.626451Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 290,
+    "timestamp": "2026-05-20T16:54:31.927178Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
