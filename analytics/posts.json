@@ -2735,5 +2735,99 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 291,
+    "timestamp": "2026-05-21T09:39:59.100124Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Insight: A Tale of Two Trends</b>\n\n\"\" We're witnessing a fascinating divergence between ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "212"
+  },
+  {
+    "id": 292,
+    "timestamp": "2026-05-21T09:39:59.420702Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Insight: A Tale of Two Trends**\n\n\"\" We're witnessing a fascinating divergence between the",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1506954703609794561"
+  },
+  {
+    "id": 293,
+    "timestamp": "2026-05-21T09:39:59.965846Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: A Tale of Two Trends\n\n\"\" We're witnessing a fascinating divergence between the S&P",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 294,
+    "timestamp": "2026-05-21T09:40:04.754913Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 \"\" We're witnessing a fascinating divergence between the S&P 500 and the Nasdaq Composite, with th",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 295,
+    "timestamp": "2026-05-21T09:40:05.604335Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: A Tale of Two Trends",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 296,
+    "timestamp": "2026-05-21T09:40:06.779025Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "\"Understanding the nuances of stock investing is crucial for long-term success. One often-overlooked",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 297,
+    "timestamp": "2026-05-21T09:40:06.936264Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $AMZN — Amazon.com, Inc. | $264.14 (-1.1%)\n\n**Setup:** correction in play → Bias: **BEARISH**\n\n",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1506954735792422942"
+  },
+  {
+    "id": 298,
+    "timestamp": "2026-05-21T09:40:07.239129Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $META Meta Platforms, Inc. 💰 616.63 (+2.3%)\n\nSetup: correction in play\nRSI: 35.2 | MACD: bearish\n",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mme4tdhpli24"
+  },
+  {
+    "id": 299,
+    "timestamp": "2026-05-21T09:40:15.501824Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 300,
+    "timestamp": "2026-05-21T09:40:43.730698Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
