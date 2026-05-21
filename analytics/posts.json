@@ -2829,5 +2829,25 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 301,
+    "timestamp": "2026-05-21T15:00:18.674010Z",
+    "platform": "telegram_en",
+    "type": "earnings",
+    "content_preview": "<b>📊 Earnings Calendar: Week of May 21</b>\n\n\n📅 <b>Thursday, May 21</b>\n  • Walmart (WMT) @ $121.74 |",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "213"
+  },
+  {
+    "id": 302,
+    "timestamp": "2026-05-21T15:00:19.239990Z",
+    "platform": "discord",
+    "type": "earnings",
+    "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of May 21**\n\n\n📅 **Thursday, May 21**\n  • ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1507035316865863770"
   }
 ]
