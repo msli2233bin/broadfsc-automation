@@ -46,3 +46,7 @@
 
 ## 16:34:47 | sales/crm_sales
 - [cross_domain_match] 🔗 跨域关联匹配: sales/crm_sales 在 FUSION_INDEX 中有对应融合策略
+
+## 06:16:50 | finance/stock_analysis
+- [ta_signal_detected] 📈 检测到技术分析信号知识点 (stock_analysis)，建议销售Agent生成触发式外联话术
+- [cross_domain_match] 🔗 跨域关联匹配: finance/stock_analysis 在 FUSION_INDEX 中有对应融合策略
