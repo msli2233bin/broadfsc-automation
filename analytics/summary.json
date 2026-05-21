@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-21T12:13:46.608893Z",
+  "generated_at": "2026-05-21T15:55:33.436633Z",
   "period": {
     "today": "2026-05-21",
     "yesterday": "2026-05-20",
@@ -7,13 +7,13 @@
     "month_ago": "2026-04-21"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 136,
-    "posts_month": 289,
+    "posts_today": 12,
+    "posts_week": 138,
+    "posts_month": 291,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 7,
-    "success_rate": 63.3
+    "success_rate": 63.6
   },
   "platforms": {
     "tiktok": {
@@ -24,17 +24,17 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 17,
-      "month": 35,
-      "success": 33,
+      "today": 2,
+      "week": 18,
+      "month": 36,
+      "success": 34,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 30,
-      "month": 61,
-      "success": 55,
+      "today": 3,
+      "week": 31,
+      "month": 62,
+      "success": 56,
       "failed": 6
     },
     "mastodon": {
@@ -176,7 +176,7 @@
       "interactions": 0
     },
     "2026-05-21": {
-      "posts": 10,
+      "posts": 12,
       "interactions": 0
     },
     "2026-04-29": {
@@ -197,29 +197,9 @@
     "12": 21,
     "13": 7,
     "20": 7,
-    "15": 2
+    "15": 4
   },
   "recent_posts": [
-    {
-      "id": 281,
-      "timestamp": "2026-05-20T16:54:07.859619Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 US Stocks: The Bullish Momentum Continues Amidst Earnings Season</b>\n\nThe S&P 500 just broke ab",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "209"
-    },
-    {
-      "id": 282,
-      "timestamp": "2026-05-20T16:54:08.245084Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **US Stocks: The Bullish Momentum Continues Amidst Earnings Season**\n\nThe S&P 500 just broke above",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1506701572128903168"
-    },
     {
       "id": 283,
       "timestamp": "2026-05-20T16:54:09.086614Z",
@@ -387,6 +367,26 @@
       "content_preview": "Hatena Blog post",
       "status": "failed",
       "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 301,
+      "timestamp": "2026-05-21T15:00:18.674010Z",
+      "platform": "telegram_en",
+      "type": "earnings",
+      "content_preview": "<b>📊 Earnings Calendar: Week of May 21</b>\n\n\n📅 <b>Thursday, May 21</b>\n  • Walmart (WMT) @ $121.74 |",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "213"
+    },
+    {
+      "id": 302,
+      "timestamp": "2026-05-21T15:00:19.239990Z",
+      "platform": "discord",
+      "type": "earnings",
+      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of May 21**\n\n\n📅 **Thursday, May 21**\n  • ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1507035316865863770"
     }
   ],
   "recent_interactions": [
