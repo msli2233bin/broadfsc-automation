@@ -268,5 +268,41 @@
     "time": "2026-05-20T16:51:53.960150",
     "message_id": "<202605201651.99501903358@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "msli2233bin+takeshi@gmail.com",
+    "subject": "Oil Just Crushed a Key Level",
+    "personality": "thomas",
+    "date": "2026-05-21",
+    "time": "2026-05-21T16:38:20.193348",
+    "message_id": "<202605211638.51108041281@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+maria@gmail.com",
+    "subject": "S&P 400-point drop in 1 month?",
+    "personality": "thomas",
+    "date": "2026-05-21",
+    "time": "2026-05-21T16:38:26.502809",
+    "message_id": "<202605211638.48046508279@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+raj@gmail.com",
+    "subject": "S&P testing 7,174 for 3rd time",
+    "personality": "thomas",
+    "date": "2026-05-21",
+    "time": "2026-05-21T16:38:33.064419",
+    "message_id": "<202605211638.76501580026@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "test@example.com",
+    "subject": "Gold broke a key trend",
+    "personality": "thomas",
+    "date": "2026-05-21",
+    "time": "2026-05-21T16:38:40.944656",
+    "message_id": "<202605211638.35933373162@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
