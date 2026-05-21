@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-05-20T22:51:16.223822Z",
+  "generated_at": "2026-05-21T00:05:56.500732Z",
   "period": {
-    "today": "2026-05-20",
-    "yesterday": "2026-05-19",
-    "week_ago": "2026-05-13",
-    "month_ago": "2026-04-20"
+    "today": "2026-05-21",
+    "yesterday": "2026-05-20",
+    "week_ago": "2026-05-14",
+    "month_ago": "2026-04-21"
   },
   "totals": {
-    "posts_today": 22,
-    "posts_week": 146,
+    "posts_today": 0,
+    "posts_week": 126,
     "posts_month": 279,
     "interactions_today": 0,
     "interactions_week": 0,
-    "interactions_month": 21,
+    "interactions_month": 7,
     "success_rate": 63.8
   },
   "platforms": {
@@ -24,22 +24,22 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 3,
-      "week": 18,
+      "today": 0,
+      "week": 16,
       "month": 34,
       "success": 32,
       "failed": 2
     },
     "discord": {
-      "today": 5,
-      "week": 32,
+      "today": 0,
+      "week": 28,
       "month": 59,
       "success": 53,
       "failed": 6
     },
     "mastodon": {
-      "today": 4,
-      "week": 28,
+      "today": 0,
+      "week": 24,
       "month": 50,
       "success": 37,
       "failed": 13
@@ -52,8 +52,8 @@
       "failed": 2
     },
     "threads": {
-      "today": 2,
-      "week": 14,
+      "today": 0,
+      "week": 12,
       "month": 32,
       "success": 10,
       "failed": 22
@@ -73,15 +73,15 @@
       "failed": 3
     },
     "bluesky": {
-      "today": 4,
-      "week": 26,
+      "today": 0,
+      "week": 22,
       "month": 42,
       "success": 42,
       "failed": 0
     },
     "hatena": {
-      "today": 4,
-      "week": 28,
+      "today": 0,
+      "week": 24,
       "month": 48,
       "success": 4,
       "failed": 44
@@ -100,7 +100,6 @@
     }
   },
   "action_breakdown": {
-    "message": 14,
     "proactive_outreach": 7
   },
   "daily_trend": {
@@ -175,10 +174,6 @@
     "2026-05-20": {
       "posts": 22,
       "interactions": 0
-    },
-    "2026-04-20": {
-      "posts": 0,
-      "interactions": 14
     },
     "2026-04-29": {
       "posts": 0,
