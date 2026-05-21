@@ -2849,5 +2849,99 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1507035316865863770"
+  },
+  {
+    "id": 303,
+    "timestamp": "2026-05-21T16:39:56.074720Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The AI-Driven Market Bubble: A $1T+ Question Mark</b>\n\nAs the S&P 500 trades at 7,403.86, a 2.6",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "220"
+  },
+  {
+    "id": 304,
+    "timestamp": "2026-05-21T16:39:56.967428Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The AI-Driven Market Bubble: A $1T+ Question Mark**\n\nAs the S&P 500 trades at 7,403.86, a 2.6% p",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1507060388787916832"
+  },
+  {
+    "id": 305,
+    "timestamp": "2026-05-21T16:39:57.665367Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The AI-Driven Market Bubble: A $1T+ Question Mark\n\nAs the S&P 500 trades at 7,403.86, a 2.6% premi",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 306,
+    "timestamp": "2026-05-21T16:40:04.148169Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 As the S&P 500 trades at 7,403. 🧵",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 307,
+    "timestamp": "2026-05-21T16:40:05.146944Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The AI-Driven Market Bubble: A $1T+ Question Mark",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 308,
+    "timestamp": "2026-05-21T16:40:06.502557Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AAPL Apple Inc.\n\n💰 298.21 (-0.2%) | 5D: +3.8%\n📊 RSI: 81.0 | MACD: bullish\n📈 MA20: $279.84 (above)\n🎯",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 309,
+    "timestamp": "2026-05-21T16:40:07.090412Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $458.79 (+0.8%)\n\n**Setup:** overbought, watching for pull",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1507060431888453862"
+  },
+  {
+    "id": 310,
+    "timestamp": "2026-05-21T16:40:07.702581Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $PLTR Palantir Technologies Inc. 💰 135.14 (+0.9%)\n\nSetup: correction in play\nRSI: 42.5 | MACD: be",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmeuceie3l2h"
+  },
+  {
+    "id": 311,
+    "timestamp": "2026-05-21T16:40:13.686734Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 312,
+    "timestamp": "2026-05-21T16:40:18.525329Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
