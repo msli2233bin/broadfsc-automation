@@ -3057,5 +3057,99 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1507390964828999865"
+  },
+  {
+    "id": 325,
+    "timestamp": "2026-05-22T16:27:11.231343Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The GOOGL Conundrum: A Warning Sign for the S&P 500?</b>\n\nThe S&P 500 may be flashing a 'cautio",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "231"
+  },
+  {
+    "id": 326,
+    "timestamp": "2026-05-22T16:27:11.494648Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The GOOGL Conundrum: A Warning Sign for the S&P 500?**\n\nThe S&P 500 may be flashing a 'caution' ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1507419567084015792"
+  },
+  {
+    "id": 327,
+    "timestamp": "2026-05-22T16:27:14.484484Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The GOOGL Conundrum: A Warning Sign for the S&P 500?\n\nThe S&P 500 may be flashing a 'caution' sign",
+    "status": "failed",
+    "error_msg": "HTTP 503"
+  },
+  {
+    "id": 328,
+    "timestamp": "2026-05-22T16:27:17.742956Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The S&P 500 may be flashing a 'caution' signal. 🧵",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 329,
+    "timestamp": "2026-05-22T16:27:18.592044Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The GOOGL Conundrum: A Warning Sign for the S&P 500?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 330,
+    "timestamp": "2026-05-22T16:27:23.908727Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AMD Advanced Micro Devices, Inc.\n\n💰 424.1 (-5.7%) | 5D: -6.8%\n📊 RSI: 67.6 | MACD: bullish\n📈 MA20: $",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 331,
+    "timestamp": "2026-05-22T16:27:24.087708Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $PLTR — Palantir Technologies Inc. | $133.73 (+2.8%)\n\n**Setup:** correction in play → Bias: **B",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1507419620456398980"
+  },
+  {
+    "id": 332,
+    "timestamp": "2026-05-22T16:27:24.341354Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $META Meta Platforms, Inc. 💰 616.81 (+0.6%)\n\nSetup: oversold bounce setup\nRSI: 26.0 | MACD: beari",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmhe2jxjyo2u"
+  },
+  {
+    "id": 333,
+    "timestamp": "2026-05-22T16:27:29.106269Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 334,
+    "timestamp": "2026-05-22T16:27:35.094206Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
