@@ -2943,5 +2943,99 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 313,
+    "timestamp": "2026-05-22T09:22:01.704960Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Alert: The Great Mismatch</b>\n\nThe S&P 500 is up 12.4% YTD, while the 10Y Yield has surg",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "223"
+  },
+  {
+    "id": 314,
+    "timestamp": "2026-05-22T09:22:02.089100Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Alert: The Great Mismatch**\n\nThe S&P 500 is up 12.4% YTD, while the 10Y Yield has surged ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1507312572725198858"
+  },
+  {
+    "id": 315,
+    "timestamp": "2026-05-22T09:22:02.573037Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: The Great Mismatch\n\nThe S&P 500 is up 12.4% YTD, while the 10Y Yield has surged 120b",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 316,
+    "timestamp": "2026-05-22T09:22:06.661471Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The S&P 500 is up 12. 🧵",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 317,
+    "timestamp": "2026-05-22T09:22:07.602110Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: The Great Mismatch",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 318,
+    "timestamp": "2026-05-22T09:22:08.956662Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "**Navigating the Intersection of Content Strategy and Algorithmic Insights**\n\nAs the social media la",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 319,
+    "timestamp": "2026-05-22T09:22:09.261046Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "Title: Staying Ahead of the Market Curve: Trading Insights\n\nHey fellow traders,\n\nAs we navigate the ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1507312603012268092"
+  },
+  {
+    "id": 320,
+    "timestamp": "2026-05-22T09:22:09.830370Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $MSFT Microsoft Corporation 💰 421.06 (+0.9%)\n\nSetup: consolidation\nRSI: 60.6 | MACD: bearish\nVol:",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmgmc5fklo2u"
+  },
+  {
+    "id": 321,
+    "timestamp": "2026-05-22T09:22:15.251252Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 322,
+    "timestamp": "2026-05-22T09:22:48.436324Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
