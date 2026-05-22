@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-22T12:03:36.221422Z",
+  "generated_at": "2026-05-22T15:30:31.588180Z",
   "period": {
     "today": "2026-05-22",
     "yesterday": "2026-05-21",
@@ -7,13 +7,13 @@
     "month_ago": "2026-04-22"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 146,
-    "posts_month": 311,
+    "posts_today": 12,
+    "posts_week": 148,
+    "posts_month": 313,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 7,
-    "success_rate": 62.7
+    "success_rate": 62.9
   },
   "platforms": {
     "tiktok": {
@@ -24,17 +24,17 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 18,
-      "month": 38,
-      "success": 36,
+      "today": 2,
+      "week": 19,
+      "month": 39,
+      "success": 37,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 32,
-      "month": 66,
-      "success": 60,
+      "today": 3,
+      "week": 33,
+      "month": 67,
+      "success": 61,
       "failed": 6
     },
     "mastodon": {
@@ -180,7 +180,7 @@
       "interactions": 0
     },
     "2026-05-22": {
-      "posts": 10,
+      "posts": 12,
       "interactions": 0
     },
     "2026-04-29": {
@@ -197,33 +197,13 @@
     "19": 5,
     "16": 48,
     "9": 29,
-    "14": 19,
+    "14": 21,
     "12": 21,
     "13": 7,
     "20": 7,
     "15": 4
   },
   "recent_posts": [
-    {
-      "id": 303,
-      "timestamp": "2026-05-21T16:39:56.074720Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 The AI-Driven Market Bubble: A $1T+ Question Mark</b>\n\nAs the S&P 500 trades at 7,403.86, a 2.6",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "220"
-    },
-    {
-      "id": 304,
-      "timestamp": "2026-05-21T16:39:56.967428Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **The AI-Driven Market Bubble: A $1T+ Question Mark**\n\nAs the S&P 500 trades at 7,403.86, a 2.6% p",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1507060388787916832"
-    },
     {
       "id": 305,
       "timestamp": "2026-05-21T16:39:57.665367Z",
@@ -391,6 +371,26 @@
       "content_preview": "Hatena Blog post",
       "status": "failed",
       "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 323,
+      "timestamp": "2026-05-22T14:33:31.857621Z",
+      "platform": "telegram_en",
+      "type": "earnings",
+      "content_preview": "<b>📊 Earnings Calendar: Week of May 22</b>\n\n\n📅 <b>Wednesday, May 27</b>\n  • Salesforce (CRM) @ $177.",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "224"
+    },
+    {
+      "id": 324,
+      "timestamp": "2026-05-22T14:33:33.595585Z",
+      "platform": "discord",
+      "type": "earnings",
+      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of May 22**\n\n\n📅 **Wednesday, May 27**\n  •",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1507390964828999865"
     }
   ],
   "recent_interactions": [
