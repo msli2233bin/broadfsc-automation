@@ -304,5 +304,32 @@
     "time": "2026-05-21T16:38:40.944656",
     "message_id": "<202605211638.35933373162@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "david.chen.trader@gmail.com",
+    "subject": "Why the VIX says otherwise",
+    "personality": "michael",
+    "date": "2026-05-22",
+    "time": "2026-05-22T16:24:48.334720",
+    "message_id": "<202605221624.14262680925@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "sarah.investor@outlook.com",
+    "subject": "Gold broke something important",
+    "personality": "michael",
+    "date": "2026-05-22",
+    "time": "2026-05-22T16:24:55.238229",
+    "message_id": "<202605221624.17348140756@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "takeshi.yamamoto@yahoo.co.jp",
+    "subject": "Why the VIX says otherwise",
+    "personality": "michael",
+    "date": "2026-05-22",
+    "time": "2026-05-22T16:25:03.966325",
+    "message_id": "<202605221625.37669930893@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
