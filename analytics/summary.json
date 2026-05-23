@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-23T07:14:18.836950Z",
+  "generated_at": "2026-05-23T09:19:53.675179Z",
   "period": {
     "today": "2026-05-23",
     "yesterday": "2026-05-22",
@@ -7,13 +7,13 @@
     "month_ago": "2026-04-23"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 148,
-    "posts_month": 323,
+    "posts_today": 10,
+    "posts_week": 158,
+    "posts_month": 333,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 7,
-    "success_rate": 62.5
+    "success_rate": 62.2
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 19,
-      "month": 40,
-      "success": 38,
+      "today": 1,
+      "week": 20,
+      "month": 41,
+      "success": 39,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 33,
-      "month": 69,
-      "success": 63,
+      "today": 2,
+      "week": 35,
+      "month": 71,
+      "success": 65,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 28,
-      "month": 58,
+      "today": 2,
+      "week": 30,
+      "month": 60,
       "success": 37,
-      "failed": 21
+      "failed": 23
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 14,
-      "month": 36,
+      "today": 1,
+      "week": 15,
+      "month": 37,
       "success": 10,
-      "failed": 26
+      "failed": 27
     },
     "medium": {
       "today": 0,
@@ -73,18 +73,18 @@
       "failed": 3
     },
     "bluesky": {
-      "today": 0,
-      "week": 26,
-      "month": 50,
-      "success": 50,
+      "today": 2,
+      "week": 28,
+      "month": 52,
+      "success": 52,
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 28,
-      "month": 56,
+      "today": 2,
+      "week": 30,
+      "month": 58,
       "success": 4,
-      "failed": 52
+      "failed": 54
     }
   },
   "interactions_by_platform": {
@@ -183,6 +183,10 @@
       "posts": 22,
       "interactions": 0
     },
+    "2026-05-23": {
+      "posts": 10,
+      "interactions": 0
+    },
     "2026-04-29": {
       "posts": 0,
       "interactions": 2
@@ -193,7 +197,7 @@
     "11": 7,
     "18": 11,
     "17": 2,
-    "8": 20,
+    "8": 25,
     "19": 5,
     "16": 53,
     "9": 29,
@@ -204,100 +208,6 @@
     "15": 4
   },
   "recent_posts": [
-    {
-      "id": 315,
-      "timestamp": "2026-05-22T09:22:02.573037Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Alert: The Great Mismatch\n\nThe S&P 500 is up 12.4% YTD, while the 10Y Yield has surged 120b",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 316,
-      "timestamp": "2026-05-22T09:22:06.661471Z",
-      "platform": "bluesky",
-      "type": "repurposed",
-      "content_preview": "📊 The S&P 500 is up 12. 🧵",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 317,
-      "timestamp": "2026-05-22T09:22:07.602110Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Alert: The Great Mismatch",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 318,
-      "timestamp": "2026-05-22T09:22:08.956662Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "**Navigating the Intersection of Content Strategy and Algorithmic Insights**\n\nAs the social media la",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 319,
-      "timestamp": "2026-05-22T09:22:09.261046Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "Title: Staying Ahead of the Market Curve: Trading Insights\n\nHey fellow traders,\n\nAs we navigate the ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1507312603012268092"
-    },
-    {
-      "id": 320,
-      "timestamp": "2026-05-22T09:22:09.830370Z",
-      "platform": "bluesky",
-      "type": "post",
-      "content_preview": "1/ $MSFT Microsoft Corporation 💰 421.06 (+0.9%)\n\nSetup: consolidation\nRSI: 60.6 | MACD: bearish\nVol:",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmgmc5fklo2u"
-    },
-    {
-      "id": 321,
-      "timestamp": "2026-05-22T09:22:15.251252Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 322,
-      "timestamp": "2026-05-22T09:22:48.436324Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 323,
-      "timestamp": "2026-05-22T14:33:31.857621Z",
-      "platform": "telegram_en",
-      "type": "earnings",
-      "content_preview": "<b>📊 Earnings Calendar: Week of May 22</b>\n\n\n📅 <b>Wednesday, May 27</b>\n  • Salesforce (CRM) @ $177.",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "224"
-    },
-    {
-      "id": 324,
-      "timestamp": "2026-05-22T14:33:33.595585Z",
-      "platform": "discord",
-      "type": "earnings",
-      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of May 22**\n\n\n📅 **Wednesday, May 27**\n  •",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1507390964828999865"
-    },
     {
       "id": 325,
       "timestamp": "2026-05-22T16:27:11.231343Z",
@@ -386,6 +296,100 @@
     {
       "id": 334,
       "timestamp": "2026-05-22T16:27:35.094206Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 335,
+      "timestamp": "2026-05-23T08:19:28.013756Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Alert: The Great Rotation Ahead?</b>\n\nWe're witnessing a historic divergence between the",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "234"
+    },
+    {
+      "id": 336,
+      "timestamp": "2026-05-23T08:19:28.509759Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Alert: The Great Rotation Ahead?**\n\nWe're witnessing a historic divergence between the S&",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1507659216675147876"
+    },
+    {
+      "id": 337,
+      "timestamp": "2026-05-23T08:19:28.989374Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Alert: The Great Rotation Ahead?\n\nWe're witnessing a historic divergence between the S&P 50",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 338,
+      "timestamp": "2026-05-23T08:19:32.573252Z",
+      "platform": "bluesky",
+      "type": "repurposed",
+      "content_preview": "📊 We're witnessing a historic divergence between the S&P 500 and Nasdaq, with the latter reaching an",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 339,
+      "timestamp": "2026-05-23T08:19:33.765125Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Alert: The Great Rotation Ahead?",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 340,
+      "timestamp": "2026-05-23T08:19:34.635022Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$META Meta Platforms, Inc.\n\n💰 614.23 (-0.7%) | 5D: +0.8%\n📊 RSI: 25.3 | MACD: bearish\n📈 MA20: $634.71",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 341,
+      "timestamp": "2026-05-23T08:19:34.869828Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟡 $AMZN — Amazon.com, Inc. | $267.22 (-1.1%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n### 📊",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1507659243929731164"
+    },
+    {
+      "id": 342,
+      "timestamp": "2026-05-23T08:19:35.502425Z",
+      "platform": "bluesky",
+      "type": "post",
+      "content_preview": "1/ $META Meta Platforms, Inc. 💰 616.63 (+2.3%)\n\nSetup: correction in play\nRSI: 35.2 | MACD: bearish\n",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmizb6hgzf2c"
+    },
+    {
+      "id": 343,
+      "timestamp": "2026-05-23T08:19:40.353373Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 344,
+      "timestamp": "2026-05-23T08:19:49.301618Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
