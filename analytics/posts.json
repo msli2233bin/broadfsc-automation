@@ -3151,5 +3151,99 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 335,
+    "timestamp": "2026-05-23T08:19:28.013756Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Alert: The Great Rotation Ahead?</b>\n\nWe're witnessing a historic divergence between the",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "234"
+  },
+  {
+    "id": 336,
+    "timestamp": "2026-05-23T08:19:28.509759Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Alert: The Great Rotation Ahead?**\n\nWe're witnessing a historic divergence between the S&",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1507659216675147876"
+  },
+  {
+    "id": 337,
+    "timestamp": "2026-05-23T08:19:28.989374Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: The Great Rotation Ahead?\n\nWe're witnessing a historic divergence between the S&P 50",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 338,
+    "timestamp": "2026-05-23T08:19:32.573252Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 We're witnessing a historic divergence between the S&P 500 and Nasdaq, with the latter reaching an",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 339,
+    "timestamp": "2026-05-23T08:19:33.765125Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: The Great Rotation Ahead?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 340,
+    "timestamp": "2026-05-23T08:19:34.635022Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$META Meta Platforms, Inc.\n\n💰 614.23 (-0.7%) | 5D: +0.8%\n📊 RSI: 25.3 | MACD: bearish\n📈 MA20: $634.71",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 341,
+    "timestamp": "2026-05-23T08:19:34.869828Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $AMZN — Amazon.com, Inc. | $267.22 (-1.1%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n### 📊",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1507659243929731164"
+  },
+  {
+    "id": 342,
+    "timestamp": "2026-05-23T08:19:35.502425Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $META Meta Platforms, Inc. 💰 616.63 (+2.3%)\n\nSetup: correction in play\nRSI: 35.2 | MACD: bearish\n",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmizb6hgzf2c"
+  },
+  {
+    "id": 343,
+    "timestamp": "2026-05-23T08:19:40.353373Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 344,
+    "timestamp": "2026-05-23T08:19:49.301618Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
