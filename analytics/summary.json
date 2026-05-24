@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-24T06:00:30.409532Z",
+  "generated_at": "2026-05-24T09:04:51.965965Z",
   "period": {
     "today": "2026-05-24",
     "yesterday": "2026-05-23",
@@ -7,13 +7,13 @@
     "month_ago": "2026-04-24"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 138,
-    "posts_month": 333,
+    "posts_today": 10,
+    "posts_week": 148,
+    "posts_month": 343,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 7,
-    "success_rate": 62.2
+    "success_rate": 61.8
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 18,
-      "month": 41,
-      "success": 39,
+      "today": 1,
+      "week": 19,
+      "month": 42,
+      "success": 40,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 31,
-      "month": 71,
-      "success": 65,
+      "today": 2,
+      "week": 33,
+      "month": 73,
+      "success": 67,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 26,
-      "month": 60,
+      "today": 2,
+      "week": 28,
+      "month": 62,
       "success": 37,
-      "failed": 23
+      "failed": 25
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 13,
-      "month": 37,
+      "today": 1,
+      "week": 14,
+      "month": 38,
       "success": 10,
-      "failed": 27
+      "failed": 28
     },
     "medium": {
       "today": 0,
@@ -73,18 +73,18 @@
       "failed": 3
     },
     "bluesky": {
-      "today": 0,
-      "week": 24,
-      "month": 52,
-      "success": 52,
+      "today": 2,
+      "week": 26,
+      "month": 54,
+      "success": 54,
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 26,
-      "month": 58,
+      "today": 2,
+      "week": 28,
+      "month": 60,
       "success": 4,
-      "failed": 54
+      "failed": 56
     }
   },
   "interactions_by_platform": {
@@ -187,6 +187,10 @@
       "posts": 10,
       "interactions": 0
     },
+    "2026-05-24": {
+      "posts": 10,
+      "interactions": 0
+    },
     "2026-04-29": {
       "posts": 0,
       "interactions": 2
@@ -197,7 +201,7 @@
     "11": 7,
     "18": 11,
     "17": 2,
-    "8": 25,
+    "8": 30,
     "19": 5,
     "16": 53,
     "9": 29,
@@ -208,100 +212,6 @@
     "15": 4
   },
   "recent_posts": [
-    {
-      "id": 325,
-      "timestamp": "2026-05-22T16:27:11.231343Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 The GOOGL Conundrum: A Warning Sign for the S&P 500?</b>\n\nThe S&P 500 may be flashing a 'cautio",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "231"
-    },
-    {
-      "id": 326,
-      "timestamp": "2026-05-22T16:27:11.494648Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **The GOOGL Conundrum: A Warning Sign for the S&P 500?**\n\nThe S&P 500 may be flashing a 'caution' ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1507419567084015792"
-    },
-    {
-      "id": 327,
-      "timestamp": "2026-05-22T16:27:14.484484Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 The GOOGL Conundrum: A Warning Sign for the S&P 500?\n\nThe S&P 500 may be flashing a 'caution' sign",
-      "status": "failed",
-      "error_msg": "HTTP 503"
-    },
-    {
-      "id": 328,
-      "timestamp": "2026-05-22T16:27:17.742956Z",
-      "platform": "bluesky",
-      "type": "repurposed",
-      "content_preview": "📊 The S&P 500 may be flashing a 'caution' signal. 🧵",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 329,
-      "timestamp": "2026-05-22T16:27:18.592044Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 The GOOGL Conundrum: A Warning Sign for the S&P 500?",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 330,
-      "timestamp": "2026-05-22T16:27:23.908727Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$AMD Advanced Micro Devices, Inc.\n\n💰 424.1 (-5.7%) | 5D: -6.8%\n📊 RSI: 67.6 | MACD: bullish\n📈 MA20: $",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 331,
-      "timestamp": "2026-05-22T16:27:24.087708Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🔴 $PLTR — Palantir Technologies Inc. | $133.73 (+2.8%)\n\n**Setup:** correction in play → Bias: **B",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1507419620456398980"
-    },
-    {
-      "id": 332,
-      "timestamp": "2026-05-22T16:27:24.341354Z",
-      "platform": "bluesky",
-      "type": "post",
-      "content_preview": "1/ $META Meta Platforms, Inc. 💰 616.81 (+0.6%)\n\nSetup: oversold bounce setup\nRSI: 26.0 | MACD: beari",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmhe2jxjyo2u"
-    },
-    {
-      "id": 333,
-      "timestamp": "2026-05-22T16:27:29.106269Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 334,
-      "timestamp": "2026-05-22T16:27:35.094206Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
     {
       "id": 335,
       "timestamp": "2026-05-23T08:19:28.013756Z",
@@ -390,6 +300,100 @@
     {
       "id": 344,
       "timestamp": "2026-05-23T08:19:49.301618Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 345,
+      "timestamp": "2026-05-24T08:28:43.294183Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 S&P 500: 74.1 RSI? Not a Red Flag, But a Buying Opportunity!</b>\n\n{\"title\": \"S&P 500: 74.1 RSI?",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "238"
+    },
+    {
+      "id": 346,
+      "timestamp": "2026-05-24T08:28:43.617276Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **S&P 500: 74.1 RSI? Not a Red Flag, But a Buying Opportunity!**\n\n{\"title\": \"S&P 500: 74.1 RSI? No",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1508023933037842455"
+    },
+    {
+      "id": 347,
+      "timestamp": "2026-05-24T08:28:44.238296Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 S&P 500: 74.1 RSI? Not a Red Flag, But a Buying Opportunity!\n\n{\"title\": \"S&P 500: 74.1 RSI? Not a ",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 348,
+      "timestamp": "2026-05-24T08:28:47.678218Z",
+      "platform": "bluesky",
+      "type": "repurposed",
+      "content_preview": "📊 {\"title\": \"S&P 500: 74. 🧵",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 349,
+      "timestamp": "2026-05-24T08:28:48.601740Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 S&P 500: 74.1 RSI? Not a Red Flag, But a Buying Opportunity!",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 350,
+      "timestamp": "2026-05-24T08:28:49.643338Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$TSLA Tesla, Inc.\n\n💰 443.3 (-0.4%) | 5D: +7.7%\n📊 RSI: 79.9 | MACD: bullish\n📈 MA20: $400.24 (above)\n🎯",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 351,
+      "timestamp": "2026-05-24T08:28:49.976320Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟡 $NVDA — NVIDIA Corporation | $235.74 (+4.4%)\n\n**Setup:** overbought, watching for pullback → Bi",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1508023960170663988"
+    },
+    {
+      "id": 352,
+      "timestamp": "2026-05-24T08:28:50.742438Z",
+      "platform": "bluesky",
+      "type": "post",
+      "content_preview": "1/ $MSFT Microsoft Corporation 💰 421.06 (+0.9%)\n\nSetup: consolidation\nRSI: 60.6 | MACD: bearish\nVol:",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmlkanhdpj2i"
+    },
+    {
+      "id": 353,
+      "timestamp": "2026-05-24T08:28:55.953360Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 354,
+      "timestamp": "2026-05-24T08:29:00.332063Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
