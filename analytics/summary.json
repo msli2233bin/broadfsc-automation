@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-24T15:02:40.227118Z",
+  "generated_at": "2026-05-24T16:32:17.592784Z",
   "period": {
     "today": "2026-05-24",
     "yesterday": "2026-05-23",
@@ -7,13 +7,13 @@
     "month_ago": "2026-04-24"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 148,
-    "posts_month": 343,
+    "posts_today": 20,
+    "posts_week": 158,
+    "posts_month": 353,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 7,
-    "success_rate": 61.8
+    "success_rate": 61.5
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 19,
-      "month": 42,
-      "success": 40,
+      "today": 2,
+      "week": 20,
+      "month": 43,
+      "success": 41,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 33,
-      "month": 73,
-      "success": 67,
+      "today": 4,
+      "week": 35,
+      "month": 75,
+      "success": 69,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 28,
-      "month": 62,
+      "today": 4,
+      "week": 30,
+      "month": 64,
       "success": 37,
-      "failed": 25
+      "failed": 27
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 14,
-      "month": 38,
+      "today": 2,
+      "week": 15,
+      "month": 39,
       "success": 10,
-      "failed": 28
+      "failed": 29
     },
     "medium": {
       "today": 0,
@@ -73,18 +73,18 @@
       "failed": 3
     },
     "bluesky": {
-      "today": 2,
-      "week": 26,
-      "month": 54,
-      "success": 54,
+      "today": 4,
+      "week": 28,
+      "month": 56,
+      "success": 56,
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 28,
-      "month": 60,
+      "today": 4,
+      "week": 30,
+      "month": 62,
       "success": 4,
-      "failed": 56
+      "failed": 58
     }
   },
   "interactions_by_platform": {
@@ -188,7 +188,7 @@
       "interactions": 0
     },
     "2026-05-24": {
-      "posts": 10,
+      "posts": 20,
       "interactions": 0
     },
     "2026-04-29": {
@@ -209,103 +209,9 @@
     "12": 21,
     "13": 7,
     "20": 7,
-    "15": 4
+    "15": 9
   },
   "recent_posts": [
-    {
-      "id": 335,
-      "timestamp": "2026-05-23T08:19:28.013756Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Alert: The Great Rotation Ahead?</b>\n\nWe're witnessing a historic divergence between the",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "234"
-    },
-    {
-      "id": 336,
-      "timestamp": "2026-05-23T08:19:28.509759Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Alert: The Great Rotation Ahead?**\n\nWe're witnessing a historic divergence between the S&",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1507659216675147876"
-    },
-    {
-      "id": 337,
-      "timestamp": "2026-05-23T08:19:28.989374Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Alert: The Great Rotation Ahead?\n\nWe're witnessing a historic divergence between the S&P 50",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 338,
-      "timestamp": "2026-05-23T08:19:32.573252Z",
-      "platform": "bluesky",
-      "type": "repurposed",
-      "content_preview": "📊 We're witnessing a historic divergence between the S&P 500 and Nasdaq, with the latter reaching an",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 339,
-      "timestamp": "2026-05-23T08:19:33.765125Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Alert: The Great Rotation Ahead?",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 340,
-      "timestamp": "2026-05-23T08:19:34.635022Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$META Meta Platforms, Inc.\n\n💰 614.23 (-0.7%) | 5D: +0.8%\n📊 RSI: 25.3 | MACD: bearish\n📈 MA20: $634.71",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 341,
-      "timestamp": "2026-05-23T08:19:34.869828Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟡 $AMZN — Amazon.com, Inc. | $267.22 (-1.1%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n### 📊",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1507659243929731164"
-    },
-    {
-      "id": 342,
-      "timestamp": "2026-05-23T08:19:35.502425Z",
-      "platform": "bluesky",
-      "type": "post",
-      "content_preview": "1/ $META Meta Platforms, Inc. 💰 616.63 (+2.3%)\n\nSetup: correction in play\nRSI: 35.2 | MACD: bearish\n",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmizb6hgzf2c"
-    },
-    {
-      "id": 343,
-      "timestamp": "2026-05-23T08:19:40.353373Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 344,
-      "timestamp": "2026-05-23T08:19:49.301618Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
     {
       "id": 345,
       "timestamp": "2026-05-24T08:28:43.294183Z",
@@ -394,6 +300,100 @@
     {
       "id": 354,
       "timestamp": "2026-05-24T08:29:00.332063Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 355,
+      "timestamp": "2026-05-24T15:06:20.897496Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 GOOGL's Extreme Overbought: A Warning Sign for Bulls?</b>\n\nGOOGL's extreme overbought reading i",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "239"
+    },
+    {
+      "id": 356,
+      "timestamp": "2026-05-24T15:06:21.569843Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **GOOGL's Extreme Overbought: A Warning Sign for Bulls?**\n\nGOOGL's extreme overbought reading is a",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1508123999505350848"
+    },
+    {
+      "id": 357,
+      "timestamp": "2026-05-24T15:06:21.882689Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 GOOGL's Extreme Overbought: A Warning Sign for Bulls?\n\nGOOGL's extreme overbought reading is a cle",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 358,
+      "timestamp": "2026-05-24T15:06:26.119277Z",
+      "platform": "bluesky",
+      "type": "repurposed",
+      "content_preview": "📊 GOOGL's extreme overbought reading is a clear warning sign that bulls should take seriously. 🧵",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 359,
+      "timestamp": "2026-05-24T15:06:27.016924Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 GOOGL's Extreme Overbought: A Warning Sign for Bulls?",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 360,
+      "timestamp": "2026-05-24T15:06:27.942748Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$META Meta Platforms, Inc.\n\n💰 616.81 (+0.6%) | 5D: +0.8%\n📊 RSI: 26.0 | MACD: bearish\n📈 MA20: $649.87",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 361,
+      "timestamp": "2026-05-24T15:06:28.362202Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟢 $NVDA — NVIDIA Corporation | $225.83 (+2.3%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n##",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1508124029213737020"
+    },
+    {
+      "id": 362,
+      "timestamp": "2026-05-24T15:06:28.619044Z",
+      "platform": "bluesky",
+      "type": "post",
+      "content_preview": "1/ $TSLA Tesla, Inc. 💰 417.85 (+0.1%)\n\nSetup: consolidation\nRSI: 59.7 | MACD: bearish\nVol: 0.8x avg-",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmmaho47ki24"
+    },
+    {
+      "id": 363,
+      "timestamp": "2026-05-24T15:06:33.665465Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 364,
+      "timestamp": "2026-05-24T15:07:05.780199Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
