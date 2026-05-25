@@ -331,5 +331,32 @@
     "time": "2026-05-22T16:25:03.966325",
     "message_id": "<202605221625.37669930893@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "maria.santos.pro@gmail.com",
+    "subject": "Gold broke 4,500 support",
+    "personality": "thomas",
+    "date": "2026-05-25",
+    "time": "2026-05-25T16:22:12.454271",
+    "message_id": "<202605251622.58221655409@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "raj.patel.invest@hotmail.com",
+    "subject": "Why the S&P 500 Just Got a Reality Check",
+    "personality": "thomas",
+    "date": "2026-05-25",
+    "time": "2026-05-25T16:22:19.216872",
+    "message_id": "<202605251622.12694745062@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+david@gmail.com",
+    "subject": "Why Dividend Yields Are Unusually Low",
+    "personality": "thomas",
+    "date": "2026-05-25",
+    "time": "2026-05-25T16:22:23.894260",
+    "message_id": "<202605251622.42071294282@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
