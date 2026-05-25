@@ -3433,5 +3433,99 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 365,
+    "timestamp": "2026-05-25T10:05:01.928206Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Insight: The Great Rotation Unfolds</b>\n\nAs the S&P 500 breaks above its 200-day moving ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "242"
+  },
+  {
+    "id": 366,
+    "timestamp": "2026-05-25T10:05:02.520434Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Insight: The Great Rotation Unfolds**\n\nAs the S&P 500 breaks above its 200-day moving ave",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1508410558968500365"
+  },
+  {
+    "id": 367,
+    "timestamp": "2026-05-25T10:05:03.218313Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The Great Rotation Unfolds\n\nAs the S&P 500 breaks above its 200-day moving average",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 368,
+    "timestamp": "2026-05-25T10:05:06.273461Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 As the S&P 500 breaks above its 200-day moving average, we're witnessing the beginning of a potent",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 369,
+    "timestamp": "2026-05-25T10:05:06.965277Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The Great Rotation Unfolds",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 370,
+    "timestamp": "2026-05-25T10:05:07.898791Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$COIN Coinbase Global, Inc.\n\n💰 192.96 (-2.5%) | 5D: +2.8%\n📊 RSI: 42.7 | MACD: bearish\n📈 MA20: $194.1",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 371,
+    "timestamp": "2026-05-25T10:05:08.228358Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $467.51 (+4.0%)\n\n**Setup:** overbought, watching for pull",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1508410583639392336"
+  },
+  {
+    "id": 372,
+    "timestamp": "2026-05-25T10:05:08.748753Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $MSFT Microsoft Corporation 💰 421.06 (+0.9%)\n\nSetup: consolidation\nRSI: 60.6 | MACD: bearish\nVol:",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmoa3rakxr2s"
+  },
+  {
+    "id": 373,
+    "timestamp": "2026-05-25T10:05:14.159114Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 374,
+    "timestamp": "2026-05-25T10:05:44.150356Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
