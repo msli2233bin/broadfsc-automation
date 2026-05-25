@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-25T12:48:10.700843Z",
+  "generated_at": "2026-05-25T15:49:25.111616Z",
   "period": {
     "today": "2026-05-25",
     "yesterday": "2026-05-24",
@@ -7,13 +7,13 @@
     "month_ago": "2026-04-25"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 150,
-    "posts_month": 363,
+    "posts_today": 12,
+    "posts_week": 152,
+    "posts_month": 365,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 7,
-    "success_rate": 61.2
+    "success_rate": 61.4
   },
   "platforms": {
     "tiktok": {
@@ -24,17 +24,17 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 19,
-      "month": 44,
-      "success": 42,
+      "today": 2,
+      "week": 20,
+      "month": 45,
+      "success": 43,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 33,
-      "month": 77,
-      "success": 71,
+      "today": 3,
+      "week": 34,
+      "month": 78,
+      "success": 72,
       "failed": 6
     },
     "mastodon": {
@@ -192,7 +192,7 @@
       "interactions": 0
     },
     "2026-05-25": {
-      "posts": 10,
+      "posts": 12,
       "interactions": 0
     },
     "2026-04-29": {
@@ -209,33 +209,13 @@
     "19": 5,
     "16": 53,
     "9": 29,
-    "14": 21,
+    "14": 23,
     "12": 21,
     "13": 7,
     "20": 7,
     "15": 9
   },
   "recent_posts": [
-    {
-      "id": 355,
-      "timestamp": "2026-05-24T15:06:20.897496Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 GOOGL's Extreme Overbought: A Warning Sign for Bulls?</b>\n\nGOOGL's extreme overbought reading i",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "239"
-    },
-    {
-      "id": 356,
-      "timestamp": "2026-05-24T15:06:21.569843Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **GOOGL's Extreme Overbought: A Warning Sign for Bulls?**\n\nGOOGL's extreme overbought reading is a",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1508123999505350848"
-    },
     {
       "id": 357,
       "timestamp": "2026-05-24T15:06:21.882689Z",
@@ -403,6 +383,26 @@
       "content_preview": "Hatena Blog post",
       "status": "failed",
       "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 375,
+      "timestamp": "2026-05-25T14:48:34.414804Z",
+      "platform": "telegram_en",
+      "type": "earnings",
+      "content_preview": "<b>📊 Earnings Calendar: Week of May 25</b>\n\n\n📅 <b>Wednesday, May 27</b>\n  • Salesforce (CRM) @ $180.",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "243"
+    },
+    {
+      "id": 376,
+      "timestamp": "2026-05-25T14:48:34.822940Z",
+      "platform": "discord",
+      "type": "earnings",
+      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of May 25**\n\n\n📅 **Wednesday, May 27**\n  •",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1508481914430816447"
     }
   ],
   "recent_interactions": [
