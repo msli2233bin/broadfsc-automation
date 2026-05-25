@@ -3547,5 +3547,99 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1508481914430816447"
+  },
+  {
+    "id": 377,
+    "timestamp": "2026-05-25T16:24:18.922365Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Mayhem: What's Hidden in Plain Sight?</b>\n\n  The S&P 500 is trading at a 74.1 RSI, indic",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "250"
+  },
+  {
+    "id": 378,
+    "timestamp": "2026-05-25T16:24:19.298825Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Mayhem: What's Hidden in Plain Sight?**\n\n  The S&P 500 is trading at a 74.1 RSI, indicati",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1508506008211820706"
+  },
+  {
+    "id": 379,
+    "timestamp": "2026-05-25T16:24:19.574978Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Mayhem: What's Hidden in Plain Sight?\n\n  The S&P 500 is trading at a 74.1 RSI, indicating t",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 380,
+    "timestamp": "2026-05-25T16:24:23.878960Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊   The S&P 500 is trading at a 74. 🧵",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 381,
+    "timestamp": "2026-05-25T16:24:24.676183Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Mayhem: What's Hidden in Plain Sight?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 382,
+    "timestamp": "2026-05-25T16:24:25.719069Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "In today's fast-paced sales landscape, it's essential to stay ahead of the curve. One key technique ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 383,
+    "timestamp": "2026-05-25T16:24:25.928502Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $TSLA — Tesla, Inc. | $433.45 (-2.6%)\n\n**Setup:** overbought, watching for pullback → Bias: **C",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1508506036816973845"
+  },
+  {
+    "id": 384,
+    "timestamp": "2026-05-25T16:24:26.215115Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $NVDA NVIDIA Corporation 💰 219.44 (+2.0%)\n\nSetup: uptrend intact\nRSI: 64.9 | MACD: bullish\nVol: 1",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmovbyibyb2s"
+  },
+  {
+    "id": 385,
+    "timestamp": "2026-05-25T16:24:40.283087Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 386,
+    "timestamp": "2026-05-25T16:25:09.052695Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
