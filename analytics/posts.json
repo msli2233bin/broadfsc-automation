@@ -3755,5 +3755,99 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1508851842623209712"
+  },
+  {
+    "id": 399,
+    "timestamp": "2026-05-26T17:28:20.445238Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The AI-Powered Market: A Contrarian Take on the Nasdaq's 'Ultra-Hot' Run</b>\n\nThe Nasdaq Compos",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "261"
+  },
+  {
+    "id": 400,
+    "timestamp": "2026-05-26T17:28:21.063328Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The AI-Powered Market: A Contrarian Take on the Nasdaq's 'Ultra-Hot' Run**\n\nThe Nasdaq Composite",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1508884509532225637"
+  },
+  {
+    "id": 401,
+    "timestamp": "2026-05-26T17:28:21.510579Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The AI-Powered Market: A Contrarian Take on the Nasdaq's 'Ultra-Hot' Run\n\nThe Nasdaq Composite has",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 402,
+    "timestamp": "2026-05-26T17:28:24.881428Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The Nasdaq Composite has just hit an all-time high, with a 76. 🧵",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 403,
+    "timestamp": "2026-05-26T17:28:26.121342Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The AI-Powered Market: A Contrarian Take on the Nasdaq's 'Ultra-Hot' Run",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 404,
+    "timestamp": "2026-05-26T17:28:27.056976Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "\"Understanding the ever-changing landscape of social media can be a daunting task. One key takeaway ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 405,
+    "timestamp": "2026-05-26T17:28:27.281347Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $GOOGL — Alphabet Inc. | $382.97 (-1.2%)\n\n**Setup:** correction in play → Bias: **BEARISH**\n\n##",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1508884536170254539"
+  },
+  {
+    "id": 406,
+    "timestamp": "2026-05-26T17:28:27.596209Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $TSLA Tesla, Inc. 💰 426.01 (+1.9%)\n\nSetup: consolidation\nRSI: 61.5 | MACD: bearish\nVol: 0.8x avg-",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmrjdfefis2i"
+  },
+  {
+    "id": 407,
+    "timestamp": "2026-05-26T17:28:33.687424Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 408,
+    "timestamp": "2026-05-26T17:28:51.175571Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
