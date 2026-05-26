@@ -3641,5 +3641,99 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 387,
+    "timestamp": "2026-05-26T09:55:49.727204Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The 'AI-Driven' Market: A Contrarian View on the Nasdaq's Extreme Overbuy</b>\n\nThe Nasdaq has r",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "253"
+  },
+  {
+    "id": 388,
+    "timestamp": "2026-05-26T09:55:50.027645Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The 'AI-Driven' Market: A Contrarian View on the Nasdaq's Extreme Overbuy**\n\nThe Nasdaq has reac",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1508770630424854538"
+  },
+  {
+    "id": 389,
+    "timestamp": "2026-05-26T09:55:50.524662Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The 'AI-Driven' Market: A Contrarian View on the Nasdaq's Extreme Overbuy\n\nThe Nasdaq has reached ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 390,
+    "timestamp": "2026-05-26T09:55:53.558606Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The Nasdaq has reached an extreme overbought level, with its RSI at 76. 🧵",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 391,
+    "timestamp": "2026-05-26T09:55:54.432623Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The 'AI-Driven' Market: A Contrarian View on the Nasdaq's Extreme Overbuy",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 392,
+    "timestamp": "2026-05-26T09:55:55.270541Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$META Meta Platforms, Inc.\n\n💰 602.61 (-1.4%) | 5D: -0.1%\n📊 RSI: 24.9 | MACD: bearish\n📈 MA20: $628.41",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 393,
+    "timestamp": "2026-05-26T09:55:55.670041Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "\"Hey everyone, I wanted to share some TikTok insights with you all. If you're looking to grow your p",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1508770653799710780"
+  },
+  {
+    "id": 394,
+    "timestamp": "2026-05-26T09:55:55.866967Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $META Meta Platforms, Inc. 💰 616.81 (+0.6%)\n\nSetup: oversold bounce setup\nRSI: 26.0 | MACD: beari",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmqq27hvkx2c"
+  },
+  {
+    "id": 395,
+    "timestamp": "2026-05-26T09:56:02.750818Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 396,
+    "timestamp": "2026-05-26T09:56:11.924507Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
