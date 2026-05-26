@@ -3735,5 +3735,25 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 397,
+    "timestamp": "2026-05-26T15:18:31.773778Z",
+    "platform": "telegram_en",
+    "type": "earnings",
+    "content_preview": "<b>📊 Earnings Calendar: Week of May 26</b>\n\n\n📅 <b>Wednesday, May 27</b>\n  • Salesforce (CRM) @ $181.",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "254"
+  },
+  {
+    "id": 398,
+    "timestamp": "2026-05-26T15:18:32.729573Z",
+    "platform": "discord",
+    "type": "earnings",
+    "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of May 26**\n\n\n📅 **Wednesday, May 27**\n  •",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1508851842623209712"
   }
 ]
