@@ -1,0 +1,11 @@
+{
+  "platform": "threads",
+  "topic": "AAPL_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "1/ $AAPL — Apple Inc.\n\n308.82 (+1.3% today) | $4.54T\n\nOVERBOUGHT, WATCHING FOR PULLBACK. This is the setup you need to see.---THREAD_BREAK---2/ Technical snapshot:\nRSI 91.1 — momentum zone\nMACD bullish, momentum intact\nMA20 $289.22 | MA50 $270.36\nVolume: 0.9x avg\n5D: +2.9% | 20D: +14.0%---THREAD_BREAK---3/ The trade:\nResistance: $311.4\nSupport: $242.97\nBias: CAUTIOUS\n\nRisk-off until trend reverses---THREAD_BREAK---4/ I post TA signals for 5 stocks daily.\n\n📱 Get them free: t.me/BroadInvestBot",
+  "content_type": "thread",
+  "symbol": "AAPL",
+  "created": "2026-05-26T07:33:28.737527",
+  "used": false,
+  "chart_paths": {}
+}
