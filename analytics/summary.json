@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-26T17:25:54.338464Z",
+  "generated_at": "2026-05-26T19:33:20.724938Z",
   "period": {
     "today": "2026-05-26",
     "yesterday": "2026-05-25",
@@ -7,13 +7,13 @@
     "month_ago": "2026-04-26"
   },
   "totals": {
-    "posts_today": 12,
-    "posts_week": 152,
-    "posts_month": 387,
+    "posts_today": 22,
+    "posts_week": 162,
+    "posts_month": 397,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 7,
-    "success_rate": 61.0
+    "success_rate": 60.7
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 2,
-      "week": 20,
-      "month": 48,
-      "success": 46,
+      "today": 3,
+      "week": 21,
+      "month": 49,
+      "success": 47,
       "failed": 2
     },
     "discord": {
-      "today": 3,
-      "week": 34,
-      "month": 83,
-      "success": 77,
+      "today": 5,
+      "week": 36,
+      "month": 85,
+      "success": 79,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 28,
-      "month": 70,
+      "today": 4,
+      "week": 30,
+      "month": 72,
       "success": 37,
-      "failed": 33
+      "failed": 35
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 14,
-      "month": 42,
+      "today": 2,
+      "week": 15,
+      "month": 43,
       "success": 10,
-      "failed": 32
+      "failed": 33
     },
     "medium": {
       "today": 0,
@@ -73,18 +73,18 @@
       "failed": 3
     },
     "bluesky": {
-      "today": 2,
-      "week": 28,
-      "month": 62,
-      "success": 62,
+      "today": 4,
+      "week": 30,
+      "month": 64,
+      "success": 64,
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 28,
-      "month": 68,
+      "today": 4,
+      "week": 30,
+      "month": 70,
       "success": 4,
-      "failed": 64
+      "failed": 66
     }
   },
   "interactions_by_platform": {
@@ -196,7 +196,7 @@
       "interactions": 0
     },
     "2026-05-26": {
-      "posts": 12,
+      "posts": 22,
       "interactions": 0
     },
     "2026-04-29": {
@@ -208,7 +208,7 @@
     "10": 20,
     "11": 7,
     "18": 11,
-    "17": 2,
+    "17": 7,
     "8": 30,
     "19": 5,
     "16": 58,
@@ -220,100 +220,6 @@
     "15": 11
   },
   "recent_posts": [
-    {
-      "id": 379,
-      "timestamp": "2026-05-25T16:24:19.574978Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Mayhem: What's Hidden in Plain Sight?\n\n  The S&P 500 is trading at a 74.1 RSI, indicating t",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 380,
-      "timestamp": "2026-05-25T16:24:23.878960Z",
-      "platform": "bluesky",
-      "type": "repurposed",
-      "content_preview": "📊   The S&P 500 is trading at a 74. 🧵",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 381,
-      "timestamp": "2026-05-25T16:24:24.676183Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Mayhem: What's Hidden in Plain Sight?",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 382,
-      "timestamp": "2026-05-25T16:24:25.719069Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "In today's fast-paced sales landscape, it's essential to stay ahead of the curve. One key technique ",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 383,
-      "timestamp": "2026-05-25T16:24:25.928502Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟡 $TSLA — Tesla, Inc. | $433.45 (-2.6%)\n\n**Setup:** overbought, watching for pullback → Bias: **C",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1508506036816973845"
-    },
-    {
-      "id": 384,
-      "timestamp": "2026-05-25T16:24:26.215115Z",
-      "platform": "bluesky",
-      "type": "post",
-      "content_preview": "1/ $NVDA NVIDIA Corporation 💰 219.44 (+2.0%)\n\nSetup: uptrend intact\nRSI: 64.9 | MACD: bullish\nVol: 1",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmovbyibyb2s"
-    },
-    {
-      "id": 385,
-      "timestamp": "2026-05-25T16:24:40.283087Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 386,
-      "timestamp": "2026-05-25T16:25:09.052695Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 387,
-      "timestamp": "2026-05-26T09:55:49.727204Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 The 'AI-Driven' Market: A Contrarian View on the Nasdaq's Extreme Overbuy</b>\n\nThe Nasdaq has r",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "253"
-    },
-    {
-      "id": 388,
-      "timestamp": "2026-05-26T09:55:50.027645Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **The 'AI-Driven' Market: A Contrarian View on the Nasdaq's Extreme Overbuy**\n\nThe Nasdaq has reac",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1508770630424854538"
-    },
     {
       "id": 389,
       "timestamp": "2026-05-26T09:55:50.524662Z",
@@ -407,6 +313,100 @@
       "status": "success",
       "error_msg": "",
       "post_id": "1508851842623209712"
+    },
+    {
+      "id": 399,
+      "timestamp": "2026-05-26T17:28:20.445238Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 The AI-Powered Market: A Contrarian Take on the Nasdaq's 'Ultra-Hot' Run</b>\n\nThe Nasdaq Compos",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "261"
+    },
+    {
+      "id": 400,
+      "timestamp": "2026-05-26T17:28:21.063328Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **The AI-Powered Market: A Contrarian Take on the Nasdaq's 'Ultra-Hot' Run**\n\nThe Nasdaq Composite",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1508884509532225637"
+    },
+    {
+      "id": 401,
+      "timestamp": "2026-05-26T17:28:21.510579Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 The AI-Powered Market: A Contrarian Take on the Nasdaq's 'Ultra-Hot' Run\n\nThe Nasdaq Composite has",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 402,
+      "timestamp": "2026-05-26T17:28:24.881428Z",
+      "platform": "bluesky",
+      "type": "repurposed",
+      "content_preview": "📊 The Nasdaq Composite has just hit an all-time high, with a 76. 🧵",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 403,
+      "timestamp": "2026-05-26T17:28:26.121342Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 The AI-Powered Market: A Contrarian Take on the Nasdaq's 'Ultra-Hot' Run",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 404,
+      "timestamp": "2026-05-26T17:28:27.056976Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "\"Understanding the ever-changing landscape of social media can be a daunting task. One key takeaway ",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 405,
+      "timestamp": "2026-05-26T17:28:27.281347Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🔴 $GOOGL — Alphabet Inc. | $382.97 (-1.2%)\n\n**Setup:** correction in play → Bias: **BEARISH**\n\n##",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1508884536170254539"
+    },
+    {
+      "id": 406,
+      "timestamp": "2026-05-26T17:28:27.596209Z",
+      "platform": "bluesky",
+      "type": "post",
+      "content_preview": "1/ $TSLA Tesla, Inc. 💰 426.01 (+1.9%)\n\nSetup: consolidation\nRSI: 61.5 | MACD: bearish\nVol: 0.8x avg-",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmrjdfefis2i"
+    },
+    {
+      "id": 407,
+      "timestamp": "2026-05-26T17:28:33.687424Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 408,
+      "timestamp": "2026-05-26T17:28:51.175571Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
     }
   ],
   "recent_interactions": [
