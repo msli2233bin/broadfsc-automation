@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-27T06:19:38.514311Z",
+  "generated_at": "2026-05-27T10:36:46.973412Z",
   "period": {
     "today": "2026-05-27",
     "yesterday": "2026-05-26",
@@ -7,13 +7,13 @@
     "month_ago": "2026-04-27"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 140,
-    "posts_month": 397,
+    "posts_today": 10,
+    "posts_week": 150,
+    "posts_month": 407,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 7,
-    "success_rate": 60.7
+    "success_rate": 60.4
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 18,
-      "month": 49,
-      "success": 47,
+      "today": 1,
+      "week": 19,
+      "month": 50,
+      "success": 48,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 31,
-      "month": 85,
-      "success": 79,
+      "today": 2,
+      "week": 33,
+      "month": 87,
+      "success": 81,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 26,
-      "month": 72,
+      "today": 2,
+      "week": 28,
+      "month": 74,
       "success": 37,
-      "failed": 35
+      "failed": 37
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 13,
-      "month": 43,
+      "today": 1,
+      "week": 14,
+      "month": 44,
       "success": 10,
-      "failed": 33
+      "failed": 34
     },
     "medium": {
       "today": 0,
@@ -73,18 +73,18 @@
       "failed": 3
     },
     "bluesky": {
-      "today": 0,
-      "week": 26,
-      "month": 64,
-      "success": 64,
+      "today": 2,
+      "week": 28,
+      "month": 66,
+      "success": 66,
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 26,
-      "month": 70,
+      "today": 2,
+      "week": 28,
+      "month": 72,
       "success": 4,
-      "failed": 66
+      "failed": 68
     }
   },
   "interactions_by_platform": {
@@ -199,6 +199,10 @@
       "posts": 22,
       "interactions": 0
     },
+    "2026-05-27": {
+      "posts": 10,
+      "interactions": 0
+    },
     "2026-04-29": {
       "posts": 0,
       "interactions": 2
@@ -212,7 +216,7 @@
     "8": 30,
     "19": 5,
     "16": 58,
-    "9": 34,
+    "9": 39,
     "14": 23,
     "12": 21,
     "13": 7,
@@ -220,100 +224,6 @@
     "15": 11
   },
   "recent_posts": [
-    {
-      "id": 389,
-      "timestamp": "2026-05-26T09:55:50.524662Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 The 'AI-Driven' Market: A Contrarian View on the Nasdaq's Extreme Overbuy\n\nThe Nasdaq has reached ",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 390,
-      "timestamp": "2026-05-26T09:55:53.558606Z",
-      "platform": "bluesky",
-      "type": "repurposed",
-      "content_preview": "📊 The Nasdaq has reached an extreme overbought level, with its RSI at 76. 🧵",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 391,
-      "timestamp": "2026-05-26T09:55:54.432623Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 The 'AI-Driven' Market: A Contrarian View on the Nasdaq's Extreme Overbuy",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 392,
-      "timestamp": "2026-05-26T09:55:55.270541Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$META Meta Platforms, Inc.\n\n💰 602.61 (-1.4%) | 5D: -0.1%\n📊 RSI: 24.9 | MACD: bearish\n📈 MA20: $628.41",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 393,
-      "timestamp": "2026-05-26T09:55:55.670041Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "\"Hey everyone, I wanted to share some TikTok insights with you all. If you're looking to grow your p",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1508770653799710780"
-    },
-    {
-      "id": 394,
-      "timestamp": "2026-05-26T09:55:55.866967Z",
-      "platform": "bluesky",
-      "type": "post",
-      "content_preview": "1/ $META Meta Platforms, Inc. 💰 616.81 (+0.6%)\n\nSetup: oversold bounce setup\nRSI: 26.0 | MACD: beari",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmqq27hvkx2c"
-    },
-    {
-      "id": 395,
-      "timestamp": "2026-05-26T09:56:02.750818Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 396,
-      "timestamp": "2026-05-26T09:56:11.924507Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 397,
-      "timestamp": "2026-05-26T15:18:31.773778Z",
-      "platform": "telegram_en",
-      "type": "earnings",
-      "content_preview": "<b>📊 Earnings Calendar: Week of May 26</b>\n\n\n📅 <b>Wednesday, May 27</b>\n  • Salesforce (CRM) @ $181.",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "254"
-    },
-    {
-      "id": 398,
-      "timestamp": "2026-05-26T15:18:32.729573Z",
-      "platform": "discord",
-      "type": "earnings",
-      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of May 26**\n\n\n📅 **Wednesday, May 27**\n  •",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1508851842623209712"
-    },
     {
       "id": 399,
       "timestamp": "2026-05-26T17:28:20.445238Z",
@@ -402,6 +312,100 @@
     {
       "id": 408,
       "timestamp": "2026-05-26T17:28:51.175571Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 409,
+      "timestamp": "2026-05-27T09:44:27.989285Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Alert: AI-Powered Rally Hits New Heights</b>\n\n🚨 The Nasdaq has just breached the $26,000",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "264"
+    },
+    {
+      "id": 410,
+      "timestamp": "2026-05-27T09:44:28.489499Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Alert: AI-Powered Rally Hits New Heights**\n\n🚨 The Nasdaq has just breached the $26,000 le",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1509130159096332338"
+    },
+    {
+      "id": 411,
+      "timestamp": "2026-05-27T09:44:29.063192Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Alert: AI-Powered Rally Hits New Heights\n\n🚨 The Nasdaq has just breached the $26,000 level,",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 412,
+      "timestamp": "2026-05-27T09:44:31.796201Z",
+      "platform": "bluesky",
+      "type": "repurposed",
+      "content_preview": "📊 🚨 The Nasdaq has just breached the $26,000 level, with a 76. 🧵",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 413,
+      "timestamp": "2026-05-27T09:44:32.844311Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Alert: AI-Powered Rally Hits New Heights",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 414,
+      "timestamp": "2026-05-27T09:44:33.910559Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "As the social media landscape continues to evolve, platforms like TikTok are redefining the rules of",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 415,
+      "timestamp": "2026-05-27T09:44:34.164342Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $445.5 (-0.6%)\n\n**Setup:** overbought, watching for pullb",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1509130183708246046"
+    },
+    {
+      "id": 416,
+      "timestamp": "2026-05-27T09:44:34.767854Z",
+      "platform": "bluesky",
+      "type": "post",
+      "content_preview": "1/ $TSLA Tesla, Inc. 💰 433.45 (-2.6%)\n\nSetup: overbought, watching for pullback\nRSI: 70.0 | MACD: bu",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmt7utej532x"
+    },
+    {
+      "id": 417,
+      "timestamp": "2026-05-27T09:44:46.159144Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 418,
+      "timestamp": "2026-05-27T09:44:59.672610Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
