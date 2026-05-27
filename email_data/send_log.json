@@ -358,5 +358,41 @@
     "time": "2026-05-25T16:22:23.894260",
     "message_id": "<202605251622.42071294282@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "msli2233bin+sarah@gmail.com",
+    "subject": "7,510.14's Hidden Enemy",
+    "personality": "iron_bull",
+    "date": "2026-05-27",
+    "time": "2026-05-27T17:18:20.259295",
+    "message_id": "<202605271718.87845987572@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+takeshi@gmail.com",
+    "subject": "Quick market note",
+    "personality": "iron_bull",
+    "date": "2026-05-27",
+    "time": "2026-05-27T17:18:26.555047",
+    "message_id": "<202605271718.91085008314@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+maria@gmail.com",
+    "subject": "Why the VIX says Gold is cheap",
+    "personality": "iron_bull",
+    "date": "2026-05-27",
+    "time": "2026-05-27T17:18:35.107088",
+    "message_id": "<202605271718.54707614697@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+raj@gmail.com",
+    "subject": "Why VIX says 'NO' to Bull",
+    "personality": "iron_bull",
+    "date": "2026-05-27",
+    "time": "2026-05-27T17:18:41.213106",
+    "message_id": "<202605271718.73961630749@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
