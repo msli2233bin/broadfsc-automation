@@ -3963,5 +3963,99 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1509218099004444785"
+  },
+  {
+    "id": 421,
+    "timestamp": "2026-05-27T17:20:28.211283Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Goldilocks Market: Not Too Hot, Not Too Cold, Just Right?</b>\n\nThe S&P 500 has been meandering ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "272"
+  },
+  {
+    "id": 422,
+    "timestamp": "2026-05-27T17:20:28.624091Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Goldilocks Market: Not Too Hot, Not Too Cold, Just Right?**\n\nThe S&P 500 has been meandering in ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1509244916293697648"
+  },
+  {
+    "id": 423,
+    "timestamp": "2026-05-27T17:20:31.668327Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Goldilocks Market: Not Too Hot, Not Too Cold, Just Right?\n\nThe S&P 500 has been meandering in a ti",
+    "status": "failed",
+    "error_msg": "HTTP 503"
+  },
+  {
+    "id": 424,
+    "timestamp": "2026-05-27T17:20:35.213505Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The S&P 500 has been meandering in a tight range, with some sectors flashing 'buy' signals. 🧵",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 425,
+    "timestamp": "2026-05-27T17:20:36.547687Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Goldilocks Market: Not Too Hot, Not Too Cold, Just Right?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 426,
+    "timestamp": "2026-05-27T17:20:52.183104Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$NVDA NVIDIA Corporation\n\n💰 225.83 (+2.3%) | 5D: +8.7%\n📊 RSI: 69.7 | MACD: bullish\n📈 MA20: $207.25 (",
+    "status": "failed",
+    "error_msg": "HTTPSConnectionPool(host='mastodon.social', port=443): Read timed out. (read timeout=15)"
+  },
+  {
+    "id": 427,
+    "timestamp": "2026-05-27T17:20:52.413931Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "Community Post:\n\n\"Hey fellow investors, let's talk about what sets top-performing financial advisors",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1509245016080650343"
+  },
+  {
+    "id": 428,
+    "timestamp": "2026-05-27T17:20:53.100122Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $COIN Coinbase Global, Inc. 💰 192.96 (-2.5%)\n\nSetup: correction in play\nRSI: 42.7 | MACD: bearish",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmtzerettc2s"
+  },
+  {
+    "id": 429,
+    "timestamp": "2026-05-27T17:21:01.579475Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 430,
+    "timestamp": "2026-05-27T17:21:14.048126Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
