@@ -1,0 +1,11 @@
+{
+  "platform": "mastodon",
+  "topic": "PLTR_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "$PLTR Palantir Technologies Inc.\n\n💰 136.6 (-0.2%) | 5D: +1.1%\n📊 RSI: 51.6 | MACD: bullish\n📈 MA20: $137.1 (below)\n🎯 Resistance: $182.43 | Support: $122.68\n📢 Vol: 0.8x avg\n\nSetup: consolidation → bias: NEUTRAL\n\n📱 Free TA signals: t.me/BroadInvestBot\n#$PLTR #Trading #TechnicalAnalysis #Stocks",
+  "content_type": "single",
+  "symbol": "PLTR",
+  "created": "2026-05-27T07:53:40.262719",
+  "used": false,
+  "chart_paths": {}
+}

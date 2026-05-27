@@ -1,0 +1,11 @@
+{
+  "platform": "discord",
+  "topic": "PLTR_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "## 🟡 $PLTR — Palantir Technologies Inc. | $136.6 (-0.2%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n### 📊 Technical Indicators\n| Indicator | Value | Signal |\n|-----------|-------|--------|\n| RSI(14) | 51.6 | Neutral ✅ |\n| MACD | -1.659 | Bullish (above signal) |\n| BB Position | 46.5% | Mid-range |\n| Volume | 0.8x avg | Low |\n\n### 📈 Key Levels\n| Level | Price |\n|-------|-------|\n| Resistance | $182.43 |\n| MA20 | $137.1 |\n| MA50 | $142.36 |\n| MA200 | $144.87 |\n| Support | $122.68 |\n\n### 📉 Performance\n1D: -0.2% | 5D: +1.1% | 20D: -4.5%\n\n### 🎯 Bollinger Bands\nUpper: $144.24 | Lower: $129.96\n\n---\n📱 Get daily TA signals for 5 stocks → **t.me/BroadInvestBot**\nFree. No spam. Just levels that matter.",
+  "content_type": "single",
+  "symbol": "PLTR",
+  "created": "2026-05-27T07:53:40.262843",
+  "used": false,
+  "chart_paths": {}
+}
