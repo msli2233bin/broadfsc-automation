@@ -3849,5 +3849,99 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 409,
+    "timestamp": "2026-05-27T09:44:27.989285Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Alert: AI-Powered Rally Hits New Heights</b>\n\n🚨 The Nasdaq has just breached the $26,000",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "264"
+  },
+  {
+    "id": 410,
+    "timestamp": "2026-05-27T09:44:28.489499Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Alert: AI-Powered Rally Hits New Heights**\n\n🚨 The Nasdaq has just breached the $26,000 le",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1509130159096332338"
+  },
+  {
+    "id": 411,
+    "timestamp": "2026-05-27T09:44:29.063192Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: AI-Powered Rally Hits New Heights\n\n🚨 The Nasdaq has just breached the $26,000 level,",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 412,
+    "timestamp": "2026-05-27T09:44:31.796201Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 🚨 The Nasdaq has just breached the $26,000 level, with a 76. 🧵",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 413,
+    "timestamp": "2026-05-27T09:44:32.844311Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: AI-Powered Rally Hits New Heights",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 414,
+    "timestamp": "2026-05-27T09:44:33.910559Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "As the social media landscape continues to evolve, platforms like TikTok are redefining the rules of",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 415,
+    "timestamp": "2026-05-27T09:44:34.164342Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $445.5 (-0.6%)\n\n**Setup:** overbought, watching for pullb",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1509130183708246046"
+  },
+  {
+    "id": 416,
+    "timestamp": "2026-05-27T09:44:34.767854Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $TSLA Tesla, Inc. 💰 433.45 (-2.6%)\n\nSetup: overbought, watching for pullback\nRSI: 70.0 | MACD: bu",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmt7utej532x"
+  },
+  {
+    "id": 417,
+    "timestamp": "2026-05-27T09:44:46.159144Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 418,
+    "timestamp": "2026-05-27T09:44:59.672610Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
