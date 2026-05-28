@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T14:47:55.732678Z",
+  "generated_at": "2026-05-28T18:11:00.350636Z",
   "period": {
     "today": "2026-05-28",
     "yesterday": "2026-05-27",
@@ -7,13 +7,13 @@
     "month_ago": "2026-04-28"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 150,
-    "posts_month": 429,
+    "posts_today": 12,
+    "posts_week": 152,
+    "posts_month": 431,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 7,
-    "success_rate": 60.1
+    "success_rate": 60.3
   },
   "platforms": {
     "tiktok": {
@@ -24,17 +24,17 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 19,
-      "month": 53,
-      "success": 51,
+      "today": 2,
+      "week": 20,
+      "month": 54,
+      "success": 52,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 33,
-      "month": 92,
-      "success": 86,
+      "today": 3,
+      "week": 34,
+      "month": 93,
+      "success": 87,
       "failed": 6
     },
     "mastodon": {
@@ -204,7 +204,7 @@
       "interactions": 0
     },
     "2026-05-28": {
-      "posts": 10,
+      "posts": 12,
       "interactions": 0
     },
     "2026-04-29": {
@@ -225,29 +225,9 @@
     "12": 21,
     "13": 7,
     "20": 7,
-    "15": 13
+    "15": 15
   },
   "recent_posts": [
-    {
-      "id": 421,
-      "timestamp": "2026-05-27T17:20:28.211283Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Goldilocks Market: Not Too Hot, Not Too Cold, Just Right?</b>\n\nThe S&P 500 has been meandering ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "272"
-    },
-    {
-      "id": 422,
-      "timestamp": "2026-05-27T17:20:28.624091Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Goldilocks Market: Not Too Hot, Not Too Cold, Just Right?**\n\nThe S&P 500 has been meandering in ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1509244916293697648"
-    },
     {
       "id": 423,
       "timestamp": "2026-05-27T17:20:31.668327Z",
@@ -415,6 +395,26 @@
       "content_preview": "Hatena Blog post",
       "status": "failed",
       "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 441,
+      "timestamp": "2026-05-28T15:44:19.794275Z",
+      "platform": "telegram_en",
+      "type": "earnings",
+      "content_preview": "<b>📊 Earnings Calendar: Week of May 28</b>\n\n\n📅 <b>Thursday, May 28</b>\n  • Costco (COST) @ $998.99 |",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "276"
+    },
+    {
+      "id": 442,
+      "timestamp": "2026-05-28T15:44:20.069801Z",
+      "platform": "discord",
+      "type": "earnings",
+      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of May 28**\n\n\n📅 **Thursday, May 28**\n  • ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1509583108800774155"
     }
   ],
   "recent_interactions": [
