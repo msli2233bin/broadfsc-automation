@@ -4057,5 +4057,99 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 431,
+    "timestamp": "2026-05-28T10:00:52.116829Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 May 28, 2026: The Great Tech Reversal - Are We on the Cusp of a Nasdaq Correction?</b>\n\nThe Nas",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "275"
+  },
+  {
+    "id": 432,
+    "timestamp": "2026-05-28T10:00:52.611215Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **May 28, 2026: The Great Tech Reversal - Are We on the Cusp of a Nasdaq Correction?**\n\nThe Nasdaq",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1509496674458927124"
+  },
+  {
+    "id": 433,
+    "timestamp": "2026-05-28T10:00:53.453838Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 May 28, 2026: The Great Tech Reversal - Are We on the Cusp of a Nasdaq Correction?\n\nThe Nasdaq Com",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 434,
+    "timestamp": "2026-05-28T10:00:57.115243Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The Nasdaq Composite is trading at an all-time high of 26,674. 🧵",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 435,
+    "timestamp": "2026-05-28T10:00:58.101830Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 May 28, 2026: The Great Tech Reversal - Are We on the Cusp of a Nasdaq Correction?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 436,
+    "timestamp": "2026-05-28T10:00:59.116537Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AMD Advanced Micro Devices, Inc.\n\n💰 424.1 (-5.7%) | 5D: -6.8%\n📊 RSI: 67.6 | MACD: bullish\n📈 MA20: $",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 437,
+    "timestamp": "2026-05-28T10:00:59.380450Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $COIN — Coinbase Global, Inc. | $192.96 (-2.5%)\n\n**Setup:** correction in play → Bias: **BEARIS",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1509496703726653522"
+  },
+  {
+    "id": 438,
+    "timestamp": "2026-05-28T10:00:59.836042Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $NVDA NVIDIA Corporation 💰 211.5 (+1.8%)\n\nSetup: consolidation\nRSI: 58.2 | MACD: bearish\nVol: 1.1",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmvrb4ay242h"
+  },
+  {
+    "id": 439,
+    "timestamp": "2026-05-28T10:01:05.645316Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 440,
+    "timestamp": "2026-05-28T10:01:14.894944Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
