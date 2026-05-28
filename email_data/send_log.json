@@ -394,5 +394,41 @@
     "time": "2026-05-27T17:18:41.213106",
     "message_id": "<202605271718.73961630749@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "test@example.com",
+    "subject": "Gold broke something important",
+    "personality": "alex",
+    "date": "2026-05-28",
+    "time": "2026-05-28T17:34:12.835621",
+    "message_id": "<202605281734.57980470808@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "david.chen.trader@gmail.com",
+    "subject": "VIX tells a different story",
+    "personality": "alex",
+    "date": "2026-05-28",
+    "time": "2026-05-28T17:34:18.725572",
+    "message_id": "<202605281734.20432445468@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "sarah.investor@outlook.com",
+    "subject": "Why the Dow just defied gravity",
+    "personality": "alex",
+    "date": "2026-05-28",
+    "time": "2026-05-28T17:34:26.770692",
+    "message_id": "<202605281734.71678892907@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+david@gmail.com",
+    "subject": "Crude's Fakeout: 88.93 Resistance",
+    "personality": "alex",
+    "date": "2026-05-28",
+    "time": "2026-05-28T17:34:35.186225",
+    "message_id": "<202605281734.17756350317@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
