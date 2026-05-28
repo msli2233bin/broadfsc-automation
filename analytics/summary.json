@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T07:08:06.146790Z",
+  "generated_at": "2026-05-28T11:04:58.673408Z",
   "period": {
     "today": "2026-05-28",
     "yesterday": "2026-05-27",
@@ -7,13 +7,13 @@
     "month_ago": "2026-04-28"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 140,
-    "posts_month": 419,
+    "posts_today": 10,
+    "posts_week": 150,
+    "posts_month": 429,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 7,
-    "success_rate": 60.4
+    "success_rate": 60.1
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 18,
-      "month": 52,
-      "success": 50,
+      "today": 1,
+      "week": 19,
+      "month": 53,
+      "success": 51,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 31,
-      "month": 90,
-      "success": 84,
+      "today": 2,
+      "week": 33,
+      "month": 92,
+      "success": 86,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 26,
-      "month": 76,
+      "today": 2,
+      "week": 28,
+      "month": 78,
       "success": 37,
-      "failed": 39
+      "failed": 41
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 13,
-      "month": 45,
+      "today": 1,
+      "week": 14,
+      "month": 46,
       "success": 10,
-      "failed": 35
+      "failed": 36
     },
     "medium": {
       "today": 0,
@@ -73,18 +73,18 @@
       "failed": 3
     },
     "bluesky": {
-      "today": 0,
-      "week": 26,
-      "month": 68,
-      "success": 68,
+      "today": 2,
+      "week": 28,
+      "month": 70,
+      "success": 70,
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 26,
-      "month": 74,
+      "today": 2,
+      "week": 28,
+      "month": 76,
       "success": 4,
-      "failed": 70
+      "failed": 72
     }
   },
   "interactions_by_platform": {
@@ -203,13 +203,17 @@
       "posts": 22,
       "interactions": 0
     },
+    "2026-05-28": {
+      "posts": 10,
+      "interactions": 0
+    },
     "2026-04-29": {
       "posts": 0,
       "interactions": 2
     }
   },
   "hourly_distribution": {
-    "10": 20,
+    "10": 25,
     "11": 7,
     "18": 11,
     "17": 12,
@@ -224,100 +228,6 @@
     "15": 13
   },
   "recent_posts": [
-    {
-      "id": 411,
-      "timestamp": "2026-05-27T09:44:29.063192Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Alert: AI-Powered Rally Hits New Heights\n\n🚨 The Nasdaq has just breached the $26,000 level,",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 412,
-      "timestamp": "2026-05-27T09:44:31.796201Z",
-      "platform": "bluesky",
-      "type": "repurposed",
-      "content_preview": "📊 🚨 The Nasdaq has just breached the $26,000 level, with a 76. 🧵",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 413,
-      "timestamp": "2026-05-27T09:44:32.844311Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Alert: AI-Powered Rally Hits New Heights",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 414,
-      "timestamp": "2026-05-27T09:44:33.910559Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "As the social media landscape continues to evolve, platforms like TikTok are redefining the rules of",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 415,
-      "timestamp": "2026-05-27T09:44:34.164342Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $445.5 (-0.6%)\n\n**Setup:** overbought, watching for pullb",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1509130183708246046"
-    },
-    {
-      "id": 416,
-      "timestamp": "2026-05-27T09:44:34.767854Z",
-      "platform": "bluesky",
-      "type": "post",
-      "content_preview": "1/ $TSLA Tesla, Inc. 💰 433.45 (-2.6%)\n\nSetup: overbought, watching for pullback\nRSI: 70.0 | MACD: bu",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmt7utej532x"
-    },
-    {
-      "id": 417,
-      "timestamp": "2026-05-27T09:44:46.159144Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 418,
-      "timestamp": "2026-05-27T09:44:59.672610Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 419,
-      "timestamp": "2026-05-27T15:33:54.545099Z",
-      "platform": "telegram_en",
-      "type": "earnings",
-      "content_preview": "<b>📊 Earnings Calendar: Week of May 27</b>\n\n\n📅 <b>Wednesday, May 27</b>\n  • Salesforce (CRM) @ $181.",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "265"
-    },
-    {
-      "id": 420,
-      "timestamp": "2026-05-27T15:33:55.129116Z",
-      "platform": "discord",
-      "type": "earnings",
-      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of May 27**\n\n\n📅 **Wednesday, May 27**\n  •",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1509218099004444785"
-    },
     {
       "id": 421,
       "timestamp": "2026-05-27T17:20:28.211283Z",
@@ -406,6 +316,100 @@
     {
       "id": 430,
       "timestamp": "2026-05-27T17:21:14.048126Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 431,
+      "timestamp": "2026-05-28T10:00:52.116829Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 May 28, 2026: The Great Tech Reversal - Are We on the Cusp of a Nasdaq Correction?</b>\n\nThe Nas",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "275"
+    },
+    {
+      "id": 432,
+      "timestamp": "2026-05-28T10:00:52.611215Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **May 28, 2026: The Great Tech Reversal - Are We on the Cusp of a Nasdaq Correction?**\n\nThe Nasdaq",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1509496674458927124"
+    },
+    {
+      "id": 433,
+      "timestamp": "2026-05-28T10:00:53.453838Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 May 28, 2026: The Great Tech Reversal - Are We on the Cusp of a Nasdaq Correction?\n\nThe Nasdaq Com",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 434,
+      "timestamp": "2026-05-28T10:00:57.115243Z",
+      "platform": "bluesky",
+      "type": "repurposed",
+      "content_preview": "📊 The Nasdaq Composite is trading at an all-time high of 26,674. 🧵",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 435,
+      "timestamp": "2026-05-28T10:00:58.101830Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 May 28, 2026: The Great Tech Reversal - Are We on the Cusp of a Nasdaq Correction?",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 436,
+      "timestamp": "2026-05-28T10:00:59.116537Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$AMD Advanced Micro Devices, Inc.\n\n💰 424.1 (-5.7%) | 5D: -6.8%\n📊 RSI: 67.6 | MACD: bullish\n📈 MA20: $",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 437,
+      "timestamp": "2026-05-28T10:00:59.380450Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🔴 $COIN — Coinbase Global, Inc. | $192.96 (-2.5%)\n\n**Setup:** correction in play → Bias: **BEARIS",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1509496703726653522"
+    },
+    {
+      "id": 438,
+      "timestamp": "2026-05-28T10:00:59.836042Z",
+      "platform": "bluesky",
+      "type": "post",
+      "content_preview": "1/ $NVDA NVIDIA Corporation 💰 211.5 (+1.8%)\n\nSetup: consolidation\nRSI: 58.2 | MACD: bearish\nVol: 1.1",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmvrb4ay242h"
+    },
+    {
+      "id": 439,
+      "timestamp": "2026-05-28T10:01:05.645316Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 440,
+      "timestamp": "2026-05-28T10:01:14.894944Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
