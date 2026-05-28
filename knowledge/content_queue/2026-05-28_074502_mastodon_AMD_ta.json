@@ -1,0 +1,11 @@
+{
+  "platform": "mastodon",
+  "topic": "AMD_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "$AMD Advanced Micro Devices, Inc.\n\n💰 495.54 (-1.7%) | 5D: +19.7%\n📊 RSI: 67.3 | MACD: bullish\n📈 MA20: $422.98 (above)\n🎯 Resistance: $510.21 | Support: $188.22\n📢 Vol: 0.7x avg\n\nSetup: uptrend intact → bias: BULLISH\n\n📱 Free TA signals: t.me/BroadInvestBot\n#$AMD #Trading #TechnicalAnalysis #Stocks",
+  "content_type": "single",
+  "symbol": "AMD",
+  "created": "2026-05-28T07:45:02.320886",
+  "used": false,
+  "chart_paths": {}
+}

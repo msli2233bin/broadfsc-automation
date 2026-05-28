@@ -1,0 +1,11 @@
+{
+  "platform": "discord",
+  "topic": "MSFT_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "## 🔴 $MSFT — Microsoft Corporation | $412.67 (-0.8%)\n\n**Setup:** correction in play → Bias: **BEARISH**\n\n### 📊 Technical Indicators\n| Indicator | Value | Signal |\n|-----------|-------|--------|\n| RSI(14) | 49.7 | Neutral ✅ |\n| MACD | 3.089 | Bearish (below signal) |\n| BB Position | 41.2% | Mid-range |\n| Volume | 0.8x avg | Low |\n\n### 📈 Key Levels\n| Level | Price |\n|-------|-------|\n| Resistance | $481.6 |\n| MA20 | $414.63 |\n| MA50 | $400.31 |\n| MA200 | $406.81 |\n| Support | $355.51 |\n\n### 📉 Performance\n1D: -0.8% | 5D: -0.9% | 20D: -3.6%\n\n### 🎯 Bollinger Bands\nUpper: $425.7 | Lower: $403.56\n\n---\n📱 Get daily TA signals for 5 stocks → **t.me/BroadInvestBot**\nFree. No spam. Just levels that matter.",
+  "content_type": "single",
+  "symbol": "MSFT",
+  "created": "2026-05-28T07:45:03.545682",
+  "used": false,
+  "chart_paths": {}
+}
