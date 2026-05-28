@@ -60,3 +60,7 @@
 
 ## 08:13:23 | sales/advisor_sales
 - [cross_domain_match] 🔗 跨域关联匹配: sales/advisor_sales 在 FUSION_INDEX 中有对应融合策略
+
+## 08:04:42 | marketing/content_strategy
+- [marketing_insight] 📱 检测到营销洞察 (content_strategy)，建议生成新平台内容
+- [cross_domain_match] 🔗 跨域关联匹配: marketing/content_strategy 在 FUSION_INDEX 中有对应融合策略
