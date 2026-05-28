@@ -4151,5 +4151,25 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 441,
+    "timestamp": "2026-05-28T15:44:19.794275Z",
+    "platform": "telegram_en",
+    "type": "earnings",
+    "content_preview": "<b>📊 Earnings Calendar: Week of May 28</b>\n\n\n📅 <b>Thursday, May 28</b>\n  • Costco (COST) @ $998.99 |",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "276"
+  },
+  {
+    "id": 442,
+    "timestamp": "2026-05-28T15:44:20.069801Z",
+    "platform": "discord",
+    "type": "earnings",
+    "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of May 28**\n\n\n📅 **Thursday, May 28**\n  • ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1509583108800774155"
   }
 ]
