@@ -62,8 +62,8 @@
     "attributes": {},
     "added_date": "2026-04-30",
     "status": "active",
-    "emails_sent": 4,
-    "last_email_date": "2026-05-22",
+    "emails_sent": 5,
+    "last_email_date": "2026-05-29",
     "opens": 0,
     "clicks": 0,
     "bounced": false
@@ -80,8 +80,8 @@
     "attributes": {},
     "added_date": "2026-04-30",
     "status": "active",
-    "emails_sent": 4,
-    "last_email_date": "2026-05-25",
+    "emails_sent": 5,
+    "last_email_date": "2026-05-29",
     "opens": 0,
     "clicks": 0,
     "bounced": false
@@ -98,8 +98,8 @@
     "attributes": {},
     "added_date": "2026-04-30",
     "status": "active",
-    "emails_sent": 4,
-    "last_email_date": "2026-05-25",
+    "emails_sent": 5,
+    "last_email_date": "2026-05-29",
     "opens": 0,
     "clicks": 0,
     "bounced": false

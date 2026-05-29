@@ -430,5 +430,32 @@
     "time": "2026-05-28T17:34:35.186225",
     "message_id": "<202605281734.17756350317@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "takeshi.yamamoto@yahoo.co.jp",
+    "subject": "Gold broke something important",
+    "personality": "thomas",
+    "date": "2026-05-29",
+    "time": "2026-05-29T17:32:59.508797",
+    "message_id": "<202605291732.22340655685@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "maria.santos.pro@gmail.com",
+    "subject": "S&P 500 at 7,581: The VIX says otherwise",
+    "personality": "thomas",
+    "date": "2026-05-29",
+    "time": "2026-05-29T17:33:05.311836",
+    "message_id": "<202605291733.55105938564@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "raj.patel.invest@hotmail.com",
+    "subject": "Why the S&P 500 might be due for a pullback",
+    "personality": "thomas",
+    "date": "2026-05-29",
+    "time": "2026-05-29T17:33:10.645791",
+    "message_id": "<202605291733.21583666335@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
