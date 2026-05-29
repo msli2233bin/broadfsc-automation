@@ -4265,5 +4265,25 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 453,
+    "timestamp": "2026-05-29T14:56:11.883198Z",
+    "platform": "telegram_en",
+    "type": "earnings",
+    "content_preview": "<b>📊 Earnings Calendar: Week of May 29</b>\n\n\n📅 <b>Monday, Jun 01</b>\n  • Meituan (3690.HK) @ $73.45 ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "287"
+  },
+  {
+    "id": 454,
+    "timestamp": "2026-05-29T14:56:12.336897Z",
+    "platform": "discord",
+    "type": "earnings",
+    "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of May 29**\n\n\n📅 **Monday, Jun 01**\n  • Me",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1509933384183578654"
   }
 ]
