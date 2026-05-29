@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-29T08:41:05.827109Z",
+  "generated_at": "2026-05-29T12:14:12.074668Z",
   "period": {
     "today": "2026-05-29",
     "yesterday": "2026-05-28",
@@ -7,13 +7,13 @@
     "month_ago": "2026-04-29"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 130,
-    "posts_month": 431,
+    "posts_today": 10,
+    "posts_week": 140,
+    "posts_month": 441,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 7,
-    "success_rate": 60.3
+    "success_rate": 60.1
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 17,
-      "month": 54,
-      "success": 52,
+      "today": 1,
+      "week": 18,
+      "month": 55,
+      "success": 53,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 29,
-      "month": 93,
-      "success": 87,
+      "today": 2,
+      "week": 31,
+      "month": 95,
+      "success": 89,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 24,
-      "month": 78,
+      "today": 2,
+      "week": 26,
+      "month": 80,
       "success": 37,
-      "failed": 41
+      "failed": 43
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 12,
-      "month": 46,
+      "today": 1,
+      "week": 13,
+      "month": 47,
       "success": 10,
-      "failed": 36
+      "failed": 37
     },
     "medium": {
       "today": 0,
@@ -73,18 +73,18 @@
       "failed": 3
     },
     "bluesky": {
-      "today": 0,
-      "week": 24,
-      "month": 70,
-      "success": 70,
+      "today": 2,
+      "week": 26,
+      "month": 72,
+      "success": 72,
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 24,
-      "month": 76,
+      "today": 2,
+      "week": 26,
+      "month": 78,
       "success": 4,
-      "failed": 72
+      "failed": 74
     }
   },
   "interactions_by_platform": {
@@ -207,6 +207,10 @@
       "posts": 12,
       "interactions": 0
     },
+    "2026-05-29": {
+      "posts": 10,
+      "interactions": 0
+    },
     "2026-04-29": {
       "posts": 0,
       "interactions": 2
@@ -220,7 +224,7 @@
     "8": 30,
     "19": 5,
     "16": 58,
-    "9": 39,
+    "9": 44,
     "14": 23,
     "12": 21,
     "13": 7,
@@ -228,100 +232,6 @@
     "15": 15
   },
   "recent_posts": [
-    {
-      "id": 423,
-      "timestamp": "2026-05-27T17:20:31.668327Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Goldilocks Market: Not Too Hot, Not Too Cold, Just Right?\n\nThe S&P 500 has been meandering in a ti",
-      "status": "failed",
-      "error_msg": "HTTP 503"
-    },
-    {
-      "id": 424,
-      "timestamp": "2026-05-27T17:20:35.213505Z",
-      "platform": "bluesky",
-      "type": "repurposed",
-      "content_preview": "📊 The S&P 500 has been meandering in a tight range, with some sectors flashing 'buy' signals. 🧵",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 425,
-      "timestamp": "2026-05-27T17:20:36.547687Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Goldilocks Market: Not Too Hot, Not Too Cold, Just Right?",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 426,
-      "timestamp": "2026-05-27T17:20:52.183104Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$NVDA NVIDIA Corporation\n\n💰 225.83 (+2.3%) | 5D: +8.7%\n📊 RSI: 69.7 | MACD: bullish\n📈 MA20: $207.25 (",
-      "status": "failed",
-      "error_msg": "HTTPSConnectionPool(host='mastodon.social', port=443): Read timed out. (read timeout=15)"
-    },
-    {
-      "id": 427,
-      "timestamp": "2026-05-27T17:20:52.413931Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "Community Post:\n\n\"Hey fellow investors, let's talk about what sets top-performing financial advisors",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1509245016080650343"
-    },
-    {
-      "id": 428,
-      "timestamp": "2026-05-27T17:20:53.100122Z",
-      "platform": "bluesky",
-      "type": "post",
-      "content_preview": "1/ $COIN Coinbase Global, Inc. 💰 192.96 (-2.5%)\n\nSetup: correction in play\nRSI: 42.7 | MACD: bearish",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmtzerettc2s"
-    },
-    {
-      "id": 429,
-      "timestamp": "2026-05-27T17:21:01.579475Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 430,
-      "timestamp": "2026-05-27T17:21:14.048126Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 431,
-      "timestamp": "2026-05-28T10:00:52.116829Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 May 28, 2026: The Great Tech Reversal - Are We on the Cusp of a Nasdaq Correction?</b>\n\nThe Nas",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "275"
-    },
-    {
-      "id": 432,
-      "timestamp": "2026-05-28T10:00:52.611215Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **May 28, 2026: The Great Tech Reversal - Are We on the Cusp of a Nasdaq Correction?**\n\nThe Nasdaq",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1509496674458927124"
-    },
     {
       "id": 433,
       "timestamp": "2026-05-28T10:00:53.453838Z",
@@ -415,6 +325,100 @@
       "status": "success",
       "error_msg": "",
       "post_id": "1509583108800774155"
+    },
+    {
+      "id": 443,
+      "timestamp": "2026-05-29T09:53:32.965071Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 A Turning Point in Tech: What's Behind the Nasdaq's 5-Month High?</b>\n\nThe Nasdaq composite ind",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "286"
+    },
+    {
+      "id": 444,
+      "timestamp": "2026-05-29T09:53:33.237015Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **A Turning Point in Tech: What's Behind the Nasdaq's 5-Month High?**\n\nThe Nasdaq composite index ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1509857220115038208"
+    },
+    {
+      "id": 445,
+      "timestamp": "2026-05-29T09:53:34.061009Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 A Turning Point in Tech: What's Behind the Nasdaq's 5-Month High?\n\nThe Nasdaq composite index has ",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 446,
+      "timestamp": "2026-05-29T09:53:39.250917Z",
+      "platform": "bluesky",
+      "type": "repurposed",
+      "content_preview": "📊 The Nasdaq composite index has finally broken above the 52-week high of 25,709, reaching a level o",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 447,
+      "timestamp": "2026-05-29T09:53:40.115772Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 A Turning Point in Tech: What's Behind the Nasdaq's 5-Month High?",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 448,
+      "timestamp": "2026-05-29T09:53:41.483158Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$NVDA NVIDIA Corporation\n\n💰 219.44 (+2.0%) | 5D: +10.6%\n📊 RSI: 64.9 | MACD: bullish\n📈 MA20: $204.69 ",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 449,
+      "timestamp": "2026-05-29T09:53:41.706684Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $467.51 (+4.0%)\n\n**Setup:** overbought, watching for pull",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1509857255997177947"
+    },
+    {
+      "id": 450,
+      "timestamp": "2026-05-29T09:53:41.988715Z",
+      "platform": "bluesky",
+      "type": "post",
+      "content_preview": "1/ $NVDA NVIDIA Corporation 💰 219.44 (+2.0%)\n\nSetup: uptrend intact\nRSI: 64.9 | MACD: bullish\nVol: 1",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmybcxzqke2r"
+    },
+    {
+      "id": 451,
+      "timestamp": "2026-05-29T09:53:46.697891Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 452,
+      "timestamp": "2026-05-29T09:54:14.692349Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
     }
   ],
   "recent_interactions": [
