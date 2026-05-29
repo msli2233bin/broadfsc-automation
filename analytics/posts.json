@@ -4285,5 +4285,99 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1509933384183578654"
+  },
+  {
+    "id": 455,
+    "timestamp": "2026-05-29T17:35:02.330903Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The Great Rotation: A Data-Driven Case for a Global Market Shift</b>\n\nAs we approach the end of",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "294"
+  },
+  {
+    "id": 456,
+    "timestamp": "2026-05-29T17:35:04.191603Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The Great Rotation: A Data-Driven Case for a Global Market Shift**\n\nAs we approach the end of Q2",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1509973358127874169"
+  },
+  {
+    "id": 457,
+    "timestamp": "2026-05-29T17:35:04.600654Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The Great Rotation: A Data-Driven Case for a Global Market Shift\n\nAs we approach the end of Q2, th",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 458,
+    "timestamp": "2026-05-29T17:35:09.031665Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 As we approach the end of Q2, the S&P 500 stands at 7,582. 🧵",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 459,
+    "timestamp": "2026-05-29T17:35:09.804007Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The Great Rotation: A Data-Driven Case for a Global Market Shift",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 460,
+    "timestamp": "2026-05-29T17:35:10.885387Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$COIN Coinbase Global, Inc.\n\n💰 184.99 (-4.4%) | 5D: -5.3%\n📊 RSI: 40.9 | MACD: bearish\n📈 MA20: $196.5",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 461,
+    "timestamp": "2026-05-29T17:35:11.128075Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $META — Meta Platforms, Inc. | $602.61 (-1.4%)\n\n**Setup:** oversold bounce setup → Bias: **BULL",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1509973393741578340"
+  },
+  {
+    "id": 462,
+    "timestamp": "2026-05-29T17:35:11.484672Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "\"Webull's secret sauce? Emphasizing education & financial literacy. By empowering investors, they're",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmz346rxc523"
+  },
+  {
+    "id": 463,
+    "timestamp": "2026-05-29T17:35:17.223973Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 464,
+    "timestamp": "2026-05-29T17:35:20.079977Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
