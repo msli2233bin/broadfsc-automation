@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-29T16:14:21.432315Z",
+  "generated_at": "2026-05-29T19:08:09.722185Z",
   "period": {
     "today": "2026-05-29",
     "yesterday": "2026-05-28",
@@ -7,13 +7,13 @@
     "month_ago": "2026-04-29"
   },
   "totals": {
-    "posts_today": 12,
-    "posts_week": 142,
-    "posts_month": 443,
+    "posts_today": 22,
+    "posts_week": 152,
+    "posts_month": 453,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 7,
-    "success_rate": 60.3
+    "success_rate": 60.0
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 2,
-      "week": 19,
-      "month": 56,
-      "success": 54,
+      "today": 3,
+      "week": 20,
+      "month": 57,
+      "success": 55,
       "failed": 2
     },
     "discord": {
-      "today": 3,
-      "week": 32,
-      "month": 96,
-      "success": 90,
+      "today": 5,
+      "week": 34,
+      "month": 98,
+      "success": 92,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 26,
-      "month": 80,
+      "today": 4,
+      "week": 28,
+      "month": 82,
       "success": 37,
-      "failed": 43
+      "failed": 45
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 13,
-      "month": 47,
+      "today": 2,
+      "week": 14,
+      "month": 48,
       "success": 10,
-      "failed": 37
+      "failed": 38
     },
     "medium": {
       "today": 0,
@@ -73,18 +73,18 @@
       "failed": 3
     },
     "bluesky": {
-      "today": 2,
-      "week": 26,
-      "month": 72,
-      "success": 72,
+      "today": 4,
+      "week": 28,
+      "month": 74,
+      "success": 74,
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 26,
-      "month": 78,
+      "today": 4,
+      "week": 28,
+      "month": 80,
       "success": 4,
-      "failed": 74
+      "failed": 76
     }
   },
   "interactions_by_platform": {
@@ -208,7 +208,7 @@
       "interactions": 0
     },
     "2026-05-29": {
-      "posts": 12,
+      "posts": 22,
       "interactions": 0
     },
     "2026-04-29": {
@@ -220,7 +220,7 @@
     "10": 25,
     "11": 7,
     "18": 11,
-    "17": 12,
+    "17": 17,
     "8": 30,
     "19": 5,
     "16": 58,
@@ -232,102 +232,6 @@
     "15": 15
   },
   "recent_posts": [
-    {
-      "id": 435,
-      "timestamp": "2026-05-28T10:00:58.101830Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 May 28, 2026: The Great Tech Reversal - Are We on the Cusp of a Nasdaq Correction?",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 436,
-      "timestamp": "2026-05-28T10:00:59.116537Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$AMD Advanced Micro Devices, Inc.\n\n💰 424.1 (-5.7%) | 5D: -6.8%\n📊 RSI: 67.6 | MACD: bullish\n📈 MA20: $",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 437,
-      "timestamp": "2026-05-28T10:00:59.380450Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🔴 $COIN — Coinbase Global, Inc. | $192.96 (-2.5%)\n\n**Setup:** correction in play → Bias: **BEARIS",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1509496703726653522"
-    },
-    {
-      "id": 438,
-      "timestamp": "2026-05-28T10:00:59.836042Z",
-      "platform": "bluesky",
-      "type": "post",
-      "content_preview": "1/ $NVDA NVIDIA Corporation 💰 211.5 (+1.8%)\n\nSetup: consolidation\nRSI: 58.2 | MACD: bearish\nVol: 1.1",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmvrb4ay242h"
-    },
-    {
-      "id": 439,
-      "timestamp": "2026-05-28T10:01:05.645316Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 440,
-      "timestamp": "2026-05-28T10:01:14.894944Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 441,
-      "timestamp": "2026-05-28T15:44:19.794275Z",
-      "platform": "telegram_en",
-      "type": "earnings",
-      "content_preview": "<b>📊 Earnings Calendar: Week of May 28</b>\n\n\n📅 <b>Thursday, May 28</b>\n  • Costco (COST) @ $998.99 |",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "276"
-    },
-    {
-      "id": 442,
-      "timestamp": "2026-05-28T15:44:20.069801Z",
-      "platform": "discord",
-      "type": "earnings",
-      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of May 28**\n\n\n📅 **Thursday, May 28**\n  • ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1509583108800774155"
-    },
-    {
-      "id": 443,
-      "timestamp": "2026-05-29T09:53:32.965071Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 A Turning Point in Tech: What's Behind the Nasdaq's 5-Month High?</b>\n\nThe Nasdaq composite ind",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "286"
-    },
-    {
-      "id": 444,
-      "timestamp": "2026-05-29T09:53:33.237015Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **A Turning Point in Tech: What's Behind the Nasdaq's 5-Month High?**\n\nThe Nasdaq composite index ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1509857220115038208"
-    },
     {
       "id": 445,
       "timestamp": "2026-05-29T09:53:34.061009Z",
@@ -421,6 +325,100 @@
       "status": "success",
       "error_msg": "",
       "post_id": "1509933384183578654"
+    },
+    {
+      "id": 455,
+      "timestamp": "2026-05-29T17:35:02.330903Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 The Great Rotation: A Data-Driven Case for a Global Market Shift</b>\n\nAs we approach the end of",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "294"
+    },
+    {
+      "id": 456,
+      "timestamp": "2026-05-29T17:35:04.191603Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **The Great Rotation: A Data-Driven Case for a Global Market Shift**\n\nAs we approach the end of Q2",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1509973358127874169"
+    },
+    {
+      "id": 457,
+      "timestamp": "2026-05-29T17:35:04.600654Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 The Great Rotation: A Data-Driven Case for a Global Market Shift\n\nAs we approach the end of Q2, th",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 458,
+      "timestamp": "2026-05-29T17:35:09.031665Z",
+      "platform": "bluesky",
+      "type": "repurposed",
+      "content_preview": "📊 As we approach the end of Q2, the S&P 500 stands at 7,582. 🧵",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 459,
+      "timestamp": "2026-05-29T17:35:09.804007Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 The Great Rotation: A Data-Driven Case for a Global Market Shift",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 460,
+      "timestamp": "2026-05-29T17:35:10.885387Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$COIN Coinbase Global, Inc.\n\n💰 184.99 (-4.4%) | 5D: -5.3%\n📊 RSI: 40.9 | MACD: bearish\n📈 MA20: $196.5",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 461,
+      "timestamp": "2026-05-29T17:35:11.128075Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟢 $META — Meta Platforms, Inc. | $602.61 (-1.4%)\n\n**Setup:** oversold bounce setup → Bias: **BULL",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1509973393741578340"
+    },
+    {
+      "id": 462,
+      "timestamp": "2026-05-29T17:35:11.484672Z",
+      "platform": "bluesky",
+      "type": "post",
+      "content_preview": "\"Webull's secret sauce? Emphasizing education & financial literacy. By empowering investors, they're",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmz346rxc523"
+    },
+    {
+      "id": 463,
+      "timestamp": "2026-05-29T17:35:17.223973Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 464,
+      "timestamp": "2026-05-29T17:35:20.079977Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
     }
   ],
   "recent_interactions": [
