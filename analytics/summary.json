@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-29T12:14:12.074668Z",
+  "generated_at": "2026-05-29T16:14:21.432315Z",
   "period": {
     "today": "2026-05-29",
     "yesterday": "2026-05-28",
@@ -7,13 +7,13 @@
     "month_ago": "2026-04-29"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 140,
-    "posts_month": 441,
+    "posts_today": 12,
+    "posts_week": 142,
+    "posts_month": 443,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 7,
-    "success_rate": 60.1
+    "success_rate": 60.3
   },
   "platforms": {
     "tiktok": {
@@ -24,17 +24,17 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 18,
-      "month": 55,
-      "success": 53,
+      "today": 2,
+      "week": 19,
+      "month": 56,
+      "success": 54,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 31,
-      "month": 95,
-      "success": 89,
+      "today": 3,
+      "week": 32,
+      "month": 96,
+      "success": 90,
       "failed": 6
     },
     "mastodon": {
@@ -208,7 +208,7 @@
       "interactions": 0
     },
     "2026-05-29": {
-      "posts": 10,
+      "posts": 12,
       "interactions": 0
     },
     "2026-04-29": {
@@ -225,31 +225,13 @@
     "19": 5,
     "16": 58,
     "9": 44,
-    "14": 23,
+    "14": 25,
     "12": 21,
     "13": 7,
     "20": 7,
     "15": 15
   },
   "recent_posts": [
-    {
-      "id": 433,
-      "timestamp": "2026-05-28T10:00:53.453838Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 May 28, 2026: The Great Tech Reversal - Are We on the Cusp of a Nasdaq Correction?\n\nThe Nasdaq Com",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 434,
-      "timestamp": "2026-05-28T10:00:57.115243Z",
-      "platform": "bluesky",
-      "type": "repurposed",
-      "content_preview": "📊 The Nasdaq Composite is trading at an all-time high of 26,674. 🧵",
-      "status": "success",
-      "error_msg": ""
-    },
     {
       "id": 435,
       "timestamp": "2026-05-28T10:00:58.101830Z",
@@ -419,6 +401,26 @@
       "content_preview": "Hatena Blog post",
       "status": "failed",
       "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 453,
+      "timestamp": "2026-05-29T14:56:11.883198Z",
+      "platform": "telegram_en",
+      "type": "earnings",
+      "content_preview": "<b>📊 Earnings Calendar: Week of May 29</b>\n\n\n📅 <b>Monday, Jun 01</b>\n  • Meituan (3690.HK) @ $73.45 ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "287"
+    },
+    {
+      "id": 454,
+      "timestamp": "2026-05-29T14:56:12.336897Z",
+      "platform": "discord",
+      "type": "earnings",
+      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of May 29**\n\n\n📅 **Monday, Jun 01**\n  • Me",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1509933384183578654"
     }
   ],
   "recent_interactions": [
