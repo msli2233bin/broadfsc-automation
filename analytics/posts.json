@@ -4171,5 +4171,99 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1509583108800774155"
+  },
+  {
+    "id": 443,
+    "timestamp": "2026-05-29T09:53:32.965071Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 A Turning Point in Tech: What's Behind the Nasdaq's 5-Month High?</b>\n\nThe Nasdaq composite ind",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "286"
+  },
+  {
+    "id": 444,
+    "timestamp": "2026-05-29T09:53:33.237015Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **A Turning Point in Tech: What's Behind the Nasdaq's 5-Month High?**\n\nThe Nasdaq composite index ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1509857220115038208"
+  },
+  {
+    "id": 445,
+    "timestamp": "2026-05-29T09:53:34.061009Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 A Turning Point in Tech: What's Behind the Nasdaq's 5-Month High?\n\nThe Nasdaq composite index has ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 446,
+    "timestamp": "2026-05-29T09:53:39.250917Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The Nasdaq composite index has finally broken above the 52-week high of 25,709, reaching a level o",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 447,
+    "timestamp": "2026-05-29T09:53:40.115772Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 A Turning Point in Tech: What's Behind the Nasdaq's 5-Month High?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 448,
+    "timestamp": "2026-05-29T09:53:41.483158Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$NVDA NVIDIA Corporation\n\n💰 219.44 (+2.0%) | 5D: +10.6%\n📊 RSI: 64.9 | MACD: bullish\n📈 MA20: $204.69 ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 449,
+    "timestamp": "2026-05-29T09:53:41.706684Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $467.51 (+4.0%)\n\n**Setup:** overbought, watching for pull",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1509857255997177947"
+  },
+  {
+    "id": 450,
+    "timestamp": "2026-05-29T09:53:41.988715Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $NVDA NVIDIA Corporation 💰 219.44 (+2.0%)\n\nSetup: uptrend intact\nRSI: 64.9 | MACD: bullish\nVol: 1",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mmybcxzqke2r"
+  },
+  {
+    "id": 451,
+    "timestamp": "2026-05-29T09:53:46.697891Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 452,
+    "timestamp": "2026-05-29T09:54:14.692349Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
