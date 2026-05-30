@@ -4473,5 +4473,99 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 475,
+    "timestamp": "2026-05-30T15:08:56.421849Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Insight: The AI-Driven Rally Reaches New Heights, But at What Cost?</b>\n\nThe Nasdaq has ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "298"
+  },
+  {
+    "id": 476,
+    "timestamp": "2026-05-30T15:08:56.706713Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Insight: The AI-Driven Rally Reaches New Heights, But at What Cost?**\n\nThe Nasdaq has sur",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1510298978795917352"
+  },
+  {
+    "id": 477,
+    "timestamp": "2026-05-30T15:08:56.991753Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The AI-Driven Rally Reaches New Heights, But at What Cost?\n\nThe Nasdaq has surged ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 478,
+    "timestamp": "2026-05-30T15:09:01.627557Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The Nasdaq has surged 24. 🧵",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 479,
+    "timestamp": "2026-05-30T15:09:02.738632Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The AI-Driven Rally Reaches New Heights, But at What Cost?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 480,
+    "timestamp": "2026-05-30T15:09:03.779964Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$META Meta Platforms, Inc.\n\n💰 612.34 (+0.3%) | 5D: +0.2%\n📊 RSI: 54.9 | MACD: bearish\n📈 MA20: $615.79",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 481,
+    "timestamp": "2026-05-30T15:09:04.004491Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $COIN — Coinbase Global, Inc. | $189.44 (-3.1%)\n\n**Setup:** correction in play → Bias: **BEARIS",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1510299009703612517"
+  },
+  {
+    "id": 482,
+    "timestamp": "2026-05-30T15:09:04.857843Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $AMZN Amazon.com, Inc. 💰 268.46 (+1.3%)\n\nSetup: consolidation\nRSI: 50.2 | MACD: bearish\nVol: 0.8x",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mn3dftpmg224"
+  },
+  {
+    "id": 483,
+    "timestamp": "2026-05-30T15:09:14.833177Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 484,
+    "timestamp": "2026-05-30T15:09:25.278228Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
