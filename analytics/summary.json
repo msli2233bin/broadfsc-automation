@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-05-29T22:50:13.431455Z",
+  "generated_at": "2026-05-30T00:08:48.875973Z",
   "period": {
-    "today": "2026-05-29",
-    "yesterday": "2026-05-28",
-    "week_ago": "2026-05-22",
-    "month_ago": "2026-04-29"
+    "today": "2026-05-30",
+    "yesterday": "2026-05-29",
+    "week_ago": "2026-05-23",
+    "month_ago": "2026-04-30"
   },
   "totals": {
-    "posts_today": 22,
-    "posts_week": 152,
+    "posts_today": 0,
+    "posts_week": 130,
     "posts_month": 453,
     "interactions_today": 0,
     "interactions_week": 0,
-    "interactions_month": 7,
+    "interactions_month": 5,
     "success_rate": 60.0
   },
   "platforms": {
@@ -24,22 +24,22 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 3,
-      "week": 20,
+      "today": 0,
+      "week": 17,
       "month": 57,
       "success": 55,
       "failed": 2
     },
     "discord": {
-      "today": 5,
-      "week": 34,
+      "today": 0,
+      "week": 29,
       "month": 98,
       "success": 92,
       "failed": 6
     },
     "mastodon": {
-      "today": 4,
-      "week": 28,
+      "today": 0,
+      "week": 24,
       "month": 82,
       "success": 37,
       "failed": 45
@@ -52,8 +52,8 @@
       "failed": 2
     },
     "threads": {
-      "today": 2,
-      "week": 14,
+      "today": 0,
+      "week": 12,
       "month": 48,
       "success": 10,
       "failed": 38
@@ -73,15 +73,15 @@
       "failed": 3
     },
     "bluesky": {
-      "today": 4,
-      "week": 28,
+      "today": 0,
+      "week": 24,
       "month": 74,
       "success": 74,
       "failed": 0
     },
     "hatena": {
-      "today": 4,
-      "week": 28,
+      "today": 0,
+      "week": 24,
       "month": 80,
       "success": 4,
       "failed": 76
@@ -100,7 +100,7 @@
     }
   },
   "action_breakdown": {
-    "proactive_outreach": 7
+    "proactive_outreach": 5
   },
   "daily_trend": {
     "2026-04-30": {
@@ -210,10 +210,6 @@
     "2026-05-29": {
       "posts": 22,
       "interactions": 0
-    },
-    "2026-04-29": {
-      "posts": 0,
-      "interactions": 2
     }
   },
   "hourly_distribution": {
