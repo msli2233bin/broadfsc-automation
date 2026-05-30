@@ -4379,5 +4379,99 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 465,
+    "timestamp": "2026-05-30T08:27:28.413056Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Insight: A Surprising Shift in Global Markets</b>\n\nThe S&P 500 has risen 4.6% in the pas",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "297"
+  },
+  {
+    "id": 466,
+    "timestamp": "2026-05-30T08:27:28.886801Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Insight: A Surprising Shift in Global Markets**\n\nThe S&P 500 has risen 4.6% in the past t",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1510197946556223548"
+  },
+  {
+    "id": 467,
+    "timestamp": "2026-05-30T08:27:29.398100Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: A Surprising Shift in Global Markets\n\nThe S&P 500 has risen 4.6% in the past two w",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 468,
+    "timestamp": "2026-05-30T08:27:35.904827Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The S&P 500 has risen 4. 🧵",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 469,
+    "timestamp": "2026-05-30T08:27:37.928865Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: A Surprising Shift in Global Markets",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 470,
+    "timestamp": "2026-05-30T08:27:39.392218Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$GOOGL Alphabet Inc.\n\n💰 402.62 (+3.9%) | 5D: +1.1%\n📊 RSI: 82.9 | MACD: bullish\n📈 MA20: $366.88 (abov",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 471,
+    "timestamp": "2026-05-30T08:27:39.729192Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $TSLA — Tesla, Inc. | $426.01 (+1.9%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n### 📊 Tech",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1510197992676917348"
+  },
+  {
+    "id": 472,
+    "timestamp": "2026-05-30T08:27:40.394070Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $GOOGL Alphabet Inc. 💰 388.88 (+1.5%)\n\nSetup: consolidation\nRSI: 50.3 | MACD: bearish\nVol: 0.9x a",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mn2my2y7dp23"
+  },
+  {
+    "id": 473,
+    "timestamp": "2026-05-30T08:27:48.001367Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 474,
+    "timestamp": "2026-05-30T08:28:15.209559Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
