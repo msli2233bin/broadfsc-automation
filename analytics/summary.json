@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-31T07:44:23.432436Z",
+  "generated_at": "2026-05-31T10:14:41.443147Z",
   "period": {
     "today": "2026-05-31",
     "yesterday": "2026-05-30",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-01"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 140,
-    "posts_month": 471,
+    "posts_today": 10,
+    "posts_week": 150,
+    "posts_month": 481,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 5,
-    "success_rate": 59.9
+    "success_rate": 59.7
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 18,
-      "month": 59,
-      "success": 57,
+      "today": 1,
+      "week": 19,
+      "month": 60,
+      "success": 58,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 31,
-      "month": 102,
-      "success": 96,
+      "today": 2,
+      "week": 33,
+      "month": 104,
+      "success": 98,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 26,
-      "month": 86,
+      "today": 2,
+      "week": 28,
+      "month": 88,
       "success": 37,
-      "failed": 49
+      "failed": 51
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 13,
-      "month": 50,
+      "today": 1,
+      "week": 14,
+      "month": 51,
       "success": 10,
-      "failed": 40
+      "failed": 41
     },
     "medium": {
       "today": 0,
@@ -73,18 +73,18 @@
       "failed": 3
     },
     "bluesky": {
-      "today": 0,
-      "week": 26,
-      "month": 78,
-      "success": 78,
+      "today": 2,
+      "week": 28,
+      "month": 80,
+      "success": 80,
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 26,
-      "month": 84,
+      "today": 2,
+      "week": 28,
+      "month": 86,
       "success": 4,
-      "failed": 80
+      "failed": 82
     }
   },
   "interactions_by_platform": {
@@ -210,6 +210,10 @@
     "2026-05-30": {
       "posts": 20,
       "interactions": 0
+    },
+    "2026-05-31": {
+      "posts": 10,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
@@ -217,7 +221,7 @@
     "11": 7,
     "18": 11,
     "17": 17,
-    "8": 35,
+    "8": 40,
     "19": 5,
     "16": 58,
     "9": 44,
@@ -228,100 +232,6 @@
     "15": 20
   },
   "recent_posts": [
-    {
-      "id": 465,
-      "timestamp": "2026-05-30T08:27:28.413056Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Insight: A Surprising Shift in Global Markets</b>\n\nThe S&P 500 has risen 4.6% in the pas",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "297"
-    },
-    {
-      "id": 466,
-      "timestamp": "2026-05-30T08:27:28.886801Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Insight: A Surprising Shift in Global Markets**\n\nThe S&P 500 has risen 4.6% in the past t",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1510197946556223548"
-    },
-    {
-      "id": 467,
-      "timestamp": "2026-05-30T08:27:29.398100Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Insight: A Surprising Shift in Global Markets\n\nThe S&P 500 has risen 4.6% in the past two w",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 468,
-      "timestamp": "2026-05-30T08:27:35.904827Z",
-      "platform": "bluesky",
-      "type": "repurposed",
-      "content_preview": "📊 The S&P 500 has risen 4. 🧵",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 469,
-      "timestamp": "2026-05-30T08:27:37.928865Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Insight: A Surprising Shift in Global Markets",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 470,
-      "timestamp": "2026-05-30T08:27:39.392218Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$GOOGL Alphabet Inc.\n\n💰 402.62 (+3.9%) | 5D: +1.1%\n📊 RSI: 82.9 | MACD: bullish\n📈 MA20: $366.88 (abov",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 471,
-      "timestamp": "2026-05-30T08:27:39.729192Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟡 $TSLA — Tesla, Inc. | $426.01 (+1.9%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n### 📊 Tech",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1510197992676917348"
-    },
-    {
-      "id": 472,
-      "timestamp": "2026-05-30T08:27:40.394070Z",
-      "platform": "bluesky",
-      "type": "post",
-      "content_preview": "1/ $GOOGL Alphabet Inc. 💰 388.88 (+1.5%)\n\nSetup: consolidation\nRSI: 50.3 | MACD: bearish\nVol: 0.9x a",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mn2my2y7dp23"
-    },
-    {
-      "id": 473,
-      "timestamp": "2026-05-30T08:27:48.001367Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 474,
-      "timestamp": "2026-05-30T08:28:15.209559Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
     {
       "id": 475,
       "timestamp": "2026-05-30T15:08:56.421849Z",
@@ -410,6 +320,100 @@
     {
       "id": 484,
       "timestamp": "2026-05-30T15:09:25.278228Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 485,
+      "timestamp": "2026-05-31T08:44:14.472798Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Alert: The $10 Trillion Shift</b>\n\nAs global investors, we're witnessing a seismic shift",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "301"
+    },
+    {
+      "id": 486,
+      "timestamp": "2026-05-31T08:44:14.861761Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Alert: The $10 Trillion Shift**\n\nAs global investors, we're witnessing a seismic shift in",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1510564554139238522"
+    },
+    {
+      "id": 487,
+      "timestamp": "2026-05-31T08:44:15.298735Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Alert: The $10 Trillion Shift\n\nAs global investors, we're witnessing a seismic shift in the",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 488,
+      "timestamp": "2026-05-31T08:44:20.073365Z",
+      "platform": "bluesky",
+      "type": "repurposed",
+      "content_preview": "📊 As global investors, we're witnessing a seismic shift in the $100+ trillion financial landscape. 🧵",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 489,
+      "timestamp": "2026-05-31T08:44:21.318583Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Alert: The $10 Trillion Shift",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 490,
+      "timestamp": "2026-05-31T08:44:22.477954Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "As the social media landscape continues to evolve, platforms like TikTok are redefining the rules of",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 491,
+      "timestamp": "2026-05-31T08:44:22.818213Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "Community Post:\n\nHey fellow traders, \n\nLet's dive into the world of stock analysis. When building a ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1510564587874025542"
+    },
+    {
+      "id": 492,
+      "timestamp": "2026-05-31T08:44:23.385721Z",
+      "platform": "bluesky",
+      "type": "post",
+      "content_preview": "1/ $MSFT Microsoft Corporation 💰 416.03 (-0.6%)\n\nSetup: consolidation\nRSI: 54.9 | MACD: bearish\nVol:",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mn56euy5y72d"
+    },
+    {
+      "id": 493,
+      "timestamp": "2026-05-31T08:44:30.127380Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 494,
+      "timestamp": "2026-05-31T08:44:48.251855Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
