@@ -4755,5 +4755,99 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 505,
+    "timestamp": "2026-06-01T11:32:39.538079Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Alert: S&P 500 Surges Above 7,300, But is it a Bull Trap?</b>\n\nThe S&P 500 has surpassed",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "305"
+  },
+  {
+    "id": 506,
+    "timestamp": "2026-06-01T11:32:41.571328Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Alert: S&P 500 Surges Above 7,300, But is it a Bull Trap?**\n\nThe S&P 500 has surpassed 7,",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1510969325752680568"
+  },
+  {
+    "id": 507,
+    "timestamp": "2026-06-01T11:32:42.057293Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: S&P 500 Surges Above 7,300, But is it a Bull Trap?\n\nThe S&P 500 has surpassed 7,300,",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 508,
+    "timestamp": "2026-06-01T11:32:46.339112Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The S&P 500 has surpassed 7,300, fueled by the tech sector's resurgence. 🧵",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 509,
+    "timestamp": "2026-06-01T11:32:48.224187Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: S&P 500 Surges Above 7,300, But is it a Bull Trap?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 510,
+    "timestamp": "2026-06-01T11:32:49.476031Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AAPL Apple Inc.\n\n💰 298.21 (-0.2%) | 5D: +3.8%\n📊 RSI: 81.0 | MACD: bullish\n📈 MA20: $279.84 (above)\n🎯",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 511,
+    "timestamp": "2026-06-01T11:32:49.723744Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $TSLA — Tesla, Inc. | $433.45 (-2.6%)\n\n**Setup:** overbought, watching for pullback → Bias: **C",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1510969367297527931"
+  },
+  {
+    "id": 512,
+    "timestamp": "2026-06-01T11:32:50.316356Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $AMZN Amazon.com, Inc. 💰 268.46 (+1.3%)\n\nSetup: consolidation\nRSI: 50.2 | MACD: bearish\nVol: 0.8x",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mn7yaz6rmd2x"
+  },
+  {
+    "id": 513,
+    "timestamp": "2026-06-01T11:32:58.541702Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 514,
+    "timestamp": "2026-06-01T11:33:26.587081Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
