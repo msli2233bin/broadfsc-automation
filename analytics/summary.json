@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-01T15:40:09.275994Z",
+  "generated_at": "2026-06-01T20:15:56.797214Z",
   "period": {
     "today": "2026-06-01",
     "yesterday": "2026-05-31",
@@ -7,9 +7,9 @@
     "month_ago": "2026-05-02"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 150,
-    "posts_month": 501,
+    "posts_today": 22,
+    "posts_week": 162,
+    "posts_month": 513,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 5,
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 19,
-      "month": 62,
-      "success": 60,
+      "today": 3,
+      "week": 21,
+      "month": 64,
+      "success": 62,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 33,
-      "month": 108,
-      "success": 102,
+      "today": 5,
+      "week": 36,
+      "month": 111,
+      "success": 105,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 28,
-      "month": 92,
+      "today": 4,
+      "week": 30,
+      "month": 94,
       "success": 37,
-      "failed": 55
+      "failed": 57
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 14,
-      "month": 53,
+      "today": 2,
+      "week": 15,
+      "month": 54,
       "success": 10,
-      "failed": 43
+      "failed": 44
     },
     "medium": {
       "today": 0,
@@ -73,18 +73,18 @@
       "failed": 3
     },
     "bluesky": {
-      "today": 2,
-      "week": 28,
-      "month": 84,
-      "success": 84,
+      "today": 4,
+      "week": 30,
+      "month": 86,
+      "success": 86,
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 28,
-      "month": 90,
+      "today": 4,
+      "week": 30,
+      "month": 92,
       "success": 4,
-      "failed": 86
+      "failed": 88
     }
   },
   "interactions_by_platform": {
@@ -216,7 +216,7 @@
       "interactions": 0
     },
     "2026-06-01": {
-      "posts": 10,
+      "posts": 22,
       "interactions": 0
     }
   },
@@ -224,9 +224,9 @@
     "10": 25,
     "11": 12,
     "18": 11,
-    "17": 17,
+    "17": 19,
     "8": 40,
-    "19": 5,
+    "19": 10,
     "16": 58,
     "9": 44,
     "14": 25,
@@ -236,120 +236,6 @@
     "15": 25
   },
   "recent_posts": [
-    {
-      "id": 495,
-      "timestamp": "2026-05-31T15:18:14.088479Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Tech Stocks in Overbought Territory, but Not Entirely Over the Hill</b>\n\nGOOGL's 85.2% RSI read",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "302"
-    },
-    {
-      "id": 496,
-      "timestamp": "2026-05-31T15:18:14.606541Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Tech Stocks in Overbought Territory, but Not Entirely Over the Hill**\n\nGOOGL's 85.2% RSI reading",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1510663705782915073"
-    },
-    {
-      "id": 497,
-      "timestamp": "2026-05-31T15:18:15.048257Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Tech Stocks in Overbought Territory, but Not Entirely Over the Hill\n\nGOOGL's 85.2% RSI reading is ",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 498,
-      "timestamp": "2026-05-31T15:18:19.626382Z",
-      "platform": "bluesky",
-      "type": "repurposed",
-      "content_preview": "📊 GOOGL's 85. 🧵",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 499,
-      "timestamp": "2026-05-31T15:18:20.665276Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Tech Stocks in Overbought Territory, but Not Entirely Over the Hill",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 500,
-      "timestamp": "2026-05-31T15:18:21.751779Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$NVDA NVIDIA Corporation\n\n💰 222.32 (-1.3%) | 5D: +1.3%\n📊 RSI: 56.6 | MACD: bullish\n📈 MA20: $211.31 (",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 501,
-      "timestamp": "2026-05-31T15:18:21.976639Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟢 $COIN — Coinbase Global, Inc. | $216.6 (+7.7%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1510663737843912794"
-    },
-    {
-      "id": 502,
-      "timestamp": "2026-05-31T15:18:22.270481Z",
-      "platform": "bluesky",
-      "type": "post",
-      "content_preview": "1/ $AAPL Apple Inc. 💰 308.82 (+1.3%)\n\nSetup: overbought, watching for pullback\nRSI: 91.1 | MACD: bul",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mn5ufes6tk2d"
-    },
-    {
-      "id": 503,
-      "timestamp": "2026-05-31T15:18:33.741065Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 504,
-      "timestamp": "2026-05-31T15:18:44.657972Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 505,
-      "timestamp": "2026-06-01T11:32:39.538079Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Alert: S&P 500 Surges Above 7,300, But is it a Bull Trap?</b>\n\nThe S&P 500 has surpassed",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "305"
-    },
-    {
-      "id": 506,
-      "timestamp": "2026-06-01T11:32:41.571328Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Alert: S&P 500 Surges Above 7,300, But is it a Bull Trap?**\n\nThe S&P 500 has surpassed 7,",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1510969325752680568"
-    },
     {
       "id": 507,
       "timestamp": "2026-06-01T11:32:42.057293Z",
@@ -418,6 +304,120 @@
     {
       "id": 514,
       "timestamp": "2026-06-01T11:33:26.587081Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 515,
+      "timestamp": "2026-06-01T17:33:00.972707Z",
+      "platform": "telegram_en",
+      "type": "earnings",
+      "content_preview": "<b>📊 Earnings Calendar: Week of Jun 01</b>\n\n\n📅 <b>Monday, Jun 01</b>\n  • Meituan (3690.HK) @ $nan | ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "306"
+    },
+    {
+      "id": 516,
+      "timestamp": "2026-06-01T17:33:01.643131Z",
+      "platform": "discord",
+      "type": "earnings",
+      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jun 01**\n\n\n📅 **Monday, Jun 01**\n  • Me",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1511060012473127107"
+    },
+    {
+      "id": 517,
+      "timestamp": "2026-06-01T19:21:39.594604Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Alert: The Great Rotation</b>\n\nThe S&P 500 has just broken above the key resistance leve",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "313"
+    },
+    {
+      "id": 518,
+      "timestamp": "2026-06-01T19:21:39.935756Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Alert: The Great Rotation**\n\nThe S&P 500 has just broken above the key resistance level o",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1511087353505124422"
+    },
+    {
+      "id": 519,
+      "timestamp": "2026-06-01T19:21:40.269755Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Alert: The Great Rotation\n\nThe S&P 500 has just broken above the key resistance level of 7,",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 520,
+      "timestamp": "2026-06-01T19:21:45.379209Z",
+      "platform": "bluesky",
+      "type": "repurposed",
+      "content_preview": "📊 The S&P 500 has just broken above the key resistance level of 7,375 (Bollinger Band Upper) and is ",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 521,
+      "timestamp": "2026-06-01T19:21:46.354752Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Alert: The Great Rotation",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 522,
+      "timestamp": "2026-06-01T19:21:47.547780Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 135.26 (+0.1%) | 5D: -0.5%\n📊 RSI: 46.4 | MACD: bearish\n📈 MA20: $",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 523,
+      "timestamp": "2026-06-01T19:21:47.728768Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $458.79 (+0.8%)\n\n**Setup:** overbought, watching for pull",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1511087386841321755"
+    },
+    {
+      "id": 524,
+      "timestamp": "2026-06-01T19:21:48.011935Z",
+      "platform": "bluesky",
+      "type": "post",
+      "content_preview": "1/ $PLTR Palantir Technologies Inc. 💰 137.41 (+0.2%)\n\nSetup: consolidation\nRSI: 40.0 | MACD: bullish",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mnashleujs23"
+    },
+    {
+      "id": 525,
+      "timestamp": "2026-06-01T19:21:52.831111Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 526,
+      "timestamp": "2026-06-01T19:22:22.793409Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
