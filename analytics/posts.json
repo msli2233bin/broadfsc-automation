@@ -4869,5 +4869,99 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1511060012473127107"
+  },
+  {
+    "id": 517,
+    "timestamp": "2026-06-01T19:21:39.594604Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Alert: The Great Rotation</b>\n\nThe S&P 500 has just broken above the key resistance leve",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "313"
+  },
+  {
+    "id": 518,
+    "timestamp": "2026-06-01T19:21:39.935756Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Alert: The Great Rotation**\n\nThe S&P 500 has just broken above the key resistance level o",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1511087353505124422"
+  },
+  {
+    "id": 519,
+    "timestamp": "2026-06-01T19:21:40.269755Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: The Great Rotation\n\nThe S&P 500 has just broken above the key resistance level of 7,",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 520,
+    "timestamp": "2026-06-01T19:21:45.379209Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The S&P 500 has just broken above the key resistance level of 7,375 (Bollinger Band Upper) and is ",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 521,
+    "timestamp": "2026-06-01T19:21:46.354752Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: The Great Rotation",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 522,
+    "timestamp": "2026-06-01T19:21:47.547780Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 135.26 (+0.1%) | 5D: -0.5%\n📊 RSI: 46.4 | MACD: bearish\n📈 MA20: $",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 523,
+    "timestamp": "2026-06-01T19:21:47.728768Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $458.79 (+0.8%)\n\n**Setup:** overbought, watching for pull",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1511087386841321755"
+  },
+  {
+    "id": 524,
+    "timestamp": "2026-06-01T19:21:48.011935Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $PLTR Palantir Technologies Inc. 💰 137.41 (+0.2%)\n\nSetup: consolidation\nRSI: 40.0 | MACD: bullish",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mnashleujs23"
+  },
+  {
+    "id": 525,
+    "timestamp": "2026-06-01T19:21:52.831111Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 526,
+    "timestamp": "2026-06-01T19:22:22.793409Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
