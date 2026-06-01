@@ -68,3 +68,9 @@
 ## 07:48:15 | marketing/social_media
 - [marketing_insight] 📱 检测到营销洞察 (social_media)，建议生成新平台内容
 - [cross_domain_match] 🔗 跨域关联匹配: marketing/social_media 在 FUSION_INDEX 中有对应融合策略
+
+## 09:15:00 | sales/crm_sales
+- [cross_domain_match] 🔗 跨域关联匹配: sales/crm_sales 在 FUSION_INDEX 中有对应融合策略
+
+## 09:15:08 | sales/sales_techniques
+- [cross_domain_match] 🔗 跨域关联匹配: sales/sales_techniques 在 FUSION_INDEX 中有对应融合策略
