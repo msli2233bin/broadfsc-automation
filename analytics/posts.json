@@ -5057,5 +5057,99 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 537,
+    "timestamp": "2026-06-02T18:06:14.898831Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Sentiment: The Unseen Warning Signs</b>\n\nAs the market continues to defy gravity, it's e",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "323"
+  },
+  {
+    "id": 538,
+    "timestamp": "2026-06-02T18:06:15.280094Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Sentiment: The Unseen Warning Signs**\n\nAs the market continues to defy gravity, it's esse",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1511430763407740999"
+  },
+  {
+    "id": 539,
+    "timestamp": "2026-06-02T18:06:15.726569Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Sentiment: The Unseen Warning Signs\n\nAs the market continues to defy gravity, it's essentia",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 540,
+    "timestamp": "2026-06-02T18:06:20.974547Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 As the market continues to defy gravity, it's essential to uncover the subtle warning signs that c",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 541,
+    "timestamp": "2026-06-02T18:06:21.943811Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Sentiment: The Unseen Warning Signs",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 542,
+    "timestamp": "2026-06-02T18:06:23.518787Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AMD Advanced Micro Devices, Inc.\n\n💰 449.59 (+0.5%) | 5D: -0.0%\n📊 RSI: 67.8 | MACD: bearish\n📈 MA20: ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 543,
+    "timestamp": "2026-06-02T18:06:23.687169Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $PLTR — Palantir Technologies Inc. | $135.26 (+0.1%)\n\n**Setup:** correction in play → Bias: **B",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1511430799545729124"
+  },
+  {
+    "id": 544,
+    "timestamp": "2026-06-02T18:06:24.263736Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $NVDA NVIDIA Corporation 💰 219.44 (+2.0%)\n\nSetup: uptrend intact\nRSI: 64.9 | MACD: bullish\nVol: 1",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mnd6poo3u42a"
+  },
+  {
+    "id": 545,
+    "timestamp": "2026-06-02T18:06:37.179223Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 546,
+    "timestamp": "2026-06-02T18:07:03.545896Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "cannot access local variable 'raw' where it is not associated with a value"
   }
 ]
