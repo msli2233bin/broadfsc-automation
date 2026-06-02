@@ -4963,5 +4963,99 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 527,
+    "timestamp": "2026-06-02T10:22:52.093262Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Dislocation: Growth Stocks at All-Time Highs, But Don't be Fooled</b>\n\nThe Nasdaq is up ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "316"
+  },
+  {
+    "id": 528,
+    "timestamp": "2026-06-02T10:22:52.474182Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Dislocation: Growth Stocks at All-Time Highs, But Don't be Fooled**\n\nThe Nasdaq is up 15%",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1511314150503223296"
+  },
+  {
+    "id": 529,
+    "timestamp": "2026-06-02T10:22:53.113387Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Dislocation: Growth Stocks at All-Time Highs, But Don't be Fooled\n\nThe Nasdaq is up 15% yea",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 530,
+    "timestamp": "2026-06-02T10:22:57.262212Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The Nasdaq is up 15% year-to-date, and growth stocks are leading the charge. 🧵",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 531,
+    "timestamp": "2026-06-02T10:22:58.617850Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Dislocation: Growth Stocks at All-Time Highs, But Don't be Fooled",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 532,
+    "timestamp": "2026-06-02T10:22:59.838438Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AAPL Apple Inc.\n\n💰 304.99 (+0.9%) | 5D: +2.3%\n📊 RSI: 82.4 | MACD: bullish\n📈 MA20: $287.32 (above)\n🎯",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 533,
+    "timestamp": "2026-06-02T10:23:00.096607Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $COIN — Coinbase Global, Inc. | $189.03 (+3.7%)\n\n**Setup:** correction in play → Bias: **BEARIS",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1511314182711148604"
+  },
+  {
+    "id": 534,
+    "timestamp": "2026-06-02T10:23:00.782124Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $AMD Advanced Micro Devices, Inc. 💰 467.51 (+4.0%)\n\nSetup: overbought, watching for pullback\nRSI:",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mncet365bo2j"
+  },
+  {
+    "id": 535,
+    "timestamp": "2026-06-02T10:23:08.342727Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 536,
+    "timestamp": "2026-06-02T10:23:41.032406Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
