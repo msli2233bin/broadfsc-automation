@@ -493,5 +493,41 @@
     "time": "2026-06-01T19:20:14.232277",
     "message_id": "<202606011920.73582414516@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "msli2233bin+raj@gmail.com",
+    "subject": "Why the 10-year Yield says 'Caution'",
+    "personality": "thomas",
+    "date": "2026-06-02",
+    "time": "2026-06-02T18:04:14.870680",
+    "message_id": "<202606021804.13095434394@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "test@example.com",
+    "subject": "The VIX says 'Buy' at 7,605",
+    "personality": "thomas",
+    "date": "2026-06-02",
+    "time": "2026-06-02T18:04:21.260868",
+    "message_id": "<202606021804.67196773587@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "david.chen.trader@gmail.com",
+    "subject": "S&P tests 7,600 support",
+    "personality": "thomas",
+    "date": "2026-06-02",
+    "time": "2026-06-02T18:04:29.294001",
+    "message_id": "<202606021804.22776642719@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "raj.patel.invest@hotmail.com",
+    "subject": "Oil's 5.42% Week: A Warning Sign?",
+    "personality": "thomas",
+    "date": "2026-06-02",
+    "time": "2026-06-02T18:04:34.487819",
+    "message_id": "<202606021804.77387621298@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
