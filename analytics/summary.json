@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-03T13:22:39.775669Z",
+  "generated_at": "2026-06-03T18:07:24.353517Z",
   "period": {
     "today": "2026-06-03",
     "yesterday": "2026-06-02",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-04"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 148,
-    "posts_month": 543,
+    "posts_today": 12,
+    "posts_week": 150,
+    "posts_month": 545,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 5,
-    "success_rate": 58.7
+    "success_rate": 58.9
   },
   "platforms": {
     "tiktok": {
@@ -24,17 +24,17 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 18,
-      "month": 67,
-      "success": 65,
+      "today": 2,
+      "week": 19,
+      "month": 68,
+      "success": 66,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 32,
-      "month": 117,
-      "success": 111,
+      "today": 3,
+      "week": 33,
+      "month": 118,
+      "success": 112,
       "failed": 6
     },
     "mastodon": {
@@ -224,7 +224,7 @@
       "interactions": 0
     },
     "2026-06-03": {
-      "posts": 10,
+      "posts": 12,
       "interactions": 0
     }
   },
@@ -235,7 +235,7 @@
     "17": 19,
     "8": 40,
     "19": 10,
-    "16": 58,
+    "16": 60,
     "9": 44,
     "14": 25,
     "12": 21,
@@ -244,26 +244,6 @@
     "15": 25
   },
   "recent_posts": [
-    {
-      "id": 537,
-      "timestamp": "2026-06-02T18:06:14.898831Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Sentiment: The Unseen Warning Signs</b>\n\nAs the market continues to defy gravity, it's e",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "323"
-    },
-    {
-      "id": 538,
-      "timestamp": "2026-06-02T18:06:15.280094Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Sentiment: The Unseen Warning Signs**\n\nAs the market continues to defy gravity, it's esse",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1511430763407740999"
-    },
     {
       "id": 539,
       "timestamp": "2026-06-02T18:06:15.726569Z",
@@ -431,6 +411,26 @@
       "content_preview": "Hatena Blog post",
       "status": "failed",
       "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 557,
+      "timestamp": "2026-06-03T16:42:24.939230Z",
+      "platform": "telegram_en",
+      "type": "earnings",
+      "content_preview": "<b>📊 Earnings Calendar: Week of Jun 03</b>\n\n\n📅 <b>Wednesday, Jun 10</b>\n  • Oracle (ORCL) @ $227.74 ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "327"
+    },
+    {
+      "id": 558,
+      "timestamp": "2026-06-03T16:42:25.302538Z",
+      "platform": "discord",
+      "type": "earnings",
+      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jun 03**\n\n\n📅 **Wednesday, Jun 10**\n  •",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1511772053982810265"
     }
   ],
   "recent_interactions": [
