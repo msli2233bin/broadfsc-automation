@@ -529,5 +529,32 @@
     "time": "2026-06-02T18:04:34.487819",
     "message_id": "<202606021804.77387621298@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "takeshi.yamamoto@yahoo.co.jp",
+    "subject": "Quick market note",
+    "personality": "michael",
+    "date": "2026-06-03",
+    "time": "2026-06-03T18:22:19.165064",
+    "message_id": "<202606031822.74171729154@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "maria.santos.pro@gmail.com",
+    "subject": "Crude Oil's 96.09 Upsurge",
+    "personality": "michael",
+    "date": "2026-06-03",
+    "time": "2026-06-03T18:22:27.149082",
+    "message_id": "<202606031822.95528465654@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+david@gmail.com",
+    "subject": "Crude Oil just broke 80",
+    "personality": "michael",
+    "date": "2026-06-03",
+    "time": "2026-06-03T18:22:34.007638",
+    "message_id": "<202606031822.63919671006@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
