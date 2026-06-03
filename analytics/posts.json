@@ -5151,5 +5151,99 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "cannot access local variable 'raw' where it is not associated with a value"
+  },
+  {
+    "id": 547,
+    "timestamp": "2026-06-03T10:57:55.598634Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 BroadFSC Market Insights: The AI-Driven Market Convergence</b>\n\nThe AI-driven Nasdaq has surpas",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "326"
+  },
+  {
+    "id": 548,
+    "timestamp": "2026-06-03T10:57:56.271949Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **BroadFSC Market Insights: The AI-Driven Market Convergence**\n\nThe AI-driven Nasdaq has surpassed",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1511685360864985109"
+  },
+  {
+    "id": 549,
+    "timestamp": "2026-06-03T10:57:56.589866Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 BroadFSC Market Insights: The AI-Driven Market Convergence\n\nThe AI-driven Nasdaq has surpassed its",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 550,
+    "timestamp": "2026-06-03T10:58:01.387415Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The AI-driven Nasdaq has surpassed its 52-week high, reaching 27,093. 🧵",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 551,
+    "timestamp": "2026-06-03T10:58:02.949283Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 BroadFSC Market Insights: The AI-Driven Market Convergence",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 552,
+    "timestamp": "2026-06-03T10:58:04.225192Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$META Meta Platforms, Inc.\n\n💰 616.81 (+0.6%) | 5D: +0.8%\n📊 RSI: 26.0 | MACD: bearish\n📈 MA20: $649.87",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 553,
+    "timestamp": "2026-06-03T10:58:04.504994Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $NVDA — NVIDIA Corporation | $222.82 (-0.7%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n###",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1511685396948320397"
+  },
+  {
+    "id": 554,
+    "timestamp": "2026-06-03T10:58:04.721163Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $MSFT Microsoft Corporation 💰 421.06 (+0.9%)\n\nSetup: consolidation\nRSI: 60.6 | MACD: bearish\nVol:",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mnexap4xq52d"
+  },
+  {
+    "id": 555,
+    "timestamp": "2026-06-03T10:58:14.877295Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 556,
+    "timestamp": "2026-06-03T10:58:49.371532Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
