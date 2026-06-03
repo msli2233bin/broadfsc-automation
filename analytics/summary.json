@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-03T18:07:24.353517Z",
+  "generated_at": "2026-06-03T21:34:48.308870Z",
   "period": {
     "today": "2026-06-03",
     "yesterday": "2026-06-02",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-04"
   },
   "totals": {
-    "posts_today": 12,
-    "posts_week": 150,
-    "posts_month": 545,
+    "posts_today": 22,
+    "posts_week": 160,
+    "posts_month": 555,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 5,
-    "success_rate": 58.9
+    "success_rate": 58.7
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 2,
-      "week": 19,
-      "month": 68,
-      "success": 66,
+      "today": 3,
+      "week": 20,
+      "month": 69,
+      "success": 67,
       "failed": 2
     },
     "discord": {
-      "today": 3,
-      "week": 33,
-      "month": 118,
-      "success": 112,
+      "today": 5,
+      "week": 35,
+      "month": 120,
+      "success": 114,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 28,
-      "month": 100,
+      "today": 4,
+      "week": 30,
+      "month": 102,
       "success": 37,
-      "failed": 63
+      "failed": 65
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 14,
-      "month": 57,
+      "today": 2,
+      "week": 15,
+      "month": 58,
       "success": 10,
-      "failed": 47
+      "failed": 48
     },
     "medium": {
       "today": 0,
@@ -73,18 +73,18 @@
       "failed": 3
     },
     "bluesky": {
-      "today": 2,
-      "week": 28,
-      "month": 92,
-      "success": 92,
+      "today": 4,
+      "week": 30,
+      "month": 94,
+      "success": 94,
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 28,
-      "month": 98,
+      "today": 4,
+      "week": 30,
+      "month": 100,
       "success": 4,
-      "failed": 94
+      "failed": 96
     }
   },
   "interactions_by_platform": {
@@ -224,14 +224,14 @@
       "interactions": 0
     },
     "2026-06-03": {
-      "posts": 12,
+      "posts": 22,
       "interactions": 0
     }
   },
   "hourly_distribution": {
     "10": 35,
     "11": 12,
-    "18": 16,
+    "18": 21,
     "17": 19,
     "8": 40,
     "19": 10,
@@ -244,100 +244,6 @@
     "15": 25
   },
   "recent_posts": [
-    {
-      "id": 539,
-      "timestamp": "2026-06-02T18:06:15.726569Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Sentiment: The Unseen Warning Signs\n\nAs the market continues to defy gravity, it's essentia",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 540,
-      "timestamp": "2026-06-02T18:06:20.974547Z",
-      "platform": "bluesky",
-      "type": "repurposed",
-      "content_preview": "📊 As the market continues to defy gravity, it's essential to uncover the subtle warning signs that c",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 541,
-      "timestamp": "2026-06-02T18:06:21.943811Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Sentiment: The Unseen Warning Signs",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 542,
-      "timestamp": "2026-06-02T18:06:23.518787Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$AMD Advanced Micro Devices, Inc.\n\n💰 449.59 (+0.5%) | 5D: -0.0%\n📊 RSI: 67.8 | MACD: bearish\n📈 MA20: ",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 543,
-      "timestamp": "2026-06-02T18:06:23.687169Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🔴 $PLTR — Palantir Technologies Inc. | $135.26 (+0.1%)\n\n**Setup:** correction in play → Bias: **B",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1511430799545729124"
-    },
-    {
-      "id": 544,
-      "timestamp": "2026-06-02T18:06:24.263736Z",
-      "platform": "bluesky",
-      "type": "post",
-      "content_preview": "1/ $NVDA NVIDIA Corporation 💰 219.44 (+2.0%)\n\nSetup: uptrend intact\nRSI: 64.9 | MACD: bullish\nVol: 1",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mnd6poo3u42a"
-    },
-    {
-      "id": 545,
-      "timestamp": "2026-06-02T18:06:37.179223Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 546,
-      "timestamp": "2026-06-02T18:07:03.545896Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "cannot access local variable 'raw' where it is not associated with a value"
-    },
-    {
-      "id": 547,
-      "timestamp": "2026-06-03T10:57:55.598634Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 BroadFSC Market Insights: The AI-Driven Market Convergence</b>\n\nThe AI-driven Nasdaq has surpas",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "326"
-    },
-    {
-      "id": 548,
-      "timestamp": "2026-06-03T10:57:56.271949Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **BroadFSC Market Insights: The AI-Driven Market Convergence**\n\nThe AI-driven Nasdaq has surpassed",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1511685360864985109"
-    },
     {
       "id": 549,
       "timestamp": "2026-06-03T10:57:56.589866Z",
@@ -431,6 +337,100 @@
       "status": "success",
       "error_msg": "",
       "post_id": "1511772053982810265"
+    },
+    {
+      "id": 559,
+      "timestamp": "2026-06-03T18:23:57.554015Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Insight: The Great Rotation Accelerates</b>\n\nThe S&P 500 is up 12.5% YTD, outpacing the ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "334"
+    },
+    {
+      "id": 560,
+      "timestamp": "2026-06-03T18:23:57.942361Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Insight: The Great Rotation Accelerates**\n\nThe S&P 500 is up 12.5% YTD, outpacing the Nas",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1511797608157413599"
+    },
+    {
+      "id": 561,
+      "timestamp": "2026-06-03T18:23:58.467245Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Insight: The Great Rotation Accelerates\n\nThe S&P 500 is up 12.5% YTD, outpacing the Nasdaq'",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 562,
+      "timestamp": "2026-06-03T18:24:04.623924Z",
+      "platform": "bluesky",
+      "type": "repurposed",
+      "content_preview": "📊 The S&P 500 is up 12. 🧵",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 563,
+      "timestamp": "2026-06-03T18:24:05.591613Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Insight: The Great Rotation Accelerates",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 564,
+      "timestamp": "2026-06-03T18:24:06.966684Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "\"Earnings season is a double-edged sword. On one hand, it brings clarity on a company's financial he",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 565,
+      "timestamp": "2026-06-03T18:24:07.169328Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟡 $NVDA — NVIDIA Corporation | $235.74 (+4.4%)\n\n**Setup:** overbought, watching for pullback → Bi",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1511797647847985374"
+    },
+    {
+      "id": 566,
+      "timestamp": "2026-06-03T18:24:07.473634Z",
+      "platform": "bluesky",
+      "type": "post",
+      "content_preview": "1/ $GOOGL Alphabet Inc. 💰 387.35 (-0.3%)\n\nSetup: overbought, watching for pullback\nRSI: 79.3 | MACD:",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mnfq6c3dog2m"
+    },
+    {
+      "id": 567,
+      "timestamp": "2026-06-03T18:24:12.931141Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 568,
+      "timestamp": "2026-06-03T18:24:37.891395Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
     }
   ],
   "recent_interactions": [
