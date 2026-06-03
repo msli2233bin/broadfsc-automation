@@ -5265,5 +5265,99 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1511772053982810265"
+  },
+  {
+    "id": 559,
+    "timestamp": "2026-06-03T18:23:57.554015Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Insight: The Great Rotation Accelerates</b>\n\nThe S&P 500 is up 12.5% YTD, outpacing the ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "334"
+  },
+  {
+    "id": 560,
+    "timestamp": "2026-06-03T18:23:57.942361Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Insight: The Great Rotation Accelerates**\n\nThe S&P 500 is up 12.5% YTD, outpacing the Nas",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1511797608157413599"
+  },
+  {
+    "id": 561,
+    "timestamp": "2026-06-03T18:23:58.467245Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The Great Rotation Accelerates\n\nThe S&P 500 is up 12.5% YTD, outpacing the Nasdaq'",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 562,
+    "timestamp": "2026-06-03T18:24:04.623924Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The S&P 500 is up 12. 🧵",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 563,
+    "timestamp": "2026-06-03T18:24:05.591613Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The Great Rotation Accelerates",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 564,
+    "timestamp": "2026-06-03T18:24:06.966684Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "\"Earnings season is a double-edged sword. On one hand, it brings clarity on a company's financial he",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 565,
+    "timestamp": "2026-06-03T18:24:07.169328Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $NVDA — NVIDIA Corporation | $235.74 (+4.4%)\n\n**Setup:** overbought, watching for pullback → Bi",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1511797647847985374"
+  },
+  {
+    "id": 566,
+    "timestamp": "2026-06-03T18:24:07.473634Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $GOOGL Alphabet Inc. 💰 387.35 (-0.3%)\n\nSetup: overbought, watching for pullback\nRSI: 79.3 | MACD:",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mnfq6c3dog2m"
+  },
+  {
+    "id": 567,
+    "timestamp": "2026-06-03T18:24:12.931141Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 568,
+    "timestamp": "2026-06-03T18:24:37.891395Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
