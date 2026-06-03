@@ -1,0 +1,11 @@
+{
+  "platform": "threads",
+  "topic": "NVDA_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "1/ $NVDA — NVIDIA Corporation\n\n222.82 (-0.7% today) | $5.40T\n\nCONSOLIDATION. This is the setup you need to see.---THREAD_BREAK---2/ Technical snapshot:\nRSI 51.6 — momentum zone\nMACD bearish, caution warranted\nMA20 $217.97 | MA50 $201.27\nVolume: 1.1x avg\n5D: +3.7% | 20D: +12.3%---THREAD_BREAK---3/ The trade:\nResistance: $236.54\nSupport: $164.27\nBias: NEUTRAL\n\nWait for confirmation before entry---THREAD_BREAK---4/ I post TA signals for 5 stocks daily.\n\n📱 Get them free: t.me/BroadInvestBot",
+  "content_type": "thread",
+  "symbol": "NVDA",
+  "created": "2026-06-03T08:44:53.726536",
+  "used": false,
+  "chart_paths": {}
+}
