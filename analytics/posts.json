@@ -5473,5 +5473,99 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1512106907374977025"
+  },
+  {
+    "id": 581,
+    "timestamp": "2026-06-04T16:56:06.909513Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The AI-Powered Market is Overheating: 5 Key Indicators to Watch</b>\n\n\"\" As AI-driven growth sto",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "345"
+  },
+  {
+    "id": 582,
+    "timestamp": "2026-06-04T16:56:07.368132Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The AI-Powered Market is Overheating: 5 Key Indicators to Watch**\n\n\"\" As AI-driven growth stocks",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1512137889847316560"
+  },
+  {
+    "id": 583,
+    "timestamp": "2026-06-04T16:56:08.078498Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The AI-Powered Market is Overheating: 5 Key Indicators to Watch\n\n\"\" As AI-driven growth stocks con",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 584,
+    "timestamp": "2026-06-04T16:56:12.694158Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 \"\" As AI-driven growth stocks continue to propel the Nasdaq to new highs, it's becoming increasing",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 585,
+    "timestamp": "2026-06-04T16:56:13.489764Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The AI-Powered Market is Overheating: 5 Key Indicators to Watch",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 586,
+    "timestamp": "2026-06-04T16:56:14.833433Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AAPL Apple Inc.\n\n💰 292.68 (-0.1%) | 5D: +5.8%\n📊 RSI: 78.5 | MACD: bullish\n📈 MA20: $274.65 (above)\n🎯",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 587,
+    "timestamp": "2026-06-04T16:56:15.027409Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $PLTR — Palantir Technologies Inc. | $135.14 (+0.9%)\n\n**Setup:** correction in play → Bias: **B",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1512137922806157393"
+  },
+  {
+    "id": 588,
+    "timestamp": "2026-06-04T16:56:15.478593Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $COIN Coinbase Global, Inc. 💰 182.25 (+4.9%)\n\nSetup: correction in play\nRSI: 45.0 | MACD: bearish",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mni3q3rhzr2t"
+  },
+  {
+    "id": 589,
+    "timestamp": "2026-06-04T16:56:21.720463Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 590,
+    "timestamp": "2026-06-04T16:56:56.330237Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
