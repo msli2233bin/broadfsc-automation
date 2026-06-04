@@ -556,5 +556,32 @@
     "time": "2026-06-03T18:22:34.007638",
     "message_id": "<202606031822.63919671006@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "msli2233bin+sarah@gmail.com",
+    "subject": "Why the VIX says otherwise",
+    "personality": "iron_bull",
+    "date": "2026-06-04",
+    "time": "2026-06-04T16:53:34.954282",
+    "message_id": "<202606041653.72369280048@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+takeshi@gmail.com",
+    "subject": "Gold's 4,500 Resistance Hold.",
+    "personality": "iron_bull",
+    "date": "2026-06-04",
+    "time": "2026-06-04T16:53:39.680624",
+    "message_id": "<202606041653.18249748076@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+maria@gmail.com",
+    "subject": "S&P at 7,584, yet small-caps diverge",
+    "personality": "iron_bull",
+    "date": "2026-06-04",
+    "time": "2026-06-04T16:53:47.563453",
+    "message_id": "<202606041653.66941971319@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
