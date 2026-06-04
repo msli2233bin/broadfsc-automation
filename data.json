@@ -1,5 +1,5 @@
 {
-  "report_time": "2026-06-04T11:44:15.415612",
+  "report_time": "2026-06-04T14:34:50.116865",
   "days": 30,
   "overview": {
     "posts_by_platform": {
@@ -200,7 +200,7 @@
   "platform_summary": {
     "bluesky": {
       "posts": 4,
-      "customers": 41,
+      "customers": 42,
       "engaged": 9
     },
     "discord": {
@@ -263,17 +263,17 @@
   },
   "customers": {
     "bluesky": {
-      "total": 41,
+      "total": 42,
       "engaged": 9
     }
   },
   "pipeline": {
-    "awareness": 32,
+    "awareness": 33,
     "interest": 9
   },
   "funnel": {
     "stages": {
-      "awareness": 32,
+      "awareness": 33,
       "interest": 9
     },
     "transitions": [
