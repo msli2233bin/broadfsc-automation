@@ -5359,5 +5359,99 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 569,
+    "timestamp": "2026-06-04T09:55:13.122434Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Alert: AI-Fueled Growth Unleashed, But Is It Sustainable?</b>\n\nAs the market continues i",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "337"
+  },
+  {
+    "id": 570,
+    "timestamp": "2026-06-04T09:55:13.602171Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Alert: AI-Fueled Growth Unleashed, But Is It Sustainable?**\n\nAs the market continues its ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1512031967082971227"
+  },
+  {
+    "id": 571,
+    "timestamp": "2026-06-04T09:55:14.539413Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: AI-Fueled Growth Unleashed, But Is It Sustainable?\n\nAs the market continues its rall",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 572,
+    "timestamp": "2026-06-04T09:55:19.665822Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 As the market continues its rally, led by AI-driven growth stocks, we've reached a critical junctu",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 573,
+    "timestamp": "2026-06-04T09:55:20.617257Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: AI-Fueled Growth Unleashed, But Is It Sustainable?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 574,
+    "timestamp": "2026-06-04T09:55:21.816923Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$GOOGL Alphabet Inc.\n\n💰 396.78 (-1.1%) | 5D: -1.0%\n📊 RSI: 75.5 | MACD: bullish\n📈 MA20: $372.89 (abov",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 575,
+    "timestamp": "2026-06-04T09:55:21.995480Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $AAPL — Apple Inc. | $294.8 (+0.7%)\n\n**Setup:** overbought, watching for pullback → Bias: **CAU",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1512032003950903376"
+  },
+  {
+    "id": 576,
+    "timestamp": "2026-06-04T09:55:22.521834Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $AMZN Amazon.com, Inc. 💰 264.86 (+0.3%)\n\nSetup: correction in play\nRSI: 56.7 | MACD: bearish\nVol:",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mnhe7iobfu2d"
+  },
+  {
+    "id": 577,
+    "timestamp": "2026-06-04T09:55:32.143857Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 578,
+    "timestamp": "2026-06-04T09:56:00.663409Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
