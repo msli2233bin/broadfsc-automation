@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-06-03T23:42:03.949758Z",
+  "generated_at": "2026-06-04T03:53:03.726637Z",
   "period": {
-    "today": "2026-06-03",
-    "yesterday": "2026-06-02",
-    "week_ago": "2026-05-27",
-    "month_ago": "2026-05-04"
+    "today": "2026-06-04",
+    "yesterday": "2026-06-03",
+    "week_ago": "2026-05-28",
+    "month_ago": "2026-05-05"
   },
   "totals": {
-    "posts_today": 22,
-    "posts_week": 160,
-    "posts_month": 555,
+    "posts_today": 0,
+    "posts_week": 138,
+    "posts_month": 553,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 5,
-    "success_rate": 58.7
+    "success_rate": 59.0
   },
   "platforms": {
     "tiktok": {
@@ -24,22 +24,22 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 3,
-      "week": 20,
+      "today": 0,
+      "week": 17,
       "month": 69,
       "success": 67,
       "failed": 2
     },
     "discord": {
-      "today": 5,
-      "week": 35,
+      "today": 0,
+      "week": 30,
       "month": 120,
       "success": 114,
       "failed": 6
     },
     "mastodon": {
-      "today": 4,
-      "week": 30,
+      "today": 0,
+      "week": 26,
       "month": 102,
       "success": 37,
       "failed": 65
@@ -52,8 +52,8 @@
       "failed": 2
     },
     "threads": {
-      "today": 2,
-      "week": 15,
+      "today": 0,
+      "week": 13,
       "month": 58,
       "success": 10,
       "failed": 48
@@ -73,15 +73,15 @@
       "failed": 3
     },
     "bluesky": {
-      "today": 4,
-      "week": 30,
+      "today": 0,
+      "week": 26,
       "month": 94,
       "success": 94,
       "failed": 0
     },
     "hatena": {
-      "today": 4,
-      "week": 30,
+      "today": 0,
+      "week": 26,
       "month": 100,
       "success": 4,
       "failed": 96
@@ -103,10 +103,6 @@
     "proactive_outreach": 5
   },
   "daily_trend": {
-    "2026-05-04": {
-      "posts": 2,
-      "interactions": 0
-    },
     "2026-05-05": {
       "posts": 32,
       "interactions": 2
