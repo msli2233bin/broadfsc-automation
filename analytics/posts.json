@@ -5681,5 +5681,99 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1512467060658012220"
+  },
+  {
+    "id": 603,
+    "timestamp": "2026-06-05T16:30:44.331294Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Alert: AI-Driven Nasdaq Index on Brink of Extreme Oversold Territory</b>\n\nThe Nasdaq Com",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "356"
+  },
+  {
+    "id": 604,
+    "timestamp": "2026-06-05T16:30:44.649575Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Alert: AI-Driven Nasdaq Index on Brink of Extreme Oversold Territory**\n\nThe Nasdaq Compos",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1512493891415314703"
+  },
+  {
+    "id": 605,
+    "timestamp": "2026-06-05T16:30:44.932550Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: AI-Driven Nasdaq Index on Brink of Extreme Oversold Territory\n\nThe Nasdaq Composite ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 606,
+    "timestamp": "2026-06-05T16:30:51.511941Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The Nasdaq Composite (^IXIC) has plunged 3. 🧵",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 607,
+    "timestamp": "2026-06-05T16:30:52.279626Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: AI-Driven Nasdaq Index on Brink of Extreme Oversold Territory",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 608,
+    "timestamp": "2026-06-05T16:30:53.467141Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AMZN Amazon.com, Inc.\n\n💰 271.17 (-1.4%) | 5D: +2.3%\n📊 RSI: 74.6 | MACD: bullish\n📈 MA20: $257.88 (ab",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 609,
+    "timestamp": "2026-06-05T16:30:53.715396Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "**Sales Strategies for Financial Services Professionals**\n\nAs traders, we know that effective sales ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1512493929298137152"
+  },
+  {
+    "id": 610,
+    "timestamp": "2026-06-05T16:30:54.312305Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $AAPL Apple Inc. 💰 292.68 (-0.1%)\n\nSetup: overbought, watching for pullback\nRSI: 78.5 | MACD: bul",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mnkkroj2my2h"
+  },
+  {
+    "id": 611,
+    "timestamp": "2026-06-05T16:30:59.348122Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 612,
+    "timestamp": "2026-06-05T16:31:01.523937Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
