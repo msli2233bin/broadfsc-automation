@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-05T13:51:15.342355Z",
+  "generated_at": "2026-06-05T16:28:28.388153Z",
   "period": {
     "today": "2026-06-05",
     "yesterday": "2026-06-04",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-06"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 158,
-    "posts_month": 553,
+    "posts_today": 12,
+    "posts_week": 160,
+    "posts_month": 555,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 3,
-    "success_rate": 59.7
+    "success_rate": 59.8
   },
   "platforms": {
     "tiktok": {
@@ -24,17 +24,17 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 19,
-      "month": 73,
-      "success": 71,
+      "today": 2,
+      "week": 20,
+      "month": 74,
+      "success": 72,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 34,
-      "month": 127,
-      "success": 121,
+      "today": 3,
+      "week": 35,
+      "month": 128,
+      "success": 122,
       "failed": 6
     },
     "mastodon": {
@@ -224,7 +224,7 @@
       "interactions": 0
     },
     "2026-06-05": {
-      "posts": 10,
+      "posts": 12,
       "interactions": 0
     }
   },
@@ -237,33 +237,13 @@
     "16": 65,
     "9": 54,
     "10": 34,
-    "14": 27,
+    "14": 29,
     "12": 21,
     "13": 7,
     "20": 7,
     "15": 25
   },
   "recent_posts": [
-    {
-      "id": 581,
-      "timestamp": "2026-06-04T16:56:06.909513Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 The AI-Powered Market is Overheating: 5 Key Indicators to Watch</b>\n\n\"\" As AI-driven growth sto",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "345"
-    },
-    {
-      "id": 582,
-      "timestamp": "2026-06-04T16:56:07.368132Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **The AI-Powered Market is Overheating: 5 Key Indicators to Watch**\n\n\"\" As AI-driven growth stocks",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1512137889847316560"
-    },
     {
       "id": 583,
       "timestamp": "2026-06-04T16:56:08.078498Z",
@@ -431,6 +411,26 @@
       "content_preview": "Hatena Blog post",
       "status": "failed",
       "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 601,
+      "timestamp": "2026-06-05T14:44:07.413239Z",
+      "platform": "telegram_en",
+      "type": "earnings",
+      "content_preview": "<b>📊 Earnings Calendar: Week of Jun 05</b>\n\n\n📅 <b>Wednesday, Jun 10</b>\n  • Oracle (ORCL) @ $222.22 ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "349"
+    },
+    {
+      "id": 602,
+      "timestamp": "2026-06-05T14:44:07.817871Z",
+      "platform": "discord",
+      "type": "earnings",
+      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jun 05**\n\n\n📅 **Wednesday, Jun 10**\n  •",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1512467060658012220"
     }
   ],
   "recent_interactions": [
