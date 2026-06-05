@@ -5567,5 +5567,99 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 591,
+    "timestamp": "2026-06-05T09:48:47.209318Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Maelstrom: GOOGL's Extremes Ignite Cross-Asset Warning</b>\n\nGOOGL's extreme overbought R",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "348"
+  },
+  {
+    "id": 592,
+    "timestamp": "2026-06-05T09:48:47.687156Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Maelstrom: GOOGL's Extremes Ignite Cross-Asset Warning**\n\nGOOGL's extreme overbought RSI ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1512392737154924636"
+  },
+  {
+    "id": 593,
+    "timestamp": "2026-06-05T09:48:48.516521Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Maelstrom: GOOGL's Extremes Ignite Cross-Asset Warning\n\nGOOGL's extreme overbought RSI (85.",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 594,
+    "timestamp": "2026-06-05T09:48:53.711734Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 GOOGL's extreme overbought RSI (85. 🧵",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 595,
+    "timestamp": "2026-06-05T09:48:54.970109Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Maelstrom: GOOGL's Extremes Ignite Cross-Asset Warning",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 596,
+    "timestamp": "2026-06-05T09:48:56.270657Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$GOOGL Alphabet Inc.\n\n💰 361.85 (-3.9%) | 5D: -7.0%\n📊 RSI: 32.6 | MACD: bearish\n📈 MA20: $389.61 (belo",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 597,
+    "timestamp": "2026-06-05T09:48:56.504468Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $TSLA — Tesla, Inc. | $404.11 (-1.4%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n### 📊 Tec",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1512392774895407217"
+  },
+  {
+    "id": 598,
+    "timestamp": "2026-06-05T09:48:57.126208Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $TSLA Tesla, Inc. 💰 417.85 (+0.1%)\n\nSetup: consolidation\nRSI: 59.7 | MACD: bearish\nVol: 0.8x avg-",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mnjucwkyuq2o"
+  },
+  {
+    "id": 599,
+    "timestamp": "2026-06-05T09:49:03.288919Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 600,
+    "timestamp": "2026-06-05T09:49:35.199569Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
