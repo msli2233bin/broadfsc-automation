@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-05T06:21:32.371468Z",
+  "generated_at": "2026-06-05T10:30:36.342744Z",
   "period": {
     "today": "2026-06-05",
     "yesterday": "2026-06-04",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-06"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 148,
-    "posts_month": 543,
+    "posts_today": 10,
+    "posts_week": 158,
+    "posts_month": 553,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 3,
-    "success_rate": 59.9
+    "success_rate": 59.7
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 18,
-      "month": 72,
-      "success": 70,
+      "today": 1,
+      "week": 19,
+      "month": 73,
+      "success": 71,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 32,
-      "month": 125,
-      "success": 119,
+      "today": 2,
+      "week": 34,
+      "month": 127,
+      "success": 121,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 28,
-      "month": 106,
+      "today": 2,
+      "week": 30,
+      "month": 108,
       "success": 37,
-      "failed": 69
+      "failed": 71
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 14,
-      "month": 60,
+      "today": 1,
+      "week": 15,
+      "month": 61,
       "success": 10,
-      "failed": 50
+      "failed": 51
     },
     "medium": {
       "today": 0,
@@ -73,18 +73,18 @@
       "failed": 3
     },
     "bluesky": {
-      "today": 0,
-      "week": 28,
-      "month": 98,
-      "success": 98,
+      "today": 2,
+      "week": 30,
+      "month": 100,
+      "success": 100,
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 28,
-      "month": 104,
+      "today": 2,
+      "week": 30,
+      "month": 106,
       "success": 4,
-      "failed": 100
+      "failed": 102
     }
   },
   "interactions_by_platform": {
@@ -222,6 +222,10 @@
     "2026-06-04": {
       "posts": 22,
       "interactions": 0
+    },
+    "2026-06-05": {
+      "posts": 10,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
@@ -231,7 +235,7 @@
     "19": 10,
     "11": 6,
     "16": 65,
-    "9": 49,
+    "9": 54,
     "10": 34,
     "14": 27,
     "12": 21,
@@ -240,100 +244,6 @@
     "15": 25
   },
   "recent_posts": [
-    {
-      "id": 571,
-      "timestamp": "2026-06-04T09:55:14.539413Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Alert: AI-Fueled Growth Unleashed, But Is It Sustainable?\n\nAs the market continues its rall",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 572,
-      "timestamp": "2026-06-04T09:55:19.665822Z",
-      "platform": "bluesky",
-      "type": "repurposed",
-      "content_preview": "📊 As the market continues its rally, led by AI-driven growth stocks, we've reached a critical junctu",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 573,
-      "timestamp": "2026-06-04T09:55:20.617257Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Alert: AI-Fueled Growth Unleashed, But Is It Sustainable?",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 574,
-      "timestamp": "2026-06-04T09:55:21.816923Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$GOOGL Alphabet Inc.\n\n💰 396.78 (-1.1%) | 5D: -1.0%\n📊 RSI: 75.5 | MACD: bullish\n📈 MA20: $372.89 (abov",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 575,
-      "timestamp": "2026-06-04T09:55:21.995480Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟡 $AAPL — Apple Inc. | $294.8 (+0.7%)\n\n**Setup:** overbought, watching for pullback → Bias: **CAU",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1512032003950903376"
-    },
-    {
-      "id": 576,
-      "timestamp": "2026-06-04T09:55:22.521834Z",
-      "platform": "bluesky",
-      "type": "post",
-      "content_preview": "1/ $AMZN Amazon.com, Inc. 💰 264.86 (+0.3%)\n\nSetup: correction in play\nRSI: 56.7 | MACD: bearish\nVol:",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mnhe7iobfu2d"
-    },
-    {
-      "id": 577,
-      "timestamp": "2026-06-04T09:55:32.143857Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 578,
-      "timestamp": "2026-06-04T09:56:00.663409Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 579,
-      "timestamp": "2026-06-04T14:52:59.925867Z",
-      "platform": "telegram_en",
-      "type": "earnings",
-      "content_preview": "<b>📊 Earnings Calendar: Week of Jun 04</b>\n\n\n📅 <b>Wednesday, Jun 10</b>\n  • Oracle (ORCL) @ $234.55 ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "338"
-    },
-    {
-      "id": 580,
-      "timestamp": "2026-06-04T14:53:00.552696Z",
-      "platform": "discord",
-      "type": "earnings",
-      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jun 04**\n\n\n📅 **Wednesday, Jun 10**\n  •",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1512106907374977025"
-    },
     {
       "id": 581,
       "timestamp": "2026-06-04T16:56:06.909513Z",
@@ -422,6 +332,100 @@
     {
       "id": 590,
       "timestamp": "2026-06-04T16:56:56.330237Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 591,
+      "timestamp": "2026-06-05T09:48:47.209318Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Maelstrom: GOOGL's Extremes Ignite Cross-Asset Warning</b>\n\nGOOGL's extreme overbought R",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "348"
+    },
+    {
+      "id": 592,
+      "timestamp": "2026-06-05T09:48:47.687156Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Maelstrom: GOOGL's Extremes Ignite Cross-Asset Warning**\n\nGOOGL's extreme overbought RSI ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1512392737154924636"
+    },
+    {
+      "id": 593,
+      "timestamp": "2026-06-05T09:48:48.516521Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Maelstrom: GOOGL's Extremes Ignite Cross-Asset Warning\n\nGOOGL's extreme overbought RSI (85.",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 594,
+      "timestamp": "2026-06-05T09:48:53.711734Z",
+      "platform": "bluesky",
+      "type": "repurposed",
+      "content_preview": "📊 GOOGL's extreme overbought RSI (85. 🧵",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 595,
+      "timestamp": "2026-06-05T09:48:54.970109Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Maelstrom: GOOGL's Extremes Ignite Cross-Asset Warning",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 596,
+      "timestamp": "2026-06-05T09:48:56.270657Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$GOOGL Alphabet Inc.\n\n💰 361.85 (-3.9%) | 5D: -7.0%\n📊 RSI: 32.6 | MACD: bearish\n📈 MA20: $389.61 (belo",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 597,
+      "timestamp": "2026-06-05T09:48:56.504468Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟢 $TSLA — Tesla, Inc. | $404.11 (-1.4%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n### 📊 Tec",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1512392774895407217"
+    },
+    {
+      "id": 598,
+      "timestamp": "2026-06-05T09:48:57.126208Z",
+      "platform": "bluesky",
+      "type": "post",
+      "content_preview": "1/ $TSLA Tesla, Inc. 💰 417.85 (+0.1%)\n\nSetup: consolidation\nRSI: 59.7 | MACD: bearish\nVol: 0.8x avg-",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mnjucwkyuq2o"
+    },
+    {
+      "id": 599,
+      "timestamp": "2026-06-05T09:49:03.288919Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 600,
+      "timestamp": "2026-06-05T09:49:35.199569Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
