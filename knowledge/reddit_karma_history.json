@@ -517,5 +517,10 @@
     "method": "proxy-html-profile",
     "note": "Reddit is rate-limiting all proxies (429/403). Profile page is accessible — account is alive. Karma data unavailable. Check manually at reddit.com/u/",
     "checked_at": "2026-06-05T05:25:07.107137"
+  },
+  {
+    "success": false,
+    "error": "HTML profile check failed: HTTP 522",
+    "checked_at": "2026-06-06T05:00:44.265791"
   }
 ]
