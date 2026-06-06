@@ -5775,5 +5775,99 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 613,
+    "timestamp": "2026-06-06T08:32:59.125444Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Insight: The AI-Driven K-Shaped Economy</b>\n\nThe AI-driven market is creating a K-Shaped",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "359"
+  },
+  {
+    "id": 614,
+    "timestamp": "2026-06-06T08:32:59.460092Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Insight: The AI-Driven K-Shaped Economy**\n\nThe AI-driven market is creating a K-Shaped ec",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1512736048524824679"
+  },
+  {
+    "id": 615,
+    "timestamp": "2026-06-06T08:32:59.976727Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The AI-Driven K-Shaped Economy\n\nThe AI-driven market is creating a K-Shaped econom",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 616,
+    "timestamp": "2026-06-06T08:33:05.967796Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The AI-driven market is creating a K-Shaped economy, where some sectors are surging while others a",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 617,
+    "timestamp": "2026-06-06T08:33:06.796377Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The AI-Driven K-Shaped Economy",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 618,
+    "timestamp": "2026-06-06T08:33:07.942505Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$NVDA NVIDIA Corporation\n\n💰 214.25 (+0.8%) | 5D: -4.1%\n📊 RSI: 52.5 | MACD: bearish\n📈 MA20: $214.88 (",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 619,
+    "timestamp": "2026-06-06T08:33:08.124178Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $AMZN — Amazon.com, Inc. | $264.14 (-1.1%)\n\n**Setup:** correction in play → Bias: **BEARISH**\n\n",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1512736085497610240"
+  },
+  {
+    "id": 620,
+    "timestamp": "2026-06-06T08:33:08.908470Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $AMZN Amazon.com, Inc. 💰 267.22 (-1.1%)\n\nSetup: consolidation\nRSI: 54.1 | MACD: bearish\nVol: 0.7x",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mnmakcjzp52m"
+  },
+  {
+    "id": 621,
+    "timestamp": "2026-06-06T08:33:14.019750Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 622,
+    "timestamp": "2026-06-06T08:33:21.503513Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
