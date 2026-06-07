@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-06-06T23:02:16.897827Z",
+  "generated_at": "2026-06-07T01:36:33.411616Z",
   "period": {
-    "today": "2026-06-06",
-    "yesterday": "2026-06-05",
-    "week_ago": "2026-05-30",
-    "month_ago": "2026-05-07"
+    "today": "2026-06-07",
+    "yesterday": "2026-06-06",
+    "week_ago": "2026-05-31",
+    "month_ago": "2026-05-08"
   },
   "totals": {
-    "posts_today": 20,
-    "posts_week": 168,
-    "posts_month": 583,
+    "posts_today": 0,
+    "posts_week": 148,
+    "posts_month": 559,
     "interactions_today": 0,
     "interactions_week": 0,
-    "interactions_month": 3,
-    "success_rate": 59.2
+    "interactions_month": 2,
+    "success_rate": 59.4
   },
   "platforms": {
     "tiktok": {
@@ -24,22 +24,22 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 2,
-      "week": 20,
+      "today": 0,
+      "week": 18,
       "month": 77,
       "success": 75,
       "failed": 2
     },
     "discord": {
-      "today": 4,
-      "week": 36,
+      "today": 0,
+      "week": 32,
       "month": 134,
       "success": 128,
       "failed": 6
     },
     "mastodon": {
-      "today": 4,
-      "week": 32,
+      "today": 0,
+      "week": 28,
       "month": 114,
       "success": 37,
       "failed": 77
@@ -52,8 +52,8 @@
       "failed": 2
     },
     "threads": {
-      "today": 2,
-      "week": 16,
+      "today": 0,
+      "week": 14,
       "month": 64,
       "success": 10,
       "failed": 54
@@ -73,15 +73,15 @@
       "failed": 3
     },
     "bluesky": {
-      "today": 4,
-      "week": 32,
+      "today": 0,
+      "week": 28,
       "month": 106,
       "success": 106,
       "failed": 0
     },
     "hatena": {
-      "today": 4,
-      "week": 32,
+      "today": 0,
+      "week": 28,
       "month": 112,
       "success": 4,
       "failed": 108
@@ -100,13 +100,9 @@
     }
   },
   "action_breakdown": {
-    "proactive_outreach": 3
+    "proactive_outreach": 2
   },
   "daily_trend": {
-    "2026-05-07": {
-      "posts": 24,
-      "interactions": 1
-    },
     "2026-05-08": {
       "posts": 3,
       "interactions": 0
@@ -229,19 +225,19 @@
     }
   },
   "hourly_distribution": {
-    "8": 45,
-    "18": 15,
-    "19": 10,
     "11": 6,
     "16": 70,
     "9": 54,
     "10": 34,
     "14": 29,
     "12": 21,
+    "18": 14,
     "13": 7,
     "20": 7,
+    "8": 38,
     "15": 30,
-    "17": 17
+    "17": 17,
+    "19": 5
   },
   "recent_posts": [
     {
