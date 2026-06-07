@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-07T15:23:22.364445Z",
+  "generated_at": "2026-06-07T16:50:52.198503Z",
   "period": {
     "today": "2026-06-07",
     "yesterday": "2026-06-06",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-08"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 158,
-    "posts_month": 569,
+    "posts_today": 20,
+    "posts_week": 168,
+    "posts_month": 579,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 2,
-    "success_rate": 59.2
+    "success_rate": 59.1
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 19,
-      "month": 78,
-      "success": 76,
+      "today": 2,
+      "week": 20,
+      "month": 79,
+      "success": 77,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 34,
-      "month": 136,
-      "success": 130,
+      "today": 4,
+      "week": 36,
+      "month": 138,
+      "success": 132,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 30,
-      "month": 116,
+      "today": 4,
+      "week": 32,
+      "month": 118,
       "success": 37,
-      "failed": 79
+      "failed": 81
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 15,
-      "month": 65,
+      "today": 2,
+      "week": 16,
+      "month": 66,
       "success": 10,
-      "failed": 55
+      "failed": 56
     },
     "medium": {
       "today": 0,
@@ -73,18 +73,18 @@
       "failed": 3
     },
     "bluesky": {
-      "today": 2,
-      "week": 30,
-      "month": 108,
-      "success": 108,
+      "today": 4,
+      "week": 32,
+      "month": 110,
+      "success": 110,
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 30,
-      "month": 114,
+      "today": 4,
+      "week": 32,
+      "month": 116,
       "success": 4,
-      "failed": 110
+      "failed": 112
     }
   },
   "interactions_by_platform": {
@@ -224,7 +224,7 @@
       "interactions": 0
     },
     "2026-06-07": {
-      "posts": 10,
+      "posts": 20,
       "interactions": 0
     }
   },
@@ -239,105 +239,11 @@
     "13": 7,
     "20": 7,
     "8": 43,
-    "15": 30,
+    "15": 35,
     "17": 17,
     "19": 5
   },
   "recent_posts": [
-    {
-      "id": 623,
-      "timestamp": "2026-06-06T15:17:52.745273Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 The Supercharged Growth Engine: Unpacking the S&P 500's Hidden Momentum</b>\n\nAs the S&P 500 hur",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "360"
-    },
-    {
-      "id": 624,
-      "timestamp": "2026-06-06T15:17:53.214110Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **The Supercharged Growth Engine: Unpacking the S&P 500's Hidden Momentum**\n\nAs the S&P 500 hurtle",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1512837943612538910"
-    },
-    {
-      "id": 625,
-      "timestamp": "2026-06-06T15:17:53.878444Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 The Supercharged Growth Engine: Unpacking the S&P 500's Hidden Momentum\n\nAs the S&P 500 hurtles to",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 626,
-      "timestamp": "2026-06-06T15:17:58.617143Z",
-      "platform": "bluesky",
-      "type": "repurposed",
-      "content_preview": "📊 As the S&P 500 hurtles towards its 52-week high, a surprising data point reveals the index's under",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 627,
-      "timestamp": "2026-06-06T15:17:59.937490Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 The Supercharged Growth Engine: Unpacking the S&P 500's Hidden Momentum",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 628,
-      "timestamp": "2026-06-06T15:18:01.051152Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$MSFT Microsoft Corporation\n\n💰 420.77 (+1.6%) | 5D: +3.2%\n📊 RSI: 48.9 | MACD: bearish\n📈 MA20: $413.9",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 629,
-      "timestamp": "2026-06-06T15:18:01.412814Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $521.54 (+2.2%)\n\n**Setup:** overbought, watching for pull",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1512837978383450193"
-    },
-    {
-      "id": 630,
-      "timestamp": "2026-06-06T15:18:04.425549Z",
-      "platform": "bluesky",
-      "type": "post",
-      "content_preview": "1/ $AAPL Apple Inc. 💰 308.82 (+1.3%)\n\nSetup: overbought, watching for pullback\nRSI: 91.1 | MACD: bul",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mnmx6bzo5p2s"
-    },
-    {
-      "id": 631,
-      "timestamp": "2026-06-06T15:18:10.426922Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 632,
-      "timestamp": "2026-06-06T15:18:40.026602Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
     {
       "id": 633,
       "timestamp": "2026-06-07T08:55:20.317225Z",
@@ -426,6 +332,100 @@
     {
       "id": 642,
       "timestamp": "2026-06-07T08:55:49.067933Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 643,
+      "timestamp": "2026-06-07T15:25:32.676542Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Global Market Snapshot</b>\n\nA 'K-Shaped' Recovery: The AI-Driven Bull and its Counterparts\n\n<b>",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "364"
+    },
+    {
+      "id": 644,
+      "timestamp": "2026-06-07T15:25:32.963919Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Global Market Snapshot**\n\nA 'K-Shaped' Recovery: The AI-Driven Bull and its Counterparts\n\n🔑 **Ke",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1513202260472234014"
+    },
+    {
+      "id": 645,
+      "timestamp": "2026-06-07T15:25:33.251543Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Global Market Snapshot\n\nA 'K-Shaped' Recovery: The AI-Driven Bull and its Counterparts\n#AAPL #NVDA",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 646,
+      "timestamp": "2026-06-07T15:25:38.830657Z",
+      "platform": "bluesky",
+      "type": "repurposed",
+      "content_preview": "📊 A 'K-Shaped' Recovery: The AI-Driven Bull and its Counterparts 🧵",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 647,
+      "timestamp": "2026-06-07T15:25:39.812618Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Global Market Snapshot",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 648,
+      "timestamp": "2026-06-07T15:25:40.898856Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$AAPL Apple Inc.\n\n💰 298.21 (-0.2%) | 5D: +3.8%\n📊 RSI: 81.0 | MACD: bullish\n📈 MA20: $279.84 (above)\n🎯",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 649,
+      "timestamp": "2026-06-07T15:25:41.456869Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟡 $AMZN — Amazon.com, Inc. | $271.17 (-1.4%)\n\n**Setup:** overbought, watching for pullback → Bias",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1513202295503061074"
+    },
+    {
+      "id": 650,
+      "timestamp": "2026-06-07T15:25:41.772603Z",
+      "platform": "bluesky",
+      "type": "post",
+      "content_preview": "1/ $AMD Advanced Micro Devices, Inc. 💰 445.5 (-0.6%)\n\nSetup: overbought, watching for pullback\nRSI: ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mnpi2w5zb62n"
+    },
+    {
+      "id": 651,
+      "timestamp": "2026-06-07T15:25:46.647315Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 652,
+      "timestamp": "2026-06-07T15:25:49.410130Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
