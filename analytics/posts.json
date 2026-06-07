@@ -6057,5 +6057,99 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 643,
+    "timestamp": "2026-06-07T15:25:32.676542Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Global Market Snapshot</b>\n\nA 'K-Shaped' Recovery: The AI-Driven Bull and its Counterparts\n\n<b>",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "364"
+  },
+  {
+    "id": 644,
+    "timestamp": "2026-06-07T15:25:32.963919Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Global Market Snapshot**\n\nA 'K-Shaped' Recovery: The AI-Driven Bull and its Counterparts\n\n🔑 **Ke",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1513202260472234014"
+  },
+  {
+    "id": 645,
+    "timestamp": "2026-06-07T15:25:33.251543Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Global Market Snapshot\n\nA 'K-Shaped' Recovery: The AI-Driven Bull and its Counterparts\n#AAPL #NVDA",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 646,
+    "timestamp": "2026-06-07T15:25:38.830657Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 A 'K-Shaped' Recovery: The AI-Driven Bull and its Counterparts 🧵",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 647,
+    "timestamp": "2026-06-07T15:25:39.812618Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Global Market Snapshot",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 648,
+    "timestamp": "2026-06-07T15:25:40.898856Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AAPL Apple Inc.\n\n💰 298.21 (-0.2%) | 5D: +3.8%\n📊 RSI: 81.0 | MACD: bullish\n📈 MA20: $279.84 (above)\n🎯",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 649,
+    "timestamp": "2026-06-07T15:25:41.456869Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $AMZN — Amazon.com, Inc. | $271.17 (-1.4%)\n\n**Setup:** overbought, watching for pullback → Bias",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1513202295503061074"
+  },
+  {
+    "id": 650,
+    "timestamp": "2026-06-07T15:25:41.772603Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $AMD Advanced Micro Devices, Inc. 💰 445.5 (-0.6%)\n\nSetup: overbought, watching for pullback\nRSI: ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mnpi2w5zb62n"
+  },
+  {
+    "id": 651,
+    "timestamp": "2026-06-07T15:25:46.647315Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 652,
+    "timestamp": "2026-06-07T15:25:49.410130Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
