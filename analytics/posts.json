@@ -5963,5 +5963,99 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 633,
+    "timestamp": "2026-06-07T08:55:20.317225Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Global Market Snapshot: S&P 500 on the Cusp of Reversal?</b>\n\nThe S&P 500 has been on a tear si",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "363"
+  },
+  {
+    "id": 634,
+    "timestamp": "2026-06-07T08:55:20.772738Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Global Market Snapshot: S&P 500 on the Cusp of Reversal?**\n\nThe S&P 500 has been on a tear since",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1513104061636018350"
+  },
+  {
+    "id": 635,
+    "timestamp": "2026-06-07T08:55:24.259997Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Global Market Snapshot: S&P 500 on the Cusp of Reversal?\n\nThe S&P 500 has been on a tear since the",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 636,
+    "timestamp": "2026-06-07T08:55:29.418177Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The S&P 500 has been on a tear since the start of the year, but the momentum is beginning to wane.",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 637,
+    "timestamp": "2026-06-07T08:55:30.475531Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Global Market Snapshot: S&P 500 on the Cusp of Reversal?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 638,
+    "timestamp": "2026-06-07T08:55:32.015146Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$TSLA Tesla, Inc.\n\n💰 433.45 (-2.6%) | 5D: +11.3%\n📊 RSI: 70.0 | MACD: bullish\n📈 MA20: $394.85 (above)",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 639,
+    "timestamp": "2026-06-07T08:55:32.347891Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $PLTR — Palantir Technologies Inc. | $136.6 (-0.2%)\n\n**Setup:** consolidation → Bias: **NEUTRAL",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1513104111237599352"
+  },
+  {
+    "id": 640,
+    "timestamp": "2026-06-07T08:55:32.690906Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $AAPL Apple Inc. 💰 304.99 (+0.9%)\n\nSetup: overbought, watching for pullback\nRSI: 82.4 | MACD: bul",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mnosbbjvxg2k"
+  },
+  {
+    "id": 641,
+    "timestamp": "2026-06-07T08:55:38.069550Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 642,
+    "timestamp": "2026-06-07T08:55:49.067933Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
