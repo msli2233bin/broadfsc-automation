@@ -1,0 +1,11 @@
+{
+  "platform": "mastodon",
+  "topic": "GOOGL_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "$GOOGL Alphabet Inc.\n\n💰 368.53 (-1.0%) | 5D: -3.1%\n📊 RSI: 30.4 | MACD: bearish\n📈 MA20: $385.38 (below)\n🎯 Resistance: $408.61 | Support: $272.11\n📢 Vol: 1.2x avg\n\nSetup: oversold bounce setup → bias: BULLISH\n\n📱 Free TA signals: t.me/BroadInvestBot\n#$GOOGL #Trading #TechnicalAnalysis #Stocks",
+  "content_type": "single",
+  "symbol": "GOOGL",
+  "created": "2026-06-08T08:41:47.106898",
+  "used": false,
+  "chart_paths": {}
+}

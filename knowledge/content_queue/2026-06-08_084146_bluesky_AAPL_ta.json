@@ -1,0 +1,11 @@
+{
+  "platform": "bluesky",
+  "topic": "AAPL_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "1/ $AAPL Apple Inc. 💰 307.34 (-1.2%)\n\nSetup: consolidation\nRSI: 58.3 | MACD: bearish\nVol: 1.4x avg---THREAD_BREAK---2/ Key levels:\n🎯 Resistance: $316.94\n🛡️ Support: $245.28\n\nBias: NEUTRAL\n\nWatch these. Respect them.---THREAD_BREAK---3/ More $AAPL + 4 other tickers every day → t.me/BroadInvestBot\n\nFree TA signals. No BS.",
+  "content_type": "thread",
+  "symbol": "AAPL",
+  "created": "2026-06-08T08:41:46.376077",
+  "used": false,
+  "chart_paths": {}
+}

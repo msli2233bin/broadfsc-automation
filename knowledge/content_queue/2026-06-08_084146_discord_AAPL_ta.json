@@ -1,0 +1,11 @@
+{
+  "platform": "discord",
+  "topic": "AAPL_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "## 🟡 $AAPL — Apple Inc. | $307.34 (-1.2%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n### 📊 Technical Indicators\n| Indicator | Value | Signal |\n|-----------|-------|--------|\n| RSI(14) | 58.3 | Neutral ✅ |\n| MACD | 8.4742 | Bearish (below signal) |\n| BB Position | 61.1% | Mid-range |\n| Volume | 1.4x avg | Normal |\n\n### 📈 Key Levels\n| Level | Price |\n|-------|-------|\n| Resistance | $316.94 |\n| MA20 | $304.24 |\n| MA50 | $281.09 |\n| MA200 | $272.63 |\n| Support | $245.28 |\n\n### 📉 Performance\n1D: -1.2% | 5D: -1.5% | 20D: +7.0%\n\n### 🎯 Bollinger Bands\nUpper: $318.25 | Lower: $290.23\n\n---\n📱 Get daily TA signals for 5 stocks → **t.me/BroadInvestBot**\nFree. No spam. Just levels that matter.",
+  "content_type": "single",
+  "symbol": "AAPL",
+  "created": "2026-06-08T08:41:46.375952",
+  "used": false,
+  "chart_paths": {}
+}
