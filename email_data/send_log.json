@@ -583,5 +583,32 @@
     "time": "2026-06-04T16:53:47.563453",
     "message_id": "<202606041653.66941971319@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "msli2233bin+raj@gmail.com",
+    "subject": "Why Oil's Quiet Rise Matters",
+    "personality": "iron_bull",
+    "date": "2026-06-08",
+    "time": "2026-06-08T17:22:02.041246",
+    "message_id": "<202606081722.17643697875@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "test@example.com",
+    "subject": "VIX says 'not all good' for markets",
+    "personality": "iron_bull",
+    "date": "2026-06-08",
+    "time": "2026-06-08T17:22:06.358910",
+    "message_id": "<202606081722.35466006138@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "david.chen.trader@gmail.com",
+    "subject": "Why the VIX says otherwise",
+    "personality": "iron_bull",
+    "date": "2026-06-08",
+    "time": "2026-06-08T17:22:11.300143",
+    "message_id": "<202606081722.67979873916@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
