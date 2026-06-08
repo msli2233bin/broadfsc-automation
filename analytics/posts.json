@@ -6245,5 +6245,25 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 663,
+    "timestamp": "2026-06-08T15:43:34.392454Z",
+    "platform": "telegram_en",
+    "type": "earnings",
+    "content_preview": "<b>📊 Earnings Calendar: Week of Jun 08</b>\n\n\n📅 <b>Wednesday, Jun 10</b>\n  • Oracle (ORCL) @ $213.63 ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "368"
+  },
+  {
+    "id": 664,
+    "timestamp": "2026-06-08T15:43:34.719538Z",
+    "platform": "discord",
+    "type": "earnings",
+    "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jun 08**\n\n\n📅 **Wednesday, Jun 10**\n  •",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1513569184989053053"
   }
 ]
