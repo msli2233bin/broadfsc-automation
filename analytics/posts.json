@@ -6265,5 +6265,99 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1513569184989053053"
+  },
+  {
+    "id": 665,
+    "timestamp": "2026-06-08T17:24:06.412784Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 BroadFSC Market Insight: 'Go Big or Go Home' for Tech Giants</b>\n\nThe Nasdaq Composite is now t",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "375"
+  },
+  {
+    "id": 666,
+    "timestamp": "2026-06-08T17:24:06.949375Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **BroadFSC Market Insight: 'Go Big or Go Home' for Tech Giants**\n\nThe Nasdaq Composite is now trad",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1513594485370650697"
+  },
+  {
+    "id": 667,
+    "timestamp": "2026-06-08T17:24:07.459654Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 BroadFSC Market Insight: 'Go Big or Go Home' for Tech Giants\n\nThe Nasdaq Composite is now trading ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 668,
+    "timestamp": "2026-06-08T17:24:13.314740Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The Nasdaq Composite is now trading at a 3-standard-deviation level, signaling an extreme overboug",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 669,
+    "timestamp": "2026-06-08T17:24:14.380512Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 BroadFSC Market Insight: 'Go Big or Go Home' for Tech Giants",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 670,
+    "timestamp": "2026-06-08T17:24:15.609690Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AMZN Amazon.com, Inc.\n\n💰 264.14 (-1.1%) | 5D: -3.1%\n📊 RSI: 53.9 | MACD: bearish\n📈 MA20: $264.53 (be",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 671,
+    "timestamp": "2026-06-08T17:24:15.926946Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $PLTR — Palantir Technologies Inc. | $135.26 (+0.1%)\n\n**Setup:** correction in play → Bias: **B",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1513594524260372500"
+  },
+  {
+    "id": 672,
+    "timestamp": "2026-06-08T17:24:16.615218Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $TSLA Tesla, Inc. 💰 433.45 (-2.6%)\n\nSetup: overbought, watching for pullback\nRSI: 70.0 | MACD: bu",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mns75uus642s"
+  },
+  {
+    "id": 673,
+    "timestamp": "2026-06-08T17:24:23.217432Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 674,
+    "timestamp": "2026-06-08T17:24:31.694072Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
