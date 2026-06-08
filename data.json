@@ -1,20 +1,12 @@
 {
-  "report_time": "2026-06-05T22:08:53.855189",
+  "report_time": "2026-06-08T02:39:16.647280",
   "days": 30,
   "overview": {
     "posts_by_platform": {
-      "bluesky": 4,
-      "discord": 13,
-      "hatena": 8,
-      "mastodon": 10,
-      "medium": 3,
-      "substack": 3,
-      "telegram_en": 8,
-      "threads": 10,
-      "tiktok": 17,
-      "twitter": 2
+      "hatena": 3,
+      "threads": 1
     },
-    "total_posts": 78,
+    "total_posts": 4,
     "total_clicks": 0,
     "clicks_by_platform": {},
     "total_conversations": 0,
@@ -22,22 +14,10 @@
     "live_chats": 0,
     "website_visits": 0,
     "whatsapp_clicks": 0,
-    "post_success_rate": 42.3
+    "post_success_rate": 75.0
   },
   "trend": {
     "posts": {
-      "2026-05-08": {
-        "bluesky": 4,
-        "discord": 13,
-        "hatena": 5,
-        "mastodon": 10,
-        "medium": 3,
-        "substack": 3,
-        "telegram_en": 8,
-        "threads": 9,
-        "tiktok": 17,
-        "twitter": 2
-      },
       "2026-05-11": {
         "hatena": 3,
         "threads": 1
@@ -49,7 +29,6 @@
   },
   "hourly": {
     "posts": {
-      "12": 74,
       "14": 2,
       "16": 2
     },
@@ -198,68 +177,20 @@
     }
   ],
   "platform_summary": {
-    "bluesky": {
-      "posts": 4,
-      "customers": 44,
-      "engaged": 9
-    },
-    "discord": {
-      "posts": 13,
-      "customers": 0,
-      "engaged": 0
-    },
     "hatena": {
-      "posts": 8,
-      "customers": 0,
-      "engaged": 0
-    },
-    "mastodon": {
-      "posts": 10,
-      "customers": 0,
-      "engaged": 0
-    },
-    "medium": {
       "posts": 3,
-      "customers": 0,
-      "engaged": 0
-    },
-    "substack": {
-      "posts": 3,
-      "customers": 0,
-      "engaged": 0
-    },
-    "telegram_en": {
-      "posts": 8,
       "customers": 0,
       "engaged": 0
     },
     "threads": {
-      "posts": 10,
-      "customers": 0,
-      "engaged": 0
-    },
-    "tiktok": {
-      "posts": 17,
-      "customers": 0,
-      "engaged": 0
-    },
-    "twitter": {
-      "posts": 2,
+      "posts": 1,
       "customers": 0,
       "engaged": 0
     }
   },
   "success_rates": {
-    "bluesky": 100.0,
-    "discord": 53.8,
-    "hatena": 50.0,
-    "mastodon": 50.0,
-    "medium": 0.0,
-    "substack": 0.0,
-    "telegram_en": 75.0,
-    "threads": 60.0,
-    "tiktok": 5.9,
-    "twitter": 0.0
+    "hatena": 100.0,
+    "threads": 0.0
   },
   "customers": {
     "bluesky": {
@@ -273,7 +204,7 @@
   },
   "funnel": {
     "stages": {
-      "awareness": 35,
+      "awareness": 34,
       "interest": 9
     },
     "transitions": [
