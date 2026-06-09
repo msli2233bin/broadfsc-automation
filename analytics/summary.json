@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-09T13:43:38.177689Z",
+  "generated_at": "2026-06-09T16:30:21.732630Z",
   "period": {
     "today": "2026-06-09",
     "yesterday": "2026-06-08",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-10"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 158,
-    "posts_month": 586,
+    "posts_today": 12,
+    "posts_week": 160,
+    "posts_month": 588,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 2,
-    "success_rate": 57.7
+    "success_rate": 57.8
   },
   "platforms": {
     "tiktok": {
@@ -24,17 +24,17 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 19,
-      "month": 83,
-      "success": 81,
+      "today": 2,
+      "week": 20,
+      "month": 84,
+      "success": 82,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 34,
-      "month": 145,
-      "success": 139,
+      "today": 3,
+      "week": 35,
+      "month": 146,
+      "success": 140,
       "failed": 6
     },
     "mastodon": {
@@ -224,14 +224,14 @@
       "interactions": 0
     },
     "2026-06-09": {
-      "posts": 10,
+      "posts": 12,
       "interactions": 0
     }
   },
   "hourly_distribution": {
     "10": 39,
     "16": 59,
-    "14": 29,
+    "14": 31,
     "12": 21,
     "18": 14,
     "13": 7,
@@ -244,26 +244,6 @@
     "19": 5
   },
   "recent_posts": [
-    {
-      "id": 665,
-      "timestamp": "2026-06-08T17:24:06.412784Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 BroadFSC Market Insight: 'Go Big or Go Home' for Tech Giants</b>\n\nThe Nasdaq Composite is now t",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "375"
-    },
-    {
-      "id": 666,
-      "timestamp": "2026-06-08T17:24:06.949375Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **BroadFSC Market Insight: 'Go Big or Go Home' for Tech Giants**\n\nThe Nasdaq Composite is now trad",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1513594485370650697"
-    },
     {
       "id": 667,
       "timestamp": "2026-06-08T17:24:07.459654Z",
@@ -431,6 +411,26 @@
       "content_preview": "Hatena Blog post",
       "status": "failed",
       "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 685,
+      "timestamp": "2026-06-09T14:43:52.989234Z",
+      "platform": "telegram_en",
+      "type": "earnings",
+      "content_preview": "<b>📊 Earnings Calendar: Week of Jun 09</b>\n\n\n📅 <b>Wednesday, Jun 10</b>\n  • Oracle (ORCL) @ $210.17 ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "379"
+    },
+    {
+      "id": 686,
+      "timestamp": "2026-06-09T14:43:53.520250Z",
+      "platform": "discord",
+      "type": "earnings",
+      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jun 09**\n\n\n📅 **Wednesday, Jun 10**\n  •",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1513916551651393570"
     }
   ],
   "recent_interactions": [
