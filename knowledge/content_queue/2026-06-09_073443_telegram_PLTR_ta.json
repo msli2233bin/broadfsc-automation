@@ -1,0 +1,11 @@
+{
+  "platform": "telegram",
+  "topic": "PLTR_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "🔴 <b>$PLTR Technical Analysis</b> — Palantir Technologies Inc.\n\n💰 Price: $136.47 (+0.7%) | Cap: $327.2B\n📊 Setup: <b>correction in play</b> | Bias: <b>BEARISH</b>\n\n<b>Indicators:</b>\n• RSI(14): 51.1\n• MACD: 0.56 (Signal: 0.79) — Bearish\n• BB: $123.4 — $155.62 (Position: 40.6%)\n• Volume: 0.7x average\n\n<b>Moving Averages:</b>\n• MA20: $139.51 | MA50: $140.68 | MA200: $142.57\n• Bearish alignment ❌\n\n<b>Performance:</b>\n• 1D: +0.7% | 5D: -15.1% | 20D: -1.0%\n\n<b>Key Levels:</b>\n• Resistance: $165.08\n• Support: $122.68\n\n<b>Trade Idea:</b>\nWait for support confirmation at $123.91\n\n📱 <b>Free daily TA signals</b> — message @BroadInvestBot",
+  "content_type": "single",
+  "symbol": "PLTR",
+  "created": "2026-06-09T07:34:43.483121",
+  "used": false,
+  "chart_paths": {}
+}
