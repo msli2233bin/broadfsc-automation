@@ -532,5 +532,20 @@
     "success": false,
     "error": "HTML profile check failed: HTTP 522",
     "checked_at": "2026-06-08T06:00:50.508916"
+  },
+  {
+    "success": true,
+    "username": "",
+    "link_karma": -1,
+    "comment_karma": -1,
+    "total_karma": -1,
+    "age_days": -1,
+    "age_str": "Unknown (proxy rate-limited)",
+    "has_verified_email": true,
+    "is_suspended": false,
+    "ready_for_posting": false,
+    "method": "proxy-html-profile",
+    "note": "Reddit is rate-limiting all proxies (429/403). Profile page is accessible — account is alive. Karma data unavailable. Check manually at reddit.com/u/",
+    "checked_at": "2026-06-09T05:13:15.263319"
   }
 ]
