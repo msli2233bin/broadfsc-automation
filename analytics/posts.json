@@ -6473,5 +6473,99 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1513916551651393570"
+  },
+  {
+    "id": 687,
+    "timestamp": "2026-06-09T16:33:10.130149Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The AI-Driven Rally Hits a Crucial Crossroads</b>\n\nThe S&P 500 is clinging to a 7,200 level, wh",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "386"
+  },
+  {
+    "id": 688,
+    "timestamp": "2026-06-09T16:33:10.463445Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The AI-Driven Rally Hits a Crucial Crossroads**\n\nThe S&P 500 is clinging to a 7,200 level, while",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1513944054038007999"
+  },
+  {
+    "id": 689,
+    "timestamp": "2026-06-09T16:33:10.778901Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The AI-Driven Rally Hits a Crucial Crossroads\n\nThe S&P 500 is clinging to a 7,200 level, while the",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 690,
+    "timestamp": "2026-06-09T16:33:16.740231Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The S&P 500 is clinging to a 7,200 level, while the Nasdaq teeters near 24,500, a level that was o",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 691,
+    "timestamp": "2026-06-09T16:33:17.630428Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The AI-Driven Rally Hits a Crucial Crossroads",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 692,
+    "timestamp": "2026-06-09T16:33:19.259698Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$GOOGL Alphabet Inc.\n\n💰 387.35 (-0.3%) | 5D: -0.3%\n📊 RSI: 79.3 | MACD: bullish\n📈 MA20: $363.61 (abov",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 693,
+    "timestamp": "2026-06-09T16:33:19.548795Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $AMD — Advanced Micro Devices, Inc. | $495.54 (-1.7%)\n\n**Setup:** uptrend intact → Bias: **BULL",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1513944092521009295"
+  },
+  {
+    "id": 694,
+    "timestamp": "2026-06-09T16:33:20.163223Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $NVDA NVIDIA Corporation 💰 211.5 (+1.8%)\n\nSetup: consolidation\nRSI: 58.2 | MACD: bearish\nVol: 1.1",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mnumrph2cb2b"
+  },
+  {
+    "id": 695,
+    "timestamp": "2026-06-09T16:33:25.994072Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 696,
+    "timestamp": "2026-06-09T16:33:58.628067Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
