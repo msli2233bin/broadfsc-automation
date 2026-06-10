@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-10T08:50:19.054516Z",
+  "generated_at": "2026-06-10T12:19:18.131647Z",
   "period": {
     "today": "2026-06-10",
     "yesterday": "2026-06-09",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-11"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 150,
-    "posts_month": 578,
+    "posts_today": 10,
+    "posts_week": 160,
+    "posts_month": 588,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 2,
-    "success_rate": 57.3
+    "success_rate": 57.1
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 19,
-      "month": 85,
-      "success": 83,
+      "today": 1,
+      "week": 20,
+      "month": 86,
+      "success": 84,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 33,
-      "month": 148,
-      "success": 142,
+      "today": 2,
+      "week": 35,
+      "month": 150,
+      "success": 144,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 28,
-      "month": 126,
+      "today": 2,
+      "week": 30,
+      "month": 128,
       "success": 37,
-      "failed": 89
+      "failed": 91
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 14,
-      "month": 70,
+      "today": 1,
+      "week": 15,
+      "month": 71,
       "success": 10,
-      "failed": 60
+      "failed": 61
     },
     "medium": {
       "today": 0,
@@ -73,18 +73,18 @@
       "failed": 3
     },
     "bluesky": {
-      "today": 0,
-      "week": 28,
-      "month": 118,
-      "success": 118,
+      "today": 2,
+      "week": 30,
+      "month": 120,
+      "success": 120,
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 28,
-      "month": 124,
+      "today": 2,
+      "week": 30,
+      "month": 126,
       "success": 4,
-      "failed": 120
+      "failed": 122
     }
   },
   "interactions_by_platform": {
@@ -222,6 +222,10 @@
     "2026-06-09": {
       "posts": 22,
       "interactions": 0
+    },
+    "2026-06-10": {
+      "posts": 10,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
@@ -234,106 +238,12 @@
     "8": 43,
     "10": 32,
     "15": 37,
-    "9": 50,
+    "9": 55,
     "17": 22,
     "11": 5,
     "19": 5
   },
   "recent_posts": [
-    {
-      "id": 677,
-      "timestamp": "2026-06-09T09:42:02.789177Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 S&P 500: The $1.4T Elephant in the Room\n\nThe S&P 500's 10-year price appreciation has been nothing",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 678,
-      "timestamp": "2026-06-09T09:42:07.068758Z",
-      "platform": "bluesky",
-      "type": "repurposed",
-      "content_preview": "📊 The S&P 500's 10-year price appreciation has been nothing short of astronomical, with the index no",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 679,
-      "timestamp": "2026-06-09T09:42:07.950629Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 S&P 500: The $1.4T Elephant in the Room",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 680,
-      "timestamp": "2026-06-09T09:42:09.670118Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$COIN Coinbase Global, Inc.\n\n💰 189.44 (-3.1%) | 5D: -12.5%\n📊 RSI: 48.0 | MACD: bearish\n📈 MA20: $198.",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 681,
-      "timestamp": "2026-06-09T09:42:10.152208Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "\"Hey everyone, I wanted to share some TikTok insights with you all. If you're looking to grow your p",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1513840621390004235"
-    },
-    {
-      "id": 682,
-      "timestamp": "2026-06-09T09:42:10.748171Z",
-      "platform": "bluesky",
-      "type": "post",
-      "content_preview": "1/ $AAPL Apple Inc. 💰 292.68 (-0.1%)\n\nSetup: overbought, watching for pullback\nRSI: 78.5 | MACD: bul",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mntvsiu3cx2v"
-    },
-    {
-      "id": 683,
-      "timestamp": "2026-06-09T09:42:23.702168Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 684,
-      "timestamp": "2026-06-09T09:42:27.902033Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 685,
-      "timestamp": "2026-06-09T14:43:52.989234Z",
-      "platform": "telegram_en",
-      "type": "earnings",
-      "content_preview": "<b>📊 Earnings Calendar: Week of Jun 09</b>\n\n\n📅 <b>Wednesday, Jun 10</b>\n  • Oracle (ORCL) @ $210.17 ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "379"
-    },
-    {
-      "id": 686,
-      "timestamp": "2026-06-09T14:43:53.520250Z",
-      "platform": "discord",
-      "type": "earnings",
-      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jun 09**\n\n\n📅 **Wednesday, Jun 10**\n  •",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1513916551651393570"
-    },
     {
       "id": 687,
       "timestamp": "2026-06-09T16:33:10.130149Z",
@@ -422,6 +332,100 @@
     {
       "id": 696,
       "timestamp": "2026-06-09T16:33:58.628067Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 697,
+      "timestamp": "2026-06-10T09:58:46.335898Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Trend Reversal Ahead: AI-Powered Earnings to Drive Market</b>\n\nA surprise 30% earnings beat by ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "389"
+    },
+    {
+      "id": 698,
+      "timestamp": "2026-06-10T09:58:47.135435Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Trend Reversal Ahead: AI-Powered Earnings to Drive Market**\n\nA surprise 30% earnings beat by NVD",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1514207189202370613"
+    },
+    {
+      "id": 699,
+      "timestamp": "2026-06-10T09:58:47.499897Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Trend Reversal Ahead: AI-Powered Earnings to Drive Market\n\nA surprise 30% earnings beat by NVDA, c",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 700,
+      "timestamp": "2026-06-10T09:58:52.440916Z",
+      "platform": "bluesky",
+      "type": "repurposed",
+      "content_preview": "📊 A surprise 30% earnings beat by NVDA, combined with a 20% revenue growth in the tech sector, may s",
+      "status": "success",
+      "error_msg": ""
+    },
+    {
+      "id": 701,
+      "timestamp": "2026-06-10T09:58:52.724531Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Trend Reversal Ahead: AI-Powered Earnings to Drive Market",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 702,
+      "timestamp": "2026-06-10T09:58:54.250212Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "As the FIFA World Cup 2026 approaches, social media platforms are gearing up to deliver unparalleled",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 703,
+      "timestamp": "2026-06-10T09:58:54.543062Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟡 $PLTR — Palantir Technologies Inc. | $136.88 (-0.4%)\n\n**Setup:** consolidation → Bias: **NEUTRA",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1514207222396354620"
+    },
+    {
+      "id": 704,
+      "timestamp": "2026-06-10T09:58:55.054591Z",
+      "platform": "bluesky",
+      "type": "post",
+      "content_preview": "1/ $MSFT Microsoft Corporation 💰 460.52 (+2.3%)\n\nSetup: overbought, watching for pullback\nRSI: 76.8 ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mnwh7e4eng2k"
+    },
+    {
+      "id": 705,
+      "timestamp": "2026-06-10T09:58:57.290722Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 706,
+      "timestamp": "2026-06-10T09:59:27.063458Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
