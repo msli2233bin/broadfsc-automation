@@ -1,12 +1,9 @@
 {
-  "report_time": "2026-06-09T22:17:42.668615",
+  "report_time": "2026-06-10T02:29:28.769489",
   "days": 30,
   "overview": {
-    "posts_by_platform": {
-      "hatena": 3,
-      "threads": 1
-    },
-    "total_posts": 4,
+    "posts_by_platform": {},
+    "total_posts": 0,
     "total_clicks": 0,
     "clicks_by_platform": {},
     "total_conversations": 0,
@@ -14,7 +11,7 @@
     "live_chats": 0,
     "website_visits": 0,
     "whatsapp_clicks": 0,
-    "post_success_rate": 75.0
+    "post_success_rate": 0.0
   },
   "trend": {
     "posts": {
@@ -28,10 +25,7 @@
     "visits": {}
   },
   "hourly": {
-    "posts": {
-      "14": 2,
-      "16": 2
-    },
+    "posts": {},
     "clicks": {}
   },
   "recent_posts": [
@@ -176,22 +170,8 @@
       "preview": "Threads post"
     }
   ],
-  "platform_summary": {
-    "hatena": {
-      "posts": 3,
-      "customers": 0,
-      "engaged": 0
-    },
-    "threads": {
-      "posts": 1,
-      "customers": 0,
-      "engaged": 0
-    }
-  },
-  "success_rates": {
-    "hatena": 100.0,
-    "threads": 0.0
-  },
+  "platform_summary": {},
+  "success_rates": {},
   "customers": {
     "bluesky": {
       "total": 46,
