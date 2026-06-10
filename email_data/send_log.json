@@ -610,5 +610,32 @@
     "time": "2026-06-08T17:22:11.300143",
     "message_id": "<202606081722.67979873916@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "sarah.investor@outlook.com",
+    "subject": "Crude Oil vs The Market",
+    "personality": "thomas",
+    "date": "2026-06-10",
+    "time": "2026-06-10T16:57:03.283638",
+    "message_id": "<202606101657.12215686323@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "takeshi.yamamoto@yahoo.co.jp",
+    "subject": "Gold just broke a key level",
+    "personality": "thomas",
+    "date": "2026-06-10",
+    "time": "2026-06-10T16:57:09.778092",
+    "message_id": "<202606101657.30114351418@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "maria.santos.pro@gmail.com",
+    "subject": "Gold broke 4,200 resistance",
+    "personality": "thomas",
+    "date": "2026-06-10",
+    "time": "2026-06-10T16:57:15.884001",
+    "message_id": "<202606101657.71106661190@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
