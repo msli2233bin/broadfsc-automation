@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-10T12:19:18.131647Z",
+  "generated_at": "2026-06-10T16:13:29.985904Z",
   "period": {
     "today": "2026-06-10",
     "yesterday": "2026-06-09",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-11"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 160,
-    "posts_month": 588,
+    "posts_today": 12,
+    "posts_week": 162,
+    "posts_month": 590,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 2,
-    "success_rate": 57.1
+    "success_rate": 57.3
   },
   "platforms": {
     "tiktok": {
@@ -24,17 +24,17 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 20,
-      "month": 86,
-      "success": 84,
+      "today": 2,
+      "week": 21,
+      "month": 87,
+      "success": 85,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 35,
-      "month": 150,
-      "success": 144,
+      "today": 3,
+      "week": 36,
+      "month": 151,
+      "success": 145,
       "failed": 6
     },
     "mastodon": {
@@ -224,7 +224,7 @@
       "interactions": 0
     },
     "2026-06-10": {
-      "posts": 10,
+      "posts": 12,
       "interactions": 0
     }
   },
@@ -237,33 +237,13 @@
     "20": 7,
     "8": 43,
     "10": 32,
-    "15": 37,
+    "15": 39,
     "9": 55,
     "17": 22,
     "11": 5,
     "19": 5
   },
   "recent_posts": [
-    {
-      "id": 687,
-      "timestamp": "2026-06-09T16:33:10.130149Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 The AI-Driven Rally Hits a Crucial Crossroads</b>\n\nThe S&P 500 is clinging to a 7,200 level, wh",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "386"
-    },
-    {
-      "id": 688,
-      "timestamp": "2026-06-09T16:33:10.463445Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **The AI-Driven Rally Hits a Crucial Crossroads**\n\nThe S&P 500 is clinging to a 7,200 level, while",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1513944054038007999"
-    },
     {
       "id": 689,
       "timestamp": "2026-06-09T16:33:10.778901Z",
@@ -431,6 +411,26 @@
       "content_preview": "Hatena Blog post",
       "status": "failed",
       "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 707,
+      "timestamp": "2026-06-10T15:26:55.701349Z",
+      "platform": "telegram_en",
+      "type": "earnings",
+      "content_preview": "<b>📊 Earnings Calendar: Week of Jun 10</b>\n\n\n📅 <b>Wednesday, Jun 10</b>\n  • Oracle (ORCL) @ $205.97 ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "390"
+    },
+    {
+      "id": 708,
+      "timestamp": "2026-06-10T15:26:56.117914Z",
+      "platform": "discord",
+      "type": "earnings",
+      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jun 10**\n\n\n📅 **Wednesday, Jun 10**\n  •",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1514289772364038195"
     }
   ],
   "recent_interactions": [
