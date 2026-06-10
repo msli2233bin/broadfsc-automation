@@ -6567,5 +6567,99 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 697,
+    "timestamp": "2026-06-10T09:58:46.335898Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Trend Reversal Ahead: AI-Powered Earnings to Drive Market</b>\n\nA surprise 30% earnings beat by ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "389"
+  },
+  {
+    "id": 698,
+    "timestamp": "2026-06-10T09:58:47.135435Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Trend Reversal Ahead: AI-Powered Earnings to Drive Market**\n\nA surprise 30% earnings beat by NVD",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1514207189202370613"
+  },
+  {
+    "id": 699,
+    "timestamp": "2026-06-10T09:58:47.499897Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Trend Reversal Ahead: AI-Powered Earnings to Drive Market\n\nA surprise 30% earnings beat by NVDA, c",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 700,
+    "timestamp": "2026-06-10T09:58:52.440916Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 A surprise 30% earnings beat by NVDA, combined with a 20% revenue growth in the tech sector, may s",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 701,
+    "timestamp": "2026-06-10T09:58:52.724531Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Trend Reversal Ahead: AI-Powered Earnings to Drive Market",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 702,
+    "timestamp": "2026-06-10T09:58:54.250212Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "As the FIFA World Cup 2026 approaches, social media platforms are gearing up to deliver unparalleled",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 703,
+    "timestamp": "2026-06-10T09:58:54.543062Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $PLTR — Palantir Technologies Inc. | $136.88 (-0.4%)\n\n**Setup:** consolidation → Bias: **NEUTRA",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1514207222396354620"
+  },
+  {
+    "id": 704,
+    "timestamp": "2026-06-10T09:58:55.054591Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $MSFT Microsoft Corporation 💰 460.52 (+2.3%)\n\nSetup: overbought, watching for pullback\nRSI: 76.8 ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mnwh7e4eng2k"
+  },
+  {
+    "id": 705,
+    "timestamp": "2026-06-10T09:58:57.290722Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 706,
+    "timestamp": "2026-06-10T09:59:27.063458Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
