@@ -1,5 +1,5 @@
 {
-  "report_time": "2026-06-10T22:46:58.459506",
+  "report_time": "2026-06-11T02:39:22.077272",
   "days": 30,
   "overview": {
     "posts_by_platform": {},
@@ -14,12 +14,7 @@
     "post_success_rate": 0.0
   },
   "trend": {
-    "posts": {
-      "2026-05-11": {
-        "hatena": 3,
-        "threads": 1
-      }
-    },
+    "posts": {},
     "clicks": {},
     "conversations": {},
     "visits": {}
@@ -174,17 +169,17 @@
   "success_rates": {},
   "customers": {
     "bluesky": {
-      "total": 49,
+      "total": 50,
       "engaged": 9
     }
   },
   "pipeline": {
-    "awareness": 40,
+    "awareness": 41,
     "interest": 9
   },
   "funnel": {
     "stages": {
-      "awareness": 39,
+      "awareness": 40,
       "interest": 9
     },
     "transitions": [
