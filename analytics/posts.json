@@ -6869,5 +6869,25 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 729,
+    "timestamp": "2026-06-11T15:54:25.533418Z",
+    "platform": "telegram_en",
+    "type": "earnings",
+    "content_preview": "<b>📊 Earnings Calendar: Week of Jun 11</b>\n\n\n📅 <b>Thursday, Jun 11</b>\n  • Adobe (ADBE) @ $221.74 | ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "401"
+  },
+  {
+    "id": 730,
+    "timestamp": "2026-06-11T15:54:26.036029Z",
+    "platform": "discord",
+    "type": "earnings",
+    "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jun 11**\n\n\n📅 **Thursday, Jun 11**\n  • ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1514659080172736633"
   }
 ]
