@@ -552,5 +552,10 @@
     "success": false,
     "error": "HTML profile check failed: HTTP 400",
     "checked_at": "2026-06-10T05:25:08.906760"
+  },
+  {
+    "success": false,
+    "error": "HTML profile check failed: HTTP 400",
+    "checked_at": "2026-06-11T05:59:33.037386"
   }
 ]
