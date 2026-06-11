@@ -6775,5 +6775,99 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 719,
+    "timestamp": "2026-06-11T10:23:00.255363Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The 'K-Shaped' Economy Shifts to 'V-Shaped': A Market Insight</b>\n\nThe S&P 500 has broken above",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "400"
+  },
+  {
+    "id": 720,
+    "timestamp": "2026-06-11T10:23:00.707601Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The 'K-Shaped' Economy Shifts to 'V-Shaped': A Market Insight**\n\nThe S&P 500 has broken above th",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1514575675384795146"
+  },
+  {
+    "id": 721,
+    "timestamp": "2026-06-11T10:23:01.579829Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The 'K-Shaped' Economy Shifts to 'V-Shaped': A Market Insight\n\nThe S&P 500 has broken above the 7,",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 722,
+    "timestamp": "2026-06-11T10:23:07.277824Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The S&P 500 has broken above the 7,375 resistance level, fueled by the Nasdaq's 25,169. 🧵",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 723,
+    "timestamp": "2026-06-11T10:23:07.535047Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The 'K-Shaped' Economy Shifts to 'V-Shaped': A Market Insight",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 724,
+    "timestamp": "2026-06-11T10:23:09.091875Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 156.54 (+9.2%) | 5D: +13.9%\n📊 RSI: 71.3 | MACD: bullish\n📈 MA20: ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 725,
+    "timestamp": "2026-06-11T10:23:09.396114Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $NVDA — NVIDIA Corporation | $214.25 (+0.8%)\n\n**Setup:** correction in play → Bias: **BEARISH**",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1514575712068309003"
+  },
+  {
+    "id": 726,
+    "timestamp": "2026-06-11T10:23:10.526202Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $AMD Advanced Micro Devices, Inc. 💰 nan (+nan%)\n\nSetup: consolidation\nRSI: 64.6 | MACD: bearish\nV",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mnyyznmg6q2d"
+  },
+  {
+    "id": 727,
+    "timestamp": "2026-06-11T10:23:12.924546Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 728,
+    "timestamp": "2026-06-11T10:23:40.911702Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
