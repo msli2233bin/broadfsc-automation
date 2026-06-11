@@ -89,3 +89,7 @@
 
 ## 06:37:41 | finance/earnings_analysis
 - [cross_domain_match] 🔗 跨域关联匹配: finance/earnings_analysis 在 FUSION_INDEX 中有对应融合策略
+
+## 08:48:37 | marketing/tiktok_updates
+- [marketing_insight] 📱 检测到营销洞察 (tiktok_updates)，建议生成新平台内容
+- [cross_domain_match] 🔗 跨域关联匹配: marketing/tiktok_updates 在 FUSION_INDEX 中有对应融合策略
