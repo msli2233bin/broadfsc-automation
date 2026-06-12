@@ -6983,5 +6983,99 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 741,
+    "timestamp": "2026-06-12T10:11:55.440499Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 BroadFSC's Weekly Market Insight: AI-Powered Bull Run or K-Shaped Crisis?</b>\n\nGet ready for a ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "411"
+  },
+  {
+    "id": 742,
+    "timestamp": "2026-06-12T10:11:55.828842Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **BroadFSC's Weekly Market Insight: AI-Powered Bull Run or K-Shaped Crisis?**\n\nGet ready for a wil",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1514935274046488598"
+  },
+  {
+    "id": 743,
+    "timestamp": "2026-06-12T10:11:56.492331Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 BroadFSC's Weekly Market Insight: AI-Powered Bull Run or K-Shaped Crisis?\n\nGet ready for a wild ri",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 744,
+    "timestamp": "2026-06-12T10:12:04.378992Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 Get ready for a wild ride! The S&P 500 just breached the 7,400 level, but the real question is: ca",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 745,
+    "timestamp": "2026-06-12T10:12:04.582990Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 BroadFSC's Weekly Market Insight: AI-Powered Bull Run or K-Shaped Crisis?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 746,
+    "timestamp": "2026-06-12T10:12:06.086753Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 135.26 (+0.1%) | 5D: -0.5%\n📊 RSI: 46.4 | MACD: bearish\n📈 MA20: $",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 747,
+    "timestamp": "2026-06-12T10:12:06.260621Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $488.45 (+8.0%)\n\n**Setup:** consolidation → Bias: **NEUTR",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1514935319131328622"
+  },
+  {
+    "id": 748,
+    "timestamp": "2026-06-12T10:12:06.558807Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $AMD Advanced Micro Devices, Inc. 💰 467.51 (+4.0%)\n\nSetup: overbought, watching for pullback\nRSI:",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mo3iurvroe26"
+  },
+  {
+    "id": 749,
+    "timestamp": "2026-06-12T10:12:08.437621Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 750,
+    "timestamp": "2026-06-12T10:12:16.875847Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
