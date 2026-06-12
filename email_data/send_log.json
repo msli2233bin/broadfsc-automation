@@ -673,5 +673,32 @@
     "time": "2026-06-11T17:36:07.715747",
     "message_id": "<202606111736.57861684940@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "msli2233bin+takeshi@gmail.com",
+    "subject": "Why the VIX says otherwise",
+    "personality": "iron_bull",
+    "date": "2026-06-12",
+    "time": "2026-06-12T16:43:27.391435",
+    "message_id": "<202606121643.62435482979@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+raj@gmail.com",
+    "subject": "S&P 500 hits another key level",
+    "personality": "iron_bull",
+    "date": "2026-06-12",
+    "time": "2026-06-12T16:43:32.284656",
+    "message_id": "<202606121643.29076264363@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "test@example.com",
+    "subject": "Why the VIX says otherwise",
+    "personality": "iron_bull",
+    "date": "2026-06-12",
+    "time": "2026-06-12T16:43:36.561838",
+    "message_id": "<202606121643.49788597044@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
