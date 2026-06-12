@@ -7077,5 +7077,99 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 751,
+    "timestamp": "2026-06-12T16:45:34.581647Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The K-Shaped Recovery: Understanding the AI-Driven Bifurcation</b>\n\nThe stock market is experie",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "418"
+  },
+  {
+    "id": 752,
+    "timestamp": "2026-06-12T16:45:34.899378Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The K-Shaped Recovery: Understanding the AI-Driven Bifurcation**\n\nThe stock market is experienci",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1515034339950461031"
+  },
+  {
+    "id": 753,
+    "timestamp": "2026-06-12T16:45:35.252759Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The K-Shaped Recovery: Understanding the AI-Driven Bifurcation\n\nThe stock market is experiencing a",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 754,
+    "timestamp": "2026-06-12T16:45:41.129198Z",
+    "platform": "bluesky",
+    "type": "repurposed",
+    "content_preview": "📊 The stock market is experiencing a K-Shaped recovery, with AI-driven sectors like technology and e",
+    "status": "success",
+    "error_msg": ""
+  },
+  {
+    "id": 755,
+    "timestamp": "2026-06-12T16:45:41.364339Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The K-Shaped Recovery: Understanding the AI-Driven Bifurcation",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 756,
+    "timestamp": "2026-06-12T16:45:42.888865Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "\"As we navigate the complex world of stock analysis, it's essential to understand the different type",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 757,
+    "timestamp": "2026-06-12T16:45:43.092291Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $521.54 (+2.2%)\n\n**Setup:** overbought, watching for pull",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1515034375165706420"
+  },
+  {
+    "id": 758,
+    "timestamp": "2026-06-12T16:45:43.705983Z",
+    "platform": "bluesky",
+    "type": "post",
+    "content_preview": "1/ $GOOGL Alphabet Inc. 💰 387.35 (-0.3%)\n\nSetup: overbought, watching for pullback\nRSI: 79.3 | MACD:",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mo46umw7re2i"
+  },
+  {
+    "id": 759,
+    "timestamp": "2026-06-12T16:45:45.999630Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 760,
+    "timestamp": "2026-06-12T16:45:54.765937Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
