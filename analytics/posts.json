@@ -7171,5 +7171,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 761,
+    "timestamp": "2026-06-13T08:57:29.280726Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Insight: AI-Driven Rotation</b>\n\nThe Nasdaq just hit a fresh all-time high, despite the ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "421"
+  },
+  {
+    "id": 762,
+    "timestamp": "2026-06-13T08:57:29.599689Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Insight: AI-Driven Rotation**\n\nThe Nasdaq just hit a fresh all-time high, despite the RSI",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1515278929894838282"
+  },
+  {
+    "id": 763,
+    "timestamp": "2026-06-13T08:57:29.961569Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: AI-Driven Rotation\n\nThe Nasdaq just hit a fresh all-time high, despite the RSI tou",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 764,
+    "timestamp": "2026-06-13T08:57:35.419270Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: AI-Driven Rotation",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 765,
+    "timestamp": "2026-06-13T08:57:37.027696Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$META Meta Platforms, Inc.\n\n💰 568.43 (-0.5%) | 5D: -9.4%\n📊 RSI: 37.4 | MACD: bearish\n📈 MA20: $606.78",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 766,
+    "timestamp": "2026-06-13T08:57:37.194756Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $NVDA — NVIDIA Corporation | $215.33 (-1.9%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n###",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1515278962081665126"
+  },
+  {
+    "id": 767,
+    "timestamp": "2026-06-13T08:57:38.987684Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 768,
+    "timestamp": "2026-06-13T08:58:03.013076Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
