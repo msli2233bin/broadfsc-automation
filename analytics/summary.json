@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-13T15:16:08.183238Z",
+  "generated_at": "2026-06-13T16:55:06.972030Z",
   "period": {
     "today": "2026-06-13",
     "yesterday": "2026-06-12",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-14"
   },
   "totals": {
-    "posts_today": 8,
-    "posts_week": 156,
-    "posts_month": 604,
+    "posts_today": 16,
+    "posts_week": 164,
+    "posts_month": 612,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 55.5
+    "success_rate": 55.2
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 19,
-      "month": 94,
-      "success": 92,
+      "today": 2,
+      "week": 20,
+      "month": 95,
+      "success": 93,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 34,
-      "month": 164,
-      "success": 158,
+      "today": 4,
+      "week": 36,
+      "month": 166,
+      "success": 160,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 30,
-      "month": 140,
+      "today": 4,
+      "week": 32,
+      "month": 142,
       "success": 37,
-      "failed": 103
+      "failed": 105
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 15,
-      "month": 77,
+      "today": 2,
+      "week": 16,
+      "month": 78,
       "success": 10,
-      "failed": 67
+      "failed": 68
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 30,
-      "month": 138,
+      "today": 4,
+      "week": 32,
+      "month": 140,
       "success": 4,
-      "failed": 134
+      "failed": 136
     }
   },
   "interactions_by_platform": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-06-13": {
-      "posts": 8,
+      "posts": 16,
       "interactions": 0
     }
   },
@@ -232,7 +232,7 @@
     "8": 46,
     "14": 29,
     "10": 42,
-    "15": 41,
+    "15": 44,
     "16": 54,
     "9": 55,
     "17": 32,
@@ -240,80 +240,6 @@
     "19": 5
   },
   "recent_posts": [
-    {
-      "id": 749,
-      "timestamp": "2026-06-12T10:12:08.437621Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 750,
-      "timestamp": "2026-06-12T10:12:16.875847Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 751,
-      "timestamp": "2026-06-12T16:45:34.581647Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 The K-Shaped Recovery: Understanding the AI-Driven Bifurcation</b>\n\nThe stock market is experie",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "418"
-    },
-    {
-      "id": 752,
-      "timestamp": "2026-06-12T16:45:34.899378Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **The K-Shaped Recovery: Understanding the AI-Driven Bifurcation**\n\nThe stock market is experienci",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1515034339950461031"
-    },
-    {
-      "id": 753,
-      "timestamp": "2026-06-12T16:45:35.252759Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 The K-Shaped Recovery: Understanding the AI-Driven Bifurcation\n\nThe stock market is experiencing a",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 754,
-      "timestamp": "2026-06-12T16:45:41.129198Z",
-      "platform": "bluesky",
-      "type": "repurposed",
-      "content_preview": "📊 The stock market is experiencing a K-Shaped recovery, with AI-driven sectors like technology and e",
-      "status": "success",
-      "error_msg": ""
-    },
-    {
-      "id": 755,
-      "timestamp": "2026-06-12T16:45:41.364339Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 The K-Shaped Recovery: Understanding the AI-Driven Bifurcation",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 756,
-      "timestamp": "2026-06-12T16:45:42.888865Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "\"As we navigate the complex world of stock analysis, it's essential to understand the different type",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
     {
       "id": 757,
       "timestamp": "2026-06-12T16:45:43.092291Z",
@@ -421,6 +347,81 @@
     {
       "id": 768,
       "timestamp": "2026-06-13T08:58:03.013076Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 769,
+      "timestamp": "2026-06-13T15:43:21.864891Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Global Market Update: Bullish Trends Continue Despite Recent Pullback</b>\n\nThe S&P 500 index ha",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "422"
+    },
+    {
+      "id": 770,
+      "timestamp": "2026-06-13T15:43:22.405148Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Global Market Update: Bullish Trends Continue Despite Recent Pullback**\n\nThe S&P 500 index has p",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1515381071750107209"
+    },
+    {
+      "id": 771,
+      "timestamp": "2026-06-13T15:43:23.141081Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Global Market Update: Bullish Trends Continue Despite Recent Pullback\n\nThe S&P 500 index has pulle",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 772,
+      "timestamp": "2026-06-13T15:43:27.894945Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Global Market Update: Bullish Trends Continue Despite Recent Pullback",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 773,
+      "timestamp": "2026-06-13T15:43:29.155285Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "\"As we navigate the complex world of stock analysis, it's essential to understand the different type",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 774,
+      "timestamp": "2026-06-13T15:43:29.359770Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟢 $COIN — Coinbase Global, Inc. | $216.6 (+7.7%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1515381102611660810"
+    },
+    {
+      "id": 775,
+      "timestamp": "2026-06-13T15:43:31.229902Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 776,
+      "timestamp": "2026-06-13T15:44:03.206521Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
