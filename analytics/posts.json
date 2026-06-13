@@ -7246,5 +7246,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 769,
+    "timestamp": "2026-06-13T15:43:21.864891Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Global Market Update: Bullish Trends Continue Despite Recent Pullback</b>\n\nThe S&P 500 index ha",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "422"
+  },
+  {
+    "id": 770,
+    "timestamp": "2026-06-13T15:43:22.405148Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Global Market Update: Bullish Trends Continue Despite Recent Pullback**\n\nThe S&P 500 index has p",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1515381071750107209"
+  },
+  {
+    "id": 771,
+    "timestamp": "2026-06-13T15:43:23.141081Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Global Market Update: Bullish Trends Continue Despite Recent Pullback\n\nThe S&P 500 index has pulle",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 772,
+    "timestamp": "2026-06-13T15:43:27.894945Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Global Market Update: Bullish Trends Continue Despite Recent Pullback",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 773,
+    "timestamp": "2026-06-13T15:43:29.155285Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "\"As we navigate the complex world of stock analysis, it's essential to understand the different type",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 774,
+    "timestamp": "2026-06-13T15:43:29.359770Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $COIN — Coinbase Global, Inc. | $216.6 (+7.7%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1515381102611660810"
+  },
+  {
+    "id": 775,
+    "timestamp": "2026-06-13T15:43:31.229902Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 776,
+    "timestamp": "2026-06-13T15:44:03.206521Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
