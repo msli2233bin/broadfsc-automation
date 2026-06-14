@@ -7321,5 +7321,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 777,
+    "timestamp": "2026-06-14T09:33:32.066264Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Moat-Protected Titans: A Cautionary Tale of Market Misconceptions</b>\n\nThe S&P 500 stands at 7,",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "425"
+  },
+  {
+    "id": 778,
+    "timestamp": "2026-06-14T09:33:32.342107Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Moat-Protected Titans: A Cautionary Tale of Market Misconceptions**\n\nThe S&P 500 stands at 7,431",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1515650389314371664"
+  },
+  {
+    "id": 779,
+    "timestamp": "2026-06-14T09:33:32.723514Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Moat-Protected Titans: A Cautionary Tale of Market Misconceptions\n\nThe S&P 500 stands at 7,431.46 ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 780,
+    "timestamp": "2026-06-14T09:33:37.629031Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Moat-Protected Titans: A Cautionary Tale of Market Misconceptions",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 781,
+    "timestamp": "2026-06-14T09:33:39.093085Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "\"Unlocking the Power of Storytelling in Social Media: A Key to Authentic Engagement\n\nAs social media",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 782,
+    "timestamp": "2026-06-14T09:33:39.393323Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $TSLA — Tesla, Inc. | $426.01 (+1.9%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n### 📊 Tech",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1515650418758385664"
+  },
+  {
+    "id": 783,
+    "timestamp": "2026-06-14T09:33:41.063148Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 784,
+    "timestamp": "2026-06-14T09:33:56.565993Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
