@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-14T06:39:21.430912Z",
+  "generated_at": "2026-06-14T10:23:25.964506Z",
   "period": {
     "today": "2026-06-14",
     "yesterday": "2026-06-13",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-15"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 144,
-    "posts_month": 600,
+    "posts_today": 8,
+    "posts_week": 152,
+    "posts_month": 608,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 54.8
+    "success_rate": 54.6
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 18,
-      "month": 95,
-      "success": 93,
+      "today": 1,
+      "week": 19,
+      "month": 96,
+      "success": 94,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 32,
-      "month": 166,
-      "success": 160,
+      "today": 2,
+      "week": 34,
+      "month": 168,
+      "success": 162,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 28,
-      "month": 142,
+      "today": 2,
+      "week": 30,
+      "month": 144,
       "success": 37,
-      "failed": 105
+      "failed": 107
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 14,
-      "month": 78,
+      "today": 1,
+      "week": 15,
+      "month": 79,
       "success": 10,
-      "failed": 68
+      "failed": 69
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 28,
-      "month": 140,
+      "today": 2,
+      "week": 30,
+      "month": 142,
       "success": 4,
-      "failed": 136
+      "failed": 138
     }
   },
   "interactions_by_platform": {
@@ -220,6 +220,10 @@
     "2026-06-13": {
       "posts": 16,
       "interactions": 0
+    },
+    "2026-06-14": {
+      "posts": 8,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
@@ -229,89 +233,13 @@
     "10": 42,
     "15": 44,
     "16": 54,
-    "9": 55,
+    "9": 58,
     "17": 32,
     "11": 5,
     "19": 5,
     "18": 10
   },
   "recent_posts": [
-    {
-      "id": 757,
-      "timestamp": "2026-06-12T16:45:43.092291Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $521.54 (+2.2%)\n\n**Setup:** overbought, watching for pull",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1515034375165706420"
-    },
-    {
-      "id": 758,
-      "timestamp": "2026-06-12T16:45:43.705983Z",
-      "platform": "bluesky",
-      "type": "post",
-      "content_preview": "1/ $GOOGL Alphabet Inc. 💰 387.35 (-0.3%)\n\nSetup: overbought, watching for pullback\nRSI: 79.3 | MACD:",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "at://did:plc:w4kf4kbbgvc524y7hlv5cmsz/app.bsky.feed.post/3mo46umw7re2i"
-    },
-    {
-      "id": 759,
-      "timestamp": "2026-06-12T16:45:45.999630Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 760,
-      "timestamp": "2026-06-12T16:45:54.765937Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 761,
-      "timestamp": "2026-06-13T08:57:29.280726Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Insight: AI-Driven Rotation</b>\n\nThe Nasdaq just hit a fresh all-time high, despite the ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "421"
-    },
-    {
-      "id": 762,
-      "timestamp": "2026-06-13T08:57:29.599689Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Insight: AI-Driven Rotation**\n\nThe Nasdaq just hit a fresh all-time high, despite the RSI",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1515278929894838282"
-    },
-    {
-      "id": 763,
-      "timestamp": "2026-06-13T08:57:29.961569Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Insight: AI-Driven Rotation\n\nThe Nasdaq just hit a fresh all-time high, despite the RSI tou",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 764,
-      "timestamp": "2026-06-13T08:57:35.419270Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Insight: AI-Driven Rotation",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 765,
       "timestamp": "2026-06-13T08:57:37.027696Z",
@@ -418,6 +346,81 @@
     {
       "id": 776,
       "timestamp": "2026-06-13T15:44:03.206521Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 777,
+      "timestamp": "2026-06-14T09:33:32.066264Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Moat-Protected Titans: A Cautionary Tale of Market Misconceptions</b>\n\nThe S&P 500 stands at 7,",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "425"
+    },
+    {
+      "id": 778,
+      "timestamp": "2026-06-14T09:33:32.342107Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Moat-Protected Titans: A Cautionary Tale of Market Misconceptions**\n\nThe S&P 500 stands at 7,431",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1515650389314371664"
+    },
+    {
+      "id": 779,
+      "timestamp": "2026-06-14T09:33:32.723514Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Moat-Protected Titans: A Cautionary Tale of Market Misconceptions\n\nThe S&P 500 stands at 7,431.46 ",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 780,
+      "timestamp": "2026-06-14T09:33:37.629031Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Moat-Protected Titans: A Cautionary Tale of Market Misconceptions",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 781,
+      "timestamp": "2026-06-14T09:33:39.093085Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "\"Unlocking the Power of Storytelling in Social Media: A Key to Authentic Engagement\n\nAs social media",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 782,
+      "timestamp": "2026-06-14T09:33:39.393323Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟡 $TSLA — Tesla, Inc. | $426.01 (+1.9%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n### 📊 Tech",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1515650418758385664"
+    },
+    {
+      "id": 783,
+      "timestamp": "2026-06-14T09:33:41.063148Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 784,
+      "timestamp": "2026-06-14T09:33:56.565993Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
