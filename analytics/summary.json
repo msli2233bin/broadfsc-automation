@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-14T14:39:46.094686Z",
+  "generated_at": "2026-06-14T16:19:55.293011Z",
   "period": {
     "today": "2026-06-14",
     "yesterday": "2026-06-13",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-15"
   },
   "totals": {
-    "posts_today": 8,
-    "posts_week": 152,
-    "posts_month": 608,
+    "posts_today": 16,
+    "posts_week": 160,
+    "posts_month": 616,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 54.6
+    "success_rate": 54.4
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 19,
-      "month": 96,
-      "success": 94,
+      "today": 2,
+      "week": 20,
+      "month": 97,
+      "success": 95,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 34,
-      "month": 168,
-      "success": 162,
+      "today": 4,
+      "week": 36,
+      "month": 170,
+      "success": 164,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 30,
-      "month": 144,
+      "today": 4,
+      "week": 32,
+      "month": 146,
       "success": 37,
-      "failed": 107
+      "failed": 109
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 15,
-      "month": 79,
+      "today": 2,
+      "week": 16,
+      "month": 80,
       "success": 10,
-      "failed": 69
+      "failed": 70
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 30,
-      "month": 142,
+      "today": 4,
+      "week": 32,
+      "month": 144,
       "success": 4,
-      "failed": 138
+      "failed": 140
     }
   },
   "interactions_by_platform": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-06-14": {
-      "posts": 8,
+      "posts": 16,
       "interactions": 0
     }
   },
@@ -231,7 +231,7 @@
     "8": 46,
     "14": 29,
     "10": 42,
-    "15": 44,
+    "15": 47,
     "16": 54,
     "9": 58,
     "17": 32,
@@ -240,81 +240,6 @@
     "18": 10
   },
   "recent_posts": [
-    {
-      "id": 765,
-      "timestamp": "2026-06-13T08:57:37.027696Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$META Meta Platforms, Inc.\n\n💰 568.43 (-0.5%) | 5D: -9.4%\n📊 RSI: 37.4 | MACD: bearish\n📈 MA20: $606.78",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 766,
-      "timestamp": "2026-06-13T08:57:37.194756Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟡 $NVDA — NVIDIA Corporation | $215.33 (-1.9%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n###",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1515278962081665126"
-    },
-    {
-      "id": 767,
-      "timestamp": "2026-06-13T08:57:38.987684Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 768,
-      "timestamp": "2026-06-13T08:58:03.013076Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 769,
-      "timestamp": "2026-06-13T15:43:21.864891Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Global Market Update: Bullish Trends Continue Despite Recent Pullback</b>\n\nThe S&P 500 index ha",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "422"
-    },
-    {
-      "id": 770,
-      "timestamp": "2026-06-13T15:43:22.405148Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Global Market Update: Bullish Trends Continue Despite Recent Pullback**\n\nThe S&P 500 index has p",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1515381071750107209"
-    },
-    {
-      "id": 771,
-      "timestamp": "2026-06-13T15:43:23.141081Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Global Market Update: Bullish Trends Continue Despite Recent Pullback\n\nThe S&P 500 index has pulle",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 772,
-      "timestamp": "2026-06-13T15:43:27.894945Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Global Market Update: Bullish Trends Continue Despite Recent Pullback",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 773,
       "timestamp": "2026-06-13T15:43:29.155285Z",
@@ -421,6 +346,81 @@
     {
       "id": 784,
       "timestamp": "2026-06-14T09:33:56.565993Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 785,
+      "timestamp": "2026-06-14T15:49:32.641775Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 BroadFSC's Exclusive Market Insight: 'The Great AI Awakening'?</b>\n\nAs the S&P 500 breaches the",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "426"
+    },
+    {
+      "id": 786,
+      "timestamp": "2026-06-14T15:49:34.074322Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **BroadFSC's Exclusive Market Insight: 'The Great AI Awakening'?**\n\nAs the S&P 500 breaches the 7,",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1515745019351273512"
+    },
+    {
+      "id": 787,
+      "timestamp": "2026-06-14T15:49:34.285082Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 BroadFSC's Exclusive Market Insight: 'The Great AI Awakening'?\n\nAs the S&P 500 breaches the 7,500 ",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 788,
+      "timestamp": "2026-06-14T15:49:38.569022Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 BroadFSC's Exclusive Market Insight: 'The Great AI Awakening'?",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 789,
+      "timestamp": "2026-06-14T15:49:39.822001Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "As the FIFA World Cup 2026 approaches, social media platforms are gearing up to deliver unparalleled",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 790,
+      "timestamp": "2026-06-14T15:49:40.378332Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "**FIFA World Cup Digital Cards: The Next Big Thing?**\n\nHey fellow traders, I wanted to share some in",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1515745046488682567"
+    },
+    {
+      "id": 791,
+      "timestamp": "2026-06-14T15:49:42.155449Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 792,
+      "timestamp": "2026-06-14T15:50:15.710078Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
