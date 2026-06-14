@@ -7396,5 +7396,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 785,
+    "timestamp": "2026-06-14T15:49:32.641775Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 BroadFSC's Exclusive Market Insight: 'The Great AI Awakening'?</b>\n\nAs the S&P 500 breaches the",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "426"
+  },
+  {
+    "id": 786,
+    "timestamp": "2026-06-14T15:49:34.074322Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **BroadFSC's Exclusive Market Insight: 'The Great AI Awakening'?**\n\nAs the S&P 500 breaches the 7,",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1515745019351273512"
+  },
+  {
+    "id": 787,
+    "timestamp": "2026-06-14T15:49:34.285082Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 BroadFSC's Exclusive Market Insight: 'The Great AI Awakening'?\n\nAs the S&P 500 breaches the 7,500 ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 788,
+    "timestamp": "2026-06-14T15:49:38.569022Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 BroadFSC's Exclusive Market Insight: 'The Great AI Awakening'?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 789,
+    "timestamp": "2026-06-14T15:49:39.822001Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "As the FIFA World Cup 2026 approaches, social media platforms are gearing up to deliver unparalleled",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 790,
+    "timestamp": "2026-06-14T15:49:40.378332Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "**FIFA World Cup Digital Cards: The Next Big Thing?**\n\nHey fellow traders, I wanted to share some in",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1515745046488682567"
+  },
+  {
+    "id": 791,
+    "timestamp": "2026-06-14T15:49:42.155449Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 792,
+    "timestamp": "2026-06-14T15:50:15.710078Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
