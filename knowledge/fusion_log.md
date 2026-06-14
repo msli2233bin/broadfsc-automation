@@ -97,3 +97,7 @@
 ## 06:49:45 | finance/company_financials
 - [ta_signal_detected] 📈 检测到技术分析信号知识点 (company_financials)，建议销售Agent生成触发式外联话术
 - [cross_domain_match] 🔗 跨域关联匹配: finance/company_financials 在 FUSION_INDEX 中有对应融合策略
+
+## 08:17:48 | marketing/tiktok_updates
+- [marketing_insight] 📱 检测到营销洞察 (tiktok_updates)，建议生成新平台内容
+- [cross_domain_match] 🔗 跨域关联匹配: marketing/tiktok_updates 在 FUSION_INDEX 中有对应融合策略
