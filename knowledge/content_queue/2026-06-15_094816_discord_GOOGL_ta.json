@@ -1,0 +1,11 @@
+{
+  "platform": "discord",
+  "topic": "GOOGL_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "## 🟢 $GOOGL — Alphabet Inc. | $359.68 (+0.5%)\n\n**Setup:** oversold bounce setup → Bias: **BULLISH**\n\n### 📊 Technical Indicators\n| Indicator | Value | Signal |\n|-----------|-------|--------|\n| RSI(14) | 34.1 | Neutral ✅ |\n| MACD | -2.8886 | Bearish (below signal) |\n| BB Position | 20.3% | Mid-range |\n| Volume | 0.8x avg | Low |\n\n### 📈 Key Levels\n| Level | Price |\n|-------|-------|\n| Resistance | $408.37 |\n| MA20 | $376.25 |\n| MA50 | $362.06 |\n| MA200 | $336.6 |\n| Support | $271.95 |\n\n### 📉 Performance\n1D: +0.5% | 5D: -2.3% | 20D: -10.3%\n\n### 🎯 Bollinger Bands\nUpper: $404.18 | Lower: $348.32\n\n---\n📱 Get daily TA signals for 5 stocks → **t.me/BroadInvestBot**\nFree. No spam. Just levels that matter.",
+  "content_type": "single",
+  "symbol": "GOOGL",
+  "created": "2026-06-15T09:48:16.454607",
+  "used": false,
+  "chart_paths": {}
+}

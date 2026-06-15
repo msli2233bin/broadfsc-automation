@@ -1,0 +1,11 @@
+{
+  "platform": "telegram",
+  "topic": "GOOGL_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "🟢 <b>$GOOGL Technical Analysis</b> — Alphabet Inc.\n\n💰 Price: $359.68 (+0.5%) | Cap: $4.39T\n📊 Setup: <b>oversold bounce setup</b> | Bias: <b>BULLISH</b>\n\n<b>Indicators:</b>\n• RSI(14): 34.1\n• MACD: -2.89 (Signal: 1.07) — Bearish\n• BB: $348.32 — $404.18 (Position: 20.3%)\n• Volume: 0.8x average\n\n<b>Moving Averages:</b>\n• MA20: $376.25 | MA50: $362.06 | MA200: $336.6\n• Mixed alignment ⚠️\n\n<b>Performance:</b>\n• 1D: +0.5% | 5D: -2.3% | 20D: -10.3%\n\n<b>Key Levels:</b>\n• Resistance: $408.37\n• Support: $271.95\n\n<b>Trade Idea:</b>\nBounce entry at $277.39 with stop below $266.51\n\n📱 <b>Free daily TA signals</b> — message @BroadInvestBot",
+  "content_type": "single",
+  "symbol": "GOOGL",
+  "created": "2026-06-15T09:48:16.455067",
+  "used": false,
+  "chart_paths": {}
+}
