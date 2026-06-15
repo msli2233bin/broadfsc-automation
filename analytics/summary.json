@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-15T10:42:32.869816Z",
+  "generated_at": "2026-06-15T16:17:14.214251Z",
   "period": {
     "today": "2026-06-15",
     "yesterday": "2026-06-14",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-16"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 140,
-    "posts_month": 606,
+    "posts_today": 8,
+    "posts_week": 148,
+    "posts_month": 614,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 54.1
+    "success_rate": 53.9
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 18,
-      "month": 97,
-      "success": 95,
+      "today": 1,
+      "week": 19,
+      "month": 98,
+      "success": 96,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 32,
-      "month": 170,
-      "success": 164,
+      "today": 2,
+      "week": 34,
+      "month": 172,
+      "success": 166,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 28,
-      "month": 146,
+      "today": 2,
+      "week": 30,
+      "month": 148,
       "success": 37,
-      "failed": 109
+      "failed": 111
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 14,
-      "month": 80,
+      "today": 1,
+      "week": 15,
+      "month": 81,
       "success": 10,
-      "failed": 70
+      "failed": 71
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 28,
-      "month": 144,
+      "today": 2,
+      "week": 30,
+      "month": 146,
       "success": 4,
-      "failed": 140
+      "failed": 142
     }
   },
   "interactions_by_platform": {
@@ -220,6 +220,10 @@
     "2026-06-14": {
       "posts": 16,
       "interactions": 0
+    },
+    "2026-06-15": {
+      "posts": 8,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
@@ -232,84 +236,10 @@
     "17": 32,
     "11": 5,
     "19": 5,
-    "18": 10
+    "18": 10,
+    "12": 3
   },
   "recent_posts": [
-    {
-      "id": 773,
-      "timestamp": "2026-06-13T15:43:29.155285Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "\"As we navigate the complex world of stock analysis, it's essential to understand the different type",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 774,
-      "timestamp": "2026-06-13T15:43:29.359770Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟢 $COIN — Coinbase Global, Inc. | $216.6 (+7.7%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1515381102611660810"
-    },
-    {
-      "id": 775,
-      "timestamp": "2026-06-13T15:43:31.229902Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 776,
-      "timestamp": "2026-06-13T15:44:03.206521Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 777,
-      "timestamp": "2026-06-14T09:33:32.066264Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Moat-Protected Titans: A Cautionary Tale of Market Misconceptions</b>\n\nThe S&P 500 stands at 7,",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "425"
-    },
-    {
-      "id": 778,
-      "timestamp": "2026-06-14T09:33:32.342107Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Moat-Protected Titans: A Cautionary Tale of Market Misconceptions**\n\nThe S&P 500 stands at 7,431",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1515650389314371664"
-    },
-    {
-      "id": 779,
-      "timestamp": "2026-06-14T09:33:32.723514Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Moat-Protected Titans: A Cautionary Tale of Market Misconceptions\n\nThe S&P 500 stands at 7,431.46 ",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 780,
-      "timestamp": "2026-06-14T09:33:37.629031Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Moat-Protected Titans: A Cautionary Tale of Market Misconceptions",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 781,
       "timestamp": "2026-06-14T09:33:39.093085Z",
@@ -416,6 +346,81 @@
     {
       "id": 792,
       "timestamp": "2026-06-14T15:50:15.710078Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 793,
+      "timestamp": "2026-06-15T12:12:09.796002Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 The Artificial Intelligence Singularity is Here: What It Means for Your Portfolio</b>\n\nThe Nasd",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "429"
+    },
+    {
+      "id": 794,
+      "timestamp": "2026-06-15T12:12:10.313909Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **The Artificial Intelligence Singularity is Here: What It Means for Your Portfolio**\n\nThe Nasdaq ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1516052697403363341"
+    },
+    {
+      "id": 795,
+      "timestamp": "2026-06-15T12:12:10.643597Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 The Artificial Intelligence Singularity is Here: What It Means for Your Portfolio\n\nThe Nasdaq has ",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 796,
+      "timestamp": "2026-06-15T12:12:15.475596Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 The Artificial Intelligence Singularity is Here: What It Means for Your Portfolio",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 797,
+      "timestamp": "2026-06-15T12:12:16.851369Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 135.26 (+0.1%) | 5D: -0.5%\n📊 RSI: 46.4 | MACD: bearish\n📈 MA20: $",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 798,
+      "timestamp": "2026-06-15T12:12:17.101777Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🔴 $META — Meta Platforms, Inc. | $568.43 (-0.5%)\n\n**Setup:** correction in play → Bias: **BEARISH",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1516052727032053800"
+    },
+    {
+      "id": 799,
+      "timestamp": "2026-06-15T12:12:19.209921Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 800,
+      "timestamp": "2026-06-15T12:12:50.333648Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
