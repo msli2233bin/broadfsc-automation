@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-15T16:17:14.214251Z",
+  "generated_at": "2026-06-15T20:01:15.681456Z",
   "period": {
     "today": "2026-06-15",
     "yesterday": "2026-06-14",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-16"
   },
   "totals": {
-    "posts_today": 8,
-    "posts_week": 148,
-    "posts_month": 614,
+    "posts_today": 16,
+    "posts_week": 156,
+    "posts_month": 622,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 53.9
+    "success_rate": 53.7
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 19,
-      "month": 98,
-      "success": 96,
+      "today": 2,
+      "week": 20,
+      "month": 99,
+      "success": 97,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 34,
-      "month": 172,
-      "success": 166,
+      "today": 4,
+      "week": 36,
+      "month": 174,
+      "success": 168,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 30,
-      "month": 148,
+      "today": 4,
+      "week": 32,
+      "month": 150,
       "success": 37,
-      "failed": 111
+      "failed": 113
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 15,
-      "month": 81,
+      "today": 2,
+      "week": 16,
+      "month": 82,
       "success": 10,
-      "failed": 71
+      "failed": 72
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 30,
-      "month": 146,
+      "today": 4,
+      "week": 32,
+      "month": 148,
       "success": 4,
-      "failed": 142
+      "failed": 144
     }
   },
   "interactions_by_platform": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-06-15": {
-      "posts": 8,
+      "posts": 16,
       "interactions": 0
     }
   },
@@ -236,85 +236,10 @@
     "17": 32,
     "11": 5,
     "19": 5,
-    "18": 10,
+    "18": 13,
     "12": 3
   },
   "recent_posts": [
-    {
-      "id": 781,
-      "timestamp": "2026-06-14T09:33:39.093085Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "\"Unlocking the Power of Storytelling in Social Media: A Key to Authentic Engagement\n\nAs social media",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 782,
-      "timestamp": "2026-06-14T09:33:39.393323Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟡 $TSLA — Tesla, Inc. | $426.01 (+1.9%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n### 📊 Tech",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1515650418758385664"
-    },
-    {
-      "id": 783,
-      "timestamp": "2026-06-14T09:33:41.063148Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 784,
-      "timestamp": "2026-06-14T09:33:56.565993Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 785,
-      "timestamp": "2026-06-14T15:49:32.641775Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 BroadFSC's Exclusive Market Insight: 'The Great AI Awakening'?</b>\n\nAs the S&P 500 breaches the",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "426"
-    },
-    {
-      "id": 786,
-      "timestamp": "2026-06-14T15:49:34.074322Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **BroadFSC's Exclusive Market Insight: 'The Great AI Awakening'?**\n\nAs the S&P 500 breaches the 7,",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1515745019351273512"
-    },
-    {
-      "id": 787,
-      "timestamp": "2026-06-14T15:49:34.285082Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 BroadFSC's Exclusive Market Insight: 'The Great AI Awakening'?\n\nAs the S&P 500 breaches the 7,500 ",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 788,
-      "timestamp": "2026-06-14T15:49:38.569022Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 BroadFSC's Exclusive Market Insight: 'The Great AI Awakening'?",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 789,
       "timestamp": "2026-06-14T15:49:39.822001Z",
@@ -421,6 +346,81 @@
     {
       "id": 800,
       "timestamp": "2026-06-15T12:12:50.333648Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 801,
+      "timestamp": "2026-06-15T18:27:47.182770Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Alert: The AI-Driven K-Shaped Economy</b>\n\nWe're seeing a rare occurrence in global mark",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "436"
+    },
+    {
+      "id": 802,
+      "timestamp": "2026-06-15T18:27:47.434524Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Alert: The AI-Driven K-Shaped Economy**\n\nWe're seeing a rare occurrence in global markets",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1516147225808339014"
+    },
+    {
+      "id": 803,
+      "timestamp": "2026-06-15T18:27:47.802971Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Alert: The AI-Driven K-Shaped Economy\n\nWe're seeing a rare occurrence in global markets: a ",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 804,
+      "timestamp": "2026-06-15T18:27:52.947856Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Alert: The AI-Driven K-Shaped Economy",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 805,
+      "timestamp": "2026-06-15T18:27:54.239987Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$GOOGL Alphabet Inc.\n\n💰 363.31 (-1.4%) | 5D: -3.4%\n📊 RSI: 28.2 | MACD: bearish\n📈 MA20: $383.28 (belo",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 806,
+      "timestamp": "2026-06-15T18:27:54.584542Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "**Market Musings**\n\nHey fellow traders, let's talk about stock types and risk management. As we know",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1516147255554342976"
+    },
+    {
+      "id": 807,
+      "timestamp": "2026-06-15T18:27:56.526244Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 808,
+      "timestamp": "2026-06-15T18:27:59.847569Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
