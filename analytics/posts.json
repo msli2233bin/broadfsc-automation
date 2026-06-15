@@ -7471,5 +7471,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 793,
+    "timestamp": "2026-06-15T12:12:09.796002Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The Artificial Intelligence Singularity is Here: What It Means for Your Portfolio</b>\n\nThe Nasd",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "429"
+  },
+  {
+    "id": 794,
+    "timestamp": "2026-06-15T12:12:10.313909Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The Artificial Intelligence Singularity is Here: What It Means for Your Portfolio**\n\nThe Nasdaq ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1516052697403363341"
+  },
+  {
+    "id": 795,
+    "timestamp": "2026-06-15T12:12:10.643597Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The Artificial Intelligence Singularity is Here: What It Means for Your Portfolio\n\nThe Nasdaq has ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 796,
+    "timestamp": "2026-06-15T12:12:15.475596Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The Artificial Intelligence Singularity is Here: What It Means for Your Portfolio",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 797,
+    "timestamp": "2026-06-15T12:12:16.851369Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 135.26 (+0.1%) | 5D: -0.5%\n📊 RSI: 46.4 | MACD: bearish\n📈 MA20: $",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 798,
+    "timestamp": "2026-06-15T12:12:17.101777Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $META — Meta Platforms, Inc. | $568.43 (-0.5%)\n\n**Setup:** correction in play → Bias: **BEARISH",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1516052727032053800"
+  },
+  {
+    "id": 799,
+    "timestamp": "2026-06-15T12:12:19.209921Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 800,
+    "timestamp": "2026-06-15T12:12:50.333648Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
