@@ -104,3 +104,6 @@
 
 ## 09:54:33 | sales/sales_research
 - [cross_domain_match] 🔗 跨域关联匹配: sales/sales_research 在 FUSION_INDEX 中有对应融合策略
+
+## 11:49:57 | competitor/industry_education
+- [cross_domain_match] 🔗 跨域关联匹配: competitor/industry_education 在 FUSION_INDEX 中有对应融合策略
