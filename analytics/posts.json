@@ -7546,5 +7546,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 801,
+    "timestamp": "2026-06-15T18:27:47.182770Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Alert: The AI-Driven K-Shaped Economy</b>\n\nWe're seeing a rare occurrence in global mark",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "436"
+  },
+  {
+    "id": 802,
+    "timestamp": "2026-06-15T18:27:47.434524Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Alert: The AI-Driven K-Shaped Economy**\n\nWe're seeing a rare occurrence in global markets",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1516147225808339014"
+  },
+  {
+    "id": 803,
+    "timestamp": "2026-06-15T18:27:47.802971Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: The AI-Driven K-Shaped Economy\n\nWe're seeing a rare occurrence in global markets: a ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 804,
+    "timestamp": "2026-06-15T18:27:52.947856Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: The AI-Driven K-Shaped Economy",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 805,
+    "timestamp": "2026-06-15T18:27:54.239987Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$GOOGL Alphabet Inc.\n\n💰 363.31 (-1.4%) | 5D: -3.4%\n📊 RSI: 28.2 | MACD: bearish\n📈 MA20: $383.28 (belo",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 806,
+    "timestamp": "2026-06-15T18:27:54.584542Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "**Market Musings**\n\nHey fellow traders, let's talk about stock types and risk management. As we know",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1516147255554342976"
+  },
+  {
+    "id": 807,
+    "timestamp": "2026-06-15T18:27:56.526244Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 808,
+    "timestamp": "2026-06-15T18:27:59.847569Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
