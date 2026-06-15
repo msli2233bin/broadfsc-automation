@@ -700,5 +700,41 @@
     "time": "2026-06-12T16:43:36.561838",
     "message_id": "<202606121643.49788597044@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "david.chen.trader@gmail.com",
+    "subject": "Gold's Big Jump",
+    "personality": "michael",
+    "date": "2026-06-15",
+    "time": "2026-06-15T18:24:14.817444",
+    "message_id": "<202606151824.76534611560@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "sarah.investor@outlook.com",
+    "subject": "Gold's 4,345 Breakout",
+    "personality": "michael",
+    "date": "2026-06-15",
+    "time": "2026-06-15T18:24:21.709885",
+    "message_id": "<202606151824.87464033553@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "takeshi.yamamoto@yahoo.co.jp",
+    "subject": "Why the S&P just hit a soft ceiling",
+    "personality": "michael",
+    "date": "2026-06-15",
+    "time": "2026-06-15T18:24:30.628063",
+    "message_id": "<202606151824.68856161015@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "maria.santos.pro@gmail.com",
+    "subject": "S&P 7,562.59: What's Behind the Rally?",
+    "personality": "michael",
+    "date": "2026-06-15",
+    "time": "2026-06-15T18:24:37.815196",
+    "message_id": "<202606151824.92721835705@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
