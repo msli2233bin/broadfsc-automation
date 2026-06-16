@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-16T17:31:40.932067Z",
+  "generated_at": "2026-06-16T20:48:56.092538Z",
   "period": {
     "today": "2026-06-16",
     "yesterday": "2026-06-15",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-17"
   },
   "totals": {
-    "posts_today": 8,
-    "posts_week": 142,
-    "posts_month": 610,
+    "posts_today": 16,
+    "posts_week": 150,
+    "posts_month": 618,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 53.0
+    "success_rate": 52.8
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 18,
-      "month": 100,
-      "success": 98,
+      "today": 2,
+      "week": 19,
+      "month": 101,
+      "success": 99,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 33,
-      "month": 176,
-      "success": 170,
+      "today": 4,
+      "week": 35,
+      "month": 178,
+      "success": 172,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 30,
-      "month": 152,
+      "today": 4,
+      "week": 32,
+      "month": 154,
       "success": 37,
-      "failed": 115
+      "failed": 117
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 15,
-      "month": 83,
+      "today": 2,
+      "week": 16,
+      "month": 84,
       "success": 10,
-      "failed": 73
+      "failed": 74
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 30,
-      "month": 150,
+      "today": 4,
+      "week": 32,
+      "month": 152,
       "success": 4,
-      "failed": 146
+      "failed": 148
     }
   },
   "interactions_by_platform": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-06-16": {
-      "posts": 8,
+      "posts": 16,
       "interactions": 0
     }
   },
@@ -236,85 +236,10 @@
     "17": 32,
     "11": 8,
     "19": 5,
-    "18": 13,
+    "18": 16,
     "12": 3
   },
   "recent_posts": [
-    {
-      "id": 797,
-      "timestamp": "2026-06-15T12:12:16.851369Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 135.26 (+0.1%) | 5D: -0.5%\n📊 RSI: 46.4 | MACD: bearish\n📈 MA20: $",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 798,
-      "timestamp": "2026-06-15T12:12:17.101777Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🔴 $META — Meta Platforms, Inc. | $568.43 (-0.5%)\n\n**Setup:** correction in play → Bias: **BEARISH",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1516052727032053800"
-    },
-    {
-      "id": 799,
-      "timestamp": "2026-06-15T12:12:19.209921Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 800,
-      "timestamp": "2026-06-15T12:12:50.333648Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 801,
-      "timestamp": "2026-06-15T18:27:47.182770Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Alert: The AI-Driven K-Shaped Economy</b>\n\nWe're seeing a rare occurrence in global mark",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "436"
-    },
-    {
-      "id": 802,
-      "timestamp": "2026-06-15T18:27:47.434524Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Alert: The AI-Driven K-Shaped Economy**\n\nWe're seeing a rare occurrence in global markets",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1516147225808339014"
-    },
-    {
-      "id": 803,
-      "timestamp": "2026-06-15T18:27:47.802971Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Alert: The AI-Driven K-Shaped Economy\n\nWe're seeing a rare occurrence in global markets: a ",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 804,
-      "timestamp": "2026-06-15T18:27:52.947856Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Alert: The AI-Driven K-Shaped Economy",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 805,
       "timestamp": "2026-06-15T18:27:54.239987Z",
@@ -421,6 +346,81 @@
     {
       "id": 816,
       "timestamp": "2026-06-16T11:09:53.478846Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 817,
+      "timestamp": "2026-06-16T18:27:47.049588Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Alert: AI-Driven Bubbles and the Bullish Case for Main Street</b>\n\nWe've identified a fa",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "446"
+    },
+    {
+      "id": 818,
+      "timestamp": "2026-06-16T18:27:47.266816Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Alert: AI-Driven Bubbles and the Bullish Case for Main Street**\n\nWe've identified a fasci",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1516509613028282539"
+    },
+    {
+      "id": 819,
+      "timestamp": "2026-06-16T18:27:47.703288Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Alert: AI-Driven Bubbles and the Bullish Case for Main Street\n\nWe've identified a fascinati",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 820,
+      "timestamp": "2026-06-16T18:27:52.683651Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Alert: AI-Driven Bubbles and the Bullish Case for Main Street",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 821,
+      "timestamp": "2026-06-16T18:27:53.906110Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$AMD Advanced Micro Devices, Inc.\n\n💰 445.5 (-0.6%) | 5D: +5.7%\n📊 RSI: 75.0 | MACD: bullish\n📈 MA20: $",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 822,
+      "timestamp": "2026-06-16T18:27:54.147704Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🔴 $MSFT — Microsoft Corporation | $407.77 (-1.2%)\n\n**Setup:** correction in play → Bias: **BEARIS",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1516509641641820202"
+    },
+    {
+      "id": 823,
+      "timestamp": "2026-06-16T18:27:56.087525Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 824,
+      "timestamp": "2026-06-16T18:28:08.402832Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
