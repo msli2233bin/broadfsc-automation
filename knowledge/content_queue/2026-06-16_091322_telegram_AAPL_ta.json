@@ -1,0 +1,11 @@
+{
+  "platform": "telegram",
+  "topic": "AAPL_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "🟢 <b>$AAPL Technical Analysis</b> — Apple Inc.\n\n💰 Price: $nan (+nan%) | Cap: $4.35T\n📊 Setup: <b>oversold bounce setup</b> | Bias: <b>BULLISH</b>\n\n<b>Indicators:</b>\n• RSI(14): 34.5\n• MACD: 2.26 (Signal: 5.05) — Bearish\n• BB: $nan — $nan (Position: nan%)\n• Volume: 0.9x average\n\n<b>Moving Averages:</b>\n• MA20: $nan | MA50: $nan | MA200: $274.38\n• Bearish alignment ❌\n\n<b>Performance:</b>\n• 1D: +nan% | 5D: +nan% | 20D: +nan%\n\n<b>Key Levels:</b>\n• Resistance: $317.4\n• Support: $245.28\n\n<b>Trade Idea:</b>\nBounce entry at $250.19 with stop below $240.37\n\n📱 <b>Free daily TA signals</b> — message @BroadInvestBot",
+  "content_type": "single",
+  "symbol": "AAPL",
+  "created": "2026-06-16T09:13:22.424278",
+  "used": false,
+  "chart_paths": {}
+}
