@@ -7621,5 +7621,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 809,
+    "timestamp": "2026-06-16T11:09:29.240196Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The Unseen Bull Signal in AI-Driven Markets</b>\n\nAs we dive into the second half of 2026, a cur",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "439"
+  },
+  {
+    "id": 810,
+    "timestamp": "2026-06-16T11:09:29.547006Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The Unseen Bull Signal in AI-Driven Markets**\n\nAs we dive into the second half of 2026, a curiou",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1516399311808761969"
+  },
+  {
+    "id": 811,
+    "timestamp": "2026-06-16T11:09:30.182647Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The Unseen Bull Signal in AI-Driven Markets\n\nAs we dive into the second half of 2026, a curious ph",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 812,
+    "timestamp": "2026-06-16T11:09:34.795815Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The Unseen Bull Signal in AI-Driven Markets",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 813,
+    "timestamp": "2026-06-16T11:09:35.836188Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "\"The US stock market is poised for growth, driven in part by the historic SpaceX IPO. However, it's ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 814,
+    "timestamp": "2026-06-16T11:09:36.008585Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $META — Meta Platforms, Inc. | $614.23 (-0.7%)\n\n**Setup:** oversold bounce setup → Bias: **BULL",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1516399339503620169"
+  },
+  {
+    "id": 815,
+    "timestamp": "2026-06-16T11:09:37.983199Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 816,
+    "timestamp": "2026-06-16T11:09:53.478846Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
