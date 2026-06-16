@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-16T07:25:50.937783Z",
+  "generated_at": "2026-06-16T12:25:49.801642Z",
   "period": {
     "today": "2026-06-16",
     "yesterday": "2026-06-15",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-17"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 134,
-    "posts_month": 602,
+    "posts_today": 8,
+    "posts_week": 142,
+    "posts_month": 610,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 53.2
+    "success_rate": 53.0
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 17,
-      "month": 99,
-      "success": 97,
+      "today": 1,
+      "week": 18,
+      "month": 100,
+      "success": 98,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 31,
-      "month": 174,
-      "success": 168,
+      "today": 2,
+      "week": 33,
+      "month": 176,
+      "success": 170,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 28,
-      "month": 150,
+      "today": 2,
+      "week": 30,
+      "month": 152,
       "success": 37,
-      "failed": 113
+      "failed": 115
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 14,
-      "month": 82,
+      "today": 1,
+      "week": 15,
+      "month": 83,
       "success": 10,
-      "failed": 72
+      "failed": 73
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 28,
-      "month": 148,
+      "today": 2,
+      "week": 30,
+      "month": 150,
       "success": 4,
-      "failed": 144
+      "failed": 146
     }
   },
   "interactions_by_platform": {
@@ -220,6 +220,10 @@
     "2026-06-15": {
       "posts": 16,
       "interactions": 0
+    },
+    "2026-06-16": {
+      "posts": 8,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
@@ -230,87 +234,12 @@
     "16": 54,
     "9": 58,
     "17": 32,
-    "11": 5,
+    "11": 8,
     "19": 5,
     "18": 13,
     "12": 3
   },
   "recent_posts": [
-    {
-      "id": 789,
-      "timestamp": "2026-06-14T15:49:39.822001Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "As the FIFA World Cup 2026 approaches, social media platforms are gearing up to deliver unparalleled",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 790,
-      "timestamp": "2026-06-14T15:49:40.378332Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "**FIFA World Cup Digital Cards: The Next Big Thing?**\n\nHey fellow traders, I wanted to share some in",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1515745046488682567"
-    },
-    {
-      "id": 791,
-      "timestamp": "2026-06-14T15:49:42.155449Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 792,
-      "timestamp": "2026-06-14T15:50:15.710078Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 793,
-      "timestamp": "2026-06-15T12:12:09.796002Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 The Artificial Intelligence Singularity is Here: What It Means for Your Portfolio</b>\n\nThe Nasd",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "429"
-    },
-    {
-      "id": 794,
-      "timestamp": "2026-06-15T12:12:10.313909Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **The Artificial Intelligence Singularity is Here: What It Means for Your Portfolio**\n\nThe Nasdaq ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1516052697403363341"
-    },
-    {
-      "id": 795,
-      "timestamp": "2026-06-15T12:12:10.643597Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 The Artificial Intelligence Singularity is Here: What It Means for Your Portfolio\n\nThe Nasdaq has ",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 796,
-      "timestamp": "2026-06-15T12:12:15.475596Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 The Artificial Intelligence Singularity is Here: What It Means for Your Portfolio",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 797,
       "timestamp": "2026-06-15T12:12:16.851369Z",
@@ -417,6 +346,81 @@
     {
       "id": 808,
       "timestamp": "2026-06-15T18:27:59.847569Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 809,
+      "timestamp": "2026-06-16T11:09:29.240196Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 The Unseen Bull Signal in AI-Driven Markets</b>\n\nAs we dive into the second half of 2026, a cur",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "439"
+    },
+    {
+      "id": 810,
+      "timestamp": "2026-06-16T11:09:29.547006Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **The Unseen Bull Signal in AI-Driven Markets**\n\nAs we dive into the second half of 2026, a curiou",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1516399311808761969"
+    },
+    {
+      "id": 811,
+      "timestamp": "2026-06-16T11:09:30.182647Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 The Unseen Bull Signal in AI-Driven Markets\n\nAs we dive into the second half of 2026, a curious ph",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 812,
+      "timestamp": "2026-06-16T11:09:34.795815Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 The Unseen Bull Signal in AI-Driven Markets",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 813,
+      "timestamp": "2026-06-16T11:09:35.836188Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "\"The US stock market is poised for growth, driven in part by the historic SpaceX IPO. However, it's ",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 814,
+      "timestamp": "2026-06-16T11:09:36.008585Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟢 $META — Meta Platforms, Inc. | $614.23 (-0.7%)\n\n**Setup:** oversold bounce setup → Bias: **BULL",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1516399339503620169"
+    },
+    {
+      "id": 815,
+      "timestamp": "2026-06-16T11:09:37.983199Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 816,
+      "timestamp": "2026-06-16T11:09:53.478846Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
