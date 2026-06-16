@@ -736,5 +736,32 @@
     "time": "2026-06-15T18:24:37.815196",
     "message_id": "<202606151824.92721835705@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "raj.patel.invest@hotmail.com",
+    "subject": "Gold broke something important",
+    "personality": "iron_bull",
+    "date": "2026-06-16",
+    "time": "2026-06-16T18:26:34.461790",
+    "message_id": "<202606161826.16290056079@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+david@gmail.com",
+    "subject": "The signal no one's talking about",
+    "personality": "iron_bull",
+    "date": "2026-06-16",
+    "time": "2026-06-16T18:26:41.762017",
+    "message_id": "<202606161826.25970532879@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+sarah@gmail.com",
+    "subject": "Gold just broke a 4-year pattern",
+    "personality": "iron_bull",
+    "date": "2026-06-16",
+    "time": "2026-06-16T18:26:46.671516",
+    "message_id": "<202606161826.99522894075@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
