@@ -7846,5 +7846,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 833,
+    "timestamp": "2026-06-17T16:55:40.998803Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Momentum Hinges on GOOGL and AAPL</b>\n\nExtreme oversold conditions in meta platforms cou",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "456"
+  },
+  {
+    "id": 834,
+    "timestamp": "2026-06-17T16:55:41.214503Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Momentum Hinges on GOOGL and AAPL**\n\nExtreme oversold conditions in meta platforms couple",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1516848823144550599"
+  },
+  {
+    "id": 835,
+    "timestamp": "2026-06-17T16:55:41.978748Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Momentum Hinges on GOOGL and AAPL\n\nExtreme oversold conditions in meta platforms coupled wi",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 836,
+    "timestamp": "2026-06-17T16:55:46.649728Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Momentum Hinges on GOOGL and AAPL",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 837,
+    "timestamp": "2026-06-17T16:55:47.817835Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$COIN Coinbase Global, Inc.\n\n💰 184.99 (-4.4%) | 5D: -5.3%\n📊 RSI: 40.9 | MACD: bearish\n📈 MA20: $196.5",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 838,
+    "timestamp": "2026-06-17T16:55:47.971465Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $503.89 (+7.8%)\n\n**Setup:** overbought, watching for pull",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1516848851380600853"
+  },
+  {
+    "id": 839,
+    "timestamp": "2026-06-17T16:55:49.931674Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 840,
+    "timestamp": "2026-06-17T16:55:55.427925Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
