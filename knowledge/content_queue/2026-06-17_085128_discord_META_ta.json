@@ -1,0 +1,11 @@
+{
+  "platform": "discord",
+  "topic": "META_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "## 🟡 $META — Meta Platforms, Inc. | $nan (+nan%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n### 📊 Technical Indicators\n| Indicator | Value | Signal |\n|-----------|-------|--------|\n| RSI(14) | 36.7 | Neutral ✅ |\n| MACD | -11.543 | Bearish (below signal) |\n| BB Position | nan% | Mid-range |\n| Volume | 0.6x avg | Low |\n\n### 📈 Key Levels\n| Level | Price |\n|-------|-------|\n| Resistance | $690.88 |\n| MA20 | $nan |\n| MA50 | $nan |\n| MA200 | $623.77 |\n| Support | $519.78 |\n\n### 📉 Performance\n1D: +nan% | 5D: +nan% | 20D: +nan%\n\n### 🎯 Bollinger Bands\nUpper: $nan | Lower: $nan\n\n---\n📱 Get daily TA signals for 5 stocks → **t.me/BroadInvestBot**\nFree. No spam. Just levels that matter.",
+  "content_type": "single",
+  "symbol": "META",
+  "created": "2026-06-17T08:51:28.033115",
+  "used": false,
+  "chart_paths": {}
+}

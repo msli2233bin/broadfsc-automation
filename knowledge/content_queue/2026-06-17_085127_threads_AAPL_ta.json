@@ -1,0 +1,11 @@
+{
+  "platform": "threads",
+  "topic": "AAPL_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "1/ $AAPL — Apple Inc.\n\n299.24 (+0.9% today) | $4.40T\n\nCORRECTION IN PLAY. This is the setup you need to see.---THREAD_BREAK---2/ Technical snapshot:\nRSI 40.5 — momentum zone\nMACD bearish, caution warranted\nMA20 $303.76 | MA50 $286.99\nVolume: 0.8x avg\n5D: +3.0% | 20D: +0.5%---THREAD_BREAK---3/ The trade:\nResistance: $317.4\nSupport: $245.28\nBias: BEARISH\n\nRisk-off until trend reverses---THREAD_BREAK---4/ I post TA signals for 5 stocks daily.\n\n📱 Get them free: t.me/BroadInvestBot",
+  "content_type": "thread",
+  "symbol": "AAPL",
+  "created": "2026-06-17T08:51:27.691228",
+  "used": false,
+  "chart_paths": {}
+}
