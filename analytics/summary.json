@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-06-16T22:52:33.546054Z",
+  "generated_at": "2026-06-17T00:14:57.584392Z",
   "period": {
-    "today": "2026-06-16",
-    "yesterday": "2026-06-15",
-    "week_ago": "2026-06-09",
-    "month_ago": "2026-05-17"
+    "today": "2026-06-17",
+    "yesterday": "2026-06-16",
+    "week_ago": "2026-06-10",
+    "month_ago": "2026-05-18"
   },
   "totals": {
-    "posts_today": 16,
-    "posts_week": 150,
-    "posts_month": 618,
+    "posts_today": 0,
+    "posts_week": 128,
+    "posts_month": 600,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 52.8
+    "success_rate": 52.3
   },
   "platforms": {
     "tiktok": {
@@ -24,22 +24,22 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 2,
-      "week": 19,
+      "today": 0,
+      "week": 16,
       "month": 101,
       "success": 99,
       "failed": 2
     },
     "discord": {
-      "today": 4,
-      "week": 35,
+      "today": 0,
+      "week": 30,
       "month": 178,
       "success": 172,
       "failed": 6
     },
     "mastodon": {
-      "today": 4,
-      "week": 32,
+      "today": 0,
+      "week": 28,
       "month": 154,
       "success": 37,
       "failed": 117
@@ -52,8 +52,8 @@
       "failed": 2
     },
     "threads": {
-      "today": 2,
-      "week": 16,
+      "today": 0,
+      "week": 14,
       "month": 84,
       "success": 10,
       "failed": 74
@@ -74,14 +74,14 @@
     },
     "bluesky": {
       "today": 0,
-      "week": 16,
+      "week": 12,
       "month": 130,
       "success": 130,
       "failed": 0
     },
     "hatena": {
-      "today": 4,
-      "week": 32,
+      "today": 0,
+      "week": 28,
       "month": 152,
       "success": 4,
       "failed": 148
@@ -101,10 +101,6 @@
   },
   "action_breakdown": {},
   "daily_trend": {
-    "2026-05-17": {
-      "posts": 18,
-      "interactions": 0
-    },
     "2026-05-18": {
       "posts": 22,
       "interactions": 0
@@ -227,12 +223,12 @@
     }
   },
   "hourly_distribution": {
-    "8": 39,
-    "14": 22,
     "10": 42,
     "15": 47,
     "16": 54,
     "9": 58,
+    "14": 16,
+    "8": 33,
     "17": 32,
     "11": 8,
     "19": 5,
