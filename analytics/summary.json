@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-17T14:07:32.445733Z",
+  "generated_at": "2026-06-17T17:28:22.105649Z",
   "period": {
     "today": "2026-06-17",
     "yesterday": "2026-06-16",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-18"
   },
   "totals": {
-    "posts_today": 8,
-    "posts_week": 136,
-    "posts_month": 608,
+    "posts_today": 16,
+    "posts_week": 144,
+    "posts_month": 616,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 52.1
+    "success_rate": 51.9
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 17,
-      "month": 102,
-      "success": 100,
+      "today": 2,
+      "week": 18,
+      "month": 103,
+      "success": 101,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 32,
-      "month": 180,
-      "success": 174,
+      "today": 4,
+      "week": 34,
+      "month": 182,
+      "success": 176,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 30,
-      "month": 156,
+      "today": 4,
+      "week": 32,
+      "month": 158,
       "success": 37,
-      "failed": 119
+      "failed": 121
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 15,
-      "month": 85,
+      "today": 2,
+      "week": 16,
+      "month": 86,
       "success": 10,
-      "failed": 75
+      "failed": 76
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 30,
-      "month": 154,
+      "today": 4,
+      "week": 32,
+      "month": 156,
       "success": 4,
-      "failed": 150
+      "failed": 152
     }
   },
   "interactions_by_platform": {
@@ -222,14 +222,14 @@
       "interactions": 0
     },
     "2026-06-17": {
-      "posts": 8,
+      "posts": 16,
       "interactions": 0
     }
   },
   "hourly_distribution": {
     "10": 45,
     "15": 47,
-    "16": 54,
+    "16": 57,
     "9": 58,
     "14": 16,
     "8": 33,
@@ -240,81 +240,6 @@
     "12": 3
   },
   "recent_posts": [
-    {
-      "id": 813,
-      "timestamp": "2026-06-16T11:09:35.836188Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "\"The US stock market is poised for growth, driven in part by the historic SpaceX IPO. However, it's ",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 814,
-      "timestamp": "2026-06-16T11:09:36.008585Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟢 $META — Meta Platforms, Inc. | $614.23 (-0.7%)\n\n**Setup:** oversold bounce setup → Bias: **BULL",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1516399339503620169"
-    },
-    {
-      "id": 815,
-      "timestamp": "2026-06-16T11:09:37.983199Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 816,
-      "timestamp": "2026-06-16T11:09:53.478846Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 817,
-      "timestamp": "2026-06-16T18:27:47.049588Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Alert: AI-Driven Bubbles and the Bullish Case for Main Street</b>\n\nWe've identified a fa",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "446"
-    },
-    {
-      "id": 818,
-      "timestamp": "2026-06-16T18:27:47.266816Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Alert: AI-Driven Bubbles and the Bullish Case for Main Street**\n\nWe've identified a fasci",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1516509613028282539"
-    },
-    {
-      "id": 819,
-      "timestamp": "2026-06-16T18:27:47.703288Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Alert: AI-Driven Bubbles and the Bullish Case for Main Street\n\nWe've identified a fascinati",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 820,
-      "timestamp": "2026-06-16T18:27:52.683651Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Alert: AI-Driven Bubbles and the Bullish Case for Main Street",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 821,
       "timestamp": "2026-06-16T18:27:53.906110Z",
@@ -421,6 +346,81 @@
     {
       "id": 832,
       "timestamp": "2026-06-17T10:55:15.054331Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 833,
+      "timestamp": "2026-06-17T16:55:40.998803Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Momentum Hinges on GOOGL and AAPL</b>\n\nExtreme oversold conditions in meta platforms cou",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "456"
+    },
+    {
+      "id": 834,
+      "timestamp": "2026-06-17T16:55:41.214503Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Momentum Hinges on GOOGL and AAPL**\n\nExtreme oversold conditions in meta platforms couple",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1516848823144550599"
+    },
+    {
+      "id": 835,
+      "timestamp": "2026-06-17T16:55:41.978748Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Momentum Hinges on GOOGL and AAPL\n\nExtreme oversold conditions in meta platforms coupled wi",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 836,
+      "timestamp": "2026-06-17T16:55:46.649728Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Momentum Hinges on GOOGL and AAPL",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 837,
+      "timestamp": "2026-06-17T16:55:47.817835Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$COIN Coinbase Global, Inc.\n\n💰 184.99 (-4.4%) | 5D: -5.3%\n📊 RSI: 40.9 | MACD: bearish\n📈 MA20: $196.5",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 838,
+      "timestamp": "2026-06-17T16:55:47.971465Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $503.89 (+7.8%)\n\n**Setup:** overbought, watching for pull",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1516848851380600853"
+    },
+    {
+      "id": 839,
+      "timestamp": "2026-06-17T16:55:49.931674Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 840,
+      "timestamp": "2026-06-17T16:55:55.427925Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
