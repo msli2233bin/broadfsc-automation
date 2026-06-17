@@ -763,5 +763,32 @@
     "time": "2026-06-16T18:26:46.671516",
     "message_id": "<202606161826.99522894075@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "msli2233bin+takeshi@gmail.com",
+    "subject": "Gold broke something important",
+    "personality": "alex",
+    "date": "2026-06-17",
+    "time": "2026-06-17T16:53:51.754549",
+    "message_id": "<202606171653.60121396881@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+maria@gmail.com",
+    "subject": "Gold broke 4,360 support",
+    "personality": "alex",
+    "date": "2026-06-17",
+    "time": "2026-06-17T16:53:57.297493",
+    "message_id": "<202606171653.19187233259@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+raj@gmail.com",
+    "subject": "Gold's 4,376.60 Breakout",
+    "personality": "alex",
+    "date": "2026-06-17",
+    "time": "2026-06-17T16:54:02.946428",
+    "message_id": "<202606171654.25702797567@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
