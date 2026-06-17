@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-17T10:13:37.652479Z",
+  "generated_at": "2026-06-17T14:07:32.445733Z",
   "period": {
     "today": "2026-06-17",
     "yesterday": "2026-06-16",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-18"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 128,
-    "posts_month": 600,
+    "posts_today": 8,
+    "posts_week": 136,
+    "posts_month": 608,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 52.3
+    "success_rate": 52.1
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 16,
-      "month": 101,
-      "success": 99,
+      "today": 1,
+      "week": 17,
+      "month": 102,
+      "success": 100,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 30,
-      "month": 178,
-      "success": 172,
+      "today": 2,
+      "week": 32,
+      "month": 180,
+      "success": 174,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 28,
-      "month": 154,
+      "today": 2,
+      "week": 30,
+      "month": 156,
       "success": 37,
-      "failed": 117
+      "failed": 119
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 14,
-      "month": 84,
+      "today": 1,
+      "week": 15,
+      "month": 85,
       "success": 10,
-      "failed": 74
+      "failed": 75
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 28,
-      "month": 152,
+      "today": 2,
+      "week": 30,
+      "month": 154,
       "success": 4,
-      "failed": 148
+      "failed": 150
     }
   },
   "interactions_by_platform": {
@@ -220,10 +220,14 @@
     "2026-06-16": {
       "posts": 16,
       "interactions": 0
+    },
+    "2026-06-17": {
+      "posts": 8,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
-    "10": 42,
+    "10": 45,
     "15": 47,
     "16": 54,
     "9": 58,
@@ -236,81 +240,6 @@
     "12": 3
   },
   "recent_posts": [
-    {
-      "id": 805,
-      "timestamp": "2026-06-15T18:27:54.239987Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$GOOGL Alphabet Inc.\n\n💰 363.31 (-1.4%) | 5D: -3.4%\n📊 RSI: 28.2 | MACD: bearish\n📈 MA20: $383.28 (belo",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 806,
-      "timestamp": "2026-06-15T18:27:54.584542Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "**Market Musings**\n\nHey fellow traders, let's talk about stock types and risk management. As we know",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1516147255554342976"
-    },
-    {
-      "id": 807,
-      "timestamp": "2026-06-15T18:27:56.526244Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 808,
-      "timestamp": "2026-06-15T18:27:59.847569Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 809,
-      "timestamp": "2026-06-16T11:09:29.240196Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 The Unseen Bull Signal in AI-Driven Markets</b>\n\nAs we dive into the second half of 2026, a cur",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "439"
-    },
-    {
-      "id": 810,
-      "timestamp": "2026-06-16T11:09:29.547006Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **The Unseen Bull Signal in AI-Driven Markets**\n\nAs we dive into the second half of 2026, a curiou",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1516399311808761969"
-    },
-    {
-      "id": 811,
-      "timestamp": "2026-06-16T11:09:30.182647Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 The Unseen Bull Signal in AI-Driven Markets\n\nAs we dive into the second half of 2026, a curious ph",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 812,
-      "timestamp": "2026-06-16T11:09:34.795815Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 The Unseen Bull Signal in AI-Driven Markets",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 813,
       "timestamp": "2026-06-16T11:09:35.836188Z",
@@ -417,6 +346,81 @@
     {
       "id": 824,
       "timestamp": "2026-06-16T18:28:08.402832Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 825,
+      "timestamp": "2026-06-17T10:54:36.108458Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Alert: Nasdaq Breakout, S&P 500 Consolidation, and Gold Reflation</b>\n\nThe Nasdaq Compos",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "449"
+    },
+    {
+      "id": 826,
+      "timestamp": "2026-06-17T10:54:36.555736Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Alert: Nasdaq Breakout, S&P 500 Consolidation, and Gold Reflation**\n\nThe Nasdaq Composite",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1516757953909231617"
+    },
+    {
+      "id": 827,
+      "timestamp": "2026-06-17T10:54:36.895145Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Alert: Nasdaq Breakout, S&P 500 Consolidation, and Gold Reflation\n\nThe Nasdaq Composite Ind",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 828,
+      "timestamp": "2026-06-17T10:54:40.849589Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Alert: Nasdaq Breakout, S&P 500 Consolidation, and Gold Reflation",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 829,
+      "timestamp": "2026-06-17T10:54:41.957265Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$GOOGL Alphabet Inc.\n\n💰 380.34 (-2.5%) | 5D: -1.9%\n📊 RSI: 35.0 | MACD: bearish\n📈 MA20: $391.15 (belo",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 830,
+      "timestamp": "2026-06-17T10:54:42.163048Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟢 $TSLA — Tesla, Inc. | $440.36 (+1.6%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n### 📊 Tec",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1516757978529665175"
+    },
+    {
+      "id": 831,
+      "timestamp": "2026-06-17T10:54:44.280408Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 832,
+      "timestamp": "2026-06-17T10:55:15.054331Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
