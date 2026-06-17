@@ -7771,5 +7771,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 825,
+    "timestamp": "2026-06-17T10:54:36.108458Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Alert: Nasdaq Breakout, S&P 500 Consolidation, and Gold Reflation</b>\n\nThe Nasdaq Compos",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "449"
+  },
+  {
+    "id": 826,
+    "timestamp": "2026-06-17T10:54:36.555736Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Alert: Nasdaq Breakout, S&P 500 Consolidation, and Gold Reflation**\n\nThe Nasdaq Composite",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1516757953909231617"
+  },
+  {
+    "id": 827,
+    "timestamp": "2026-06-17T10:54:36.895145Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: Nasdaq Breakout, S&P 500 Consolidation, and Gold Reflation\n\nThe Nasdaq Composite Ind",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 828,
+    "timestamp": "2026-06-17T10:54:40.849589Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: Nasdaq Breakout, S&P 500 Consolidation, and Gold Reflation",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 829,
+    "timestamp": "2026-06-17T10:54:41.957265Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$GOOGL Alphabet Inc.\n\n💰 380.34 (-2.5%) | 5D: -1.9%\n📊 RSI: 35.0 | MACD: bearish\n📈 MA20: $391.15 (belo",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 830,
+    "timestamp": "2026-06-17T10:54:42.163048Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $TSLA — Tesla, Inc. | $440.36 (+1.6%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n### 📊 Tec",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1516757978529665175"
+  },
+  {
+    "id": 831,
+    "timestamp": "2026-06-17T10:54:44.280408Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 832,
+    "timestamp": "2026-06-17T10:55:15.054331Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
