@@ -7921,5 +7921,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 841,
+    "timestamp": "2026-06-18T10:19:56.709923Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Global Market Alert: AI-Driven Growth vs. Inflationary Pressures</b>\n\nThe past week has seen a ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "459"
+  },
+  {
+    "id": 842,
+    "timestamp": "2026-06-18T10:19:57.063489Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Global Market Alert: AI-Driven Growth vs. Inflationary Pressures**\n\nThe past week has seen a mix",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1517111620264792134"
+  },
+  {
+    "id": 843,
+    "timestamp": "2026-06-18T10:19:57.352290Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Global Market Alert: AI-Driven Growth vs. Inflationary Pressures\n\nThe past week has seen a mix of ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 844,
+    "timestamp": "2026-06-18T10:20:03.158995Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Global Market Alert: AI-Driven Growth vs. Inflationary Pressures",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 845,
+    "timestamp": "2026-06-18T10:20:04.487391Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$META Meta Platforms, Inc.\n\n💰 nan (+nan%) | 5D: +nan%\n📊 RSI: 36.7 | MACD: bearish\n📈 MA20: $nan (belo",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 846,
+    "timestamp": "2026-06-18T10:20:04.701641Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $PLTR — Palantir Technologies Inc. | $143.34 (+8.2%)\n\n**Setup:** uptrend intact → Bias: **BULLI",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1517111652871442583"
+  },
+  {
+    "id": 847,
+    "timestamp": "2026-06-18T10:20:06.933865Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 848,
+    "timestamp": "2026-06-18T10:20:13.391526Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
