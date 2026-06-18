@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-18T08:45:32.462878Z",
+  "generated_at": "2026-06-18T12:24:27.184231Z",
   "period": {
     "today": "2026-06-18",
     "yesterday": "2026-06-17",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-19"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 122,
-    "posts_month": 594,
+    "posts_today": 8,
+    "posts_week": 130,
+    "posts_month": 602,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 51.2
+    "success_rate": 51.0
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 15,
-      "month": 103,
-      "success": 101,
+      "today": 1,
+      "week": 16,
+      "month": 104,
+      "success": 102,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 29,
-      "month": 182,
-      "success": 176,
+      "today": 2,
+      "week": 31,
+      "month": 184,
+      "success": 178,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 28,
-      "month": 158,
+      "today": 2,
+      "week": 30,
+      "month": 160,
       "success": 37,
-      "failed": 121
+      "failed": 123
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 14,
-      "month": 86,
+      "today": 1,
+      "week": 15,
+      "month": 87,
       "success": 10,
-      "failed": 76
+      "failed": 77
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 28,
-      "month": 156,
+      "today": 2,
+      "week": 30,
+      "month": 158,
       "success": 4,
-      "failed": 152
+      "failed": 154
     }
   },
   "interactions_by_platform": {
@@ -220,6 +220,10 @@
     "2026-06-17": {
       "posts": 16,
       "interactions": 0
+    },
+    "2026-06-18": {
+      "posts": 8,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
@@ -228,7 +232,7 @@
     "16": 50,
     "15": 45,
     "8": 33,
-    "10": 38,
+    "10": 41,
     "17": 32,
     "11": 8,
     "19": 5,
@@ -236,81 +240,6 @@
     "12": 3
   },
   "recent_posts": [
-    {
-      "id": 821,
-      "timestamp": "2026-06-16T18:27:53.906110Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$AMD Advanced Micro Devices, Inc.\n\n💰 445.5 (-0.6%) | 5D: +5.7%\n📊 RSI: 75.0 | MACD: bullish\n📈 MA20: $",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 822,
-      "timestamp": "2026-06-16T18:27:54.147704Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🔴 $MSFT — Microsoft Corporation | $407.77 (-1.2%)\n\n**Setup:** correction in play → Bias: **BEARIS",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1516509641641820202"
-    },
-    {
-      "id": 823,
-      "timestamp": "2026-06-16T18:27:56.087525Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 824,
-      "timestamp": "2026-06-16T18:28:08.402832Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 825,
-      "timestamp": "2026-06-17T10:54:36.108458Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Alert: Nasdaq Breakout, S&P 500 Consolidation, and Gold Reflation</b>\n\nThe Nasdaq Compos",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "449"
-    },
-    {
-      "id": 826,
-      "timestamp": "2026-06-17T10:54:36.555736Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Alert: Nasdaq Breakout, S&P 500 Consolidation, and Gold Reflation**\n\nThe Nasdaq Composite",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1516757953909231617"
-    },
-    {
-      "id": 827,
-      "timestamp": "2026-06-17T10:54:36.895145Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Alert: Nasdaq Breakout, S&P 500 Consolidation, and Gold Reflation\n\nThe Nasdaq Composite Ind",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 828,
-      "timestamp": "2026-06-17T10:54:40.849589Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Alert: Nasdaq Breakout, S&P 500 Consolidation, and Gold Reflation",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 829,
       "timestamp": "2026-06-17T10:54:41.957265Z",
@@ -417,6 +346,81 @@
     {
       "id": 840,
       "timestamp": "2026-06-17T16:55:55.427925Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 841,
+      "timestamp": "2026-06-18T10:19:56.709923Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Global Market Alert: AI-Driven Growth vs. Inflationary Pressures</b>\n\nThe past week has seen a ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "459"
+    },
+    {
+      "id": 842,
+      "timestamp": "2026-06-18T10:19:57.063489Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Global Market Alert: AI-Driven Growth vs. Inflationary Pressures**\n\nThe past week has seen a mix",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1517111620264792134"
+    },
+    {
+      "id": 843,
+      "timestamp": "2026-06-18T10:19:57.352290Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Global Market Alert: AI-Driven Growth vs. Inflationary Pressures\n\nThe past week has seen a mix of ",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 844,
+      "timestamp": "2026-06-18T10:20:03.158995Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Global Market Alert: AI-Driven Growth vs. Inflationary Pressures",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 845,
+      "timestamp": "2026-06-18T10:20:04.487391Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$META Meta Platforms, Inc.\n\n💰 nan (+nan%) | 5D: +nan%\n📊 RSI: 36.7 | MACD: bearish\n📈 MA20: $nan (belo",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 846,
+      "timestamp": "2026-06-18T10:20:04.701641Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟢 $PLTR — Palantir Technologies Inc. | $143.34 (+8.2%)\n\n**Setup:** uptrend intact → Bias: **BULLI",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1517111652871442583"
+    },
+    {
+      "id": 847,
+      "timestamp": "2026-06-18T10:20:06.933865Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 848,
+      "timestamp": "2026-06-18T10:20:13.391526Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
