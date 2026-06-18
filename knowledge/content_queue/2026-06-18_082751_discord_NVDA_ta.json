@@ -1,0 +1,11 @@
+{
+  "platform": "discord",
+  "topic": "NVDA_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "## 🔴 $NVDA — NVIDIA Corporation | $204.65 (-1.3%)\n\n**Setup:** correction in play → Bias: **BEARISH**\n\n### 📊 Technical Indicators\n| Indicator | Value | Signal |\n|-----------|-------|--------|\n| RSI(14) | 43.8 | Neutral ✅ |\n| MACD | -1.2593 | Bearish (below signal) |\n| BB Position | 22.0% | Mid-range |\n| Volume | 0.7x avg | Low |\n\n### 📈 Key Levels\n| Level | Price |\n|-------|-------|\n| Resistance | $236.26 |\n| MA20 | $212.31 |\n| MA50 | $208.54 |\n| MA200 | $196.52 |\n| Support | $164.08 |\n\n### 📉 Performance\n1D: -1.3% | 5D: +2.1% | 20D: -7.1%\n\n### 🎯 Bollinger Bands\nUpper: $225.97 | Lower: $198.65\n\n---\n📱 Get daily TA signals for 5 stocks → **t.me/BroadInvestBot**\nFree. No spam. Just levels that matter.",
+  "content_type": "single",
+  "symbol": "NVDA",
+  "created": "2026-06-18T08:27:51.881184",
+  "used": false,
+  "chart_paths": {}
+}
