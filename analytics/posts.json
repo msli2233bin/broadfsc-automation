@@ -7996,5 +7996,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 849,
+    "timestamp": "2026-06-18T16:57:08.576584Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The AI-Driven Market: A Tale of Two Economies</b>\n\nWe've entered an era where the stock market ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "466"
+  },
+  {
+    "id": 850,
+    "timestamp": "2026-06-18T16:57:09.083723Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The AI-Driven Market: A Tale of Two Economies**\n\nWe've entered an era where the stock market is ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1517211578494222527"
+  },
+  {
+    "id": 851,
+    "timestamp": "2026-06-18T16:57:09.693573Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The AI-Driven Market: A Tale of Two Economies\n\nWe've entered an era where the stock market is driv",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 852,
+    "timestamp": "2026-06-18T16:57:14.380092Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The AI-Driven Market: A Tale of Two Economies",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 853,
+    "timestamp": "2026-06-18T16:57:15.486458Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$MSFT Microsoft Corporation\n\n💰 411.74 (-1.2%) | 5D: -10.6%\n📊 RSI: 45.3 | MACD: bearish\n📈 MA20: $422.",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 854,
+    "timestamp": "2026-06-18T16:57:15.735470Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $COIN — Coinbase Global, Inc. | $216.6 (+7.7%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1517211607443439616"
+  },
+  {
+    "id": 855,
+    "timestamp": "2026-06-18T16:57:18.252874Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 856,
+    "timestamp": "2026-06-18T16:57:26.146060Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
