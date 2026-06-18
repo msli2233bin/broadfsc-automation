@@ -790,5 +790,32 @@
     "time": "2026-06-17T16:54:02.946428",
     "message_id": "<202606171654.25702797567@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "test@example.com",
+    "subject": "S&P 500 tests 7,494.72 support",
+    "personality": "thomas",
+    "date": "2026-06-18",
+    "time": "2026-06-18T16:55:12.797974",
+    "message_id": "<202606181655.71280198864@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "david.chen.trader@gmail.com",
+    "subject": "S&P 500 at a Crucial Level",
+    "personality": "thomas",
+    "date": "2026-06-18",
+    "time": "2026-06-18T16:55:20.190254",
+    "message_id": "<202606181655.53026480035@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "sarah.investor@outlook.com",
+    "subject": "Why the VIX says otherwise",
+    "personality": "thomas",
+    "date": "2026-06-18",
+    "time": "2026-06-18T16:55:26.189742",
+    "message_id": "<202606181655.32994954661@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
