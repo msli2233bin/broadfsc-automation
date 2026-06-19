@@ -8071,5 +8071,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 857,
+    "timestamp": "2026-06-19T10:25:14.560560Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Insight: The AI-Driven Superbubble</b>\n\nThe Nasdaq Index has reached an astonishing 76.6",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "469"
+  },
+  {
+    "id": 858,
+    "timestamp": "2026-06-19T10:25:14.987577Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Insight: The AI-Driven Superbubble**\n\nThe Nasdaq Index has reached an astonishing 76.6 RS",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1517475341009027224"
+  },
+  {
+    "id": 859,
+    "timestamp": "2026-06-19T10:25:15.358068Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The AI-Driven Superbubble\n\nThe Nasdaq Index has reached an astonishing 76.6 RSI le",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 860,
+    "timestamp": "2026-06-19T10:25:21.656594Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The AI-Driven Superbubble",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 861,
+    "timestamp": "2026-06-19T10:25:23.527663Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$COIN Coinbase Global, Inc.\n\n💰 182.61 (-3.4%) | 5D: -1.3%\n📊 RSI: 32.6 | MACD: bearish\n📈 MA20: $194.3",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 862,
+    "timestamp": "2026-06-19T10:25:23.749467Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "**Unlocking the Art of Sales in Financial Services**\n\nAs we navigate the ever-changing landscape of ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1517475378917015584"
+  },
+  {
+    "id": 863,
+    "timestamp": "2026-06-19T10:25:26.096490Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 864,
+    "timestamp": "2026-06-19T10:25:47.618717Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
