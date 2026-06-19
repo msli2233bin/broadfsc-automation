@@ -8146,5 +8146,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 865,
+    "timestamp": "2026-06-19T16:32:33.384962Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Insight: Bull Trap or a New Uptrend?</b>\n\nThe S&P 500 has rallied 5% in the past two wee",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "476"
+  },
+  {
+    "id": 866,
+    "timestamp": "2026-06-19T16:32:33.910371Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Insight: Bull Trap or a New Uptrend?**\n\nThe S&P 500 has rallied 5% in the past two weeks,",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1517567779006578722"
+  },
+  {
+    "id": 867,
+    "timestamp": "2026-06-19T16:32:34.815824Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: Bull Trap or a New Uptrend?\n\nThe S&P 500 has rallied 5% in the past two weeks, wit",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 868,
+    "timestamp": "2026-06-19T16:32:39.454606Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: Bull Trap or a New Uptrend?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 869,
+    "timestamp": "2026-06-19T16:32:41.122057Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$NVDA NVIDIA Corporation\n\n💰 204.65 (-1.3%) | 5D: +2.1%\n📊 RSI: 43.8 | MACD: bearish\n📈 MA20: $212.31 (",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 870,
+    "timestamp": "2026-06-19T16:32:41.370562Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "**Industry Insight: Leveraging Niche Education**\n\nHey fellow traders and investors,\n\nLet's talk abou",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1517567811453452318"
+  },
+  {
+    "id": 871,
+    "timestamp": "2026-06-19T16:32:43.861381Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 872,
+    "timestamp": "2026-06-19T16:32:48.486112Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
