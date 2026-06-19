@@ -817,5 +817,32 @@
     "time": "2026-06-18T16:55:26.189742",
     "message_id": "<202606181655.32994954661@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "takeshi.yamamoto@yahoo.co.jp",
+    "subject": "Gold's 4,100 floor",
+    "personality": "michael",
+    "date": "2026-06-19",
+    "time": "2026-06-19T16:31:16.448081",
+    "message_id": "<202606191631.61357838961@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "maria.santos.pro@gmail.com",
+    "subject": "Gold's 4,200 floor is in trouble",
+    "personality": "michael",
+    "date": "2026-06-19",
+    "time": "2026-06-19T16:31:23.454680",
+    "message_id": "<202606191631.40709096891@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "raj.patel.invest@hotmail.com",
+    "subject": "VIX is Quiet, But Not What You Think",
+    "personality": "michael",
+    "date": "2026-06-19",
+    "time": "2026-06-19T16:31:30.941439",
+    "message_id": "<202606191631.14858971060@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
