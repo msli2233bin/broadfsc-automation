@@ -8296,5 +8296,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 881,
+    "timestamp": "2026-06-20T15:46:17.842359Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Insight: The AI-Driven Bull Market</b>\n\nThe Nasdaq, a bellwether for technology stocks, ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "480"
+  },
+  {
+    "id": 882,
+    "timestamp": "2026-06-20T15:46:18.220297Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Insight: The AI-Driven Bull Market**\n\nThe Nasdaq, a bellwether for technology stocks, has",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1517918525400809762"
+  },
+  {
+    "id": 883,
+    "timestamp": "2026-06-20T15:46:19.024508Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The AI-Driven Bull Market\n\nThe Nasdaq, a bellwether for technology stocks, has rea",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 884,
+    "timestamp": "2026-06-20T15:46:23.690665Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The AI-Driven Bull Market",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 885,
+    "timestamp": "2026-06-20T15:46:24.874191Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$META Meta Platforms, Inc.\n\n💰 635.29 (+0.0%) | 5D: +5.0%\n📊 RSI: 60.7 | MACD: bullish\n📈 MA20: $612.3 ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 886,
+    "timestamp": "2026-06-20T15:46:25.192109Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $AMD — Advanced Micro Devices, Inc. | $516.1 (-0.4%)\n\n**Setup:** uptrend intact → Bias: **BULLI",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1517918554660540690"
+  },
+  {
+    "id": 887,
+    "timestamp": "2026-06-20T15:46:27.751096Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 888,
+    "timestamp": "2026-06-20T15:46:58.591594Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
