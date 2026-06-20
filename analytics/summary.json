@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-20T08:20:15.596478Z",
+  "generated_at": "2026-06-20T10:57:00.071014Z",
   "period": {
     "today": "2026-06-20",
     "yesterday": "2026-06-19",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-21"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 112,
-    "posts_month": 582,
+    "posts_today": 8,
+    "posts_week": 120,
+    "posts_month": 590,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 50.2
+    "success_rate": 50.0
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 14,
-      "month": 107,
-      "success": 105,
+      "today": 1,
+      "week": 15,
+      "month": 108,
+      "success": 106,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 28,
-      "month": 190,
-      "success": 184,
+      "today": 2,
+      "week": 30,
+      "month": 192,
+      "success": 186,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 28,
-      "month": 166,
+      "today": 2,
+      "week": 30,
+      "month": 168,
       "success": 37,
-      "failed": 129
+      "failed": 131
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 14,
-      "month": 90,
+      "today": 1,
+      "week": 15,
+      "month": 91,
       "success": 10,
-      "failed": 80
+      "failed": 81
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 28,
-      "month": 164,
+      "today": 2,
+      "week": 30,
+      "month": 166,
       "success": 4,
-      "failed": 160
+      "failed": 162
     }
   },
   "interactions_by_platform": {
@@ -220,6 +220,10 @@
     "2026-06-19": {
       "posts": 16,
       "interactions": 0
+    },
+    "2026-06-20": {
+      "posts": 8,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
@@ -227,7 +231,7 @@
     "15": 45,
     "16": 46,
     "14": 12,
-    "8": 33,
+    "8": 36,
     "10": 44,
     "17": 32,
     "11": 8,
@@ -236,81 +240,6 @@
     "12": 3
   },
   "recent_posts": [
-    {
-      "id": 853,
-      "timestamp": "2026-06-18T16:57:15.486458Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$MSFT Microsoft Corporation\n\n💰 411.74 (-1.2%) | 5D: -10.6%\n📊 RSI: 45.3 | MACD: bearish\n📈 MA20: $422.",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 854,
-      "timestamp": "2026-06-18T16:57:15.735470Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟢 $COIN — Coinbase Global, Inc. | $216.6 (+7.7%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1517211607443439616"
-    },
-    {
-      "id": 855,
-      "timestamp": "2026-06-18T16:57:18.252874Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 856,
-      "timestamp": "2026-06-18T16:57:26.146060Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 857,
-      "timestamp": "2026-06-19T10:25:14.560560Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Insight: The AI-Driven Superbubble</b>\n\nThe Nasdaq Index has reached an astonishing 76.6",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "469"
-    },
-    {
-      "id": 858,
-      "timestamp": "2026-06-19T10:25:14.987577Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Insight: The AI-Driven Superbubble**\n\nThe Nasdaq Index has reached an astonishing 76.6 RS",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1517475341009027224"
-    },
-    {
-      "id": 859,
-      "timestamp": "2026-06-19T10:25:15.358068Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Insight: The AI-Driven Superbubble\n\nThe Nasdaq Index has reached an astonishing 76.6 RSI le",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 860,
-      "timestamp": "2026-06-19T10:25:21.656594Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Insight: The AI-Driven Superbubble",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 861,
       "timestamp": "2026-06-19T10:25:23.527663Z",
@@ -417,6 +346,81 @@
     {
       "id": 872,
       "timestamp": "2026-06-19T16:32:48.486112Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 873,
+      "timestamp": "2026-06-20T08:55:06.801484Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 The AI-Driven Market: Separating Signal from Noise</b>\n\nAs we hit the halfway mark of 2026, the",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "479"
+    },
+    {
+      "id": 874,
+      "timestamp": "2026-06-20T08:55:07.402737Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **The AI-Driven Market: Separating Signal from Noise**\n\nAs we hit the halfway mark of 2026, the S&",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1517815047508987976"
+    },
+    {
+      "id": 875,
+      "timestamp": "2026-06-20T08:55:08.180152Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 The AI-Driven Market: Separating Signal from Noise\n\nAs we hit the halfway mark of 2026, the S&P 50",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 876,
+      "timestamp": "2026-06-20T08:55:14.278583Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 The AI-Driven Market: Separating Signal from Noise",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 877,
+      "timestamp": "2026-06-20T08:55:15.608028Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$MSFT Microsoft Corporation\n\n💰 nan (+nan%) | 5D: +nan%\n📊 RSI: 39.7 | MACD: bearish\n📈 MA20: $nan (bel",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 878,
+      "timestamp": "2026-06-20T08:55:16.014536Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟢 $NVDA — NVIDIA Corporation | $222.32 (-1.3%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n##",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1517815084657934437"
+    },
+    {
+      "id": 879,
+      "timestamp": "2026-06-20T08:55:18.369682Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 880,
+      "timestamp": "2026-06-20T08:55:49.050000Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
