@@ -8371,5 +8371,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 889,
+    "timestamp": "2026-06-21T09:48:54.383302Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Crocodile in the Water: A Market Insight from BroadFSC</b>\n\nWhile the market continues to roar,",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "483"
+  },
+  {
+    "id": 890,
+    "timestamp": "2026-06-21T09:48:54.780093Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Crocodile in the Water: A Market Insight from BroadFSC**\n\nWhile the market continues to roar, we",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1518190972679360642"
+  },
+  {
+    "id": 891,
+    "timestamp": "2026-06-21T09:48:55.549006Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Crocodile in the Water: A Market Insight from BroadFSC\n\nWhile the market continues to roar, we're ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 892,
+    "timestamp": "2026-06-21T09:49:02.037844Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Crocodile in the Water: A Market Insight from BroadFSC",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 893,
+    "timestamp": "2026-06-21T09:49:03.205324Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AAPL Apple Inc.\n\n💰 307.34 (-1.2%) | 5D: -1.5%\n📊 RSI: 58.3 | MACD: bearish\n📈 MA20: $304.24 (above)\n🎯",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 894,
+    "timestamp": "2026-06-21T09:49:03.419661Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $MSFT — Microsoft Corporation | $460.52 (+2.3%)\n\n**Setup:** overbought, watching for pullback →",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1518191009425653881"
+  },
+  {
+    "id": 895,
+    "timestamp": "2026-06-21T09:49:06.184234Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 896,
+    "timestamp": "2026-06-21T09:49:26.455102Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
