@@ -8446,5 +8446,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 897,
+    "timestamp": "2026-06-21T15:53:07.740507Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The Great Rotation: AI-Driven Nasdaq vs Supercharged Dow</b>\n\nThe Nasdaq's AI-driven dominance ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "484"
+  },
+  {
+    "id": 898,
+    "timestamp": "2026-06-21T15:53:08.249989Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The Great Rotation: AI-Driven Nasdaq vs Supercharged Dow**\n\nThe Nasdaq's AI-driven dominance is ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1518282632394440854"
+  },
+  {
+    "id": 899,
+    "timestamp": "2026-06-21T15:53:08.797798Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The Great Rotation: AI-Driven Nasdaq vs Supercharged Dow\n\nThe Nasdaq's AI-driven dominance is reac",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 900,
+    "timestamp": "2026-06-21T15:53:13.458839Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The Great Rotation: AI-Driven Nasdaq vs Supercharged Dow",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 901,
+    "timestamp": "2026-06-21T15:53:14.462137Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$META Meta Platforms, Inc.\n\n💰 568.43 (-0.5%) | 5D: -9.4%\n📊 RSI: 37.4 | MACD: bearish\n📈 MA20: $606.78",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 902,
+    "timestamp": "2026-06-21T15:53:14.658097Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $GOOGL — Alphabet Inc. | $382.97 (-1.2%)\n\n**Setup:** correction in play → Bias: **BEARISH**\n\n##",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1518282660126920705"
+  },
+  {
+    "id": 903,
+    "timestamp": "2026-06-21T15:53:16.485116Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 904,
+    "timestamp": "2026-06-21T15:53:45.729256Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
