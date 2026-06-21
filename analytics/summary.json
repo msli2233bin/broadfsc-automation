@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-21T14:07:33.179597Z",
+  "generated_at": "2026-06-21T16:14:43.163625Z",
   "period": {
     "today": "2026-06-21",
     "yesterday": "2026-06-20",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-22"
   },
   "totals": {
-    "posts_today": 8,
-    "posts_week": 120,
-    "posts_month": 584,
+    "posts_today": 16,
+    "posts_week": 128,
+    "posts_month": 592,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 49.5
+    "success_rate": 49.3
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 15,
-      "month": 110,
-      "success": 108,
+      "today": 2,
+      "week": 16,
+      "month": 111,
+      "success": 109,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 30,
-      "month": 196,
-      "success": 190,
+      "today": 4,
+      "week": 32,
+      "month": 198,
+      "success": 192,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 30,
-      "month": 172,
+      "today": 4,
+      "week": 32,
+      "month": 174,
       "success": 37,
-      "failed": 135
+      "failed": 137
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 15,
-      "month": 93,
+      "today": 2,
+      "week": 16,
+      "month": 94,
       "success": 10,
-      "failed": 83
+      "failed": 84
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 30,
-      "month": 170,
+      "today": 4,
+      "week": 32,
+      "month": 172,
       "success": 4,
-      "failed": 166
+      "failed": 168
     }
   },
   "interactions_by_platform": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-06-21": {
-      "posts": 8,
+      "posts": 16,
       "interactions": 0
     }
   },
@@ -231,7 +231,7 @@
     "14": 12,
     "16": 41,
     "8": 36,
-    "15": 46,
+    "15": 49,
     "10": 44,
     "17": 32,
     "11": 8,
@@ -240,81 +240,6 @@
     "12": 3
   },
   "recent_posts": [
-    {
-      "id": 877,
-      "timestamp": "2026-06-20T08:55:15.608028Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$MSFT Microsoft Corporation\n\n💰 nan (+nan%) | 5D: +nan%\n📊 RSI: 39.7 | MACD: bearish\n📈 MA20: $nan (bel",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 878,
-      "timestamp": "2026-06-20T08:55:16.014536Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟢 $NVDA — NVIDIA Corporation | $222.32 (-1.3%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n##",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1517815084657934437"
-    },
-    {
-      "id": 879,
-      "timestamp": "2026-06-20T08:55:18.369682Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 880,
-      "timestamp": "2026-06-20T08:55:49.050000Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 881,
-      "timestamp": "2026-06-20T15:46:17.842359Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Insight: The AI-Driven Bull Market</b>\n\nThe Nasdaq, a bellwether for technology stocks, ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "480"
-    },
-    {
-      "id": 882,
-      "timestamp": "2026-06-20T15:46:18.220297Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Insight: The AI-Driven Bull Market**\n\nThe Nasdaq, a bellwether for technology stocks, has",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1517918525400809762"
-    },
-    {
-      "id": 883,
-      "timestamp": "2026-06-20T15:46:19.024508Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Insight: The AI-Driven Bull Market\n\nThe Nasdaq, a bellwether for technology stocks, has rea",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 884,
-      "timestamp": "2026-06-20T15:46:23.690665Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Insight: The AI-Driven Bull Market",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 885,
       "timestamp": "2026-06-20T15:46:24.874191Z",
@@ -421,6 +346,81 @@
     {
       "id": 896,
       "timestamp": "2026-06-21T09:49:26.455102Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 897,
+      "timestamp": "2026-06-21T15:53:07.740507Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 The Great Rotation: AI-Driven Nasdaq vs Supercharged Dow</b>\n\nThe Nasdaq's AI-driven dominance ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "484"
+    },
+    {
+      "id": 898,
+      "timestamp": "2026-06-21T15:53:08.249989Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **The Great Rotation: AI-Driven Nasdaq vs Supercharged Dow**\n\nThe Nasdaq's AI-driven dominance is ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1518282632394440854"
+    },
+    {
+      "id": 899,
+      "timestamp": "2026-06-21T15:53:08.797798Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 The Great Rotation: AI-Driven Nasdaq vs Supercharged Dow\n\nThe Nasdaq's AI-driven dominance is reac",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 900,
+      "timestamp": "2026-06-21T15:53:13.458839Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 The Great Rotation: AI-Driven Nasdaq vs Supercharged Dow",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 901,
+      "timestamp": "2026-06-21T15:53:14.462137Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$META Meta Platforms, Inc.\n\n💰 568.43 (-0.5%) | 5D: -9.4%\n📊 RSI: 37.4 | MACD: bearish\n📈 MA20: $606.78",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 902,
+      "timestamp": "2026-06-21T15:53:14.658097Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🔴 $GOOGL — Alphabet Inc. | $382.97 (-1.2%)\n\n**Setup:** correction in play → Bias: **BEARISH**\n\n##",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1518282660126920705"
+    },
+    {
+      "id": 903,
+      "timestamp": "2026-06-21T15:53:16.485116Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 904,
+      "timestamp": "2026-06-21T15:53:45.729256Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
