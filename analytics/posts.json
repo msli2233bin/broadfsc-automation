@@ -8521,5 +8521,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 905,
+    "timestamp": "2026-06-22T11:52:46.566250Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Insights: The $4 Trillion Opportunity in AI-Driven Growth</b>\n\nThe Nasdaq has hit an all",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "487"
+  },
+  {
+    "id": 906,
+    "timestamp": "2026-06-22T11:52:46.991213Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Insights: The $4 Trillion Opportunity in AI-Driven Growth**\n\nThe Nasdaq has hit an all-ti",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1518584533652602961"
+  },
+  {
+    "id": 907,
+    "timestamp": "2026-06-22T11:52:48.018497Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insights: The $4 Trillion Opportunity in AI-Driven Growth\n\nThe Nasdaq has hit an all-time h",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 908,
+    "timestamp": "2026-06-22T11:52:53.426012Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insights: The $4 Trillion Opportunity in AI-Driven Growth",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 909,
+    "timestamp": "2026-06-22T11:52:54.920082Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AMD Advanced Micro Devices, Inc.\n\n💰 516.1 (-0.4%) | 5D: +14.8%\n📊 RSI: 67.0 | MACD: bullish\n📈 MA20: ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 910,
+    "timestamp": "2026-06-22T11:52:55.198558Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $NVDA — NVIDIA Corporation | $225.83 (+2.3%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n##",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1518584568716726362"
+  },
+  {
+    "id": 911,
+    "timestamp": "2026-06-22T11:52:57.557498Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 912,
+    "timestamp": "2026-06-22T11:53:25.139454Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
