@@ -844,5 +844,32 @@
     "time": "2026-06-19T16:31:30.941439",
     "message_id": "<202606191631.14858971060@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "msli2233bin+david@gmail.com",
+    "subject": "Quick market note",
+    "personality": "thomas",
+    "date": "2026-06-22",
+    "time": "2026-06-22T18:12:04.216690",
+    "message_id": "<202606221812.83296824683@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+sarah@gmail.com",
+    "subject": "Gold broke 4,200 resistance",
+    "personality": "thomas",
+    "date": "2026-06-22",
+    "time": "2026-06-22T18:12:11.779708",
+    "message_id": "<202606221812.61103160442@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+takeshi@gmail.com",
+    "subject": "Gold's Hidden Breakdown",
+    "personality": "thomas",
+    "date": "2026-06-22",
+    "time": "2026-06-22T18:12:16.089795",
+    "message_id": "<202606221812.22728887717@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
