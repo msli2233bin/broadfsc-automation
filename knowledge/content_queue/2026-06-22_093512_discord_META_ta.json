@@ -1,0 +1,11 @@
+{
+  "platform": "discord",
+  "topic": "META_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "## 🔴 $META — Meta Platforms, Inc. | $577.22 (+1.7%)\n\n**Setup:** correction in play → Bias: **BEARISH**\n\n### 📊 Technical Indicators\n| Indicator | Value | Signal |\n|-----------|-------|--------|\n| RSI(14) | 36.4 | Neutral ✅ |\n| MACD | -11.2561 | Bearish (below signal) |\n| BB Position | 26.4% | Mid-range |\n| Volume | 1.5x avg | Normal |\n\n### 📈 Key Levels\n| Level | Price |\n|-------|-------|\n| Resistance | $690.88 |\n| MA20 | $599.03 |\n| MA50 | $621.37 |\n| MA200 | $621.38 |\n| Support | $519.78 |\n\n### 📉 Performance\n1D: +1.7% | 5D: +1.6% | 20D: -4.5%\n\n### 🎯 Bollinger Bands\nUpper: $645.16 | Lower: $552.9\n\n---\n📱 Get daily TA signals for 5 stocks → **t.me/BroadInvestBot**\nFree. No spam. Just levels that matter.",
+  "content_type": "single",
+  "symbol": "META",
+  "created": "2026-06-22T09:35:12.022278",
+  "used": false,
+  "chart_paths": {}
+}
