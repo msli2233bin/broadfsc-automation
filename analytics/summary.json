@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-22T08:37:18.702342Z",
+  "generated_at": "2026-06-22T14:38:10.233414Z",
   "period": {
     "today": "2026-06-22",
     "yesterday": "2026-06-21",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-23"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 112,
-    "posts_month": 570,
+    "posts_today": 8,
+    "posts_week": 120,
+    "posts_month": 578,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 49.1
+    "success_rate": 49.0
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 14,
-      "month": 111,
-      "success": 109,
+      "today": 1,
+      "week": 15,
+      "month": 112,
+      "success": 110,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 28,
-      "month": 198,
-      "success": 192,
+      "today": 2,
+      "week": 30,
+      "month": 200,
+      "success": 194,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 28,
-      "month": 174,
+      "today": 2,
+      "week": 30,
+      "month": 176,
       "success": 37,
-      "failed": 137
+      "failed": 139
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 14,
-      "month": 94,
+      "today": 1,
+      "week": 15,
+      "month": 95,
       "success": 10,
-      "failed": 84
+      "failed": 85
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 28,
-      "month": 172,
+      "today": 2,
+      "week": 30,
+      "month": 174,
       "success": 4,
-      "failed": 168
+      "failed": 170
     }
   },
   "interactions_by_platform": {
@@ -220,6 +220,10 @@
     "2026-06-21": {
       "posts": 16,
       "interactions": 0
+    },
+    "2026-06-22": {
+      "posts": 8,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
@@ -230,87 +234,12 @@
     "16": 36,
     "9": 41,
     "17": 32,
-    "11": 8,
+    "11": 11,
     "19": 5,
     "18": 16,
     "12": 3
   },
   "recent_posts": [
-    {
-      "id": 885,
-      "timestamp": "2026-06-20T15:46:24.874191Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$META Meta Platforms, Inc.\n\n💰 635.29 (+0.0%) | 5D: +5.0%\n📊 RSI: 60.7 | MACD: bullish\n📈 MA20: $612.3 ",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 886,
-      "timestamp": "2026-06-20T15:46:25.192109Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟢 $AMD — Advanced Micro Devices, Inc. | $516.1 (-0.4%)\n\n**Setup:** uptrend intact → Bias: **BULLI",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1517918554660540690"
-    },
-    {
-      "id": 887,
-      "timestamp": "2026-06-20T15:46:27.751096Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 888,
-      "timestamp": "2026-06-20T15:46:58.591594Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 889,
-      "timestamp": "2026-06-21T09:48:54.383302Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Crocodile in the Water: A Market Insight from BroadFSC</b>\n\nWhile the market continues to roar,",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "483"
-    },
-    {
-      "id": 890,
-      "timestamp": "2026-06-21T09:48:54.780093Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Crocodile in the Water: A Market Insight from BroadFSC**\n\nWhile the market continues to roar, we",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1518190972679360642"
-    },
-    {
-      "id": 891,
-      "timestamp": "2026-06-21T09:48:55.549006Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Crocodile in the Water: A Market Insight from BroadFSC\n\nWhile the market continues to roar, we're ",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 892,
-      "timestamp": "2026-06-21T09:49:02.037844Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Crocodile in the Water: A Market Insight from BroadFSC",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 893,
       "timestamp": "2026-06-21T09:49:03.205324Z",
@@ -417,6 +346,81 @@
     {
       "id": 904,
       "timestamp": "2026-06-21T15:53:45.729256Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 905,
+      "timestamp": "2026-06-22T11:52:46.566250Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Insights: The $4 Trillion Opportunity in AI-Driven Growth</b>\n\nThe Nasdaq has hit an all",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "487"
+    },
+    {
+      "id": 906,
+      "timestamp": "2026-06-22T11:52:46.991213Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Insights: The $4 Trillion Opportunity in AI-Driven Growth**\n\nThe Nasdaq has hit an all-ti",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1518584533652602961"
+    },
+    {
+      "id": 907,
+      "timestamp": "2026-06-22T11:52:48.018497Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Insights: The $4 Trillion Opportunity in AI-Driven Growth\n\nThe Nasdaq has hit an all-time h",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 908,
+      "timestamp": "2026-06-22T11:52:53.426012Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Insights: The $4 Trillion Opportunity in AI-Driven Growth",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 909,
+      "timestamp": "2026-06-22T11:52:54.920082Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$AMD Advanced Micro Devices, Inc.\n\n💰 516.1 (-0.4%) | 5D: +14.8%\n📊 RSI: 67.0 | MACD: bullish\n📈 MA20: ",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 910,
+      "timestamp": "2026-06-22T11:52:55.198558Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟢 $NVDA — NVIDIA Corporation | $225.83 (+2.3%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n##",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1518584568716726362"
+    },
+    {
+      "id": 911,
+      "timestamp": "2026-06-22T11:52:57.557498Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 912,
+      "timestamp": "2026-06-22T11:53:25.139454Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
