@@ -114,3 +114,6 @@
 
 ## 09:41:19 | sales/crm_sales
 - [cross_domain_match] 🔗 跨域关联匹配: sales/crm_sales 在 FUSION_INDEX 中有对应融合策略
+
+## 11:39:14 | competitor/competitor_webull
+- [cross_domain_match] 🔗 跨域关联匹配: competitor/competitor_webull 在 FUSION_INDEX 中有对应融合策略
