@@ -871,5 +871,41 @@
     "time": "2026-06-22T18:12:16.089795",
     "message_id": "<202606221812.22728887717@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "msli2233bin+maria@gmail.com",
+    "subject": "Gold's 4,151 level at risk",
+    "personality": "michael",
+    "date": "2026-06-23",
+    "time": "2026-06-23T16:26:19.042944",
+    "message_id": "<202606231626.36781857952@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+raj@gmail.com",
+    "subject": "Gold broke something important",
+    "personality": "michael",
+    "date": "2026-06-23",
+    "time": "2026-06-23T16:26:26.272971",
+    "message_id": "<202606231626.86627263178@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "test@example.com",
+    "subject": "7,399: The Resistance We're Overlooking",
+    "personality": "michael",
+    "date": "2026-06-23",
+    "time": "2026-06-23T16:26:33.606216",
+    "message_id": "<202606231626.18869993972@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "david.chen.trader@gmail.com",
+    "subject": "S&P testing 7,199 resistance",
+    "personality": "michael",
+    "date": "2026-06-23",
+    "time": "2026-06-23T16:26:40.580550",
+    "message_id": "<202606231626.86357773150@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
