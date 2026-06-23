@@ -8596,5 +8596,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 913,
+    "timestamp": "2026-06-23T09:37:21.311140Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Alert: Artificial Intelligence Driving Nasdaq to New Heights</b>\n\nThe Nasdaq has reached",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "497"
+  },
+  {
+    "id": 914,
+    "timestamp": "2026-06-23T09:37:21.773536Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Alert: Artificial Intelligence Driving Nasdaq to New Heights**\n\nThe Nasdaq has reached ne",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1518912841493516403"
+  },
+  {
+    "id": 915,
+    "timestamp": "2026-06-23T09:37:22.271500Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: Artificial Intelligence Driving Nasdaq to New Heights\n\nThe Nasdaq has reached new al",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 916,
+    "timestamp": "2026-06-23T09:37:27.703863Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: Artificial Intelligence Driving Nasdaq to New Heights",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 917,
+    "timestamp": "2026-06-23T09:37:28.859149Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AAPL Apple Inc.\n\n💰 308.82 (+1.3%) | 5D: +2.9%\n📊 RSI: 91.1 | MACD: bullish\n📈 MA20: $289.22 (above)\n🎯",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 918,
+    "timestamp": "2026-06-23T09:37:29.148154Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $AAPL — Apple Inc. | $nan (+nan%)\n\n**Setup:** oversold bounce setup → Bias: **BULLISH**\n\n### 📊 ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1518912872934277245"
+  },
+  {
+    "id": 919,
+    "timestamp": "2026-06-23T09:37:31.164859Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 920,
+    "timestamp": "2026-06-23T09:38:00.030542Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
