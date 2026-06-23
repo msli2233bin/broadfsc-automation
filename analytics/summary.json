@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-23T09:36:04.931279Z",
+  "generated_at": "2026-06-23T12:31:16.949814Z",
   "period": {
     "today": "2026-06-23",
     "yesterday": "2026-06-22",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-24"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 104,
-    "posts_month": 568,
+    "posts_today": 8,
+    "posts_week": 112,
+    "posts_month": 576,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 48.9
+    "success_rate": 48.8
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 13,
-      "month": 112,
-      "success": 110,
+      "today": 1,
+      "week": 14,
+      "month": 113,
+      "success": 111,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 26,
-      "month": 200,
-      "success": 194,
+      "today": 2,
+      "week": 28,
+      "month": 202,
+      "success": 196,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 26,
-      "month": 176,
+      "today": 2,
+      "week": 28,
+      "month": 178,
       "success": 37,
-      "failed": 139
+      "failed": 141
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 13,
-      "month": 95,
+      "today": 1,
+      "week": 14,
+      "month": 96,
       "success": 10,
-      "failed": 85
+      "failed": 86
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 26,
-      "month": 174,
+      "today": 2,
+      "week": 28,
+      "month": 176,
       "success": 4,
-      "failed": 170
+      "failed": 172
     }
   },
   "interactions_by_platform": {
@@ -220,6 +220,10 @@
     "2026-06-22": {
       "posts": 8,
       "interactions": 0
+    },
+    "2026-06-23": {
+      "posts": 8,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
@@ -228,7 +232,7 @@
     "10": 44,
     "14": 10,
     "16": 36,
-    "9": 41,
+    "9": 44,
     "17": 32,
     "11": 11,
     "19": 5,
@@ -236,81 +240,6 @@
     "12": 3
   },
   "recent_posts": [
-    {
-      "id": 893,
-      "timestamp": "2026-06-21T09:49:03.205324Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$AAPL Apple Inc.\n\n💰 307.34 (-1.2%) | 5D: -1.5%\n📊 RSI: 58.3 | MACD: bearish\n📈 MA20: $304.24 (above)\n🎯",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 894,
-      "timestamp": "2026-06-21T09:49:03.419661Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟡 $MSFT — Microsoft Corporation | $460.52 (+2.3%)\n\n**Setup:** overbought, watching for pullback →",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1518191009425653881"
-    },
-    {
-      "id": 895,
-      "timestamp": "2026-06-21T09:49:06.184234Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 896,
-      "timestamp": "2026-06-21T09:49:26.455102Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 897,
-      "timestamp": "2026-06-21T15:53:07.740507Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 The Great Rotation: AI-Driven Nasdaq vs Supercharged Dow</b>\n\nThe Nasdaq's AI-driven dominance ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "484"
-    },
-    {
-      "id": 898,
-      "timestamp": "2026-06-21T15:53:08.249989Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **The Great Rotation: AI-Driven Nasdaq vs Supercharged Dow**\n\nThe Nasdaq's AI-driven dominance is ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1518282632394440854"
-    },
-    {
-      "id": 899,
-      "timestamp": "2026-06-21T15:53:08.797798Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 The Great Rotation: AI-Driven Nasdaq vs Supercharged Dow\n\nThe Nasdaq's AI-driven dominance is reac",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 900,
-      "timestamp": "2026-06-21T15:53:13.458839Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 The Great Rotation: AI-Driven Nasdaq vs Supercharged Dow",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 901,
       "timestamp": "2026-06-21T15:53:14.462137Z",
@@ -417,6 +346,81 @@
     {
       "id": 912,
       "timestamp": "2026-06-22T11:53:25.139454Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 913,
+      "timestamp": "2026-06-23T09:37:21.311140Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Alert: Artificial Intelligence Driving Nasdaq to New Heights</b>\n\nThe Nasdaq has reached",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "497"
+    },
+    {
+      "id": 914,
+      "timestamp": "2026-06-23T09:37:21.773536Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Alert: Artificial Intelligence Driving Nasdaq to New Heights**\n\nThe Nasdaq has reached ne",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1518912841493516403"
+    },
+    {
+      "id": 915,
+      "timestamp": "2026-06-23T09:37:22.271500Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Alert: Artificial Intelligence Driving Nasdaq to New Heights\n\nThe Nasdaq has reached new al",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 916,
+      "timestamp": "2026-06-23T09:37:27.703863Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Alert: Artificial Intelligence Driving Nasdaq to New Heights",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 917,
+      "timestamp": "2026-06-23T09:37:28.859149Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$AAPL Apple Inc.\n\n💰 308.82 (+1.3%) | 5D: +2.9%\n📊 RSI: 91.1 | MACD: bullish\n📈 MA20: $289.22 (above)\n🎯",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 918,
+      "timestamp": "2026-06-23T09:37:29.148154Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟢 $AAPL — Apple Inc. | $nan (+nan%)\n\n**Setup:** oversold bounce setup → Bias: **BULLISH**\n\n### 📊 ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1518912872934277245"
+    },
+    {
+      "id": 919,
+      "timestamp": "2026-06-23T09:37:31.164859Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 920,
+      "timestamp": "2026-06-23T09:38:00.030542Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
