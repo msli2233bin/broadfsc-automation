@@ -8841,5 +8841,25 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 939,
+    "timestamp": "2026-06-24T14:23:57.610305Z",
+    "platform": "telegram_en",
+    "type": "earnings",
+    "content_preview": "<b>📊 Earnings Calendar: Week of Jun 24</b>\n\n\n📅 <b>Tuesday, Jun 30</b>\n  • Nike (NKE) @ $41.93 | EPS ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "509"
+  },
+  {
+    "id": 940,
+    "timestamp": "2026-06-24T14:23:58.218424Z",
+    "platform": "discord",
+    "type": "earnings",
+    "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jun 24**\n\n\n📅 **Tuesday, Jun 30**\n  • N",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1519347356016054312"
   }
 ]
