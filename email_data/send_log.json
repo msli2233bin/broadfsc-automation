@@ -907,5 +907,32 @@
     "time": "2026-06-23T16:26:40.580550",
     "message_id": "<202606231626.86357773150@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "sarah.investor@outlook.com",
+    "subject": "S&P Hits 7,410, but... ",
+    "personality": "iron_bull",
+    "date": "2026-06-24",
+    "time": "2026-06-24T16:20:39.388556",
+    "message_id": "<202606241620.62738112864@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "takeshi.yamamoto@yahoo.co.jp",
+    "subject": "Why the Dow just defied the odds",
+    "personality": "iron_bull",
+    "date": "2026-06-24",
+    "time": "2026-06-24T16:20:46.620823",
+    "message_id": "<202606241620.11821958613@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "maria.santos.pro@gmail.com",
+    "subject": "Gold broke a decade-old trend",
+    "personality": "iron_bull",
+    "date": "2026-06-24",
+    "time": "2026-06-24T16:20:54.125001",
+    "message_id": "<202606241620.52810720977@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
