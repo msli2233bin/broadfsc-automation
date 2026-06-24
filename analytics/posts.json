@@ -8861,5 +8861,80 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1519347356016054312"
+  },
+  {
+    "id": 941,
+    "timestamp": "2026-06-24T16:22:50.628396Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The Silent Shift in Market Sentiment</b>\n\nAs we head into the second half of 2026, the market r",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "516"
+  },
+  {
+    "id": 942,
+    "timestamp": "2026-06-24T16:22:51.168704Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The Silent Shift in Market Sentiment**\n\nAs we head into the second half of 2026, the market refe",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1519377273860395019"
+  },
+  {
+    "id": 943,
+    "timestamp": "2026-06-24T16:22:51.413556Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The Silent Shift in Market Sentiment\n\nAs we head into the second half of 2026, the market referenc",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 944,
+    "timestamp": "2026-06-24T16:22:52.300823Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The Silent Shift in Market Sentiment",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 945,
+    "timestamp": "2026-06-24T16:22:52.978606Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$MSFT Microsoft Corporation\n\n💰 nan (+nan%) | 5D: +nan%\n📊 RSI: 39.7 | MACD: bearish\n📈 MA20: $nan (bel",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 946,
+    "timestamp": "2026-06-24T16:22:53.268484Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $TSLA — Tesla, Inc. | $nan (+nan%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n### 📊 Technic",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1519377283926724608"
+  },
+  {
+    "id": 947,
+    "timestamp": "2026-06-24T16:22:55.116421Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 948,
+    "timestamp": "2026-06-24T16:23:26.564539Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
