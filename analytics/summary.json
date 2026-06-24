@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-24T09:26:13.716668Z",
+  "generated_at": "2026-06-24T12:05:30.439885Z",
   "period": {
     "today": "2026-06-24",
     "yesterday": "2026-06-23",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-25"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 106,
-    "posts_month": 566,
+    "posts_today": 8,
+    "posts_week": 114,
+    "posts_month": 574,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 48.8
+    "success_rate": 48.6
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 14,
-      "month": 115,
-      "success": 113,
+      "today": 1,
+      "week": 15,
+      "month": 116,
+      "success": 114,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 27,
-      "month": 205,
-      "success": 199,
+      "today": 2,
+      "week": 29,
+      "month": 207,
+      "success": 201,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 26,
-      "month": 180,
+      "today": 2,
+      "week": 28,
+      "month": 182,
       "success": 37,
-      "failed": 143
+      "failed": 145
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 13,
-      "month": 97,
+      "today": 1,
+      "week": 14,
+      "month": 98,
       "success": 10,
-      "failed": 87
+      "failed": 88
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 26,
-      "month": 178,
+      "today": 2,
+      "week": 28,
+      "month": 180,
       "success": 4,
-      "failed": 174
+      "failed": 176
     }
   },
   "interactions_by_platform": {
@@ -220,13 +220,17 @@
     "2026-06-23": {
       "posts": 18,
       "interactions": 0
+    },
+    "2026-06-24": {
+      "posts": 8,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
     "10": 44,
     "14": 12,
     "16": 39,
-    "9": 44,
+    "9": 47,
     "15": 44,
     "17": 32,
     "8": 26,
@@ -236,81 +240,6 @@
     "12": 3
   },
   "recent_posts": [
-    {
-      "id": 911,
-      "timestamp": "2026-06-22T11:52:57.557498Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 912,
-      "timestamp": "2026-06-22T11:53:25.139454Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 913,
-      "timestamp": "2026-06-23T09:37:21.311140Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Alert: Artificial Intelligence Driving Nasdaq to New Heights</b>\n\nThe Nasdaq has reached",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "497"
-    },
-    {
-      "id": 914,
-      "timestamp": "2026-06-23T09:37:21.773536Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Alert: Artificial Intelligence Driving Nasdaq to New Heights**\n\nThe Nasdaq has reached ne",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1518912841493516403"
-    },
-    {
-      "id": 915,
-      "timestamp": "2026-06-23T09:37:22.271500Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Alert: Artificial Intelligence Driving Nasdaq to New Heights\n\nThe Nasdaq has reached new al",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 916,
-      "timestamp": "2026-06-23T09:37:27.703863Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Alert: Artificial Intelligence Driving Nasdaq to New Heights",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 917,
-      "timestamp": "2026-06-23T09:37:28.859149Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$AAPL Apple Inc.\n\n💰 308.82 (+1.3%) | 5D: +2.9%\n📊 RSI: 91.1 | MACD: bullish\n📈 MA20: $289.22 (above)\n🎯",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 918,
-      "timestamp": "2026-06-23T09:37:29.148154Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟢 $AAPL — Apple Inc. | $nan (+nan%)\n\n**Setup:** oversold bounce setup → Bias: **BULLISH**\n\n### 📊 ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1518912872934277245"
-    },
     {
       "id": 919,
       "timestamp": "2026-06-23T09:37:31.164859Z",
@@ -418,6 +347,81 @@
     {
       "id": 930,
       "timestamp": "2026-06-23T16:28:17.441896Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 931,
+      "timestamp": "2026-06-24T09:28:06.829762Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 The Great Contrarian Opportunity in Tech</b>\n\nThe S&P 500 is trading at 7,365.46, down 1.4% fro",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "508"
+    },
+    {
+      "id": 932,
+      "timestamp": "2026-06-24T09:28:07.469013Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **The Great Contrarian Opportunity in Tech**\n\nThe S&P 500 is trading at 7,365.46, down 1.4% from t",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1519272903710085120"
+    },
+    {
+      "id": 933,
+      "timestamp": "2026-06-24T09:28:08.126273Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 The Great Contrarian Opportunity in Tech\n\nThe S&P 500 is trading at 7,365.46, down 1.4% from the a",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 934,
+      "timestamp": "2026-06-24T09:28:12.669477Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 The Great Contrarian Opportunity in Tech",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 935,
+      "timestamp": "2026-06-24T09:28:14.327955Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$META Meta Platforms, Inc.\n\n💰 635.29 (+0.0%) | 5D: +5.0%\n📊 RSI: 60.7 | MACD: bullish\n📈 MA20: $612.3 ",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 936,
+      "timestamp": "2026-06-24T09:28:14.620957Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🔴 $META — Meta Platforms, Inc. | $593.48 (+4.8%)\n\n**Setup:** correction in play → Bias: **BEARISH",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1519272935221891102"
+    },
+    {
+      "id": 937,
+      "timestamp": "2026-06-24T09:28:16.787210Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 938,
+      "timestamp": "2026-06-24T09:28:49.503856Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
