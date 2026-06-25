@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-25T13:35:14.261158Z",
+  "generated_at": "2026-06-25T16:22:18.386030Z",
   "period": {
     "today": "2026-06-25",
     "yesterday": "2026-06-24",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-26"
   },
   "totals": {
-    "posts_today": 8,
-    "posts_week": 116,
-    "posts_month": 570,
+    "posts_today": 10,
+    "posts_week": 118,
+    "posts_month": 572,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 48.2
+    "success_rate": 48.4
   },
   "platforms": {
     "tiktok": {
@@ -24,17 +24,17 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 16,
-      "month": 119,
-      "success": 117,
+      "today": 2,
+      "week": 17,
+      "month": 120,
+      "success": 118,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 30,
-      "month": 212,
-      "success": 206,
+      "today": 3,
+      "week": 31,
+      "month": 213,
+      "success": 207,
       "failed": 6
     },
     "mastodon": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-06-25": {
-      "posts": 8,
+      "posts": 10,
       "interactions": 0
     }
   },
@@ -231,7 +231,7 @@
     "15": 44,
     "17": 32,
     "10": 39,
-    "14": 12,
+    "14": 14,
     "8": 26,
     "11": 11,
     "19": 5,
@@ -240,24 +240,6 @@
     "12": 3
   },
   "recent_posts": [
-    {
-      "id": 937,
-      "timestamp": "2026-06-24T09:28:16.787210Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 938,
-      "timestamp": "2026-06-24T09:28:49.503856Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
     {
       "id": 939,
       "timestamp": "2026-06-24T14:23:57.610305Z",
@@ -427,6 +409,26 @@
       "content_preview": "Hatena Blog post",
       "status": "failed",
       "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 957,
+      "timestamp": "2026-06-25T14:25:31.185087Z",
+      "platform": "telegram_en",
+      "type": "earnings",
+      "content_preview": "<b>📊 Earnings Calendar: Week of Jun 25</b>\n\n\n📅 <b>Tuesday, Jun 30</b>\n  • Nike (NKE) @ $41.69 | EPS ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "520"
+    },
+    {
+      "id": 958,
+      "timestamp": "2026-06-25T14:25:31.529217Z",
+      "platform": "discord",
+      "type": "earnings",
+      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jun 25**\n\n\n📅 **Tuesday, Jun 30**\n  • N",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1519710136258662403"
     }
   ],
   "recent_interactions": [
