@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-25T16:22:18.386030Z",
+  "generated_at": "2026-06-25T18:31:52.726756Z",
   "period": {
     "today": "2026-06-25",
     "yesterday": "2026-06-24",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-26"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 118,
-    "posts_month": 572,
+    "posts_today": 18,
+    "posts_week": 126,
+    "posts_month": 580,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 48.4
+    "success_rate": 48.3
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 2,
-      "week": 17,
-      "month": 120,
-      "success": 118,
+      "today": 3,
+      "week": 18,
+      "month": 121,
+      "success": 119,
       "failed": 2
     },
     "discord": {
-      "today": 3,
-      "week": 31,
-      "month": 213,
-      "success": 207,
+      "today": 5,
+      "week": 33,
+      "month": 215,
+      "success": 209,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 28,
-      "month": 186,
+      "today": 4,
+      "week": 30,
+      "month": 188,
       "success": 37,
-      "failed": 149
+      "failed": 151
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 14,
-      "month": 100,
+      "today": 2,
+      "week": 15,
+      "month": 101,
       "success": 10,
-      "failed": 90
+      "failed": 91
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 28,
-      "month": 184,
+      "today": 4,
+      "week": 30,
+      "month": 186,
       "success": 4,
-      "failed": 180
+      "failed": 182
     }
   },
   "interactions_by_platform": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-06-25": {
-      "posts": 10,
+      "posts": 18,
       "interactions": 0
     }
   },
@@ -236,87 +236,10 @@
     "11": 11,
     "19": 5,
     "18": 16,
-    "16": 37,
+    "16": 40,
     "12": 3
   },
   "recent_posts": [
-    {
-      "id": 939,
-      "timestamp": "2026-06-24T14:23:57.610305Z",
-      "platform": "telegram_en",
-      "type": "earnings",
-      "content_preview": "<b>📊 Earnings Calendar: Week of Jun 24</b>\n\n\n📅 <b>Tuesday, Jun 30</b>\n  • Nike (NKE) @ $41.93 | EPS ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "509"
-    },
-    {
-      "id": 940,
-      "timestamp": "2026-06-24T14:23:58.218424Z",
-      "platform": "discord",
-      "type": "earnings",
-      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jun 24**\n\n\n📅 **Tuesday, Jun 30**\n  • N",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1519347356016054312"
-    },
-    {
-      "id": 941,
-      "timestamp": "2026-06-24T16:22:50.628396Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 The Silent Shift in Market Sentiment</b>\n\nAs we head into the second half of 2026, the market r",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "516"
-    },
-    {
-      "id": 942,
-      "timestamp": "2026-06-24T16:22:51.168704Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **The Silent Shift in Market Sentiment**\n\nAs we head into the second half of 2026, the market refe",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1519377273860395019"
-    },
-    {
-      "id": 943,
-      "timestamp": "2026-06-24T16:22:51.413556Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 The Silent Shift in Market Sentiment\n\nAs we head into the second half of 2026, the market referenc",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 944,
-      "timestamp": "2026-06-24T16:22:52.300823Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 The Silent Shift in Market Sentiment",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 945,
-      "timestamp": "2026-06-24T16:22:52.978606Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$MSFT Microsoft Corporation\n\n💰 nan (+nan%) | 5D: +nan%\n📊 RSI: 39.7 | MACD: bearish\n📈 MA20: $nan (bel",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 946,
-      "timestamp": "2026-06-24T16:22:53.268484Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟡 $TSLA — Tesla, Inc. | $nan (+nan%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n### 📊 Technic",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1519377283926724608"
-    },
     {
       "id": 947,
       "timestamp": "2026-06-24T16:22:55.116421Z",
@@ -429,6 +352,81 @@
       "status": "success",
       "error_msg": "",
       "post_id": "1519710136258662403"
+    },
+    {
+      "id": 959,
+      "timestamp": "2026-06-25T16:26:25.460129Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Maturity: The Unseen Forces Behind a Puzzling Rally</b>\n\nThe S&P 500 has just breached t",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "527"
+    },
+    {
+      "id": 960,
+      "timestamp": "2026-06-25T16:26:25.899328Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Maturity: The Unseen Forces Behind a Puzzling Rally**\n\nThe S&P 500 has just breached the ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1519740563170267277"
+    },
+    {
+      "id": 961,
+      "timestamp": "2026-06-25T16:26:26.278779Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Maturity: The Unseen Forces Behind a Puzzling Rally\n\nThe S&P 500 has just breached the 7,37",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 962,
+      "timestamp": "2026-06-25T16:26:27.431401Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Maturity: The Unseen Forces Behind a Puzzling Rally",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 963,
+      "timestamp": "2026-06-25T16:26:28.116044Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 116.7 (-2.3%) | 5D: -13.4%\n📊 RSI: 16.2 | MACD: bearish\n📈 MA20: $",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 964,
+      "timestamp": "2026-06-25T16:26:28.318017Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟡 $AAPL — Apple Inc. | $310.26 (-1.6%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n### 📊 Techn",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1519740573983178875"
+    },
+    {
+      "id": 965,
+      "timestamp": "2026-06-25T16:26:30.594121Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 966,
+      "timestamp": "2026-06-25T16:26:34.308694Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
     }
   ],
   "recent_interactions": [
