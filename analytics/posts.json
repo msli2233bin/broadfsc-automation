@@ -9031,5 +9031,80 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1519710136258662403"
+  },
+  {
+    "id": 959,
+    "timestamp": "2026-06-25T16:26:25.460129Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Maturity: The Unseen Forces Behind a Puzzling Rally</b>\n\nThe S&P 500 has just breached t",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "527"
+  },
+  {
+    "id": 960,
+    "timestamp": "2026-06-25T16:26:25.899328Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Maturity: The Unseen Forces Behind a Puzzling Rally**\n\nThe S&P 500 has just breached the ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1519740563170267277"
+  },
+  {
+    "id": 961,
+    "timestamp": "2026-06-25T16:26:26.278779Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Maturity: The Unseen Forces Behind a Puzzling Rally\n\nThe S&P 500 has just breached the 7,37",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 962,
+    "timestamp": "2026-06-25T16:26:27.431401Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Maturity: The Unseen Forces Behind a Puzzling Rally",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 963,
+    "timestamp": "2026-06-25T16:26:28.116044Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 116.7 (-2.3%) | 5D: -13.4%\n📊 RSI: 16.2 | MACD: bearish\n📈 MA20: $",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 964,
+    "timestamp": "2026-06-25T16:26:28.318017Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $AAPL — Apple Inc. | $310.26 (-1.6%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n### 📊 Techn",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1519740573983178875"
+  },
+  {
+    "id": 965,
+    "timestamp": "2026-06-25T16:26:30.594121Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 966,
+    "timestamp": "2026-06-25T16:26:34.308694Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
