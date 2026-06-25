@@ -124,3 +124,7 @@
 
 ## 07:36:34 | sales/sales_research
 - [cross_domain_match] 🔗 跨域关联匹配: sales/sales_research 在 FUSION_INDEX 中有对应融合策略
+
+## 07:49:32 | marketing/tiktok_updates
+- [marketing_insight] 📱 检测到营销洞察 (tiktok_updates)，建议生成新平台内容
+- [cross_domain_match] 🔗 跨域关联匹配: marketing/tiktok_updates 在 FUSION_INDEX 中有对应融合策略
