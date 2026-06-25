@@ -1,0 +1,11 @@
+{
+  "platform": "threads",
+  "topic": "AAPL_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "1/ $AAPL — Apple Inc.\n\n293.08 (-0.4% today) | $4.30T\n\nOVERSOLD BOUNCE SETUP. This is the setup you need to see.---THREAD_BREAK---2/ Technical snapshot:\nRSI 32.7 — momentum zone\nMACD bearish, caution warranted\nMA20 $301.51 | MA50 $290.73\nVolume: 1.0x avg\n5D: -2.1% | 20D: -5.0%---THREAD_BREAK---3/ The trade:\nResistance: $317.4\nSupport: $245.28\nBias: BULLISH\n\nBounce play if support holds---THREAD_BREAK---4/ I post TA signals for 5 stocks daily.\n\n📱 Get them free: t.me/BroadInvestBot",
+  "content_type": "thread",
+  "symbol": "AAPL",
+  "created": "2026-06-25T07:30:35.704740",
+  "used": false,
+  "chart_paths": {}
+}
