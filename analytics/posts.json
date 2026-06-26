@@ -9106,5 +9106,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 967,
+    "timestamp": "2026-06-26T09:24:55.842423Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Insight: AI-Driven Euphoria Meets Reality Check</b>\n\n{\"title\": \"Market Insight: AI-Drive",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "530"
+  },
+  {
+    "id": 968,
+    "timestamp": "2026-06-26T09:24:56.216446Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Insight: AI-Driven Euphoria Meets Reality Check**\n\n{\"title\": \"Market Insight: AI-Driven E",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1519996878467502180"
+  },
+  {
+    "id": 969,
+    "timestamp": "2026-06-26T09:24:56.627786Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: AI-Driven Euphoria Meets Reality Check\n\n{\"title\": \"Market Insight: AI-Driven Eupho",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 970,
+    "timestamp": "2026-06-26T09:24:57.549669Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: AI-Driven Euphoria Meets Reality Check",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 971,
+    "timestamp": "2026-06-26T09:24:58.210257Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "As I analyze Webull's competitive strategy, one key takeaway stands out: the importance of content i",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 972,
+    "timestamp": "2026-06-26T09:24:58.568234Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $AMD — Advanced Micro Devices, Inc. | $516.1 (-0.4%)\n\n**Setup:** uptrend intact → Bias: **BULLI",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1519996888328441858"
+  },
+  {
+    "id": 973,
+    "timestamp": "2026-06-26T09:25:04.048275Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 974,
+    "timestamp": "2026-06-26T09:25:36.703222Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
