@@ -934,5 +934,32 @@
     "time": "2026-06-24T16:20:54.125001",
     "message_id": "<202606241620.52810720977@smtp-relay.mailin.fr>",
     "status": "sent"
+  },
+  {
+    "to": "raj.patel.invest@hotmail.com",
+    "subject": "S&P breaks 7,368.78 support",
+    "personality": "thomas",
+    "date": "2026-06-26",
+    "time": "2026-06-26T16:14:57.073323",
+    "message_id": "<202606261614.34696758271@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+david@gmail.com",
+    "subject": "Gold broke a 5-year trendline",
+    "personality": "thomas",
+    "date": "2026-06-26",
+    "time": "2026-06-26T16:15:02.292583",
+    "message_id": "<202606261615.88063843872@smtp-relay.mailin.fr>",
+    "status": "sent"
+  },
+  {
+    "to": "msli2233bin+sarah@gmail.com",
+    "subject": "S&P testing 7,174 for 3rd time",
+    "personality": "thomas",
+    "date": "2026-06-26",
+    "time": "2026-06-26T16:15:10.179108",
+    "message_id": "<202606261615.81148503572@smtp-relay.mailin.fr>",
+    "status": "sent"
   }
 ]
