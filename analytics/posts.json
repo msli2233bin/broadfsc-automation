@@ -9201,5 +9201,80 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1520070519536353451"
+  },
+  {
+    "id": 977,
+    "timestamp": "2026-06-26T16:18:54.619745Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Insight: The Artificial Insanity</b>\n\nThe world is going mad, and the stock market is no",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "538"
+  },
+  {
+    "id": 978,
+    "timestamp": "2026-06-26T16:18:55.050907Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Insight: The Artificial Insanity**\n\nThe world is going mad, and the stock market is no ex",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1520101059471605915"
+  },
+  {
+    "id": 979,
+    "timestamp": "2026-06-26T16:18:55.800887Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The Artificial Insanity\n\nThe world is going mad, and the stock market is no except",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 980,
+    "timestamp": "2026-06-26T16:18:57.111146Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The Artificial Insanity",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 981,
+    "timestamp": "2026-06-26T16:18:57.851587Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$META Meta Platforms, Inc.\n\n💰 nan (+nan%) | 5D: +nan%\n📊 RSI: 44.0 | MACD: bearish\n📈 MA20: $nan (belo",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 982,
+    "timestamp": "2026-06-26T16:18:58.103505Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $GOOGL — Alphabet Inc. | $380.34 (-2.5%)\n\n**Setup:** correction in play → Bias: **BEARISH**\n\n##",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1520101073401024723"
+  },
+  {
+    "id": 983,
+    "timestamp": "2026-06-26T16:19:03.226238Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 984,
+    "timestamp": "2026-06-26T16:19:36.656530Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
