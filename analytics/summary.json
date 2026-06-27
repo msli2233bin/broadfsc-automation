@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-27T15:14:03.205970Z",
+  "generated_at": "2026-06-27T16:37:49.869865Z",
   "period": {
     "today": "2026-06-27",
     "yesterday": "2026-06-26",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-28"
   },
   "totals": {
-    "posts_today": 8,
-    "posts_week": 120,
-    "posts_month": 562,
+    "posts_today": 16,
+    "posts_week": 128,
+    "posts_month": 570,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 47.5
+    "success_rate": 47.4
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 18,
-      "month": 125,
-      "success": 123,
+      "today": 2,
+      "week": 19,
+      "month": 126,
+      "success": 124,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 32,
-      "month": 222,
-      "success": 216,
+      "today": 4,
+      "week": 34,
+      "month": 224,
+      "success": 218,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 28,
-      "month": 194,
+      "today": 4,
+      "week": 30,
+      "month": 196,
       "success": 37,
-      "failed": 157
+      "failed": 159
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 14,
-      "month": 104,
+      "today": 2,
+      "week": 15,
+      "month": 105,
       "success": 10,
-      "failed": 94
+      "failed": 95
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 28,
-      "month": 192,
+      "today": 4,
+      "week": 30,
+      "month": 194,
       "success": 4,
-      "failed": 188
+      "failed": 190
     }
   },
   "interactions_by_platform": {
@@ -222,13 +222,13 @@
       "interactions": 0
     },
     "2026-06-27": {
-      "posts": 8,
+      "posts": 16,
       "interactions": 0
     }
   },
   "hourly_distribution": {
     "10": 39,
-    "15": 40,
+    "15": 43,
     "9": 43,
     "14": 16,
     "17": 22,
@@ -240,82 +240,6 @@
     "12": 3
   },
   "recent_posts": [
-    {
-      "id": 973,
-      "timestamp": "2026-06-26T09:25:04.048275Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 974,
-      "timestamp": "2026-06-26T09:25:36.703222Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 975,
-      "timestamp": "2026-06-26T14:17:33.261902Z",
-      "platform": "telegram_en",
-      "type": "earnings",
-      "content_preview": "<b>📊 Earnings Calendar: Week of Jun 26</b>\n\n\n📅 <b>Tuesday, Jun 30</b>\n  • Nike (NKE) @ $40.81 | EPS ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "531"
-    },
-    {
-      "id": 976,
-      "timestamp": "2026-06-26T14:17:33.616428Z",
-      "platform": "discord",
-      "type": "earnings",
-      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jun 26**\n\n\n📅 **Tuesday, Jun 30**\n  • N",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1520070519536353451"
-    },
-    {
-      "id": 977,
-      "timestamp": "2026-06-26T16:18:54.619745Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Insight: The Artificial Insanity</b>\n\nThe world is going mad, and the stock market is no",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "538"
-    },
-    {
-      "id": 978,
-      "timestamp": "2026-06-26T16:18:55.050907Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Insight: The Artificial Insanity**\n\nThe world is going mad, and the stock market is no ex",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1520101059471605915"
-    },
-    {
-      "id": 979,
-      "timestamp": "2026-06-26T16:18:55.800887Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Insight: The Artificial Insanity\n\nThe world is going mad, and the stock market is no except",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 980,
-      "timestamp": "2026-06-26T16:18:57.111146Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Insight: The Artificial Insanity",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 981,
       "timestamp": "2026-06-26T16:18:57.851587Z",
@@ -422,6 +346,81 @@
     {
       "id": 992,
       "timestamp": "2026-06-27T08:35:39.291828Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 993,
+      "timestamp": "2026-06-27T15:16:44.396108Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Global Market Insight: The AI-Driven Bull Run Continues</b>\n\nThe S&P 500 has reached a new all-",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "541"
+    },
+    {
+      "id": 994,
+      "timestamp": "2026-06-27T15:16:44.830321Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Global Market Insight: The AI-Driven Bull Run Continues**\n\nThe S&P 500 has reached a new all-tim",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1520447801912201358"
+    },
+    {
+      "id": 995,
+      "timestamp": "2026-06-27T15:16:46.161585Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Global Market Insight: The AI-Driven Bull Run Continues\n\nThe S&P 500 has reached a new all-time hi",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 996,
+      "timestamp": "2026-06-27T15:16:47.346307Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Global Market Insight: The AI-Driven Bull Run Continues",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 997,
+      "timestamp": "2026-06-27T15:16:48.357835Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$GOOGL Alphabet Inc.\n\n💰 363.31 (-1.4%) | 5D: -3.4%\n📊 RSI: 28.2 | MACD: bearish\n📈 MA20: $383.28 (belo",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 998,
+      "timestamp": "2026-06-27T15:16:48.649094Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟢 $AMZN — Amazon.com, Inc. | $227.01 (-3.1%)\n\n**Setup:** oversold bounce setup → Bias: **BULLISH*",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1520447818765045770"
+    },
+    {
+      "id": 999,
+      "timestamp": "2026-06-27T15:16:51.974930Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1000,
+      "timestamp": "2026-06-27T15:17:25.439671Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
