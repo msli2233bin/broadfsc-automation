@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-27T07:48:18.653339Z",
+  "generated_at": "2026-06-27T10:06:43.115932Z",
   "period": {
     "today": "2026-06-27",
     "yesterday": "2026-06-26",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-28"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 112,
-    "posts_month": 554,
+    "posts_today": 8,
+    "posts_week": 120,
+    "posts_month": 562,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 47.7
+    "success_rate": 47.5
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 17,
-      "month": 124,
-      "success": 122,
+      "today": 1,
+      "week": 18,
+      "month": 125,
+      "success": 123,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 30,
-      "month": 220,
-      "success": 214,
+      "today": 2,
+      "week": 32,
+      "month": 222,
+      "success": 216,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 26,
-      "month": 192,
+      "today": 2,
+      "week": 28,
+      "month": 194,
       "success": 37,
-      "failed": 155
+      "failed": 157
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 13,
-      "month": 103,
+      "today": 1,
+      "week": 14,
+      "month": 104,
       "success": 10,
-      "failed": 93
+      "failed": 94
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 26,
-      "month": 190,
+      "today": 2,
+      "week": 28,
+      "month": 192,
       "success": 4,
-      "failed": 186
+      "failed": 188
     }
   },
   "interactions_by_platform": {
@@ -220,6 +220,10 @@
     "2026-06-26": {
       "posts": 18,
       "interactions": 0
+    },
+    "2026-06-27": {
+      "posts": 8,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
@@ -228,7 +232,7 @@
     "9": 43,
     "14": 16,
     "17": 22,
-    "8": 26,
+    "8": 29,
     "11": 11,
     "19": 5,
     "18": 16,
@@ -236,81 +240,6 @@
     "12": 3
   },
   "recent_posts": [
-    {
-      "id": 965,
-      "timestamp": "2026-06-25T16:26:30.594121Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 966,
-      "timestamp": "2026-06-25T16:26:34.308694Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 967,
-      "timestamp": "2026-06-26T09:24:55.842423Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Insight: AI-Driven Euphoria Meets Reality Check</b>\n\n{\"title\": \"Market Insight: AI-Drive",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "530"
-    },
-    {
-      "id": 968,
-      "timestamp": "2026-06-26T09:24:56.216446Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Insight: AI-Driven Euphoria Meets Reality Check**\n\n{\"title\": \"Market Insight: AI-Driven E",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1519996878467502180"
-    },
-    {
-      "id": 969,
-      "timestamp": "2026-06-26T09:24:56.627786Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Insight: AI-Driven Euphoria Meets Reality Check\n\n{\"title\": \"Market Insight: AI-Driven Eupho",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 970,
-      "timestamp": "2026-06-26T09:24:57.549669Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Insight: AI-Driven Euphoria Meets Reality Check",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 971,
-      "timestamp": "2026-06-26T09:24:58.210257Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "As I analyze Webull's competitive strategy, one key takeaway stands out: the importance of content i",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 972,
-      "timestamp": "2026-06-26T09:24:58.568234Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟢 $AMD — Advanced Micro Devices, Inc. | $516.1 (-0.4%)\n\n**Setup:** uptrend intact → Bias: **BULLI",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1519996888328441858"
-    },
     {
       "id": 973,
       "timestamp": "2026-06-26T09:25:04.048275Z",
@@ -418,6 +347,81 @@
     {
       "id": 984,
       "timestamp": "2026-06-26T16:19:36.656530Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 985,
+      "timestamp": "2026-06-27T08:35:00.353451Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Surging Tech Stocks: A Warning Signal for Bulls?</b>\n\nThe S&P 500 has been trending upwards, bu",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "540"
+    },
+    {
+      "id": 986,
+      "timestamp": "2026-06-27T08:35:00.726423Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Surging Tech Stocks: A Warning Signal for Bulls?**\n\nThe S&P 500 has been trending upwards, but t",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1520346701842350082"
+    },
+    {
+      "id": 987,
+      "timestamp": "2026-06-27T08:35:01.029180Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Surging Tech Stocks: A Warning Signal for Bulls?\n\nThe S&P 500 has been trending upwards, but the t",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 988,
+      "timestamp": "2026-06-27T08:35:01.942735Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Surging Tech Stocks: A Warning Signal for Bulls?",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 989,
+      "timestamp": "2026-06-27T08:35:02.667994Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 135.14 (+0.9%) | 5D: -1.3%\n📊 RSI: 42.5 | MACD: bearish\n📈 MA20: $",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 990,
+      "timestamp": "2026-06-27T08:35:02.956963Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟢 $NVDA — NVIDIA Corporation | $222.32 (-1.3%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n##",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1520346711736717333"
+    },
+    {
+      "id": 991,
+      "timestamp": "2026-06-27T08:35:06.285697Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 992,
+      "timestamp": "2026-06-27T08:35:39.291828Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
