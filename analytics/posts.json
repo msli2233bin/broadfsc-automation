@@ -9351,5 +9351,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 993,
+    "timestamp": "2026-06-27T15:16:44.396108Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Global Market Insight: The AI-Driven Bull Run Continues</b>\n\nThe S&P 500 has reached a new all-",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "541"
+  },
+  {
+    "id": 994,
+    "timestamp": "2026-06-27T15:16:44.830321Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Global Market Insight: The AI-Driven Bull Run Continues**\n\nThe S&P 500 has reached a new all-tim",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1520447801912201358"
+  },
+  {
+    "id": 995,
+    "timestamp": "2026-06-27T15:16:46.161585Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Global Market Insight: The AI-Driven Bull Run Continues\n\nThe S&P 500 has reached a new all-time hi",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 996,
+    "timestamp": "2026-06-27T15:16:47.346307Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Global Market Insight: The AI-Driven Bull Run Continues",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 997,
+    "timestamp": "2026-06-27T15:16:48.357835Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$GOOGL Alphabet Inc.\n\n💰 363.31 (-1.4%) | 5D: -3.4%\n📊 RSI: 28.2 | MACD: bearish\n📈 MA20: $383.28 (belo",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 998,
+    "timestamp": "2026-06-27T15:16:48.649094Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $AMZN — Amazon.com, Inc. | $227.01 (-3.1%)\n\n**Setup:** oversold bounce setup → Bias: **BULLISH*",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1520447818765045770"
+  },
+  {
+    "id": 999,
+    "timestamp": "2026-06-27T15:16:51.974930Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1000,
+    "timestamp": "2026-06-27T15:17:25.439671Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
