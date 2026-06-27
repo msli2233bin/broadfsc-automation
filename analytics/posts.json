@@ -9276,5 +9276,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 985,
+    "timestamp": "2026-06-27T08:35:00.353451Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Surging Tech Stocks: A Warning Signal for Bulls?</b>\n\nThe S&P 500 has been trending upwards, bu",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "540"
+  },
+  {
+    "id": 986,
+    "timestamp": "2026-06-27T08:35:00.726423Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Surging Tech Stocks: A Warning Signal for Bulls?**\n\nThe S&P 500 has been trending upwards, but t",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1520346701842350082"
+  },
+  {
+    "id": 987,
+    "timestamp": "2026-06-27T08:35:01.029180Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Surging Tech Stocks: A Warning Signal for Bulls?\n\nThe S&P 500 has been trending upwards, but the t",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 988,
+    "timestamp": "2026-06-27T08:35:01.942735Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Surging Tech Stocks: A Warning Signal for Bulls?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 989,
+    "timestamp": "2026-06-27T08:35:02.667994Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 135.14 (+0.9%) | 5D: -1.3%\n📊 RSI: 42.5 | MACD: bearish\n📈 MA20: $",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 990,
+    "timestamp": "2026-06-27T08:35:02.956963Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $NVDA — NVIDIA Corporation | $222.32 (-1.3%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n##",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1520346711736717333"
+  },
+  {
+    "id": 991,
+    "timestamp": "2026-06-27T08:35:06.285697Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 992,
+    "timestamp": "2026-06-27T08:35:39.291828Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
