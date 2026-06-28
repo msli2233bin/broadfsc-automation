@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-28T14:22:19.307908Z",
+  "generated_at": "2026-06-28T15:48:14.104279Z",
   "period": {
     "today": "2026-06-28",
     "yesterday": "2026-06-27",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-29"
   },
   "totals": {
-    "posts_today": 8,
-    "posts_week": 120,
-    "posts_month": 566,
+    "posts_today": 16,
+    "posts_week": 128,
+    "posts_month": 574,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 47.0
+    "success_rate": 46.9
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 18,
-      "month": 127,
-      "success": 125,
+      "today": 2,
+      "week": 19,
+      "month": 128,
+      "success": 126,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 32,
-      "month": 226,
-      "success": 220,
+      "today": 4,
+      "week": 34,
+      "month": 228,
+      "success": 222,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 28,
-      "month": 198,
+      "today": 4,
+      "week": 30,
+      "month": 200,
       "success": 37,
-      "failed": 161
+      "failed": 163
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 14,
-      "month": 106,
+      "today": 2,
+      "week": 15,
+      "month": 107,
       "success": 10,
-      "failed": 96
+      "failed": 97
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 28,
-      "month": 196,
+      "today": 4,
+      "week": 30,
+      "month": 198,
       "success": 4,
-      "failed": 192
+      "failed": 194
     }
   },
   "interactions_by_platform": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-06-28": {
-      "posts": 8,
+      "posts": 16,
       "interactions": 0
     }
   },
@@ -231,7 +231,7 @@
     "14": 16,
     "17": 22,
     "8": 32,
-    "15": 41,
+    "15": 44,
     "11": 11,
     "19": 5,
     "10": 34,
@@ -240,81 +240,6 @@
     "12": 3
   },
   "recent_posts": [
-    {
-      "id": 989,
-      "timestamp": "2026-06-27T08:35:02.667994Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 135.14 (+0.9%) | 5D: -1.3%\n📊 RSI: 42.5 | MACD: bearish\n📈 MA20: $",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 990,
-      "timestamp": "2026-06-27T08:35:02.956963Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟢 $NVDA — NVIDIA Corporation | $222.32 (-1.3%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n##",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1520346711736717333"
-    },
-    {
-      "id": 991,
-      "timestamp": "2026-06-27T08:35:06.285697Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 992,
-      "timestamp": "2026-06-27T08:35:39.291828Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 993,
-      "timestamp": "2026-06-27T15:16:44.396108Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Global Market Insight: The AI-Driven Bull Run Continues</b>\n\nThe S&P 500 has reached a new all-",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "541"
-    },
-    {
-      "id": 994,
-      "timestamp": "2026-06-27T15:16:44.830321Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Global Market Insight: The AI-Driven Bull Run Continues**\n\nThe S&P 500 has reached a new all-tim",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1520447801912201358"
-    },
-    {
-      "id": 995,
-      "timestamp": "2026-06-27T15:16:46.161585Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Global Market Insight: The AI-Driven Bull Run Continues\n\nThe S&P 500 has reached a new all-time hi",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 996,
-      "timestamp": "2026-06-27T15:16:47.346307Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Global Market Insight: The AI-Driven Bull Run Continues",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 997,
       "timestamp": "2026-06-27T15:16:48.357835Z",
@@ -421,6 +346,81 @@
     {
       "id": 1008,
       "timestamp": "2026-06-28T08:50:59.411920Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1009,
+      "timestamp": "2026-06-28T15:18:47.854714Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 The AI-Powered Market: Trends and Insights to Watch</b>\n\nAs the global market inches closer to ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "545"
+    },
+    {
+      "id": 1010,
+      "timestamp": "2026-06-28T15:18:48.155216Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **The AI-Powered Market: Trends and Insights to Watch**\n\nAs the global market inches closer to a p",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1520810707388727448"
+    },
+    {
+      "id": 1011,
+      "timestamp": "2026-06-28T15:18:48.733128Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 The AI-Powered Market: Trends and Insights to Watch\n\nAs the global market inches closer to a possi",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1012,
+      "timestamp": "2026-06-28T15:18:50.362194Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 The AI-Powered Market: Trends and Insights to Watch",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1013,
+      "timestamp": "2026-06-28T15:18:51.008127Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$AAPL Apple Inc.\n\n💰 nan (+nan%) | 5D: +nan%\n📊 RSI: 34.5 | MACD: bearish\n📈 MA20: $nan (below)\n🎯 Resis",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1014,
+      "timestamp": "2026-06-28T15:18:51.312171Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🔴 $PLTR — Palantir Technologies Inc. | $136.89 (-0.7%)\n\n**Setup:** correction in play → Bias: **B",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1520810720923615302"
+    },
+    {
+      "id": 1015,
+      "timestamp": "2026-06-28T15:18:55.620995Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1016,
+      "timestamp": "2026-06-28T15:19:28.258667Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
