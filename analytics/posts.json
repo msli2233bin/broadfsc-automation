@@ -9426,5 +9426,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1001,
+    "timestamp": "2026-06-28T08:50:23.096413Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The S&P 500 is Ticking Time Bombs, and It's Not Just the Price</b>\n\nAs we approach the midpoint",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "544"
+  },
+  {
+    "id": 1002,
+    "timestamp": "2026-06-28T08:50:23.489132Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The S&P 500 is Ticking Time Bombs, and It's Not Just the Price**\n\nAs we approach the midpoint of",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1520712960505286696"
+  },
+  {
+    "id": 1003,
+    "timestamp": "2026-06-28T08:50:23.920993Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The S&P 500 is Ticking Time Bombs, and It's Not Just the Price\n\nAs we approach the midpoint of 202",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1004,
+    "timestamp": "2026-06-28T08:50:25.482346Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The S&P 500 is Ticking Time Bombs, and It's Not Just the Price",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1005,
+    "timestamp": "2026-06-28T08:50:26.069442Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "**Navigating the Intersection of Content Strategy and Algorithmic Insights**\n\nAs the social media la",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1006,
+    "timestamp": "2026-06-28T08:50:26.335871Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $COIN — Coinbase Global, Inc. | $189.03 (+3.7%)\n\n**Setup:** correction in play → Bias: **BEARIS",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1520712972907970660"
+  },
+  {
+    "id": 1007,
+    "timestamp": "2026-06-28T08:50:28.638445Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1008,
+    "timestamp": "2026-06-28T08:50:59.411920Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
