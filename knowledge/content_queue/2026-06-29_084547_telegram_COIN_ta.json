@@ -1,0 +1,11 @@
+{
+  "platform": "telegram",
+  "topic": "COIN_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "🔴 <b>$COIN Technical Analysis</b> — Coinbase Global, Inc.\n\n💰 Price: $149.06 (+4.6%) | Cap: $39.3B\n📊 Setup: <b>correction in play</b> | Bias: <b>BEARISH</b>\n\n<b>Indicators:</b>\n• RSI(14): 47.7\n• MACD: -8.60 (Signal: -7.73) — Bearish\n• BB: $140.25 — $184.64 (Position: 19.8%)\n• Volume: 1.2x average\n\n<b>Moving Averages:</b>\n• MA20: $162.45 | MA50: $182.66 | MA200: $183.01\n• Bearish alignment ❌\n\n<b>Performance:</b>\n• 1D: +4.6% | 5D: -8.7% | 20D: -18.2%\n\n<b>Key Levels:</b>\n• Resistance: $222.35\n• Support: $139.18\n\n<b>Trade Idea:</b>\nWait for support confirmation at $140.57\n\n📱 <b>Free daily TA signals</b> — message @BroadInvestBot",
+  "content_type": "single",
+  "symbol": "COIN",
+  "created": "2026-06-29T08:45:47.840236",
+  "used": false,
+  "chart_paths": {}
+}
