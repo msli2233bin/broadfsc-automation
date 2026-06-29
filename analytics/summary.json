@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-29T16:23:13.433171Z",
+  "generated_at": "2026-06-29T18:29:04.156402Z",
   "period": {
     "today": "2026-06-29",
     "yesterday": "2026-06-28",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-30"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 122,
-    "posts_month": 562,
+    "posts_today": 18,
+    "posts_week": 130,
+    "posts_month": 570,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 46.6
+    "success_rate": 46.5
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 2,
-      "week": 19,
-      "month": 130,
-      "success": 128,
+      "today": 3,
+      "week": 20,
+      "month": 131,
+      "success": 129,
       "failed": 2
     },
     "discord": {
-      "today": 3,
-      "week": 33,
-      "month": 231,
-      "success": 225,
+      "today": 5,
+      "week": 35,
+      "month": 233,
+      "success": 227,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 28,
-      "month": 202,
+      "today": 4,
+      "week": 30,
+      "month": 204,
       "success": 37,
-      "failed": 165
+      "failed": 167
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 14,
-      "month": 108,
+      "today": 2,
+      "week": 15,
+      "month": 109,
       "success": 10,
-      "failed": 98
+      "failed": 99
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 28,
-      "month": 200,
+      "today": 4,
+      "week": 30,
+      "month": 202,
       "success": 4,
-      "failed": 196
+      "failed": 198
     }
   },
   "interactions_by_platform": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-06-29": {
-      "posts": 10,
+      "posts": 18,
       "interactions": 0
     }
   },
@@ -234,87 +234,12 @@
     "19": 5,
     "10": 37,
     "18": 16,
-    "16": 43,
+    "16": 46,
     "9": 38,
     "14": 14,
     "12": 3
   },
   "recent_posts": [
-    {
-      "id": 1007,
-      "timestamp": "2026-06-28T08:50:28.638445Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1008,
-      "timestamp": "2026-06-28T08:50:59.411920Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 1009,
-      "timestamp": "2026-06-28T15:18:47.854714Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 The AI-Powered Market: Trends and Insights to Watch</b>\n\nAs the global market inches closer to ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "545"
-    },
-    {
-      "id": 1010,
-      "timestamp": "2026-06-28T15:18:48.155216Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **The AI-Powered Market: Trends and Insights to Watch**\n\nAs the global market inches closer to a p",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1520810707388727448"
-    },
-    {
-      "id": 1011,
-      "timestamp": "2026-06-28T15:18:48.733128Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 The AI-Powered Market: Trends and Insights to Watch\n\nAs the global market inches closer to a possi",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1012,
-      "timestamp": "2026-06-28T15:18:50.362194Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 The AI-Powered Market: Trends and Insights to Watch",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 1013,
-      "timestamp": "2026-06-28T15:18:51.008127Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$AAPL Apple Inc.\n\n💰 nan (+nan%) | 5D: +nan%\n📊 RSI: 34.5 | MACD: bearish\n📈 MA20: $nan (below)\n🎯 Resis",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1014,
-      "timestamp": "2026-06-28T15:18:51.312171Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🔴 $PLTR — Palantir Technologies Inc. | $136.89 (-0.7%)\n\n**Setup:** correction in play → Bias: **B",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1520810720923615302"
-    },
     {
       "id": 1015,
       "timestamp": "2026-06-28T15:18:55.620995Z",
@@ -427,6 +352,81 @@
       "status": "success",
       "error_msg": "",
       "post_id": "1521178608520138955"
+    },
+    {
+      "id": 1027,
+      "timestamp": "2026-06-29T16:53:31.379075Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 BULL MARKET EXHAUSTION: 3 REASONS WHY THE S&P 500 COULD BREAK DOWN</b>\n\nThe S&P 500 has been on",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "556"
+    },
+    {
+      "id": 1028,
+      "timestamp": "2026-06-29T16:53:31.872971Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **BULL MARKET EXHAUSTION: 3 REASONS WHY THE S&P 500 COULD BREAK DOWN**\n\nThe S&P 500 has been on a ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1521196933782441988"
+    },
+    {
+      "id": 1029,
+      "timestamp": "2026-06-29T16:53:32.983963Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 BULL MARKET EXHAUSTION: 3 REASONS WHY THE S&P 500 COULD BREAK DOWN\n\nThe S&P 500 has been on a tear",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1030,
+      "timestamp": "2026-06-29T16:53:33.889794Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 BULL MARKET EXHAUSTION: 3 REASONS WHY THE S&P 500 COULD BREAK DOWN",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1031,
+      "timestamp": "2026-06-29T16:53:34.462678Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$MSFT Microsoft Corporation\n\n💰 nan (+nan%) | 5D: +nan%\n📊 RSI: 47.8 | MACD: bearish\n📈 MA20: $nan (bel",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1032,
+      "timestamp": "2026-06-29T16:53:34.793617Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "**Market Musings**\n\nHey fellow traders, let's talk about stock types and risk management. As we know",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1521196947023597720"
+    },
+    {
+      "id": 1033,
+      "timestamp": "2026-06-29T16:53:40.212655Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1034,
+      "timestamp": "2026-06-29T16:54:11.872938Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
     }
   ],
   "recent_interactions": [
