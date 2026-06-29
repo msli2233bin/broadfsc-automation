@@ -9671,5 +9671,80 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1521178608520138955"
+  },
+  {
+    "id": 1027,
+    "timestamp": "2026-06-29T16:53:31.379075Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 BULL MARKET EXHAUSTION: 3 REASONS WHY THE S&P 500 COULD BREAK DOWN</b>\n\nThe S&P 500 has been on",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "556"
+  },
+  {
+    "id": 1028,
+    "timestamp": "2026-06-29T16:53:31.872971Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **BULL MARKET EXHAUSTION: 3 REASONS WHY THE S&P 500 COULD BREAK DOWN**\n\nThe S&P 500 has been on a ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1521196933782441988"
+  },
+  {
+    "id": 1029,
+    "timestamp": "2026-06-29T16:53:32.983963Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 BULL MARKET EXHAUSTION: 3 REASONS WHY THE S&P 500 COULD BREAK DOWN\n\nThe S&P 500 has been on a tear",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1030,
+    "timestamp": "2026-06-29T16:53:33.889794Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 BULL MARKET EXHAUSTION: 3 REASONS WHY THE S&P 500 COULD BREAK DOWN",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1031,
+    "timestamp": "2026-06-29T16:53:34.462678Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$MSFT Microsoft Corporation\n\n💰 nan (+nan%) | 5D: +nan%\n📊 RSI: 47.8 | MACD: bearish\n📈 MA20: $nan (bel",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1032,
+    "timestamp": "2026-06-29T16:53:34.793617Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "**Market Musings**\n\nHey fellow traders, let's talk about stock types and risk management. As we know",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1521196947023597720"
+  },
+  {
+    "id": 1033,
+    "timestamp": "2026-06-29T16:53:40.212655Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1034,
+    "timestamp": "2026-06-29T16:54:11.872938Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
