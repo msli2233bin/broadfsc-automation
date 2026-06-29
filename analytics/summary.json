@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-29T06:45:35.055381Z",
+  "generated_at": "2026-06-29T12:00:30.421907Z",
   "period": {
     "today": "2026-06-29",
     "yesterday": "2026-06-28",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-30"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 112,
-    "posts_month": 552,
+    "posts_today": 8,
+    "posts_week": 120,
+    "posts_month": 560,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 46.6
+    "success_rate": 46.4
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 17,
-      "month": 128,
-      "success": 126,
+      "today": 1,
+      "week": 18,
+      "month": 129,
+      "success": 127,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 30,
-      "month": 228,
-      "success": 222,
+      "today": 2,
+      "week": 32,
+      "month": 230,
+      "success": 224,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 26,
-      "month": 200,
+      "today": 2,
+      "week": 28,
+      "month": 202,
       "success": 37,
-      "failed": 163
+      "failed": 165
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 13,
-      "month": 107,
+      "today": 1,
+      "week": 14,
+      "month": 108,
       "success": 10,
-      "failed": 97
+      "failed": 98
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 26,
-      "month": 198,
+      "today": 2,
+      "week": 28,
+      "month": 200,
       "success": 4,
-      "failed": 194
+      "failed": 196
     }
   },
   "interactions_by_platform": {
@@ -220,6 +220,10 @@
     "2026-06-28": {
       "posts": 16,
       "interactions": 0
+    },
+    "2026-06-29": {
+      "posts": 8,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
@@ -228,7 +232,7 @@
     "11": 11,
     "17": 17,
     "19": 5,
-    "10": 34,
+    "10": 37,
     "18": 16,
     "16": 43,
     "9": 38,
@@ -236,81 +240,6 @@
     "12": 3
   },
   "recent_posts": [
-    {
-      "id": 997,
-      "timestamp": "2026-06-27T15:16:48.357835Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$GOOGL Alphabet Inc.\n\n💰 363.31 (-1.4%) | 5D: -3.4%\n📊 RSI: 28.2 | MACD: bearish\n📈 MA20: $383.28 (belo",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 998,
-      "timestamp": "2026-06-27T15:16:48.649094Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟢 $AMZN — Amazon.com, Inc. | $227.01 (-3.1%)\n\n**Setup:** oversold bounce setup → Bias: **BULLISH*",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1520447818765045770"
-    },
-    {
-      "id": 999,
-      "timestamp": "2026-06-27T15:16:51.974930Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1000,
-      "timestamp": "2026-06-27T15:17:25.439671Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 1001,
-      "timestamp": "2026-06-28T08:50:23.096413Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 The S&P 500 is Ticking Time Bombs, and It's Not Just the Price</b>\n\nAs we approach the midpoint",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "544"
-    },
-    {
-      "id": 1002,
-      "timestamp": "2026-06-28T08:50:23.489132Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **The S&P 500 is Ticking Time Bombs, and It's Not Just the Price**\n\nAs we approach the midpoint of",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1520712960505286696"
-    },
-    {
-      "id": 1003,
-      "timestamp": "2026-06-28T08:50:23.920993Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 The S&P 500 is Ticking Time Bombs, and It's Not Just the Price\n\nAs we approach the midpoint of 202",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1004,
-      "timestamp": "2026-06-28T08:50:25.482346Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 The S&P 500 is Ticking Time Bombs, and It's Not Just the Price",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 1005,
       "timestamp": "2026-06-28T08:50:26.069442Z",
@@ -417,6 +346,81 @@
     {
       "id": 1016,
       "timestamp": "2026-06-28T15:19:28.258667Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1017,
+      "timestamp": "2026-06-29T10:57:47.161893Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 The Croc's Market Insight: AI-Driven Stocks on Thin Ice</b>\n\n🚨 GOOGL's 85.2 RSI 🔴: The world's ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "548"
+    },
+    {
+      "id": 1018,
+      "timestamp": "2026-06-29T10:57:47.534521Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **The Croc's Market Insight: AI-Driven Stocks on Thin Ice**\n\n🚨 GOOGL's 85.2 RSI 🔴: The world's mos",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1521107409920331898"
+    },
+    {
+      "id": 1019,
+      "timestamp": "2026-06-29T10:57:48.156436Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 The Croc's Market Insight: AI-Driven Stocks on Thin Ice\n\n🚨 GOOGL's 85.2 RSI 🔴: The world's most va",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1020,
+      "timestamp": "2026-06-29T10:57:49.044742Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 The Croc's Market Insight: AI-Driven Stocks on Thin Ice",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1021,
+      "timestamp": "2026-06-29T10:57:49.932709Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$TSLA Tesla, Inc.\n\n💰 400.49 (+1.0%) | 5D: +0.3%\n📊 RSI: 38.6 | MACD: bearish\n📈 MA20: $413.7 (below)\n🎯",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1022,
+      "timestamp": "2026-06-29T10:57:50.124062Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟡 $AMZN — Amazon.com, Inc. | $271.17 (-1.4%)\n\n**Setup:** overbought, watching for pullback → Bias",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1521107421186097173"
+    },
+    {
+      "id": 1023,
+      "timestamp": "2026-06-29T10:57:52.070125Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1024,
+      "timestamp": "2026-06-29T10:58:25.480033Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
