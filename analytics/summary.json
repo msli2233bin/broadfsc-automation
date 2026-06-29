@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-29T12:00:30.421907Z",
+  "generated_at": "2026-06-29T16:23:13.433171Z",
   "period": {
     "today": "2026-06-29",
     "yesterday": "2026-06-28",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-30"
   },
   "totals": {
-    "posts_today": 8,
-    "posts_week": 120,
-    "posts_month": 560,
+    "posts_today": 10,
+    "posts_week": 122,
+    "posts_month": 562,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 46.4
+    "success_rate": 46.6
   },
   "platforms": {
     "tiktok": {
@@ -24,17 +24,17 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 18,
-      "month": 129,
-      "success": 127,
+      "today": 2,
+      "week": 19,
+      "month": 130,
+      "success": 128,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 32,
-      "month": 230,
-      "success": 224,
+      "today": 3,
+      "week": 33,
+      "month": 231,
+      "success": 225,
       "failed": 6
     },
     "mastodon": {
@@ -222,13 +222,13 @@
       "interactions": 0
     },
     "2026-06-29": {
-      "posts": 8,
+      "posts": 10,
       "interactions": 0
     }
   },
   "hourly_distribution": {
     "8": 32,
-    "15": 44,
+    "15": 46,
     "11": 11,
     "17": 17,
     "19": 5,
@@ -240,25 +240,6 @@
     "12": 3
   },
   "recent_posts": [
-    {
-      "id": 1005,
-      "timestamp": "2026-06-28T08:50:26.069442Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "**Navigating the Intersection of Content Strategy and Algorithmic Insights**\n\nAs the social media la",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1006,
-      "timestamp": "2026-06-28T08:50:26.335871Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🔴 $COIN — Coinbase Global, Inc. | $189.03 (+3.7%)\n\n**Setup:** correction in play → Bias: **BEARIS",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1520712972907970660"
-    },
     {
       "id": 1007,
       "timestamp": "2026-06-28T08:50:28.638445Z",
@@ -426,6 +407,26 @@
       "content_preview": "Hatena Blog post",
       "status": "failed",
       "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1025,
+      "timestamp": "2026-06-29T15:40:42.209622Z",
+      "platform": "telegram_en",
+      "type": "earnings",
+      "content_preview": "<b>📊 Earnings Calendar: Week of Jun 29</b>\n\n\n📅 <b>Tuesday, Jun 30</b>\n  • Nike (NKE) @ $41.35 | EPS ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "549"
+    },
+    {
+      "id": 1026,
+      "timestamp": "2026-06-29T15:40:42.807133Z",
+      "platform": "discord",
+      "type": "earnings",
+      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jun 29**\n\n\n📅 **Tuesday, Jun 30**\n  • N",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1521178608520138955"
     }
   ],
   "recent_interactions": [
