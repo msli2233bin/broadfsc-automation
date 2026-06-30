@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T16:03:28.579858Z",
+  "generated_at": "2026-06-30T18:18:42.841225Z",
   "period": {
     "today": "2026-06-30",
     "yesterday": "2026-06-29",
@@ -7,13 +7,13 @@
     "month_ago": "2026-05-31"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 132,
-    "posts_month": 560,
+    "posts_today": 18,
+    "posts_week": 140,
+    "posts_month": 568,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 46.4
+    "success_rate": 46.3
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 2,
-      "week": 21,
-      "month": 133,
-      "success": 131,
+      "today": 3,
+      "week": 22,
+      "month": 134,
+      "success": 132,
       "failed": 2
     },
     "discord": {
-      "today": 3,
-      "week": 36,
-      "month": 236,
-      "success": 230,
+      "today": 5,
+      "week": 38,
+      "month": 238,
+      "success": 232,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 30,
-      "month": 206,
+      "today": 4,
+      "week": 32,
+      "month": 208,
       "success": 37,
-      "failed": 169
+      "failed": 171
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 15,
-      "month": 110,
+      "today": 2,
+      "week": 16,
+      "month": 111,
       "success": 10,
-      "failed": 100
+      "failed": 101
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 30,
-      "month": 204,
+      "today": 4,
+      "week": 32,
+      "month": 206,
       "success": 4,
-      "failed": 200
+      "failed": 202
     }
   },
   "interactions_by_platform": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-06-30": {
-      "posts": 10,
+      "posts": 18,
       "interactions": 0
     }
   },
@@ -234,89 +234,12 @@
     "19": 5,
     "10": 37,
     "18": 16,
-    "16": 46,
+    "16": 49,
     "9": 41,
     "14": 16,
     "12": 3
   },
   "recent_posts": [
-    {
-      "id": 1025,
-      "timestamp": "2026-06-29T15:40:42.209622Z",
-      "platform": "telegram_en",
-      "type": "earnings",
-      "content_preview": "<b>📊 Earnings Calendar: Week of Jun 29</b>\n\n\n📅 <b>Tuesday, Jun 30</b>\n  • Nike (NKE) @ $41.35 | EPS ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "549"
-    },
-    {
-      "id": 1026,
-      "timestamp": "2026-06-29T15:40:42.807133Z",
-      "platform": "discord",
-      "type": "earnings",
-      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jun 29**\n\n\n📅 **Tuesday, Jun 30**\n  • N",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1521178608520138955"
-    },
-    {
-      "id": 1027,
-      "timestamp": "2026-06-29T16:53:31.379075Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 BULL MARKET EXHAUSTION: 3 REASONS WHY THE S&P 500 COULD BREAK DOWN</b>\n\nThe S&P 500 has been on",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "556"
-    },
-    {
-      "id": 1028,
-      "timestamp": "2026-06-29T16:53:31.872971Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **BULL MARKET EXHAUSTION: 3 REASONS WHY THE S&P 500 COULD BREAK DOWN**\n\nThe S&P 500 has been on a ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1521196933782441988"
-    },
-    {
-      "id": 1029,
-      "timestamp": "2026-06-29T16:53:32.983963Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 BULL MARKET EXHAUSTION: 3 REASONS WHY THE S&P 500 COULD BREAK DOWN\n\nThe S&P 500 has been on a tear",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1030,
-      "timestamp": "2026-06-29T16:53:33.889794Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 BULL MARKET EXHAUSTION: 3 REASONS WHY THE S&P 500 COULD BREAK DOWN",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 1031,
-      "timestamp": "2026-06-29T16:53:34.462678Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$MSFT Microsoft Corporation\n\n💰 nan (+nan%) | 5D: +nan%\n📊 RSI: 47.8 | MACD: bearish\n📈 MA20: $nan (bel",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1032,
-      "timestamp": "2026-06-29T16:53:34.793617Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "**Market Musings**\n\nHey fellow traders, let's talk about stock types and risk management. As we know",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1521196947023597720"
-    },
     {
       "id": 1033,
       "timestamp": "2026-06-29T16:53:40.212655Z",
@@ -429,6 +352,81 @@
       "status": "success",
       "error_msg": "",
       "post_id": "1521518739378671676"
+    },
+    {
+      "id": 1045,
+      "timestamp": "2026-06-30T16:23:44.681796Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 The Quiet Rise of Value Investing in a Market of Extremes</b>\n\nAs the S&P 500 touches all-time ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "567"
+    },
+    {
+      "id": 1046,
+      "timestamp": "2026-06-30T16:23:45.256123Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **The Quiet Rise of Value Investing in a Market of Extremes**\n\nAs the S&P 500 touches all-time hig",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1521551828053921945"
+    },
+    {
+      "id": 1047,
+      "timestamp": "2026-06-30T16:23:45.866883Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 The Quiet Rise of Value Investing in a Market of Extremes\n\nAs the S&P 500 touches all-time highs, ",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1048,
+      "timestamp": "2026-06-30T16:23:46.746373Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 The Quiet Rise of Value Investing in a Market of Extremes",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1049,
+      "timestamp": "2026-06-30T16:23:47.764315Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$MSFT Microsoft Corporation\n\n💰 390.74 (+0.1%) | 5D: -6.2%\n📊 RSI: 38.9 | MACD: bearish\n📈 MA20: $419.5",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1050,
+      "timestamp": "2026-06-30T16:23:47.968188Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟡 $COIN — Coinbase Global, Inc. | $164.84 (+1.0%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1521551840720715856"
+    },
+    {
+      "id": 1051,
+      "timestamp": "2026-06-30T16:23:50.755930Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1052,
+      "timestamp": "2026-06-30T16:24:23.753204Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
     }
   ],
   "recent_interactions": [
