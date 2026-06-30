@@ -9841,5 +9841,80 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1521518739378671676"
+  },
+  {
+    "id": 1045,
+    "timestamp": "2026-06-30T16:23:44.681796Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The Quiet Rise of Value Investing in a Market of Extremes</b>\n\nAs the S&P 500 touches all-time ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "567"
+  },
+  {
+    "id": 1046,
+    "timestamp": "2026-06-30T16:23:45.256123Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The Quiet Rise of Value Investing in a Market of Extremes**\n\nAs the S&P 500 touches all-time hig",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1521551828053921945"
+  },
+  {
+    "id": 1047,
+    "timestamp": "2026-06-30T16:23:45.866883Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The Quiet Rise of Value Investing in a Market of Extremes\n\nAs the S&P 500 touches all-time highs, ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1048,
+    "timestamp": "2026-06-30T16:23:46.746373Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The Quiet Rise of Value Investing in a Market of Extremes",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1049,
+    "timestamp": "2026-06-30T16:23:47.764315Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$MSFT Microsoft Corporation\n\n💰 390.74 (+0.1%) | 5D: -6.2%\n📊 RSI: 38.9 | MACD: bearish\n📈 MA20: $419.5",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1050,
+    "timestamp": "2026-06-30T16:23:47.968188Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $COIN — Coinbase Global, Inc. | $164.84 (+1.0%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1521551840720715856"
+  },
+  {
+    "id": 1051,
+    "timestamp": "2026-06-30T16:23:50.755930Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1052,
+    "timestamp": "2026-06-30T16:24:23.753204Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
