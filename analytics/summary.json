@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-06-29T22:55:46.280743Z",
+  "generated_at": "2026-06-30T00:03:38.427159Z",
   "period": {
-    "today": "2026-06-29",
-    "yesterday": "2026-06-28",
-    "week_ago": "2026-06-22",
-    "month_ago": "2026-05-30"
+    "today": "2026-06-30",
+    "yesterday": "2026-06-29",
+    "week_ago": "2026-06-23",
+    "month_ago": "2026-05-31"
   },
   "totals": {
-    "posts_today": 18,
-    "posts_week": 130,
-    "posts_month": 570,
+    "posts_today": 0,
+    "posts_week": 122,
+    "posts_month": 550,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 46.5
+    "success_rate": 46.4
   },
   "platforms": {
     "tiktok": {
@@ -24,22 +24,22 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 3,
-      "week": 20,
+      "today": 0,
+      "week": 19,
       "month": 131,
       "success": 129,
       "failed": 2
     },
     "discord": {
-      "today": 5,
-      "week": 35,
+      "today": 0,
+      "week": 33,
       "month": 233,
       "success": 227,
       "failed": 6
     },
     "mastodon": {
-      "today": 4,
-      "week": 30,
+      "today": 0,
+      "week": 28,
       "month": 204,
       "success": 37,
       "failed": 167
@@ -52,8 +52,8 @@
       "failed": 2
     },
     "threads": {
-      "today": 2,
-      "week": 15,
+      "today": 0,
+      "week": 14,
       "month": 109,
       "success": 10,
       "failed": 99
@@ -80,8 +80,8 @@
       "failed": 0
     },
     "hatena": {
-      "today": 4,
-      "week": 30,
+      "today": 0,
+      "week": 28,
       "month": 202,
       "success": 4,
       "failed": 198
@@ -101,10 +101,6 @@
   },
   "action_breakdown": {},
   "daily_trend": {
-    "2026-05-30": {
-      "posts": 20,
-      "interactions": 0
-    },
     "2026-05-31": {
       "posts": 20,
       "interactions": 0
@@ -227,8 +223,8 @@
     }
   },
   "hourly_distribution": {
-    "8": 32,
-    "15": 46,
+    "8": 27,
+    "15": 41,
     "11": 11,
     "17": 17,
     "19": 5,
