@@ -9746,5 +9746,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1035,
+    "timestamp": "2026-06-30T09:34:00.918434Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Maelstrom: AI-Driven Tech Stocks on Fire, But Is It Sustainable?</b>\n\nThe Nasdaq has sur",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "559"
+  },
+  {
+    "id": 1036,
+    "timestamp": "2026-06-30T09:34:01.433492Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Maelstrom: AI-Driven Tech Stocks on Fire, But Is It Sustainable?**\n\nThe Nasdaq has surged",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1521448716026777641"
+  },
+  {
+    "id": 1037,
+    "timestamp": "2026-06-30T09:34:02.244717Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Maelstrom: AI-Driven Tech Stocks on Fire, But Is It Sustainable?\n\nThe Nasdaq has surged 25%",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1038,
+    "timestamp": "2026-06-30T09:34:03.429050Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Maelstrom: AI-Driven Tech Stocks on Fire, But Is It Sustainable?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1039,
+    "timestamp": "2026-06-30T09:34:04.179776Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AAPL Apple Inc.\n\n💰 298.21 (-0.2%) | 5D: +3.8%\n📊 RSI: 81.0 | MACD: bullish\n📈 MA20: $279.84 (above)\n🎯",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1040,
+    "timestamp": "2026-06-30T09:34:04.431271Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $PLTR — Palantir Technologies Inc. | $nan (+nan%)\n\n**Setup:** oversold bounce setup → Bias: **B",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1521448729918574652"
+  },
+  {
+    "id": 1041,
+    "timestamp": "2026-06-30T09:34:09.439175Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1042,
+    "timestamp": "2026-06-30T09:34:42.666526Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
