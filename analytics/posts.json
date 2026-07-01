@@ -9916,5 +9916,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1053,
+    "timestamp": "2026-07-01T09:43:41.349853Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Flash: Nasdaq's AI-Fueled Surge and the Forgotten Factor of Inflation</b>\n\nThe Nasdaq Co",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "570"
+  },
+  {
+    "id": 1054,
+    "timestamp": "2026-07-01T09:43:41.904521Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Flash: Nasdaq's AI-Fueled Surge and the Forgotten Factor of Inflation**\n\nThe Nasdaq Compo",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1521813538648096868"
+  },
+  {
+    "id": 1055,
+    "timestamp": "2026-07-01T09:43:42.561371Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Flash: Nasdaq's AI-Fueled Surge and the Forgotten Factor of Inflation\n\nThe Nasdaq Composite",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1056,
+    "timestamp": "2026-07-01T09:43:43.809517Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Flash: Nasdaq's AI-Fueled Surge and the Forgotten Factor of Inflation",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1057,
+    "timestamp": "2026-07-01T09:43:44.359746Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "\"Mastodon users, let's talk about the power of niche communities. With its decentralized and communi",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1058,
+    "timestamp": "2026-07-01T09:43:44.536446Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $503.89 (+7.8%)\n\n**Setup:** overbought, watching for pull",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1521813550702661643"
+  },
+  {
+    "id": 1059,
+    "timestamp": "2026-07-01T09:43:46.185096Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1060,
+    "timestamp": "2026-07-01T09:44:18.888284Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
