@@ -1,0 +1,11 @@
+{
+  "platform": "mastodon",
+  "topic": "TSLA_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "$TSLA Tesla, Inc.\n\n💰 420.6 (+2.1%) | 5D: +10.2%\n📊 RSI: 58.3 | MACD: bullish\n📈 MA20: $400.59 (above)\n🎯 Resistance: $453.4 | Support: $337.24\n📢 Vol: 0.9x avg\n\nSetup: uptrend intact → bias: BULLISH\n\n📱 Free TA signals: t.me/BroadInvestBot\n#$TSLA #Trading #TechnicalAnalysis #Stocks",
+  "content_type": "single",
+  "symbol": "TSLA",
+  "created": "2026-07-01T07:59:51.242426",
+  "used": false,
+  "chart_paths": {}
+}
