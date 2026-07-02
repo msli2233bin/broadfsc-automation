@@ -1,0 +1,11 @@
+{
+  "platform": "twitter",
+  "topic": "AAPL_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "1/ $AAPL 🟢 294.38 (+1.7%) | $4.32T\n\nCORRECTION IN PLAY. neutral (RSI 52.1), MACD bearish, below signal. room to run.---THREAD_BREAK---2/ KEY LEVELS:\nResistance: $317.4\nSupport: $245.28\nMA20: $294.88 (below)\n5D: +0.4% | 20D: -6.6%\nVol: 0.7x avg---THREAD_BREAK---3/ SETUP: BEARISH\nBB position: 48.6%\n\nCompression → breakout imminent---THREAD_BREAK---4/ TRADE: Only enter with confirmation. Respect the levels.\n\n📱 More $AAPL signals + 4 more stocks: t.me/BroadInvestBot",
+  "content_type": "thread",
+  "symbol": "AAPL",
+  "created": "2026-07-02T06:57:22.528919",
+  "used": false,
+  "chart_paths": {}
+}
