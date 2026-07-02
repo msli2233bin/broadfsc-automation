@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-07-01T23:23:25.484076Z",
+  "generated_at": "2026-07-02T01:31:48.035026Z",
   "period": {
-    "today": "2026-07-01",
-    "yesterday": "2026-06-30",
-    "week_ago": "2026-06-24",
-    "month_ago": "2026-06-01"
+    "today": "2026-07-02",
+    "yesterday": "2026-07-01",
+    "week_ago": "2026-06-25",
+    "month_ago": "2026-06-02"
   },
   "totals": {
-    "posts_today": 16,
-    "posts_week": 138,
-    "posts_month": 564,
+    "posts_today": 0,
+    "posts_week": 120,
+    "posts_month": 542,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 45.9
+    "success_rate": 45.6
   },
   "platforms": {
     "tiktok": {
@@ -24,22 +24,22 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 2,
-      "week": 21,
+      "today": 0,
+      "week": 18,
       "month": 136,
       "success": 134,
       "failed": 2
     },
     "discord": {
-      "today": 4,
-      "week": 37,
+      "today": 0,
+      "week": 32,
       "month": 242,
       "success": 236,
       "failed": 6
     },
     "mastodon": {
-      "today": 4,
-      "week": 32,
+      "today": 0,
+      "week": 28,
       "month": 212,
       "success": 37,
       "failed": 175
@@ -52,8 +52,8 @@
       "failed": 2
     },
     "threads": {
-      "today": 2,
-      "week": 16,
+      "today": 0,
+      "week": 14,
       "month": 113,
       "success": 10,
       "failed": 103
@@ -80,8 +80,8 @@
       "failed": 0
     },
     "hatena": {
-      "today": 4,
-      "week": 32,
+      "today": 0,
+      "week": 28,
       "month": 210,
       "success": 4,
       "failed": 206
@@ -101,10 +101,6 @@
   },
   "action_breakdown": {},
   "daily_trend": {
-    "2026-06-01": {
-      "posts": 22,
-      "interactions": 0
-    },
     "2026-06-02": {
       "posts": 20,
       "interactions": 0
@@ -227,9 +223,6 @@
     }
   },
   "hourly_distribution": {
-    "11": 11,
-    "17": 17,
-    "19": 5,
     "10": 37,
     "18": 16,
     "16": 52,
@@ -237,7 +230,9 @@
     "14": 16,
     "8": 22,
     "15": 36,
-    "12": 3
+    "17": 15,
+    "12": 3,
+    "11": 6
   },
   "recent_posts": [
     {
