@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-02T05:58:08.037507Z",
+  "generated_at": "2026-07-02T09:24:16.687772Z",
   "period": {
     "today": "2026-07-02",
     "yesterday": "2026-07-01",
@@ -7,13 +7,13 @@
     "month_ago": "2026-06-02"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 120,
-    "posts_month": 542,
+    "posts_today": 8,
+    "posts_week": 128,
+    "posts_month": 550,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 45.6
+    "success_rate": 45.5
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 18,
-      "month": 136,
-      "success": 134,
+      "today": 1,
+      "week": 19,
+      "month": 137,
+      "success": 135,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 32,
-      "month": 242,
-      "success": 236,
+      "today": 2,
+      "week": 34,
+      "month": 244,
+      "success": 238,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 28,
-      "month": 212,
+      "today": 2,
+      "week": 30,
+      "month": 214,
       "success": 37,
-      "failed": 175
+      "failed": 177
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 14,
-      "month": 113,
+      "today": 1,
+      "week": 15,
+      "month": 114,
       "success": 10,
-      "failed": 103
+      "failed": 104
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 28,
-      "month": 210,
+      "today": 2,
+      "week": 30,
+      "month": 212,
       "success": 4,
-      "failed": 206
+      "failed": 208
     }
   },
   "interactions_by_platform": {
@@ -220,6 +220,10 @@
     "2026-07-01": {
       "posts": 16,
       "interactions": 0
+    },
+    "2026-07-02": {
+      "posts": 8,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
@@ -228,88 +232,13 @@
     "16": 52,
     "9": 44,
     "14": 16,
-    "8": 22,
+    "8": 25,
     "15": 36,
     "17": 15,
     "12": 3,
     "11": 6
   },
   "recent_posts": [
-    {
-      "id": 1049,
-      "timestamp": "2026-06-30T16:23:47.764315Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$MSFT Microsoft Corporation\n\n💰 390.74 (+0.1%) | 5D: -6.2%\n📊 RSI: 38.9 | MACD: bearish\n📈 MA20: $419.5",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1050,
-      "timestamp": "2026-06-30T16:23:47.968188Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟡 $COIN — Coinbase Global, Inc. | $164.84 (+1.0%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1521551840720715856"
-    },
-    {
-      "id": 1051,
-      "timestamp": "2026-06-30T16:23:50.755930Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1052,
-      "timestamp": "2026-06-30T16:24:23.753204Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 1053,
-      "timestamp": "2026-07-01T09:43:41.349853Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Flash: Nasdaq's AI-Fueled Surge and the Forgotten Factor of Inflation</b>\n\nThe Nasdaq Co",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "570"
-    },
-    {
-      "id": 1054,
-      "timestamp": "2026-07-01T09:43:41.904521Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Flash: Nasdaq's AI-Fueled Surge and the Forgotten Factor of Inflation**\n\nThe Nasdaq Compo",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1521813538648096868"
-    },
-    {
-      "id": 1055,
-      "timestamp": "2026-07-01T09:43:42.561371Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Flash: Nasdaq's AI-Fueled Surge and the Forgotten Factor of Inflation\n\nThe Nasdaq Composite",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1056,
-      "timestamp": "2026-07-01T09:43:43.809517Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Flash: Nasdaq's AI-Fueled Surge and the Forgotten Factor of Inflation",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 1057,
       "timestamp": "2026-07-01T09:43:44.359746Z",
@@ -416,6 +345,81 @@
     {
       "id": 1068,
       "timestamp": "2026-07-01T16:28:17.105363Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1069,
+      "timestamp": "2026-07-02T08:54:40.581499Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 The AI-Driven Stock Market: A Double-Edged Sword</b>\n\n{   \"title\": \"The AI-Driven Stock Market:",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "580"
+    },
+    {
+      "id": 1070,
+      "timestamp": "2026-07-02T08:54:41.102927Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **The AI-Driven Stock Market: A Double-Edged Sword**\n\n{   \"title\": \"The AI-Driven Stock Market: A ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1522163591627931763"
+    },
+    {
+      "id": 1071,
+      "timestamp": "2026-07-02T08:54:41.596187Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 The AI-Driven Stock Market: A Double-Edged Sword\n\n{   \"title\": \"The AI-Driven Stock Market: A Doub",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1072,
+      "timestamp": "2026-07-02T08:54:42.350823Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 The AI-Driven Stock Market: A Double-Edged Sword",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1073,
+      "timestamp": "2026-07-02T08:54:42.905405Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$AMZN Amazon.com, Inc.\n\n💰 267.22 (-1.1%) | 5D: -1.5%\n📊 RSI: 54.1 | MACD: bearish\n📈 MA20: $263.85 (ab",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1074,
+      "timestamp": "2026-07-02T08:54:43.137457Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🔴 $PLTR — Palantir Technologies Inc. | $127.99 (-2.4%)\n\n**Setup:** correction in play → Bias: **B",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1522163601622827128"
+    },
+    {
+      "id": 1075,
+      "timestamp": "2026-07-02T08:54:49.096586Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1076,
+      "timestamp": "2026-07-02T08:55:05.084418Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
