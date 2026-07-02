@@ -657,5 +657,10 @@
     "success": false,
     "error": "HTML profile check failed: HTTP 522",
     "checked_at": "2026-07-01T05:48:21.150824"
+  },
+  {
+    "success": false,
+    "error": "HTML profile check failed: HTTP 522",
+    "checked_at": "2026-07-02T05:05:28.862761"
   }
 ]
