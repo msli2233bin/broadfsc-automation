@@ -1,5 +1,5 @@
 {
-  "report_time": "2026-07-03T01:56:38.354844",
+  "report_time": "2026-07-03T06:21:00.233109",
   "days": 30,
   "overview": {
     "posts_by_platform": {},
@@ -180,7 +180,7 @@
   "funnel": {
     "stages": {
       "awareness": 26,
-      "interest": 2
+      "interest": 1
     },
     "transitions": [
       {
