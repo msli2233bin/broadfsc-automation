@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T13:59:52.222276Z",
+  "generated_at": "2026-07-03T15:56:32.099895Z",
   "period": {
     "today": "2026-07-03",
     "yesterday": "2026-07-02",
@@ -7,13 +7,13 @@
     "month_ago": "2026-06-03"
   },
   "totals": {
-    "posts_today": 8,
-    "posts_week": 118,
-    "posts_month": 538,
+    "posts_today": 16,
+    "posts_week": 126,
+    "posts_month": 546,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 45.2
+    "success_rate": 45.1
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 17,
-      "month": 138,
-      "success": 136,
+      "today": 2,
+      "week": 18,
+      "month": 139,
+      "success": 137,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 31,
-      "month": 246,
-      "success": 240,
+      "today": 4,
+      "week": 33,
+      "month": 248,
+      "success": 242,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 28,
-      "month": 216,
+      "today": 4,
+      "week": 30,
+      "month": 218,
       "success": 37,
-      "failed": 179
+      "failed": 181
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 14,
-      "month": 115,
+      "today": 2,
+      "week": 15,
+      "month": 116,
       "success": 10,
-      "failed": 105
+      "failed": 106
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 28,
-      "month": 214,
+      "today": 4,
+      "week": 30,
+      "month": 216,
       "success": 4,
-      "failed": 210
+      "failed": 212
     }
   },
   "interactions_by_platform": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-07-03": {
-      "posts": 8,
+      "posts": 16,
       "interactions": 0
     }
   },
@@ -233,87 +233,12 @@
     "9": 47,
     "14": 16,
     "8": 25,
-    "15": 36,
+    "15": 39,
     "17": 15,
     "12": 3,
     "11": 6
   },
   "recent_posts": [
-    {
-      "id": 1065,
-      "timestamp": "2026-07-01T16:28:04.186975Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$AMD Advanced Micro Devices, Inc.\n\n💰 nan (+nan%) | 5D: +nan%\n📊 RSI: 49.4 | MACD: bearish\n📈 MA20: $na",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1066,
-      "timestamp": "2026-07-01T16:28:04.672805Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "**Sales Methodologies 101: Why 64% of Sales Reps Miss Quota**\n\nHey fellow traders (and sales enthusi",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1521915304899514388"
-    },
-    {
-      "id": 1067,
-      "timestamp": "2026-07-01T16:28:06.483262Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1068,
-      "timestamp": "2026-07-01T16:28:17.105363Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 1069,
-      "timestamp": "2026-07-02T08:54:40.581499Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 The AI-Driven Stock Market: A Double-Edged Sword</b>\n\n{   \"title\": \"The AI-Driven Stock Market:",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "580"
-    },
-    {
-      "id": 1070,
-      "timestamp": "2026-07-02T08:54:41.102927Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **The AI-Driven Stock Market: A Double-Edged Sword**\n\n{   \"title\": \"The AI-Driven Stock Market: A ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1522163591627931763"
-    },
-    {
-      "id": 1071,
-      "timestamp": "2026-07-02T08:54:41.596187Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 The AI-Driven Stock Market: A Double-Edged Sword\n\n{   \"title\": \"The AI-Driven Stock Market: A Doub",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1072,
-      "timestamp": "2026-07-02T08:54:42.350823Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 The AI-Driven Stock Market: A Double-Edged Sword",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 1073,
       "timestamp": "2026-07-02T08:54:42.905405Z",
@@ -420,6 +345,81 @@
     {
       "id": 1084,
       "timestamp": "2026-07-03T09:17:10.500438Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1085,
+      "timestamp": "2026-07-03T15:53:12.426510Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Update: The $4.2T Question</b>\n\nWe're on the cusp of a $4.2T correction in the US stock ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "597"
+    },
+    {
+      "id": 1086,
+      "timestamp": "2026-07-03T15:53:13.115349Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Update: The $4.2T Question**\n\nWe're on the cusp of a $4.2T correction in the US stock mar",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1522631306171777268"
+    },
+    {
+      "id": 1087,
+      "timestamp": "2026-07-03T15:53:13.410597Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Update: The $4.2T Question\n\nWe're on the cusp of a $4.2T correction in the US stock market,",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1088,
+      "timestamp": "2026-07-03T15:53:14.640389Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Update: The $4.2T Question",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1089,
+      "timestamp": "2026-07-03T15:53:15.318908Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 116.7 (-2.3%) | 5D: -13.4%\n📊 RSI: 16.2 | MACD: bearish\n📈 MA20: $",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1090,
+      "timestamp": "2026-07-03T15:53:15.585561Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $447.58 (+8.1%)\n\n**Setup:** consolidation → Bias: **NEUTR",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1522631318549037136"
+    },
+    {
+      "id": 1091,
+      "timestamp": "2026-07-03T15:53:20.655882Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1092,
+      "timestamp": "2026-07-03T15:53:52.156090Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
