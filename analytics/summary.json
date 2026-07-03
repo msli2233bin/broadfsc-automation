@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T08:34:01.951322Z",
+  "generated_at": "2026-07-03T11:30:46.158890Z",
   "period": {
     "today": "2026-07-03",
     "yesterday": "2026-07-02",
@@ -7,13 +7,13 @@
     "month_ago": "2026-06-03"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 110,
-    "posts_month": 530,
+    "posts_today": 8,
+    "posts_week": 118,
+    "posts_month": 538,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 45.3
+    "success_rate": 45.2
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 16,
-      "month": 137,
-      "success": 135,
+      "today": 1,
+      "week": 17,
+      "month": 138,
+      "success": 136,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 29,
-      "month": 244,
-      "success": 238,
+      "today": 2,
+      "week": 31,
+      "month": 246,
+      "success": 240,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 26,
-      "month": 214,
+      "today": 2,
+      "week": 28,
+      "month": 216,
       "success": 37,
-      "failed": 177
+      "failed": 179
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 13,
-      "month": 114,
+      "today": 1,
+      "week": 14,
+      "month": 115,
       "success": 10,
-      "failed": 104
+      "failed": 105
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 26,
-      "month": 212,
+      "today": 2,
+      "week": 28,
+      "month": 214,
       "success": 4,
-      "failed": 208
+      "failed": 210
     }
   },
   "interactions_by_platform": {
@@ -220,13 +220,17 @@
     "2026-07-02": {
       "posts": 8,
       "interactions": 0
+    },
+    "2026-07-03": {
+      "posts": 8,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
     "10": 32,
     "16": 52,
     "18": 11,
-    "9": 44,
+    "9": 47,
     "14": 16,
     "8": 25,
     "15": 36,
@@ -235,81 +239,6 @@
     "11": 6
   },
   "recent_posts": [
-    {
-      "id": 1057,
-      "timestamp": "2026-07-01T09:43:44.359746Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "\"Mastodon users, let's talk about the power of niche communities. With its decentralized and communi",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1058,
-      "timestamp": "2026-07-01T09:43:44.536446Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $503.89 (+7.8%)\n\n**Setup:** overbought, watching for pull",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1521813550702661643"
-    },
-    {
-      "id": 1059,
-      "timestamp": "2026-07-01T09:43:46.185096Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1060,
-      "timestamp": "2026-07-01T09:44:18.888284Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 1061,
-      "timestamp": "2026-07-01T16:28:01.647810Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Insight: AI-Powered Rally Hits Turbo Charge</b>\n\nThe S&P 500 just cleared the 7,400 barr",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "577"
-    },
-    {
-      "id": 1062,
-      "timestamp": "2026-07-01T16:28:02.026085Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Insight: AI-Powered Rally Hits Turbo Charge**\n\nThe S&P 500 just cleared the 7,400 barrier",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1521915293553659915"
-    },
-    {
-      "id": 1063,
-      "timestamp": "2026-07-01T16:28:02.593321Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Insight: AI-Powered Rally Hits Turbo Charge\n\nThe S&P 500 just cleared the 7,400 barrier, a ",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1064,
-      "timestamp": "2026-07-01T16:28:03.513113Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Insight: AI-Powered Rally Hits Turbo Charge",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 1065,
       "timestamp": "2026-07-01T16:28:04.186975Z",
@@ -416,6 +345,81 @@
     {
       "id": 1076,
       "timestamp": "2026-07-02T08:55:05.084418Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1077,
+      "timestamp": "2026-07-03T09:16:54.907288Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Alert: US Stocks at Risk of Overbought Correction</b>\n\nThe S&P 500 has climbed 17.8% fro",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "590"
+    },
+    {
+      "id": 1078,
+      "timestamp": "2026-07-03T09:16:55.348665Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Alert: US Stocks at Risk of Overbought Correction**\n\nThe S&P 500 has climbed 17.8% from i",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1522531576553013268"
+    },
+    {
+      "id": 1079,
+      "timestamp": "2026-07-03T09:16:55.748958Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Alert: US Stocks at Risk of Overbought Correction\n\nThe S&P 500 has climbed 17.8% from its m",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1080,
+      "timestamp": "2026-07-03T09:16:57.274733Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Alert: US Stocks at Risk of Overbought Correction",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1081,
+      "timestamp": "2026-07-03T09:16:58.055708Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$AMD Advanced Micro Devices, Inc.\n\n💰 540.88 (-6.9%) | 5D: +4.1%\n📊 RSI: 63.2 | MACD: bearish\n📈 MA20: ",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1082,
+      "timestamp": "2026-07-03T09:16:58.339872Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🔴 $META — Meta Platforms, Inc. | $597.63 (-0.5%)\n\n**Setup:** correction in play → Bias: **BEARISH",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1522531589261889577"
+    },
+    {
+      "id": 1083,
+      "timestamp": "2026-07-03T09:17:00.831744Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1084,
+      "timestamp": "2026-07-03T09:17:10.500438Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
