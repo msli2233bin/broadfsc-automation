@@ -10141,5 +10141,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1077,
+    "timestamp": "2026-07-03T09:16:54.907288Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Alert: US Stocks at Risk of Overbought Correction</b>\n\nThe S&P 500 has climbed 17.8% fro",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "590"
+  },
+  {
+    "id": 1078,
+    "timestamp": "2026-07-03T09:16:55.348665Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Alert: US Stocks at Risk of Overbought Correction**\n\nThe S&P 500 has climbed 17.8% from i",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1522531576553013268"
+  },
+  {
+    "id": 1079,
+    "timestamp": "2026-07-03T09:16:55.748958Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: US Stocks at Risk of Overbought Correction\n\nThe S&P 500 has climbed 17.8% from its m",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1080,
+    "timestamp": "2026-07-03T09:16:57.274733Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: US Stocks at Risk of Overbought Correction",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1081,
+    "timestamp": "2026-07-03T09:16:58.055708Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AMD Advanced Micro Devices, Inc.\n\n💰 540.88 (-6.9%) | 5D: +4.1%\n📊 RSI: 63.2 | MACD: bearish\n📈 MA20: ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1082,
+    "timestamp": "2026-07-03T09:16:58.339872Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $META — Meta Platforms, Inc. | $597.63 (-0.5%)\n\n**Setup:** correction in play → Bias: **BEARISH",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1522531589261889577"
+  },
+  {
+    "id": 1083,
+    "timestamp": "2026-07-03T09:17:00.831744Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1084,
+    "timestamp": "2026-07-03T09:17:10.500438Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
