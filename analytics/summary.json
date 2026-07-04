@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-04T08:09:48.351452Z",
+  "generated_at": "2026-07-04T10:32:26.269286Z",
   "period": {
     "today": "2026-07-04",
     "yesterday": "2026-07-03",
@@ -7,13 +7,13 @@
     "month_ago": "2026-06-04"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 108,
-    "posts_month": 524,
+    "posts_today": 8,
+    "posts_week": 116,
+    "posts_month": 532,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 44.7
+    "success_rate": 44.5
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 15,
-      "month": 139,
-      "success": 137,
+      "today": 1,
+      "week": 16,
+      "month": 140,
+      "success": 138,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 28,
-      "month": 248,
-      "success": 242,
+      "today": 2,
+      "week": 30,
+      "month": 250,
+      "success": 244,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 26,
-      "month": 218,
+      "today": 2,
+      "week": 28,
+      "month": 220,
       "success": 37,
-      "failed": 181
+      "failed": 183
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 13,
-      "month": 116,
+      "today": 1,
+      "week": 14,
+      "month": 117,
       "success": 10,
-      "failed": 106
+      "failed": 107
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 26,
-      "month": 216,
+      "today": 2,
+      "week": 28,
+      "month": 218,
       "success": 4,
-      "failed": 212
+      "failed": 214
     }
   },
   "interactions_by_platform": {
@@ -220,13 +220,17 @@
     "2026-07-03": {
       "posts": 16,
       "interactions": 0
+    },
+    "2026-07-04": {
+      "posts": 8,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
     "9": 47,
     "14": 16,
     "16": 50,
-    "8": 25,
+    "8": 28,
     "15": 39,
     "10": 27,
     "17": 15,
@@ -235,81 +239,6 @@
     "11": 6
   },
   "recent_posts": [
-    {
-      "id": 1073,
-      "timestamp": "2026-07-02T08:54:42.905405Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$AMZN Amazon.com, Inc.\n\n💰 267.22 (-1.1%) | 5D: -1.5%\n📊 RSI: 54.1 | MACD: bearish\n📈 MA20: $263.85 (ab",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1074,
-      "timestamp": "2026-07-02T08:54:43.137457Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🔴 $PLTR — Palantir Technologies Inc. | $127.99 (-2.4%)\n\n**Setup:** correction in play → Bias: **B",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1522163601622827128"
-    },
-    {
-      "id": 1075,
-      "timestamp": "2026-07-02T08:54:49.096586Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1076,
-      "timestamp": "2026-07-02T08:55:05.084418Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 1077,
-      "timestamp": "2026-07-03T09:16:54.907288Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Alert: US Stocks at Risk of Overbought Correction</b>\n\nThe S&P 500 has climbed 17.8% fro",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "590"
-    },
-    {
-      "id": 1078,
-      "timestamp": "2026-07-03T09:16:55.348665Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Alert: US Stocks at Risk of Overbought Correction**\n\nThe S&P 500 has climbed 17.8% from i",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1522531576553013268"
-    },
-    {
-      "id": 1079,
-      "timestamp": "2026-07-03T09:16:55.748958Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Alert: US Stocks at Risk of Overbought Correction\n\nThe S&P 500 has climbed 17.8% from its m",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1080,
-      "timestamp": "2026-07-03T09:16:57.274733Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Alert: US Stocks at Risk of Overbought Correction",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 1081,
       "timestamp": "2026-07-03T09:16:58.055708Z",
@@ -416,6 +345,81 @@
     {
       "id": 1092,
       "timestamp": "2026-07-03T15:53:52.156090Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1093,
+      "timestamp": "2026-07-04T08:35:30.650000Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 **Market Alert: The AI-Powered Bull is Losing Steam**</b>\n\nAs we enter the second half of 2026,",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "600"
+    },
+    {
+      "id": 1094,
+      "timestamp": "2026-07-04T08:35:31.332981Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 ****Market Alert: The AI-Powered Bull is Losing Steam****\n\nAs we enter the second half of 2026, th",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1522883544870027355"
+    },
+    {
+      "id": 1095,
+      "timestamp": "2026-07-04T08:35:31.990680Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Alert: The AI-Powered Bull is Losing Steam**\n\nAs we enter the second half of 2026, the ma",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1096,
+      "timestamp": "2026-07-04T08:35:32.966949Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Alert: The AI-Powered Bull is Losing Steam**",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1097,
+      "timestamp": "2026-07-04T08:35:33.562027Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$TSLA Tesla, Inc.\n\n💰 405.05 (+1.1%) | 5D: -0.3%\n📊 RSI: 46.1 | MACD: bearish\n📈 MA20: $413.06 (below)\n",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1098,
+      "timestamp": "2026-07-04T08:35:33.872527Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🔴 $PLTR — Palantir Technologies Inc. | $136.89 (-0.7%)\n\n**Setup:** correction in play → Bias: **B",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1522883556777529454"
+    },
+    {
+      "id": 1099,
+      "timestamp": "2026-07-04T08:35:37.800437Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1100,
+      "timestamp": "2026-07-04T08:36:10.896189Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
