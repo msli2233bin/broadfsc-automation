@@ -10366,5 +10366,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1101,
+    "timestamp": "2026-07-04T15:06:24.735125Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Insights: A Tale of Two Markets</b>\n\nAs we navigate the complex landscape of the global ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "601"
+  },
+  {
+    "id": 1102,
+    "timestamp": "2026-07-04T15:06:25.798139Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Insights: A Tale of Two Markets**\n\nAs we navigate the complex landscape of the global eco",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1522981919346790490"
+  },
+  {
+    "id": 1103,
+    "timestamp": "2026-07-04T15:06:26.150756Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insights: A Tale of Two Markets\n\nAs we navigate the complex landscape of the global economy",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1104,
+    "timestamp": "2026-07-04T15:06:27.414990Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insights: A Tale of Two Markets",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1105,
+    "timestamp": "2026-07-04T15:06:28.094889Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AAPL Apple Inc.\n\n💰 299.24 (+0.9%) | 5D: +3.0%\n📊 RSI: 40.5 | MACD: bearish\n📈 MA20: $303.76 (below)\n🎯",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1106,
+    "timestamp": "2026-07-04T15:06:28.306112Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $COIN — Coinbase Global, Inc. | $152.4 (-7.2%)\n\n**Setup:** oversold bounce setup → Bias: **BULL",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1522981931917119700"
+  },
+  {
+    "id": 1107,
+    "timestamp": "2026-07-04T15:06:36.795771Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1108,
+    "timestamp": "2026-07-04T15:07:09.269303Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
