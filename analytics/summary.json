@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-05T14:41:51.898219Z",
+  "generated_at": "2026-07-05T16:07:02.791627Z",
   "period": {
     "today": "2026-07-05",
     "yesterday": "2026-07-04",
@@ -7,13 +7,13 @@
     "month_ago": "2026-06-05"
   },
   "totals": {
-    "posts_today": 8,
-    "posts_week": 116,
-    "posts_month": 526,
+    "posts_today": 16,
+    "posts_week": 124,
+    "posts_month": 534,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 43.9
+    "success_rate": 43.8
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 16,
-      "month": 142,
-      "success": 140,
+      "today": 2,
+      "week": 17,
+      "month": 143,
+      "success": 141,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 30,
-      "month": 254,
-      "success": 248,
+      "today": 4,
+      "week": 32,
+      "month": 256,
+      "success": 250,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 28,
-      "month": 224,
+      "today": 4,
+      "week": 30,
+      "month": 226,
       "success": 37,
-      "failed": 187
+      "failed": 189
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 14,
-      "month": 119,
+      "today": 2,
+      "week": 15,
+      "month": 120,
       "success": 10,
-      "failed": 109
+      "failed": 110
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 28,
-      "month": 222,
+      "today": 4,
+      "week": 30,
+      "month": 224,
       "success": 4,
-      "failed": 218
+      "failed": 220
     }
   },
   "interactions_by_platform": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-07-05": {
-      "posts": 8,
+      "posts": 16,
       "interactions": 0
     }
   },
@@ -231,7 +231,7 @@
     "14": 14,
     "16": 45,
     "8": 31,
-    "15": 42,
+    "15": 45,
     "10": 27,
     "17": 15,
     "12": 3,
@@ -239,81 +239,6 @@
     "11": 6
   },
   "recent_posts": [
-    {
-      "id": 1097,
-      "timestamp": "2026-07-04T08:35:33.562027Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$TSLA Tesla, Inc.\n\n💰 405.05 (+1.1%) | 5D: -0.3%\n📊 RSI: 46.1 | MACD: bearish\n📈 MA20: $413.06 (below)\n",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1098,
-      "timestamp": "2026-07-04T08:35:33.872527Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🔴 $PLTR — Palantir Technologies Inc. | $136.89 (-0.7%)\n\n**Setup:** correction in play → Bias: **B",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1522883556777529454"
-    },
-    {
-      "id": 1099,
-      "timestamp": "2026-07-04T08:35:37.800437Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1100,
-      "timestamp": "2026-07-04T08:36:10.896189Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 1101,
-      "timestamp": "2026-07-04T15:06:24.735125Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Insights: A Tale of Two Markets</b>\n\nAs we navigate the complex landscape of the global ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "601"
-    },
-    {
-      "id": 1102,
-      "timestamp": "2026-07-04T15:06:25.798139Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Insights: A Tale of Two Markets**\n\nAs we navigate the complex landscape of the global eco",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1522981919346790490"
-    },
-    {
-      "id": 1103,
-      "timestamp": "2026-07-04T15:06:26.150756Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Insights: A Tale of Two Markets\n\nAs we navigate the complex landscape of the global economy",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1104,
-      "timestamp": "2026-07-04T15:06:27.414990Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Insights: A Tale of Two Markets",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 1105,
       "timestamp": "2026-07-04T15:06:28.094889Z",
@@ -420,6 +345,81 @@
     {
       "id": 1116,
       "timestamp": "2026-07-05T08:52:05.258171Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1117,
+      "timestamp": "2026-07-05T15:13:54.670885Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Imbalance: AI-Driven Stocks Lead the Charge</b>\n\nA closer look at the current market lan",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "605"
+    },
+    {
+      "id": 1118,
+      "timestamp": "2026-07-05T15:13:55.115191Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Imbalance: AI-Driven Stocks Lead the Charge**\n\nA closer look at the current market landsc",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1523346193441226944"
+    },
+    {
+      "id": 1119,
+      "timestamp": "2026-07-05T15:13:55.957075Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Imbalance: AI-Driven Stocks Lead the Charge\n\nA closer look at the current market landscape ",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1120,
+      "timestamp": "2026-07-05T15:13:56.899613Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Imbalance: AI-Driven Stocks Lead the Charge",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1121,
+      "timestamp": "2026-07-05T15:13:57.560107Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 136.47 (+0.7%) | 5D: -15.1%\n📊 RSI: 51.1 | MACD: bearish\n📈 MA20: ",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1122,
+      "timestamp": "2026-07-05T15:13:57.971619Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "**Book Club Update: Navigating the Algorithm to Reach a Wider Audience**\n\nHey fellow book lovers, \n\n",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1523346205868818472"
+    },
+    {
+      "id": 1123,
+      "timestamp": "2026-07-05T15:14:03.330934Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1124,
+      "timestamp": "2026-07-05T15:14:35.342856Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
