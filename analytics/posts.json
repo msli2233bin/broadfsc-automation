@@ -10441,5 +10441,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1109,
+    "timestamp": "2026-07-05T08:51:23.652049Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Insight: The Unlikely Synchrony between Tech and Commodities</b>\n\nWhile the consensus ex",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "604"
+  },
+  {
+    "id": 1110,
+    "timestamp": "2026-07-05T08:51:24.129978Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Insight: The Unlikely Synchrony between Tech and Commodities**\n\nWhile the consensus expec",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1523249929319874633"
+  },
+  {
+    "id": 1111,
+    "timestamp": "2026-07-05T08:51:24.725837Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The Unlikely Synchrony between Tech and Commodities\n\nWhile the consensus expects a",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1112,
+    "timestamp": "2026-07-05T08:51:25.646507Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The Unlikely Synchrony between Tech and Commodities",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1113,
+    "timestamp": "2026-07-05T08:51:26.256923Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$TSLA Tesla, Inc.\n\n💰 391.0 (-6.6%) | 5D: -10.3%\n📊 RSI: 37.3 | MACD: bearish\n📈 MA20: $425.87 (below)\n",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1114,
+    "timestamp": "2026-07-05T08:51:26.533761Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "**Market Musings**\n\nHey fellow traders, let's talk about stock types and risk management. As we know",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1523249940367806474"
+  },
+  {
+    "id": 1115,
+    "timestamp": "2026-07-05T08:51:31.428614Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1116,
+    "timestamp": "2026-07-05T08:52:05.258171Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
