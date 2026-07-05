@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-07-04T23:34:01.001950Z",
+  "generated_at": "2026-07-05T02:56:10.465545Z",
   "period": {
-    "today": "2026-07-04",
-    "yesterday": "2026-07-03",
-    "week_ago": "2026-06-27",
-    "month_ago": "2026-06-04"
+    "today": "2026-07-05",
+    "yesterday": "2026-07-04",
+    "week_ago": "2026-06-28",
+    "month_ago": "2026-06-05"
   },
   "totals": {
-    "posts_today": 16,
-    "posts_week": 124,
-    "posts_month": 540,
+    "posts_today": 0,
+    "posts_week": 108,
+    "posts_month": 518,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 44.4
+    "success_rate": 44.0
   },
   "platforms": {
     "tiktok": {
@@ -24,22 +24,22 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 2,
-      "week": 17,
+      "today": 0,
+      "week": 15,
       "month": 141,
       "success": 139,
       "failed": 2
     },
     "discord": {
-      "today": 4,
-      "week": 32,
+      "today": 0,
+      "week": 28,
       "month": 252,
       "success": 246,
       "failed": 6
     },
     "mastodon": {
-      "today": 4,
-      "week": 30,
+      "today": 0,
+      "week": 26,
       "month": 222,
       "success": 37,
       "failed": 185
@@ -52,8 +52,8 @@
       "failed": 2
     },
     "threads": {
-      "today": 2,
-      "week": 15,
+      "today": 0,
+      "week": 13,
       "month": 118,
       "success": 10,
       "failed": 108
@@ -80,8 +80,8 @@
       "failed": 0
     },
     "hatena": {
-      "today": 4,
-      "week": 30,
+      "today": 0,
+      "week": 26,
       "month": 220,
       "success": 4,
       "failed": 216
@@ -101,10 +101,6 @@
   },
   "action_breakdown": {},
   "daily_trend": {
-    "2026-06-04": {
-      "posts": 22,
-      "interactions": 0
-    },
     "2026-06-05": {
       "posts": 22,
       "interactions": 0
@@ -227,9 +223,9 @@
     }
   },
   "hourly_distribution": {
-    "9": 47,
-    "14": 16,
-    "16": 50,
+    "9": 42,
+    "14": 14,
+    "16": 45,
     "8": 28,
     "15": 42,
     "10": 27,
