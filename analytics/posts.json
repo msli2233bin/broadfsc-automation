@@ -10516,5 +10516,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1117,
+    "timestamp": "2026-07-05T15:13:54.670885Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Imbalance: AI-Driven Stocks Lead the Charge</b>\n\nA closer look at the current market lan",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "605"
+  },
+  {
+    "id": 1118,
+    "timestamp": "2026-07-05T15:13:55.115191Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Imbalance: AI-Driven Stocks Lead the Charge**\n\nA closer look at the current market landsc",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1523346193441226944"
+  },
+  {
+    "id": 1119,
+    "timestamp": "2026-07-05T15:13:55.957075Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Imbalance: AI-Driven Stocks Lead the Charge\n\nA closer look at the current market landscape ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1120,
+    "timestamp": "2026-07-05T15:13:56.899613Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Imbalance: AI-Driven Stocks Lead the Charge",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1121,
+    "timestamp": "2026-07-05T15:13:57.560107Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 136.47 (+0.7%) | 5D: -15.1%\n📊 RSI: 51.1 | MACD: bearish\n📈 MA20: ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1122,
+    "timestamp": "2026-07-05T15:13:57.971619Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "**Book Club Update: Navigating the Algorithm to Reach a Wider Audience**\n\nHey fellow book lovers, \n\n",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1523346205868818472"
+  },
+  {
+    "id": 1123,
+    "timestamp": "2026-07-05T15:14:03.330934Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1124,
+    "timestamp": "2026-07-05T15:14:35.342856Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
