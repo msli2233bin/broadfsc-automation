@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-05T06:41:21.576806Z",
+  "generated_at": "2026-07-05T09:41:10.055989Z",
   "period": {
     "today": "2026-07-05",
     "yesterday": "2026-07-04",
@@ -7,13 +7,13 @@
     "month_ago": "2026-06-05"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 108,
-    "posts_month": 518,
+    "posts_today": 8,
+    "posts_week": 116,
+    "posts_month": 526,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 44.0
+    "success_rate": 43.9
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 15,
-      "month": 141,
-      "success": 139,
+      "today": 1,
+      "week": 16,
+      "month": 142,
+      "success": 140,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 28,
-      "month": 252,
-      "success": 246,
+      "today": 2,
+      "week": 30,
+      "month": 254,
+      "success": 248,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 26,
-      "month": 222,
+      "today": 2,
+      "week": 28,
+      "month": 224,
       "success": 37,
-      "failed": 185
+      "failed": 187
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 13,
-      "month": 118,
+      "today": 1,
+      "week": 14,
+      "month": 119,
       "success": 10,
-      "failed": 108
+      "failed": 109
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 26,
-      "month": 220,
+      "today": 2,
+      "week": 28,
+      "month": 222,
       "success": 4,
-      "failed": 216
+      "failed": 218
     }
   },
   "interactions_by_platform": {
@@ -220,13 +220,17 @@
     "2026-07-04": {
       "posts": 16,
       "interactions": 0
+    },
+    "2026-07-05": {
+      "posts": 8,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
     "9": 42,
     "14": 14,
     "16": 45,
-    "8": 28,
+    "8": 31,
     "15": 42,
     "10": 27,
     "17": 15,
@@ -235,81 +239,6 @@
     "11": 6
   },
   "recent_posts": [
-    {
-      "id": 1089,
-      "timestamp": "2026-07-03T15:53:15.318908Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 116.7 (-2.3%) | 5D: -13.4%\n📊 RSI: 16.2 | MACD: bearish\n📈 MA20: $",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1090,
-      "timestamp": "2026-07-03T15:53:15.585561Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $447.58 (+8.1%)\n\n**Setup:** consolidation → Bias: **NEUTR",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1522631318549037136"
-    },
-    {
-      "id": 1091,
-      "timestamp": "2026-07-03T15:53:20.655882Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1092,
-      "timestamp": "2026-07-03T15:53:52.156090Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 1093,
-      "timestamp": "2026-07-04T08:35:30.650000Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 **Market Alert: The AI-Powered Bull is Losing Steam**</b>\n\nAs we enter the second half of 2026,",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "600"
-    },
-    {
-      "id": 1094,
-      "timestamp": "2026-07-04T08:35:31.332981Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 ****Market Alert: The AI-Powered Bull is Losing Steam****\n\nAs we enter the second half of 2026, th",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1522883544870027355"
-    },
-    {
-      "id": 1095,
-      "timestamp": "2026-07-04T08:35:31.990680Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Alert: The AI-Powered Bull is Losing Steam**\n\nAs we enter the second half of 2026, the ma",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1096,
-      "timestamp": "2026-07-04T08:35:32.966949Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Alert: The AI-Powered Bull is Losing Steam**",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 1097,
       "timestamp": "2026-07-04T08:35:33.562027Z",
@@ -416,6 +345,81 @@
     {
       "id": 1108,
       "timestamp": "2026-07-04T15:07:09.269303Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1109,
+      "timestamp": "2026-07-05T08:51:23.652049Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Insight: The Unlikely Synchrony between Tech and Commodities</b>\n\nWhile the consensus ex",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "604"
+    },
+    {
+      "id": 1110,
+      "timestamp": "2026-07-05T08:51:24.129978Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Insight: The Unlikely Synchrony between Tech and Commodities**\n\nWhile the consensus expec",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1523249929319874633"
+    },
+    {
+      "id": 1111,
+      "timestamp": "2026-07-05T08:51:24.725837Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Insight: The Unlikely Synchrony between Tech and Commodities\n\nWhile the consensus expects a",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1112,
+      "timestamp": "2026-07-05T08:51:25.646507Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Insight: The Unlikely Synchrony between Tech and Commodities",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1113,
+      "timestamp": "2026-07-05T08:51:26.256923Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$TSLA Tesla, Inc.\n\n💰 391.0 (-6.6%) | 5D: -10.3%\n📊 RSI: 37.3 | MACD: bearish\n📈 MA20: $425.87 (below)\n",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1114,
+      "timestamp": "2026-07-05T08:51:26.533761Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "**Market Musings**\n\nHey fellow traders, let's talk about stock types and risk management. As we know",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1523249940367806474"
+    },
+    {
+      "id": 1115,
+      "timestamp": "2026-07-05T08:51:31.428614Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1116,
+      "timestamp": "2026-07-05T08:52:05.258171Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
