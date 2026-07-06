@@ -10666,5 +10666,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1133,
+    "timestamp": "2026-07-06T16:52:28.271763Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Momentum Shifts: AI-Driven Growth, Superbubble or New Normal?</b>\n\nThe S&P 500, Nasdaq, ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "615"
+  },
+  {
+    "id": 1134,
+    "timestamp": "2026-07-06T16:52:28.547010Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Momentum Shifts: AI-Driven Growth, Superbubble or New Normal?**\n\nThe S&P 500, Nasdaq, and",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1523733384260485210"
+  },
+  {
+    "id": 1135,
+    "timestamp": "2026-07-06T16:52:29.119515Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Momentum Shifts: AI-Driven Growth, Superbubble or New Normal?\n\nThe S&P 500, Nasdaq, and Dow",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1136,
+    "timestamp": "2026-07-06T16:52:30.405992Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Momentum Shifts: AI-Driven Growth, Superbubble or New Normal?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1137,
+    "timestamp": "2026-07-06T16:52:31.044311Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AAPL Apple Inc.\n\n💰 308.63 (+4.8%) | 5D: +12.2%\n📊 RSI: 58.3 | MACD: bullish\n📈 MA20: $294.8 (above)\n🎯",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1138,
+    "timestamp": "2026-07-06T16:52:31.366842Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $META — Meta Platforms, Inc. | $602.61 (-1.4%)\n\n**Setup:** oversold bounce setup → Bias: **BULL",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1523733395874779311"
+  },
+  {
+    "id": 1139,
+    "timestamp": "2026-07-06T16:52:34.767563Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1140,
+    "timestamp": "2026-07-06T16:53:07.440450Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
