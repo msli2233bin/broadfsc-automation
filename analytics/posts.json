@@ -10591,5 +10591,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1125,
+    "timestamp": "2026-07-06T10:19:16.826683Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The AI-Driven Market Reversal: Are You Ready?</b>\n\nThe Nasdaq, driven by AI-powered momentum, i",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "608"
+  },
+  {
+    "id": 1126,
+    "timestamp": "2026-07-06T10:19:17.346937Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The AI-Driven Market Reversal: Are You Ready?**\n\nThe Nasdaq, driven by AI-powered momentum, is f",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1523634434417360927"
+  },
+  {
+    "id": 1127,
+    "timestamp": "2026-07-06T10:19:17.753112Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The AI-Driven Market Reversal: Are You Ready?\n\nThe Nasdaq, driven by AI-powered momentum, is flash",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1128,
+    "timestamp": "2026-07-06T10:19:18.900086Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The AI-Driven Market Reversal: Are You Ready?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1129,
+    "timestamp": "2026-07-06T10:19:19.524840Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AAPL Apple Inc.\n\n💰 304.99 (+0.9%) | 5D: +2.3%\n📊 RSI: 82.4 | MACD: bullish\n📈 MA20: $287.32 (above)\n🎯",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1130,
+    "timestamp": "2026-07-06T10:19:19.756329Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "**Sales Methodologies 101: Why 64% of Sales Reps Miss Quota**\n\nHey fellow traders (and sales enthusi",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1523634445515489322"
+  },
+  {
+    "id": 1131,
+    "timestamp": "2026-07-06T10:19:24.546951Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1132,
+    "timestamp": "2026-07-06T10:19:39.228256Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
