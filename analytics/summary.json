@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-07T16:28:50.540247Z",
+  "generated_at": "2026-07-07T18:31:44.031801Z",
   "period": {
     "today": "2026-07-07",
     "yesterday": "2026-07-06",
@@ -7,13 +7,13 @@
     "month_ago": "2026-06-07"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 116,
-    "posts_month": 518,
+    "posts_today": 18,
+    "posts_week": 124,
+    "posts_month": 526,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 43.1
+    "success_rate": 43.0
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 2,
-      "week": 16,
-      "month": 147,
-      "success": 145,
+      "today": 3,
+      "week": 17,
+      "month": 148,
+      "success": 146,
       "failed": 2
     },
     "discord": {
-      "today": 3,
-      "week": 30,
-      "month": 263,
-      "success": 257,
+      "today": 5,
+      "week": 32,
+      "month": 265,
+      "success": 259,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 28,
-      "month": 232,
+      "today": 4,
+      "week": 30,
+      "month": 234,
       "success": 37,
-      "failed": 195
+      "failed": 197
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 14,
-      "month": 123,
+      "today": 2,
+      "week": 15,
+      "month": 124,
       "success": 10,
-      "failed": 113
+      "failed": 114
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 28,
-      "month": 230,
+      "today": 4,
+      "week": 30,
+      "month": 232,
       "success": 4,
-      "failed": 226
+      "failed": 228
     }
   },
   "interactions_by_platform": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-07-07": {
-      "posts": 10,
+      "posts": 18,
       "interactions": 0
     }
   },
@@ -233,87 +233,12 @@
     "17": 15,
     "9": 40,
     "14": 14,
-    "16": 43,
+    "16": 46,
     "12": 3,
     "18": 6,
     "11": 6
   },
   "recent_posts": [
-    {
-      "id": 1131,
-      "timestamp": "2026-07-06T10:19:24.546951Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1132,
-      "timestamp": "2026-07-06T10:19:39.228256Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 1133,
-      "timestamp": "2026-07-06T16:52:28.271763Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Momentum Shifts: AI-Driven Growth, Superbubble or New Normal?</b>\n\nThe S&P 500, Nasdaq, ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "615"
-    },
-    {
-      "id": 1134,
-      "timestamp": "2026-07-06T16:52:28.547010Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Momentum Shifts: AI-Driven Growth, Superbubble or New Normal?**\n\nThe S&P 500, Nasdaq, and",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1523733384260485210"
-    },
-    {
-      "id": 1135,
-      "timestamp": "2026-07-06T16:52:29.119515Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Momentum Shifts: AI-Driven Growth, Superbubble or New Normal?\n\nThe S&P 500, Nasdaq, and Dow",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1136,
-      "timestamp": "2026-07-06T16:52:30.405992Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Momentum Shifts: AI-Driven Growth, Superbubble or New Normal?",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 1137,
-      "timestamp": "2026-07-06T16:52:31.044311Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$AAPL Apple Inc.\n\n💰 308.63 (+4.8%) | 5D: +12.2%\n📊 RSI: 58.3 | MACD: bullish\n📈 MA20: $294.8 (above)\n🎯",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1138,
-      "timestamp": "2026-07-06T16:52:31.366842Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟢 $META — Meta Platforms, Inc. | $602.61 (-1.4%)\n\n**Setup:** oversold bounce setup → Bias: **BULL",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1523733395874779311"
-    },
     {
       "id": 1139,
       "timestamp": "2026-07-06T16:52:34.767563Z",
@@ -426,6 +351,81 @@
       "status": "success",
       "error_msg": "",
       "post_id": "1524058635536306266"
+    },
+    {
+      "id": 1151,
+      "timestamp": "2026-07-07T16:32:35.640398Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 S&P 500 On Cusp of Historic Breakout</b>\n\nAs the S&P 500 approaches 7,550, we're witnessing a c",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "626"
+    },
+    {
+      "id": 1152,
+      "timestamp": "2026-07-07T16:32:36.215007Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **S&P 500 On Cusp of Historic Breakout**\n\nAs the S&P 500 approaches 7,550, we're witnessing a conf",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1524090770192335031"
+    },
+    {
+      "id": 1153,
+      "timestamp": "2026-07-07T16:32:36.840369Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 S&P 500 On Cusp of Historic Breakout\n\nAs the S&P 500 approaches 7,550, we're witnessing a confluen",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1154,
+      "timestamp": "2026-07-07T16:32:38.012987Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 S&P 500 On Cusp of Historic Breakout",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1155,
+      "timestamp": "2026-07-07T16:32:38.653921Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 129.3 (+2.8%) | 5D: +20.5%\n📊 RSI: 48.5 | MACD: bullish\n📈 MA20: $",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1156,
+      "timestamp": "2026-07-07T16:32:38.888073Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🔴 $AAPL — Apple Inc. | $295.95 (-1.1%)\n\n**Setup:** correction in play → Bias: **BEARISH**\n\n### 📊 ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1524090782493966447"
+    },
+    {
+      "id": 1157,
+      "timestamp": "2026-07-07T16:32:41.021782Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1158,
+      "timestamp": "2026-07-07T16:33:14.049766Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
     }
   ],
   "recent_interactions": [
