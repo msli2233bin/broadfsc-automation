@@ -10816,5 +10816,25 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1149,
+    "timestamp": "2026-07-07T14:24:54.129853Z",
+    "platform": "telegram_en",
+    "type": "earnings",
+    "content_preview": "<b>📊 Earnings Calendar: Week of Jul 07</b>\n\n\n📅 <b>Tuesday, Jul 14</b>\n  • Bank of America (BAC) @ $6",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "619"
+  },
+  {
+    "id": 1150,
+    "timestamp": "2026-07-07T14:24:54.561395Z",
+    "platform": "discord",
+    "type": "earnings",
+    "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 07**\n\n\n📅 **Tuesday, Jul 14**\n  • B",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1524058635536306266"
   }
 ]
