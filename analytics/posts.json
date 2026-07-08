@@ -10911,5 +10911,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1159,
+    "timestamp": "2026-07-08T08:26:20.801700Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Insight: AI-Powered Bulls and Bears</b>\n\nAs the AI-driven Nasdaq (^IXIC) continues to le",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "629"
+  },
+  {
+    "id": 1160,
+    "timestamp": "2026-07-08T08:26:21.485622Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Insight: AI-Powered Bulls and Bears**\n\nAs the AI-driven Nasdaq (^IXIC) continues to lead ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1524330789737594920"
+  },
+  {
+    "id": 1161,
+    "timestamp": "2026-07-08T08:26:22.044133Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: AI-Powered Bulls and Bears\n\nAs the AI-driven Nasdaq (^IXIC) continues to lead the ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1162,
+    "timestamp": "2026-07-08T08:26:23.226912Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: AI-Powered Bulls and Bears",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1163,
+    "timestamp": "2026-07-08T08:26:23.823181Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "**Unlocking the Power of Social Media for Financial Services**\n\nAs a licensed investment securities ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1164,
+    "timestamp": "2026-07-08T08:26:24.212072Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $GOOGL — Alphabet Inc. | $nan (+nan%)\n\n**Setup:** oversold bounce setup → Bias: **BULLISH**\n\n##",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1524330802652123148"
+  },
+  {
+    "id": 1165,
+    "timestamp": "2026-07-08T08:26:28.394297Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1166,
+    "timestamp": "2026-07-08T08:27:01.067666Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
