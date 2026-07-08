@@ -11006,5 +11006,80 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1524413822599692531"
+  },
+  {
+    "id": 1169,
+    "timestamp": "2026-07-08T16:02:38.516833Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The Great Shift: How AI-Powered Earnings Reports Are Changing the Game</b>\n\nWe've seen the rise",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "637"
+  },
+  {
+    "id": 1170,
+    "timestamp": "2026-07-08T16:02:39.019848Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The Great Shift: How AI-Powered Earnings Reports Are Changing the Game**\n\nWe've seen the rise of",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1524445620356517918"
+  },
+  {
+    "id": 1171,
+    "timestamp": "2026-07-08T16:02:39.921875Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The Great Shift: How AI-Powered Earnings Reports Are Changing the Game\n\nWe've seen the rise of AI-",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1172,
+    "timestamp": "2026-07-08T16:02:40.820776Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The Great Shift: How AI-Powered Earnings Reports Are Changing the Game",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1173,
+    "timestamp": "2026-07-08T16:02:41.589118Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$MSFT Microsoft Corporation\n\n💰 nan (+nan%) | 5D: +nan%\n📊 RSI: 39.7 | MACD: bearish\n📈 MA20: $nan (bel",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1174,
+    "timestamp": "2026-07-08T16:02:41.867585Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "**Unlock the Secrets of Top-Performing Sales Teams**\n\nHey fellow sales professionals,\n\nAre you tired",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1524445632876642447"
+  },
+  {
+    "id": 1175,
+    "timestamp": "2026-07-08T16:02:47.268321Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1176,
+    "timestamp": "2026-07-08T16:03:19.257235Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
