@@ -1,0 +1,11 @@
+{
+  "platform": "threads",
+  "topic": "AAPL_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "1/ $AAPL — Apple Inc.\n\n310.66 (-0.6% today) | $4.56T\n\nUPTREND INTACT. This is the setup you need to see.---THREAD_BREAK---2/ Technical snapshot:\nRSI 59.5 — momentum zone\nMACD bullish, momentum intact\nMA20 $295.04 | MA50 $295.0\nVolume: 0.6x avg\n5D: +10.3% | 20D: +1.1%---THREAD_BREAK---3/ The trade:\nResistance: $317.4\nSupport: $245.28\nBias: BULLISH\n\nBounce play if support holds---THREAD_BREAK---4/ I post TA signals for 5 stocks daily.\n\n📱 Get them free: t.me/BroadInvestBot",
+  "content_type": "thread",
+  "symbol": "AAPL",
+  "created": "2026-07-08T06:19:10.953420",
+  "used": false,
+  "chart_paths": {}
+}
