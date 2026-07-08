@@ -1,5 +1,5 @@
 {
-  "report_time": "2026-07-07T22:04:30.434387",
+  "report_time": "2026-07-08T01:45:15.494998",
   "days": 30,
   "overview": {
     "posts_by_platform": {},
@@ -182,11 +182,6 @@
       "awareness": 15
     },
     "transitions": [
-      {
-        "from": "awareness",
-        "to": "interest",
-        "cnt": 1
-      },
       {
         "from": "interest",
         "to": "awareness",
