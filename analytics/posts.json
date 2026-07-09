@@ -11176,5 +11176,80 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1524790006311289023"
+  },
+  {
+    "id": 1187,
+    "timestamp": "2026-07-09T16:28:27.227455Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Macro Cycle Turning Point: US Stocks at a Tipping Point</b>\n\nThe S&P 500 has reached 7,534.13, ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "648"
+  },
+  {
+    "id": 1188,
+    "timestamp": "2026-07-09T16:28:27.585449Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Macro Cycle Turning Point: US Stocks at a Tipping Point**\n\nThe S&P 500 has reached 7,534.13, a 5",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1524814503693258774"
+  },
+  {
+    "id": 1189,
+    "timestamp": "2026-07-09T16:28:31.327334Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Macro Cycle Turning Point: US Stocks at a Tipping Point\n\nThe S&P 500 has reached 7,534.13, a 5.5% ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1190,
+    "timestamp": "2026-07-09T16:28:32.346161Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Macro Cycle Turning Point: US Stocks at a Tipping Point",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1191,
+    "timestamp": "2026-07-09T16:28:34.337769Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$META Meta Platforms, Inc.\n\n💰 nan (+nan%) | 5D: +nan%\n📊 RSI: 44.0 | MACD: bearish\n📈 MA20: $nan (belo",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1192,
+    "timestamp": "2026-07-09T16:28:34.579079Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $COIN — Coinbase Global, Inc. | $164.92 (-2.6%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1524814533259169944"
+  },
+  {
+    "id": 1193,
+    "timestamp": "2026-07-09T16:28:36.695178Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1194,
+    "timestamp": "2026-07-09T16:28:51.576974Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
