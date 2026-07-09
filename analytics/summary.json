@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-09T14:04:32.369669Z",
+  "generated_at": "2026-07-09T17:01:02.799505Z",
   "period": {
     "today": "2026-07-09",
     "yesterday": "2026-07-08",
@@ -7,13 +7,13 @@
     "month_ago": "2026-06-09"
   },
   "totals": {
-    "posts_today": 8,
-    "posts_week": 116,
-    "posts_month": 510,
+    "posts_today": 18,
+    "posts_week": 126,
+    "posts_month": 520,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 42.2
+    "success_rate": 42.3
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 16,
-      "month": 152,
-      "success": 150,
+      "today": 3,
+      "week": 18,
+      "month": 154,
+      "success": 152,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 30,
-      "month": 272,
-      "success": 266,
+      "today": 5,
+      "week": 33,
+      "month": 275,
+      "success": 269,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 28,
-      "month": 240,
+      "today": 4,
+      "week": 30,
+      "month": 242,
       "success": 37,
-      "failed": 203
+      "failed": 205
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 14,
-      "month": 127,
+      "today": 2,
+      "week": 15,
+      "month": 128,
       "success": 10,
-      "failed": 117
+      "failed": 118
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 28,
-      "month": 238,
+      "today": 4,
+      "week": 30,
+      "month": 240,
       "success": 4,
-      "failed": 234
+      "failed": 236
     }
   },
   "interactions_by_platform": {
@@ -222,14 +222,14 @@
       "interactions": 0
     },
     "2026-07-09": {
-      "posts": 8,
+      "posts": 18,
       "interactions": 0
     }
   },
   "hourly_distribution": {
     "9": 43,
-    "14": 14,
-    "16": 49,
+    "14": 16,
+    "16": 52,
     "15": 33,
     "17": 10,
     "10": 25,
@@ -240,101 +240,6 @@
     "13": 2
   },
   "recent_posts": [
-    {
-      "id": 1165,
-      "timestamp": "2026-07-08T08:26:28.394297Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1166,
-      "timestamp": "2026-07-08T08:27:01.067666Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 1167,
-      "timestamp": "2026-07-08T13:56:17.166315Z",
-      "platform": "telegram_en",
-      "type": "earnings",
-      "content_preview": "<b>📊 Earnings Calendar: Week of Jul 08</b>\n\n\n📅 <b>Tuesday, Jul 14</b>\n  • Bank of America (BAC) @ $5",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "630"
-    },
-    {
-      "id": 1168,
-      "timestamp": "2026-07-08T13:56:17.677636Z",
-      "platform": "discord",
-      "type": "earnings",
-      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 08**\n\n\n📅 **Tuesday, Jul 14**\n  • B",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1524413822599692531"
-    },
-    {
-      "id": 1169,
-      "timestamp": "2026-07-08T16:02:38.516833Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 The Great Shift: How AI-Powered Earnings Reports Are Changing the Game</b>\n\nWe've seen the rise",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "637"
-    },
-    {
-      "id": 1170,
-      "timestamp": "2026-07-08T16:02:39.019848Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **The Great Shift: How AI-Powered Earnings Reports Are Changing the Game**\n\nWe've seen the rise of",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1524445620356517918"
-    },
-    {
-      "id": 1171,
-      "timestamp": "2026-07-08T16:02:39.921875Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 The Great Shift: How AI-Powered Earnings Reports Are Changing the Game\n\nWe've seen the rise of AI-",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1172,
-      "timestamp": "2026-07-08T16:02:40.820776Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 The Great Shift: How AI-Powered Earnings Reports Are Changing the Game",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 1173,
-      "timestamp": "2026-07-08T16:02:41.589118Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$MSFT Microsoft Corporation\n\n💰 nan (+nan%) | 5D: +nan%\n📊 RSI: 39.7 | MACD: bearish\n📈 MA20: $nan (bel",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1174,
-      "timestamp": "2026-07-08T16:02:41.867585Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "**Unlock the Secrets of Top-Performing Sales Teams**\n\nHey fellow sales professionals,\n\nAre you tired",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1524445632876642447"
-    },
     {
       "id": 1175,
       "timestamp": "2026-07-08T16:02:47.268321Z",
@@ -422,6 +327,101 @@
     {
       "id": 1184,
       "timestamp": "2026-07-09T09:37:49.312248Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1185,
+      "timestamp": "2026-07-09T14:51:06.540865Z",
+      "platform": "telegram_en",
+      "type": "earnings",
+      "content_preview": "<b>📊 Earnings Calendar: Week of Jul 09</b>\n\n\n📅 <b>Tuesday, Jul 14</b>\n  • Bank of America (BAC) @ $5",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "641"
+    },
+    {
+      "id": 1186,
+      "timestamp": "2026-07-09T14:51:06.996665Z",
+      "platform": "discord",
+      "type": "earnings",
+      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 09**\n\n\n📅 **Tuesday, Jul 14**\n  • B",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1524790006311289023"
+    },
+    {
+      "id": 1187,
+      "timestamp": "2026-07-09T16:28:27.227455Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Macro Cycle Turning Point: US Stocks at a Tipping Point</b>\n\nThe S&P 500 has reached 7,534.13, ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "648"
+    },
+    {
+      "id": 1188,
+      "timestamp": "2026-07-09T16:28:27.585449Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Macro Cycle Turning Point: US Stocks at a Tipping Point**\n\nThe S&P 500 has reached 7,534.13, a 5",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1524814503693258774"
+    },
+    {
+      "id": 1189,
+      "timestamp": "2026-07-09T16:28:31.327334Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Macro Cycle Turning Point: US Stocks at a Tipping Point\n\nThe S&P 500 has reached 7,534.13, a 5.5% ",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1190,
+      "timestamp": "2026-07-09T16:28:32.346161Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Macro Cycle Turning Point: US Stocks at a Tipping Point",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1191,
+      "timestamp": "2026-07-09T16:28:34.337769Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$META Meta Platforms, Inc.\n\n💰 nan (+nan%) | 5D: +nan%\n📊 RSI: 44.0 | MACD: bearish\n📈 MA20: $nan (belo",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1192,
+      "timestamp": "2026-07-09T16:28:34.579079Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟡 $COIN — Coinbase Global, Inc. | $164.92 (-2.6%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1524814533259169944"
+    },
+    {
+      "id": 1193,
+      "timestamp": "2026-07-09T16:28:36.695178Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1194,
+      "timestamp": "2026-07-09T16:28:51.576974Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
