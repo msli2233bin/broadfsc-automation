@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-10T13:26:09.332632Z",
+  "generated_at": "2026-07-10T15:54:55.688384Z",
   "period": {
     "today": "2026-07-10",
     "yesterday": "2026-07-09",
@@ -7,13 +7,13 @@
     "month_ago": "2026-06-10"
   },
   "totals": {
-    "posts_today": 8,
-    "posts_week": 126,
-    "posts_month": 506,
+    "posts_today": 10,
+    "posts_week": 128,
+    "posts_month": 508,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 41.7
+    "success_rate": 41.9
   },
   "platforms": {
     "tiktok": {
@@ -24,17 +24,17 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 18,
-      "month": 155,
-      "success": 153,
+      "today": 2,
+      "week": 19,
+      "month": 156,
+      "success": 154,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 33,
-      "month": 277,
-      "success": 271,
+      "today": 3,
+      "week": 34,
+      "month": 278,
+      "success": 272,
       "failed": 6
     },
     "mastodon": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-07-10": {
-      "posts": 8,
+      "posts": 10,
       "interactions": 0
     }
   },
@@ -236,28 +236,10 @@
     "12": 3,
     "18": 6,
     "11": 6,
-    "14": 14,
+    "14": 16,
     "13": 2
   },
   "recent_posts": [
-    {
-      "id": 1183,
-      "timestamp": "2026-07-09T09:37:35.479315Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1184,
-      "timestamp": "2026-07-09T09:37:49.312248Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
     {
       "id": 1185,
       "timestamp": "2026-07-09T14:51:06.540865Z",
@@ -427,6 +409,26 @@
       "content_preview": "Hatena Blog post",
       "status": "failed",
       "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1203,
+      "timestamp": "2026-07-10T14:16:00.185194Z",
+      "platform": "telegram_en",
+      "type": "earnings",
+      "content_preview": "<b>📊 Earnings Calendar: Week of Jul 10</b>\n\n\n📅 <b>Tuesday, Jul 14</b>\n  • Bank of America (BAC) @ $5",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "652"
+    },
+    {
+      "id": 1204,
+      "timestamp": "2026-07-10T14:16:00.560237Z",
+      "platform": "discord",
+      "type": "earnings",
+      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 10**\n\n\n📅 **Tuesday, Jul 14**\n  • B",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1525143559198605427"
     }
   ],
   "recent_interactions": [
