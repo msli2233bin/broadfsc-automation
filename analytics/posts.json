@@ -11251,5 +11251,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1195,
+    "timestamp": "2026-07-10T09:33:22.815904Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The AI-Fueled Stock Market Rally: Is It Sustainable?</b>\n\nThe S&P 500 has surged 18.2% YTD, wit",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "651"
+  },
+  {
+    "id": 1196,
+    "timestamp": "2026-07-10T09:33:23.709125Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The AI-Fueled Stock Market Rally: Is It Sustainable?**\n\nThe S&P 500 has surged 18.2% YTD, with t",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1525072435139837984"
+  },
+  {
+    "id": 1197,
+    "timestamp": "2026-07-10T09:33:24.694224Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The AI-Fueled Stock Market Rally: Is It Sustainable?\n\nThe S&P 500 has surged 18.2% YTD, with tech ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1198,
+    "timestamp": "2026-07-10T09:33:25.775385Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The AI-Fueled Stock Market Rally: Is It Sustainable?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1199,
+    "timestamp": "2026-07-10T09:33:27.513427Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$GOOGL Alphabet Inc.\n\n💰 368.53 (-1.0%) | 5D: -3.1%\n📊 RSI: 30.4 | MACD: bearish\n📈 MA20: $385.38 (belo",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1200,
+    "timestamp": "2026-07-10T09:33:27.739396Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $META — Meta Platforms, Inc. | $612.34 (+0.3%)\n\n**Setup:** correction in play → Bias: **BEARISH",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1525072454622384259"
+  },
+  {
+    "id": 1201,
+    "timestamp": "2026-07-10T09:33:29.800265Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1202,
+    "timestamp": "2026-07-10T09:34:03.508502Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
