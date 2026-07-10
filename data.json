@@ -1,5 +1,5 @@
 {
-  "report_time": "2026-07-09T22:12:45.655982",
+  "report_time": "2026-07-10T01:55:24.436107",
   "days": 30,
   "overview": {
     "posts_by_platform": {},
@@ -181,12 +181,6 @@
     "stages": {
       "awareness": 11
     },
-    "transitions": [
-      {
-        "from": "interest",
-        "to": "awareness",
-        "cnt": 1
-      }
-    ]
+    "transitions": []
   }
 }
