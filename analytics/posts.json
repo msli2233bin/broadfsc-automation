@@ -11346,5 +11346,80 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1525143559198605427"
+  },
+  {
+    "id": 1205,
+    "timestamp": "2026-07-10T16:26:22.999724Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Insight: AI-Driven Nasdaq Toppings 26,252, Amid S&P 500's 7,559.15 Breakout</b>\n\n🚀📈 The ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "659"
+  },
+  {
+    "id": 1206,
+    "timestamp": "2026-07-10T16:26:24.090869Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Insight: AI-Driven Nasdaq Toppings 26,252, Amid S&P 500's 7,559.15 Breakout**\n\n🚀📈 The Nas",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1525176372555943938"
+  },
+  {
+    "id": 1207,
+    "timestamp": "2026-07-10T16:26:24.618188Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: AI-Driven Nasdaq Toppings 26,252, Amid S&P 500's 7,559.15 Breakout\n\n🚀📈 The Nasdaq ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1208,
+    "timestamp": "2026-07-10T16:26:25.780872Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: AI-Driven Nasdaq Toppings 26,252, Amid S&P 500's 7,559.15 Breakout",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1209,
+    "timestamp": "2026-07-10T16:26:26.470638Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 129.3 (+2.8%) | 5D: +20.5%\n📊 RSI: 48.5 | MACD: bullish\n📈 MA20: $",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1210,
+    "timestamp": "2026-07-10T16:26:26.729584Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $PLTR — Palantir Technologies Inc. | $nan (+nan%)\n\n**Setup:** oversold bounce setup → Bias: **B",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1525176384899514441"
+  },
+  {
+    "id": 1211,
+    "timestamp": "2026-07-10T16:26:29.035048Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1212,
+    "timestamp": "2026-07-10T16:27:02.397306Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
