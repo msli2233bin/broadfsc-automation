@@ -1,0 +1,11 @@
+{
+  "platform": "mastodon",
+  "topic": "COIN_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "$COIN Coinbase Global, Inc.\n\n💰 158.44 (-0.6%) | 5D: -0.5%\n📊 RSI: 45.6 | MACD: bullish\n📈 MA20: $158.93 (below)\n🎯 Resistance: $222.35 | Support: $139.18\n📢 Vol: 0.6x avg\n\nSetup: consolidation → bias: NEUTRAL\n\n📱 Free TA signals: t.me/BroadInvestBot\n#$COIN #Trading #TechnicalAnalysis #Stocks",
+  "content_type": "single",
+  "symbol": "COIN",
+  "created": "2026-07-10T07:23:51.903433",
+  "used": false,
+  "chart_paths": {}
+}
