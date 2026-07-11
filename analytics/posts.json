@@ -11421,5 +11421,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1213,
+    "timestamp": "2026-07-11T07:54:13.770713Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Alert: AI-Driven Stocks and Cryptocurrencies Ignite a Global Bull Run</b>\n\nWe're witness",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "662"
+  },
+  {
+    "id": 1214,
+    "timestamp": "2026-07-11T07:54:14.674041Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Alert: AI-Driven Stocks and Cryptocurrencies Ignite a Global Bull Run**\n\nWe're witnessing",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1525409870751334481"
+  },
+  {
+    "id": 1215,
+    "timestamp": "2026-07-11T07:54:15.436755Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: AI-Driven Stocks and Cryptocurrencies Ignite a Global Bull Run\n\nWe're witnessing a h",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1216,
+    "timestamp": "2026-07-11T07:54:17.037876Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: AI-Driven Stocks and Cryptocurrencies Ignite a Global Bull Run",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1217,
+    "timestamp": "2026-07-11T07:54:17.638213Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$COIN Coinbase Global, Inc.\n\n💰 142.52 (-5.1%) | 5D: -13.6%\n📊 RSI: 35.9 | MACD: bearish\n📈 MA20: $164.",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1218,
+    "timestamp": "2026-07-11T07:54:18.055103Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $GOOGL — Alphabet Inc. | $387.66 (-2.3%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n### 📊 T",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1525409886857330760"
+  },
+  {
+    "id": 1219,
+    "timestamp": "2026-07-11T07:54:21.217630Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1220,
+    "timestamp": "2026-07-11T07:54:55.024122Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
