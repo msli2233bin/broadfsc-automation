@@ -11496,5 +11496,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1221,
+    "timestamp": "2026-07-11T14:55:07.603879Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Insight: Bull Run Intact, but Watch for Warning Signs</b>\n\nThe S&P 500 has reclaimed its",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "664"
+  },
+  {
+    "id": 1222,
+    "timestamp": "2026-07-11T14:55:08.028143Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Insight: Bull Run Intact, but Watch for Warning Signs**\n\nThe S&P 500 has reclaimed its 20",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1525515793230598204"
+  },
+  {
+    "id": 1223,
+    "timestamp": "2026-07-11T14:55:09.115838Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: Bull Run Intact, but Watch for Warning Signs\n\nThe S&P 500 has reclaimed its 200-da",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1224,
+    "timestamp": "2026-07-11T14:55:10.701528Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: Bull Run Intact, but Watch for Warning Signs",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1225,
+    "timestamp": "2026-07-11T14:55:11.471334Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$TSLA Tesla, Inc.\n\n💰 426.01 (+1.9%) | 5D: +0.9%\n📊 RSI: 61.5 | MACD: bearish\n📈 MA20: $409.26 (above)\n",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1226,
+    "timestamp": "2026-07-11T14:55:11.752225Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $447.58 (+8.1%)\n\n**Setup:** consolidation → Bias: **NEUTR",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1525515809332396143"
+  },
+  {
+    "id": 1227,
+    "timestamp": "2026-07-11T14:55:14.548067Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1228,
+    "timestamp": "2026-07-11T14:55:47.814926Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
