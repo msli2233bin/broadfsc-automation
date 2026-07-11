@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-11T14:20:55.315545Z",
+  "generated_at": "2026-07-11T15:30:19.776270Z",
   "period": {
     "today": "2026-07-11",
     "yesterday": "2026-07-10",
@@ -7,9 +7,9 @@
     "month_ago": "2026-06-11"
   },
   "totals": {
-    "posts_today": 8,
-    "posts_week": 128,
-    "posts_month": 502,
+    "posts_today": 16,
+    "posts_week": 136,
+    "posts_month": 510,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 19,
-      "month": 158,
-      "success": 156,
+      "today": 2,
+      "week": 20,
+      "month": 159,
+      "success": 157,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 34,
-      "month": 282,
-      "success": 276,
+      "today": 4,
+      "week": 36,
+      "month": 284,
+      "success": 278,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 30,
-      "month": 248,
+      "today": 4,
+      "week": 32,
+      "month": 250,
       "success": 37,
-      "failed": 211
+      "failed": 213
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 15,
-      "month": 131,
+      "today": 2,
+      "week": 16,
+      "month": 132,
       "success": 10,
-      "failed": 121
+      "failed": 122
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 30,
-      "month": 246,
+      "today": 4,
+      "week": 32,
+      "month": 248,
       "success": 4,
-      "failed": 242
+      "failed": 244
     }
   },
   "interactions_by_platform": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-07-11": {
-      "posts": 8,
+      "posts": 16,
       "interactions": 0
     }
   },
@@ -236,87 +236,11 @@
     "12": 3,
     "18": 6,
     "11": 6,
-    "14": 16,
+    "14": 19,
     "13": 2,
     "7": 3
   },
   "recent_posts": [
-    {
-      "id": 1201,
-      "timestamp": "2026-07-10T09:33:29.800265Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1202,
-      "timestamp": "2026-07-10T09:34:03.508502Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 1203,
-      "timestamp": "2026-07-10T14:16:00.185194Z",
-      "platform": "telegram_en",
-      "type": "earnings",
-      "content_preview": "<b>📊 Earnings Calendar: Week of Jul 10</b>\n\n\n📅 <b>Tuesday, Jul 14</b>\n  • Bank of America (BAC) @ $5",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "652"
-    },
-    {
-      "id": 1204,
-      "timestamp": "2026-07-10T14:16:00.560237Z",
-      "platform": "discord",
-      "type": "earnings",
-      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 10**\n\n\n📅 **Tuesday, Jul 14**\n  • B",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1525143559198605427"
-    },
-    {
-      "id": 1205,
-      "timestamp": "2026-07-10T16:26:22.999724Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Insight: AI-Driven Nasdaq Toppings 26,252, Amid S&P 500's 7,559.15 Breakout</b>\n\n🚀📈 The ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "659"
-    },
-    {
-      "id": 1206,
-      "timestamp": "2026-07-10T16:26:24.090869Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Insight: AI-Driven Nasdaq Toppings 26,252, Amid S&P 500's 7,559.15 Breakout**\n\n🚀📈 The Nas",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1525176372555943938"
-    },
-    {
-      "id": 1207,
-      "timestamp": "2026-07-10T16:26:24.618188Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Insight: AI-Driven Nasdaq Toppings 26,252, Amid S&P 500's 7,559.15 Breakout\n\n🚀📈 The Nasdaq ",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1208,
-      "timestamp": "2026-07-10T16:26:25.780872Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Insight: AI-Driven Nasdaq Toppings 26,252, Amid S&P 500's 7,559.15 Breakout",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 1209,
       "timestamp": "2026-07-10T16:26:26.470638Z",
@@ -423,6 +347,81 @@
     {
       "id": 1220,
       "timestamp": "2026-07-11T07:54:55.024122Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1221,
+      "timestamp": "2026-07-11T14:55:07.603879Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Insight: Bull Run Intact, but Watch for Warning Signs</b>\n\nThe S&P 500 has reclaimed its",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "664"
+    },
+    {
+      "id": 1222,
+      "timestamp": "2026-07-11T14:55:08.028143Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Insight: Bull Run Intact, but Watch for Warning Signs**\n\nThe S&P 500 has reclaimed its 20",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1525515793230598204"
+    },
+    {
+      "id": 1223,
+      "timestamp": "2026-07-11T14:55:09.115838Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Insight: Bull Run Intact, but Watch for Warning Signs\n\nThe S&P 500 has reclaimed its 200-da",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1224,
+      "timestamp": "2026-07-11T14:55:10.701528Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Insight: Bull Run Intact, but Watch for Warning Signs",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1225,
+      "timestamp": "2026-07-11T14:55:11.471334Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$TSLA Tesla, Inc.\n\n💰 426.01 (+1.9%) | 5D: +0.9%\n📊 RSI: 61.5 | MACD: bearish\n📈 MA20: $409.26 (above)\n",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1226,
+      "timestamp": "2026-07-11T14:55:11.752225Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $447.58 (+8.1%)\n\n**Setup:** consolidation → Bias: **NEUTR",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1525515809332396143"
+    },
+    {
+      "id": 1227,
+      "timestamp": "2026-07-11T14:55:14.548067Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1228,
+      "timestamp": "2026-07-11T14:55:47.814926Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
