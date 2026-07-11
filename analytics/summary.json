@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-11T06:34:19.762443Z",
+  "generated_at": "2026-07-11T08:45:20.057013Z",
   "period": {
     "today": "2026-07-11",
     "yesterday": "2026-07-10",
@@ -7,13 +7,13 @@
     "month_ago": "2026-06-11"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 120,
-    "posts_month": 494,
+    "posts_today": 8,
+    "posts_week": 128,
+    "posts_month": 502,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 41.3
+    "success_rate": 41.2
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 18,
-      "month": 157,
-      "success": 155,
+      "today": 1,
+      "week": 19,
+      "month": 158,
+      "success": 156,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 32,
-      "month": 280,
-      "success": 274,
+      "today": 2,
+      "week": 34,
+      "month": 282,
+      "success": 276,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 28,
-      "month": 246,
+      "today": 2,
+      "week": 30,
+      "month": 248,
       "success": 37,
-      "failed": 209
+      "failed": 211
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 14,
-      "month": 130,
+      "today": 1,
+      "week": 15,
+      "month": 131,
       "success": 10,
-      "failed": 120
+      "failed": 121
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 28,
-      "month": 244,
+      "today": 2,
+      "week": 30,
+      "month": 246,
       "success": 4,
-      "failed": 240
+      "failed": 242
     }
   },
   "interactions_by_platform": {
@@ -220,6 +220,10 @@
     "2026-07-10": {
       "posts": 18,
       "interactions": 0
+    },
+    "2026-07-11": {
+      "posts": 8,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
@@ -233,84 +237,10 @@
     "18": 6,
     "11": 6,
     "14": 16,
-    "13": 2
+    "13": 2,
+    "7": 3
   },
   "recent_posts": [
-    {
-      "id": 1193,
-      "timestamp": "2026-07-09T16:28:36.695178Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1194,
-      "timestamp": "2026-07-09T16:28:51.576974Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 1195,
-      "timestamp": "2026-07-10T09:33:22.815904Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 The AI-Fueled Stock Market Rally: Is It Sustainable?</b>\n\nThe S&P 500 has surged 18.2% YTD, wit",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "651"
-    },
-    {
-      "id": 1196,
-      "timestamp": "2026-07-10T09:33:23.709125Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **The AI-Fueled Stock Market Rally: Is It Sustainable?**\n\nThe S&P 500 has surged 18.2% YTD, with t",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1525072435139837984"
-    },
-    {
-      "id": 1197,
-      "timestamp": "2026-07-10T09:33:24.694224Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 The AI-Fueled Stock Market Rally: Is It Sustainable?\n\nThe S&P 500 has surged 18.2% YTD, with tech ",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1198,
-      "timestamp": "2026-07-10T09:33:25.775385Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 The AI-Fueled Stock Market Rally: Is It Sustainable?",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 1199,
-      "timestamp": "2026-07-10T09:33:27.513427Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$GOOGL Alphabet Inc.\n\n💰 368.53 (-1.0%) | 5D: -3.1%\n📊 RSI: 30.4 | MACD: bearish\n📈 MA20: $385.38 (belo",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1200,
-      "timestamp": "2026-07-10T09:33:27.739396Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🔴 $META — Meta Platforms, Inc. | $612.34 (+0.3%)\n\n**Setup:** correction in play → Bias: **BEARISH",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1525072454622384259"
-    },
     {
       "id": 1201,
       "timestamp": "2026-07-10T09:33:29.800265Z",
@@ -418,6 +348,81 @@
     {
       "id": 1212,
       "timestamp": "2026-07-10T16:27:02.397306Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1213,
+      "timestamp": "2026-07-11T07:54:13.770713Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Alert: AI-Driven Stocks and Cryptocurrencies Ignite a Global Bull Run</b>\n\nWe're witness",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "662"
+    },
+    {
+      "id": 1214,
+      "timestamp": "2026-07-11T07:54:14.674041Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Alert: AI-Driven Stocks and Cryptocurrencies Ignite a Global Bull Run**\n\nWe're witnessing",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1525409870751334481"
+    },
+    {
+      "id": 1215,
+      "timestamp": "2026-07-11T07:54:15.436755Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Alert: AI-Driven Stocks and Cryptocurrencies Ignite a Global Bull Run\n\nWe're witnessing a h",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1216,
+      "timestamp": "2026-07-11T07:54:17.037876Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Alert: AI-Driven Stocks and Cryptocurrencies Ignite a Global Bull Run",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1217,
+      "timestamp": "2026-07-11T07:54:17.638213Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$COIN Coinbase Global, Inc.\n\n💰 142.52 (-5.1%) | 5D: -13.6%\n📊 RSI: 35.9 | MACD: bearish\n📈 MA20: $164.",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1218,
+      "timestamp": "2026-07-11T07:54:18.055103Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟡 $GOOGL — Alphabet Inc. | $387.66 (-2.3%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n### 📊 T",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1525409886857330760"
+    },
+    {
+      "id": 1219,
+      "timestamp": "2026-07-11T07:54:21.217630Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1220,
+      "timestamp": "2026-07-11T07:54:55.024122Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
