@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-12T07:27:36.919656Z",
+  "generated_at": "2026-07-12T09:27:16.519002Z",
   "period": {
     "today": "2026-07-12",
     "yesterday": "2026-07-11",
@@ -7,13 +7,13 @@
     "month_ago": "2026-06-12"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 120,
-    "posts_month": 488,
+    "posts_today": 8,
+    "posts_week": 128,
+    "posts_month": 496,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 40.6
+    "success_rate": 40.5
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 18,
-      "month": 159,
-      "success": 157,
+      "today": 1,
+      "week": 19,
+      "month": 160,
+      "success": 158,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 32,
-      "month": 284,
-      "success": 278,
+      "today": 2,
+      "week": 34,
+      "month": 286,
+      "success": 280,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 28,
-      "month": 250,
+      "today": 2,
+      "week": 30,
+      "month": 252,
       "success": 37,
-      "failed": 213
+      "failed": 215
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 14,
-      "month": 132,
+      "today": 1,
+      "week": 15,
+      "month": 133,
       "success": 10,
-      "failed": 122
+      "failed": 123
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 28,
-      "month": 248,
+      "today": 2,
+      "week": 30,
+      "month": 250,
       "success": 4,
-      "failed": 244
+      "failed": 246
     }
   },
   "interactions_by_platform": {
@@ -220,12 +220,16 @@
     "2026-07-11": {
       "posts": 16,
       "interactions": 0
+    },
+    "2026-07-12": {
+      "posts": 8,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
     "10": 20,
     "16": 50,
-    "8": 24,
+    "8": 27,
     "15": 29,
     "9": 36,
     "12": 3,
@@ -236,81 +240,6 @@
     "7": 3
   },
   "recent_posts": [
-    {
-      "id": 1209,
-      "timestamp": "2026-07-10T16:26:26.470638Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 129.3 (+2.8%) | 5D: +20.5%\n📊 RSI: 48.5 | MACD: bullish\n📈 MA20: $",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1210,
-      "timestamp": "2026-07-10T16:26:26.729584Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟢 $PLTR — Palantir Technologies Inc. | $nan (+nan%)\n\n**Setup:** oversold bounce setup → Bias: **B",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1525176384899514441"
-    },
-    {
-      "id": 1211,
-      "timestamp": "2026-07-10T16:26:29.035048Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1212,
-      "timestamp": "2026-07-10T16:27:02.397306Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 1213,
-      "timestamp": "2026-07-11T07:54:13.770713Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Alert: AI-Driven Stocks and Cryptocurrencies Ignite a Global Bull Run</b>\n\nWe're witness",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "662"
-    },
-    {
-      "id": 1214,
-      "timestamp": "2026-07-11T07:54:14.674041Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Alert: AI-Driven Stocks and Cryptocurrencies Ignite a Global Bull Run**\n\nWe're witnessing",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1525409870751334481"
-    },
-    {
-      "id": 1215,
-      "timestamp": "2026-07-11T07:54:15.436755Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Alert: AI-Driven Stocks and Cryptocurrencies Ignite a Global Bull Run\n\nWe're witnessing a h",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1216,
-      "timestamp": "2026-07-11T07:54:17.037876Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Alert: AI-Driven Stocks and Cryptocurrencies Ignite a Global Bull Run",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 1217,
       "timestamp": "2026-07-11T07:54:17.638213Z",
@@ -417,6 +346,81 @@
     {
       "id": 1228,
       "timestamp": "2026-07-11T14:55:47.814926Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1229,
+      "timestamp": "2026-07-12T08:15:33.532022Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 A Market Paradox: Are We Witnessing a Global Bubble? </b>\n\nAs we navigate the current market la",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "667"
+    },
+    {
+      "id": 1230,
+      "timestamp": "2026-07-12T08:15:34.055133Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **A Market Paradox: Are We Witnessing a Global Bubble? **\n\nAs we navigate the current market lands",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1525777626411831297"
+    },
+    {
+      "id": 1231,
+      "timestamp": "2026-07-12T08:15:34.714524Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 A Market Paradox: Are We Witnessing a Global Bubble? \n\nAs we navigate the current market landscape",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1232,
+      "timestamp": "2026-07-12T08:15:35.573609Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 A Market Paradox: Are We Witnessing a Global Bubble? ",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1233,
+      "timestamp": "2026-07-12T08:15:36.413870Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 137.41 (+0.2%) | 5D: +2.8%\n📊 RSI: 40.0 | MACD: bullish\n📈 MA20: $",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1234,
+      "timestamp": "2026-07-12T08:15:36.726410Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟢 $NVDA — NVIDIA Corporation | $222.32 (-1.3%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n##",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1525777638264803452"
+    },
+    {
+      "id": 1235,
+      "timestamp": "2026-07-12T08:15:41.707039Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1236,
+      "timestamp": "2026-07-12T08:16:14.855687Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
