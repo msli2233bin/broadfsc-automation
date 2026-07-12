@@ -11646,5 +11646,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1237,
+    "timestamp": "2026-07-12T14:57:48.790126Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The Unlikely Catalyst: AI-Driven Growth Ignites a Rally in Small-Cap Tech</b>\n\nAs the S&P 500 c",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "668"
+  },
+  {
+    "id": 1238,
+    "timestamp": "2026-07-12T14:57:49.125643Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The Unlikely Catalyst: AI-Driven Growth Ignites a Rally in Small-Cap Tech**\n\nAs the S&P 500 cont",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1525878856903295147"
+  },
+  {
+    "id": 1239,
+    "timestamp": "2026-07-12T14:57:50.799519Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The Unlikely Catalyst: AI-Driven Growth Ignites a Rally in Small-Cap Tech\n\nAs the S&P 500 continue",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1240,
+    "timestamp": "2026-07-12T14:57:51.822100Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The Unlikely Catalyst: AI-Driven Growth Ignites a Rally in Small-Cap Tech",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1241,
+    "timestamp": "2026-07-12T14:57:52.688897Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$MSFT Microsoft Corporation\n\n💰 412.67 (-0.8%) | 5D: -0.9%\n📊 RSI: 49.7 | MACD: bearish\n📈 MA20: $414.6",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1242,
+    "timestamp": "2026-07-12T14:57:53.071637Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $GOOGL — Alphabet Inc. | $396.78 (-1.1%)\n\n**Setup:** overbought, watching for pullback → Bias: ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1525878873705939127"
+  },
+  {
+    "id": 1243,
+    "timestamp": "2026-07-12T14:57:55.006557Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1244,
+    "timestamp": "2026-07-12T14:58:26.677074Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
