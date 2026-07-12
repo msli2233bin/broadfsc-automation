@@ -146,3 +146,7 @@
 ## 07:42:29 | marketing/content_strategy
 - [marketing_insight] 📱 检测到营销洞察 (content_strategy)，建议生成新平台内容
 - [cross_domain_match] 🔗 跨域关联匹配: marketing/content_strategy 在 FUSION_INDEX 中有对应融合策略
+
+## 05:34:44 | finance/stock_analysis
+- [ta_signal_detected] 📈 检测到技术分析信号知识点 (stock_analysis)，建议销售Agent生成触发式外联话术
+- [cross_domain_match] 🔗 跨域关联匹配: finance/stock_analysis 在 FUSION_INDEX 中有对应融合策略
