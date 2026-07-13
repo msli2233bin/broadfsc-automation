@@ -29,10 +29,10 @@
 - [2026-06-25-tiktok_updates](marketing/2026-06-25-tiktok_updates.md) - marketing
 - [2026-06-16-tiktok_updates](marketing/2026-06-16-tiktok_updates.md) - marketing
 - [README](competitor/README.md) - competitor
+- [2026-07-13-competitor_webull](competitor/2026-07-13-competitor_webull.md) - competitor
 - [2026-06-22-competitor_webull](competitor/2026-06-22-competitor_webull.md) - competitor
 - [2026-06-15-industry_education](competitor/2026-06-15-industry_education.md) - competitor
 - [2026-05-11-competitor_etoro](competitor/2026-05-11-competitor_etoro.md) - competitor
-- [2026-05-04-industry_news](competitor/2026-05-04-industry_news.md) - competitor
 
 ## 使用说明
 
