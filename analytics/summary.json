@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-13T06:16:03.944955Z",
+  "generated_at": "2026-07-13T09:53:00.104470Z",
   "period": {
     "today": "2026-07-13",
     "yesterday": "2026-07-12",
@@ -7,13 +7,13 @@
     "month_ago": "2026-06-13"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 120,
-    "posts_month": 484,
+    "posts_today": 8,
+    "posts_week": 128,
+    "posts_month": 492,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 40.1
+    "success_rate": 40.0
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 18,
-      "month": 161,
-      "success": 159,
+      "today": 1,
+      "week": 19,
+      "month": 162,
+      "success": 160,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 32,
-      "month": 288,
-      "success": 282,
+      "today": 2,
+      "week": 34,
+      "month": 290,
+      "success": 284,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 28,
-      "month": 254,
+      "today": 2,
+      "week": 30,
+      "month": 256,
       "success": 37,
-      "failed": 217
+      "failed": 219
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 14,
-      "month": 134,
+      "today": 1,
+      "week": 15,
+      "month": 135,
       "success": 10,
-      "failed": 124
+      "failed": 125
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 28,
-      "month": 252,
+      "today": 2,
+      "week": 30,
+      "month": 254,
       "success": 4,
-      "failed": 248
+      "failed": 250
     }
   },
   "interactions_by_platform": {
@@ -220,12 +220,16 @@
     "2026-07-12": {
       "posts": 16,
       "interactions": 0
+    },
+    "2026-07-13": {
+      "posts": 8,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
     "8": 27,
     "15": 29,
-    "9": 36,
+    "9": 39,
     "12": 3,
     "18": 6,
     "11": 6,
@@ -236,81 +240,6 @@
     "7": 3
   },
   "recent_posts": [
-    {
-      "id": 1225,
-      "timestamp": "2026-07-11T14:55:11.471334Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$TSLA Tesla, Inc.\n\n💰 426.01 (+1.9%) | 5D: +0.9%\n📊 RSI: 61.5 | MACD: bearish\n📈 MA20: $409.26 (above)\n",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1226,
-      "timestamp": "2026-07-11T14:55:11.752225Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $447.58 (+8.1%)\n\n**Setup:** consolidation → Bias: **NEUTR",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1525515809332396143"
-    },
-    {
-      "id": 1227,
-      "timestamp": "2026-07-11T14:55:14.548067Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1228,
-      "timestamp": "2026-07-11T14:55:47.814926Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 1229,
-      "timestamp": "2026-07-12T08:15:33.532022Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 A Market Paradox: Are We Witnessing a Global Bubble? </b>\n\nAs we navigate the current market la",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "667"
-    },
-    {
-      "id": 1230,
-      "timestamp": "2026-07-12T08:15:34.055133Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **A Market Paradox: Are We Witnessing a Global Bubble? **\n\nAs we navigate the current market lands",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1525777626411831297"
-    },
-    {
-      "id": 1231,
-      "timestamp": "2026-07-12T08:15:34.714524Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 A Market Paradox: Are We Witnessing a Global Bubble? \n\nAs we navigate the current market landscape",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1232,
-      "timestamp": "2026-07-12T08:15:35.573609Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 A Market Paradox: Are We Witnessing a Global Bubble? ",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 1233,
       "timestamp": "2026-07-12T08:15:36.413870Z",
@@ -417,6 +346,81 @@
     {
       "id": 1244,
       "timestamp": "2026-07-12T14:58:26.677074Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1245,
+      "timestamp": "2026-07-13T09:24:35.846000Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Gold Bugs Rejoice: The Rise of the Safe Haven Trade</b>\n\nAs the market teeters on the edge of a",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "671"
+    },
+    {
+      "id": 1246,
+      "timestamp": "2026-07-13T09:24:36.562870Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Gold Bugs Rejoice: The Rise of the Safe Haven Trade**\n\nAs the market teeters on the edge of a ne",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1526157388254674954"
+    },
+    {
+      "id": 1247,
+      "timestamp": "2026-07-13T09:24:37.107134Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Gold Bugs Rejoice: The Rise of the Safe Haven Trade\n\nAs the market teeters on the edge of a new co",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1248,
+      "timestamp": "2026-07-13T09:24:38.292148Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Gold Bugs Rejoice: The Rise of the Safe Haven Trade",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1249,
+      "timestamp": "2026-07-13T09:24:39.362999Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$META Meta Platforms, Inc.\n\n💰 600.29 (+3.0%) | 5D: +9.1%\n📊 RSI: 57.4 | MACD: bullish\n📈 MA20: $575.17",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1250,
+      "timestamp": "2026-07-13T09:24:39.597228Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟢 $COIN — Coinbase Global, Inc. | $182.61 (-3.4%)\n\n**Setup:** oversold bounce setup → Bias: **BUL",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1526157402527895585"
+    },
+    {
+      "id": 1251,
+      "timestamp": "2026-07-13T09:24:41.974862Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1252,
+      "timestamp": "2026-07-13T09:25:12.677106Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
