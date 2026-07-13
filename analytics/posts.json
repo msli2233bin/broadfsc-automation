@@ -11816,5 +11816,80 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1526233735274565764"
+  },
+  {
+    "id": 1255,
+    "timestamp": "2026-07-13T16:34:53.696422Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Gold Rush: $5,600 in Sight? What We're Watching.</b>\n\nYellow metal touches 3-year high on Monda",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "679"
+  },
+  {
+    "id": 1256,
+    "timestamp": "2026-07-13T16:34:54.135516Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Gold Rush: $5,600 in Sight? What We're Watching.**\n\nYellow metal touches 3-year high on Monday, ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1526265675947966667"
+  },
+  {
+    "id": 1257,
+    "timestamp": "2026-07-13T16:34:54.604333Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Gold Rush: $5,600 in Sight? What We're Watching.\n\nYellow metal touches 3-year high on Monday, July",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1258,
+    "timestamp": "2026-07-13T16:34:55.405541Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Gold Rush: $5,600 in Sight? What We're Watching.",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1259,
+    "timestamp": "2026-07-13T16:34:56.130875Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AMD Advanced Micro Devices, Inc.\n\n💰 516.11 (-6.5%) | 5D: -4.3%\n📊 RSI: 45.3 | MACD: bearish\n📈 MA20: ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1260,
+    "timestamp": "2026-07-13T16:34:56.328721Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $META — Meta Platforms, Inc. | $597.63 (-0.5%)\n\n**Setup:** correction in play → Bias: **BEARISH",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1526265685922021489"
+  },
+  {
+    "id": 1261,
+    "timestamp": "2026-07-13T16:34:58.329174Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1262,
+    "timestamp": "2026-07-13T16:35:28.494358Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
