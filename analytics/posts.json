@@ -11721,5 +11721,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1245,
+    "timestamp": "2026-07-13T09:24:35.846000Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Gold Bugs Rejoice: The Rise of the Safe Haven Trade</b>\n\nAs the market teeters on the edge of a",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "671"
+  },
+  {
+    "id": 1246,
+    "timestamp": "2026-07-13T09:24:36.562870Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Gold Bugs Rejoice: The Rise of the Safe Haven Trade**\n\nAs the market teeters on the edge of a ne",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1526157388254674954"
+  },
+  {
+    "id": 1247,
+    "timestamp": "2026-07-13T09:24:37.107134Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Gold Bugs Rejoice: The Rise of the Safe Haven Trade\n\nAs the market teeters on the edge of a new co",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1248,
+    "timestamp": "2026-07-13T09:24:38.292148Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Gold Bugs Rejoice: The Rise of the Safe Haven Trade",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1249,
+    "timestamp": "2026-07-13T09:24:39.362999Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$META Meta Platforms, Inc.\n\n💰 600.29 (+3.0%) | 5D: +9.1%\n📊 RSI: 57.4 | MACD: bullish\n📈 MA20: $575.17",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1250,
+    "timestamp": "2026-07-13T09:24:39.597228Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $COIN — Coinbase Global, Inc. | $182.61 (-3.4%)\n\n**Setup:** oversold bounce setup → Bias: **BUL",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1526157402527895585"
+  },
+  {
+    "id": 1251,
+    "timestamp": "2026-07-13T09:24:41.974862Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1252,
+    "timestamp": "2026-07-13T09:25:12.677106Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
