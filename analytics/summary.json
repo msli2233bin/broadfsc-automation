@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-14T14:23:51.416080Z",
+  "generated_at": "2026-07-14T15:56:00.583078Z",
   "period": {
     "today": "2026-07-14",
     "yesterday": "2026-07-13",
@@ -7,9 +7,9 @@
     "month_ago": "2026-06-14"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 132,
-    "posts_month": 496,
+    "posts_today": 18,
+    "posts_week": 140,
+    "posts_month": 504,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 2,
-      "week": 21,
-      "month": 166,
-      "success": 164,
+      "today": 3,
+      "week": 22,
+      "month": 167,
+      "success": 165,
       "failed": 2
     },
     "discord": {
-      "today": 3,
-      "week": 36,
-      "month": 296,
-      "success": 290,
+      "today": 5,
+      "week": 38,
+      "month": 298,
+      "success": 292,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 30,
-      "month": 260,
+      "today": 4,
+      "week": 32,
+      "month": 262,
       "success": 37,
-      "failed": 223
+      "failed": 225
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 15,
-      "month": 137,
+      "today": 2,
+      "week": 16,
+      "month": 138,
       "success": 10,
-      "failed": 127
+      "failed": 128
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 30,
-      "month": 258,
+      "today": 4,
+      "week": 32,
+      "month": 260,
       "success": 4,
-      "failed": 254
+      "failed": 256
     }
   },
   "interactions_by_platform": {
@@ -222,13 +222,13 @@
       "interactions": 0
     },
     "2026-07-14": {
-      "posts": 10,
+      "posts": 18,
       "interactions": 0
     }
   },
   "hourly_distribution": {
     "9": 39,
-    "15": 26,
+    "15": 29,
     "12": 3,
     "18": 6,
     "11": 6,
@@ -240,83 +240,6 @@
     "7": 3
   },
   "recent_posts": [
-    {
-      "id": 1253,
-      "timestamp": "2026-07-13T14:27:58.411141Z",
-      "platform": "telegram_en",
-      "type": "earnings",
-      "content_preview": "<b>📊 Earnings Calendar: Week of Jul 13</b>\n\n\n📅 <b>Tuesday, Jul 14</b>\n  • Bank of America (BAC) @ $5",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "672"
-    },
-    {
-      "id": 1254,
-      "timestamp": "2026-07-13T14:27:58.745408Z",
-      "platform": "discord",
-      "type": "earnings",
-      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 13**\n\n\n📅 **Tuesday, Jul 14**\n  • B",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1526233735274565764"
-    },
-    {
-      "id": 1255,
-      "timestamp": "2026-07-13T16:34:53.696422Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Gold Rush: $5,600 in Sight? What We're Watching.</b>\n\nYellow metal touches 3-year high on Monda",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "679"
-    },
-    {
-      "id": 1256,
-      "timestamp": "2026-07-13T16:34:54.135516Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Gold Rush: $5,600 in Sight? What We're Watching.**\n\nYellow metal touches 3-year high on Monday, ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1526265675947966667"
-    },
-    {
-      "id": 1257,
-      "timestamp": "2026-07-13T16:34:54.604333Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Gold Rush: $5,600 in Sight? What We're Watching.\n\nYellow metal touches 3-year high on Monday, July",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1258,
-      "timestamp": "2026-07-13T16:34:55.405541Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Gold Rush: $5,600 in Sight? What We're Watching.",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 1259,
-      "timestamp": "2026-07-13T16:34:56.130875Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$AMD Advanced Micro Devices, Inc.\n\n💰 516.11 (-6.5%) | 5D: -4.3%\n📊 RSI: 45.3 | MACD: bearish\n📈 MA20: ",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1260,
-      "timestamp": "2026-07-13T16:34:56.328721Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🔴 $META — Meta Platforms, Inc. | $597.63 (-0.5%)\n\n**Setup:** correction in play → Bias: **BEARISH",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1526265685922021489"
-    },
     {
       "id": 1261,
       "timestamp": "2026-07-13T16:34:58.329174Z",
@@ -429,6 +352,81 @@
       "status": "success",
       "error_msg": "",
       "post_id": "1526580765754789899"
+    },
+    {
+      "id": 1273,
+      "timestamp": "2026-07-14T15:24:48.647901Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Momentum Shift: Is the Rally Over?</b>\n\nThe S&P 500 has rallied 13.5% since its March lo",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "690"
+    },
+    {
+      "id": 1274,
+      "timestamp": "2026-07-14T15:24:49.070503Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Momentum Shift: Is the Rally Over?**\n\nThe S&P 500 has rallied 13.5% since its March lows,",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1526610426928824350"
+    },
+    {
+      "id": 1275,
+      "timestamp": "2026-07-14T15:24:49.596281Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Momentum Shift: Is the Rally Over?\n\nThe S&P 500 has rallied 13.5% since its March lows, out",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1276,
+      "timestamp": "2026-07-14T15:24:50.648216Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Momentum Shift: Is the Rally Over?",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1277,
+      "timestamp": "2026-07-14T15:24:51.292367Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "\"As we navigate the complex world of stock analysis, it's essential to understand the different type",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1278,
+      "timestamp": "2026-07-14T15:24:51.522089Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $546.72 (+5.7%)\n\n**Setup:** consolidation → Bias: **NEUTR",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1526610437905453187"
+    },
+    {
+      "id": 1279,
+      "timestamp": "2026-07-14T15:24:56.833451Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1280,
+      "timestamp": "2026-07-14T15:25:29.884688Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
     }
   ],
   "recent_interactions": [
