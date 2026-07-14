@@ -1,0 +1,11 @@
+{
+  "platform": "telegram",
+  "topic": "AMZN_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "🟢 <b>$AMZN Technical Analysis</b> — Amazon.com, Inc.\n\n💰 Price: $247.31 (+0.8%) | Cap: $2.66T\n📊 Setup: <b>uptrend intact</b> | Bias: <b>BULLISH</b>\n\n<b>Indicators:</b>\n• RSI(14): 67.8\n• MACD: -1.08 (Signal: -2.88) — Bullish\n• BB: $228.81 — $252.16 (Position: 79.2%)\n• Volume: 0.6x average\n\n<b>Moving Averages:</b>\n• MA20: $240.48 | MA50: $253.72 | MA200: $241.37\n• Mixed alignment ⚠️\n\n<b>Performance:</b>\n• 1D: +0.8% | 5D: +1.3% | 20D: +2.4%\n\n<b>Key Levels:</b>\n• Resistance: $278.56\n• Support: $199.14\n\n<b>Trade Idea:</b>\nBreakout entry above $278.56 on volume confirmation\n\n📱 <b>Free daily TA signals</b> — message @BroadInvestBot",
+  "content_type": "single",
+  "symbol": "AMZN",
+  "created": "2026-07-14T06:00:56.543300",
+  "used": false,
+  "chart_paths": {}
+}
