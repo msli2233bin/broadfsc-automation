@@ -11891,5 +11891,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1263,
+    "timestamp": "2026-07-14T08:02:37.949255Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Main Street's Secret Sauce: Unpacking the S&P 500's 74.1 RSI Reading</b>\n\nAs we dive into the m",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "682"
+  },
+  {
+    "id": 1264,
+    "timestamp": "2026-07-14T08:02:38.465400Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Main Street's Secret Sauce: Unpacking the S&P 500's 74.1 RSI Reading**\n\nAs we dive into the mids",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1526499149078597693"
+  },
+  {
+    "id": 1265,
+    "timestamp": "2026-07-14T08:02:38.854671Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Main Street's Secret Sauce: Unpacking the S&P 500's 74.1 RSI Reading\n\nAs we dive into the midst of",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1266,
+    "timestamp": "2026-07-14T08:02:39.816702Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Main Street's Secret Sauce: Unpacking the S&P 500's 74.1 RSI Reading",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1267,
+    "timestamp": "2026-07-14T08:02:40.605853Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AAPL Apple Inc.\n\n💰 310.66 (-0.6%) | 5D: +10.3%\n📊 RSI: 59.5 | MACD: bullish\n📈 MA20: $295.04 (above)\n",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1268,
+    "timestamp": "2026-07-14T08:02:40.939860Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $COIN — Coinbase Global, Inc. | $163.22 (-6.2%)\n\n**Setup:** oversold bounce setup → Bias: **BUL",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1526499159970943057"
+  },
+  {
+    "id": 1269,
+    "timestamp": "2026-07-14T08:02:46.221666Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1270,
+    "timestamp": "2026-07-14T08:03:20.233371Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
