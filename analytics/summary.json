@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-07-13T23:28:09.373172Z",
+  "generated_at": "2026-07-14T00:54:04.532104Z",
   "period": {
-    "today": "2026-07-13",
-    "yesterday": "2026-07-12",
-    "week_ago": "2026-07-06",
-    "month_ago": "2026-06-13"
+    "today": "2026-07-14",
+    "yesterday": "2026-07-13",
+    "week_ago": "2026-07-07",
+    "month_ago": "2026-06-14"
   },
   "totals": {
-    "posts_today": 18,
-    "posts_week": 138,
-    "posts_month": 502,
+    "posts_today": 0,
+    "posts_week": 122,
+    "posts_month": 486,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 40.2
+    "success_rate": 40.3
   },
   "platforms": {
     "tiktok": {
@@ -24,22 +24,22 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 3,
-      "week": 21,
+      "today": 0,
+      "week": 19,
       "month": 164,
       "success": 162,
       "failed": 2
     },
     "discord": {
-      "today": 5,
-      "week": 37,
+      "today": 0,
+      "week": 33,
       "month": 293,
       "success": 287,
       "failed": 6
     },
     "mastodon": {
-      "today": 4,
-      "week": 32,
+      "today": 0,
+      "week": 28,
       "month": 258,
       "success": 37,
       "failed": 221
@@ -52,8 +52,8 @@
       "failed": 2
     },
     "threads": {
-      "today": 2,
-      "week": 16,
+      "today": 0,
+      "week": 14,
       "month": 136,
       "success": 10,
       "failed": 126
@@ -80,8 +80,8 @@
       "failed": 0
     },
     "hatena": {
-      "today": 4,
-      "week": 32,
+      "today": 0,
+      "week": 28,
       "month": 256,
       "success": 4,
       "failed": 252
@@ -101,10 +101,6 @@
   },
   "action_breakdown": {},
   "daily_trend": {
-    "2026-06-13": {
-      "posts": 16,
-      "interactions": 0
-    },
     "2026-06-14": {
       "posts": 16,
       "interactions": 0
@@ -227,14 +223,14 @@
     }
   },
   "hourly_distribution": {
-    "8": 27,
-    "15": 29,
     "9": 39,
+    "15": 26,
     "12": 3,
     "18": 6,
     "11": 6,
     "10": 15,
     "16": 48,
+    "8": 24,
     "14": 24,
     "13": 2,
     "7": 3
