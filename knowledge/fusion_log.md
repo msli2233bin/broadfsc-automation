@@ -157,3 +157,7 @@
 ## 08:54:10 | competitor/competitor_webull
 - [competitor_weakness] 🎯 检测到竞品弱点分析 (competitor_webull)，建议更新销售异议处理话术
 - [cross_domain_match] 🔗 跨域关联匹配: competitor/competitor_webull 在 FUSION_INDEX 中有对应融合策略
+
+## 06:13:25 | marketing/tiktok_updates
+- [marketing_insight] 📱 检测到营销洞察 (tiktok_updates)，建议生成新平台内容
+- [cross_domain_match] 🔗 跨域关联匹配: marketing/tiktok_updates 在 FUSION_INDEX 中有对应融合策略
