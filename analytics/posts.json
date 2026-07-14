@@ -11986,5 +11986,80 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1526580765754789899"
+  },
+  {
+    "id": 1273,
+    "timestamp": "2026-07-14T15:24:48.647901Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Momentum Shift: Is the Rally Over?</b>\n\nThe S&P 500 has rallied 13.5% since its March lo",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "690"
+  },
+  {
+    "id": 1274,
+    "timestamp": "2026-07-14T15:24:49.070503Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Momentum Shift: Is the Rally Over?**\n\nThe S&P 500 has rallied 13.5% since its March lows,",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1526610426928824350"
+  },
+  {
+    "id": 1275,
+    "timestamp": "2026-07-14T15:24:49.596281Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Momentum Shift: Is the Rally Over?\n\nThe S&P 500 has rallied 13.5% since its March lows, out",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1276,
+    "timestamp": "2026-07-14T15:24:50.648216Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Momentum Shift: Is the Rally Over?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1277,
+    "timestamp": "2026-07-14T15:24:51.292367Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "\"As we navigate the complex world of stock analysis, it's essential to understand the different type",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1278,
+    "timestamp": "2026-07-14T15:24:51.522089Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $546.72 (+5.7%)\n\n**Setup:** consolidation → Bias: **NEUTR",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1526610437905453187"
+  },
+  {
+    "id": 1279,
+    "timestamp": "2026-07-14T15:24:56.833451Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1280,
+    "timestamp": "2026-07-14T15:25:29.884688Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
