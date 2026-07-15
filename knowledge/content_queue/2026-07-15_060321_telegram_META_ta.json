@@ -1,0 +1,11 @@
+{
+  "platform": "telegram",
+  "topic": "META_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "🟢 <b>$META Technical Analysis</b> — Meta Platforms, Inc.\n\n💰 Price: $661.04 (+0.7%) | Cap: $1.68T\n📊 Setup: <b>uptrend intact</b> | Bias: <b>BULLISH</b>\n\n<b>Indicators:</b>\n• RSI(14): 70.0\n• MACD: 14.97 (Signal: 3.36) — Bullish\n• BB: $517.95 — $669.5 (Position: 94.4%)\n• Volume: 0.8x average\n\n<b>Moving Averages:</b>\n• MA20: $593.72 | MA50: $600.84 | MA200: $611.72\n• Price above all MAs ✅\n\n<b>Performance:</b>\n• 1D: +0.7% | 5D: +7.4% | 20D: +16.7%\n\n<b>Key Levels:</b>\n• Resistance: $690.88\n• Support: $519.78\n\n<b>Trade Idea:</b>\nBreakout entry above $690.88 on volume confirmation\n\n📱 <b>Free daily TA signals</b> — message @BroadInvestBot",
+  "content_type": "single",
+  "symbol": "META",
+  "created": "2026-07-15T06:03:21.429010",
+  "used": false,
+  "chart_paths": {}
+}

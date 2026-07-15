@@ -1,0 +1,11 @@
+{
+  "platform": "twitter",
+  "topic": "AAPL_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "1/ $AAPL 🔴 nan (+nan%) | $4.62T\n\nCONSOLIDATION. momentum zone (RSI 66.2), MACD bullish, above signal. trend strong, watch OB.---THREAD_BREAK---2/ KEY LEVELS:\nResistance: $323.45\nSupport: $245.28\nMA20: $nan (below)\n5D: +nan% | 20D: +nan%\nVol: 0.6x avg---THREAD_BREAK---3/ SETUP: NEUTRAL\nBB position: nan%\n\nCompression → breakout imminent---THREAD_BREAK---4/ TRADE: Only enter with confirmation. Respect the levels.\n\n📱 More $AAPL signals + 4 more stocks: t.me/BroadInvestBot",
+  "content_type": "thread",
+  "symbol": "AAPL",
+  "created": "2026-07-15T06:03:22.003734",
+  "used": false,
+  "chart_paths": {}
+}
