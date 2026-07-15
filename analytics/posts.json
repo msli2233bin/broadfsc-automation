@@ -12156,5 +12156,80 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1526943749157163008"
+  },
+  {
+    "id": 1291,
+    "timestamp": "2026-07-15T15:27:21.590669Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The Goldilocks Market: Not Too Hot, Not Too Cold, but Just Right?</b>\n\nWe're 10% above the 2023",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "701"
+  },
+  {
+    "id": 1292,
+    "timestamp": "2026-07-15T15:27:22.027966Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The Goldilocks Market: Not Too Hot, Not Too Cold, but Just Right?**\n\nWe're 10% above the 2023 lo",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1526973456535523349"
+  },
+  {
+    "id": 1293,
+    "timestamp": "2026-07-15T15:27:23.092442Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The Goldilocks Market: Not Too Hot, Not Too Cold, but Just Right?\n\nWe're 10% above the 2023 lows, ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1294,
+    "timestamp": "2026-07-15T15:27:24.324426Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The Goldilocks Market: Not Too Hot, Not Too Cold, but Just Right?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1295,
+    "timestamp": "2026-07-15T15:27:25.212615Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "\"Mastodon's decentralized nature offers a refreshing alternative to traditional social media platfor",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1296,
+    "timestamp": "2026-07-15T15:27:25.557214Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "\"Hey traders, let's talk about staying adaptable in a rapidly changing market. Just like how Discord",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1526973471366844520"
+  },
+  {
+    "id": 1297,
+    "timestamp": "2026-07-15T15:27:27.907712Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1298,
+    "timestamp": "2026-07-15T15:28:01.019226Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
