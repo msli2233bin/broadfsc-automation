@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-15T12:51:08.116216Z",
+  "generated_at": "2026-07-15T14:48:19.533634Z",
   "period": {
     "today": "2026-07-15",
     "yesterday": "2026-07-14",
@@ -7,13 +7,13 @@
     "month_ago": "2026-06-15"
   },
   "totals": {
-    "posts_today": 8,
-    "posts_week": 130,
-    "posts_month": 496,
+    "posts_today": 10,
+    "posts_week": 132,
+    "posts_month": 498,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 40.5
+    "success_rate": 40.8
   },
   "platforms": {
     "tiktok": {
@@ -24,17 +24,17 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 20,
-      "month": 168,
-      "success": 166,
+      "today": 2,
+      "week": 21,
+      "month": 169,
+      "success": 167,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 35,
-      "month": 300,
-      "success": 294,
+      "today": 3,
+      "week": 36,
+      "month": 301,
+      "success": 295,
       "failed": 6
     },
     "mastodon": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-07-15": {
-      "posts": 8,
+      "posts": 10,
       "interactions": 0
     }
   },
@@ -236,28 +236,10 @@
     "15": 26,
     "9": 36,
     "14": 24,
-    "13": 4,
+    "13": 6,
     "7": 3
   },
   "recent_posts": [
-    {
-      "id": 1269,
-      "timestamp": "2026-07-14T08:02:46.221666Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1270,
-      "timestamp": "2026-07-14T08:03:20.233371Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
     {
       "id": 1271,
       "timestamp": "2026-07-14T13:26:56.902240Z",
@@ -427,6 +409,26 @@
       "content_preview": "Hatena Blog post",
       "status": "failed",
       "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1289,
+      "timestamp": "2026-07-15T13:29:18.317484Z",
+      "platform": "telegram_en",
+      "type": "earnings",
+      "content_preview": "<b>📊 Earnings Calendar: Week of Jul 15</b>\n\n\n📅 <b>Wednesday, Jul 15</b>\n  • ASML (ASML) @ $nan | EPS",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "694"
+    },
+    {
+      "id": 1290,
+      "timestamp": "2026-07-15T13:29:19.221108Z",
+      "platform": "discord",
+      "type": "earnings",
+      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 15**\n\n\n📅 **Wednesday, Jul 15**\n  •",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1526943749157163008"
     }
   ],
   "recent_interactions": [
