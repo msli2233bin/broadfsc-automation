@@ -12136,5 +12136,25 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1289,
+    "timestamp": "2026-07-15T13:29:18.317484Z",
+    "platform": "telegram_en",
+    "type": "earnings",
+    "content_preview": "<b>📊 Earnings Calendar: Week of Jul 15</b>\n\n\n📅 <b>Wednesday, Jul 15</b>\n  • ASML (ASML) @ $nan | EPS",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "694"
+  },
+  {
+    "id": 1290,
+    "timestamp": "2026-07-15T13:29:19.221108Z",
+    "platform": "discord",
+    "type": "earnings",
+    "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 15**\n\n\n📅 **Wednesday, Jul 15**\n  •",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1526943749157163008"
   }
 ]
