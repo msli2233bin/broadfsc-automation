@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-15T14:48:19.533634Z",
+  "generated_at": "2026-07-15T16:19:59.103274Z",
   "period": {
     "today": "2026-07-15",
     "yesterday": "2026-07-14",
@@ -7,13 +7,13 @@
     "month_ago": "2026-06-15"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 132,
-    "posts_month": 498,
+    "posts_today": 18,
+    "posts_week": 140,
+    "posts_month": 506,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 40.8
+    "success_rate": 40.7
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 2,
-      "week": 21,
-      "month": 169,
-      "success": 167,
+      "today": 3,
+      "week": 22,
+      "month": 170,
+      "success": 168,
       "failed": 2
     },
     "discord": {
-      "today": 3,
-      "week": 36,
-      "month": 301,
-      "success": 295,
+      "today": 5,
+      "week": 38,
+      "month": 303,
+      "success": 297,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 30,
-      "month": 264,
+      "today": 4,
+      "week": 32,
+      "month": 266,
       "success": 37,
-      "failed": 227
+      "failed": 229
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 15,
-      "month": 139,
+      "today": 2,
+      "week": 16,
+      "month": 140,
       "success": 10,
-      "failed": 129
+      "failed": 130
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 30,
-      "month": 262,
+      "today": 4,
+      "week": 32,
+      "month": 264,
       "success": 4,
-      "failed": 258
+      "failed": 260
     }
   },
   "interactions_by_platform": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-07-15": {
-      "posts": 10,
+      "posts": 18,
       "interactions": 0
     }
   },
@@ -233,90 +233,13 @@
     "10": 15,
     "16": 48,
     "8": 30,
-    "15": 26,
+    "15": 29,
     "9": 36,
     "14": 24,
     "13": 6,
     "7": 3
   },
   "recent_posts": [
-    {
-      "id": 1271,
-      "timestamp": "2026-07-14T13:26:56.902240Z",
-      "platform": "telegram_en",
-      "type": "earnings",
-      "content_preview": "<b>📊 Earnings Calendar: Week of Jul 14</b>\n\n\n📅 <b>Tuesday, Jul 14</b>\n  • Bank of America (BAC) @ $5",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "683"
-    },
-    {
-      "id": 1272,
-      "timestamp": "2026-07-14T13:26:57.447241Z",
-      "platform": "discord",
-      "type": "earnings",
-      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 14**\n\n\n📅 **Tuesday, Jul 14**\n  • B",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1526580765754789899"
-    },
-    {
-      "id": 1273,
-      "timestamp": "2026-07-14T15:24:48.647901Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Momentum Shift: Is the Rally Over?</b>\n\nThe S&P 500 has rallied 13.5% since its March lo",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "690"
-    },
-    {
-      "id": 1274,
-      "timestamp": "2026-07-14T15:24:49.070503Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Momentum Shift: Is the Rally Over?**\n\nThe S&P 500 has rallied 13.5% since its March lows,",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1526610426928824350"
-    },
-    {
-      "id": 1275,
-      "timestamp": "2026-07-14T15:24:49.596281Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Momentum Shift: Is the Rally Over?\n\nThe S&P 500 has rallied 13.5% since its March lows, out",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1276,
-      "timestamp": "2026-07-14T15:24:50.648216Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Momentum Shift: Is the Rally Over?",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 1277,
-      "timestamp": "2026-07-14T15:24:51.292367Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "\"As we navigate the complex world of stock analysis, it's essential to understand the different type",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1278,
-      "timestamp": "2026-07-14T15:24:51.522089Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $546.72 (+5.7%)\n\n**Setup:** consolidation → Bias: **NEUTR",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1526610437905453187"
-    },
     {
       "id": 1279,
       "timestamp": "2026-07-14T15:24:56.833451Z",
@@ -429,6 +352,81 @@
       "status": "success",
       "error_msg": "",
       "post_id": "1526943749157163008"
+    },
+    {
+      "id": 1291,
+      "timestamp": "2026-07-15T15:27:21.590669Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 The Goldilocks Market: Not Too Hot, Not Too Cold, but Just Right?</b>\n\nWe're 10% above the 2023",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "701"
+    },
+    {
+      "id": 1292,
+      "timestamp": "2026-07-15T15:27:22.027966Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **The Goldilocks Market: Not Too Hot, Not Too Cold, but Just Right?**\n\nWe're 10% above the 2023 lo",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1526973456535523349"
+    },
+    {
+      "id": 1293,
+      "timestamp": "2026-07-15T15:27:23.092442Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 The Goldilocks Market: Not Too Hot, Not Too Cold, but Just Right?\n\nWe're 10% above the 2023 lows, ",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1294,
+      "timestamp": "2026-07-15T15:27:24.324426Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 The Goldilocks Market: Not Too Hot, Not Too Cold, but Just Right?",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1295,
+      "timestamp": "2026-07-15T15:27:25.212615Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "\"Mastodon's decentralized nature offers a refreshing alternative to traditional social media platfor",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1296,
+      "timestamp": "2026-07-15T15:27:25.557214Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "\"Hey traders, let's talk about staying adaptable in a rapidly changing market. Just like how Discord",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1526973471366844520"
+    },
+    {
+      "id": 1297,
+      "timestamp": "2026-07-15T15:27:27.907712Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1298,
+      "timestamp": "2026-07-15T15:28:01.019226Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
     }
   ],
   "recent_interactions": [
