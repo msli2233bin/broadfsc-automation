@@ -12061,5 +12061,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1281,
+    "timestamp": "2026-07-15T08:07:56.875010Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Tech Stocks in Turbulence: A Data-Driven Analysis of the Nasdaq's Recent Drop</b>\n\nThe Nasdaq C",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "693"
+  },
+  {
+    "id": 1282,
+    "timestamp": "2026-07-15T08:07:57.427488Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Tech Stocks in Turbulence: A Data-Driven Analysis of the Nasdaq's Recent Drop**\n\nThe Nasdaq Comp",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1526862874557808748"
+  },
+  {
+    "id": 1283,
+    "timestamp": "2026-07-15T08:07:57.789138Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Tech Stocks in Turbulence: A Data-Driven Analysis of the Nasdaq's Recent Drop\n\nThe Nasdaq Composit",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1284,
+    "timestamp": "2026-07-15T08:07:58.643495Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Tech Stocks in Turbulence: A Data-Driven Analysis of the Nasdaq's Recent Drop",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1285,
+    "timestamp": "2026-07-15T08:07:59.490504Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AMD Advanced Micro Devices, Inc.\n\n💰 540.88 (-6.9%) | 5D: +4.1%\n📊 RSI: 63.2 | MACD: bearish\n📈 MA20: ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1286,
+    "timestamp": "2026-07-15T08:07:59.741514Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $META — Meta Platforms, Inc. | $603.12 (-2.0%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1526862885538762762"
+  },
+  {
+    "id": 1287,
+    "timestamp": "2026-07-15T08:08:01.990901Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1288,
+    "timestamp": "2026-07-15T08:08:13.640763Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
