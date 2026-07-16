@@ -12326,5 +12326,80 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1527309564826091601"
+  },
+  {
+    "id": 1309,
+    "timestamp": "2026-07-16T15:39:50.416523Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Insight: AI-Driven Nasdaq Breaks Out, But is it a Warning?</b>\n\nAs the Nasdaq breaks out",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "712"
+  },
+  {
+    "id": 1310,
+    "timestamp": "2026-07-16T15:39:50.836618Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Insight: AI-Driven Nasdaq Breaks Out, But is it a Warning?**\n\nAs the Nasdaq breaks out to",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1527338984890568734"
+  },
+  {
+    "id": 1311,
+    "timestamp": "2026-07-16T15:39:51.698163Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: AI-Driven Nasdaq Breaks Out, But is it a Warning?\n\nAs the Nasdaq breaks out to new",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1312,
+    "timestamp": "2026-07-16T15:39:53.392296Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: AI-Driven Nasdaq Breaks Out, But is it a Warning?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1313,
+    "timestamp": "2026-07-16T15:39:54.134467Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$TSLA Tesla, Inc.\n\n💰 419.77 (+6.7%) | 5D: +10.6%\n📊 RSI: 54.0 | MACD: bullish\n📈 MA20: $399.22 (above)",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1314,
+    "timestamp": "2026-07-16T15:39:54.508009Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $GOOGL — Alphabet Inc. | $357.77 (+0.4%)\n\n**Setup:** oversold bounce setup → Bias: **BULLISH**\n",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1527339000312889546"
+  },
+  {
+    "id": 1315,
+    "timestamp": "2026-07-16T15:39:57.868920Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1316,
+    "timestamp": "2026-07-16T15:40:21.445684Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
