@@ -12231,5 +12231,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1299,
+    "timestamp": "2026-07-16T08:11:08.894615Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Insight: Riding the Growth Wave, But Be Cautious of Overbought</b>\n\nAs we navigate the c",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "704"
+  },
+  {
+    "id": 1300,
+    "timestamp": "2026-07-16T08:11:09.247261Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Insight: Riding the Growth Wave, But Be Cautious of Overbought**\n\nAs we navigate the curr",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1527226067797151745"
+  },
+  {
+    "id": 1301,
+    "timestamp": "2026-07-16T08:11:09.869052Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: Riding the Growth Wave, But Be Cautious of Overbought\n\nAs we navigate the current ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1302,
+    "timestamp": "2026-07-16T08:11:11.120323Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: Riding the Growth Wave, But Be Cautious of Overbought",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1303,
+    "timestamp": "2026-07-16T08:11:11.770919Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 135.14 (+0.9%) | 5D: -1.3%\n📊 RSI: 42.5 | MACD: bearish\n📈 MA20: $",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1304,
+    "timestamp": "2026-07-16T08:11:12.021570Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $COIN — Coinbase Global, Inc. | $146.19 (-3.6%)\n\n**Setup:** correction in play → Bias: **BEARIS",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1527226079931138178"
+  },
+  {
+    "id": 1305,
+    "timestamp": "2026-07-16T08:11:16.454829Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1306,
+    "timestamp": "2026-07-16T08:11:49.089133Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
