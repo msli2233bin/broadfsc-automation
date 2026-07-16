@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-16T12:58:15.992866Z",
+  "generated_at": "2026-07-16T15:07:29.429323Z",
   "period": {
     "today": "2026-07-16",
     "yesterday": "2026-07-15",
@@ -7,13 +7,13 @@
     "month_ago": "2026-06-16"
   },
   "totals": {
-    "posts_today": 8,
-    "posts_week": 130,
-    "posts_month": 498,
+    "posts_today": 10,
+    "posts_week": 132,
+    "posts_month": 500,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 40.8
+    "success_rate": 41.0
   },
   "platforms": {
     "tiktok": {
@@ -24,17 +24,17 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 20,
-      "month": 171,
-      "success": 169,
+      "today": 2,
+      "week": 21,
+      "month": 172,
+      "success": 170,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 35,
-      "month": 305,
-      "success": 299,
+      "today": 3,
+      "week": 36,
+      "month": 306,
+      "success": 300,
       "failed": 6
     },
     "mastodon": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-07-16": {
-      "posts": 8,
+      "posts": 10,
       "interactions": 0
     }
   },
@@ -235,28 +235,10 @@
     "15": 29,
     "9": 36,
     "14": 24,
-    "13": 6,
+    "13": 8,
     "7": 3
   },
   "recent_posts": [
-    {
-      "id": 1287,
-      "timestamp": "2026-07-15T08:08:01.990901Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1288,
-      "timestamp": "2026-07-15T08:08:13.640763Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
     {
       "id": 1289,
       "timestamp": "2026-07-15T13:29:18.317484Z",
@@ -426,6 +408,26 @@
       "content_preview": "Hatena Blog post",
       "status": "failed",
       "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1307,
+      "timestamp": "2026-07-16T13:42:56.099074Z",
+      "platform": "telegram_en",
+      "type": "earnings",
+      "content_preview": "<b>📊 Earnings Calendar: Week of Jul 16</b>\n\n\n📅 <b>Thursday, Jul 16</b>\n  • GE Aerospace (GE) @ $348.",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "705"
+    },
+    {
+      "id": 1308,
+      "timestamp": "2026-07-16T13:42:56.471812Z",
+      "platform": "discord",
+      "type": "earnings",
+      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 16**\n\n\n📅 **Thursday, Jul 16**\n  • ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1527309564826091601"
     }
   ],
   "recent_interactions": [
