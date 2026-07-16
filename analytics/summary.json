@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-16T06:41:38.747842Z",
+  "generated_at": "2026-07-16T09:11:45.055982Z",
   "period": {
     "today": "2026-07-16",
     "yesterday": "2026-07-15",
@@ -7,9 +7,9 @@
     "month_ago": "2026-06-16"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 122,
-    "posts_month": 490,
+    "posts_today": 8,
+    "posts_week": 130,
+    "posts_month": 498,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 19,
-      "month": 170,
-      "success": 168,
+      "today": 1,
+      "week": 20,
+      "month": 171,
+      "success": 169,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 33,
-      "month": 303,
-      "success": 297,
+      "today": 2,
+      "week": 35,
+      "month": 305,
+      "success": 299,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 28,
-      "month": 266,
+      "today": 2,
+      "week": 30,
+      "month": 268,
       "success": 37,
-      "failed": 229
+      "failed": 231
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 14,
-      "month": 140,
+      "today": 1,
+      "week": 15,
+      "month": 141,
       "success": 10,
-      "failed": 130
+      "failed": 131
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 28,
-      "month": 264,
+      "today": 2,
+      "week": 30,
+      "month": 266,
       "success": 4,
-      "failed": 260
+      "failed": 262
     }
   },
   "interactions_by_platform": {
@@ -220,6 +220,10 @@
     "2026-07-15": {
       "posts": 18,
       "interactions": 0
+    },
+    "2026-07-16": {
+      "posts": 8,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
@@ -227,7 +231,7 @@
     "18": 3,
     "10": 15,
     "16": 48,
-    "8": 30,
+    "8": 33,
     "15": 29,
     "9": 36,
     "14": 24,
@@ -235,81 +239,6 @@
     "7": 3
   },
   "recent_posts": [
-    {
-      "id": 1279,
-      "timestamp": "2026-07-14T15:24:56.833451Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1280,
-      "timestamp": "2026-07-14T15:25:29.884688Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 1281,
-      "timestamp": "2026-07-15T08:07:56.875010Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Tech Stocks in Turbulence: A Data-Driven Analysis of the Nasdaq's Recent Drop</b>\n\nThe Nasdaq C",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "693"
-    },
-    {
-      "id": 1282,
-      "timestamp": "2026-07-15T08:07:57.427488Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Tech Stocks in Turbulence: A Data-Driven Analysis of the Nasdaq's Recent Drop**\n\nThe Nasdaq Comp",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1526862874557808748"
-    },
-    {
-      "id": 1283,
-      "timestamp": "2026-07-15T08:07:57.789138Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Tech Stocks in Turbulence: A Data-Driven Analysis of the Nasdaq's Recent Drop\n\nThe Nasdaq Composit",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1284,
-      "timestamp": "2026-07-15T08:07:58.643495Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Tech Stocks in Turbulence: A Data-Driven Analysis of the Nasdaq's Recent Drop",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 1285,
-      "timestamp": "2026-07-15T08:07:59.490504Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$AMD Advanced Micro Devices, Inc.\n\n💰 540.88 (-6.9%) | 5D: +4.1%\n📊 RSI: 63.2 | MACD: bearish\n📈 MA20: ",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1286,
-      "timestamp": "2026-07-15T08:07:59.741514Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟢 $META — Meta Platforms, Inc. | $603.12 (-2.0%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1526862885538762762"
-    },
     {
       "id": 1287,
       "timestamp": "2026-07-15T08:08:01.990901Z",
@@ -417,6 +346,81 @@
     {
       "id": 1298,
       "timestamp": "2026-07-15T15:28:01.019226Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1299,
+      "timestamp": "2026-07-16T08:11:08.894615Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Insight: Riding the Growth Wave, But Be Cautious of Overbought</b>\n\nAs we navigate the c",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "704"
+    },
+    {
+      "id": 1300,
+      "timestamp": "2026-07-16T08:11:09.247261Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Insight: Riding the Growth Wave, But Be Cautious of Overbought**\n\nAs we navigate the curr",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1527226067797151745"
+    },
+    {
+      "id": 1301,
+      "timestamp": "2026-07-16T08:11:09.869052Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Insight: Riding the Growth Wave, But Be Cautious of Overbought\n\nAs we navigate the current ",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1302,
+      "timestamp": "2026-07-16T08:11:11.120323Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Insight: Riding the Growth Wave, But Be Cautious of Overbought",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1303,
+      "timestamp": "2026-07-16T08:11:11.770919Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 135.14 (+0.9%) | 5D: -1.3%\n📊 RSI: 42.5 | MACD: bearish\n📈 MA20: $",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1304,
+      "timestamp": "2026-07-16T08:11:12.021570Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🔴 $COIN — Coinbase Global, Inc. | $146.19 (-3.6%)\n\n**Setup:** correction in play → Bias: **BEARIS",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1527226079931138178"
+    },
+    {
+      "id": 1305,
+      "timestamp": "2026-07-16T08:11:16.454829Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1306,
+      "timestamp": "2026-07-16T08:11:49.089133Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
