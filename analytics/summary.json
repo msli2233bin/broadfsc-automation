@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-17T06:36:56.792255Z",
+  "generated_at": "2026-07-17T09:07:23.726208Z",
   "period": {
     "today": "2026-07-17",
     "yesterday": "2026-07-16",
@@ -7,13 +7,13 @@
     "month_ago": "2026-06-17"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 122,
-    "posts_month": 492,
+    "posts_today": 8,
+    "posts_week": 130,
+    "posts_month": 500,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 41.1
+    "success_rate": 41.0
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 19,
-      "month": 173,
-      "success": 171,
+      "today": 1,
+      "week": 20,
+      "month": 174,
+      "success": 172,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 33,
-      "month": 308,
-      "success": 302,
+      "today": 2,
+      "week": 35,
+      "month": 310,
+      "success": 304,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 28,
-      "month": 270,
+      "today": 2,
+      "week": 30,
+      "month": 272,
       "success": 37,
-      "failed": 233
+      "failed": 235
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 14,
-      "month": 142,
+      "today": 1,
+      "week": 15,
+      "month": 143,
       "success": 10,
-      "failed": 132
+      "failed": 133
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 28,
-      "month": 268,
+      "today": 2,
+      "week": 30,
+      "month": 270,
       "success": 4,
-      "failed": 264
+      "failed": 266
     }
   },
   "interactions_by_platform": {
@@ -220,12 +220,16 @@
     "2026-07-16": {
       "posts": 18,
       "interactions": 0
+    },
+    "2026-07-17": {
+      "posts": 8,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
     "10": 15,
     "16": 48,
-    "8": 33,
+    "8": 36,
     "15": 32,
     "9": 36,
     "11": 3,
@@ -234,81 +238,6 @@
     "7": 3
   },
   "recent_posts": [
-    {
-      "id": 1297,
-      "timestamp": "2026-07-15T15:27:27.907712Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1298,
-      "timestamp": "2026-07-15T15:28:01.019226Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 1299,
-      "timestamp": "2026-07-16T08:11:08.894615Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Insight: Riding the Growth Wave, But Be Cautious of Overbought</b>\n\nAs we navigate the c",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "704"
-    },
-    {
-      "id": 1300,
-      "timestamp": "2026-07-16T08:11:09.247261Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Insight: Riding the Growth Wave, But Be Cautious of Overbought**\n\nAs we navigate the curr",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1527226067797151745"
-    },
-    {
-      "id": 1301,
-      "timestamp": "2026-07-16T08:11:09.869052Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Insight: Riding the Growth Wave, But Be Cautious of Overbought\n\nAs we navigate the current ",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1302,
-      "timestamp": "2026-07-16T08:11:11.120323Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Insight: Riding the Growth Wave, But Be Cautious of Overbought",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 1303,
-      "timestamp": "2026-07-16T08:11:11.770919Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 135.14 (+0.9%) | 5D: -1.3%\n📊 RSI: 42.5 | MACD: bearish\n📈 MA20: $",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1304,
-      "timestamp": "2026-07-16T08:11:12.021570Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🔴 $COIN — Coinbase Global, Inc. | $146.19 (-3.6%)\n\n**Setup:** correction in play → Bias: **BEARIS",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1527226079931138178"
-    },
     {
       "id": 1305,
       "timestamp": "2026-07-16T08:11:16.454829Z",
@@ -416,6 +345,81 @@
     {
       "id": 1316,
       "timestamp": "2026-07-16T15:40:21.445684Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1317,
+      "timestamp": "2026-07-17T08:08:19.193101Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Alert: The Great Rotation</b>\n\nThe Nasdaq's 77.8 reading on the RSI indicator has offici",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "715"
+    },
+    {
+      "id": 1318,
+      "timestamp": "2026-07-17T08:08:19.652597Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Alert: The Great Rotation**\n\nThe Nasdaq's 77.8 reading on the RSI indicator has officiall",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1527587744061194240"
+    },
+    {
+      "id": 1319,
+      "timestamp": "2026-07-17T08:08:20.059061Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Alert: The Great Rotation\n\nThe Nasdaq's 77.8 reading on the RSI indicator has officially de",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1320,
+      "timestamp": "2026-07-17T08:08:21.094517Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Alert: The Great Rotation",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1321,
+      "timestamp": "2026-07-17T08:08:21.656664Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$TSLA Tesla, Inc.\n\n💰 411.84 (+8.5%) | 5D: +1.7%\n📊 RSI: 51.0 | MACD: bearish\n📈 MA20: $400.36 (above)\n",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1322,
+      "timestamp": "2026-07-17T08:08:21.928763Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟢 $AMZN — Amazon.com, Inc. | $244.39 (+2.9%)\n\n**Setup:** oversold bounce setup → Bias: **BULLISH*",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1527587753859223595"
+    },
+    {
+      "id": 1323,
+      "timestamp": "2026-07-17T08:08:25.897883Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1324,
+      "timestamp": "2026-07-17T08:08:59.668813Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
