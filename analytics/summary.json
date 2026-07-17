@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-17T14:42:25.746044Z",
+  "generated_at": "2026-07-17T16:14:17.500602Z",
   "period": {
     "today": "2026-07-17",
     "yesterday": "2026-07-16",
@@ -7,9 +7,9 @@
     "month_ago": "2026-06-17"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 132,
-    "posts_month": 502,
+    "posts_today": 18,
+    "posts_week": 140,
+    "posts_month": 510,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 2,
-      "week": 21,
-      "month": 175,
-      "success": 173,
+      "today": 3,
+      "week": 22,
+      "month": 176,
+      "success": 174,
       "failed": 2
     },
     "discord": {
-      "today": 3,
-      "week": 36,
-      "month": 311,
-      "success": 305,
+      "today": 5,
+      "week": 38,
+      "month": 313,
+      "success": 307,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 30,
-      "month": 272,
+      "today": 4,
+      "week": 32,
+      "month": 274,
       "success": 37,
-      "failed": 235
+      "failed": 237
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 15,
-      "month": 143,
+      "today": 2,
+      "week": 16,
+      "month": 144,
       "success": 10,
-      "failed": 133
+      "failed": 134
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 30,
-      "month": 270,
+      "today": 4,
+      "week": 32,
+      "month": 272,
       "success": 4,
-      "failed": 266
+      "failed": 268
     }
   },
   "interactions_by_platform": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-07-17": {
-      "posts": 10,
+      "posts": 18,
       "interactions": 0
     }
   },
@@ -230,7 +230,7 @@
     "10": 15,
     "16": 48,
     "8": 36,
-    "15": 32,
+    "15": 35,
     "9": 36,
     "11": 3,
     "14": 24,
@@ -238,83 +238,6 @@
     "7": 3
   },
   "recent_posts": [
-    {
-      "id": 1307,
-      "timestamp": "2026-07-16T13:42:56.099074Z",
-      "platform": "telegram_en",
-      "type": "earnings",
-      "content_preview": "<b>📊 Earnings Calendar: Week of Jul 16</b>\n\n\n📅 <b>Thursday, Jul 16</b>\n  • GE Aerospace (GE) @ $348.",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "705"
-    },
-    {
-      "id": 1308,
-      "timestamp": "2026-07-16T13:42:56.471812Z",
-      "platform": "discord",
-      "type": "earnings",
-      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 16**\n\n\n📅 **Thursday, Jul 16**\n  • ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1527309564826091601"
-    },
-    {
-      "id": 1309,
-      "timestamp": "2026-07-16T15:39:50.416523Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Insight: AI-Driven Nasdaq Breaks Out, But is it a Warning?</b>\n\nAs the Nasdaq breaks out",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "712"
-    },
-    {
-      "id": 1310,
-      "timestamp": "2026-07-16T15:39:50.836618Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Insight: AI-Driven Nasdaq Breaks Out, But is it a Warning?**\n\nAs the Nasdaq breaks out to",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1527338984890568734"
-    },
-    {
-      "id": 1311,
-      "timestamp": "2026-07-16T15:39:51.698163Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Insight: AI-Driven Nasdaq Breaks Out, But is it a Warning?\n\nAs the Nasdaq breaks out to new",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1312,
-      "timestamp": "2026-07-16T15:39:53.392296Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Insight: AI-Driven Nasdaq Breaks Out, But is it a Warning?",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 1313,
-      "timestamp": "2026-07-16T15:39:54.134467Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$TSLA Tesla, Inc.\n\n💰 419.77 (+6.7%) | 5D: +10.6%\n📊 RSI: 54.0 | MACD: bullish\n📈 MA20: $399.22 (above)",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1314,
-      "timestamp": "2026-07-16T15:39:54.508009Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟢 $GOOGL — Alphabet Inc. | $357.77 (+0.4%)\n\n**Setup:** oversold bounce setup → Bias: **BULLISH**\n",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1527339000312889546"
-    },
     {
       "id": 1315,
       "timestamp": "2026-07-16T15:39:57.868920Z",
@@ -427,6 +350,81 @@
       "status": "success",
       "error_msg": "",
       "post_id": "1527666296542597150"
+    },
+    {
+      "id": 1327,
+      "timestamp": "2026-07-17T15:14:35.276024Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Macro Shift: The Rise of the 'Risk-On' Trade</b>\n\nA staggering 7.5% of the S&P 500's market cap",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "723"
+    },
+    {
+      "id": 1328,
+      "timestamp": "2026-07-17T15:14:35.685861Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Macro Shift: The Rise of the 'Risk-On' Trade**\n\nA staggering 7.5% of the S&P 500's market capita",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1527695017714651308"
+    },
+    {
+      "id": 1329,
+      "timestamp": "2026-07-17T15:14:36.349410Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Macro Shift: The Rise of the 'Risk-On' Trade\n\nA staggering 7.5% of the S&P 500's market capitaliza",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1330,
+      "timestamp": "2026-07-17T15:14:37.532361Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Macro Shift: The Rise of the 'Risk-On' Trade",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1331,
+      "timestamp": "2026-07-17T15:14:38.153128Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$GOOGL Alphabet Inc.\n\n💰 359.68 (+0.5%) | 5D: -2.3%\n📊 RSI: 34.1 | MACD: bearish\n📈 MA20: $376.25 (belo",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1332,
+      "timestamp": "2026-07-17T15:14:38.429085Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🔴 $COIN — Coinbase Global, Inc. | $159.78 (-0.4%)\n\n**Setup:** correction in play → Bias: **BEARIS",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1527695029609562143"
+    },
+    {
+      "id": 1333,
+      "timestamp": "2026-07-17T15:14:42.929648Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1334,
+      "timestamp": "2026-07-17T15:15:16.751648Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
     }
   ],
   "recent_interactions": [
