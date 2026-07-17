@@ -12476,5 +12476,25 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1325,
+    "timestamp": "2026-07-17T13:20:27.589809Z",
+    "platform": "telegram_en",
+    "type": "earnings",
+    "content_preview": "<b>📊 Earnings Calendar: Week of Jul 17</b>\n\n\n📅 <b>Saturday, Jul 18</b>\n  • HDFC Bank (HDB) @ $26.31 ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "716"
+  },
+  {
+    "id": 1326,
+    "timestamp": "2026-07-17T13:20:28.062239Z",
+    "platform": "discord",
+    "type": "earnings",
+    "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 17**\n\n\n📅 **Saturday, Jul 18**\n  • ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1527666296542597150"
   }
 ]
