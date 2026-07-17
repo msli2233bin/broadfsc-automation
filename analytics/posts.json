@@ -12401,5 +12401,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1317,
+    "timestamp": "2026-07-17T08:08:19.193101Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Alert: The Great Rotation</b>\n\nThe Nasdaq's 77.8 reading on the RSI indicator has offici",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "715"
+  },
+  {
+    "id": 1318,
+    "timestamp": "2026-07-17T08:08:19.652597Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Alert: The Great Rotation**\n\nThe Nasdaq's 77.8 reading on the RSI indicator has officiall",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1527587744061194240"
+  },
+  {
+    "id": 1319,
+    "timestamp": "2026-07-17T08:08:20.059061Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: The Great Rotation\n\nThe Nasdaq's 77.8 reading on the RSI indicator has officially de",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1320,
+    "timestamp": "2026-07-17T08:08:21.094517Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: The Great Rotation",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1321,
+    "timestamp": "2026-07-17T08:08:21.656664Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$TSLA Tesla, Inc.\n\n💰 411.84 (+8.5%) | 5D: +1.7%\n📊 RSI: 51.0 | MACD: bearish\n📈 MA20: $400.36 (above)\n",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1322,
+    "timestamp": "2026-07-17T08:08:21.928763Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $AMZN — Amazon.com, Inc. | $244.39 (+2.9%)\n\n**Setup:** oversold bounce setup → Bias: **BULLISH*",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1527587753859223595"
+  },
+  {
+    "id": 1323,
+    "timestamp": "2026-07-17T08:08:25.897883Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1324,
+    "timestamp": "2026-07-17T08:08:59.668813Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
