@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-18T14:52:42.318284Z",
+  "generated_at": "2026-07-18T15:55:02.520847Z",
   "period": {
     "today": "2026-07-18",
     "yesterday": "2026-07-17",
@@ -7,9 +7,9 @@
     "month_ago": "2026-06-18"
   },
   "totals": {
-    "posts_today": 8,
-    "posts_week": 130,
-    "posts_month": 502,
+    "posts_today": 16,
+    "posts_week": 138,
+    "posts_month": 510,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 20,
-      "month": 177,
-      "success": 175,
+      "today": 2,
+      "week": 21,
+      "month": 178,
+      "success": 176,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 35,
-      "month": 315,
-      "success": 309,
+      "today": 4,
+      "week": 37,
+      "month": 317,
+      "success": 311,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 30,
-      "month": 276,
+      "today": 4,
+      "week": 32,
+      "month": 278,
       "success": 37,
-      "failed": 239
+      "failed": 241
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 15,
-      "month": 145,
+      "today": 2,
+      "week": 16,
+      "month": 146,
       "success": 10,
-      "failed": 135
+      "failed": 136
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 30,
-      "month": 274,
+      "today": 4,
+      "week": 32,
+      "month": 276,
       "success": 4,
-      "failed": 270
+      "failed": 272
     }
   },
   "interactions_by_platform": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-07-18": {
-      "posts": 8,
+      "posts": 16,
       "interactions": 0
     }
   },
@@ -233,87 +233,11 @@
     "15": 35,
     "9": 36,
     "11": 3,
-    "14": 24,
+    "14": 27,
     "13": 10,
     "7": 6
   },
   "recent_posts": [
-    {
-      "id": 1323,
-      "timestamp": "2026-07-17T08:08:25.897883Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1324,
-      "timestamp": "2026-07-17T08:08:59.668813Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 1325,
-      "timestamp": "2026-07-17T13:20:27.589809Z",
-      "platform": "telegram_en",
-      "type": "earnings",
-      "content_preview": "<b>📊 Earnings Calendar: Week of Jul 17</b>\n\n\n📅 <b>Saturday, Jul 18</b>\n  • HDFC Bank (HDB) @ $26.31 ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "716"
-    },
-    {
-      "id": 1326,
-      "timestamp": "2026-07-17T13:20:28.062239Z",
-      "platform": "discord",
-      "type": "earnings",
-      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 17**\n\n\n📅 **Saturday, Jul 18**\n  • ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1527666296542597150"
-    },
-    {
-      "id": 1327,
-      "timestamp": "2026-07-17T15:14:35.276024Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Macro Shift: The Rise of the 'Risk-On' Trade</b>\n\nA staggering 7.5% of the S&P 500's market cap",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "723"
-    },
-    {
-      "id": 1328,
-      "timestamp": "2026-07-17T15:14:35.685861Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Macro Shift: The Rise of the 'Risk-On' Trade**\n\nA staggering 7.5% of the S&P 500's market capita",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1527695017714651308"
-    },
-    {
-      "id": 1329,
-      "timestamp": "2026-07-17T15:14:36.349410Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Macro Shift: The Rise of the 'Risk-On' Trade\n\nA staggering 7.5% of the S&P 500's market capitaliza",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1330,
-      "timestamp": "2026-07-17T15:14:37.532361Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Macro Shift: The Rise of the 'Risk-On' Trade",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 1331,
       "timestamp": "2026-07-17T15:14:38.153128Z",
@@ -420,6 +344,81 @@
     {
       "id": 1342,
       "timestamp": "2026-07-18T07:48:29.115648Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1343,
+      "timestamp": "2026-07-18T14:54:09.254770Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Mayhem: The Unseen Opportunities Amidst Chaos</b>\n\nAs the S&P 500 plunges 1.0% to 7,457.",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "727"
+    },
+    {
+      "id": 1344,
+      "timestamp": "2026-07-18T14:54:09.887650Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Mayhem: The Unseen Opportunities Amidst Chaos**\n\nAs the S&P 500 plunges 1.0% to 7,457.69,",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1528052263581520034"
+    },
+    {
+      "id": 1345,
+      "timestamp": "2026-07-18T14:54:10.499043Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Mayhem: The Unseen Opportunities Amidst Chaos\n\nAs the S&P 500 plunges 1.0% to 7,457.69, mos",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1346,
+      "timestamp": "2026-07-18T14:54:11.441618Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Mayhem: The Unseen Opportunities Amidst Chaos",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1347,
+      "timestamp": "2026-07-18T14:54:12.070389Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$COIN Coinbase Global, Inc.\n\n💰 216.6 (+7.7%) | 5D: +6.7%\n📊 RSI: 61.0 | MACD: bullish\n📈 MA20: $197.95",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1348,
+      "timestamp": "2026-07-18T14:54:12.240165Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🔴 $AAPL — Apple Inc. | $301.54 (-1.9%)\n\n**Setup:** correction in play → Bias: **BEARISH**\n\n### 📊 ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1528052274633642186"
+    },
+    {
+      "id": 1349,
+      "timestamp": "2026-07-18T14:54:16.409915Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1350,
+      "timestamp": "2026-07-18T14:54:49.321403Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
