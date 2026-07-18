@@ -176,3 +176,7 @@
 
 ## 06:11:17 | sales/advisor_sales
 - [cross_domain_match] 🔗 跨域关联匹配: sales/advisor_sales 在 FUSION_INDEX 中有对应融合策略
+
+## 04:53:46 | finance/technical_analysis
+- [ta_signal_detected] 📈 检测到技术分析信号知识点 (technical_analysis)，建议销售Agent生成触发式外联话术
+- [cross_domain_match] 🔗 跨域关联匹配: finance/technical_analysis 在 FUSION_INDEX 中有对应融合策略
