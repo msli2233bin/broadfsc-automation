@@ -12646,5 +12646,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1343,
+    "timestamp": "2026-07-18T14:54:09.254770Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Mayhem: The Unseen Opportunities Amidst Chaos</b>\n\nAs the S&P 500 plunges 1.0% to 7,457.",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "727"
+  },
+  {
+    "id": 1344,
+    "timestamp": "2026-07-18T14:54:09.887650Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Mayhem: The Unseen Opportunities Amidst Chaos**\n\nAs the S&P 500 plunges 1.0% to 7,457.69,",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1528052263581520034"
+  },
+  {
+    "id": 1345,
+    "timestamp": "2026-07-18T14:54:10.499043Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Mayhem: The Unseen Opportunities Amidst Chaos\n\nAs the S&P 500 plunges 1.0% to 7,457.69, mos",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1346,
+    "timestamp": "2026-07-18T14:54:11.441618Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Mayhem: The Unseen Opportunities Amidst Chaos",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1347,
+    "timestamp": "2026-07-18T14:54:12.070389Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$COIN Coinbase Global, Inc.\n\n💰 216.6 (+7.7%) | 5D: +6.7%\n📊 RSI: 61.0 | MACD: bullish\n📈 MA20: $197.95",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1348,
+    "timestamp": "2026-07-18T14:54:12.240165Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $AAPL — Apple Inc. | $301.54 (-1.9%)\n\n**Setup:** correction in play → Bias: **BEARISH**\n\n### 📊 ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1528052274633642186"
+  },
+  {
+    "id": 1349,
+    "timestamp": "2026-07-18T14:54:16.409915Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1350,
+    "timestamp": "2026-07-18T14:54:49.321403Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
