@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-07-17T23:23:02.612986Z",
+  "generated_at": "2026-07-18T00:54:09.104420Z",
   "period": {
-    "today": "2026-07-17",
-    "yesterday": "2026-07-16",
-    "week_ago": "2026-07-10",
-    "month_ago": "2026-06-17"
+    "today": "2026-07-18",
+    "yesterday": "2026-07-17",
+    "week_ago": "2026-07-11",
+    "month_ago": "2026-06-18"
   },
   "totals": {
-    "posts_today": 18,
-    "posts_week": 140,
-    "posts_month": 510,
+    "posts_today": 0,
+    "posts_week": 122,
+    "posts_month": 494,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 41.2
+    "success_rate": 41.3
   },
   "platforms": {
     "tiktok": {
@@ -24,22 +24,22 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 3,
-      "week": 22,
+      "today": 0,
+      "week": 19,
       "month": 176,
       "success": 174,
       "failed": 2
     },
     "discord": {
-      "today": 5,
-      "week": 38,
+      "today": 0,
+      "week": 33,
       "month": 313,
       "success": 307,
       "failed": 6
     },
     "mastodon": {
-      "today": 4,
-      "week": 32,
+      "today": 0,
+      "week": 28,
       "month": 274,
       "success": 37,
       "failed": 237
@@ -52,8 +52,8 @@
       "failed": 2
     },
     "threads": {
-      "today": 2,
-      "week": 16,
+      "today": 0,
+      "week": 14,
       "month": 144,
       "success": 10,
       "failed": 134
@@ -80,8 +80,8 @@
       "failed": 0
     },
     "hatena": {
-      "today": 4,
-      "week": 32,
+      "today": 0,
+      "week": 28,
       "month": 272,
       "success": 4,
       "failed": 268
@@ -101,10 +101,6 @@
   },
   "action_breakdown": {},
   "daily_trend": {
-    "2026-06-17": {
-      "posts": 16,
-      "interactions": 0
-    },
     "2026-06-18": {
       "posts": 16,
       "interactions": 0
@@ -227,8 +223,8 @@
     }
   },
   "hourly_distribution": {
-    "10": 15,
-    "16": 48,
+    "10": 12,
+    "16": 45,
     "8": 36,
     "15": 35,
     "9": 36,
