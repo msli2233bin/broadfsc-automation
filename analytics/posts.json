@@ -12796,5 +12796,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1359,
+    "timestamp": "2026-07-19T14:57:01.759877Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Disconnected: S&P 500, Nasdaq, and the AI-Driven Rally</b>\n\nThe S&P 500 and Nasdaq have ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "731"
+  },
+  {
+    "id": 1360,
+    "timestamp": "2026-07-19T14:57:02.113889Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Disconnected: S&P 500, Nasdaq, and the AI-Driven Rally**\n\nThe S&P 500 and Nasdaq have div",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1528415374842925097"
+  },
+  {
+    "id": 1361,
+    "timestamp": "2026-07-19T14:57:02.823520Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Disconnected: S&P 500, Nasdaq, and the AI-Driven Rally\n\nThe S&P 500 and Nasdaq have diverge",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1362,
+    "timestamp": "2026-07-19T14:57:04.312097Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Disconnected: S&P 500, Nasdaq, and the AI-Driven Rally",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1363,
+    "timestamp": "2026-07-19T14:57:04.993544Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 143.34 (+8.2%) | 5D: +4.5%\n📊 RSI: 60.0 | MACD: bullish\n📈 MA20: $",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1364,
+    "timestamp": "2026-07-19T14:57:05.297202Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $AMD — Advanced Micro Devices, Inc. | $516.1 (-0.4%)\n\n**Setup:** uptrend intact → Bias: **BULLI",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1528415388583461056"
+  },
+  {
+    "id": 1365,
+    "timestamp": "2026-07-19T14:57:07.762147Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1366,
+    "timestamp": "2026-07-19T14:57:35.569499Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
