@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-19T07:06:07.350785Z",
+  "generated_at": "2026-07-19T09:26:25.387170Z",
   "period": {
     "today": "2026-07-19",
     "yesterday": "2026-07-18",
@@ -7,13 +7,13 @@
     "month_ago": "2026-06-19"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 122,
-    "posts_month": 494,
+    "posts_today": 8,
+    "posts_week": 130,
+    "posts_month": 502,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 41.3
+    "success_rate": 41.2
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 19,
-      "month": 178,
-      "success": 176,
+      "today": 1,
+      "week": 20,
+      "month": 179,
+      "success": 177,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 33,
-      "month": 317,
-      "success": 311,
+      "today": 2,
+      "week": 35,
+      "month": 319,
+      "success": 313,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 28,
-      "month": 278,
+      "today": 2,
+      "week": 30,
+      "month": 280,
       "success": 37,
-      "failed": 241
+      "failed": 243
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 14,
-      "month": 146,
+      "today": 1,
+      "week": 15,
+      "month": 147,
       "success": 10,
-      "failed": 136
+      "failed": 137
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 28,
-      "month": 276,
+      "today": 2,
+      "week": 30,
+      "month": 278,
       "success": 4,
-      "failed": 272
+      "failed": 274
     }
   },
   "interactions_by_platform": {
@@ -220,12 +220,16 @@
     "2026-07-18": {
       "posts": 16,
       "interactions": 0
+    },
+    "2026-07-19": {
+      "posts": 8,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
     "10": 9,
     "16": 42,
-    "8": 36,
+    "8": 39,
     "15": 35,
     "9": 36,
     "11": 3,
@@ -234,81 +238,6 @@
     "7": 6
   },
   "recent_posts": [
-    {
-      "id": 1331,
-      "timestamp": "2026-07-17T15:14:38.153128Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$GOOGL Alphabet Inc.\n\n💰 359.68 (+0.5%) | 5D: -2.3%\n📊 RSI: 34.1 | MACD: bearish\n📈 MA20: $376.25 (belo",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1332,
-      "timestamp": "2026-07-17T15:14:38.429085Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🔴 $COIN — Coinbase Global, Inc. | $159.78 (-0.4%)\n\n**Setup:** correction in play → Bias: **BEARIS",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1527695029609562143"
-    },
-    {
-      "id": 1333,
-      "timestamp": "2026-07-17T15:14:42.929648Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1334,
-      "timestamp": "2026-07-17T15:15:16.751648Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 1335,
-      "timestamp": "2026-07-18T07:47:47.129833Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 The Bullish Conundrum: 2026's Unlikely Rally</b>\n\nThe S&P 500 has just closed at 7,457.69, a me",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "726"
-    },
-    {
-      "id": 1336,
-      "timestamp": "2026-07-18T07:47:47.481658Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **The Bullish Conundrum: 2026's Unlikely Rally**\n\nThe S&P 500 has just closed at 7,457.69, a mere ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1527944964024041562"
-    },
-    {
-      "id": 1337,
-      "timestamp": "2026-07-18T07:47:48.132046Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 The Bullish Conundrum: 2026's Unlikely Rally\n\nThe S&P 500 has just closed at 7,457.69, a mere 1% d",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1338,
-      "timestamp": "2026-07-18T07:47:49.371094Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 The Bullish Conundrum: 2026's Unlikely Rally",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 1339,
       "timestamp": "2026-07-18T07:47:50.140049Z",
@@ -415,6 +344,81 @@
     {
       "id": 1350,
       "timestamp": "2026-07-18T14:54:49.321403Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1351,
+      "timestamp": "2026-07-19T08:15:24.032648Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 The Bull's Conundrum: US Stocks at All-Time Highs, Yet MACD Warns of Imminent Correction</b>\n\nT",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "730"
+    },
+    {
+      "id": 1352,
+      "timestamp": "2026-07-19T08:15:24.381562Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **The Bull's Conundrum: US Stocks at All-Time Highs, Yet MACD Warns of Imminent Correction**\n\nThe ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1528314301616488488"
+    },
+    {
+      "id": 1353,
+      "timestamp": "2026-07-19T08:15:24.980779Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 The Bull's Conundrum: US Stocks at All-Time Highs, Yet MACD Warns of Imminent Correction\n\nThe S&P ",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1354,
+      "timestamp": "2026-07-19T08:15:25.887547Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 The Bull's Conundrum: US Stocks at All-Time Highs, Yet MACD Warns of Imminent Correction",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1355,
+      "timestamp": "2026-07-19T08:15:27.799674Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$TSLA Tesla, Inc.\n\n💰 396.38 (-2.0%) | 5D: +3.9%\n📊 RSI: 35.4 | MACD: bearish\n📈 MA20: $414.54 (below)\n",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1356,
+      "timestamp": "2026-07-19T08:15:27.994711Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟡 $META — Meta Platforms, Inc. | $nan (+nan%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n### ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1528314317215371437"
+    },
+    {
+      "id": 1357,
+      "timestamp": "2026-07-19T08:15:30.060762Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1358,
+      "timestamp": "2026-07-19T08:16:02.806802Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
