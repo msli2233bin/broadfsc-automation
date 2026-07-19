@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-07-18T23:25:09.480084Z",
+  "generated_at": "2026-07-19T00:59:58.268798Z",
   "period": {
-    "today": "2026-07-18",
-    "yesterday": "2026-07-17",
-    "week_ago": "2026-07-11",
-    "month_ago": "2026-06-18"
+    "today": "2026-07-19",
+    "yesterday": "2026-07-18",
+    "week_ago": "2026-07-12",
+    "month_ago": "2026-06-19"
   },
   "totals": {
-    "posts_today": 16,
-    "posts_week": 138,
-    "posts_month": 510,
+    "posts_today": 0,
+    "posts_week": 122,
+    "posts_month": 494,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 41.2
+    "success_rate": 41.3
   },
   "platforms": {
     "tiktok": {
@@ -24,22 +24,22 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 2,
-      "week": 21,
+      "today": 0,
+      "week": 19,
       "month": 178,
       "success": 176,
       "failed": 2
     },
     "discord": {
-      "today": 4,
-      "week": 37,
+      "today": 0,
+      "week": 33,
       "month": 317,
       "success": 311,
       "failed": 6
     },
     "mastodon": {
-      "today": 4,
-      "week": 32,
+      "today": 0,
+      "week": 28,
       "month": 278,
       "success": 37,
       "failed": 241
@@ -52,8 +52,8 @@
       "failed": 2
     },
     "threads": {
-      "today": 2,
-      "week": 16,
+      "today": 0,
+      "week": 14,
       "month": 146,
       "success": 10,
       "failed": 136
@@ -80,8 +80,8 @@
       "failed": 0
     },
     "hatena": {
-      "today": 4,
-      "week": 32,
+      "today": 0,
+      "week": 28,
       "month": 276,
       "success": 4,
       "failed": 272
@@ -101,10 +101,6 @@
   },
   "action_breakdown": {},
   "daily_trend": {
-    "2026-06-18": {
-      "posts": 16,
-      "interactions": 0
-    },
     "2026-06-19": {
       "posts": 16,
       "interactions": 0
@@ -227,8 +223,8 @@
     }
   },
   "hourly_distribution": {
-    "10": 12,
-    "16": 45,
+    "10": 9,
+    "16": 42,
     "8": 36,
     "15": 35,
     "9": 36,
