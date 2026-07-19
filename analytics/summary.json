@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-19T14:37:56.547621Z",
+  "generated_at": "2026-07-19T15:55:59.033391Z",
   "period": {
     "today": "2026-07-19",
     "yesterday": "2026-07-18",
@@ -7,9 +7,9 @@
     "month_ago": "2026-06-19"
   },
   "totals": {
-    "posts_today": 8,
-    "posts_week": 130,
-    "posts_month": 502,
+    "posts_today": 16,
+    "posts_week": 138,
+    "posts_month": 510,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 20,
-      "month": 179,
-      "success": 177,
+      "today": 2,
+      "week": 21,
+      "month": 180,
+      "success": 178,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 35,
-      "month": 319,
-      "success": 313,
+      "today": 4,
+      "week": 37,
+      "month": 321,
+      "success": 315,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 30,
-      "month": 280,
+      "today": 4,
+      "week": 32,
+      "month": 282,
       "success": 37,
-      "failed": 243
+      "failed": 245
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 15,
-      "month": 147,
+      "today": 2,
+      "week": 16,
+      "month": 148,
       "success": 10,
-      "failed": 137
+      "failed": 138
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 30,
-      "month": 278,
+      "today": 4,
+      "week": 32,
+      "month": 280,
       "success": 4,
-      "failed": 274
+      "failed": 276
     }
   },
   "interactions_by_platform": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-07-19": {
-      "posts": 8,
+      "posts": 16,
       "interactions": 0
     }
   },
@@ -233,86 +233,11 @@
     "15": 35,
     "9": 36,
     "11": 3,
-    "14": 27,
+    "14": 30,
     "13": 10,
     "7": 6
   },
   "recent_posts": [
-    {
-      "id": 1339,
-      "timestamp": "2026-07-18T07:47:50.140049Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$AMZN Amazon.com, Inc.\n\n💰 259.34 (-2.1%) | 5D: -2.4%\n📊 RSI: 45.5 | MACD: bearish\n📈 MA20: $265.83 (be",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1340,
-      "timestamp": "2026-07-18T07:47:50.517294Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🔴 $AMZN — Amazon.com, Inc. | $264.14 (-1.1%)\n\n**Setup:** correction in play → Bias: **BEARISH**\n\n",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1527944976925982771"
-    },
-    {
-      "id": 1341,
-      "timestamp": "2026-07-18T07:47:55.760296Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1342,
-      "timestamp": "2026-07-18T07:48:29.115648Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 1343,
-      "timestamp": "2026-07-18T14:54:09.254770Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Mayhem: The Unseen Opportunities Amidst Chaos</b>\n\nAs the S&P 500 plunges 1.0% to 7,457.",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "727"
-    },
-    {
-      "id": 1344,
-      "timestamp": "2026-07-18T14:54:09.887650Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Mayhem: The Unseen Opportunities Amidst Chaos**\n\nAs the S&P 500 plunges 1.0% to 7,457.69,",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1528052263581520034"
-    },
-    {
-      "id": 1345,
-      "timestamp": "2026-07-18T14:54:10.499043Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Mayhem: The Unseen Opportunities Amidst Chaos\n\nAs the S&P 500 plunges 1.0% to 7,457.69, mos",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1346,
-      "timestamp": "2026-07-18T14:54:11.441618Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Mayhem: The Unseen Opportunities Amidst Chaos",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 1347,
       "timestamp": "2026-07-18T14:54:12.070389Z",
@@ -419,6 +344,81 @@
     {
       "id": 1358,
       "timestamp": "2026-07-19T08:16:02.806802Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1359,
+      "timestamp": "2026-07-19T14:57:01.759877Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Disconnected: S&P 500, Nasdaq, and the AI-Driven Rally</b>\n\nThe S&P 500 and Nasdaq have ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "731"
+    },
+    {
+      "id": 1360,
+      "timestamp": "2026-07-19T14:57:02.113889Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Disconnected: S&P 500, Nasdaq, and the AI-Driven Rally**\n\nThe S&P 500 and Nasdaq have div",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1528415374842925097"
+    },
+    {
+      "id": 1361,
+      "timestamp": "2026-07-19T14:57:02.823520Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Disconnected: S&P 500, Nasdaq, and the AI-Driven Rally\n\nThe S&P 500 and Nasdaq have diverge",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1362,
+      "timestamp": "2026-07-19T14:57:04.312097Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Disconnected: S&P 500, Nasdaq, and the AI-Driven Rally",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1363,
+      "timestamp": "2026-07-19T14:57:04.993544Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 143.34 (+8.2%) | 5D: +4.5%\n📊 RSI: 60.0 | MACD: bullish\n📈 MA20: $",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1364,
+      "timestamp": "2026-07-19T14:57:05.297202Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟢 $AMD — Advanced Micro Devices, Inc. | $516.1 (-0.4%)\n\n**Setup:** uptrend intact → Bias: **BULLI",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1528415388583461056"
+    },
+    {
+      "id": 1365,
+      "timestamp": "2026-07-19T14:57:07.762147Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1366,
+      "timestamp": "2026-07-19T14:57:35.569499Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
