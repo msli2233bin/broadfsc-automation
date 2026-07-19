@@ -12721,5 +12721,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1351,
+    "timestamp": "2026-07-19T08:15:24.032648Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The Bull's Conundrum: US Stocks at All-Time Highs, Yet MACD Warns of Imminent Correction</b>\n\nT",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "730"
+  },
+  {
+    "id": 1352,
+    "timestamp": "2026-07-19T08:15:24.381562Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The Bull's Conundrum: US Stocks at All-Time Highs, Yet MACD Warns of Imminent Correction**\n\nThe ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1528314301616488488"
+  },
+  {
+    "id": 1353,
+    "timestamp": "2026-07-19T08:15:24.980779Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The Bull's Conundrum: US Stocks at All-Time Highs, Yet MACD Warns of Imminent Correction\n\nThe S&P ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1354,
+    "timestamp": "2026-07-19T08:15:25.887547Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The Bull's Conundrum: US Stocks at All-Time Highs, Yet MACD Warns of Imminent Correction",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1355,
+    "timestamp": "2026-07-19T08:15:27.799674Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$TSLA Tesla, Inc.\n\n💰 396.38 (-2.0%) | 5D: +3.9%\n📊 RSI: 35.4 | MACD: bearish\n📈 MA20: $414.54 (below)\n",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1356,
+    "timestamp": "2026-07-19T08:15:27.994711Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $META — Meta Platforms, Inc. | $nan (+nan%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n### ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1528314317215371437"
+  },
+  {
+    "id": 1357,
+    "timestamp": "2026-07-19T08:15:30.060762Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1358,
+    "timestamp": "2026-07-19T08:16:02.806802Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
