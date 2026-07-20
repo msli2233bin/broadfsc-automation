@@ -194,3 +194,13 @@
 
 ## 06:39:47 | sales/sales_research
 - [cross_domain_match] 🔗 跨域关联匹配: sales/sales_research 在 FUSION_INDEX 中有对应融合策略
+
+## 08:44:26 | competitor/industry_news
+- [cross_domain_match] 🔗 跨域关联匹配: competitor/industry_news 在 FUSION_INDEX 中有对应融合策略
+
+## 08:44:30 | competitor/industry_education
+- [competitor_weakness] 🎯 检测到竞品弱点分析 (industry_education)，建议更新销售异议处理话术
+- [cross_domain_match] 🔗 跨域关联匹配: competitor/industry_education 在 FUSION_INDEX 中有对应融合策略
+
+## 08:44:36 | competitor/competitor_etoro
+- [cross_domain_match] 🔗 跨域关联匹配: competitor/competitor_etoro 在 FUSION_INDEX 中有对应融合策略
