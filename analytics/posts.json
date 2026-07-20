@@ -12871,5 +12871,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1367,
+    "timestamp": "2026-07-20T08:56:19.710627Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Insight: The AI-Driven Growth Showdown</b>\n\nThe Nasdaq just hit a new record high at 25,",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "734"
+  },
+  {
+    "id": 1368,
+    "timestamp": "2026-07-20T08:56:21.036493Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Insight: The AI-Driven Growth Showdown**\n\nThe Nasdaq just hit a new record high at 25,694",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1528686989531152404"
+  },
+  {
+    "id": 1369,
+    "timestamp": "2026-07-20T08:56:21.740578Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The AI-Driven Growth Showdown\n\nThe Nasdaq just hit a new record high at 25,694 wit",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1370,
+    "timestamp": "2026-07-20T08:56:22.854463Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The AI-Driven Growth Showdown",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1371,
+    "timestamp": "2026-07-20T08:56:23.499496Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$GOOGL Alphabet Inc.\n\n💰 357.18 (-0.5%) | 5D: -0.8%\n📊 RSI: 42.5 | MACD: bullish\n📈 MA20: $357.88 (belo",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1372,
+    "timestamp": "2026-07-20T08:56:23.819862Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $COIN — Coinbase Global, Inc. | $160.49 (-4.0%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1528687005297279006"
+  },
+  {
+    "id": 1373,
+    "timestamp": "2026-07-20T08:56:26.022912Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1374,
+    "timestamp": "2026-07-20T08:56:56.843898Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
