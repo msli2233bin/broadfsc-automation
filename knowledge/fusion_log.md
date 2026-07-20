@@ -188,3 +188,9 @@
 ## 06:32:59 | marketing/platform_tips
 - [marketing_insight] 📱 检测到营销洞察 (platform_tips)，建议生成新平台内容
 - [cross_domain_match] 🔗 跨域关联匹配: marketing/platform_tips 在 FUSION_INDEX 中有对应融合策略
+
+## 06:39:41 | sales/wealth_sales
+- [cross_domain_match] 🔗 跨域关联匹配: sales/wealth_sales 在 FUSION_INDEX 中有对应融合策略
+
+## 06:39:47 | sales/sales_research
+- [cross_domain_match] 🔗 跨域关联匹配: sales/sales_research 在 FUSION_INDEX 中有对应融合策略
