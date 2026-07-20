@@ -1,0 +1,11 @@
+{
+  "platform": "discord",
+  "topic": "AAPL_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "## 🟡 $AAPL — Apple Inc. | $333.74 (+0.1%)\n\n**Setup:** overbought, watching for pullback → Bias: **CAUTIOUS**\n\n### 📊 Technical Indicators\n| Indicator | Value | Signal |\n|-----------|-------|--------|\n| RSI(14) | 88.6 | Overbought ⚠️ |\n| MACD | 8.7784 | Bullish (above signal) |\n| BB Position | 91.9% | Near upper |\n| Volume | 0.9x avg | Normal |\n\n### 📈 Key Levels\n| Level | Price |\n|-------|-------|\n| Resistance | $334.99 |\n| MA20 | $305.52 |\n| MA50 | $302.63 |\n| MA200 | $284.01 |\n| Support | $245.28 |\n\n### 📉 Performance\n1D: +0.1% | 5D: +5.8% | 20D: +12.8%\n\n### 🎯 Bollinger Bands\nUpper: $339.2 | Lower: $271.83\n\n---\n📱 Get daily TA signals for 5 stocks → **t.me/BroadInvestBot**\nFree. No spam. Just levels that matter.",
+  "content_type": "single",
+  "symbol": "AAPL",
+  "created": "2026-07-20T06:35:58.644813",
+  "used": false,
+  "chart_paths": {}
+}

@@ -1,0 +1,11 @@
+{
+  "platform": "mastodon",
+  "topic": "AMZN_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "$AMZN Amazon.com, Inc.\n\n💰 247.23 (-1.1%) | 5D: +0.8%\n📊 RSI: 67.4 | MACD: bullish\n📈 MA20: $242.06 (above)\n🎯 Resistance: $278.56 | Support: $199.14\n📢 Vol: 0.7x avg\n\nSetup: uptrend intact → bias: BULLISH\n\n📱 Free TA signals: t.me/BroadInvestBot\n#$AMZN #Trading #TechnicalAnalysis #Stocks",
+  "content_type": "single",
+  "symbol": "AMZN",
+  "created": "2026-07-20T06:35:59.127015",
+  "used": false,
+  "chart_paths": {}
+}
