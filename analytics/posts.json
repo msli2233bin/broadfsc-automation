@@ -12966,5 +12966,80 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1528763065628102728"
+  },
+  {
+    "id": 1377,
+    "timestamp": "2026-07-20T15:51:45.024353Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The Great Misconception: How Markets Are Misreading Inflation</b>\n\n \" Markets are misreading in",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "742"
+  },
+  {
+    "id": 1378,
+    "timestamp": "2026-07-20T15:51:45.362137Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The Great Misconception: How Markets Are Misreading Inflation**\n\n \" Markets are misreading infla",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1528791533539819680"
+  },
+  {
+    "id": 1379,
+    "timestamp": "2026-07-20T15:51:45.956671Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The Great Misconception: How Markets Are Misreading Inflation\n\n \" Markets are misreading inflation",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1380,
+    "timestamp": "2026-07-20T15:51:46.926287Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The Great Misconception: How Markets Are Misreading Inflation",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1381,
+    "timestamp": "2026-07-20T15:51:47.747211Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$MSFT Microsoft Corporation\n\n💰 421.06 (+0.9%) | 5D: +3.9%\n📊 RSI: 60.6 | MACD: bearish\n📈 MA20: $416.7",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1382,
+    "timestamp": "2026-07-20T15:51:48.037207Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $MSFT — Microsoft Corporation | $367.34 (-3.2%)\n\n**Setup:** oversold bounce setup → Bias: **BUL",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1528791544864313498"
+  },
+  {
+    "id": 1383,
+    "timestamp": "2026-07-20T15:51:50.181269Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1384,
+    "timestamp": "2026-07-20T15:52:20.772286Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
