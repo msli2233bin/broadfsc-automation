@@ -13136,5 +13136,80 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1529120988887777312"
+  },
+  {
+    "id": 1395,
+    "timestamp": "2026-07-21T15:44:48.622100Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Dislocation: The Great Rotation Has Begun</b>\n\nA surprising 1.1% surge in the S&P 500 la",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "753"
+  },
+  {
+    "id": 1396,
+    "timestamp": "2026-07-21T15:44:49.089023Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Dislocation: The Great Rotation Has Begun**\n\nA surprising 1.1% surge in the S&P 500 last ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1529152175014678659"
+  },
+  {
+    "id": 1397,
+    "timestamp": "2026-07-21T15:44:50.086940Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Dislocation: The Great Rotation Has Begun\n\nA surprising 1.1% surge in the S&P 500 last week",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1398,
+    "timestamp": "2026-07-21T15:44:51.196461Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Dislocation: The Great Rotation Has Begun",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1399,
+    "timestamp": "2026-07-21T15:44:51.855026Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$NVDA NVIDIA Corporation\n\n💰 203.53 (-3.5%) | 5D: +4.1%\n📊 RSI: 45.4 | MACD: bullish\n📈 MA20: $201.88 (",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1400,
+    "timestamp": "2026-07-21T15:44:52.132767Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $AMZN — Amazon.com, Inc. | $247.31 (+0.8%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n### ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1529152188465545468"
+  },
+  {
+    "id": 1401,
+    "timestamp": "2026-07-21T15:44:54.224786Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1402,
+    "timestamp": "2026-07-21T15:45:08.169057Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
