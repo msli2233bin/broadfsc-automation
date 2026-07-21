@@ -1,0 +1,11 @@
+{
+  "platform": "discord",
+  "topic": "AMZN_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "## 🟢 $AMZN — Amazon.com, Inc. | $249.99 (+1.1%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n### 📊 Technical Indicators\n| Indicator | Value | Signal |\n|-----------|-------|--------|\n| RSI(14) | 63.3 | Neutral ✅ |\n| MACD | 0.793 | Bullish (above signal) |\n| BB Position | 76.7% | Mid-range |\n| Volume | 0.5x avg | Low |\n\n### 📈 Key Levels\n| Level | Price |\n|-------|-------|\n| Resistance | $278.56 |\n| MA20 | $242.34 |\n| MA50 | $251.63 |\n| MA200 | $243.29 |\n| Support | $199.14 |\n\n### 📉 Performance\n1D: +1.1% | 5D: +1.1% | 20D: +2.3%\n\n### 🎯 Bollinger Bands\nUpper: $256.65 | Lower: $228.03\n\n---\n📱 Get daily TA signals for 5 stocks → **t.me/BroadInvestBot**\nFree. No spam. Just levels that matter.",
+  "content_type": "single",
+  "symbol": "AMZN",
+  "created": "2026-07-21T06:19:35.509318",
+  "used": false,
+  "chart_paths": {}
+}
