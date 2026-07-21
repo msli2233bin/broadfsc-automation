@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T15:02:31.626516Z",
+  "generated_at": "2026-07-21T16:53:59.681225Z",
   "period": {
     "today": "2026-07-21",
     "yesterday": "2026-07-20",
@@ -7,13 +7,13 @@
     "month_ago": "2026-06-21"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 132,
-    "posts_month": 506,
+    "posts_today": 18,
+    "posts_week": 140,
+    "posts_month": 514,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 41.7
+    "success_rate": 41.6
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 2,
-      "week": 21,
-      "month": 185,
-      "success": 183,
+      "today": 3,
+      "week": 22,
+      "month": 186,
+      "success": 184,
       "failed": 2
     },
     "discord": {
-      "today": 3,
-      "week": 36,
-      "month": 329,
-      "success": 323,
+      "today": 5,
+      "week": 38,
+      "month": 331,
+      "success": 325,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 30,
-      "month": 288,
+      "today": 4,
+      "week": 32,
+      "month": 290,
       "success": 37,
-      "failed": 251
+      "failed": 253
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 15,
-      "month": 151,
+      "today": 2,
+      "week": 16,
+      "month": 152,
       "success": 10,
-      "failed": 141
+      "failed": 142
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 30,
-      "month": 286,
+      "today": 4,
+      "week": 32,
+      "month": 288,
       "success": 4,
-      "failed": 282
+      "failed": 284
     }
   },
   "interactions_by_platform": {
@@ -222,13 +222,13 @@
       "interactions": 0
     },
     "2026-07-21": {
-      "posts": 10,
+      "posts": 18,
       "interactions": 0
     }
   },
   "hourly_distribution": {
     "9": 36,
-    "15": 35,
+    "15": 38,
     "11": 3,
     "14": 30,
     "16": 39,
@@ -238,83 +238,6 @@
     "7": 6
   },
   "recent_posts": [
-    {
-      "id": 1375,
-      "timestamp": "2026-07-20T13:58:37.816962Z",
-      "platform": "telegram_en",
-      "type": "earnings",
-      "content_preview": "<b>📊 Earnings Calendar: Week of Jul 20</b>\n\n\n📅 <b>Wednesday, Jul 22</b>\n  • Alphabet (GOOGL) @ $358.",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "735"
-    },
-    {
-      "id": 1376,
-      "timestamp": "2026-07-20T13:58:38.187743Z",
-      "platform": "discord",
-      "type": "earnings",
-      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 20**\n\n\n📅 **Wednesday, Jul 22**\n  •",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1528763065628102728"
-    },
-    {
-      "id": 1377,
-      "timestamp": "2026-07-20T15:51:45.024353Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 The Great Misconception: How Markets Are Misreading Inflation</b>\n\n \" Markets are misreading in",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "742"
-    },
-    {
-      "id": 1378,
-      "timestamp": "2026-07-20T15:51:45.362137Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **The Great Misconception: How Markets Are Misreading Inflation**\n\n \" Markets are misreading infla",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1528791533539819680"
-    },
-    {
-      "id": 1379,
-      "timestamp": "2026-07-20T15:51:45.956671Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 The Great Misconception: How Markets Are Misreading Inflation\n\n \" Markets are misreading inflation",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1380,
-      "timestamp": "2026-07-20T15:51:46.926287Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 The Great Misconception: How Markets Are Misreading Inflation",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 1381,
-      "timestamp": "2026-07-20T15:51:47.747211Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$MSFT Microsoft Corporation\n\n💰 421.06 (+0.9%) | 5D: +3.9%\n📊 RSI: 60.6 | MACD: bearish\n📈 MA20: $416.7",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1382,
-      "timestamp": "2026-07-20T15:51:48.037207Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟢 $MSFT — Microsoft Corporation | $367.34 (-3.2%)\n\n**Setup:** oversold bounce setup → Bias: **BUL",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1528791544864313498"
-    },
     {
       "id": 1383,
       "timestamp": "2026-07-20T15:51:50.181269Z",
@@ -427,6 +350,81 @@
       "status": "success",
       "error_msg": "",
       "post_id": "1529120988887777312"
+    },
+    {
+      "id": 1395,
+      "timestamp": "2026-07-21T15:44:48.622100Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Dislocation: The Great Rotation Has Begun</b>\n\nA surprising 1.1% surge in the S&P 500 la",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "753"
+    },
+    {
+      "id": 1396,
+      "timestamp": "2026-07-21T15:44:49.089023Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Dislocation: The Great Rotation Has Begun**\n\nA surprising 1.1% surge in the S&P 500 last ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1529152175014678659"
+    },
+    {
+      "id": 1397,
+      "timestamp": "2026-07-21T15:44:50.086940Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Dislocation: The Great Rotation Has Begun\n\nA surprising 1.1% surge in the S&P 500 last week",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1398,
+      "timestamp": "2026-07-21T15:44:51.196461Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Dislocation: The Great Rotation Has Begun",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1399,
+      "timestamp": "2026-07-21T15:44:51.855026Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$NVDA NVIDIA Corporation\n\n💰 203.53 (-3.5%) | 5D: +4.1%\n📊 RSI: 45.4 | MACD: bullish\n📈 MA20: $201.88 (",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1400,
+      "timestamp": "2026-07-21T15:44:52.132767Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟢 $AMZN — Amazon.com, Inc. | $247.31 (+0.8%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n### ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1529152188465545468"
+    },
+    {
+      "id": 1401,
+      "timestamp": "2026-07-21T15:44:54.224786Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1402,
+      "timestamp": "2026-07-21T15:45:08.169057Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
     }
   ],
   "recent_interactions": [
