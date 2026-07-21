@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T06:26:18.978962Z",
+  "generated_at": "2026-07-21T09:08:55.935480Z",
   "period": {
     "today": "2026-07-21",
     "yesterday": "2026-07-20",
@@ -7,9 +7,9 @@
     "month_ago": "2026-06-21"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 122,
-    "posts_month": 496,
+    "posts_today": 8,
+    "posts_week": 130,
+    "posts_month": 504,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 19,
-      "month": 183,
-      "success": 181,
+      "today": 1,
+      "week": 20,
+      "month": 184,
+      "success": 182,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 33,
-      "month": 326,
-      "success": 320,
+      "today": 2,
+      "week": 35,
+      "month": 328,
+      "success": 322,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 28,
-      "month": 286,
+      "today": 2,
+      "week": 30,
+      "month": 288,
       "success": 37,
-      "failed": 249
+      "failed": 251
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 14,
-      "month": 150,
+      "today": 1,
+      "week": 15,
+      "month": 151,
       "success": 10,
-      "failed": 140
+      "failed": 141
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 28,
-      "month": 284,
+      "today": 2,
+      "week": 30,
+      "month": 286,
       "success": 4,
-      "failed": 280
+      "failed": 282
     }
   },
   "interactions_by_platform": {
@@ -220,6 +220,10 @@
     "2026-07-20": {
       "posts": 18,
       "interactions": 0
+    },
+    "2026-07-21": {
+      "posts": 8,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
@@ -228,87 +232,12 @@
     "11": 3,
     "14": 30,
     "16": 39,
-    "8": 39,
+    "8": 42,
     "10": 6,
     "13": 12,
     "7": 6
   },
   "recent_posts": [
-    {
-      "id": 1365,
-      "timestamp": "2026-07-19T14:57:07.762147Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1366,
-      "timestamp": "2026-07-19T14:57:35.569499Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 1367,
-      "timestamp": "2026-07-20T08:56:19.710627Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Insight: The AI-Driven Growth Showdown</b>\n\nThe Nasdaq just hit a new record high at 25,",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "734"
-    },
-    {
-      "id": 1368,
-      "timestamp": "2026-07-20T08:56:21.036493Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Insight: The AI-Driven Growth Showdown**\n\nThe Nasdaq just hit a new record high at 25,694",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1528686989531152404"
-    },
-    {
-      "id": 1369,
-      "timestamp": "2026-07-20T08:56:21.740578Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Insight: The AI-Driven Growth Showdown\n\nThe Nasdaq just hit a new record high at 25,694 wit",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1370,
-      "timestamp": "2026-07-20T08:56:22.854463Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Insight: The AI-Driven Growth Showdown",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 1371,
-      "timestamp": "2026-07-20T08:56:23.499496Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$GOOGL Alphabet Inc.\n\n💰 357.18 (-0.5%) | 5D: -0.8%\n📊 RSI: 42.5 | MACD: bullish\n📈 MA20: $357.88 (belo",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1372,
-      "timestamp": "2026-07-20T08:56:23.819862Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟢 $COIN — Coinbase Global, Inc. | $160.49 (-4.0%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1528687005297279006"
-    },
     {
       "id": 1373,
       "timestamp": "2026-07-20T08:56:26.022912Z",
@@ -416,6 +345,81 @@
     {
       "id": 1384,
       "timestamp": "2026-07-20T15:52:20.772286Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1385,
+      "timestamp": "2026-07-21T08:26:25.779692Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Insight: The AI-Driven Bull</b>\n\nAs the Nasdaq (^IXIC) reaches a 76.6 RSI level, its MAC",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "745"
+    },
+    {
+      "id": 1386,
+      "timestamp": "2026-07-21T08:26:26.302863Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Insight: The AI-Driven Bull**\n\nAs the Nasdaq (^IXIC) reaches a 76.6 RSI level, its MACD i",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1529041853792518265"
+    },
+    {
+      "id": 1387,
+      "timestamp": "2026-07-21T08:26:27.086678Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Insight: The AI-Driven Bull\n\nAs the Nasdaq (^IXIC) reaches a 76.6 RSI level, its MACD indic",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1388,
+      "timestamp": "2026-07-21T08:26:28.010449Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Insight: The AI-Driven Bull",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1389,
+      "timestamp": "2026-07-21T08:26:28.695123Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$AMZN Amazon.com, Inc.\n\n💰 245.34 (-0.7%) | 5D: +1.1%\n📊 RSI: 50.9 | MACD: bullish\n📈 MA20: $240.19 (ab",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1390,
+      "timestamp": "2026-07-21T08:26:28.981211Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟢 $META — Meta Platforms, Inc. | $582.9 (-4.9%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n#",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1529041864936787999"
+    },
+    {
+      "id": 1391,
+      "timestamp": "2026-07-21T08:26:32.929111Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1392,
+      "timestamp": "2026-07-21T08:27:05.378026Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
