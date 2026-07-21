@@ -204,3 +204,7 @@
 
 ## 08:44:36 | competitor/competitor_etoro
 - [cross_domain_match] 🔗 跨域关联匹配: competitor/competitor_etoro 在 FUSION_INDEX 中有对应融合策略
+
+## 06:31:55 | marketing/content_strategy
+- [marketing_insight] 📱 检测到营销洞察 (content_strategy)，建议生成新平台内容
+- [cross_domain_match] 🔗 跨域关联匹配: marketing/content_strategy 在 FUSION_INDEX 中有对应融合策略
