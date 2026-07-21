@@ -13041,5 +13041,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1385,
+    "timestamp": "2026-07-21T08:26:25.779692Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Insight: The AI-Driven Bull</b>\n\nAs the Nasdaq (^IXIC) reaches a 76.6 RSI level, its MAC",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "745"
+  },
+  {
+    "id": 1386,
+    "timestamp": "2026-07-21T08:26:26.302863Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Insight: The AI-Driven Bull**\n\nAs the Nasdaq (^IXIC) reaches a 76.6 RSI level, its MACD i",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1529041853792518265"
+  },
+  {
+    "id": 1387,
+    "timestamp": "2026-07-21T08:26:27.086678Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The AI-Driven Bull\n\nAs the Nasdaq (^IXIC) reaches a 76.6 RSI level, its MACD indic",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1388,
+    "timestamp": "2026-07-21T08:26:28.010449Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The AI-Driven Bull",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1389,
+    "timestamp": "2026-07-21T08:26:28.695123Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AMZN Amazon.com, Inc.\n\n💰 245.34 (-0.7%) | 5D: +1.1%\n📊 RSI: 50.9 | MACD: bullish\n📈 MA20: $240.19 (ab",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1390,
+    "timestamp": "2026-07-21T08:26:28.981211Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $META — Meta Platforms, Inc. | $582.9 (-4.9%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n#",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1529041864936787999"
+  },
+  {
+    "id": 1391,
+    "timestamp": "2026-07-21T08:26:32.929111Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1392,
+    "timestamp": "2026-07-21T08:27:05.378026Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
