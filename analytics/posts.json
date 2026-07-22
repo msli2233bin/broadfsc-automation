@@ -13286,5 +13286,25 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1411,
+    "timestamp": "2026-07-22T13:44:04.723307Z",
+    "platform": "telegram_en",
+    "type": "earnings",
+    "content_preview": "<b>📊 Earnings Calendar: Week of Jul 22</b>\n\n\n📅 <b>Wednesday, Jul 22</b>\n  • Alphabet (GOOGL) @ $347.",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "757"
+  },
+  {
+    "id": 1412,
+    "timestamp": "2026-07-22T13:44:05.319981Z",
+    "platform": "discord",
+    "type": "earnings",
+    "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 22**\n\n\n📅 **Wednesday, Jul 22**\n  •",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1529484179572527196"
   }
 ]
