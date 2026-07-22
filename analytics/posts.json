@@ -13211,5 +13211,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1403,
+    "timestamp": "2026-07-22T08:27:14.550450Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The Bullish Bubble: Uncovering Hidden Risks in the Markets</b>\n\nAs the S&P 500 surges to new he",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "756"
+  },
+  {
+    "id": 1404,
+    "timestamp": "2026-07-22T08:27:15.078257Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The Bullish Bubble: Uncovering Hidden Risks in the Markets**\n\nAs the S&P 500 surges to new heigh",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1529404445299839097"
+  },
+  {
+    "id": 1405,
+    "timestamp": "2026-07-22T08:27:15.611447Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The Bullish Bubble: Uncovering Hidden Risks in the Markets\n\nAs the S&P 500 surges to new heights, ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1406,
+    "timestamp": "2026-07-22T08:27:16.929270Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The Bullish Bubble: Uncovering Hidden Risks in the Markets",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1407,
+    "timestamp": "2026-07-22T08:27:17.726088Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AMZN Amazon.com, Inc.\n\n💰 227.01 (-3.1%) | 5D: -4.4%\n📊 RSI: 29.6 | MACD: bearish\n📈 MA20: $246.09 (be",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1408,
+    "timestamp": "2026-07-22T08:27:18.137629Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $MSFT — Microsoft Corporation | $390.74 (+0.1%)\n\n**Setup:** correction in play → Bias: **BEARIS",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1529404458608492688"
+  },
+  {
+    "id": 1409,
+    "timestamp": "2026-07-22T08:27:20.131514Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1410,
+    "timestamp": "2026-07-22T08:27:50.441884Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
