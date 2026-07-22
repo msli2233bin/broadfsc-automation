@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-22T13:48:30.139402Z",
+  "generated_at": "2026-07-22T17:16:25.998805Z",
   "period": {
     "today": "2026-07-22",
     "yesterday": "2026-07-21",
@@ -7,9 +7,9 @@
     "month_ago": "2026-06-22"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 132,
-    "posts_month": 508,
+    "posts_today": 18,
+    "posts_week": 140,
+    "posts_month": 516,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 2,
-      "week": 21,
-      "month": 188,
-      "success": 186,
+      "today": 3,
+      "week": 22,
+      "month": 189,
+      "success": 187,
       "failed": 2
     },
     "discord": {
-      "today": 3,
-      "week": 36,
-      "month": 334,
-      "success": 328,
+      "today": 5,
+      "week": 38,
+      "month": 336,
+      "success": 330,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 30,
-      "month": 292,
+      "today": 4,
+      "week": 32,
+      "month": 294,
       "success": 37,
-      "failed": 255
+      "failed": 257
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 15,
-      "month": 153,
+      "today": 2,
+      "week": 16,
+      "month": 154,
       "success": 10,
-      "failed": 143
+      "failed": 144
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 30,
-      "month": 290,
+      "today": 4,
+      "week": 32,
+      "month": 292,
       "success": 4,
-      "failed": 286
+      "failed": 288
     }
   },
   "interactions_by_platform": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-07-22": {
-      "posts": 10,
+      "posts": 18,
       "interactions": 0
     }
   },
@@ -232,89 +232,12 @@
     "14": 30,
     "16": 39,
     "8": 45,
-    "15": 35,
+    "15": 38,
     "10": 6,
     "13": 16,
     "7": 6
   },
   "recent_posts": [
-    {
-      "id": 1393,
-      "timestamp": "2026-07-21T13:40:53.382575Z",
-      "platform": "telegram_en",
-      "type": "earnings",
-      "content_preview": "<b>📊 Earnings Calendar: Week of Jul 21</b>\n\n\n📅 <b>Wednesday, Jul 22</b>\n  • Alphabet (GOOGL) @ $349.",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "746"
-    },
-    {
-      "id": 1394,
-      "timestamp": "2026-07-21T13:40:53.670913Z",
-      "platform": "discord",
-      "type": "earnings",
-      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 21**\n\n\n📅 **Wednesday, Jul 22**\n  •",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1529120988887777312"
-    },
-    {
-      "id": 1395,
-      "timestamp": "2026-07-21T15:44:48.622100Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Dislocation: The Great Rotation Has Begun</b>\n\nA surprising 1.1% surge in the S&P 500 la",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "753"
-    },
-    {
-      "id": 1396,
-      "timestamp": "2026-07-21T15:44:49.089023Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Dislocation: The Great Rotation Has Begun**\n\nA surprising 1.1% surge in the S&P 500 last ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1529152175014678659"
-    },
-    {
-      "id": 1397,
-      "timestamp": "2026-07-21T15:44:50.086940Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Dislocation: The Great Rotation Has Begun\n\nA surprising 1.1% surge in the S&P 500 last week",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1398,
-      "timestamp": "2026-07-21T15:44:51.196461Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Dislocation: The Great Rotation Has Begun",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 1399,
-      "timestamp": "2026-07-21T15:44:51.855026Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$NVDA NVIDIA Corporation\n\n💰 203.53 (-3.5%) | 5D: +4.1%\n📊 RSI: 45.4 | MACD: bullish\n📈 MA20: $201.88 (",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1400,
-      "timestamp": "2026-07-21T15:44:52.132767Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟢 $AMZN — Amazon.com, Inc. | $247.31 (+0.8%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n### ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1529152188465545468"
-    },
     {
       "id": 1401,
       "timestamp": "2026-07-21T15:44:54.224786Z",
@@ -427,6 +350,81 @@
       "status": "success",
       "error_msg": "",
       "post_id": "1529484179572527196"
+    },
+    {
+      "id": 1413,
+      "timestamp": "2026-07-22T15:43:47.546738Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 The Bullish Bias in the US Market: What You Need to Know Before Friday's Close</b>\n\nAs we appro",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "764"
+    },
+    {
+      "id": 1414,
+      "timestamp": "2026-07-22T15:43:47.939963Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **The Bullish Bias in the US Market: What You Need to Know Before Friday's Close**\n\nAs we approach",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1529514306981462036"
+    },
+    {
+      "id": 1415,
+      "timestamp": "2026-07-22T15:43:48.560372Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 The Bullish Bias in the US Market: What You Need to Know Before Friday's Close\n\nAs we approach Fri",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1416,
+      "timestamp": "2026-07-22T15:43:49.963002Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 The Bullish Bias in the US Market: What You Need to Know Before Friday's Close",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1417,
+      "timestamp": "2026-07-22T15:43:50.551842Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 133.73 (+2.8%) | 5D: -2.4%\n📊 RSI: 38.6 | MACD: bearish\n📈 MA20: $",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1418,
+      "timestamp": "2026-07-22T15:43:51.159257Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🔴 $TSLA — Tesla, Inc. | $379.71 (+1.2%)\n\n**Setup:** correction in play → Bias: **BEARISH**\n\n### 📊",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1529514320608886804"
+    },
+    {
+      "id": 1419,
+      "timestamp": "2026-07-22T15:43:54.962000Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1420,
+      "timestamp": "2026-07-22T15:44:07.541925Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "cannot access local variable 'raw' where it is not associated with a value"
     }
   ],
   "recent_interactions": [
