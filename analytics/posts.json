@@ -13306,5 +13306,80 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1529484179572527196"
+  },
+  {
+    "id": 1413,
+    "timestamp": "2026-07-22T15:43:47.546738Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The Bullish Bias in the US Market: What You Need to Know Before Friday's Close</b>\n\nAs we appro",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "764"
+  },
+  {
+    "id": 1414,
+    "timestamp": "2026-07-22T15:43:47.939963Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The Bullish Bias in the US Market: What You Need to Know Before Friday's Close**\n\nAs we approach",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1529514306981462036"
+  },
+  {
+    "id": 1415,
+    "timestamp": "2026-07-22T15:43:48.560372Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The Bullish Bias in the US Market: What You Need to Know Before Friday's Close\n\nAs we approach Fri",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1416,
+    "timestamp": "2026-07-22T15:43:49.963002Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The Bullish Bias in the US Market: What You Need to Know Before Friday's Close",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1417,
+    "timestamp": "2026-07-22T15:43:50.551842Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 133.73 (+2.8%) | 5D: -2.4%\n📊 RSI: 38.6 | MACD: bearish\n📈 MA20: $",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1418,
+    "timestamp": "2026-07-22T15:43:51.159257Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $TSLA — Tesla, Inc. | $379.71 (+1.2%)\n\n**Setup:** correction in play → Bias: **BEARISH**\n\n### 📊",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1529514320608886804"
+  },
+  {
+    "id": 1419,
+    "timestamp": "2026-07-22T15:43:54.962000Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1420,
+    "timestamp": "2026-07-22T15:44:07.541925Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "cannot access local variable 'raw' where it is not associated with a value"
   }
 ]
