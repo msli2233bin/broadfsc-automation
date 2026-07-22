@@ -1,0 +1,11 @@
+{
+  "platform": "discord",
+  "topic": "AMD_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $544.43 (+8.1%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n### 📊 Technical Indicators\n| Indicator | Value | Signal |\n|-----------|-------|--------|\n| RSI(14) | 44.2 | Neutral ✅ |\n| MACD | 6.2054 | Bearish (below signal) |\n| BB Position | 66.0% | Mid-range |\n| Volume | 1.0x avg | Normal |\n\n### 📈 Key Levels\n| Level | Price |\n|-------|-------|\n| Resistance | $584.73 |\n| MA20 | $530.97 |\n| MA50 | $503.45 |\n| MA200 | $396.09 |\n| Support | $192.27 |\n\n### 📉 Performance\n1D: +8.1% | 5D: -0.7% | 20D: -1.3%\n\n### 🎯 Bollinger Bands\nUpper: $572.98 | Lower: $488.96\n\n---\n📱 Get daily TA signals for 5 stocks → **t.me/BroadInvestBot**\nFree. No spam. Just levels that matter.",
+  "content_type": "single",
+  "symbol": "AMD",
+  "created": "2026-07-22T06:18:01.365771",
+  "used": false,
+  "chart_paths": {}
+}
