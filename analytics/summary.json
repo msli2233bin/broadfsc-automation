@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-23T13:53:02.995867Z",
+  "generated_at": "2026-07-23T17:20:28.189098Z",
   "period": {
     "today": "2026-07-23",
     "yesterday": "2026-07-22",
@@ -7,13 +7,13 @@
     "month_ago": "2026-06-23"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 132,
-    "posts_month": 518,
+    "posts_today": 18,
+    "posts_week": 140,
+    "posts_month": 526,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 42.1
+    "success_rate": 42.0
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 2,
-      "week": 21,
-      "month": 191,
-      "success": 189,
+      "today": 3,
+      "week": 22,
+      "month": 192,
+      "success": 190,
       "failed": 2
     },
     "discord": {
-      "today": 3,
-      "week": 36,
-      "month": 339,
-      "success": 333,
+      "today": 5,
+      "week": 38,
+      "month": 341,
+      "success": 335,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 30,
-      "month": 296,
+      "today": 4,
+      "week": 32,
+      "month": 298,
       "success": 37,
-      "failed": 259
+      "failed": 261
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 15,
-      "month": 155,
+      "today": 2,
+      "week": 16,
+      "month": 156,
       "success": 10,
-      "failed": 145
+      "failed": 146
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 30,
-      "month": 294,
+      "today": 4,
+      "week": 32,
+      "month": 296,
       "success": 4,
-      "failed": 290
+      "failed": 292
     }
   },
   "interactions_by_platform": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-07-23": {
-      "posts": 10,
+      "posts": 18,
       "interactions": 0
     }
   },
@@ -231,89 +231,12 @@
     "14": 30,
     "16": 39,
     "8": 48,
-    "15": 38,
+    "15": 41,
     "10": 6,
     "13": 18,
     "7": 6
   },
   "recent_posts": [
-    {
-      "id": 1411,
-      "timestamp": "2026-07-22T13:44:04.723307Z",
-      "platform": "telegram_en",
-      "type": "earnings",
-      "content_preview": "<b>📊 Earnings Calendar: Week of Jul 22</b>\n\n\n📅 <b>Wednesday, Jul 22</b>\n  • Alphabet (GOOGL) @ $347.",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "757"
-    },
-    {
-      "id": 1412,
-      "timestamp": "2026-07-22T13:44:05.319981Z",
-      "platform": "discord",
-      "type": "earnings",
-      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 22**\n\n\n📅 **Wednesday, Jul 22**\n  •",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1529484179572527196"
-    },
-    {
-      "id": 1413,
-      "timestamp": "2026-07-22T15:43:47.546738Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 The Bullish Bias in the US Market: What You Need to Know Before Friday's Close</b>\n\nAs we appro",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "764"
-    },
-    {
-      "id": 1414,
-      "timestamp": "2026-07-22T15:43:47.939963Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **The Bullish Bias in the US Market: What You Need to Know Before Friday's Close**\n\nAs we approach",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1529514306981462036"
-    },
-    {
-      "id": 1415,
-      "timestamp": "2026-07-22T15:43:48.560372Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 The Bullish Bias in the US Market: What You Need to Know Before Friday's Close\n\nAs we approach Fri",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1416,
-      "timestamp": "2026-07-22T15:43:49.963002Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 The Bullish Bias in the US Market: What You Need to Know Before Friday's Close",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 1417,
-      "timestamp": "2026-07-22T15:43:50.551842Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 133.73 (+2.8%) | 5D: -2.4%\n📊 RSI: 38.6 | MACD: bearish\n📈 MA20: $",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1418,
-      "timestamp": "2026-07-22T15:43:51.159257Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🔴 $TSLA — Tesla, Inc. | $379.71 (+1.2%)\n\n**Setup:** correction in play → Bias: **BEARISH**\n\n### 📊",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1529514320608886804"
-    },
     {
       "id": 1419,
       "timestamp": "2026-07-22T15:43:54.962000Z",
@@ -426,6 +349,81 @@
       "status": "success",
       "error_msg": "",
       "post_id": "1529847906478194891"
+    },
+    {
+      "id": 1431,
+      "timestamp": "2026-07-23T15:55:58.897343Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Alert: $GOOGL Extreme Overbuy Signals</b>\n\nGOOGL's 85.2 RSI reading is the highest since",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "775"
+    },
+    {
+      "id": 1432,
+      "timestamp": "2026-07-23T15:55:59.268455Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Alert: $GOOGL Extreme Overbuy Signals**\n\nGOOGL's 85.2 RSI reading is the highest since 20",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1529879761680207875"
+    },
+    {
+      "id": 1433,
+      "timestamp": "2026-07-23T15:55:59.775261Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Alert: $GOOGL Extreme Overbuy Signals\n\nGOOGL's 85.2 RSI reading is the highest since 2015. ",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1434,
+      "timestamp": "2026-07-23T15:56:00.743723Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Alert: $GOOGL Extreme Overbuy Signals",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1435,
+      "timestamp": "2026-07-23T15:56:01.673797Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "\"Mastodon's decentralized nature offers a refreshing alternative to traditional social media platfor",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1436,
+      "timestamp": "2026-07-23T15:56:02.037515Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "Community Post:\n\n\"Hey fellow sales pros, I wanted to share a crucial insight on sales methodologies ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1529879773512470580"
+    },
+    {
+      "id": 1437,
+      "timestamp": "2026-07-23T15:56:04.156186Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1438,
+      "timestamp": "2026-07-23T15:56:36.366084Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
     }
   ],
   "recent_interactions": [
