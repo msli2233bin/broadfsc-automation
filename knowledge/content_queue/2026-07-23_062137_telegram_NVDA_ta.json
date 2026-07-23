@@ -1,0 +1,11 @@
+{
+  "platform": "telegram",
+  "topic": "NVDA_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "🟢 <b>$NVDA Technical Analysis</b> — NVIDIA Corporation\n\n💰 Price: $212.06 (+2.3%) | Cap: $5.14T\n📊 Setup: <b>uptrend intact</b> | Bias: <b>BULLISH</b>\n\n<b>Indicators:</b>\n• RSI(14): 62.7\n• MACD: 0.73 (Signal: -0.37) — Bullish\n• BB: $189.46 — $215.12 (Position: 88.1%)\n• Volume: 1.0x average\n\n<b>Moving Averages:</b>\n• MA20: $202.29 | MA50: $209.59 | MA200: $200.92\n• Price above all MAs ✅\n\n<b>Performance:</b>\n• 1D: +2.3% | 5D: -0.2% | 20D: +6.0%\n\n<b>Key Levels:</b>\n• Resistance: $236.26\n• Support: $164.08\n\n<b>Trade Idea:</b>\nBreakout entry above $236.26 on volume confirmation\n\n📱 <b>Free daily TA signals</b> — message @BroadInvestBot",
+  "content_type": "single",
+  "symbol": "NVDA",
+  "created": "2026-07-23T06:21:37.028612",
+  "used": false,
+  "chart_paths": {}
+}
