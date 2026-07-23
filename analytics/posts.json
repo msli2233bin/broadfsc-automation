@@ -13456,5 +13456,25 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1429,
+    "timestamp": "2026-07-23T13:49:23.929867Z",
+    "platform": "telegram_en",
+    "type": "earnings",
+    "content_preview": "<b>📊 Earnings Calendar: Week of Jul 23</b>\n\n\n📅 <b>Thursday, Jul 23</b>\n  • Infosys (INFY) @ $10.48 |",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "768"
+  },
+  {
+    "id": 1430,
+    "timestamp": "2026-07-23T13:49:24.234330Z",
+    "platform": "discord",
+    "type": "earnings",
+    "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 23**\n\n\n📅 **Thursday, Jul 23**\n  • ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1529847906478194891"
   }
 ]
