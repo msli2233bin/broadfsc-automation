@@ -13476,5 +13476,80 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1529847906478194891"
+  },
+  {
+    "id": 1431,
+    "timestamp": "2026-07-23T15:55:58.897343Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Alert: $GOOGL Extreme Overbuy Signals</b>\n\nGOOGL's 85.2 RSI reading is the highest since",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "775"
+  },
+  {
+    "id": 1432,
+    "timestamp": "2026-07-23T15:55:59.268455Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Alert: $GOOGL Extreme Overbuy Signals**\n\nGOOGL's 85.2 RSI reading is the highest since 20",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1529879761680207875"
+  },
+  {
+    "id": 1433,
+    "timestamp": "2026-07-23T15:55:59.775261Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: $GOOGL Extreme Overbuy Signals\n\nGOOGL's 85.2 RSI reading is the highest since 2015. ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1434,
+    "timestamp": "2026-07-23T15:56:00.743723Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: $GOOGL Extreme Overbuy Signals",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1435,
+    "timestamp": "2026-07-23T15:56:01.673797Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "\"Mastodon's decentralized nature offers a refreshing alternative to traditional social media platfor",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1436,
+    "timestamp": "2026-07-23T15:56:02.037515Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "Community Post:\n\n\"Hey fellow sales pros, I wanted to share a crucial insight on sales methodologies ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1529879773512470580"
+  },
+  {
+    "id": 1437,
+    "timestamp": "2026-07-23T15:56:04.156186Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1438,
+    "timestamp": "2026-07-23T15:56:36.366084Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
