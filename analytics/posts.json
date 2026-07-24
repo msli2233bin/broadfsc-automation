@@ -13551,5 +13551,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1439,
+    "timestamp": "2026-07-24T08:25:52.918673Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Disruption: Can You Handle the Truth?</b>\n\nThe S&P 500 is trading at 7,408.30, with the ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "778"
+  },
+  {
+    "id": 1440,
+    "timestamp": "2026-07-24T08:25:53.491515Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Disruption: Can You Handle the Truth?**\n\nThe S&P 500 is trading at 7,408.30, with the Nas",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1530128878691946611"
+  },
+  {
+    "id": 1441,
+    "timestamp": "2026-07-24T08:25:54.073740Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Disruption: Can You Handle the Truth?\n\nThe S&P 500 is trading at 7,408.30, with the Nasdaq ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1442,
+    "timestamp": "2026-07-24T08:25:55.146916Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Disruption: Can You Handle the Truth?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1443,
+    "timestamp": "2026-07-24T08:25:55.979691Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AMZN Amazon.com, Inc.\n\n💰 243.62 (-1.0%) | 5D: +2.2%\n📊 RSI: 48.0 | MACD: bullish\n📈 MA20: $239.68 (ab",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1444,
+    "timestamp": "2026-07-24T08:25:56.265558Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $NVDA — NVIDIA Corporation | $222.82 (-0.7%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n###",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1530128891660734546"
+  },
+  {
+    "id": 1445,
+    "timestamp": "2026-07-24T08:26:00.937137Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1446,
+    "timestamp": "2026-07-24T08:26:18.661271Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
