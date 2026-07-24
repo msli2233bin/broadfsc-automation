@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-24T12:56:24.579902Z",
+  "generated_at": "2026-07-24T14:55:47.630951Z",
   "period": {
     "today": "2026-07-24",
     "yesterday": "2026-07-23",
@@ -7,13 +7,13 @@
     "month_ago": "2026-06-24"
   },
   "totals": {
-    "posts_today": 8,
-    "posts_week": 130,
-    "posts_month": 516,
+    "posts_today": 10,
+    "posts_week": 132,
+    "posts_month": 518,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 41.9
+    "success_rate": 42.1
   },
   "platforms": {
     "tiktok": {
@@ -24,17 +24,17 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 20,
-      "month": 193,
-      "success": 191,
+      "today": 2,
+      "week": 21,
+      "month": 194,
+      "success": 192,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 35,
-      "month": 343,
-      "success": 337,
+      "today": 3,
+      "week": 36,
+      "month": 344,
+      "success": 338,
       "failed": 6
     },
     "mastodon": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-07-24": {
-      "posts": 8,
+      "posts": 10,
       "interactions": 0
     }
   },
@@ -233,28 +233,10 @@
     "8": 51,
     "15": 41,
     "10": 6,
-    "13": 18,
+    "13": 20,
     "7": 6
   },
   "recent_posts": [
-    {
-      "id": 1427,
-      "timestamp": "2026-07-23T08:28:32.571224Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1428,
-      "timestamp": "2026-07-23T08:29:05.429292Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
     {
       "id": 1429,
       "timestamp": "2026-07-23T13:49:23.929867Z",
@@ -424,6 +406,26 @@
       "content_preview": "Hatena Blog post",
       "status": "failed",
       "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1447,
+      "timestamp": "2026-07-24T13:29:15.440075Z",
+      "platform": "telegram_en",
+      "type": "earnings",
+      "content_preview": "<b>📊 Earnings Calendar: Week of Jul 24</b>\n\n\n📅 <b>Friday, Jul 24</b>\n  • Schlumberger (SLB) @ $47.22",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "779"
+    },
+    {
+      "id": 1448,
+      "timestamp": "2026-07-24T13:29:15.777379Z",
+      "platform": "discord",
+      "type": "earnings",
+      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 24**\n\n\n📅 **Friday, Jul 24**\n  • Sc",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1530205225598714056"
     }
   ],
   "recent_interactions": [
