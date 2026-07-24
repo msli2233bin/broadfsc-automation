@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-24T06:23:51.666012Z",
+  "generated_at": "2026-07-24T09:02:50.965967Z",
   "period": {
     "today": "2026-07-24",
     "yesterday": "2026-07-23",
@@ -7,9 +7,9 @@
     "month_ago": "2026-06-24"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 122,
-    "posts_month": 508,
+    "posts_today": 8,
+    "posts_week": 130,
+    "posts_month": 516,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 19,
-      "month": 192,
-      "success": 190,
+      "today": 1,
+      "week": 20,
+      "month": 193,
+      "success": 191,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 33,
-      "month": 341,
-      "success": 335,
+      "today": 2,
+      "week": 35,
+      "month": 343,
+      "success": 337,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 28,
-      "month": 298,
+      "today": 2,
+      "week": 30,
+      "month": 300,
       "success": 37,
-      "failed": 261
+      "failed": 263
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 14,
-      "month": 156,
+      "today": 1,
+      "week": 15,
+      "month": 157,
       "success": 10,
-      "failed": 146
+      "failed": 147
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 28,
-      "month": 296,
+      "today": 2,
+      "week": 30,
+      "month": 298,
       "success": 4,
-      "failed": 292
+      "failed": 294
     }
   },
   "interactions_by_platform": {
@@ -220,94 +220,23 @@
     "2026-07-23": {
       "posts": 18,
       "interactions": 0
+    },
+    "2026-07-24": {
+      "posts": 8,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
     "9": 30,
     "14": 28,
     "16": 36,
-    "8": 48,
+    "8": 51,
     "15": 41,
     "10": 6,
     "13": 18,
     "7": 6
   },
   "recent_posts": [
-    {
-      "id": 1419,
-      "timestamp": "2026-07-22T15:43:54.962000Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1420,
-      "timestamp": "2026-07-22T15:44:07.541925Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "cannot access local variable 'raw' where it is not associated with a value"
-    },
-    {
-      "id": 1421,
-      "timestamp": "2026-07-23T08:28:24.113706Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Global Market Turbulence: A $1 Trillion Opportunity?</b>\n\nThe S&P 500 has plunged 10.6% in the ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "767"
-    },
-    {
-      "id": 1422,
-      "timestamp": "2026-07-23T08:28:24.483088Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Global Market Turbulence: A $1 Trillion Opportunity?**\n\nThe S&P 500 has plunged 10.6% in the pas",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1529767125013631097"
-    },
-    {
-      "id": 1423,
-      "timestamp": "2026-07-23T08:28:25.020309Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Global Market Turbulence: A $1 Trillion Opportunity?\n\nThe S&P 500 has plunged 10.6% in the past mo",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1424,
-      "timestamp": "2026-07-23T08:28:26.198650Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Global Market Turbulence: A $1 Trillion Opportunity?",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 1425,
-      "timestamp": "2026-07-23T08:28:26.834260Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$META Meta Platforms, Inc.\n\n💰 582.9 (-4.9%) | 5D: +7.4%\n📊 RSI: 53.5 | MACD: bullish\n📈 MA20: $576.51 ",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1426,
-      "timestamp": "2026-07-23T08:28:27.134608Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟡 $GOOGL — Alphabet Inc. | $352.51 (-1.3%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n### 📊 T",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1529767136388710400"
-    },
     {
       "id": 1427,
       "timestamp": "2026-07-23T08:28:32.571224Z",
@@ -415,6 +344,81 @@
     {
       "id": 1438,
       "timestamp": "2026-07-23T15:56:36.366084Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1439,
+      "timestamp": "2026-07-24T08:25:52.918673Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Disruption: Can You Handle the Truth?</b>\n\nThe S&P 500 is trading at 7,408.30, with the ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "778"
+    },
+    {
+      "id": 1440,
+      "timestamp": "2026-07-24T08:25:53.491515Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Disruption: Can You Handle the Truth?**\n\nThe S&P 500 is trading at 7,408.30, with the Nas",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1530128878691946611"
+    },
+    {
+      "id": 1441,
+      "timestamp": "2026-07-24T08:25:54.073740Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Disruption: Can You Handle the Truth?\n\nThe S&P 500 is trading at 7,408.30, with the Nasdaq ",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1442,
+      "timestamp": "2026-07-24T08:25:55.146916Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Disruption: Can You Handle the Truth?",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1443,
+      "timestamp": "2026-07-24T08:25:55.979691Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$AMZN Amazon.com, Inc.\n\n💰 243.62 (-1.0%) | 5D: +2.2%\n📊 RSI: 48.0 | MACD: bullish\n📈 MA20: $239.68 (ab",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1444,
+      "timestamp": "2026-07-24T08:25:56.265558Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟡 $NVDA — NVIDIA Corporation | $222.82 (-0.7%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n###",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1530128891660734546"
+    },
+    {
+      "id": 1445,
+      "timestamp": "2026-07-24T08:26:00.937137Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1446,
+      "timestamp": "2026-07-24T08:26:18.661271Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
