@@ -1,19 +1,5 @@
 [
   {
-    "success": true,
-    "username": "Only-Character4025",
-    "link_karma": 1,
-    "comment_karma": 0,
-    "total_karma": 1,
-    "age_days": 0,
-    "age_str": "0 days (since 2026-04-22)",
-    "has_verified_email": true,
-    "is_suspended": false,
-    "ready_for_posting": false,
-    "method": "proxy-codetabs",
-    "checked_at": "2026-04-23T07:44:39.347110"
-  },
-  {
     "success": false,
     "error": "User 'Only-Character4025' not found on Reddit",
     "checked_at": "2026-04-24T13:02:12.971879"
@@ -757,5 +743,10 @@
     "success": false,
     "error": "HTML profile check failed: HTTP 522",
     "checked_at": "2026-07-21T04:21:55.800486"
+  },
+  {
+    "success": false,
+    "error": "HTML profile check failed: HTTP 522",
+    "checked_at": "2026-07-24T04:21:57.944980"
   }
 ]
