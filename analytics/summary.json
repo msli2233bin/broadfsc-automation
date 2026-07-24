@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-24T14:55:47.630951Z",
+  "generated_at": "2026-07-24T16:41:30.275778Z",
   "period": {
     "today": "2026-07-24",
     "yesterday": "2026-07-23",
@@ -7,13 +7,13 @@
     "month_ago": "2026-06-24"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 132,
-    "posts_month": 518,
+    "posts_today": 18,
+    "posts_week": 140,
+    "posts_month": 526,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 42.1
+    "success_rate": 42.0
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 2,
-      "week": 21,
-      "month": 194,
-      "success": 192,
+      "today": 3,
+      "week": 22,
+      "month": 195,
+      "success": 193,
       "failed": 2
     },
     "discord": {
-      "today": 3,
-      "week": 36,
-      "month": 344,
-      "success": 338,
+      "today": 5,
+      "week": 38,
+      "month": 346,
+      "success": 340,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 30,
-      "month": 300,
+      "today": 4,
+      "week": 32,
+      "month": 302,
       "success": 37,
-      "failed": 263
+      "failed": 265
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 15,
-      "month": 157,
+      "today": 2,
+      "week": 16,
+      "month": 158,
       "success": 10,
-      "failed": 147
+      "failed": 148
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 30,
-      "month": 298,
+      "today": 4,
+      "week": 32,
+      "month": 300,
       "success": 4,
-      "failed": 294
+      "failed": 296
     }
   },
   "interactions_by_platform": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-07-24": {
-      "posts": 10,
+      "posts": 18,
       "interactions": 0
     }
   },
@@ -231,89 +231,12 @@
     "14": 28,
     "16": 36,
     "8": 51,
-    "15": 41,
+    "15": 44,
     "10": 6,
     "13": 20,
     "7": 6
   },
   "recent_posts": [
-    {
-      "id": 1429,
-      "timestamp": "2026-07-23T13:49:23.929867Z",
-      "platform": "telegram_en",
-      "type": "earnings",
-      "content_preview": "<b>📊 Earnings Calendar: Week of Jul 23</b>\n\n\n📅 <b>Thursday, Jul 23</b>\n  • Infosys (INFY) @ $10.48 |",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "768"
-    },
-    {
-      "id": 1430,
-      "timestamp": "2026-07-23T13:49:24.234330Z",
-      "platform": "discord",
-      "type": "earnings",
-      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 23**\n\n\n📅 **Thursday, Jul 23**\n  • ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1529847906478194891"
-    },
-    {
-      "id": 1431,
-      "timestamp": "2026-07-23T15:55:58.897343Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Alert: $GOOGL Extreme Overbuy Signals</b>\n\nGOOGL's 85.2 RSI reading is the highest since",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "775"
-    },
-    {
-      "id": 1432,
-      "timestamp": "2026-07-23T15:55:59.268455Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Alert: $GOOGL Extreme Overbuy Signals**\n\nGOOGL's 85.2 RSI reading is the highest since 20",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1529879761680207875"
-    },
-    {
-      "id": 1433,
-      "timestamp": "2026-07-23T15:55:59.775261Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Alert: $GOOGL Extreme Overbuy Signals\n\nGOOGL's 85.2 RSI reading is the highest since 2015. ",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1434,
-      "timestamp": "2026-07-23T15:56:00.743723Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Alert: $GOOGL Extreme Overbuy Signals",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 1435,
-      "timestamp": "2026-07-23T15:56:01.673797Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "\"Mastodon's decentralized nature offers a refreshing alternative to traditional social media platfor",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1436,
-      "timestamp": "2026-07-23T15:56:02.037515Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "Community Post:\n\n\"Hey fellow sales pros, I wanted to share a crucial insight on sales methodologies ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1529879773512470580"
-    },
     {
       "id": 1437,
       "timestamp": "2026-07-23T15:56:04.156186Z",
@@ -426,6 +349,81 @@
       "status": "success",
       "error_msg": "",
       "post_id": "1530205225598714056"
+    },
+    {
+      "id": 1449,
+      "timestamp": "2026-07-24T15:26:29.765142Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 The Bull Run Continues: S&P 500 at Record Highs, But What's Next?</b>\n\nThe S&P 500 has just sur",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "786"
+    },
+    {
+      "id": 1450,
+      "timestamp": "2026-07-24T15:26:30.001513Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **The Bull Run Continues: S&P 500 at Record Highs, But What's Next?**\n\nThe S&P 500 has just surpas",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1530234729280962863"
+    },
+    {
+      "id": 1451,
+      "timestamp": "2026-07-24T15:26:30.977231Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 The Bull Run Continues: S&P 500 at Record Highs, But What's Next?\n\nThe S&P 500 has just surpassed ",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1452,
+      "timestamp": "2026-07-24T15:26:31.786590Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 The Bull Run Continues: S&P 500 at Record Highs, But What's Next?",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1453,
+      "timestamp": "2026-07-24T15:26:32.528700Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$MSFT Microsoft Corporation\n\n💰 373.02 (+1.2%) | 5D: -0.2%\n📊 RSI: 36.5 | MACD: bearish\n📈 MA20: $391.6",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1454,
+      "timestamp": "2026-07-24T15:26:32.723678Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🔴 $COIN — Coinbase Global, Inc. | $184.99 (-4.4%)\n\n**Setup:** correction in play → Bias: **BEARIS",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1530234740723028070"
+    },
+    {
+      "id": 1455,
+      "timestamp": "2026-07-24T15:26:36.835587Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1456,
+      "timestamp": "2026-07-24T15:27:10.487493Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
     }
   ],
   "recent_interactions": [
