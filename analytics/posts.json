@@ -13721,5 +13721,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1457,
+    "timestamp": "2026-07-25T08:04:39.960760Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Alert: Bull Run in Sight?</b>\n\nWe're not in a bull market yet, but the S&P 500's RSI is ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "789"
+  },
+  {
+    "id": 1458,
+    "timestamp": "2026-07-25T08:04:40.446741Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Alert: Bull Run in Sight?**\n\nWe're not in a bull market yet, but the S&P 500's RSI is fla",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1530485927279857758"
+  },
+  {
+    "id": 1459,
+    "timestamp": "2026-07-25T08:04:41.176326Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: Bull Run in Sight?\n\nWe're not in a bull market yet, but the S&P 500's RSI is flashin",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1460,
+    "timestamp": "2026-07-25T08:04:42.327984Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: Bull Run in Sight?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1461,
+    "timestamp": "2026-07-25T08:04:42.935262Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "\"Market momentum is building, but don't get caught up in the hype. The US stock market's recent rebo",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1462,
+    "timestamp": "2026-07-25T08:04:43.332940Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $PLTR — Palantir Technologies Inc. | $nan (+nan%)\n\n**Setup:** oversold bounce setup → Bias: **B",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1530485940059897966"
+  },
+  {
+    "id": 1463,
+    "timestamp": "2026-07-25T08:04:45.722186Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1464,
+    "timestamp": "2026-07-25T08:05:17.355432Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
