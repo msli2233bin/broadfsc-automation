@@ -13796,5 +13796,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1465,
+    "timestamp": "2026-07-25T15:03:40.738447Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The AI-Driven Market Shift: 6 Key Numbers to Watch</b>\n\nThe Nasdaq's RSI just hit a new high of",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "790"
+  },
+  {
+    "id": 1466,
+    "timestamp": "2026-07-25T15:03:40.967613Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The AI-Driven Market Shift: 6 Key Numbers to Watch**\n\nThe Nasdaq's RSI just hit a new high of 77",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1530591375236661502"
+  },
+  {
+    "id": 1467,
+    "timestamp": "2026-07-25T15:03:42.154677Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The AI-Driven Market Shift: 6 Key Numbers to Watch\n\nThe Nasdaq's RSI just hit a new high of 77.4, ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1468,
+    "timestamp": "2026-07-25T15:03:42.981097Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The AI-Driven Market Shift: 6 Key Numbers to Watch",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1469,
+    "timestamp": "2026-07-25T15:03:43.547249Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$NVDA NVIDIA Corporation\n\n💰 212.06 (+2.3%) | 5D: -0.2%\n📊 RSI: 62.7 | MACD: bullish\n📈 MA20: $202.29 (",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1470,
+    "timestamp": "2026-07-25T15:03:43.798521Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $PLTR — Palantir Technologies Inc. | $127.99 (-2.4%)\n\n**Setup:** correction in play → Bias: **B",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1530591386997493820"
+  },
+  {
+    "id": 1471,
+    "timestamp": "2026-07-25T15:03:45.743907Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1472,
+    "timestamp": "2026-07-25T15:04:17.157284Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
