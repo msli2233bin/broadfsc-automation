@@ -1,10 +1,5 @@
 [
   {
-    "success": false,
-    "error": "User 'Only-Character4025' not found on Reddit",
-    "checked_at": "2026-04-24T13:02:12.971879"
-  },
-  {
     "success": true,
     "username": "Only-Character4025",
     "link_karma": -1,
@@ -748,5 +743,10 @@
     "success": false,
     "error": "HTML profile check failed: HTTP 522",
     "checked_at": "2026-07-24T04:21:57.944980"
+  },
+  {
+    "success": false,
+    "error": "HTML profile check failed: HTTP 522",
+    "checked_at": "2026-07-25T04:17:43.196570"
   }
 ]
