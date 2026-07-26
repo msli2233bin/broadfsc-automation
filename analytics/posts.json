@@ -13946,5 +13946,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1481,
+    "timestamp": "2026-07-26T15:06:13.589713Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Insight: The Great Reversal of 2026</b>\n\nWe're witnessing a remarkable reversal in the g",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "794"
+  },
+  {
+    "id": 1482,
+    "timestamp": "2026-07-26T15:06:14.688465Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Insight: The Great Reversal of 2026**\n\nWe're witnessing a remarkable reversal in the glob",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1530954405212459109"
+  },
+  {
+    "id": 1483,
+    "timestamp": "2026-07-26T15:06:15.233466Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The Great Reversal of 2026\n\nWe're witnessing a remarkable reversal in the global m",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1484,
+    "timestamp": "2026-07-26T15:06:16.440560Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The Great Reversal of 2026",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1485,
+    "timestamp": "2026-07-26T15:06:17.151003Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AAPL Apple Inc.\n\n💰 294.38 (+1.7%) | 5D: +0.4%\n📊 RSI: 52.1 | MACD: bearish\n📈 MA20: $294.88 (below)\n🎯",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1486,
+    "timestamp": "2026-07-26T15:06:17.577441Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $MSFT — Microsoft Corporation | $418.57 (-0.1%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1530954419229687820"
+  },
+  {
+    "id": 1487,
+    "timestamp": "2026-07-26T15:06:20.058862Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1488,
+    "timestamp": "2026-07-26T15:06:53.153829Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
