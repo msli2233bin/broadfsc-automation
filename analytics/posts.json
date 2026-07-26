@@ -13871,5 +13871,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1473,
+    "timestamp": "2026-07-26T08:24:56.833819Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Global Market Update: AI Drives Tech Rally, But Bulls Face Headwinds</b>\n\nAs we head into the s",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "793"
+  },
+  {
+    "id": 1474,
+    "timestamp": "2026-07-26T08:24:57.499133Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Global Market Update: AI Drives Tech Rally, But Bulls Face Headwinds**\n\nAs we head into the seco",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1530853418938142803"
+  },
+  {
+    "id": 1475,
+    "timestamp": "2026-07-26T08:24:58.201095Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Global Market Update: AI Drives Tech Rally, But Bulls Face Headwinds\n\nAs we head into the second h",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1476,
+    "timestamp": "2026-07-26T08:25:00.120451Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Global Market Update: AI Drives Tech Rally, But Bulls Face Headwinds",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1477,
+    "timestamp": "2026-07-26T08:25:01.104229Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AAPL Apple Inc.\n\n💰 310.26 (-1.6%) | 5D: -0.2%\n📊 RSI: 64.0 | MACD: bearish\n📈 MA20: $302.03 (above)\n🎯",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1478,
+    "timestamp": "2026-07-26T08:25:01.588368Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $nan (+nan%)\n\n**Setup:** consolidation → Bias: **NEUTRAL*",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1530853437355458592"
+  },
+  {
+    "id": 1479,
+    "timestamp": "2026-07-26T08:25:04.350059Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1480,
+    "timestamp": "2026-07-26T08:25:31.231133Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
