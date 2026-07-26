@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-26T07:35:19.148042Z",
+  "generated_at": "2026-07-26T09:57:23.516548Z",
   "period": {
     "today": "2026-07-26",
     "yesterday": "2026-07-25",
@@ -7,13 +7,13 @@
     "month_ago": "2026-06-26"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 122,
-    "posts_month": 506,
+    "posts_today": 8,
+    "posts_week": 130,
+    "posts_month": 514,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 41.7
+    "success_rate": 41.6
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 19,
-      "month": 197,
-      "success": 195,
+      "today": 1,
+      "week": 20,
+      "month": 198,
+      "success": 196,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 33,
-      "month": 350,
-      "success": 344,
+      "today": 2,
+      "week": 35,
+      "month": 352,
+      "success": 346,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 28,
-      "month": 306,
+      "today": 2,
+      "week": 30,
+      "month": 308,
       "success": 37,
-      "failed": 269
+      "failed": 271
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 14,
-      "month": 160,
+      "today": 1,
+      "week": 15,
+      "month": 161,
       "success": 10,
-      "failed": 150
+      "failed": 151
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 28,
-      "month": 304,
+      "today": 2,
+      "week": 30,
+      "month": 306,
       "success": 4,
-      "failed": 300
+      "failed": 302
     }
   },
   "interactions_by_platform": {
@@ -220,94 +220,23 @@
     "2026-07-25": {
       "posts": 16,
       "interactions": 0
+    },
+    "2026-07-26": {
+      "posts": 8,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
     "9": 24,
     "14": 24,
     "16": 30,
-    "8": 54,
+    "8": 57,
     "15": 47,
     "10": 6,
     "13": 20,
     "7": 6
   },
   "recent_posts": [
-    {
-      "id": 1453,
-      "timestamp": "2026-07-24T15:26:32.528700Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$MSFT Microsoft Corporation\n\n💰 373.02 (+1.2%) | 5D: -0.2%\n📊 RSI: 36.5 | MACD: bearish\n📈 MA20: $391.6",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1454,
-      "timestamp": "2026-07-24T15:26:32.723678Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🔴 $COIN — Coinbase Global, Inc. | $184.99 (-4.4%)\n\n**Setup:** correction in play → Bias: **BEARIS",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1530234740723028070"
-    },
-    {
-      "id": 1455,
-      "timestamp": "2026-07-24T15:26:36.835587Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1456,
-      "timestamp": "2026-07-24T15:27:10.487493Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 1457,
-      "timestamp": "2026-07-25T08:04:39.960760Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Alert: Bull Run in Sight?</b>\n\nWe're not in a bull market yet, but the S&P 500's RSI is ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "789"
-    },
-    {
-      "id": 1458,
-      "timestamp": "2026-07-25T08:04:40.446741Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Alert: Bull Run in Sight?**\n\nWe're not in a bull market yet, but the S&P 500's RSI is fla",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1530485927279857758"
-    },
-    {
-      "id": 1459,
-      "timestamp": "2026-07-25T08:04:41.176326Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Alert: Bull Run in Sight?\n\nWe're not in a bull market yet, but the S&P 500's RSI is flashin",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1460,
-      "timestamp": "2026-07-25T08:04:42.327984Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Alert: Bull Run in Sight?",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
     {
       "id": 1461,
       "timestamp": "2026-07-25T08:04:42.935262Z",
@@ -414,6 +343,81 @@
     {
       "id": 1472,
       "timestamp": "2026-07-25T15:04:17.157284Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1473,
+      "timestamp": "2026-07-26T08:24:56.833819Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Global Market Update: AI Drives Tech Rally, But Bulls Face Headwinds</b>\n\nAs we head into the s",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "793"
+    },
+    {
+      "id": 1474,
+      "timestamp": "2026-07-26T08:24:57.499133Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Global Market Update: AI Drives Tech Rally, But Bulls Face Headwinds**\n\nAs we head into the seco",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1530853418938142803"
+    },
+    {
+      "id": 1475,
+      "timestamp": "2026-07-26T08:24:58.201095Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Global Market Update: AI Drives Tech Rally, But Bulls Face Headwinds\n\nAs we head into the second h",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1476,
+      "timestamp": "2026-07-26T08:25:00.120451Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Global Market Update: AI Drives Tech Rally, But Bulls Face Headwinds",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1477,
+      "timestamp": "2026-07-26T08:25:01.104229Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$AAPL Apple Inc.\n\n💰 310.26 (-1.6%) | 5D: -0.2%\n📊 RSI: 64.0 | MACD: bearish\n📈 MA20: $302.03 (above)\n🎯",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1478,
+      "timestamp": "2026-07-26T08:25:01.588368Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $nan (+nan%)\n\n**Setup:** consolidation → Bias: **NEUTRAL*",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1530853437355458592"
+    },
+    {
+      "id": 1479,
+      "timestamp": "2026-07-26T08:25:04.350059Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1480,
+      "timestamp": "2026-07-26T08:25:31.231133Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
