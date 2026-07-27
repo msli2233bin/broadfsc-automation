@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-27T12:21:05.430837Z",
+  "generated_at": "2026-07-27T15:23:04.708305Z",
   "period": {
     "today": "2026-07-27",
     "yesterday": "2026-07-26",
@@ -7,13 +7,13 @@
     "month_ago": "2026-06-27"
   },
   "totals": {
-    "posts_today": 8,
-    "posts_week": 130,
-    "posts_month": 512,
+    "posts_today": 10,
+    "posts_week": 132,
+    "posts_month": 514,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 41.4
+    "success_rate": 41.6
   },
   "platforms": {
     "tiktok": {
@@ -24,17 +24,17 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 20,
-      "month": 200,
-      "success": 198,
+      "today": 2,
+      "week": 21,
+      "month": 201,
+      "success": 199,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 35,
-      "month": 356,
-      "success": 350,
+      "today": 3,
+      "week": 36,
+      "month": 357,
+      "success": 351,
       "failed": 6
     },
     "mastodon": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-07-27": {
-      "posts": 8,
+      "posts": 10,
       "interactions": 0
     }
   },
@@ -232,30 +232,11 @@
     "10": 6,
     "16": 27,
     "9": 24,
-    "14": 22,
+    "14": 24,
     "13": 20,
     "7": 6
   },
   "recent_posts": [
-    {
-      "id": 1477,
-      "timestamp": "2026-07-26T08:25:01.104229Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$AAPL Apple Inc.\n\n💰 310.26 (-1.6%) | 5D: -0.2%\n📊 RSI: 64.0 | MACD: bearish\n📈 MA20: $302.03 (above)\n🎯",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1478,
-      "timestamp": "2026-07-26T08:25:01.588368Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟡 $AMD — Advanced Micro Devices, Inc. | $nan (+nan%)\n\n**Setup:** consolidation → Bias: **NEUTRAL*",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1530853437355458592"
-    },
     {
       "id": 1479,
       "timestamp": "2026-07-26T08:25:04.350059Z",
@@ -423,6 +404,26 @@
       "content_preview": "Hatena Blog post",
       "status": "failed",
       "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1497,
+      "timestamp": "2026-07-27T14:25:41.589875Z",
+      "platform": "telegram_en",
+      "type": "earnings",
+      "content_preview": "<b>📊 Earnings Calendar: Week of Jul 27</b>\n\n\n📅 <b>Monday, Jul 27</b>\n  • AstraZeneca (AZN) @ $172.2 ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "798"
+    },
+    {
+      "id": 1498,
+      "timestamp": "2026-07-27T14:25:41.984876Z",
+      "platform": "discord",
+      "type": "earnings",
+      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 27**\n\n\n📅 **Monday, Jul 27**\n  • As",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1531306591566041118"
     }
   ],
   "recent_interactions": [
