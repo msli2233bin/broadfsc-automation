@@ -14116,5 +14116,80 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1531306591566041118"
+  },
+  {
+    "id": 1499,
+    "timestamp": "2026-07-27T16:21:34.560047Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Alert: Tech Stocks in Danger Zone</b>\n\nThe Nasdaq is up 2.3% YTD, but the real story is ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "805"
+  },
+  {
+    "id": 1500,
+    "timestamp": "2026-07-27T16:21:34.992013Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Alert: Tech Stocks in Danger Zone**\n\nThe Nasdaq is up 2.3% YTD, but the real story is in ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1531335754805022802"
+  },
+  {
+    "id": 1501,
+    "timestamp": "2026-07-27T16:21:35.513284Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: Tech Stocks in Danger Zone\n\nThe Nasdaq is up 2.3% YTD, but the real story is in the ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1502,
+    "timestamp": "2026-07-27T16:21:36.816108Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: Tech Stocks in Danger Zone",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1503,
+    "timestamp": "2026-07-27T16:21:37.517700Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$COIN Coinbase Global, Inc.\n\n💰 152.4 (-7.2%) | 5D: -19.4%\n📊 RSI: 25.5 | MACD: bearish\n📈 MA20: $187.4",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1504,
+    "timestamp": "2026-07-27T16:21:37.862656Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $AAPL — Apple Inc. | $310.26 (-1.6%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n### 📊 Techn",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1531335766716846092"
+  },
+  {
+    "id": 1505,
+    "timestamp": "2026-07-27T16:21:40.042137Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1506,
+    "timestamp": "2026-07-27T16:21:46.105883Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
