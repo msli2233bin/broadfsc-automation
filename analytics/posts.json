@@ -14096,5 +14096,25 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1497,
+    "timestamp": "2026-07-27T14:25:41.589875Z",
+    "platform": "telegram_en",
+    "type": "earnings",
+    "content_preview": "<b>📊 Earnings Calendar: Week of Jul 27</b>\n\n\n📅 <b>Monday, Jul 27</b>\n  • AstraZeneca (AZN) @ $172.2 ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "798"
+  },
+  {
+    "id": 1498,
+    "timestamp": "2026-07-27T14:25:41.984876Z",
+    "platform": "discord",
+    "type": "earnings",
+    "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 27**\n\n\n📅 **Monday, Jul 27**\n  • As",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1531306591566041118"
   }
 ]
