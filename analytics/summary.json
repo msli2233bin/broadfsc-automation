@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-27T15:23:04.708305Z",
+  "generated_at": "2026-07-27T17:17:05.070754Z",
   "period": {
     "today": "2026-07-27",
     "yesterday": "2026-07-26",
@@ -7,9 +7,9 @@
     "month_ago": "2026-06-27"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 132,
-    "posts_month": 514,
+    "posts_today": 18,
+    "posts_week": 140,
+    "posts_month": 522,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 2,
-      "week": 21,
-      "month": 201,
-      "success": 199,
+      "today": 3,
+      "week": 22,
+      "month": 202,
+      "success": 200,
       "failed": 2
     },
     "discord": {
-      "today": 3,
-      "week": 36,
-      "month": 357,
-      "success": 351,
+      "today": 5,
+      "week": 38,
+      "month": 359,
+      "success": 353,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 30,
-      "month": 312,
+      "today": 4,
+      "week": 32,
+      "month": 314,
       "success": 37,
-      "failed": 275
+      "failed": 277
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 15,
-      "month": 163,
+      "today": 2,
+      "week": 16,
+      "month": 164,
       "success": 10,
-      "failed": 153
+      "failed": 154
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 30,
-      "month": 310,
+      "today": 4,
+      "week": 32,
+      "month": 312,
       "success": 4,
-      "failed": 306
+      "failed": 308
     }
   },
   "interactions_by_platform": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-07-27": {
-      "posts": 10,
+      "posts": 18,
       "interactions": 0
     }
   },
@@ -230,88 +230,13 @@
     "8": 57,
     "15": 50,
     "10": 6,
-    "16": 27,
+    "16": 30,
     "9": 24,
     "14": 24,
     "13": 20,
     "7": 6
   },
   "recent_posts": [
-    {
-      "id": 1479,
-      "timestamp": "2026-07-26T08:25:04.350059Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1480,
-      "timestamp": "2026-07-26T08:25:31.231133Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 1481,
-      "timestamp": "2026-07-26T15:06:13.589713Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Market Insight: The Great Reversal of 2026</b>\n\nWe're witnessing a remarkable reversal in the g",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "794"
-    },
-    {
-      "id": 1482,
-      "timestamp": "2026-07-26T15:06:14.688465Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Market Insight: The Great Reversal of 2026**\n\nWe're witnessing a remarkable reversal in the glob",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1530954405212459109"
-    },
-    {
-      "id": 1483,
-      "timestamp": "2026-07-26T15:06:15.233466Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Market Insight: The Great Reversal of 2026\n\nWe're witnessing a remarkable reversal in the global m",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1484,
-      "timestamp": "2026-07-26T15:06:16.440560Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Market Insight: The Great Reversal of 2026",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 1485,
-      "timestamp": "2026-07-26T15:06:17.151003Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$AAPL Apple Inc.\n\n💰 294.38 (+1.7%) | 5D: +0.4%\n📊 RSI: 52.1 | MACD: bearish\n📈 MA20: $294.88 (below)\n🎯",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1486,
-      "timestamp": "2026-07-26T15:06:17.577441Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🟡 $MSFT — Microsoft Corporation | $418.57 (-0.1%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1530954419229687820"
-    },
     {
       "id": 1487,
       "timestamp": "2026-07-26T15:06:20.058862Z",
@@ -424,6 +349,81 @@
       "status": "success",
       "error_msg": "",
       "post_id": "1531306591566041118"
+    },
+    {
+      "id": 1499,
+      "timestamp": "2026-07-27T16:21:34.560047Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Alert: Tech Stocks in Danger Zone</b>\n\nThe Nasdaq is up 2.3% YTD, but the real story is ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "805"
+    },
+    {
+      "id": 1500,
+      "timestamp": "2026-07-27T16:21:34.992013Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Alert: Tech Stocks in Danger Zone**\n\nThe Nasdaq is up 2.3% YTD, but the real story is in ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1531335754805022802"
+    },
+    {
+      "id": 1501,
+      "timestamp": "2026-07-27T16:21:35.513284Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Alert: Tech Stocks in Danger Zone\n\nThe Nasdaq is up 2.3% YTD, but the real story is in the ",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1502,
+      "timestamp": "2026-07-27T16:21:36.816108Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Alert: Tech Stocks in Danger Zone",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1503,
+      "timestamp": "2026-07-27T16:21:37.517700Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$COIN Coinbase Global, Inc.\n\n💰 152.4 (-7.2%) | 5D: -19.4%\n📊 RSI: 25.5 | MACD: bearish\n📈 MA20: $187.4",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1504,
+      "timestamp": "2026-07-27T16:21:37.862656Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟡 $AAPL — Apple Inc. | $310.26 (-1.6%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n### 📊 Techn",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1531335766716846092"
+    },
+    {
+      "id": 1505,
+      "timestamp": "2026-07-27T16:21:40.042137Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1506,
+      "timestamp": "2026-07-27T16:21:46.105883Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
     }
   ],
   "recent_interactions": [
