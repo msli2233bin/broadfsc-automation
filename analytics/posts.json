@@ -14021,5 +14021,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1489,
+    "timestamp": "2026-07-27T09:50:04.246081Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Alert: Bullish Setup or False Dawn?</b>\n\nThe S&P 500 has reached 7,411.98, but the bulls",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "797"
+  },
+  {
+    "id": 1490,
+    "timestamp": "2026-07-27T09:50:04.597414Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Alert: Bullish Setup or False Dawn?**\n\nThe S&P 500 has reached 7,411.98, but the bulls ar",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1531237228909695220"
+  },
+  {
+    "id": 1491,
+    "timestamp": "2026-07-27T09:50:07.046125Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: Bullish Setup or False Dawn?\n\nThe S&P 500 has reached 7,411.98, but the bulls are no",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1492,
+    "timestamp": "2026-07-27T09:50:08.191317Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Alert: Bullish Setup or False Dawn?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1493,
+    "timestamp": "2026-07-27T09:50:08.941541Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$NVDA NVIDIA Corporation\n\n💰 214.25 (+0.8%) | 5D: -4.1%\n📊 RSI: 52.5 | MACD: bearish\n📈 MA20: $214.88 (",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1494,
+    "timestamp": "2026-07-27T09:50:09.229272Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟡 $NVDA — NVIDIA Corporation | $nan (+nan%)\n\n**Setup:** consolidation → Bias: **NEUTRAL**\n\n### 📊 ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1531237248320798762"
+  },
+  {
+    "id": 1495,
+    "timestamp": "2026-07-27T09:50:10.898221Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1496,
+    "timestamp": "2026-07-27T09:50:43.016951Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
