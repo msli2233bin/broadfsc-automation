@@ -14266,5 +14266,25 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1515,
+    "timestamp": "2026-07-28T13:58:00.888258Z",
+    "platform": "telegram_en",
+    "type": "earnings",
+    "content_preview": "<b>📊 Earnings Calendar: Week of Jul 28</b>\n\n\n📅 <b>Tuesday, Jul 28</b>\n  • SK Hynix (000660.KS) @ $15",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "809"
+  },
+  {
+    "id": 1516,
+    "timestamp": "2026-07-28T13:58:01.411332Z",
+    "platform": "discord",
+    "type": "earnings",
+    "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 28**\n\n\n📅 **Tuesday, Jul 28**\n  • S",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1531662014370549770"
   }
 ]
