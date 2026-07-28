@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T11:34:59.021268Z",
+  "generated_at": "2026-07-28T14:02:10.750204Z",
   "period": {
     "today": "2026-07-28",
     "yesterday": "2026-07-27",
@@ -7,13 +7,13 @@
     "month_ago": "2026-06-28"
   },
   "totals": {
-    "posts_today": 8,
-    "posts_week": 130,
-    "posts_month": 514,
+    "posts_today": 10,
+    "posts_week": 132,
+    "posts_month": 516,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 41.6
+    "success_rate": 41.9
   },
   "platforms": {
     "tiktok": {
@@ -24,17 +24,17 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 20,
-      "month": 203,
-      "success": 201,
+      "today": 2,
+      "week": 21,
+      "month": 204,
+      "success": 202,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 35,
-      "month": 361,
-      "success": 355,
+      "today": 3,
+      "week": 36,
+      "month": 362,
+      "success": 356,
       "failed": 6
     },
     "mastodon": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-07-28": {
-      "posts": 8,
+      "posts": 10,
       "interactions": 0
     }
   },
@@ -233,28 +233,10 @@
     "16": 30,
     "9": 24,
     "14": 24,
-    "13": 20,
+    "13": 22,
     "7": 6
   },
   "recent_posts": [
-    {
-      "id": 1495,
-      "timestamp": "2026-07-27T09:50:10.898221Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1496,
-      "timestamp": "2026-07-27T09:50:43.016951Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
     {
       "id": 1497,
       "timestamp": "2026-07-27T14:25:41.589875Z",
@@ -424,6 +406,26 @@
       "content_preview": "Hatena Blog post",
       "status": "failed",
       "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1515,
+      "timestamp": "2026-07-28T13:58:00.888258Z",
+      "platform": "telegram_en",
+      "type": "earnings",
+      "content_preview": "<b>📊 Earnings Calendar: Week of Jul 28</b>\n\n\n📅 <b>Tuesday, Jul 28</b>\n  • SK Hynix (000660.KS) @ $15",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "809"
+    },
+    {
+      "id": 1516,
+      "timestamp": "2026-07-28T13:58:01.411332Z",
+      "platform": "discord",
+      "type": "earnings",
+      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 28**\n\n\n📅 **Tuesday, Jul 28**\n  • S",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1531662014370549770"
     }
   ],
   "recent_interactions": [
