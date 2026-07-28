@@ -1,0 +1,11 @@
+{
+  "platform": "telegram",
+  "topic": "TSLA_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "🟢 <b>$TSLA Technical Analysis</b> — Tesla, Inc.\n\n💰 Price: $309.22 (-1.2%) | Cap: $1.22T\n📊 Setup: <b>oversold bounce setup</b> | Bias: <b>BULLISH</b>\n\n<b>Indicators:</b>\n• RSI(14): 17.2 — ⚠️ Oversold\n• MACD: -19.51 (Signal: -10.08) — Bearish\n• BB: $316.8 — $453.6 (Position: -5.5%)\n• Volume: 1.0x average\n\n<b>Moving Averages:</b>\n• MA20: $385.2 | MA50: $399.84 | MA200: $392.02\n• Bearish alignment ❌\n\n<b>Performance:</b>\n• 1D: -1.2% | 5D: -16.3% | 20D: -18.6%\n\n<b>Key Levels:</b>\n• Resistance: $453.4\n• Support: $304.28\n\n<b>Trade Idea:</b>\nBounce entry at $310.37 with stop below $298.19\n\n📱 <b>Free daily TA signals</b> — message @BroadInvestBot",
+  "content_type": "single",
+  "symbol": "TSLA",
+  "created": "2026-07-28T06:15:52.250591",
+  "used": false,
+  "chart_paths": {}
+}

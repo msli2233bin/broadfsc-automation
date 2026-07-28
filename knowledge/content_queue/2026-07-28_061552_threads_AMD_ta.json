@@ -1,0 +1,11 @@
+{
+  "platform": "threads",
+  "topic": "AMD_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "1/ $AMD — Advanced Micro Devices, Inc.\n\n494.95 (-5.2% today) | $807.1B\n\nCORRECTION IN PLAY. This is the setup you need to see.---THREAD_BREAK---2/ Technical snapshot:\nRSI 45.7 — momentum zone\nMACD bearish, caution warranted\nMA20 $531.73 | MA50 $509.47\nVolume: 1.2x avg\n5D: -1.7% | 20D: -5.1%---THREAD_BREAK---3/ The trade:\nResistance: $584.73\nSupport: $192.83\nBias: BEARISH\n\nRisk-off until trend reverses---THREAD_BREAK---4/ I post TA signals for 5 stocks daily.\n\n📱 Get them free: t.me/BroadInvestBot",
+  "content_type": "thread",
+  "symbol": "AMD",
+  "created": "2026-07-28T06:15:52.390502",
+  "used": false,
+  "chart_paths": {}
+}
