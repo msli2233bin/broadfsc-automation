@@ -14286,5 +14286,80 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1531662014370549770"
+  },
+  {
+    "id": 1517,
+    "timestamp": "2026-07-28T16:05:38.796158Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Global Market Insight: The Great Rotation into Value</b>\n\nA surprising shift in market dynamics",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "816"
+  },
+  {
+    "id": 1518,
+    "timestamp": "2026-07-28T16:05:39.345209Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Global Market Insight: The Great Rotation into Value**\n\nA surprising shift in market dynamics is",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1531694133809516554"
+  },
+  {
+    "id": 1519,
+    "timestamp": "2026-07-28T16:05:42.630467Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Global Market Insight: The Great Rotation into Value\n\nA surprising shift in market dynamics is und",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1520,
+    "timestamp": "2026-07-28T16:05:43.510607Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Global Market Insight: The Great Rotation into Value",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1521,
+    "timestamp": "2026-07-28T16:05:44.065585Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 113.5 (-2.7%) | 5D: -14.8%\n📊 RSI: 18.6 | MACD: bearish\n📈 MA20: $",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1522,
+    "timestamp": "2026-07-28T16:05:44.295048Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $META — Meta Platforms, Inc. | $577.22 (+1.7%)\n\n**Setup:** correction in play → Bias: **BEARISH",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1531694155615436880"
+  },
+  {
+    "id": 1523,
+    "timestamp": "2026-07-28T16:05:47.725999Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1524,
+    "timestamp": "2026-07-28T16:06:20.250913Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
