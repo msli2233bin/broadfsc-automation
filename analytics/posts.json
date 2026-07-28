@@ -14191,5 +14191,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1507,
+    "timestamp": "2026-07-28T08:32:05.899190Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Global Market Insight: The Great Rotation Ahead?</b>\n\nThe S&P 500 is hovering at 7,413.18, with",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "808"
+  },
+  {
+    "id": 1508,
+    "timestamp": "2026-07-28T08:32:06.265469Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Global Market Insight: The Great Rotation Ahead?**\n\nThe S&P 500 is hovering at 7,413.18, with th",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1531579994155782246"
+  },
+  {
+    "id": 1509,
+    "timestamp": "2026-07-28T08:32:06.835506Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Global Market Insight: The Great Rotation Ahead?\n\nThe S&P 500 is hovering at 7,413.18, with the Na",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1510,
+    "timestamp": "2026-07-28T08:32:07.754236Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Global Market Insight: The Great Rotation Ahead?",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1511,
+    "timestamp": "2026-07-28T08:32:08.384423Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AMD Advanced Micro Devices, Inc.\n\n💰 523.2 (-3.6%) | 5D: +1.0%\n📊 RSI: 67.0 | MACD: bullish\n📈 MA20: $",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1512,
+    "timestamp": "2026-07-28T08:32:08.563507Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $PLTR — Palantir Technologies Inc. | $133.73 (+2.8%)\n\n**Setup:** correction in play → Bias: **B",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1531580004717297704"
+  },
+  {
+    "id": 1513,
+    "timestamp": "2026-07-28T08:32:13.623791Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1514,
+    "timestamp": "2026-07-28T08:32:47.004384Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
