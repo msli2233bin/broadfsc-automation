@@ -1,0 +1,11 @@
+{
+  "platform": "telegram",
+  "topic": "MSFT_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "🟢 <b>$MSFT Technical Analysis</b> — Microsoft Corporation\n\n💰 Price: $393.35 (+1.1%) | Cap: $2.92T\n📊 Setup: <b>uptrend intact</b> | Bias: <b>BULLISH</b>\n\n<b>Indicators:</b>\n• RSI(14): 56.4\n• MACD: -0.59 (Signal: -1.25) — Bullish\n• BB: $374.65 — $403.23 (Position: 65.4%)\n• Volume: 1.0x average\n\n<b>Moving Averages:</b>\n• MA20: $388.94 | MA50: $398.46 | MA200: $397.81\n• Bearish alignment ❌\n\n<b>Performance:</b>\n• 1D: +1.1% | 5D: -1.1% | 20D: +6.7%\n\n<b>Key Levels:</b>\n• Resistance: $466.32\n• Support: $349.2\n\n<b>Trade Idea:</b>\nBreakout entry above $466.32 on volume confirmation\n\n📱 <b>Free daily TA signals</b> — message @BroadInvestBot",
+  "content_type": "single",
+  "symbol": "MSFT",
+  "created": "2026-07-29T06:21:36.075504",
+  "used": false,
+  "chart_paths": {}
+}
