@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-29T12:58:27.509509Z",
+  "generated_at": "2026-07-29T15:11:29.365088Z",
   "period": {
     "today": "2026-07-29",
     "yesterday": "2026-07-28",
@@ -7,13 +7,13 @@
     "month_ago": "2026-06-29"
   },
   "totals": {
-    "posts_today": 8,
-    "posts_week": 130,
-    "posts_month": 516,
+    "posts_today": 10,
+    "posts_week": 132,
+    "posts_month": 518,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 41.9
+    "success_rate": 42.1
   },
   "platforms": {
     "tiktok": {
@@ -24,17 +24,17 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 20,
-      "month": 206,
-      "success": 204,
+      "today": 2,
+      "week": 21,
+      "month": 207,
+      "success": 205,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 35,
-      "month": 366,
-      "success": 360,
+      "today": 3,
+      "week": 36,
+      "month": 367,
+      "success": 361,
       "failed": 6
     },
     "mastodon": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-07-29": {
-      "posts": 8,
+      "posts": 10,
       "interactions": 0
     }
   },
@@ -231,30 +231,12 @@
     "15": 44,
     "16": 33,
     "9": 24,
-    "14": 24,
+    "14": 26,
     "8": 57,
     "13": 22,
     "7": 6
   },
   "recent_posts": [
-    {
-      "id": 1513,
-      "timestamp": "2026-07-28T08:32:13.623791Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1514,
-      "timestamp": "2026-07-28T08:32:47.004384Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
     {
       "id": 1515,
       "timestamp": "2026-07-28T13:58:00.888258Z",
@@ -424,6 +406,26 @@
       "content_preview": "Hatena Blog post",
       "status": "failed",
       "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1533,
+      "timestamp": "2026-07-29T14:02:35.364043Z",
+      "platform": "telegram_en",
+      "type": "earnings",
+      "content_preview": "<b>📊 Earnings Calendar: Week of Jul 29</b>\n\n\n📅 <b>Wednesday, Jul 29</b>\n  • Samsung (005930.KS) @ $2",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "820"
+    },
+    {
+      "id": 1534,
+      "timestamp": "2026-07-29T14:02:36.169033Z",
+      "platform": "discord",
+      "type": "earnings",
+      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 29**\n\n\n📅 **Wednesday, Jul 29**\n  •",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1532025553723592744"
     }
   ],
   "recent_interactions": [
