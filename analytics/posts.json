@@ -14436,5 +14436,25 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1533,
+    "timestamp": "2026-07-29T14:02:35.364043Z",
+    "platform": "telegram_en",
+    "type": "earnings",
+    "content_preview": "<b>📊 Earnings Calendar: Week of Jul 29</b>\n\n\n📅 <b>Wednesday, Jul 29</b>\n  • Samsung (005930.KS) @ $2",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "820"
+  },
+  {
+    "id": 1534,
+    "timestamp": "2026-07-29T14:02:36.169033Z",
+    "platform": "discord",
+    "type": "earnings",
+    "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 29**\n\n\n📅 **Wednesday, Jul 29**\n  •",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1532025553723592744"
   }
 ]
