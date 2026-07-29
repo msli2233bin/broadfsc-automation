@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-29T15:11:29.365088Z",
+  "generated_at": "2026-07-29T16:49:22.784496Z",
   "period": {
     "today": "2026-07-29",
     "yesterday": "2026-07-28",
@@ -7,13 +7,13 @@
     "month_ago": "2026-06-29"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 132,
-    "posts_month": 518,
+    "posts_today": 18,
+    "posts_week": 140,
+    "posts_month": 526,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 42.1
+    "success_rate": 42.0
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 2,
-      "week": 21,
-      "month": 207,
-      "success": 205,
+      "today": 3,
+      "week": 22,
+      "month": 208,
+      "success": 206,
       "failed": 2
     },
     "discord": {
-      "today": 3,
-      "week": 36,
-      "month": 367,
-      "success": 361,
+      "today": 5,
+      "week": 38,
+      "month": 369,
+      "success": 363,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 30,
-      "month": 320,
+      "today": 4,
+      "week": 32,
+      "month": 322,
       "success": 37,
-      "failed": 283
+      "failed": 285
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 15,
-      "month": 167,
+      "today": 2,
+      "week": 16,
+      "month": 168,
       "success": 10,
-      "failed": 157
+      "failed": 158
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 30,
-      "month": 318,
+      "today": 4,
+      "week": 32,
+      "month": 320,
       "success": 4,
-      "failed": 314
+      "failed": 316
     }
   },
   "interactions_by_platform": {
@@ -222,13 +222,13 @@
       "interactions": 0
     },
     "2026-07-29": {
-      "posts": 10,
+      "posts": 18,
       "interactions": 0
     }
   },
   "hourly_distribution": {
     "10": 6,
-    "15": 44,
+    "15": 47,
     "16": 33,
     "9": 24,
     "14": 26,
@@ -237,83 +237,6 @@
     "7": 6
   },
   "recent_posts": [
-    {
-      "id": 1515,
-      "timestamp": "2026-07-28T13:58:00.888258Z",
-      "platform": "telegram_en",
-      "type": "earnings",
-      "content_preview": "<b>📊 Earnings Calendar: Week of Jul 28</b>\n\n\n📅 <b>Tuesday, Jul 28</b>\n  • SK Hynix (000660.KS) @ $15",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "809"
-    },
-    {
-      "id": 1516,
-      "timestamp": "2026-07-28T13:58:01.411332Z",
-      "platform": "discord",
-      "type": "earnings",
-      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 28**\n\n\n📅 **Tuesday, Jul 28**\n  • S",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1531662014370549770"
-    },
-    {
-      "id": 1517,
-      "timestamp": "2026-07-28T16:05:38.796158Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Global Market Insight: The Great Rotation into Value</b>\n\nA surprising shift in market dynamics",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "816"
-    },
-    {
-      "id": 1518,
-      "timestamp": "2026-07-28T16:05:39.345209Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Global Market Insight: The Great Rotation into Value**\n\nA surprising shift in market dynamics is",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1531694133809516554"
-    },
-    {
-      "id": 1519,
-      "timestamp": "2026-07-28T16:05:42.630467Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Global Market Insight: The Great Rotation into Value\n\nA surprising shift in market dynamics is und",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1520,
-      "timestamp": "2026-07-28T16:05:43.510607Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Global Market Insight: The Great Rotation into Value",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 1521,
-      "timestamp": "2026-07-28T16:05:44.065585Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$PLTR Palantir Technologies Inc.\n\n💰 113.5 (-2.7%) | 5D: -14.8%\n📊 RSI: 18.6 | MACD: bearish\n📈 MA20: $",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1522,
-      "timestamp": "2026-07-28T16:05:44.295048Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🔴 $META — Meta Platforms, Inc. | $577.22 (+1.7%)\n\n**Setup:** correction in play → Bias: **BEARISH",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1531694155615436880"
-    },
     {
       "id": 1523,
       "timestamp": "2026-07-28T16:05:47.725999Z",
@@ -426,6 +349,81 @@
       "status": "success",
       "error_msg": "",
       "post_id": "1532025553723592744"
+    },
+    {
+      "id": 1535,
+      "timestamp": "2026-07-29T15:50:07.691795Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Insight: The Unseen Warning in the US Treasury Yield Curve</b>\n\nThe 10Y yield has surged",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "827"
+    },
+    {
+      "id": 1536,
+      "timestamp": "2026-07-29T15:50:08.320657Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Insight: The Unseen Warning in the US Treasury Yield Curve**\n\nThe 10Y yield has surged 0.",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1532052616681619717"
+    },
+    {
+      "id": 1537,
+      "timestamp": "2026-07-29T15:50:09.348924Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Insight: The Unseen Warning in the US Treasury Yield Curve\n\nThe 10Y yield has surged 0.8% t",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1538,
+      "timestamp": "2026-07-29T15:50:10.565054Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Insight: The Unseen Warning in the US Treasury Yield Curve",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1539,
+      "timestamp": "2026-07-29T15:50:11.202549Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$MSFT Microsoft Corporation\n\n💰 nan (+nan%) | 5D: +nan%\n📊 RSI: 47.8 | MACD: bearish\n📈 MA20: $nan (bel",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1540,
+      "timestamp": "2026-07-29T15:50:11.622112Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟢 $TSLA — Tesla, Inc. | $404.11 (-1.4%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n### 📊 Tec",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1532052631294312508"
+    },
+    {
+      "id": 1541,
+      "timestamp": "2026-07-29T15:50:13.987752Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1542,
+      "timestamp": "2026-07-29T15:50:46.781035Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
     }
   ],
   "recent_interactions": [
