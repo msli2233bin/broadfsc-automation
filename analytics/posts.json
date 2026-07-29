@@ -14456,5 +14456,80 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1532025553723592744"
+  },
+  {
+    "id": 1535,
+    "timestamp": "2026-07-29T15:50:07.691795Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Market Insight: The Unseen Warning in the US Treasury Yield Curve</b>\n\nThe 10Y yield has surged",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "827"
+  },
+  {
+    "id": 1536,
+    "timestamp": "2026-07-29T15:50:08.320657Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Market Insight: The Unseen Warning in the US Treasury Yield Curve**\n\nThe 10Y yield has surged 0.",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1532052616681619717"
+  },
+  {
+    "id": 1537,
+    "timestamp": "2026-07-29T15:50:09.348924Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The Unseen Warning in the US Treasury Yield Curve\n\nThe 10Y yield has surged 0.8% t",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1538,
+    "timestamp": "2026-07-29T15:50:10.565054Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Market Insight: The Unseen Warning in the US Treasury Yield Curve",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1539,
+    "timestamp": "2026-07-29T15:50:11.202549Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$MSFT Microsoft Corporation\n\n💰 nan (+nan%) | 5D: +nan%\n📊 RSI: 47.8 | MACD: bearish\n📈 MA20: $nan (bel",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1540,
+    "timestamp": "2026-07-29T15:50:11.622112Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🟢 $TSLA — Tesla, Inc. | $404.11 (-1.4%)\n\n**Setup:** uptrend intact → Bias: **BULLISH**\n\n### 📊 Tec",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1532052631294312508"
+  },
+  {
+    "id": 1541,
+    "timestamp": "2026-07-29T15:50:13.987752Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1542,
+    "timestamp": "2026-07-29T15:50:46.781035Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
