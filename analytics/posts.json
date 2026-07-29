@@ -14361,5 +14361,80 @@
     "content_preview": "Hatena Blog post",
     "status": "failed",
     "error_msg": "post_to_hatena returned False"
+  },
+  {
+    "id": 1525,
+    "timestamp": "2026-07-29T08:38:47.061691Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 Bulls at the Gates: AI-Driven Markets Enter Extreme Overbought Territory</b>\n\nIn a stunning dis",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "819"
+  },
+  {
+    "id": 1526,
+    "timestamp": "2026-07-29T08:38:47.487584Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **Bulls at the Gates: AI-Driven Markets Enter Extreme Overbought Territory**\n\nIn a stunning displa",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1531944064877072444"
+  },
+  {
+    "id": 1527,
+    "timestamp": "2026-07-29T08:38:48.542710Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 Bulls at the Gates: AI-Driven Markets Enter Extreme Overbought Territory\n\nIn a stunning display of",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1528,
+    "timestamp": "2026-07-29T08:38:49.771072Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 Bulls at the Gates: AI-Driven Markets Enter Extreme Overbought Territory",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1529,
+    "timestamp": "2026-07-29T08:38:52.395471Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$AAPL Apple Inc.\n\n💰 294.8 (+0.7%) | 5D: +3.8%\n📊 RSI: 76.0 | MACD: bullish\n📈 MA20: $276.46 (above)\n🎯 ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1530,
+    "timestamp": "2026-07-29T08:38:52.709603Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $NVDA — NVIDIA Corporation | $195.55 (+0.4%)\n\n**Setup:** correction in play → Bias: **BEARISH**",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1531944087400218754"
+  },
+  {
+    "id": 1531,
+    "timestamp": "2026-07-29T08:38:55.929364Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1532,
+    "timestamp": "2026-07-29T08:39:29.125510Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
