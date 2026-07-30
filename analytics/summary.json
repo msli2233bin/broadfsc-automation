@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-30T06:25:48.768047Z",
+  "generated_at": "2026-07-30T09:13:00.700073Z",
   "period": {
     "today": "2026-07-30",
     "yesterday": "2026-07-29",
@@ -7,9 +7,9 @@
     "month_ago": "2026-06-30"
   },
   "totals": {
-    "posts_today": 0,
-    "posts_week": 122,
-    "posts_month": 508,
+    "posts_today": 8,
+    "posts_week": 130,
+    "posts_month": 516,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 0,
-      "week": 19,
-      "month": 208,
-      "success": 206,
+      "today": 1,
+      "week": 20,
+      "month": 209,
+      "success": 207,
       "failed": 2
     },
     "discord": {
-      "today": 0,
-      "week": 33,
-      "month": 369,
-      "success": 363,
+      "today": 2,
+      "week": 35,
+      "month": 371,
+      "success": 365,
       "failed": 6
     },
     "mastodon": {
-      "today": 0,
-      "week": 28,
-      "month": 322,
+      "today": 2,
+      "week": 30,
+      "month": 324,
       "success": 37,
-      "failed": 285
+      "failed": 287
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 0,
-      "week": 14,
-      "month": 168,
+      "today": 1,
+      "week": 15,
+      "month": 169,
       "success": 10,
-      "failed": 158
+      "failed": 159
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 0,
-      "week": 28,
-      "month": 320,
+      "today": 2,
+      "week": 30,
+      "month": 322,
       "success": 4,
-      "failed": 316
+      "failed": 318
     }
   },
   "interactions_by_platform": {
@@ -220,94 +220,23 @@
     "2026-07-29": {
       "posts": 18,
       "interactions": 0
+    },
+    "2026-07-30": {
+      "posts": 8,
+      "interactions": 0
     }
   },
   "hourly_distribution": {
     "9": 24,
     "14": 26,
     "16": 30,
-    "8": 57,
+    "8": 60,
     "15": 45,
     "10": 3,
     "13": 22,
     "7": 6
   },
   "recent_posts": [
-    {
-      "id": 1523,
-      "timestamp": "2026-07-28T16:05:47.725999Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1524,
-      "timestamp": "2026-07-28T16:06:20.250913Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
-    {
-      "id": 1525,
-      "timestamp": "2026-07-29T08:38:47.061691Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 Bulls at the Gates: AI-Driven Markets Enter Extreme Overbought Territory</b>\n\nIn a stunning dis",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "819"
-    },
-    {
-      "id": 1526,
-      "timestamp": "2026-07-29T08:38:47.487584Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **Bulls at the Gates: AI-Driven Markets Enter Extreme Overbought Territory**\n\nIn a stunning displa",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1531944064877072444"
-    },
-    {
-      "id": 1527,
-      "timestamp": "2026-07-29T08:38:48.542710Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 Bulls at the Gates: AI-Driven Markets Enter Extreme Overbought Territory\n\nIn a stunning display of",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1528,
-      "timestamp": "2026-07-29T08:38:49.771072Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 Bulls at the Gates: AI-Driven Markets Enter Extreme Overbought Territory",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 1529,
-      "timestamp": "2026-07-29T08:38:52.395471Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$AAPL Apple Inc.\n\n💰 294.8 (+0.7%) | 5D: +3.8%\n📊 RSI: 76.0 | MACD: bullish\n📈 MA20: $276.46 (above)\n🎯 ",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1530,
-      "timestamp": "2026-07-29T08:38:52.709603Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "## 🔴 $NVDA — NVIDIA Corporation | $195.55 (+0.4%)\n\n**Setup:** correction in play → Bias: **BEARISH**",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1531944087400218754"
-    },
     {
       "id": 1531,
       "timestamp": "2026-07-29T08:38:55.929364Z",
@@ -415,6 +344,81 @@
     {
       "id": 1542,
       "timestamp": "2026-07-29T15:50:46.781035Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1543,
+      "timestamp": "2026-07-30T08:24:43.582030Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 Market Insight: Bullish Bets on a Bumpy Ride</b>\n\nAs we head into the final stretch of Q2 earni",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "830"
+    },
+    {
+      "id": 1544,
+      "timestamp": "2026-07-30T08:24:44.134722Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **Market Insight: Bullish Bets on a Bumpy Ride**\n\nAs we head into the final stretch of Q2 earnings",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1532302914704642090"
+    },
+    {
+      "id": 1545,
+      "timestamp": "2026-07-30T08:24:45.078972Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 Market Insight: Bullish Bets on a Bumpy Ride\n\nAs we head into the final stretch of Q2 earnings, th",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1546,
+      "timestamp": "2026-07-30T08:24:45.956982Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 Market Insight: Bullish Bets on a Bumpy Ride",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1547,
+      "timestamp": "2026-07-30T08:24:46.629353Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$MSFT Microsoft Corporation\n\n💰 384.28 (+3.0%) | 5D: +5.2%\n📊 RSI: 44.4 | MACD: bearish\n📈 MA20: $388.8",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1548,
+      "timestamp": "2026-07-30T08:24:46.931835Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🟡 $AAPL — Apple Inc. | $310.85 (+0.8%)\n\n**Setup:** overbought, watching for pullback → Bias: **CA",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1532302927853518919"
+    },
+    {
+      "id": 1549,
+      "timestamp": "2026-07-30T08:24:52.544594Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1550,
+      "timestamp": "2026-07-30T08:25:24.824461Z",
       "platform": "hatena",
       "type": "email",
       "content_preview": "Hatena Blog post",
