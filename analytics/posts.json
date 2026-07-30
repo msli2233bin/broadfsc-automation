@@ -14626,5 +14626,80 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1532385102766800970"
+  },
+  {
+    "id": 1553,
+    "timestamp": "2026-07-30T15:52:13.744694Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The S&P 500's Insanely Overbought but Unstoppable Trend</b>\n\n{\"title\": \"The S&P 500's Insanely ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "838"
+  },
+  {
+    "id": 1554,
+    "timestamp": "2026-07-30T15:52:14.214020Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The S&P 500's Insanely Overbought but Unstoppable Trend**\n\n{\"title\": \"The S&P 500's Insanely Ove",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1532415532761092157"
+  },
+  {
+    "id": 1555,
+    "timestamp": "2026-07-30T15:52:14.809802Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The S&P 500's Insanely Overbought but Unstoppable Trend\n\n{\"title\": \"The S&P 500's Insanely Overbou",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1556,
+    "timestamp": "2026-07-30T15:52:16.221474Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The S&P 500's Insanely Overbought but Unstoppable Trend",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1557,
+    "timestamp": "2026-07-30T15:52:17.067395Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$COIN Coinbase Global, Inc.\n\n💰 191.29 (-1.1%) | 5D: -5.2%\n📊 RSI: 51.7 | MACD: bearish\n📈 MA20: $197.4",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1558,
+    "timestamp": "2026-07-30T15:52:17.315986Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "**Staying Ahead of the Curve: Insights from the Frontlines of Social Media**\n\nHey fellow traders and",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1532415546627325982"
+  },
+  {
+    "id": 1559,
+    "timestamp": "2026-07-30T15:52:22.186227Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1560,
+    "timestamp": "2026-07-30T15:52:54.822202Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
