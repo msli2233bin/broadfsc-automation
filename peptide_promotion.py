@@ -44,6 +44,19 @@ DISCLAIMER = (
     "Visit " + SITE_URL + " for specifications.</i>"
 )
 
+# 客服团队（网站未上线，直接在频道接客；点链接进私聊）
+CS_AGENTS = [
+    ("a888888980", "Peptide inquiry"),
+    ("Wesgsd", "Quotes & orders"),
+    ("luzhongqiang", "Custom synthesis"),
+    ("Luxiaoye1006", "COA / QC"),
+    ("qs2536", "Logistics & delivery"),
+    ("Owen475857", "OEM / key accounts"),
+]
+CS_FOOTER = "\n\n<b>📞 Talk to our team</b>\nOur peptide specialists are online on Telegram:"
+for _h, _role in CS_AGENTS:
+    CS_FOOTER += f"\n• <a href=\"https://t.me/{_h}\">@{_h}</a> — {_role}"
+
 # ============================================================
 # Groq 内容生成（复用 daily_promotion 的 persona + 生成结构）
 # ============================================================
@@ -170,7 +183,7 @@ def send_telegram(text, channel_id):
     url = "https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage"
     payload = {
         "chat_id": channel_id,
-        "text": text + DISCLAIMER,
+        "text": text + DISCLAIMER + CS_FOOTER,
         "parse_mode": "HTML",
         "disable_web_page_preview": False,
     }
