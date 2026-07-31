@@ -1,20 +1,5 @@
 [
   {
-    "success": true,
-    "username": "Only-Character4025",
-    "link_karma": -1,
-    "comment_karma": -1,
-    "total_karma": -1,
-    "age_days": -1,
-    "age_str": "Unknown (about.json restricted for this account)",
-    "has_verified_email": true,
-    "is_suspended": false,
-    "ready_for_posting": false,
-    "method": "proxy-codetabs-html-verified",
-    "note": "Account exists but Reddit restricts about.json access for new/low-karma accounts. Check karma manually.",
-    "checked_at": "2026-04-30T09:26:01.393756"
-  },
-  {
     "success": false,
     "error": "Blocked by Reddit (403) - IP banned",
     "checked_at": "2026-05-01T08:30:07.152884"
@@ -698,5 +683,10 @@
     "success": false,
     "error": "HTML profile check failed: HTTP 522",
     "checked_at": "2026-07-30T04:12:54.047679"
+  },
+  {
+    "success": false,
+    "error": "HTML profile check failed: HTTP 522",
+    "checked_at": "2026-07-31T04:30:48.905088"
   }
 ]
