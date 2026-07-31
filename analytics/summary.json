@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-31T15:17:34.557599Z",
+  "generated_at": "2026-07-31T17:03:39.048146Z",
   "period": {
     "today": "2026-07-31",
     "yesterday": "2026-07-30",
@@ -7,13 +7,13 @@
     "month_ago": "2026-07-01"
   },
   "totals": {
-    "posts_today": 10,
-    "posts_week": 132,
-    "posts_month": 518,
+    "posts_today": 18,
+    "posts_week": 140,
+    "posts_month": 526,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 42.1
+    "success_rate": 42.0
   },
   "platforms": {
     "tiktok": {
@@ -24,25 +24,25 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 2,
-      "week": 21,
-      "month": 213,
-      "success": 211,
+      "today": 3,
+      "week": 22,
+      "month": 214,
+      "success": 212,
       "failed": 2
     },
     "discord": {
-      "today": 3,
-      "week": 36,
-      "month": 377,
-      "success": 371,
+      "today": 5,
+      "week": 38,
+      "month": 379,
+      "success": 373,
       "failed": 6
     },
     "mastodon": {
-      "today": 2,
-      "week": 30,
-      "month": 328,
+      "today": 4,
+      "week": 32,
+      "month": 330,
       "success": 37,
-      "failed": 291
+      "failed": 293
     },
     "twitter": {
       "today": 0,
@@ -52,11 +52,11 @@
       "failed": 2
     },
     "threads": {
-      "today": 1,
-      "week": 15,
-      "month": 171,
+      "today": 2,
+      "week": 16,
+      "month": 172,
       "success": 10,
-      "failed": 161
+      "failed": 162
     },
     "medium": {
       "today": 0,
@@ -80,11 +80,11 @@
       "failed": 0
     },
     "hatena": {
-      "today": 2,
-      "week": 30,
-      "month": 326,
+      "today": 4,
+      "week": 32,
+      "month": 328,
       "success": 4,
-      "failed": 322
+      "failed": 324
     }
   },
   "interactions_by_platform": {
@@ -222,13 +222,13 @@
       "interactions": 0
     },
     "2026-07-31": {
-      "posts": 10,
+      "posts": 18,
       "interactions": 0
     }
   },
   "hourly_distribution": {
     "9": 21,
-    "16": 27,
+    "16": 30,
     "8": 63,
     "15": 48,
     "10": 3,
@@ -237,83 +237,6 @@
     "7": 6
   },
   "recent_posts": [
-    {
-      "id": 1551,
-      "timestamp": "2026-07-30T13:51:18.758234Z",
-      "platform": "telegram_en",
-      "type": "earnings",
-      "content_preview": "<b>📊 Earnings Calendar: Week of Jul 30</b>\n\n\n📅 <b>Thursday, Jul 30</b>\n  • Apple (AAPL) @ $332.41 | ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "831"
-    },
-    {
-      "id": 1552,
-      "timestamp": "2026-07-30T13:51:19.112549Z",
-      "platform": "discord",
-      "type": "earnings",
-      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 30**\n\n\n📅 **Thursday, Jul 30**\n  • ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1532385102766800970"
-    },
-    {
-      "id": 1553,
-      "timestamp": "2026-07-30T15:52:13.744694Z",
-      "platform": "telegram_en",
-      "type": "repurposed",
-      "content_preview": "<b>📊 The S&P 500's Insanely Overbought but Unstoppable Trend</b>\n\n{\"title\": \"The S&P 500's Insanely ",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "838"
-    },
-    {
-      "id": 1554,
-      "timestamp": "2026-07-30T15:52:14.214020Z",
-      "platform": "discord",
-      "type": "repurposed",
-      "content_preview": "📊 **The S&P 500's Insanely Overbought but Unstoppable Trend**\n\n{\"title\": \"The S&P 500's Insanely Ove",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1532415532761092157"
-    },
-    {
-      "id": 1555,
-      "timestamp": "2026-07-30T15:52:14.809802Z",
-      "platform": "mastodon",
-      "type": "repurposed",
-      "content_preview": "📊 The S&P 500's Insanely Overbought but Unstoppable Trend\n\n{\"title\": \"The S&P 500's Insanely Overbou",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1556,
-      "timestamp": "2026-07-30T15:52:16.221474Z",
-      "platform": "hatena",
-      "type": "repurposed",
-      "content_preview": "📊 The S&P 500's Insanely Overbought but Unstoppable Trend",
-      "status": "failed",
-      "error_msg": "Missing BREVO_API_KEY"
-    },
-    {
-      "id": 1557,
-      "timestamp": "2026-07-30T15:52:17.067395Z",
-      "platform": "mastodon",
-      "type": "toot",
-      "content_preview": "$COIN Coinbase Global, Inc.\n\n💰 191.29 (-1.1%) | 5D: -5.2%\n📊 RSI: 51.7 | MACD: bearish\n📈 MA20: $197.4",
-      "status": "failed",
-      "error_msg": "HTTP 403"
-    },
-    {
-      "id": 1558,
-      "timestamp": "2026-07-30T15:52:17.315986Z",
-      "platform": "discord",
-      "type": "message",
-      "content_preview": "**Staying Ahead of the Curve: Insights from the Frontlines of Social Media**\n\nHey fellow traders and",
-      "status": "success",
-      "error_msg": "",
-      "post_id": "1532415546627325982"
-    },
     {
       "id": 1559,
       "timestamp": "2026-07-30T15:52:22.186227Z",
@@ -426,6 +349,81 @@
       "status": "success",
       "error_msg": "",
       "post_id": "1532748877894254613"
+    },
+    {
+      "id": 1571,
+      "timestamp": "2026-07-31T16:02:01.885274Z",
+      "platform": "telegram_en",
+      "type": "repurposed",
+      "content_preview": "<b>📊 The Bull Market's Hidden Weakness</b>\n\nThe S&P 500 has just closed its 9th consecutive week abo",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "849"
+    },
+    {
+      "id": 1572,
+      "timestamp": "2026-07-31T16:02:02.292774Z",
+      "platform": "discord",
+      "type": "repurposed",
+      "content_preview": "📊 **The Bull Market's Hidden Weakness**\n\nThe S&P 500 has just closed its 9th consecutive week above ",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1532780387489677393"
+    },
+    {
+      "id": 1573,
+      "timestamp": "2026-07-31T16:02:03.034489Z",
+      "platform": "mastodon",
+      "type": "repurposed",
+      "content_preview": "📊 The Bull Market's Hidden Weakness\n\nThe S&P 500 has just closed its 9th consecutive week above its ",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1574,
+      "timestamp": "2026-07-31T16:02:04.316603Z",
+      "platform": "hatena",
+      "type": "repurposed",
+      "content_preview": "📊 The Bull Market's Hidden Weakness",
+      "status": "failed",
+      "error_msg": "Missing BREVO_API_KEY"
+    },
+    {
+      "id": 1575,
+      "timestamp": "2026-07-31T16:02:05.044233Z",
+      "platform": "mastodon",
+      "type": "toot",
+      "content_preview": "$TSLA Tesla, Inc.\n\n💰 nan (+nan%) | 5D: +nan%\n📊 RSI: 52.0 | MACD: bearish\n📈 MA20: $nan (below)\n🎯 Resi",
+      "status": "failed",
+      "error_msg": "HTTP 403"
+    },
+    {
+      "id": 1576,
+      "timestamp": "2026-07-31T16:02:05.298813Z",
+      "platform": "discord",
+      "type": "message",
+      "content_preview": "## 🔴 $TSLA — Tesla, Inc. | $369.57 (-3.0%)\n\n**Setup:** correction in play → Bias: **BEARISH**\n\n### 📊",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1532780400709996816"
+    },
+    {
+      "id": 1577,
+      "timestamp": "2026-07-31T16:02:08.680351Z",
+      "platform": "threads",
+      "type": "thread",
+      "content_preview": "Threads post",
+      "status": "failed",
+      "error_msg": "post_to_threads returned False"
+    },
+    {
+      "id": 1578,
+      "timestamp": "2026-07-31T16:02:20.509845Z",
+      "platform": "hatena",
+      "type": "email",
+      "content_preview": "Hatena Blog post",
+      "status": "failed",
+      "error_msg": "post_to_hatena returned False"
     }
   ],
   "recent_interactions": [
