@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-31T12:54:05.355010Z",
+  "generated_at": "2026-07-31T15:17:34.557599Z",
   "period": {
     "today": "2026-07-31",
     "yesterday": "2026-07-30",
@@ -7,13 +7,13 @@
     "month_ago": "2026-07-01"
   },
   "totals": {
-    "posts_today": 8,
-    "posts_week": 130,
-    "posts_month": 516,
+    "posts_today": 10,
+    "posts_week": 132,
+    "posts_month": 518,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 41.9
+    "success_rate": 42.1
   },
   "platforms": {
     "tiktok": {
@@ -24,17 +24,17 @@
       "failed": 16
     },
     "telegram_en": {
-      "today": 1,
-      "week": 20,
-      "month": 212,
-      "success": 210,
+      "today": 2,
+      "week": 21,
+      "month": 213,
+      "success": 211,
       "failed": 2
     },
     "discord": {
-      "today": 2,
-      "week": 35,
-      "month": 376,
-      "success": 370,
+      "today": 3,
+      "week": 36,
+      "month": 377,
+      "success": 371,
       "failed": 6
     },
     "mastodon": {
@@ -222,7 +222,7 @@
       "interactions": 0
     },
     "2026-07-31": {
-      "posts": 8,
+      "posts": 10,
       "interactions": 0
     }
   },
@@ -233,28 +233,10 @@
     "15": 48,
     "10": 3,
     "14": 24,
-    "13": 24,
+    "13": 26,
     "7": 6
   },
   "recent_posts": [
-    {
-      "id": 1549,
-      "timestamp": "2026-07-30T08:24:52.544594Z",
-      "platform": "threads",
-      "type": "thread",
-      "content_preview": "Threads post",
-      "status": "failed",
-      "error_msg": "post_to_threads returned False"
-    },
-    {
-      "id": 1550,
-      "timestamp": "2026-07-30T08:25:24.824461Z",
-      "platform": "hatena",
-      "type": "email",
-      "content_preview": "Hatena Blog post",
-      "status": "failed",
-      "error_msg": "post_to_hatena returned False"
-    },
     {
       "id": 1551,
       "timestamp": "2026-07-30T13:51:18.758234Z",
@@ -424,6 +406,26 @@
       "content_preview": "Hatena Blog post",
       "status": "failed",
       "error_msg": "post_to_hatena returned False"
+    },
+    {
+      "id": 1569,
+      "timestamp": "2026-07-31T13:56:49.444644Z",
+      "platform": "telegram_en",
+      "type": "earnings",
+      "content_preview": "<b>📊 Earnings Calendar: Week of Jul 31</b>\n\n\n📅 <b>Friday, Jul 31</b>\n  • Sony (6758.T) @ $3787.0 | R",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "842"
+    },
+    {
+      "id": 1570,
+      "timestamp": "2026-07-31T13:56:49.804874Z",
+      "platform": "discord",
+      "type": "earnings",
+      "content_preview": "📊 **EARNINGS WEEK PREVIEW** 📊\n\n**📊 Earnings Calendar: Week of Jul 31**\n\n\n📅 **Friday, Jul 31**\n  • So",
+      "status": "success",
+      "error_msg": "",
+      "post_id": "1532748877894254613"
     }
   ],
   "recent_interactions": [
