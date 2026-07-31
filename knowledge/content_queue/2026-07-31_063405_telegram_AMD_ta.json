@@ -1,0 +1,11 @@
+{
+  "platform": "telegram",
+  "topic": "AMD_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "🔴 <b>$AMD Technical Analysis</b> — Advanced Micro Devices, Inc.\n\n💰 Price: $485.39 (+13.0%) | Cap: $0M\n📊 Setup: <b>correction in play</b> | Bias: <b>BEARISH</b>\n\n<b>Indicators:</b>\n• RSI(14): 38.8\n• MACD: -9.54 (Signal: 0.48) — Bearish\n• BB: $449.62 — $584.66 (Position: 26.5%)\n• Volume: 1.3x average\n\n<b>Moving Averages:</b>\n• MA20: $517.14 | MA50: $510.97 | MA200: $419.3\n• Mixed alignment ⚠️\n\n<b>Performance:</b>\n• 1D: +13.0% | 5D: -10.1% | 20D: -10.3%\n\n<b>Key Levels:</b>\n• Resistance: $584.73\n• Support: $192.87\n\n<b>Trade Idea:</b>\nWait for support confirmation at $194.8\n\n📱 <b>Free daily TA signals</b> — message @BroadInvestBot",
+  "content_type": "single",
+  "symbol": "AMD",
+  "created": "2026-07-31T06:34:05.980482",
+  "used": false,
+  "chart_paths": {}
+}

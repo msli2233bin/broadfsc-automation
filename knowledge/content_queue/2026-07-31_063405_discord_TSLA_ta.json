@@ -1,0 +1,11 @@
+{
+  "platform": "discord",
+  "topic": "TSLA_ta_analysis",
+  "agent": "daily_stock_content",
+  "content": "## 🟢 $TSLA — Tesla, Inc. | $308.85 (+3.5%)\n\n**Setup:** oversold bounce setup → Bias: **BULLISH**\n\n### 📊 Technical Indicators\n| Indicator | Value | Signal |\n|-----------|-------|--------|\n| RSI(14) | 15.1 | Oversold ⚠️ |\n| MACD | -25.4957 | Bearish (below signal) |\n| BB Position | 14.0% | Near lower |\n| Volume | 0.9x avg | Normal |\n\n### 📈 Key Levels\n| Level | Price |\n|-------|-------|\n| Resistance | $453.4 |\n| MA20 | $368.04 |\n| MA50 | $392.62 |\n| MA200 | $389.5 |\n| Support | $297.38 |\n\n### 📉 Performance\n1D: +3.5% | 5D: -3.4% | 20D: -27.4%\n\n### 🎯 Bollinger Bands\nUpper: $450.36 | Lower: $285.72\n\n---\n📱 Get daily TA signals for 5 stocks → **t.me/BroadInvestBot**\nFree. No spam. Just levels that matter.",
+  "content_type": "single",
+  "symbol": "TSLA",
+  "created": "2026-07-31T06:34:05.743376",
+  "used": false,
+  "chart_paths": {}
+}
