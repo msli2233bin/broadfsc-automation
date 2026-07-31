@@ -14796,5 +14796,80 @@
     "status": "success",
     "error_msg": "",
     "post_id": "1532748877894254613"
+  },
+  {
+    "id": 1571,
+    "timestamp": "2026-07-31T16:02:01.885274Z",
+    "platform": "telegram_en",
+    "type": "repurposed",
+    "content_preview": "<b>📊 The Bull Market's Hidden Weakness</b>\n\nThe S&P 500 has just closed its 9th consecutive week abo",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "849"
+  },
+  {
+    "id": 1572,
+    "timestamp": "2026-07-31T16:02:02.292774Z",
+    "platform": "discord",
+    "type": "repurposed",
+    "content_preview": "📊 **The Bull Market's Hidden Weakness**\n\nThe S&P 500 has just closed its 9th consecutive week above ",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1532780387489677393"
+  },
+  {
+    "id": 1573,
+    "timestamp": "2026-07-31T16:02:03.034489Z",
+    "platform": "mastodon",
+    "type": "repurposed",
+    "content_preview": "📊 The Bull Market's Hidden Weakness\n\nThe S&P 500 has just closed its 9th consecutive week above its ",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1574,
+    "timestamp": "2026-07-31T16:02:04.316603Z",
+    "platform": "hatena",
+    "type": "repurposed",
+    "content_preview": "📊 The Bull Market's Hidden Weakness",
+    "status": "failed",
+    "error_msg": "Missing BREVO_API_KEY"
+  },
+  {
+    "id": 1575,
+    "timestamp": "2026-07-31T16:02:05.044233Z",
+    "platform": "mastodon",
+    "type": "toot",
+    "content_preview": "$TSLA Tesla, Inc.\n\n💰 nan (+nan%) | 5D: +nan%\n📊 RSI: 52.0 | MACD: bearish\n📈 MA20: $nan (below)\n🎯 Resi",
+    "status": "failed",
+    "error_msg": "HTTP 403"
+  },
+  {
+    "id": 1576,
+    "timestamp": "2026-07-31T16:02:05.298813Z",
+    "platform": "discord",
+    "type": "message",
+    "content_preview": "## 🔴 $TSLA — Tesla, Inc. | $369.57 (-3.0%)\n\n**Setup:** correction in play → Bias: **BEARISH**\n\n### 📊",
+    "status": "success",
+    "error_msg": "",
+    "post_id": "1532780400709996816"
+  },
+  {
+    "id": 1577,
+    "timestamp": "2026-07-31T16:02:08.680351Z",
+    "platform": "threads",
+    "type": "thread",
+    "content_preview": "Threads post",
+    "status": "failed",
+    "error_msg": "post_to_threads returned False"
+  },
+  {
+    "id": 1578,
+    "timestamp": "2026-07-31T16:02:20.509845Z",
+    "platform": "hatena",
+    "type": "email",
+    "content_preview": "Hatena Blog post",
+    "status": "failed",
+    "error_msg": "post_to_hatena returned False"
   }
 ]
