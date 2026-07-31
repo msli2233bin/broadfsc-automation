@@ -1,0 +1,38 @@
+name: RTPeptide Daily Promotion
+
+on:
+  schedule:
+    # 每日 02:00 UTC = 10:00 北京时间（亚洲受众活跃时段）
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  peptide-promotion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install requests groq
+
+      - name: Run peptide daily promotion
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+          TELEGRAM_PEPTIDE_CHANNEL_ID: ${{ secrets.TELEGRAM_PEPTIDE_CHANNEL_ID }}
+          PEPTIDE_SITE_URL: ${{ secrets.PEPTIDE_SITE_URL }}
+        run: python peptide_promotion.py
