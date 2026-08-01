@@ -214,11 +214,11 @@ def run_all(product=None, dry_run=False, channels=None):
         elif ch == "linkedin":
             results[ch] = post_linkedin(texts["linkedin"], link=SEO_BASE, dry_run=dry_run)
         elif ch == "pinterest":
-            img = os.environ.get("PINTEREST_IMAGE_BASE", "")
-            link = f"{SEO_BASE}/products/{product['slug']}.html"
+            img = os.environ.get("PINTEREST_DEFAULT_IMAGE") or os.environ.get("PINTEREST_IMAGE_BASE", "")
+            link = f"{SEO_BASE}/products/{slugify(product['name'])}.html"
             results[ch] = post_pinterest(
                 texts["pinterest"], link=link,
-                image_url=(img + slugify(product["name"]) + ".png") if img else "",
+                image_url=img,
                 dry_run=dry_run,
             )
     return results
