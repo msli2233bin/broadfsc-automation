@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://msli2233bin.github.io/broadfsc-automation/sitemap.xml

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://msli2233bin.github.io/broadfsc-automation/peptide-seo/sitemap.xml

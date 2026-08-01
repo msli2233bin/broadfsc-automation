@@ -23,8 +23,8 @@ import sys
 sys.path.insert(0, sys_path)
 from peptide_products import PRODUCTS, CATEGORIES, products_by_category
 
-BASE_URL = "https://msli2233bin.github.io/broadfsc-automation"
-OUT_DIR = os.path.join(sys_path, "peptide-seo")
+BASE_URL = "https://msli2233bin.github.io/broadfsc-automation/peptide-seo"
+OUT_DIR = os.path.join(sys_path, "docs", "peptide-seo")
 PRODUCTS_DIR = os.path.join(OUT_DIR, "products")
 
 SITE_NAME = "RTPeptide"
