@@ -15,6 +15,7 @@ import sys
 import json
 import urllib.request
 import urllib.error
+import urllib.parse
 from datetime import datetime, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -37,14 +38,25 @@ def slugify(name):
     return "".join(out).strip("-")
 
 
+UA = {"User-Agent": "Mozilla/5.0 (compatible; RTPeptideBot/1.0)"}
+
+
 def _post_json(url, payload, headers, timeout=20):
     data = json.dumps(payload).encode()
-    req = urllib.request.Request(url, data=data, headers=headers, method="POST")
+    h = dict(UA)
+    h.update(headers)
+    req = urllib.request.Request(url, data=data, headers=h, method="POST")
     try:
         r = urllib.request.urlopen(req, timeout=timeout)
-        return True, json.loads(r.read().decode())
+        body = r.read().decode()
+        return True, json.loads(body) if body else {"ok": True}
     except urllib.error.HTTPError as e:
-        return False, json.loads(e.read().decode()) if e.fp else {"error": e.code}
+        raw = e.fp.read().decode() if e.fp else ""
+        try:
+            detail = json.loads(raw) if raw else {"error": e.code, "reason": e.reason}
+        except Exception:  # noqa
+            detail = {"error": e.code, "reason": e.reason, "body": raw[:300]}
+        return False, detail
     except Exception as e:  # noqa
         return False, {"error": str(e)}
 
@@ -164,6 +176,88 @@ def post_pinterest(text, link="", image_url="", dry_run=False):
 
 
 # ---------------------------------------------------------------------------
+# Threads (Meta Graph API) — 凭据已就绪（长效 Token）
+# ---------------------------------------------------------------------------
+def post_threads(text, link="", dry_run=False):
+    token = os.environ.get("THREADS_ACCESS_TOKEN")
+    uid = os.environ.get("THREADS_USER_ID")
+    if not token or not uid:
+        return {"ok": False, "skip": True, "reason": "no THREADS_ACCESS_TOKEN/USER_ID"}
+    content = text
+    if link:
+        content += "\n\n" + link
+    if dry_run:
+        return {"ok": True, "dry": True, "len": len(content)}
+    # 1) 创建文本容器
+    data = urllib.parse.urlencode(
+        {"media_type": "text", "text": content[:500], "access_token": token}
+    ).encode()
+    req = urllib.request.Request(
+        f"https://graph.threads.net/v1.0/{uid}/threads", data=data, headers=UA, method="POST"
+    )
+    try:
+        r = urllib.request.urlopen(req, timeout=20)
+        cid = json.loads(r.read().decode()).get("id")
+    except urllib.error.HTTPError as e:
+        raw = e.fp.read().decode() if e.fp else ""
+        return {"ok": False, "reason": "container failed", "detail": raw[:300]}
+    if not cid:
+        return {"ok": False, "reason": "no container id"}
+    # 2) 发布
+    pub = urllib.parse.urlencode({"creation_id": cid, "access_token": token}).encode()
+    req2 = urllib.request.Request(
+        f"https://graph.threads.net/v1.0/{uid}/threads_publish", data=pub, headers=UA, method="POST"
+    )
+    try:
+        r2 = urllib.request.urlopen(req2, timeout=20)
+        return {"ok": True, "detail": json.loads(r2.read().decode())}
+    except urllib.error.HTTPError as e:
+        return {"ok": False, "reason": "publish failed", "detail": e.read().decode()[:300]}
+
+
+# ---------------------------------------------------------------------------
+# Mastodon (去中心化) — 凭据已就绪
+# ---------------------------------------------------------------------------
+def post_mastodon(text, link="", dry_run=False):
+    token = os.environ.get("MASTODON_ACCESS_TOKEN")
+    inst = os.environ.get("MASTODON_INSTANCE")
+    if not token or not inst:
+        return {"ok": False, "skip": True, "reason": "no MASTODON_ACCESS_TOKEN/INSTANCE"}
+    content = text
+    if link:
+        content += "\n\n" + link
+    if dry_run:
+        return {"ok": True, "dry": True, "len": len(content)}
+    ok, res = _post_json(
+        f"https://{inst}/api/v1/statuses",
+        {"status": content[:500]},
+        {"Content-Type": "application/json", "Authorization": "Bearer " + token},
+    )
+    return {"ok": ok, "detail": res}
+
+
+# ---------------------------------------------------------------------------
+# Discord (Bot) — 凭据已就绪
+# ---------------------------------------------------------------------------
+def post_discord(text, link="", dry_run=False):
+    token = os.environ.get("DISCORD_BOT_TOKEN")
+    cid = os.environ.get("DISCORD_CHANNEL_ID")
+    if not token or not cid:
+        return {"ok": False, "skip": True, "reason": "no DISCORD_BOT_TOKEN/CHANNEL_ID"}
+    content = text
+    if link:
+        content += "\n\n" + link
+    if dry_run:
+        return {"ok": True, "dry": True, "len": len(content)}
+    ok, res = _post_json(
+        f"https://discord.com/api/v10/channels/{cid}/messages",
+        {"content": content[:2000]},
+        {"Content-Type": "application/json", "Authorization": "Bot " + token},
+    )
+    return {"ok": ok, "detail": res}
+
+
+# ---------------------------------------------------------------------------
 # 内容生成（复用 Groq，多渠道共享一条 hook）
 # ---------------------------------------------------------------------------
 def build_social_texts(product, hook=None):
@@ -181,10 +275,16 @@ def build_social_texts(product, hook=None):
             f"lab-grade, sold for scientific study only.\n\n{seo_link}\n\n{DISCLAIMER}"
         ),
         "pinterest": f"{name} — research peptide ({cat}). {focus}",
+        "threads": f"🔬 {name} — {focus}\n{seo_link}\n\n{DISCLAIMER}",
+        "mastodon": f"🔬 {name} ({cat})\n{focus}\n{seo_link}\n\n{DISCLAIMER}",
+        "discord": f"🔬 **{name}** ({cat})\n{focus}\n{seo_link}\n\n{DISCLAIMER}",
     }
     if hook:
         lines["bluesky"] = f"🔬 {hook}\n\n{name} ({cat}): {seo_link}\n\n{DISCLAIMER}"
         lines["x"] = f"🔬 {hook} {name} {seo_link} {DISCLAIMER}"
+        lines["threads"] = f"🔬 {hook}\n{name}: {seo_link}\n\n{DISCLAIMER}"
+        lines["mastodon"] = f"🔬 {hook}\n\n{name} ({cat}): {seo_link}\n\n{DISCLAIMER}"
+        lines["discord"] = f"🔬 **{hook}**\n{name} ({cat}): {seo_link}\n\n{DISCLAIMER}"
     return lines
 
 
@@ -205,7 +305,7 @@ def run_all(product=None, dry_run=False, channels=None):
 
     texts = build_social_texts(product, hook)
     results = {}
-    targets = channels or ["bluesky", "x", "linkedin", "pinterest"]
+    targets = channels or ["bluesky", "x", "linkedin", "pinterest", "threads", "mastodon", "discord"]
     for ch in targets:
         if ch == "bluesky":
             results[ch] = post_bluesky(texts["bluesky"], dry_run=dry_run)
@@ -214,13 +314,19 @@ def run_all(product=None, dry_run=False, channels=None):
         elif ch == "linkedin":
             results[ch] = post_linkedin(texts["linkedin"], link=SEO_BASE, dry_run=dry_run)
         elif ch == "pinterest":
-            img = os.environ.get("PINTEREST_DEFAULT_IMAGE") or os.environ.get("PINTEREST_IMAGE_BASE", "")
+            img = os.environ.get("PINTEREST_IMAGE_BASE", "")
             link = f"{SEO_BASE}/products/{slugify(product['name'])}.html"
             results[ch] = post_pinterest(
                 texts["pinterest"], link=link,
                 image_url=img,
                 dry_run=dry_run,
             )
+        elif ch == "threads":
+            results[ch] = post_threads(texts["threads"], link=SEO_BASE, dry_run=dry_run)
+        elif ch == "mastodon":
+            results[ch] = post_mastodon(texts["mastodon"], link=SEO_BASE, dry_run=dry_run)
+        elif ch == "discord":
+            results[ch] = post_discord(texts["discord"], link=SEO_BASE, dry_run=dry_run)
     return results
 
 
@@ -228,7 +334,7 @@ if __name__ == "__main__":
     import argparse
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry", action="store_true", help="不真实发送，只校验")
-    ap.add_argument("--channels", default="bluesky,x,linkedin,pinterest")
+    ap.add_argument("--channels", default="bluesky,x,linkedin,pinterest,threads,mastodon,discord")
     args = ap.parse_args()
     # 载入 .env
     envf = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")

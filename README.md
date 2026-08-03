@@ -2,6 +2,18 @@
 
 **Zero Cost · AI-Powered · Global Coverage**
 
+## RTPeptide — Research Peptide Promotion
+
+B2B supplier of research-grade peptides (Research Use Only, not for human consumption).
+Automated, multi-channel content promotion engine driving traffic to:
+
+- **SEO product catalogue:** https://msli2233bin.github.io/broadfsc-automation/peptide-seo/
+- **Telegram channel:** https://t.me/rtpeptide_official
+- **Official site:** https://rawpeptidemfg.com
+
+Channels wired: Telegram (live), Threads, Mastodon, Discord, X, LinkedIn, Pinterest, Newsletter.
+All content enforces Research Use Only compliance — no therapeutic/medical claims.
+
 ## System Architecture
 
 ```
