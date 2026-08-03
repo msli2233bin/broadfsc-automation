@@ -306,27 +306,33 @@ def run_all(product=None, dry_run=False, channels=None):
     texts = build_social_texts(product, hook)
     results = {}
     targets = channels or ["bluesky", "x", "linkedin", "pinterest", "threads", "mastodon", "discord"]
+    dispatchers = {
+        "bluesky": lambda: post_bluesky(texts["bluesky"], dry_run=dry_run),
+        "x": lambda: post_x(texts["x"], dry_run=dry_run),
+        "linkedin": lambda: post_linkedin(texts["linkedin"], link=SEO_BASE, dry_run=dry_run),
+        "pinterest": lambda: post_pinterest(
+            texts["pinterest"], link=f"{SEO_BASE}/products/{slugify(product['name'])}.html",
+            image_url=os.environ.get("PINTEREST_IMAGE_BASE", ""), dry_run=dry_run),
+        "threads": lambda: post_threads(texts["threads"], link=SEO_BASE, dry_run=dry_run),
+        "mastodon": lambda: post_mastodon(texts["mastodon"], link=SEO_BASE, dry_run=dry_run),
+        "discord": lambda: post_discord(texts["discord"], link=SEO_BASE, dry_run=dry_run),
+    }
+    ok, failed = [], []
     for ch in targets:
-        if ch == "bluesky":
-            results[ch] = post_bluesky(texts["bluesky"], dry_run=dry_run)
-        elif ch == "x":
-            results[ch] = post_x(texts["x"], dry_run=dry_run)
-        elif ch == "linkedin":
-            results[ch] = post_linkedin(texts["linkedin"], link=SEO_BASE, dry_run=dry_run)
-        elif ch == "pinterest":
-            img = os.environ.get("PINTEREST_IMAGE_BASE", "")
-            link = f"{SEO_BASE}/products/{slugify(product['name'])}.html"
-            results[ch] = post_pinterest(
-                texts["pinterest"], link=link,
-                image_url=img,
-                dry_run=dry_run,
-            )
-        elif ch == "threads":
-            results[ch] = post_threads(texts["threads"], link=SEO_BASE, dry_run=dry_run)
-        elif ch == "mastodon":
-            results[ch] = post_mastodon(texts["mastodon"], link=SEO_BASE, dry_run=dry_run)
-        elif ch == "discord":
-            results[ch] = post_discord(texts["discord"], link=SEO_BASE, dry_run=dry_run)
+        fn = dispatchers.get(ch)
+        if not fn:
+            continue
+        try:
+            r = fn()
+            results[ch] = r
+            if isinstance(r, dict) and r.get("ok"):
+                ok.append(ch)
+            else:
+                failed.append(ch)
+        except Exception as e:  # noqa — 死凭据/网络问题不中断整轮
+            results[ch] = {"ok": False, "error": str(e)}
+            failed.append(ch)
+    print(f"[channels] ok={ok} skipped/failed={failed}")
     return results
 
 

@@ -28,6 +28,7 @@ from peptide_promotion import generate_product_content, send_telegram
 
 SITE_URL = "https://www.rawpeptidemfg.com"
 CHANNEL_URL = "https://t.me/rtpeptide_official"
+CATALOGUE_URL = "https://msli2233bin.github.io/broadfsc-automation/peptide-seo/"
 NEWSLETTER_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "peptide-seo", "newsletter")
 
 SYS_PROMPT = (
@@ -77,7 +78,7 @@ def to_html(title, body):
 <p style="color:#667">{date} · Research Use Only</p>
 <p>{paras}</p>
 <hr>
-<p style="font-size:13px;color:#667">RTPeptide supplies research-grade peptides for laboratory investigation only. Not for human consumption. <a href="{CHANNEL_URL}">Telegram</a> · <a href="{SITE_URL}">Website</a></p>
+<p style="font-size:13px;color:#667">RTPeptide supplies research-grade peptides for laboratory investigation only. Not for human consumption. <a href="{CATALOGUE_URL}">Research catalogue</a> · <a href="{CHANNEL_URL}">Telegram</a> · <a href="{SITE_URL}">Website</a></p>
 </body></html>"""
 
 
@@ -87,7 +88,7 @@ def main():
     # Telegram (HTML-ish, strip tags)
     import re
     tg_text = re.sub("<[^>]+>", "", body)
-    tg_text += f"\n\n🔬 RTPeptide Research Weekly · {CHANNEL_URL}\n<i>Research Use Only. Not for human consumption.</i>"
+    tg_text += f"\n\n🔬 RTPeptide Research Weekly\nCatalogue: {CATALOGUE_URL}\nChannel: {CHANNEL_URL}\n<i>Research Use Only. Not for human consumption.</i>"
     send_telegram(tg_text, os.environ.get("TELEGRAM_PEPTIDE_CHANNEL_ID", os.environ.get("TELEGRAM_CHANNEL_ID", "")))
     # HTML for Substack
     os.makedirs(NEWSLETTER_DIR, exist_ok=True)
