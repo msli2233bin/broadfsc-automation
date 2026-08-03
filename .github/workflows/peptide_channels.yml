@@ -38,4 +38,6 @@ jobs:
           MASTODON_INSTANCE: ${{ secrets.MASTODON_INSTANCE }}
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
           DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
-        run: python peptide_channels.py --channels bluesky,x,linkedin,pinterest,threads,mastodon,discord
+        run: python peptide_channels.py --channels pinterest
+        # 注：Threads/Discord 账号已死亡(2026-08-04确认)，Bluesky账号被封、X/LinkedIn无凭据，
+        # 均已从自动分发移除。Pinterest 待审核通过即自动激活。SEO引擎(peptide_seo.yml)为主力。

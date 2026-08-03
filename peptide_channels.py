@@ -4,10 +4,12 @@ RTPeptide 多渠道推广引擎
 把肽产品科研内容自动发到多个渠道。每个渠道可独立开关（读环境变量），
 没有凭据的渠道自动跳过，不会报错。
 
-已验证可发: Telegram(在 peptide_promotion.py), Bluesky
-代码就绪待 key: X/Twitter, LinkedIn, Pinterest
+已验证可发: Telegram(在 peptide_promotion.py)
+代码就绪待激活: Pinterest(审核中)
+已废弃(账号死亡/被封): Bluesky(封号), Threads(账号失访), Discord(账号失访), X/LinkedIn(无凭据)
 
 合规: 所有内容强制 Research Use Only 框架，绝不做疗效/人体使用暗示。
+主引擎为程序化 SEO 站点(peptide_seo.yml 每日刷新)，不依赖任何社交账号。
 """
 
 import os
@@ -305,7 +307,7 @@ def run_all(product=None, dry_run=False, channels=None):
 
     texts = build_social_texts(product, hook)
     results = {}
-    targets = channels or ["bluesky", "x", "linkedin", "pinterest", "threads", "mastodon", "discord"]
+    targets = channels or ["pinterest"]
     dispatchers = {
         "bluesky": lambda: post_bluesky(texts["bluesky"], dry_run=dry_run),
         "x": lambda: post_x(texts["x"], dry_run=dry_run),
