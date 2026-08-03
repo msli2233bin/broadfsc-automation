@@ -4,8 +4,10 @@ RTPeptide 肽产品 SEO 静态站生成器（v2 — 程序化长尾引擎）
 
 读取 peptide_products.py，生成搜索引擎友好的静态页矩阵：
 - index.html                          首页（分类导航 + 最新文章 + 强 CTA）
+- contact.html                       联系专家枢纽页（6 位客服 TG 直链 + 频道）
 - <category>.html                    8 个分类落地页
 - products/<slug>.html               20 个产品页（含 JSON-LD Product + 面包屑）
+- products/<slug>-<country>.html     240 个产品×国家长尾页（覆盖真实搜索词）
 - countries/<slug>.html              12 个国家/地区长尾页
 - compare/<a>-vs-<b>.html            10 个对比页
 - faq.html                           通用 FAQ（FAQPage 结构化数据）
@@ -42,6 +44,16 @@ SITE_DESC = ("Research-grade peptides for laboratory study. Browse research pept
              "category with sequences, purity and research focus. Research Use Only.")
 CS_LINK = "https://t.me/rtpeptide_official"
 SITE_LINK = "https://www.rawpeptidemfg.com"
+CONTACT_LINK = "contact.html"
+# 6 位客服（Telegram 直链，访客一键直达客服对话框）
+AGENTS = [
+    ("@a888888980", "Specialist A"),
+    ("@Wesgsd", "Specialist B"),
+    ("@luzhongqiang", "Specialist C"),
+    ("@Luxiaoye1006", "Specialist D"),
+    ("@qs2536", "Specialist E"),
+    ("@Owen475857", "Specialist F"),
+]
 UPDATED = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
 
 DISCLAIMER_HTML = """
@@ -175,6 +187,7 @@ def page_shell(title, description, body, canonical_rel, json_ld=None, nav_prefix
     <a href="{nav_prefix}index.html">Home</a>
     <a href="{nav_prefix}faq.html">FAQ</a>
     <a href="{nav_prefix}blog/index.html">Blog</a>
+    <a href="{nav_prefix}contact.html">Specialists</a>
     <a href="{CS_LINK}">Telegram</a>
   </nav>
 </header>
@@ -182,6 +195,7 @@ def page_shell(title, description, body, canonical_rel, json_ld=None, nav_prefix
 <footer>
   {SITE_NAME} supplies laboratory research chemicals. All products are Research Use Only and not for human consumption.
   &copy; {datetime.datetime.now(datetime.timezone.utc).year} {SITE_NAME}. &middot; <a href="{SITE_LINK}">rawpeptidemfg.com</a>
+  &middot; <a href="{nav_prefix}contact.html">Talk to a specialist</a>
 </footer>
 </div>
 </body>
@@ -676,17 +690,116 @@ def build_rss():
 
 
 # ----------------------------------------------------------------------------
+# 联系专家枢纽页（流量直接导入 6 位客服 TG 对话框）
+# ----------------------------------------------------------------------------
+
+def agent_tg(handle):
+    return "https://t.me/" + handle.lstrip("@")
+
+def build_contact():
+    cards = []
+    for handle, label in AGENTS:
+        cards.append(f"""
+<div class="card" style="text-align:center">
+  <h3 style="margin-top:0;color:#bfe2ff">{esc(label)}</h3>
+  <p class="small">{esc(handle)}</p>
+  <a class="btn" href="{agent_tg(handle)}">Chat on Telegram</a>
+</div>""")
+    bc, bc_ld = breadcrumb("", [("Home", "index.html", "index.html"),
+                                ("Specialists", "contact.html", "contact.html")])
+    body = f"""
+{bc}
+<h1>Talk to an RTPeptide Specialist</h1>
+<p>Looking for a specific research peptide, full specifications, or bulk enquiry? Reach our specialists directly on
+Telegram — they respond to laboratory and procurement questions in real time. All conversations are Research Use Only.</p>
+<div class="grid">{"".join(cards)}</div>
+<div class="card" style="text-align:center">
+  <h2 style="margin-top:0">Or join our public channel</h2>
+  <p class="small">Product updates, new research peptides, and catalogue links.</p>
+  <a class="btn ghost" href="{CS_LINK}">@rtpeptide_official on Telegram</a>
+</div>
+<p class="small">Prefer WhatsApp? Message any specialist on Telegram and ask for the WhatsApp link.</p>
+<div class="cta">
+  <a class="btn" href="index.html">Browse the peptide catalogue</a>
+</div>
+{DISCLAIMER_HTML}
+"""
+    cpage_ld = jld({"@context": "https://schema.org", "@type": "ContactPage",
+                    "name": "Talk to an RTPeptide Specialist",
+                    "url": BASE_URL + "/contact.html",
+                    "mainEntity": {"@type": "Organization", "name": SITE_NAME,
+                                   "contactPoint": [{"@type": "ContactPoint",
+                                                     "contactType": "customer support",
+                                                     "url": agent_tg(h)} for h, _ in AGENTS]}})
+    return page_shell("Talk to an RTPeptide Specialist | " + SITE_NAME,
+                      "Reach RTPeptide specialists directly on Telegram for research-peptide specifications and procurement. Research Use Only.",
+                      body, "/contact.html", json_ld=[bc_ld, cpage_ld])
+
+
+# ----------------------------------------------------------------------------
+# 产品×国家 长尾页（覆盖 "buy [peptide] research peptide in [country]" 真实搜索）
+# ----------------------------------------------------------------------------
+
+def build_geo(p, name, cslug):
+    pslug = slugify(p["name"])
+    fname = f"{pslug}-{cslug}.html"
+    seq = p.get("sequence", "N/A")
+    kps = "".join(f"<li>{esc(k)}</li>" for k in p.get("key_points", []))
+    bc, bc_ld = breadcrumb("../", [("Home", "index.html", "index.html"),
+                                   (name, f"countries/{cslug}.html", f"countries/{cslug}.html"),
+                                   (p["name"], f"products/{fname}", f"products/{fname}")])
+    body = f"""
+{bc}
+<h1>{esc(p['name'])} Research Peptide — Supplied to Laboratories in {esc(name)}</h1>
+<p>{SITE_NAME} supplies {esc(p['name'])} as a research-grade peptide to laboratories and research institutions in
+{esc(name)}. All material is provided strictly for scientific study under Research Use Only conditions — not for human
+consumption, diagnostic, or therapeutic use.</p>
+<div class="spec">
+  <div class="kv"><span class="k">Sequence</span><span class="v">{esc(seq)}</span></div>
+  <div class="kv"><span class="k">Purity</span><span class="v">{esc(p.get('purity','N/A'))}</span></div>
+  <div class="kv"><span class="k">Form</span><span class="v">{esc(p.get('form','N/A'))}</span></div>
+  <div class="kv"><span class="k">CAS</span><span class="v">{esc(p.get('cas','N/A'))}</span></div>
+  <div class="kv"><span class="k">Category</span><span class="v"><a href="../{slugify(p['category'])}.html">{esc(p['category'])}</a></span></div>
+</div>
+<h2>Research Focus</h2>
+<p>{esc(p.get('research_focus',''))}</p>
+<h2>Key Research Points</h2>
+<ul>{kps}</ul>
+<h2>Responsible Supply to {esc(name)}</h2>
+<p>Research teams in {esc(name)} can request documented laboratory chemicals with verified purity, sequence, and
+CAS identification. We handle enquiries through verified research channels only and provide clear chain-of-custody
+information. All handling complies with applicable regulations for research-grade materials.</p>
+<div class="cta">
+  <a class="btn" href="../{CONTACT_LINK}">Contact a specialist</a>
+  <a class="btn ghost" href="../products/{pslug}.html">Full {esc(p['name'])} profile</a>
+</div>
+{DISCLAIMER_HTML}
+"""
+    title = f"{p['name']} Research Peptide in {name} | {SITE_NAME}"
+    desc = (f"{p['name']} research peptide supplied to laboratories in {name}. Sequence, purity and research "
+            f"focus for laboratory study. Research Use Only.")
+    prod_ld = jld({"@context": "https://schema.org", "@type": "Product",
+                   "name": p["name"] + " (research peptide)", "description": p["research_focus"],
+                   "category": p["category"], "brand": {"@type": "Brand", "name": SITE_NAME}})
+    return page_shell(title, desc, body, f"/products/{fname}",
+                      json_ld=[prod_ld, bc_ld], nav_prefix="../")
+
+
+# ----------------------------------------------------------------------------
 # Sitemap / robots / urls
 # ----------------------------------------------------------------------------
 
 def all_urls():
-    urls = [BASE_URL + "/index.html", BASE_URL + "/faq.html", BASE_URL + "/blog/index.html"]
+    urls = [BASE_URL + "/index.html", BASE_URL + "/faq.html",
+            BASE_URL + "/contact.html", BASE_URL + "/blog/index.html"]
     for c in CATEGORIES:
         urls.append(f"{BASE_URL}/{slugify(c)}.html")
     for p in PRODUCTS:
         urls.append(f"{BASE_URL}/products/{slugify(p['name'])}.html")
     for _, cslug in COUNTRIES:
         urls.append(f"{BASE_URL}/countries/{cslug}.html")
+        for p in PRODUCTS:
+            urls.append(f"{BASE_URL}/products/{slugify(p['name'])}-{cslug}.html")
     for a, b in COMPARES:
         urls.append(f"{BASE_URL}/compare/{slugify(a)}-vs-{slugify(b)}.html")
     for a in BLOG_ARTICLES:
@@ -719,6 +832,8 @@ def main():
         f.write(build_index()); written += 1
     with open(os.path.join(OUT_DIR, "faq.html"), "w", encoding="utf-8") as f:
         f.write(build_faq()); written += 1
+    with open(os.path.join(OUT_DIR, "contact.html"), "w", encoding="utf-8") as f:
+        f.write(build_contact()); written += 1
     with open(os.path.join(BLOG_DIR, "index.html"), "w", encoding="utf-8") as f:
         f.write(build_blog_index()); written += 1
 
@@ -733,6 +848,12 @@ def main():
     for name, cslug in COUNTRIES:
         with open(os.path.join(COUNTRY_DIR, cslug + ".html"), "w", encoding="utf-8") as f:
             f.write(build_country(name, cslug)); written += 1
+
+    for name, cslug in COUNTRIES:
+        for p in PRODUCTS:
+            fname = f"{slugify(p['name'])}-{cslug}.html"
+            with open(os.path.join(PRODUCTS_DIR, fname), "w", encoding="utf-8") as f:
+                f.write(build_geo(p, name, cslug)); written += 1
 
     for a, b in COMPARES:
         html_doc = build_compare(a, b)
