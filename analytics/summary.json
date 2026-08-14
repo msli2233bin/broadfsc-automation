@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-08-13T23:38:42.685403Z",
+  "generated_at": "2026-08-14T01:47:19.739358Z",
   "period": {
-    "today": "2026-08-13",
-    "yesterday": "2026-08-12",
-    "week_ago": "2026-08-06",
-    "month_ago": "2026-07-14"
+    "today": "2026-08-14",
+    "yesterday": "2026-08-13",
+    "week_ago": "2026-08-07",
+    "month_ago": "2026-07-15"
   },
   "totals": {
     "posts_today": 0,
     "posts_week": 0,
-    "posts_month": 316,
+    "posts_month": 298,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
@@ -101,10 +101,6 @@
   },
   "action_breakdown": {},
   "daily_trend": {
-    "2026-07-14": {
-      "posts": 18,
-      "interactions": 0
-    },
     "2026-07-15": {
       "posts": 18,
       "interactions": 0
@@ -175,9 +171,9 @@
     }
   },
   "hourly_distribution": {
-    "8": 48,
-    "13": 24,
-    "15": 39,
+    "8": 45,
+    "13": 22,
+    "15": 36,
     "7": 3,
     "14": 10,
     "9": 3,
