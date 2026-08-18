@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-08-17T23:46:07.464270Z",
+  "generated_at": "2026-08-18T01:06:07.462291Z",
   "period": {
-    "today": "2026-08-17",
-    "yesterday": "2026-08-16",
-    "week_ago": "2026-08-10",
-    "month_ago": "2026-07-18"
+    "today": "2026-08-18",
+    "yesterday": "2026-08-17",
+    "week_ago": "2026-08-11",
+    "month_ago": "2026-07-19"
   },
   "totals": {
     "posts_today": 0,
     "posts_week": 0,
-    "posts_month": 244,
+    "posts_month": 228,
     "interactions_today": 0,
     "interactions_week": 0,
     "interactions_month": 0,
-    "success_rate": 42.6
+    "success_rate": 43.0
   },
   "platforms": {
     "tiktok": {
@@ -101,10 +101,6 @@
   },
   "action_breakdown": {},
   "daily_trend": {
-    "2026-07-18": {
-      "posts": 16,
-      "interactions": 0
-    },
     "2026-07-19": {
       "posts": 16,
       "interactions": 0
@@ -159,9 +155,8 @@
     }
   },
   "hourly_distribution": {
-    "7": 3,
-    "14": 10,
     "8": 36,
+    "14": 7,
     "13": 16,
     "15": 27,
     "9": 3,
